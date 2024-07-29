@@ -1719,12 +1719,12 @@ ui:
         msg:
           contain_reserved: "recommended tags cannot contain reserved tags"
       required_tag:
-        title: Set required tags
-        label: Set “Recommend tags” as required tags
+        title: 设置必填标签
+        label: 设置“推荐标签”为必需的标签
         text: "每个新问题必须至少有一个推荐标签。"
       reserved_tags:
         label: 保留标签
-        text: "Reserved tags can only be used by moderator."
+        text: "只有版主才能使用保留的标签。"
     seo:
       page_title: 搜索引擎优化
       permalink:
