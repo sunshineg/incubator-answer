@@ -415,10 +415,10 @@ backend:
     deleted_title:
       other: Gelöschte Frage
     questions_title:
-      other: Questions
+      other: Fragen
   tag:
     tags_title:
-      other: Tags
+      other: Schlagwörter
     no_description:
       other: The tag has no description.
   notification:
@@ -1194,8 +1194,8 @@ ui:
     submit: Submit
     normal: Normal
     closed: Geschlossen
-    deleted: Deleted
-    pending: Pending
+    deleted: Gelöscht
+    pending: Ausstehend
     more: More
   search:
     title: Suchergebnisse
