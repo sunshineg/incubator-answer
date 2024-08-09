@@ -420,7 +420,7 @@ backend:
     tags_title:
       other: Schlagwörter
     no_description:
-      other: The tag has no description.
+      other: Diese Kategorie hat keine Beschreibung.
   notification:
     action:
       update_question:
@@ -778,8 +778,8 @@ ui:
     smile: Lächeln
     frown: frown
     btn_label: Reaktionen hinzufügen oder entfernen
-    undo_emoji: undo {{ emoji }} reaction
-    react_emoji: react with {{ emoji }}
+    undo_emoji: '{{ emoji }} Reaktion rückgängig machen'
+    react_emoji: mit {{ emoji }} reagieren
     unreact_emoji: unreact with {{ emoji }}
   comment:
     btn_add_comment: Einen Kommentar hinzufügen
@@ -918,7 +918,7 @@ ui:
       msg:
         empty: Der Name darf nicht leer sein.
         range: Die Länge des Namens sollte zwischen 4 und 30 Zeichen liegen.
-        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+        character: 'Muss den Zeichensatz "a-z", "A-Z", "0-9", " - . _" verwenden'
     email:
       label: E-Mail
       msg:
@@ -1132,8 +1132,8 @@ ui:
       title: Diesen Beitrag auflisten
       content: Are you sure you want to list?
     unlist:
-      confirm_btn: Unlist
-      title: Unlist this post
+      confirm_btn: Von Liste nehmen
+      title: Diesen Beitrag von der Liste nehmen
       content: Are you sure you want to unlist?
     pin:
       title: Diesen Beitrag anpinnen
@@ -1156,7 +1156,7 @@ ui:
     save: Speichern
     delete: Löschen
     undelete: Wiederherstellen
-    list: List
+    list: Liste
     unlist: Unlist
     unlisted: Unlisted
     login: Einloggen
@@ -1191,7 +1191,7 @@ ui:
     post_lowercase: post
     filter: Filter
     ignore: Ignore
-    submit: Submit
+    submit: Absenden
     normal: Normal
     closed: Geschlossen
     deleted: Gelöscht
@@ -1321,7 +1321,7 @@ ui:
       msg: Datenbank-Host darf nicht leer sein.
     db_name:
       label: Datenbankname
-      placeholder: answer
+      placeholder: antworten
       msg: Der Datenbankname darf nicht leer sein.
     db_file:
       label: Datenbank-Datei
@@ -1374,7 +1374,7 @@ ui:
       msg:
         empty: E-Mail darf nicht leer sein.
         incorrect: E-Mail falsches Format.
-    ready_title: Your site is ready
+    ready_title: Ihre Seite ist bereit
     ready_desc: >-
       Wenn du noch mehr Einstellungen ändern möchtest, besuche den <1>Admin-Bereich</1>; du findest ihn im Seitenmenü.
     good_luck: "Viel Spaß und viel Glück!"
@@ -1423,7 +1423,7 @@ ui:
     css_html: CSS/HTML
     login: Anmeldung
     privileges: Berechtigungen
-    plugins: Plugins
+    plugins: Erweiterungen (Plugins)
     installed_plugins: Installierte Plugins
   website_welcome: Willkommen auf {{site_name}}
   user_center:
@@ -1435,7 +1435,7 @@ ui:
       title: Administrator
     dashboard:
       title: Dashboard
-      welcome: Welcome to Admin!
+      welcome: Willkommen im Admin Bereich!
       site_statistics: Website-Statistiken
       questions: "Fragen:"
       answers: "Antworten:"
@@ -1859,13 +1859,13 @@ ui:
     suggest_edits: Suggested edits
     flag_post: Beitrag melden
     flag_user: Nutzer melden
-    queued_post: Queued post
-    queued_user: Queued user
-    filter_label: Type
-    reputation: reputation
+    queued_post: Beitrag in Warteschlange
+    queued_user: Benutzer in der Warteschlange
+    filter_label: Typ
+    reputation: ansehen
     flag_post_type: Flagged this post as {{ type }}.
     flag_user_type: Flagged this user as {{ type }}.
-    edit_post: Edit post
+    edit_post: Beitrag bearbeiten
     list_post: List post
     unlist_post: Unlist post
   timeline:
