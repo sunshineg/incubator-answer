@@ -19,19 +19,19 @@
 backend:
   base:
     success:
-      other: Success.
+      other: Gennemført.
     unknown:
-      other: Unknown error.
+      other: Ukendt fejl.
     request_format_error:
-      other: Request format is not valid.
+      other: Forespørgselsformat er ikke gyldigt.
     unauthorized_error:
-      other: Unauthorized.
+      other: Uautoriseret.
     database_error:
-      other: Data server error.
+      other: Data-server fejl.
     forbidden_error:
-      other: Forbidden.
+      other: Forbudt.
     duplicate_request_error:
-      other: Duplicate submission.
+      other: Duplilkeret indenselse.
   action:
     report:
       other: Flag
