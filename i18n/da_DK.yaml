@@ -530,7 +530,7 @@ ui:
   how_to_format:
     title: Sådan formaterer du
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">for at lave links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url. om)</code></pre></li><li><p class="mb-2">putter afkast mellem afsnit</p></li><li><p class="mb-2"><em>_italic_</em> eller **<strong>fed</strong>**</p></li><li><p class="mb-2">led kode med 4 mellemrum</p></li><li><p class="mb-2">citat ved at placere <code>&gt;</code> i starten af linje</p></li><li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">opret kodehegn med backticks <code></code></p><pre class="mb-0"><code>``<br/>kode her<br/>`52</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">for at lave links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Titel](https://url.com)</code></pre></li><li><p class="mb-2">indsæt linieskift mellem paragraffer</p></li><li><p class="mb-2"><em>_kursiv_</em> or **<strong>fed</strong>**</p></li><li><p class="mb-2">indskyd kode med 4 mellemrum</p></li><li><p class="mb-2">citér ved at placere <code>&gt;</code> på starten af linie</p></li><li><p class="mb-2">backtick escapes <code>`som _dette_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
     prev: Forrige
     next: Næste
@@ -1029,280 +1029,280 @@ ui:
     account:
       heading: Konto
       change_email_btn: Ændre e-mail
-      change_pass_btn: Change password
+      change_pass_btn: Skift adgangskode
       change_email_info: >-
-        We've sent an email to that address. Please follow the confirmation instructions.
+        Vi har sendt en e-mail til denne adresse. Følg venligst bekræftelsesinstruktionerne.
       email:
-        label: Email
+        label: E-mail
       new_email:
-        label: New email
-        msg: New email cannot be empty.
+        label: Ny e-mail
+        msg: Ny e-mail skal udfyldes.
       pass:
-        label: Current password
-        msg: Password cannot be empty.
-      password_title: Password
+        label: Nuværende adgangskode
+        msg: Adgangskoden skal udfyldes.
+      password_title: Adgangskode
       current_pass:
-        label: Current password
+        label: Nuværende adgangskode
         msg:
-          empty: Current password cannot be empty.
-          length: The length needs to be between 8 and 32.
-          different: The two entered passwords do not match.
+          empty: Nuværende adgangskode skal udfyldes.
+          length: Længden skal være mellem 8 og 32 tegn.
+          different: De to indtastede adgangskoder er ikke ens.
       new_pass:
-        label: New password
+        label: Ny adgangskode
       pass_confirm:
-        label: Confirm new password
+        label: Bekræft den nye adgangskode
     interface:
-      heading: Interface
+      heading: Grænseflade
       lang:
-        label: Interface language
-        text: User interface language. It will change when you refresh the page.
+        label: Grænseflade sprog
+        text: Brugergrænseflade sprog. Det vil ændres, når du opdaterer siden.
     my_logins:
-      title: My logins
-      label: Log in or sign up on this site using these accounts.
-      modal_title: Remove login
-      modal_content: Are you sure you want to remove this login from your account?
-      modal_confirm_btn: Remove
-      remove_success: Removed successfully
+      title: Mine log ind
+      label: Log ind eller tilmeld dig på dette websted ved hjælp af disse konti.
+      modal_title: Fjern login
+      modal_content: Er du sikker på, at du vil fjerne dette login fra din konto?
+      modal_confirm_btn: Slet
+      remove_success: Fjernet
   toast:
-    update: update success
-    update_password: Password changed successfully.
-    flag_success: Thanks for flagging.
-    forbidden_operate_self: Forbidden to operate on yourself
-    review: Your revision will show after review.
-    sent_success: Sent successfully
+    update: opdatering gennemført
+    update_password: Adgangskoden er ændret.
+    flag_success: Tak for at anmelde.
+    forbidden_operate_self: Forbudt at operere på dig selv
+    review: Din revision vil blive vist efter gennemgang.
+    sent_success: Sendt
   related_question:
-    title: Related Questions
-    answers: answers
+    title: Relaterede spørgsmål
+    answers: svar
   invite_to_answer:
-    title: People Asked
-    desc: Select people who you think might know the answer.
-    invite: Invite to answer
-    add: Add people
-    search: Search people
+    title: Inviter personer
+    desc: Invitér personer, som du tror, kan svare.
+    invite: Inviter til at svare
+    add: Tilføj personer
+    search: Søg personer
   question_detail:
-    action: Action
-    Asked: Asked
-    asked: asked
-    update: Modified
-    edit: edited
-    commented: commented
-    Views: Viewed
-    Follow: Follow
-    Following: Following
-    follow_tip: Follow this question to receive notifications
-    answered: answered
-    closed_in: Closed in
-    show_exist: Show existing question.
-    useful: Useful
-    question_useful: It is useful and clear
-    question_un_useful: It is unclear or not useful
-    question_bookmark: Bookmark this question
-    answer_useful: It is useful
-    answer_un_useful: It is not useful
+    action: Handling
+    Asked: Spurgt
+    asked: spurgt
+    update: Ændret
+    edit: redigeret
+    commented: kommenteret
+    Views: Set
+    Follow: Følg
+    Following: Følger
+    follow_tip: Følg dette spørgsmål for at modtage notifikationer
+    answered: besvaret
+    closed_in: Lukket om
+    show_exist: Vis eksisterende spørgsmål.
+    useful: Nyttigt
+    question_useful: Det er nyttigt og klart
+    question_un_useful: Det er uklart eller ikke nyttigt
+    question_bookmark: Bogmærk dette spørgsmål
+    answer_useful: Det er nyttigt
+    answer_un_useful: Det er ikke nyttigt
     answers:
-      title: Answers
-      score: Score
-      newest: Newest
-      oldest: Oldest
-      btn_accept: Accept
-      btn_accepted: Accepted
+      title: Svar
+      score: Bedømmelse
+      newest: Nyeste
+      oldest: Ældste
+      btn_accept: Acceptér
+      btn_accepted: Accepteret
     write_answer:
-      title: Your Answer
-      edit_answer: Edit my existing answer
-      btn_name: Post your answer
-      add_another_answer: Add another answer
-      confirm_title: Continue to answer
-      continue: Continue
+      title: Dit Svar
+      edit_answer: Redigér mit eksisterende svar
+      btn_name: Indsend dit svar
+      add_another_answer: Tilføj endnu et svar
+      confirm_title: Fortsæt med at svare
+      continue: Forsæt
       confirm_info: >-
-        <p>Are you sure you want to add another answer?</p><p>You could use the edit link to refine and improve your existing answer, instead.</p>
-      empty: Answer cannot be empty.
-      characters: content must be at least 6 characters in length.
+        <p>Er du sikker på, at du vil tilføje et andet svar?</p><p>Du kan i stedet bruge redigeringslinket til at forfine og forbedre dit eksisterende svar.</p>
+      empty: Svar skal udfyldes.
+      characters: indhold skal være mindst 6 tegn.
       tips:
-        header_1: Thanks for your answer
-        li1_1: Please be sure to <strong>answer the question</strong>. Provide details and share your research.
-        li1_2: Back up any statements you make with references or personal experience.
-        header_2: But <strong>avoid</strong> ...
-        li2_1: Asking for help, seeking clarification, or responding to other answers.
+        header_1: Tak for dit svar
+        li1_1: Vær sikker på at <strong>besvare spørgsmålet</strong>. Giv oplysninger og del din forskning.
+        li1_2: Begrund eventuelle udsagn med referencer eller personlige erfaringer.
+        header_2: Men <strong>undgå</strong>...
+        li2_1: Spørger om hjælp, søger afklaring, eller reagerer på andre svar.
     reopen:
-      confirm_btn: Reopen
-      title: Reopen this post
-      content: Are you sure you want to reopen?
+      confirm_btn: Genåbn
+      title: Genåbn dette indlæg
+      content: Er du sikker på, at du vil genåbne?
     list:
-      confirm_btn: List
-      title: List this post
-      content: Are you sure you want to list?
+      confirm_btn: Liste
+      title: Sæt dette indlæg på listen
+      content: Er du sikker på du vil sætte på listen?
     unlist:
-      confirm_btn: Unlist
-      title: Unlist this post
-      content: Are you sure you want to unlist?
+      confirm_btn: Fjern fra listen
+      title: Fjern dette indlæg fra listen
+      content: Er du sikker på at du vil fjerne fra listen?
     pin:
-      title: Pin this post
-      content: Are you sure you wish to pinned globally? This post will appear at the top of all post lists.
-      confirm_btn: Pin
+      title: Fastgør dette indlæg
+      content: Er du sikker på, at du ønsker at fastgøre globalt? Dette indlæg vises øverst på alle indlægs-lister.
+      confirm_btn: Fastgør
   delete:
-    title: Delete this post
+    title: Slet dette indlæg
     question: >-
-      We do not recommend <strong>deleting questions with answers</strong> because doing so deprives future readers of this knowledge.</p><p>Repeated deletion of answered questions can result in your account being blocked from asking. Are you sure you wish to delete?
+      Vi anbefaler ikke, at <strong>sletter spørgsmål med svar</strong>, fordi det fratager fremtidige læsere denne viden.</p><p>Gentaget sletning af besvarede spørgsmål kan resultere i, at din konto bliver blokeret fra at spørge. Er du sikker på, at du ønsker at slette?
     answer_accepted: >-
-      <p>We do not recommend <strong>deleting accepted answer</strong> because doing so deprives future readers of this knowledge. </p> Repeated deletion of accepted answers can result in your account being blocked from answering. Are you sure you wish to delete?
-    other: Are you sure you wish to delete?
-    tip_answer_deleted: This answer has been deleted
-    undelete_title: Undelete this post
-    undelete_desc: Are you sure you wish to undelete?
+      <p>Vi anbefaler ikke <strong>at slette accepteret svar</strong> fordi det fratager fremtidige læsere denne viden. </p> Gentagen sletning af accepterede svar kan resultere i, at din konto bliver blokeret fra besvarelse. Er du sikker på, at du ønsker at slette?
+    other: Er du sikker på, at du vil slette?
+    tip_answer_deleted: Dette svar er blevet slettet
+    undelete_title: Genopret dette indlæg
+    undelete_desc: Er du sikker på du ønsker at genoprette?
   btns:
-    confirm: Confirm
-    cancel: Cancel
-    edit: Edit
-    save: Save
-    delete: Delete
-    undelete: Undelete
-    list: List
-    unlist: Unlist
-    unlisted: Unlisted
-    login: Log in
-    signup: Sign up
-    logout: Log out
-    verify: Verify
-    add_question: Add question
-    approve: Approve
-    reject: Reject
-    skip: Skip
-    discard_draft: Discard draft
-    pinned: Pinned
-    all: All
-    question: Question
-    answer: Answer
-    comment: Comment
-    refresh: Refresh
-    resend: Resend
-    deactivate: Deactivate
-    active: Active
-    suspend: Suspend
-    unsuspend: Unsuspend
-    close: Close
-    reopen: Reopen
-    ok: OK
-    light: Light
-    dark: Dark
-    system_setting: System setting
-    default: Default
-    reset: Reset
+    confirm: Bekræft
+    cancel: Annuller
+    edit: Rediger
+    save: Gem
+    delete: Slet
+    undelete: Genopret
+    list: Sæt på liste
+    unlist: Fjern fra liste
+    unlisted: Fjernet fra liste
+    login: Log ind
+    signup: Opret konto
+    logout: Log Ud
+    verify: Verificér
+    add_question: Tilføj spørgsmål
+    approve: Godkend
+    reject: Afvis
+    skip: Spring Over
+    discard_draft: Kassér udkast
+    pinned: Fastgjort
+    all: Alle
+    question: Spørgsmål
+    answer: Svar
+    comment: Kommentar
+    refresh: Genopfrisk
+    resend: Send igen
+    deactivate: Deaktiver
+    active: Aktiv
+    suspend: Suspendér
+    unsuspend: Ophæv suspendering
+    close: Luk
+    reopen: Genåbn
+    ok: Ok
+    light: Lys
+    dark: Mørk
+    system_setting: Systemindstilling
+    default: Standard
+    reset: Nulstil
     tag: Tag
-    post_lowercase: post
-    filter: Filter
-    ignore: Ignore
-    submit: Submit
+    post_lowercase: indlæg
+    filter: Filtrer
+    ignore: Ignorér
+    submit: Indsend
     normal: Normal
-    closed: Closed
-    deleted: Deleted
-    pending: Pending
-    more: More
+    closed: Lukket
+    deleted: Slettet
+    pending: Ventende
+    more: Mere
   search:
-    title: Search Results
-    keywords: Keywords
-    options: Options
-    follow: Follow
-    following: Following
-    counts: "{{count}} Results"
-    more: More
+    title: Søgeresultater
+    keywords: Nøgleord
+    options: Muligheder
+    follow: Følg
+    following: Følger
+    counts: "{{count}} Resultater"
+    more: Mere
     sort_btns:
-      relevance: Relevance
-      newest: Newest
-      active: Active
-      score: Score
-      more: More
+      relevance: Relevans
+      newest: Nyeste
+      active: Aktiv
+      score: Bedømmelse
+      more: Mere
     tips:
-      title: Advanced Search Tips
-      tag: "<1>[tag]</1> search with a tag"
-      user: "<1>user:username</1> search by author"
-      answer: "<1>answers:0</1> unanswered questions"
-      score: "<1>score:3</1> posts with a 3+ score"
-      question: "<1>is:question</1> search questions"
-      is_answer: "<1>is:answer</1> search answers"
-    empty: We couldn't find anything. <br /> Try different or less specific keywords.
+      title: Avancerede Søgetips
+      tag: "<1>[tag]</1> søgning med et tag"
+      user: "<1>user:username</1> søgning efter forfatter"
+      answer: "<1>answers:0</1> ubesvarede spørgsmål"
+      score: "<1>score:3</1> indlæg med 3+ score"
+      question: "<1>is:question</1> søgespørgsmål"
+      is_answer: "<1>is:answer</1> søgesvar"
+    empty: Vi kunne ikke finde noget. <br /> Prøv forskellige eller mindre specifikke søgeord.
   share:
-    name: Share
-    copy: Copy link
-    via: Share post via...
-    copied: Copied
-    facebook: Share to Facebook
-    twitter: Share to Twitter
-  cannot_vote_for_self: You can't vote for your own post.
+    name: Del
+    copy: Kopiér link
+    via: Del indlæg via...
+    copied: Kopieret
+    facebook: Del på Facebook
+    twitter: Del på Twitter
+  cannot_vote_for_self: Du kan ikke stemme på dit eget indlæg.
   modal_confirm:
-    title: Error...
+    title: Fejl...
   account_result:
-    success: Your new account is confirmed; you will be redirected to the home page.
-    link: Continue to homepage
-    oops: Oops!
-    invalid: The link you used no longer works.
-    confirm_new_email: Your email has been updated.
+    success: Din nye konto er bekræftet. Du vil blive omdirigeret til hjemmesiden.
+    link: Fortsæt til startside
+    oops: Hovsa!
+    invalid: Linket, du brugte, virker ikke længere.
+    confirm_new_email: Din e-mail er blevet opdateret.
     confirm_new_email_invalid: >-
-      Sorry, this confirmation link is no longer valid. Perhaps your email was already changed?
+      Beklager, dette bekræftelseslink er ikke længere gyldigt. Måske blev din e-mail allerede ændret?
   unsubscribe:
-    page_title: Unsubscribe
-    success_title: Unsubscribe Successful
-    success_desc: You have been successfully removed from this subscriber list and won't receive any further emails from us.
-    link: Change settings
+    page_title: Afmeld
+    success_title: Afmelding Lykkedes
+    success_desc: Du er blevet fjernet fra denne abonnentliste og vil ikke modtage yderligere e-mails fra os.
+    link: Skift indstillinger
   question:
-    following_tags: Following Tags
-    edit: Edit
-    save: Save
-    follow_tag_tip: Follow tags to curate your list of questions.
-    hot_questions: Hot Questions
-    all_questions: All Questions
-    x_questions: "{{ count }} Questions"
-    x_answers: "{{ count }} answers"
-    questions: Questions
-    answers: Answers
-    newest: Newest
-    active: Active
-    hot: Hot
-    score: Score
-    unanswered: Unanswered
-    modified: modified
-    answered: answered
-    asked: asked
-    closed: closed
-    follow_a_tag: Follow a tag
-    more: More
+    following_tags: Følger Tags
+    edit: Rediger
+    save: Gem
+    follow_tag_tip: Følg tags for at udvælge dine spørgsmål.
+    hot_questions: Populære Spørgsmål
+    all_questions: Alle Spørgsmål
+    x_questions: "{{ count }} Spørgsmål"
+    x_answers: "{{ count }} svar"
+    questions: Spørgsmål
+    answers: Svar
+    newest: Nyeste
+    active: Aktiv
+    hot: Populært
+    score: Bedømmelse
+    unanswered: Ubesvaret
+    modified: ændret
+    answered: besvaret
+    asked: spurgt
+    closed: lukket
+    follow_a_tag: Følg et tag
+    more: Mere
   personal:
-    overview: Overview
-    answers: Answers
-    answer: answer
-    questions: Questions
-    question: question
-    bookmarks: Bookmarks
-    reputation: Reputation
-    comments: Comments
-    votes: Votes
-    newest: Newest
-    score: Score
-    edit_profile: Edit profile
-    visited_x_days: "Visited {{ count }} days"
-    viewed: Viewed
-    joined: Joined
-    last_login: Seen
-    about_me: About Me
-    about_me_empty: "// Hello, World !"
-    top_answers: Top Answers
-    top_questions: Top Questions
-    stats: Stats
-    list_empty: No posts found.<br />Perhaps you'd like to select a different tab?
-    accepted: Accepted
-    answered: answered
-    asked: asked
-    downvoted: downvoted
+    overview: Oversigt
+    answers: Svar
+    answer: svar
+    questions: Spørgsmål
+    question: spørgsmål
+    bookmarks: Bogmærker
+    reputation: Omdømme
+    comments: Kommentarer
+    votes: Stemmer
+    newest: Nyeste
+    score: Bedømmelse
+    edit_profile: Rediger profil
+    visited_x_days: "Besøgte {{ count }} dage"
+    viewed: Set
+    joined: Tilmeldt
+    last_login: Set
+    about_me: Om Mig
+    about_me_empty: "// Hej, Verden!"
+    top_answers: Populære Svar
+    top_questions: Populære Spørgsmål
+    stats: Statistik
+    list_empty: Ingen indlæg fundet.<br />Måske vil du vælge en anden fane?
+    accepted: Accepteret
+    answered: besvaret
+    asked: spurgt
+    downvoted: nedstemt
     mod_short: MOD
-    mod_long: Moderators
-    x_reputation: reputation
-    x_votes: votes received
-    x_answers: answers
-    x_questions: questions
+    mod_long: Moderatorer
+    x_reputation: omdømme
+    x_votes: stemmer modtaget
+    x_answers: svar
+    x_questions: spørgsmål
   install:
     title: Installation
-    next: Next
-    done: Done
-    config_yaml_error: Can't create the config.yaml file.
+    next: Næste
+    done: Udført
+    config_yaml_error: Kan ikke oprette filen config.yaml.
     lang:
       label: Please choose a language
     db_type:
@@ -1364,260 +1364,260 @@ ui:
     admin_password:
       label: Password
       text: >-
-        You will need this password to log in. Please store it in a secure location.
-      msg: Password cannot be empty.
-      msg_min_length: Password must be at least 8 characters in length.
-      msg_max_length: Password must be at maximum 32 characters in length.
+        Du skal bruge denne adgangskode for at logge ind. Opbevar den et sikkert sted.
+      msg: Adgangskoden skal udfyldes.
+      msg_min_length: Adgangskoden skal være mindst 8 tegn.
+      msg_max_length: Adgangskoden skal højst udgøre 32 tegn.
     admin_email:
-      label: Email
-      text: You will need this email to log in.
+      label: E-mail
+      text: Du skal bruge denne e-mail for at logge ind.
       msg:
-        empty: Email cannot be empty.
-        incorrect: Email incorrect format.
-    ready_title: Your site is ready
+        empty: E-mail skal udfyldes.
+        incorrect: Ugyldig e-mail adresse.
+    ready_title: Dit websted er klar
     ready_desc: >-
-      If you ever feel like changing more settings, visit <1>admin section</1>; find it in the site menu.
-    good_luck: "Have fun, and good luck!"
-    warn_title: Warning
+      Hvis du nogensinde har lyst til at ændre flere indstillinger, kan du besøge <1>admin-sektion</1>; find det i site-menuen.
+    good_luck: "Hav det sjovt, og held og lykke!"
+    warn_title: Advarsel
     warn_desc: >-
-      The file <1>config.yaml</1> already exists. If you need to reset any of the configuration items in this file, please delete it first.
-    install_now: You may try <1>installing now</1>.
-    installed: Already installed
+      Filen <1>config.yaml</1> findes allerede. Hvis du har brug for at nulstille en af konfigurationselementerne i denne fil, så slet den først.
+    install_now: Du kan prøve <1>at installere nu</1>.
+    installed: Allerede installeret
     installed_desc: >-
-      You appear to have already installed. To reinstall please clear your old database tables first.
-    db_failed: Database connection failed
+      Du synes allerede at være installeret. For at geninstallere skal du først rydde dine gamle databasetabeller.
+    db_failed: Database forbindelse mislykkedes
     db_failed_desc: >-
-      This either means that the database information in your <1>config.yaml</1> file is incorrect or that contact with the database server could not be established. This could mean your host's database server is down.
+      Det betyder enten, at databaseinformationen i din <1>config. aml</1> fil er forkert eller at kontakt med databaseserveren ikke kunne etableres. Dette kan betyde, at din værts databaseserver er nede.
   counts:
-    views: views
-    votes: votes
-    answers: answers
-    accepted: Accepted
+    views: visninger
+    votes: stemmer
+    answers: svar
+    accepted: Accepteret
   page_error:
-    http_error: HTTP Error {{ code }}
-    desc_403: You don't have permission to access this page.
-    desc_404: Unfortunately, this page doesn't exist.
-    desc_50X: The server encountered an error and could not complete your request.
-    back_home: Back to homepage
+    http_error: HTTP Fejl {{ code }}
+    desc_403: Du har ikke adgang til denne side.
+    desc_404: Denne side findes desværre ikke.
+    desc_50X: Der skete en fejl på serveren og den kunne ikke fuldføre din anmodning.
+    back_home: Tilbage til forsiden
   page_maintenance:
-    desc: "We are under maintenance, we'll be back soon."
+    desc: "Vi laver vedligeholdelse, men er snart tilbage igen."
   nav_menus:
-    dashboard: Dashboard
-    contents: Contents
-    questions: Questions
-    answers: Answers
-    users: Users
-    flags: Flags
-    settings: Settings
-    general: General
-    interface: Interface
+    dashboard: Kontrolpanel
+    contents: Indhold
+    questions: Spørgsmål
+    answers: Svar
+    users: Brugere
+    flags: Anmeldelser
+    settings: Indstillinger
+    general: Generelt
+    interface: Brugerflade
     smtp: SMTP
     branding: Branding
-    legal: Legal
-    write: Write
-    tos: Terms of Service
-    privacy: Privacy
+    legal: Jura
+    write: Skriv
+    tos: Betingelser for brug
+    privacy: Privatliv
     seo: SEO
-    customize: Customize
-    themes: Themes
+    customize: Tilpas
+    themes: Temaer
     css_html: CSS/HTML
-    login: Login
-    privileges: Privileges
+    login: Log Ind
+    privileges: Rettigheder
     plugins: Plugins
-    installed_plugins: Installed Plugins
-  website_welcome: Welcome to {{site_name}}
+    installed_plugins: Installerede Plugins
+  website_welcome: Velkommen til {{site_name}}
   user_center:
-    login: Login
-    qrcode_login_tip: Please use {{ agentName }} to scan the QR code and log in.
-    login_failed_email_tip: Login failed, please allow this app to access your email information before try again.
+    login: Log Ind
+    qrcode_login_tip: Brug {{ agentName }} til at scanne QR-koden og logge ind.
+    login_failed_email_tip: Log ind mislykkedes, tillad denne app at få adgang til dine e-mail-oplysninger, før du prøver igen.
   admin:
     admin_header:
-      title: Admin
+      title: Administrator
     dashboard:
-      title: Dashboard
-      welcome: Welcome to Admin!
-      site_statistics: Site statistics
-      questions: "Questions:"
-      answers: "Answers:"
-      comments: "Comments:"
-      votes: "Votes:"
-      users: "Users:"
-      flags: "Flags:"
-      reviews: "Reviews:"
-      site_health: Site health
+      title: Kontrolpanel
+      welcome: Velkommen til Administration!
+      site_statistics: Statistik for webstedet
+      questions: "Spørgsmål:"
+      answers: "Svar:"
+      comments: "Kommentarer:"
+      votes: "Stemmer:"
+      users: "Brugere:"
+      flags: "Anmeldelser:"
+      reviews: "Gennemgange:"
+      site_health: Websteds sundhed
       version: "Version:"
       https: "HTTPS:"
-      upload_folder: "Upload folder:"
-      run_mode: "Running mode:"
-      private: Private
-      public: Public
+      upload_folder: "Upload mappe:"
+      run_mode: "Kørselstilstand:"
+      private: Privat
+      public: Offentlig
       smtp: "SMTP:"
-      timezone: "Timezone:"
-      system_info: System info
+      timezone: "Tidszone:"
+      system_info: System information
       go_version: "Go version:"
       database: "Database:"
-      database_size: "Database size:"
-      storage_used: "Storage used:"
-      uptime: "Uptime:"
+      database_size: "Database størrelse:"
+      storage_used: "Anvendt lagerplads:"
+      uptime: "Oppetid:"
       links: Links
       plugins: Plugins
       github: GitHub
       blog: Blog
-      contact: Contact
+      contact: Kontakt os
       forum: Forum
-      documents: Documents
-      feedback: Feedback
+      documents: Dokumenter
+      feedback: Tilbagemelding
       support: Support
-      review: Review
-      config: Config
-      update_to: Update to
-      latest: Latest
-      check_failed: Check failed
-      "yes": "Yes"
-      "no": "No"
-      not_allowed: Not allowed
-      allowed: Allowed
-      enabled: Enabled
-      disabled: Disabled
-      writable: Writable
-      not_writable: Not writable
+      review: Gennemgå
+      config: Konfiguration
+      update_to: Opdatér til
+      latest: Seneste
+      check_failed: Tjek mislykkedes
+      "yes": "Ja"
+      "no": "Nej"
+      not_allowed: Ikke tilladt
+      allowed: Tilladt
+      enabled: Aktiveret
+      disabled: Deaktiveret
+      writable: Skrivbar
+      not_writable: Ikke skrivbar
     flags:
-      title: Flags
-      pending: Pending
-      completed: Completed
-      flagged: Flagged
-      flagged_type: Flagged {{ type }}
-      created: Created
-      action: Action
-      review: Review
+      title: Anmeldelser
+      pending: Ventende
+      completed: Gennemført
+      flagged: Anmeldt
+      flagged_type: Anmeldt{{ type }}
+      created: Oprettet
+      action: Handling
+      review: Gennemgå
     user_role_modal:
-      title: Change user role to...
-      btn_cancel: Cancel
-      btn_submit: Submit
+      title: Skift brugerrolle til...
+      btn_cancel: Annuller
+      btn_submit: Indsend
     new_password_modal:
-      title: Set new password
+      title: Angiv ny adgangskode
       form:
         fields:
           password:
-            label: Password
-            text: The user will be logged out and need to login again.
-            msg: Password must be at 8-32 characters in length.
-      btn_cancel: Cancel
-      btn_submit: Submit
+            label: Adgangskode
+            text: Brugeren vil blive logget ud og skal logge ind igen.
+            msg: Adgangskoden skal være på 8- 32 tegn.
+      btn_cancel: Annuller
+      btn_submit: Indsend
     edit_profile_modal:
-      title: Edit profile
+      title: Rediger profil
       form:
         fields:
           display_name:
-            label: Display name
-            msg_range: Display name up to 30 characters.
+            label: Navn
+            msg_range: Navn på op til 30 tegn.
           username:
-            label: Username
-            msg_range: Username up to 30 characters.
+            label: Brugernavn
+            msg_range: Brugernavn op til 30 tegn.
           email:
-            label: Email
-            msg_invalid: Invalid Email Address.
-      edit_success: Edited successfully
-      btn_cancel: Cancel
-      btn_submit: Submit
+            label: E-mail
+            msg_invalid: Ugyldig E-Mail Adresse.
+      edit_success: Redigering lykkedes
+      btn_cancel: Annuller
+      btn_submit: Indsend
     user_modal:
-      title: Add new user
+      title: Tilføj ny bruger
       form:
         fields:
           users:
-            label: Bulk add user
+            label: Masse-tilføj bruger
             placeholder: "John Smith, john@example.com, BUSYopr2\nAlice, alice@example.com, fpDntV8q"
-            text: Separate “name, email, password” with commas. One user per line.
-            msg: "Please enter the user's email, one per line."
+            text: Adskil “navn, e-mail, adgangskode” med kommaer. Én bruger pr. linje.
+            msg: "Indtast venligst brugerens e-mail, en pr. linje."
           display_name:
-            label: Display name
-            msg: Display name must be at 4-30 characters in length.
+            label: Navn
+            msg: Vis navn skal være på 4-30 tegn.
           email:
-            label: Email
-            msg: Email is not valid.
+            label: E-mail
+            msg: E-mail er ugyldig.
           password:
-            label: Password
-            msg: Password must be at 8-32 characters in length.
-      btn_cancel: Cancel
-      btn_submit: Submit
+            label: Adgangskode
+            msg: Adgangskoden skal være 8- 32 tegn.
+      btn_cancel: Annuller
+      btn_submit: Indsend
     users:
-      title: Users
-      name: Name
-      email: Email
-      reputation: Reputation
-      created_at: Created Time
-      delete_at: Deleted Time
-      suspend_at: Suspended Time
+      title: Brugere
+      name: Navn
+      email: E-mail
+      reputation: Omdømme
+      created_at: Oprettet Tidspunkt
+      delete_at: Slettet Tidspunkt
+      suspend_at: Suspenderet Tidspunkt
       status: Status
-      role: Role
-      action: Action
-      change: Change
-      all: All
-      staff: Staff
-      more: More
-      inactive: Inactive
-      suspended: Suspended
-      deleted: Deleted
+      role: Rolle
+      action: Handling
+      change: Ændre
+      all: Alle
+      staff: Ansatte
+      more: Mere
+      inactive: Inaktiv
+      suspended: Suspenderet
+      deleted: Slettet
       normal: Normal
       Moderator: Moderator
-      Admin: Admin
-      User: User
+      Admin: Administrator
+      User: Bruger
       filter:
-        placeholder: "Filter by name, user:id"
-      set_new_password: Set new password
-      edit_profile: Edit profile
-      change_status: Change status
-      change_role: Change role
-      show_logs: Show logs
-      add_user: Add user
+        placeholder: "Filtrer efter navn, user:id"
+      set_new_password: Angiv ny adgangskode
+      edit_profile: Rediger profil
+      change_status: Ændre status
+      change_role: Ændre rolle
+      show_logs: Vis logfiler
+      add_user: Tilføj bruger
       deactivate_user:
-        title: Deactivate user
-        content: An inactive user must re-validate their email.
+        title: Deaktiver bruger
+        content: En inaktiv bruger skal bekræfte deres e-mail igen.
       delete_user:
-        title: Delete this user
-        content: Are you sure you want to delete this user? This is permanent!
-        remove: Remove their content
-        label: Remove all questions, answers, comments, etc.
-        text: Don’t check this if you wish to only delete the user’s account.
+        title: Slet denne bruger
+        content: Er du sikker på, at du vil slette denne bruger? Dette er permanent!
+        remove: Fjern deres indhold
+        label: Fjern alle spørgsmål, svar, kommentarer osv.
+        text: Tjek ikke dette, hvis du kun ønsker at slette brugerens konto.
       suspend_user:
-        title: Suspend this user
-        content: A suspended user can't log in.
+        title: Suspendér denne bruger
+        content: En suspenderet bruger kan ikke logge ind.
     questions:
-      page_title: Questions
-      unlisted: Unlisted
-      post: Post
-      votes: Votes
-      answers: Answers
-      created: Created
+      page_title: Spørgsmål
+      unlisted: Fjernet fra liste
+      post: Indlæg
+      votes: Stemmer
+      answers: Svar
+      created: Oprettet
       status: Status
-      action: Action
-      change: Change
-      pending: Pending
+      action: Handling
+      change: Ændre
+      pending: Ventende
       filter:
-        placeholder: "Filter by title, question:id"
+        placeholder: "Filtrer efter titel, question:id"
     answers:
-      page_title: Answers
-      post: Post
-      votes: Votes
-      created: Created
+      page_title: Svar
+      post: Indlæg
+      votes: Stemmer
+      created: Oprettet
       status: Status
-      action: Action
-      change: Change
+      action: Handling
+      change: Ændre
       filter:
-        placeholder: "Filter by title, answer:id"
+        placeholder: "Filtrer efter titel, answer:id"
     general:
-      page_title: General
+      page_title: Generelt
       name:
-        label: Site name
-        msg: Site name cannot be empty.
-        text: "The name of this site, as used in the title tag."
+        label: Websted navn
+        msg: Websted-navn skal udfyldes.
+        text: "Navnet på dette websted, som bruges i title-tagget."
       site_url:
-        label: Site URL
-        msg: Site url cannot be empty.
-        validate: Please enter a valid URL.
-        text: The address of your site.
+        label: Websted URL
+        msg: Websted-URL skal udfyldes.
+        validate: Angiv et gyldigt URL.
+        text: Adressen på dit websted.
       short_desc:
-        label: Short site description
+        label: Kort beskrivelse af websted
         msg: Short site description cannot be empty.
         text: "Short description, as used in the title tag on homepage."
       desc:
