@@ -542,7 +542,7 @@ ui:
     tag_wiki: tag wiki
     create_tag: Opret tag
     edit_tag: Rediger tag
-    ask_a_question: Tilføj Spørgsmål
+    ask_a_question: Stil et spørgsmål
     edit_question: Rediger spørgsmål
     edit_answer: Rediger Svar
     search: Søg
@@ -713,10 +713,10 @@ ui:
     form:
       fields:
         display_name:
-          label: Navn
+          label: Visnings-navn
           msg:
-            empty: Navn må ikke være tomt.
-            range: Navn på op til 35 tegn.
+            empty: Visnings-navn skal udfyldes.
+            range: Visnings-navn på op til 35 tegn.
         slug_name:
           label: URL-slug
           desc: URL slug op til 35 tegn.
@@ -827,10 +827,10 @@ ui:
     no_desc: Tag har ingen beskrivelse.
     more: Mere
   ask:
-    title: Tilføj Spørgsmål
+    title: Stil et spørgsmål
     edit_title: Rediger spørgsmål
     default_reason: Rediger spørgsmål
-    default_first_reason: Tilføj spørgsmål
+    default_first_reason: Stil et spørgsmål
     similar_questions: Lignende spørgsmål
     form:
       fields:
@@ -988,9 +988,9 @@ ui:
       heading: Profil
       btn_name: Gem
       display_name:
-        label: Navn
-        msg: Navn skal udfyldes.
-        msg_range: Navn på op til 30 tegn.
+        label: Visnings-navn
+        msg: Visnings-navn skal udfyldes.
+        msg_range: Visnings-navn på op til 30 tegn.
       username:
         label: Brugernavn
         caption: Man kan nævne dig som "@username".
@@ -1163,7 +1163,7 @@ ui:
     signup: Opret konto
     logout: Log Ud
     verify: Verificér
-    add_question: Tilføj spørgsmål
+    add_question: Stil et spørgsmål
     approve: Godkend
     reject: Afvis
     skip: Spring Over
@@ -1509,8 +1509,8 @@ ui:
       form:
         fields:
           display_name:
-            label: Navn
-            msg_range: Navn på op til 30 tegn.
+            label: Visnings-navn
+            msg_range: Visnings-navn på op til 30 tegn.
           username:
             label: Brugernavn
             msg_range: Brugernavn op til 30 tegn.
@@ -1530,7 +1530,7 @@ ui:
             text: Adskil “navn, e-mail, adgangskode” med kommaer. Én bruger pr. linje.
             msg: "Indtast venligst brugerens e-mail, en pr. linje."
           display_name:
-            label: Navn
+            label: Visnings-navn
             msg: Vis navn skal være på 4-30 tegn.
           email:
             label: E-mail
