@@ -418,7 +418,7 @@ backend:
       other: Questions
   tag:
     tags_title:
-      other: Tags
+      other: 태그
     no_description:
       other: The tag has no description.
   notification:
@@ -1515,10 +1515,10 @@ ui:
             label: Username
             msg_range: Username up to 30 characters.
           email:
-            label: Email
+            label: 이메일
             msg_invalid: Invalid Email Address.
       edit_success: Edited successfully
-      btn_cancel: Cancel
+      btn_cancel: 취소
       btn_submit: Submit
     user_modal:
       title: 새 사용자 추가
@@ -1726,7 +1726,7 @@ ui:
         label: 예약된 태그
         text: "Reserved tags can only be used by moderator."
     seo:
-      page_title: SEO
+      page_title: 검색 엔진 최적화
       permalink:
         label: 영구 링크
         text: 사용자 정의 URL 구조는 링크의 사용성과 미래 호환성을 향상시킬 수 있습니다.
