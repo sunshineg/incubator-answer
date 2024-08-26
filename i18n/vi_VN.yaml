@@ -1724,7 +1724,7 @@ ui:
         text: "Mỗi câu hỏi mới phải có ít nhất một thẻ được đề xuất."
       reserved_tags:
         label: Thẻ dành riêng
-        text: "Reserved tags can only be used by moderator."
+        text: "Thẻ dành riêng chỉ có thể được thêm vào một bài đăng bởi điều hành viên."
     seo:
       page_title: SEO
       permalink:
