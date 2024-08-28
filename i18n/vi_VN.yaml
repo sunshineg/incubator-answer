@@ -34,7 +34,7 @@ backend:
       other: Trùng lặp yêu cầu.
   action:
     report:
-      other: Gắn Cờ
+      other: Flag
     edit:
       other: Chỉnh sửa
     delete:
