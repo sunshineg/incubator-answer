@@ -23,7 +23,7 @@ backend:
     unknown:
       other: Erro desconhecido.
     request_format_error:
-      other: Formato de solicitação não é válido.
+      other: Formato de solicitação inválido.
     unauthorized_error:
       other: Não autorizado.
     database_error:
@@ -31,14 +31,14 @@ backend:
     forbidden_error:
       other: Proibido.
     duplicate_request_error:
-      other: Duplicate submission.
+      other: Solicitação duplicada.
   action:
     report:
       other: Bandeira
     edit:
       other: Editar
     delete:
-      other: Deletar
+      other: Excluir
     close:
       other: Fechar
     reopen:
@@ -56,7 +56,7 @@ backend:
     invite_someone_to_answer:
       other: Editar
     undelete:
-      other: Undelete
+      other: Desfazer
   role:
     name:
       user:
@@ -69,9 +69,9 @@ backend:
       user:
         other: Padrão sem acesso especial.
       admin:
-        other: Possui acesso total ao site.
+        other: Possui acesso total.
       moderator:
-        other: Possui acesso a todas as postagens exceto às configurações de usuários.
+        other: Acesso a todas as postagens, exceto configurações administrativas.
   privilege:
     level_1:
       description:
@@ -84,7 +84,7 @@ backend:
         other: Nível 3 (Alta reputação necessária para a comunidade adulta)
     level_custom:
       description:
-        other: Custom Level
+        other: Nível customizado
     rank_question_add_label:
       other: Perguntar
     rank_answer_add_label:
@@ -144,7 +144,7 @@ backend:
   error:
     common:
       invalid_url:
-        other: Invalid URL.
+        other: URL inválida.
     password:
       space_invalid:
         other: A senha não pode conter espaços.
@@ -152,7 +152,7 @@ backend:
       cannot_update_their_password:
         other: Você não pode modificar sua senha.
       cannot_edit_their_profile:
-        other: You cannot modify your profile.
+        other: Você não pode alterar o seu perfil.
       cannot_modify_self_status:
         other: Você não pode modificar seu status
       email_or_password_wrong:
