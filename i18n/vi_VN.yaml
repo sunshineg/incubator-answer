@@ -557,9 +557,9 @@ ui:
     account_suspended: Tài khoản bị đình chỉ
     admin: Quản trị
     change_email: Thay đổi Email
-    install: Cài đặt câu trả lời
-    upgrade: Nâng cấp nền tảng
-    maintenance: Bảo trì trang website
+    install: Cài đặt Answer
+    upgrade: Nâng cấp Answer
+    maintenance: Bảo trì trang web
     users: Người dùng
     oauth_callback: Đang xử lý
     http_404: Lỗi HTTP 404
