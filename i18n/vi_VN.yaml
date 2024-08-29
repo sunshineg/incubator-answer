@@ -187,7 +187,7 @@ backend:
         other: Không tìm thấy file ngôn ngữ.
     object:
       captcha_verification_failed:
-        other: Sai Captcha.
+        other: Xác minh Captcha thất bại.
       disallow_follow:
         other: Bạn không được phép theo dõi.
       disallow_vote:
