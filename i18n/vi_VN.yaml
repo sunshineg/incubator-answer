@@ -64,7 +64,7 @@ backend:
       admin:
         other: Quản trị viên
       moderator:
-        other: Điều hành viên
+        other: Người điều hành
     description:
       user:
         other: Mặc định không có quyền truy cập đặc biệt.
