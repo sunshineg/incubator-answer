@@ -718,11 +718,11 @@ ui:
             empty: Tên hiển thị không thể trống.
             range: Tên hiển thị tối đa 35 ký tự.
         slug_name:
-          label: URL slug
-          desc: URL slug tối đa 35 ký tự.
+          label: Đường dẫn URL
+          desc: Đường dẫn tối đa 35 ký tự.
           msg:
-            empty: URL slug không thể trống.
-            range: URL slug tối đa 35 ký tự.
+            empty: Đường dẫn URL không thể trống.
+            range: Đường dẫn URL tối đa 35 ký tự.
             character: Đường dẫn URL chứa bộ ký tự không được phép.
         desc:
           label: Mô tả
@@ -766,8 +766,8 @@ ui:
     long_date_with_year: "MMM D, YYYY"
     long_date_with_time: "MMM D, YYYY [at] HH:mm"
     now: bây giờ
-    x_seconds_ago: "{{count}}s trước"
-    x_minutes_ago: "{{count}}m trước"
+    x_seconds_ago: "{{count}}giây trước"
+    x_minutes_ago: "{{count}}phút trước"
     x_hours_ago: "{{count}}giờ trước"
     hour: giờ
     day: ngày
@@ -780,7 +780,7 @@ ui:
     btn_label: thêm hoặc loại bỏ lại
     undo_emoji: trở lại {{ emoji }} lặp lại
     react_emoji: biểu cảm với {{ emoji }}
-    unreact_emoji: react with {{ emoji }}
+    unreact_emoji: hủy biểu cảm {{ emoji }}
   comment:
     btn_add_comment: Thêm bình luận
     reply_to: Trả lời cho
@@ -1074,7 +1074,7 @@ ui:
     title: Các câu hỏi liên quan
     answers: câu trả lời
   invite_to_answer:
-    title: People Asked
+    title: Mời mọi người
     desc: Mời những người bạn nghĩ có thể trả lời.
     invite: Mời trả lời
     add: Thêm người
@@ -1321,7 +1321,7 @@ ui:
       msg: Máy chủ cơ sở dữ liệu không thể trống.
     db_name:
       label: Tên cơ sở dữ liệu
-      placeholder: answer
+      placeholder: câu trả lời
       msg: Tên cơ sở dữ liệu không thể trống.
     db_file:
       label: Tệp tin Database
