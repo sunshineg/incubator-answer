@@ -510,7 +510,7 @@ backend:
     downvoted:
       other: đã bình chọn xuống
     accept:
-      other:
+      other: chấp nhận
     accepted:
       other: đã chấp nhận
     edit:
