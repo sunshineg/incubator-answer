@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: 无效的 URL。
       status_invalid:
-        other: Invalid status.
+        other: 无效状态。
     password:
       space_invalid:
         other: 密码不得含有空格。
@@ -315,7 +315,7 @@ backend:
         other: 未找到网站的该配置信息。
     badge:
       object_not_found:
-        other: Badge object not found
+        other: 没有找到徽章对象
   reason:
     spam:
       name:
@@ -420,12 +420,12 @@ backend:
     deleted_title:
       other: 删除的问题
     questions_title:
-      other: Questions
+      other: 问题
   tag:
     tags_title:
-      other: Tags
+      other: 标签
     no_description:
-      other: The tag has no description.
+      other: 此标签没有描述。
   notification:
     action:
       update_question:
@@ -465,7 +465,7 @@ backend:
       invited_you_to_answer:
         other: 邀请你回答
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: 你获得 "{{.BadgeName}}" 徽章
   email_tpl:
     change_email:
       title:
@@ -536,259 +536,259 @@ backend:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: 自传作者
         desc:
           other: Filled out <a href="/users/settings/profile" target="_blank">profile</a> information.
       certified:
         name:
-          other: Certified
+          other: 已认证
         desc:
-          other: Completed our new user tutorial.
+          other: 完成了我们的新用户教程。
       editor:
         name:
-          other: Editor
+          other: 编辑者
         desc:
-          other: First post edit.
+          other: 首次帖子编辑。
       first_flag:
         name:
-          other: First Flag
+          other: 第一次举报
         desc:
-          other: First flagged a post.
+          other: 第一次举报一个帖子
       first_upvote:
         name:
-          other: First Upvote
+          other: 第一次投票
         desc:
-          other: First up voted a post.
+          other: 第一次投票了一个帖子。
       first_link:
         name:
-          other: First Link
+          other: 第一个链接
         desc:
-          other: First dirst added a link to another post.
+          other: 第一个脏添加了一个链接到另一个帖子。
       first_reaction:
         name:
-          other: First Reaction
+          other: 第一个响应
         desc:
-          other: First reacted to the post.
+          other: 第一次表情回应帖子
       first_share:
         name:
-          other: First Share
+          other: 首次分享
         desc:
-          other: First shared a post.
+          other: 首次分享了一个帖子。
       scholar:
         name:
-          other: Scholar
+          other: 学者
         desc:
-          other: Asked a question and accepted an answer.
+          other: 问了一个问题并接受了一个答案。
       commentator:
         name:
-          other: Commentator
+          other: 评论员
         desc:
-          other: Leave 5 comments.
+          other: 留下5条评论。
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: 月度用户
         desc:
-          other: Outstanding contributions in their first month.
+          other: 本月杰出用户
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: 阅读指南
         desc:
-          other: Read the [community guidelines].
+          other: 阅读[社区准则]。
       reader:
         name:
-          other: Reader
+          other: 读者
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: 用10个以上的答案在主题中阅读每个答案。
       welcome:
         name:
-          other: Welcome
+          other: 欢迎
         desc:
-          other: Received a up vote.
+          other: 获得一个点赞投票
       nice_share:
         name:
-          other: Nice Share
+          other: 好分享
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: 分享了一个拥有25个唯一访客的帖子。
       good_share:
         name:
-          other: Good Share
+          other: 好分享
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: 分享了一个拥有300个唯一访客的帖子。
       great_share:
         name:
-          other: Great Share
+          other: 优秀的分享
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: 分享了一个拥有1000个唯一访客的帖子。
       out_of_love:
         name:
-          other: Out of Love
+          other: 失去爱好
         desc:
-          other: Used 50 up votes in a day.
+          other: 一天内使用了50张选票。
       higher_love:
         name:
-          other: Higher Love
+          other: 更高的爱好
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: 一天内使用了50张选票。
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: 爱情疯狂的
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: 在 20 天内使用了50张选票。
       promoter:
         name:
-          other: Promoter
+          other: 推荐人
         desc:
-          other: Invited a user.
+          other: 邀请用户。
       campaigner:
         name:
-          other: Campaigner
+          other: 宣传者
         desc:
-          other: Invited 3 basic users.
+          other: 邀请了3个基本用户。
       champion:
         name:
-          other: Champion
+          other: 冠军
         desc:
-          other: Invited 5 members.
+          other: 邀请了5个成员。
       thank_you:
         name:
-          other: Thank You
+          other: 谢谢
         desc:
-          other: Has 20 up voted posts and gave 10 up votes.
+          other: 拥有20个投票赞成的职位并放弃了10个投票。
       gives_back:
         name:
-          other: Gives Back
+          other: 返回
         desc:
-          other: Has 100 up voted posts and gave 100 up votes.
+          other: 拥有100个投票赞成的职位并放弃了100个投票。
       empathetic:
         name:
-          other: Empathetic
+          other: 情随境迁
         desc:
-          other: Has 500 up voted posts and gave 1000 up votes.
+          other: 拥有500个投票赞成的职位并放弃了1000个投票。
       enthusiast:
         name:
-          other: Enthusiast
+          other: 狂热
         desc:
-          other: Visited 10 consecutive days.
+          other: 连续访问10天。
       aficionado:
         name:
           other: Aficionado
         desc:
-          other: Visited 100 consecutive days.
+          other: 连续访问100天。
       devotee:
         name:
           other: Devotee
         desc:
-          other: Visited 365 consecutive days.
+          other: 连续访问365天。
       anniversary:
         name:
-          other: Anniversary
+          other: 周年纪念日
         desc:
-          other: Active member for a year, posted at least once.
+          other: 活跃成员一年至少发布一次。
       appreciated:
         name:
-          other: Appreciated
+          other: 欣赏
         desc:
-          other: Received 1 up vote on 20 posts.
+          other: 20个员额获得1次补票。
       respected:
         name:
-          other: Respected
+          other: 尊敬
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: 100个员额获得2次补票。
       admired:
         name:
-          other: Admired
+          other: 仰慕
         desc:
-          other: Received 5 up votes on 300 posts.
+          other: 300个员额获得5次补票。
       solved:
         name:
-          other: Solved
+          other: 已解决
         desc:
-          other: Have an answer be accepted.
+          other: 接受答案。
       guidance_counsellor:
         name:
-          other: Guidance Counsellor
+          other: 指导顾问
         desc:
-          other: Have 10 answers be accepted.
+          other: 接受答案。
       know_it_all:
         name:
-          other: Know-it-All
+          other: 万事通
         desc:
-          other: Have 50 answers be accepted.
+          other: 接受50个答案。
       solution_institution:
         name:
-          other: Solution Institution
+          other: 解决方案机构
         desc:
-          other: Have 150 answers be accepted.
+          other: 接受150份答复。
       nice_answer:
         name:
-          other: Nice Answer
+          other: 好答案
         desc:
-          other: Answer score of 10 or more.
+          other: 回答得分为10或以上。
       good_answer:
         name:
-          other: Good Answer
+          other: 好答案
         desc:
-          other: Answer score of 25 or more.
+          other: 回答得分为25或更多。
       great_answer:
         name:
-          other: Great Answer
+          other: 优秀答案
         desc:
-          other: Answer score of 50 or more.
+          other: 回答得分为50或以上。
       nice_question:
         name:
-          other: Nice Question
+          other: 好问题
         desc:
-          other: Question score of 10 or more.
+          other: 问题得分为10或以上。
       good_question:
         name:
-          other: Good Question
+          other: 好问题
         desc:
-          other: Question score of 25 or more.
+          other: 问题得分为25或更多。
       great_question:
         name:
-          other: Great Question
+          other: 很棒的问题
         desc:
-          other: Question score of 50 or more.
+          other: 问题得分为50或更多。
       popular_question:
         name:
-          other: Popular Question
+          other: 热门问题
         desc:
-          other: Question with 500 views.
+          other: 问题有500个意见。
       notable_question:
         name:
-          other: Notable Question
+          other: 值得关注问题
         desc:
-          other: Question with 1,000 views.
+          other: 1 000个问题。
       famous_question:
         name:
-          other: Famous Question
+          other: 著名的问题
         desc:
-          other: Question with 5,000 views.
+          other: 问题有5,000个意见。
       popular_link:
         name:
-          other: Popular Link
+          other: 热门链接
         desc:
-          other: Posted an external link with 50 clicks.
+          other: 发布了一个带有50个点击的外部链接。
       hot_link:
         name:
-          other: Hot Link
+          other: 热门链接
         desc:
-          other: Posted an external link with 300 clicks.
+          other: 发布了一个带有300个点击的外部链接。
       famous_link:
         name:
-          other: Famous Link
+          other: 著名链接
         desc:
-          other: Posted an external link with 100 clicks.
+          other: 发布了一个带有100个点击的外部链接。
     default_badge_groups:
       getting_started:
         name:
-          other: Getting Started
+          other: 完成初始化
       community:
         name:
-          other: Community
+          other: Community 专题
       posting:
         name:
-          other: Posting
+          other: 发帖
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
@@ -843,9 +843,9 @@ ui:
       posts: 帖子
       invites: 邀请
       votes: 投票
-    answer: Answer
-    question: Question
-    badge_award: Badge
+    answer: 回答
+    question: 问题
+    badge_award: 徽章
   suspended:
     title: 你的账号账号已被封禁
     until_time: "你的账号被封禁直到 {{ time }}。"
@@ -1017,9 +1017,9 @@ ui:
     delete:
       title: 删除标签
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p>我们不允许 <strong>删除带有帖子的标签</strong>。</p> <p>请先从帖子中移除此标签。</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p>我们不允许 <strong>删除带有同义词的标签</strong>。</p> <p>请先从此标签中删除同义词。</p>
       tip: 确定要删除吗？
       close: 关闭
   edit_tag:
@@ -1141,7 +1141,7 @@ ui:
       question: 问题
       tag: 标签
       user: 用户
-      badges: Badges
+      badges: 徽章
       profile: 用户主页
       setting: 账号设置
       logout: 退出
@@ -1501,8 +1501,8 @@ ui:
   account_result:
     success: 你的账号已通过验证，即将返回首页。
     link: 返回首页
-    oops: Oops!
-    invalid: The link you used no longer works.
+    oops: 糟糕！
+    invalid: 您使用的链接不再有效。
     confirm_new_email: 你的电子邮箱已更新
     confirm_new_email_invalid: >-
       抱歉，此验证链接已失效。也许是你的邮箱已经成功更改了？
@@ -1524,8 +1524,8 @@ ui:
     answers: 回答
     newest: 最新
     active: 活跃
-    hot: Hot
-    recommend: Recommend
+    hot: 热门
+    recommend: 推荐
     score: 评分
     unanswered: 未回答
     modified: 更新于
@@ -1544,14 +1544,14 @@ ui:
     reputation: 声望
     comments: 评论
     votes: 得票
-    badges: Badges
+    badges: 徽章
     newest: 最新
     score: 评分
     edit_profile: 编辑资料
     visited_x_days: "已访问 {{ count }} 天"
     viewed: 浏览次数
     joined: 加入于
-    comma: ","
+    comma: "，"
     last_login: 上次登录
     about_me: 关于我
     about_me_empty: "// Hello, World!"
@@ -1569,7 +1569,7 @@ ui:
     x_votes: 得票
     x_answers: 个回答
     x_questions: 个问题
-    recent_badges: Recent Badges
+    recent_badges: 最近的徽章
   install:
     title: 安装
     next: 下一步
@@ -1679,7 +1679,7 @@ ui:
     questions: 问题
     answers: 回答
     users: 用户管理
-    badges: Badges
+    badges: 徽章
     flags: 举报管理
     settings: 站点设置
     general: 一般
@@ -1705,16 +1705,16 @@ ui:
     login_failed_email_tip: 登录失败，请允许此应用访问您的邮箱信息，然后重试。
   badges:
     modal:
-      title: Congratulations
-      content: You've earned a new badge.
-      close: Close
-      confirm: View badges
-    title: Badges
-    awarded: Awarded
-    earned_×: Earned ×{{ number }}
-    ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: You can earn this multiple times.
-    earned: Earned
+      title: 恭喜
+      content: 你赢得了一个新徽章。
+      close: 关闭
+      confirm: 查看徽章
+    title: 徽章
+    awarded: 授予的
+    earned_×: 以获得 ×{{ number }}
+    ×_awarded: "{{ number }} 得到"
+    can_earn_multiple: 你可以多次获得
+    earned: 获得
   admin:
     admin_header:
       title: 后台管理
@@ -1794,8 +1794,8 @@ ui:
       form:
         fields:
           display_name:
-            label: Display name
-            msg_range: Display name up to 30 characters.
+            label: 显示名称
+            msg_range: 显示名称不能超过 30 个字符。
           username:
             label: 用户名
             msg_range: 用户名不能超过 30 个字符。
@@ -1995,14 +1995,14 @@ ui:
     write:
       page_title: 编辑
       restrict_answer:
-        title: Answer write
+        title: 回答编辑
         label: 每个用户对于每个问题只能有一个回答
-        text: "Turn off to allow users to write multiple answers to the same question, which may cause answers to be unfocused."
+        text: "用户可以使用编辑按钮优化已有的回答"
       recommend_tags:
         label: 推荐标签
-        text: "Recommend tags will show in the dropdown list by default."
+        text: "推荐标签将默认显示在下拉列表中。"
         msg:
-          contain_reserved: "recommended tags cannot contain reserved tags"
+          contain_reserved: "推荐标签不能包含保留标签"
       required_tag:
         title: 设置必填标签
         label: 设置“推荐标签”为必需的标签
@@ -2120,19 +2120,19 @@ ui:
         should_be_number: 输入必须是数字
         number_larger_1: 数字应该大于等于 1
     badges:
-      action: Action
-      active: Active
-      all: All
-      awards: Awards
-      deactivate: Deactivate
+      action: 操作
+      active: 活跃的
+      all: 全部
+      awards: 奖项
+      deactivate: 取消激活
       filter:
-        placeholder: Filter by name, badge:id
-      group: Group
-      inactive: Inactive
-      name: Name
-      show_logs: Show logs
-      status: Status
-      title: Badges
+        placeholder: 按名称筛选，或使用 badge:id
+      group: 组
+      inactive: 未启用
+      name: 名字
+      show_logs: 显示日志
+      status: 状态
+      title: 徽章
   form:
     optional: (选填)
     empty: 不能为空
