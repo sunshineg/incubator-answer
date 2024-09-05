@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: Ogiltig URL.
       status_invalid:
-        other: Invalid status.
+        other: Ogiltig status.
     password:
       space_invalid:
         other: Password cannot contain spaces.
@@ -1705,9 +1705,9 @@ ui:
     login_failed_email_tip: Login failed, please allow this app to access your email information before try again.
   badges:
     modal:
-      title: Congratulations
+      title: Grattis
       content: You've earned a new badge.
-      close: Close
+      close: Stäng
       confirm: View badges
     title: Badges
     awarded: Awarded
@@ -1794,7 +1794,7 @@ ui:
       form:
         fields:
           display_name:
-            label: Display name
+            label: Visningsnamn
             msg_range: Display name up to 30 characters.
           username:
             label: Username
@@ -2121,17 +2121,17 @@ ui:
         number_larger_1: number should be equal or larger than 1
     badges:
       action: Action
-      active: Active
-      activate: Activate
-      all: All
+      active: Aktiv
+      activate: Aktivera
+      all: Alla
       awards: Awards
-      deactivate: Deactivate
+      deactivate: Inaktivera
       filter:
         placeholder: Filter by name, badge:id
-      group: Group
-      inactive: Inactive
-      name: Name
-      show_logs: Show logs
+      group: Grupp
+      inactive: Inaktiv
+      name: Namn
+      show_logs: Visa loggar
       status: Status
       title: Badges
   form:
