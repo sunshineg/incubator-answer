@@ -641,7 +641,7 @@ backend:
           other: Invited a user.
       campaigner:
         name:
-          other: Campaigner
+          other: Kampanyacı
         desc:
           other: Invited 3 basic users.
       champion:
@@ -651,7 +651,7 @@ backend:
           other: Invited 5 members.
       thank_you:
         name:
-          other: Thank You
+          other:
         desc:
           other: Has 20 up voted posts and gave 10 up votes.
       gives_back:
