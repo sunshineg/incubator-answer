@@ -319,26 +319,26 @@ backend:
   reason:
     spam:
       name:
-        other: Lạm dụng
+        other: thư rác
       desc:
-        other: Bài đăng này là quảng cáo hoặc phá hoại. Nó không hữu ích hoặc liên quan đến chủ đề hiện tại.
+        other: Bài đăng này quảng cáo hoặc phá hoại. Nó không hữu ích hoặc liên quan đến chủ đề hiện tại.
     rude_or_abusive:
       name:
         other: thô lỗ hoặc lạm dụng
       desc:
         other:
           - Một người lý trí sẽ thấy nội dung này không phù hợp để thảo luận tôn trọng
-          - Đàm thoại
+          - đàm thoại.
     a_duplicate:
       name:
         other: một bản sao
       desc:
-        other: Câu hỏi này đã được hỏi trước đó và đã có câu trả lời.
+        other: Câu hỏi này đã được hỏi trước đó, đã có câu trả lời.
       placeholder:
         other: Nhập liên kết câu hỏi hiện tại
     not_a_answer:
       name:
-        other: không phải là câu trả lời
+        other: không phải câu trả lời
       desc:
         other:
           - Nội dung này được đăng dưới dạng câu trả lời, nhưng nó không hề trả lời cho câu hỏi
@@ -641,42 +641,42 @@ backend:
           other: Mời một user
       campaigner:
         name:
-          other: Campaigner
+          other: Chiến dịch
         desc:
-          other: Invited 3 basic users.
+          other: Đã mời 3 người dùng cơ bản.
       champion:
         name:
-          other: Champion
+          other: Vô địch
         desc:
-          other: Invited 5 members.
+          other: Mời 5 thành viên.
       thank_you:
         name:
-          other: Thank You
+          other: Cảm ơn bạn
         desc:
-          other: Has 20 up voted posts and gave 10 up votes.
+          other: Có 20 bài đăng được bình chọn đưa ra 10 phiếu bầu.
       gives_back:
         name:
-          other: Gives Back
+          other: Trả lại
         desc:
-          other: Has 100 up voted posts and gave 100 up votes.
+          other: Có 100 bài đăng được bình chọn và đưa ra 100 phiếu bầu
       empathetic:
         name:
-          other: Empathetic
+          other: Đồng cảm
         desc:
-          other: Has 500 up voted posts and gave 1000 up votes.
+          other: Có 500 bài đăng được bình chọn đưa ra 1000 phiếu bầu.
       enthusiast:
         name:
-          other: Enthusiast
+          other: Người nhiệt thành
         desc:
-          other: Visited 10 consecutive days.
+          other: Đã truy cập 10 ngày liên tiếp.
       aficionado:
         name:
-          other: Aficionado
+          other: Người hâm mộ
         desc:
-          other: Visited 100 consecutive days.
+          other: Đã truy cập 100 ngày liên tiếp.
       devotee:
         name:
-          other: Devotee
+          other: Tín đồ
         desc:
           other: Đã truy cập 365 ngày liên tiếp.
       anniversary:
@@ -716,42 +716,42 @@ backend:
           other: Có 50 câu trả lời được chấp nhận.
       solution_institution:
         name:
-          other: Solution Institution
+          other: Viện giải pháp
         desc:
-          other: Have 150 answers be accepted.
+          other: Có 150 câu trả lời được chấp nhận.
       nice_answer:
         name:
-          other: Nice Answer
+          other: Câu trả lời tốt
         desc:
-          other: Answer score of 10 or more.
+          other: Điểm trả lời từ 10 trở lên.
       good_answer:
         name:
-          other: Good Answer
+          other: Câu trả lời của bạn
         desc:
-          other: Answer score of 25 or more.
+          other: Điểm trả lời từ 25 trở lên.
       great_answer:
         name:
-          other: Great Answer
+          other: Câu trả lời tuyệt vời
         desc:
-          other: Answer score of 50 or more.
+          other: Điểm trả lời từ 50 trở lên.
       nice_question:
         name:
-          other: Nice Question
+          other: Câu trả lời tốt
         desc:
-          other: Question score of 10 or more.
+          other: Điểm trả lời từ 10 trở lên.
       good_question:
         name:
-          other: Good Question
+          other: Câu trả lời tốt
         desc:
-          other: Question score of 25 or more.
+          other: Điểm trả lời từ 25 trở lên.
       great_question:
         name:
-          other: Great Question
+          other: Câu trả lời tốt
         desc:
-          other: Question score of 50 or more.
+          other: Điểm trả lời từ 50 trở lên.
       popular_question:
         name:
-          other: Popular Question
+          other: Câu hỏi phổ biến
         desc:
           other: Câu hỏi với 500 lượt xem.
       notable_question:
@@ -844,8 +844,8 @@ ui:
       invites: Lời mời
       votes: Bình chọn
     answer: Câu trả lời
-    question: Question
-    badge_award: Badge
+    question: Câu hỏi
+    badge_award: Huy hiệu
   suspended:
     title: Tài khoản của bạn đã bị đình chỉ
     until_time: "Tài khoản của bạn đã bị đình chỉ cho đến {{ time }}."
@@ -1141,7 +1141,7 @@ ui:
       question: Câu hỏi
       tag: Thẻ
       user: Người dùng
-      badges: Badges
+      badges: Danh hiệu
       profile: Hồ sơ
       setting: Cài đặt
       logout: Đăng xuất
@@ -1525,7 +1525,7 @@ ui:
     newest: Mới nhất
     active: Hoạt động
     hot: Được nhiều quan tâm
-    recommend: Recommend
+    recommend: Đề xuất
     score: Điểm
     unanswered: Chưa được trả lời
     modified: đã chỉnh sửa
@@ -1544,7 +1544,7 @@ ui:
     reputation: Danh tiếng
     comments: Bình luận
     votes: Bình chọn
-    badges: Badges
+    badges: Danh hiệu
     newest: Mới nhất
     score: Điểm
     edit_profile: Chỉnh sửa hồ sơ
@@ -1569,7 +1569,7 @@ ui:
     x_votes: phiếu bầu nhận được
     x_answers: câu trả lời
     x_questions: câu hỏi
-    recent_badges: Recent Badges
+    recent_badges: Huy hiệu gần đây
   install:
     title: Cài đặt
     next: Tiếp theo
@@ -1679,7 +1679,7 @@ ui:
     questions: Câu hỏi
     answers: Câu trả lời
     users: Người dùng
-    badges: Badges
+    badges: Huy hiệu
     flags: Cờ
     settings: Cài đặt
     general: Chung
@@ -1705,13 +1705,13 @@ ui:
     login_failed_email_tip: Đăng nhập thất bại, vui lòng cho phép ứng dụng này truy cập thông tin email của bạn trước khi thử lại.
   badges:
     modal:
-      title: Congratulations
-      content: You've earned a new badge.
-      close: Close
-      confirm: View badges
-    title: Badges
-    awarded: Awarded
-    earned_×: Earned ×{{ number }}
+      title: Chúc mừng
+      content: Bạn đã nhận được huy hiệu mới.
+      close: Đóng
+      confirm: Xem huy hiệu
+    title: Huy hiệu
+    awarded: Giải Thưởng
+    earned_×: Nhận được ×{{ number }}
     ×_awarded: "{{ number }} awarded"
     can_earn_multiple: Bạn có thể kiếm được nhiều lần.
     earned: Đã nhận
@@ -2117,7 +2117,7 @@ ui:
         label: Mức độ danh tiếng yêu cầu
         text: Chọn mức danh tiếng yêu cầu cho các đặc quyền
       msg:
-        should_be_number: dữ liệu đầu vào phải là số
+        should_be_number: dữ liệu đầu vào phải là kiểu số
         number_larger_1: số phải bằng hoặc lớn hơn 1
     badges:
       action: Hành động
