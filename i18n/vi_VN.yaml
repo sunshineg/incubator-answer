@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: URL không tồn tại.
       status_invalid:
-        other: Invalid status.
+        other: Trạng thái không hợp lệ
     password:
       space_invalid:
         other: Mật khẩu không thể tồn tại khoảng trắng.
@@ -315,7 +315,7 @@ backend:
         other: Không tìm thấy cấu hình trang.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Đối tượng không tìm thấy
   reason:
     spam:
       name:
@@ -341,8 +341,8 @@ backend:
         other: không phải là câu trả lời
       desc:
         other:
-          - Nội dung này được đăng dưới dạng câu trả lời, nhưng nó không hề trả lời cho câu hỏi...
-          - câu hỏi. Nó có thể là một chỉnh sửa, một bình luận, một câu hỏi khác,
+          - Nội dung này được đăng dưới dạng câu trả lời, nhưng nó không hề trả lời cho câu hỏi
+          - Đàm thoại.
           - hoặc bị xóa hoàn toàn.
     no_longer_needed:
       name:
@@ -465,7 +465,7 @@ backend:
       invited_you_to_answer:
         other: đã mời bạn trả lời
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Bạn đã nhận được huy hiệu "{{.BadgeName}}"
   email_tpl:
     change_email:
       title:
@@ -536,109 +536,109 @@ backend:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Tác giả tự truyện
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Đã điền thông tin <a href="{{ .ProfileURL }}" target="_blank">hồ sơ</a>.
       certified:
         name:
-          other: Certified
+          other: Đã xác minh
         desc:
-          other: Completed our new user tutorial.
+          other: Hoàn thành hướng dẫn cho người dùng mới của chúng tôi.
       editor:
         name:
-          other: Editor
+          other: Trình chỉnh sửa
         desc:
-          other: First post edit.
+          other: Chỉnh sửa bài đăng đầu tiên.
       first_flag:
         name:
-          other: First Flag
+          other: Cờ đầu tiên
         desc:
-          other: First flagged a post.
+          other: Lần đầu tiên báo cáo một bài viết.
       first_upvote:
         name:
-          other: First Upvote
+          other: Cái Đầu Tiên Được Thích
         desc:
-          other: First up voted a post.
+          other: Lần đầu tiên báo cáo một bài viết.
       first_link:
         name:
-          other: First Link
+          other: Liên kết đầu tiên
         desc:
-          other: First dirst added a link to another post.
+          other: Đầu tiên, Dirst đã thêm một liên kết đến một bài viết khác.
       first_reaction:
         name:
-          other: First Reaction
+          other: Phản ứng đầu tiên
         desc:
-          other: First reacted to the post.
+          other: Phản ứng với bài viết đầu tiên
       first_share:
         name:
-          other: First Share
+          other: Chia sẻ đầu tiên
         desc:
-          other: First shared a post.
+          other: Lần đầu chia sẻ một bài viết.
       scholar:
         name:
-          other: Scholar
+          other: Học giả
         desc:
-          other: Asked a question and accepted an answer.
+          other: Đặt một câu hỏi và chấp nhận một câu trả lời.
       commentator:
         name:
-          other: Commentator
+          other: Bình luận viên
         desc:
-          other: Leave 5 comments.
+          other: Để lại 5 bình luận.
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: Người dùng mới của tháng
         desc:
-          other: Outstanding contributions in their first month.
+          other: Đóng góp nổi bật trong tháng đầu tiên của họ.
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: Đọc hướng dẫn
         desc:
-          other: Read the [community guidelines].
+          other: Đọc [nguyên tắc cộng đồng].
       reader:
         name:
-          other: Reader
+          other: Người đọc
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: Đọc mọi câu trả lời trong một chủ đề có hơn 10 câu trả lời.
       welcome:
         name:
-          other: Welcome
+          other: Xin chào
         desc:
-          other: Received a up vote.
+          other: Đã nhận được phiếu tán thành.
       nice_share:
         name:
-          other: Nice Share
+          other: Chia sẻ hay
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: Đã chia sẻ một bài đăng với 25 khách truy cập.
       good_share:
         name:
-          other: Good Share
+          other: Chia sẻ tốt
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: Đã chia sẻ một bài đăng với 300 khách truy cập.
       great_share:
         name:
-          other: Great Share
+          other: Chia sẻ tuyệt vời
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: Đã chia sẻ một bài đăng với 1000 khách truy cập.
       out_of_love:
         name:
-          other: Out of Love
+          other: Hết yêu thích
         desc:
-          other: Used 50 up votes in a day.
+          other: Đã sử dụng 50 phiếu bầu trong một ngày.
       higher_love:
         name:
-          other: Higher Love
+          other: Thích cao hơn
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: Đã sử dụng 50 phiếu bầu trong một ngày.
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: Thích điên cuồng
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: Đã sử dụng 50 phiếu bầu trong một ngày 20 lần.
       promoter:
         name:
-          other: Promoter
+          other: Người quảng bá
         desc:
-          other: Invited a user.
+          other: Mời một user
       campaigner:
         name:
           other: Campaigner
