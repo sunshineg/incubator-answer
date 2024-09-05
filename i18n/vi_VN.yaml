@@ -678,42 +678,42 @@ backend:
         name:
           other: Devotee
         desc:
-          other: Visited 365 consecutive days.
+          other: Đã truy cập 365 ngày liên tiếp.
       anniversary:
         name:
-          other: Anniversary
+          other: Kỉ niệm
         desc:
-          other: Active member for a year, posted at least once.
+          other: Thành viên tích cực trong một năm, đăng ít nhất một lần.
       appreciated:
         name:
-          other: Appreciated
+          other: Đánh giá cao
         desc:
-          other: Received 1 up vote on 20 posts.
+          other: Nhận được 1 lượt bình chọn cho 20 bài viết.
       respected:
         name:
-          other: Respected
+          other: Tôn trọng
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: Nhận được 2 lượt bình chọn cho 100 bài viết.
       admired:
         name:
-          other: Admired
+          other: Ngưỡng mộ
         desc:
-          other: Received 5 up votes on 300 posts.
+          other: Nhận được 5 lượt bình chọn trên 300 bài đăng.
       solved:
         name:
-          other: Solved
+          other: Đã giải quyết
         desc:
-          other: Have an answer be accepted.
+          other: Có một câu trả lời được chấp nhận.
       guidance_counsellor:
         name:
-          other: Guidance Counsellor
+          other: Cố vấn hướng dẫn
         desc:
-          other: Have 10 answers be accepted.
+          other: Có 10 câu trả lời được chấp nhận.
       know_it_all:
         name:
-          other: Know-it-All
+          other: Biết tất cả
         desc:
-          other: Have 50 answers be accepted.
+          other: Có 50 câu trả lời được chấp nhận.
       solution_institution:
         name:
           other: Solution Institution
@@ -753,42 +753,42 @@ backend:
         name:
           other: Popular Question
         desc:
-          other: Question with 500 views.
+          other: Câu hỏi với 500 lượt xem.
       notable_question:
         name:
-          other: Notable Question
+          other: Câu hỏi đáng chú ý
         desc:
-          other: Question with 1,000 views.
+          other: Câu hỏi với 1.000 lượt xem.
       famous_question:
         name:
-          other: Famous Question
+          other: Câu hỏi nổi tiếng
         desc:
-          other: Question with 5,000 views.
+          other: Câu hỏi với 5.000 lượt xem.
       popular_link:
         name:
-          other: Popular Link
+          other: Liên kết phổ biến
         desc:
-          other: Posted an external link with 50 clicks.
+          other: Đã đăng một liên kết bên ngoài với 50 lần nhấp chuột.
       hot_link:
         name:
-          other: Hot Link
+          other: Liên kết nổi bật
         desc:
-          other: Posted an external link with 300 clicks.
+          other: Đã đăng một liên kết bên ngoài với 300 lần nhấp chuột.
       famous_link:
         name:
-          other: Famous Link
+          other: Liên kết nổi tiếng
         desc:
-          other: Posted an external link with 100 clicks.
+          other: Đã đăng một liên kết bên ngoài với 100 lần nhấp chuột.
     default_badge_groups:
       getting_started:
         name:
-          other: Getting Started
+          other: Bắt đầu
       community:
         name:
-          other: Community
+          other: Cộng đồng
       posting:
         name:
-          other: Posting
+          other: Viết bài thảo luận
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
@@ -843,7 +843,7 @@ ui:
       posts: Bài đăng
       invites: Lời mời
       votes: Bình chọn
-    answer: Answer
+    answer: Câu trả lời
     question: Question
     badge_award: Badge
   suspended:
@@ -1713,7 +1713,7 @@ ui:
     awarded: Awarded
     earned_×: Earned ×{{ number }}
     ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: You can earn this multiple times.
+    can_earn_multiple: Bạn có thể kiếm được số tiền này nhiều lần.
     earned: Earned
   admin:
     admin_header:
