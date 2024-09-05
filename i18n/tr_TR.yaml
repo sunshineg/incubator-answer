@@ -183,7 +183,7 @@ backend:
       verify_url_expired:
         other: Email verified URL has expired, please resend the email.
       illegal_email_domain_error:
-        other: Email is not allowed from that email domain. Please use another one.
+        other: Bu alan adındaki e-posta adreslerine izin verilmiyor. Lütfen başka bir e-posta deneyin.
     lang:
       not_found:
         other: Dil dosyası bulunamadı.
@@ -400,23 +400,23 @@ backend:
           other: This question doesn't meet a community guideline.
       multiple:
         name:
-          other: needs details or clarity
+          other: açıklanmaya veya detaya ihtiyacı var
         desc:
           other:
             - This question currently includes multiple questions in one. It should
-            - focus on one problem only.
+            - yalnızca bir soruna odaklan.
       other:
         name:
-          other: something else
+          other: başka bir şey
         desc:
           other: This post requires another reason not listed above.
     operation_type:
       asked:
-        other: asked
+        other: soruldu
       answered:
-        other: answered
+        other: cevaplandı
       modified:
-        other: modified
+        other: düzenlendi
     deleted_title:
       other: Deleted question
     questions_title:
