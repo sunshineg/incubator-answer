@@ -1713,8 +1713,8 @@ ui:
     awarded: Awarded
     earned_×: Earned ×{{ number }}
     ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: Bạn có thể kiếm được số tiền này nhiều lần.
-    earned: Earned
+    can_earn_multiple: Bạn có thể kiếm được nhiều lần.
+    earned: Đã nhận
   admin:
     admin_header:
       title: Quản trị
@@ -2120,19 +2120,19 @@ ui:
         should_be_number: dữ liệu đầu vào phải là số
         number_larger_1: số phải bằng hoặc lớn hơn 1
     badges:
-      action: Action
-      active: Active
-      activate: Activate
-      all: All
-      awards: Awards
-      deactivate: Deactivate
+      action: Hành động
+      active: Hoạt động
+      activate: Kích hoạt
+      all: Tất cả
+      awards: Giải Thưởng
+      deactivate: Ngừng kích hoạt
       filter:
-        placeholder: Filter by name, badge:id
-      group: Group
-      inactive: Inactive
-      name: Name
-      show_logs: Show logs
-      status: Status
+        placeholder: Lọc theo tên, user:id
+      group: Nhóm
+      inactive: Không hoạt động
+      name: Tên
+      show_logs: Hiển thị nhật ký
+      status: Trạng thái
       title: Badges
   form:
     optional: (tùy chọn)
