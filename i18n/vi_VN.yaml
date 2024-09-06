@@ -658,7 +658,7 @@ backend:
         name:
           other: Trả lại
         desc:
-          other: Có 100 bài đăng được bình chọn và đưa ra 100 phiếu bầu
+          other: Có 100 bài đăng được bình chọn và đưa ra 100 phiếu bầu.
       empathetic:
         name:
           other: Đồng cảm
@@ -1712,7 +1712,7 @@ ui:
     title: Huy hiệu
     awarded: Giải Thưởng
     earned_×: Nhận được ×{{ number }}
-    ×_awarded: "{{ number }} awarded"
+    ×_awarded: "{{ number }} được trao tặng"
     can_earn_multiple: Bạn có thể kiếm được nhiều lần.
     earned: Đã nhận
   admin:
@@ -2133,7 +2133,7 @@ ui:
       name: Tên
       show_logs: Hiển thị nhật ký
       status: Trạng thái
-      title: Badges
+      title: Danh hiệu
   form:
     optional: (tùy chọn)
     empty: không thể trống
