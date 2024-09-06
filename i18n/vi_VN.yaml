@@ -556,7 +556,7 @@ backend:
           other: Lần đầu tiên báo cáo một bài viết.
       first_upvote:
         name:
-          other: Cái Đầu Tiên Được Thích
+          other: Lượt thích đầu tiên
         desc:
           other: Lần đầu tiên báo cáo một bài viết.
       first_link:
@@ -568,7 +568,7 @@ backend:
         name:
           other: Phản ứng đầu tiên
         desc:
-          other: Phản ứng với bài viết đầu tiên
+          other: Phản ứng với bài viết đầu tiên.
       first_share:
         name:
           other: Chia sẻ đầu tiên
@@ -638,7 +638,7 @@ backend:
         name:
           other: Người quảng bá
         desc:
-          other: Mời một user
+          other: Đã mời một người dùng.
       campaigner:
         name:
           other: Chiến dịch
@@ -868,8 +868,8 @@ ui:
       gantt_chart: Biểu đồ Gantt
       pie_chart: Biểu đồ tròn
     code:
-      text: Mẫu mã
-      add_code: Thêm mẫu mã
+      text: Mẫu code
+      add_code: Thêm code mẫu
       form:
         fields:
           code:
@@ -938,7 +938,7 @@ ui:
       form:
         fields:
           url:
-            label: URL
+            label: Đường link url
             msg:
               empty: URL không thể trống.
           name:
@@ -1043,9 +1043,9 @@ ui:
   reaction:
     heart: trái tim
     smile: nụ cười
-    frown: khắc nghiệt
-    btn_label: thêm hoặc loại bỏ lại
-    undo_emoji: trở lại {{ emoji }} lặp lại
+    frown: nhăn mặt
+    btn_label: thêm hoặc loại bỏ phản ứng
+    undo_emoji: bỏ dấu {{ emoji }} phản ứng
     react_emoji: biểu cảm với {{ emoji }}
     unreact_emoji: hủy biểu cảm {{ emoji }}
   comment:
@@ -1167,11 +1167,11 @@ ui:
       Bạn gần như đã hoàn tất! Chúng tôi đã gửi một email kích hoạt đến <bold>{{mail}}</bold>. Vui lòng làm theo hướng dẫn trong email để kích hoạt tài khoản của bạn.
     info: "Nếu không nhận được, hãy kiểm tra thư mục spam của bạn."
     another: >-
-      Chúng tôi đã gửi một email kích hoạt khác cho bạn tại <bold>{{mail}}</bold>. Có thể mất vài phút để nó đến; hãy chắc chắn kiểm tra thư mục spam của bạn.
+      Chúng tôi đã gửi một email kích hoạt khác cho bạn tại <bold>{{mail}}</bold>. Có thể mất vài phút để nó đến; hãy chắc chắn kiểm tra thư mục thư rác của bạn.
     btn_name: Gửi lại email kích hoạt
     change_btn_name: Thay đổi email
     msg:
-      empty: Không thể trống.
+      empty: Không thể để trống mục này.
     resend_email:
       url_label: Bạn có chắc chắn muốn gửi lại email kích hoạt không?
       url_text: Bạn cũng có thể cung cấp liên kết kích hoạt ở trên cho người dùng.
@@ -1301,7 +1301,7 @@ ui:
       change_email_info: >-
         Chúng tôi đã gửi một email đến địa chỉ đó. Vui lòng làm theo hướng dẫn xác nhận.
       email:
-        label: Email mới
+        label: Email
       new_email:
         label: Email mới
         msg: Email mới không được để trống.
@@ -1558,7 +1558,7 @@ ui:
     top_answers: Câu trả lời hàng đầu
     top_questions: Câu hỏi hàng đầu
     stats: Thống kê
-    list_empty: Không tìm thấy bài đăng.<br />Có thể bạn muốn chọn một tab khác?
+    list_empty: Không tìm thấy bài đăng.<br />Có thể bạn muốn chọn một thẻ khác?
     accepted: Đã chấp nhận
     answered: đã trả lời
     asked: đã hỏi
@@ -1646,7 +1646,7 @@ ui:
       msg:
         empty: Email không thể trống.
         incorrect: Định dạng email không chính xác.
-    ready_title: Answer của bạn đã sẵn sàng
+    ready_title: Trang web của bạn đã sẵn sàng
     ready_desc: >-
       Nếu bạn cảm thấy muốn thay đổi thêm cài đặt nào đó, hãy truy cập <1>mục quản trị</1>; tìm nó trong menu trang.
     good_luck: "Chúc bạn vui vẻ và may mắn!"
@@ -1696,7 +1696,7 @@ ui:
     css_html: CSS/HTML
     login: Đăng nhập
     privileges: Đặc quyền
-    plugins: Plugin
+    plugins: Plugins
     installed_plugins: Plugin đã cài đặt
   website_welcome: Chào mừng bạn đến với {{site_name}}
   user_center:
@@ -1774,7 +1774,7 @@ ui:
       flagged_type: Đã đánh dấu {{ type }}
       created: Đã tạo
       action: Hành động
-      review: Xem xét
+      review: Đánh giá
     user_role_modal:
       title: Thay đổi vai trò người dùng thành...
       btn_cancel: Hủy
@@ -2013,7 +2013,7 @@ ui:
     seo:
       page_title: SEO
       permalink:
-        label: Permalink
+        label: Liên kết cố định
         text: Cấu trúc URL tùy chỉnh có thể cải thiện khả năng sử dụng và khả năng tương thích về sau của liên kết của bạn.
       robots:
         label: robots.txt
@@ -2073,7 +2073,7 @@ ui:
         text: "CẢNH BÁO: Nếu tắt, bạn có thể không thể đăng nhập nếu bạn chưa cấu hình phương thức đăng nhập khác trước đó."
     installed_plugins:
       title: Plugin đã cài đặt
-      plugin_link: Plugin mở rộng và mở rộng chức năng của Answer. Bạn có thể tìm thấy plugin trong <1>Kho Plugin Answer</1>.
+      plugin_link: Plugin mở rộng và mở rộng chức năng của trang web. Bạn có thể tìm thấy plugin trong <1>Kho Plugin Answer</1>.
       filter:
         all: Tất cả
         active: Đang hoạt động
@@ -2190,7 +2190,7 @@ ui:
     title: "Lịch sử cho"
     tag_title: "Dòng thời gian cho"
     show_votes: "Hiển thị phiếu bầu"
-    n_or_a: Không có
+    n_or_a: N/A
     title_for_question: "Dòng thời gian cho"
     title_for_answer: "Dòng thời gian cho câu trả lời của {{ title }} bởi {{ author }}"
     title_for_tag: "Dòng thời gian cho thẻ"
