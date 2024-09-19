@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: Невірна URL.
       status_invalid:
-        other: Invalid status.
+        other: Неприпустимий статус.
     password:
       space_invalid:
         other: Пароль не може містити пробіли.
@@ -315,7 +315,7 @@ backend:
         other: Конфігурацію сайту не знайдено.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Об'єкт значка не знайдено
   reason:
     spam:
       name:
@@ -420,7 +420,7 @@ backend:
     deleted_title:
       other: Видалене питання
     questions_title:
-      other: Questions
+      other: Питання
   tag:
     tags_title:
       other: Теґи
@@ -515,7 +515,7 @@ backend:
     downvote:
       other: голос "проти"
     downvoted:
-      other: downvoted
+      other: проголосував проти
     accept:
       other: прийняти
     accepted:
@@ -541,14 +541,14 @@ backend:
           other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
       certified:
         name:
-          other: Certified
+          other: Підтверджений
         desc:
           other: Completed our new user tutorial.
       editor:
         name:
           other: Редактор
         desc:
-          other: First post edit.
+          other: Перше редагування посту.
       first_flag:
         name:
           other: First Flag
@@ -586,14 +586,14 @@ backend:
           other: Залиште 5 коментарів.
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: Новий користувач місяця
         desc:
           other: Outstanding contributions in their first month.
       read_guidelines:
         name:
           other: Read Guidelines
         desc:
-          other: Read the [community guidelines].
+          other: Прочитайте [рекомендації для спільноти].
       reader:
         name:
           other: Читач
@@ -603,7 +603,7 @@ backend:
         name:
           other: Ласкаво просимо
         desc:
-          other: Received a up vote.
+          other: Отримав голос.
       nice_share:
         name:
           other: Nice Share
@@ -636,9 +636,9 @@ backend:
           other: Used 50 up votes in a day 20 times.
       promoter:
         name:
-          other: Promoter
+          other: Промоутер
         desc:
-          other: Invited a user.
+          other: Запросив користувача.
       campaigner:
         name:
           other: Campaigner
@@ -646,12 +646,12 @@ backend:
           other: Invited 3 basic users.
       champion:
         name:
-          other: Champion
+          other: Чемпіон
         desc:
-          other: Invited 5 members.
+          other: Запросив 5 учасників.
       thank_you:
         name:
-          other: Thank You
+          other: Дякую
         desc:
           other: Has 20 up voted posts and gave 10 up votes.
       gives_back:
@@ -691,7 +691,7 @@ backend:
           other: Received 1 up vote on 20 posts.
       respected:
         name:
-          other: Respected
+          other: Шанований
         desc:
           other: Received 2 up votes on 100 posts.
       admired:
@@ -701,7 +701,7 @@ backend:
           other: Received 5 up votes on 300 posts.
       solved:
         name:
-          other: Solved
+          other: Вирішено
         desc:
           other: Have an answer be accepted.
       guidance_counsellor:
@@ -785,7 +785,7 @@ backend:
           other: Getting Started
       community:
         name:
-          other: Community
+          other: Спільнота
       posting:
         name:
           other: Posting
@@ -843,7 +843,7 @@ ui:
       posts: Публікації
       invites: Запрошення
       votes: Голоси
-    answer: Answer
+    answer: Відповідь
     question: Question
     badge_award: Badge
   suspended:
@@ -1037,12 +1037,12 @@ ui:
     x_minutes_ago: "{{count}}m ago"
     x_hours_ago: "{{count}}h ago"
     hour: hour
-    day: day
+    day: день
     hours: hours
-    days: days
+    days: дні
   reaction:
     heart: heart
-    smile: smile
+    smile: посмішка
     frown: frown
     btn_label: add or remove reactions
     undo_emoji: undo {{ emoji }} reaction
@@ -1361,7 +1361,7 @@ ui:
     answered: answered
     closed_in: Closed in
     show_exist: Показати наявне запитання.
-    useful: Useful
+    useful: Корисне
     question_useful: It is useful and clear
     question_un_useful: It is unclear or not useful
     question_bookmark: Bookmark this question
@@ -1372,10 +1372,10 @@ ui:
       score: Score
       newest: Newest
       oldest: Oldest
-      btn_accept: Accept
+      btn_accept: Прийняти
       btn_accepted: Accepted
     write_answer:
-      title: Your Answer
+      title: Ваша відповідь
       edit_answer: Edit my existing answer
       btn_name: Post your answer
       add_another_answer: Add another answer
@@ -1383,7 +1383,7 @@ ui:
       continue: Continue
       confirm_info: >-
         <p>Are you sure you want to add another answer?</p><p>You could use the edit link to refine and improve your existing answer, instead.</p>
-      empty: Answer cannot be empty.
+      empty: Відповідь не може бути порожньою.
       characters: вміст має бути не менше 6 символів.
       tips:
         header_1: Дякуємо за відповідь
@@ -1424,8 +1424,8 @@ ui:
     save: Зберегти
     delete: Видалити
     undelete: Скасувати видалення
-    list: List
-    unlist: Unlist
+    list: Список
+    unlist: Вилучити зі списку
     unlisted: Unlisted
     login: Увійти
     signup: Зареєструватися
@@ -1449,7 +1449,7 @@ ui:
     unsuspend: Unsuspend
     close: Закрити
     reopen: Відкрити знову
-    ok: OK
+    ok: ОК
     light: Світла
     dark: Темна
     system_setting: Налаштування системи
@@ -1462,7 +1462,7 @@ ui:
     submit: Submit
     normal: Normal
     closed: Closed
-    deleted: Deleted
+    deleted: Видалені
     pending: Pending
     more: More
   search:
@@ -1497,11 +1497,11 @@ ui:
     twitter: Share to Twitter
   cannot_vote_for_self: You can't vote for your own post.
   modal_confirm:
-    title: Error...
+    title: Помилка...
   account_result:
     success: Your new account is confirmed; you will be redirected to the home page.
-    link: Continue to homepage
-    oops: Oops!
+    link: Перейти на головну сторінку
+    oops: Йой!
     invalid: The link you used no longer works.
     confirm_new_email: Your email has been updated.
     confirm_new_email_invalid: >-
@@ -1514,7 +1514,7 @@ ui:
   question:
     following_tags: Підписки на теги
     edit: Edit
-    save: Save
+    save: Зберегти
     follow_tag_tip: Підпишіться на теги, щоб упорядкувати свій список запитань.
     hot_questions: Hot Questions
     all_questions: Всі питання
@@ -1576,17 +1576,17 @@ ui:
     done: Done
     config_yaml_error: Can't create the config.yaml file.
     lang:
-      label: Please choose a language
+      label: Будь ласка, виберіть мову
     db_type:
       label: Database engine
     db_username:
-      label: Username
+      label: Ім'я користувача
       placeholder: root
       msg: Username cannot be empty.
     db_password:
-      label: Password
+      label: Пароль
       placeholder: root
-      msg: Password cannot be empty.
+      msg: Поле паролю не може бути порожнім.
     db_host:
       label: Database host
       placeholder: "db:3306"
@@ -1664,7 +1664,7 @@ ui:
     views: views
     votes: votes
     answers: answers
-    accepted: Accepted
+    accepted: Схвалено
   page_error:
     http_error: HTTP Error {{ code }}
     desc_403: You don't have permission to access this page.
@@ -1681,17 +1681,17 @@ ui:
     users: Users
     badges: Badges
     flags: Відмітки
-    settings: Settings
+    settings: Налаштування
     general: General
     interface: Interface
     smtp: SMTP
     branding: Branding
     legal: Legal
-    write: Write
+    write: Написати
     tos: Terms of Service
     privacy: Privacy
     seo: SEO
-    customize: Customize
+    customize: Персоналізувати
     themes: Themes
     css_html: CSS/HTML
     login: Login
@@ -1707,17 +1707,17 @@ ui:
     modal:
       title: Congratulations
       content: You've earned a new badge.
-      close: Close
+      close: Закрити
       confirm: View badges
     title: Badges
     awarded: Awarded
     earned_×: Earned ×{{ number }}
     ×_awarded: "{{ number }} awarded"
     can_earn_multiple: You can earn this multiple times.
-    earned: Earned
+    earned: Зароблено
   admin:
     admin_header:
-      title: Admin
+      title: Адмін
     dashboard:
       title: Dashboard
       welcome: Welcome to Admin!
@@ -1744,11 +1744,11 @@ ui:
       database_size: "Розмір бази даних:"
       storage_used: "Використаний обсяг пам’яті:"
       uptime: "Uptime:"
-      links: Links
+      links: Посилання
       plugins: Плаґіни
       github: GitHub
       blog: Блоґ
-      contact: Contact
+      contact: Контакт
       forum: Forum
       documents: Документи
       feedback: Відгук
@@ -1777,20 +1777,20 @@ ui:
       review: Огляд
     user_role_modal:
       title: Change user role to...
-      btn_cancel: Cancel
-      btn_submit: Submit
+      btn_cancel: Скасувати
+      btn_submit: Надіслати
     new_password_modal:
-      title: Set new password
+      title: Встановити новий пароль
       form:
         fields:
           password:
-            label: Password
+            label: Пароль
             text: The user will be logged out and need to login again.
             msg: Password must be at 8-32 characters in length.
-      btn_cancel: Cancel
-      btn_submit: Submit
+      btn_cancel: Скасувати
+      btn_submit: Надіслати
     edit_profile_modal:
-      title: Edit profile
+      title: Редагувати профіль
       form:
         fields:
           display_name:
@@ -1800,13 +1800,13 @@ ui:
             label: Username
             msg_range: Username up to 30 characters.
           email:
-            label: Email
+            label: Електронна пошта
             msg_invalid: Invalid Email Address.
       edit_success: Edited successfully
-      btn_cancel: Cancel
-      btn_submit: Submit
+      btn_cancel: Скасувати
+      btn_submit: Надіслати
     user_modal:
-      title: Add new user
+      title: Додати нового користувача
       form:
         fields:
           users:
@@ -1818,17 +1818,17 @@ ui:
             label: Ім'я для відображення
             msg: Ім'я для відображення повинно мати довжину від 4 до 30 символів.
           email:
-            label: Email
+            label: Електронна пошта
             msg: Email is not valid.
           password:
-            label: Password
+            label: Пароль
             msg: Password must be at 8-32 characters in length.
-      btn_cancel: Cancel
-      btn_submit: Submit
+      btn_cancel: Скасувати
+      btn_submit: Надіслати
     users:
-      title: Users
-      name: Name
-      email: Email
+      title: Користувачі
+      name: Ім’я
+      email: Електронна пошта
       reputation: Reputation
       created_at: Created Time
       delete_at: Deleted Time
@@ -1870,7 +1870,7 @@ ui:
     questions:
       page_title: Запитання
       unlisted: Unlisted
-      post: Post
+      post: Опублікувати
       votes: Votes
       answers: Answers
       created: Створені
@@ -1993,7 +1993,7 @@ ui:
         label: Політика конфіденційности
         text: "Ви можете додати вміст політики конфіденційності тут. Якщо у вас уже є документ, розміщений деінде, надайте тут повну URL-адресу."
     write:
-      page_title: Write
+      page_title: Написати
       restrict_answer:
         title: Answer write
         label: Кожен користувач може написати лише одну відповідь на кожне запитання
@@ -2028,7 +2028,7 @@ ui:
       navbar_style:
         label: Navbar style
       primary_color:
-        label: Primary color
+        label: Основний колір
         text: Modify the colors used by your themes
     css_and_html:
       page_title: CSS and HTML
@@ -2051,7 +2051,7 @@ ui:
         label: Sidebar
         text: This will insert in sidebar.
     login:
-      page_title: Login
+      page_title: Увійти
       membership:
         title: Membership
         label: Дозволити нові реєстрації
@@ -2082,15 +2082,15 @@ ui:
       plugins:
         label: Plugins
         text: Select an existing plugin.
-      name: Name
+      name: Ім’я
       version: Version
       status: Status
       action: Action
       deactivate: Deactivate
       activate: Activate
-      settings: Settings
+      settings: Налаштування
     settings_users:
-      title: Users
+      title: Користувачі
       avatar:
         label: Default avatar
         text: For users without a custom avatar of their own.
@@ -2130,17 +2130,17 @@ ui:
         placeholder: Filter by name, badge:id
       group: Group
       inactive: Inactive
-      name: Name
+      name: Ім’я
       show_logs: Show logs
       status: Status
       title: Badges
   form:
     optional: (optional)
-    empty: cannot be empty
+    empty: не може бути порожнім
     invalid: is invalid
-    btn_submit: Save
+    btn_submit: Зберегти
     not_found_props: "Required property {{ key }} not found."
-    select: Select
+    select: Вибрати
   page_review:
     review: Review
     proposed: proposed
