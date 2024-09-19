@@ -423,7 +423,7 @@ backend:
       other: Questions
   tag:
     tags_title:
-      other: Tags
+      other: Теґи
     no_description:
       other: The tag has no description.
   notification:
@@ -546,7 +546,7 @@ backend:
           other: Completed our new user tutorial.
       editor:
         name:
-          other: Editor
+          other: Редактор
         desc:
           other: First post edit.
       first_flag:
@@ -561,12 +561,12 @@ backend:
           other: First up voted a post.
       first_link:
         name:
-          other: First Link
+          other: Перше посилання
         desc:
           other: First dirst added a link to another post.
       first_reaction:
         name:
-          other: First Reaction
+          other: Перша реакція
         desc:
           other: First reacted to the post.
       first_share:
@@ -576,14 +576,14 @@ backend:
           other: First shared a post.
       scholar:
         name:
-          other: Scholar
+          other: Вчений
         desc:
           other: Asked a question and accepted an answer.
       commentator:
         name:
-          other: Commentator
+          other: Коментатор
         desc:
-          other: Leave 5 comments.
+          other: Залиште 5 коментарів.
       new_user_of_the_month:
         name:
           other: New User of the Month
@@ -596,12 +596,12 @@ backend:
           other: Read the [community guidelines].
       reader:
         name:
-          other: Reader
+          other: Читач
         desc:
           other: Read every answers in a topic with more than 10 answers.
       welcome:
         name:
-          other: Welcome
+          other: Ласкаво просимо
         desc:
           other: Received a up vote.
       nice_share:
