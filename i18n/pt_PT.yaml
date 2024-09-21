@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: URL inválida.
       status_invalid:
-        other: Invalid status.
+        other: Estado inválido.
     password:
       space_invalid:
         other: A senha não pode conter espaços.
@@ -598,7 +598,7 @@ backend:
         name:
           other: Reader
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: Leia todas as respostas num tópico com mais de 10 respostas.
       welcome:
         name:
           other: Welcome
@@ -628,7 +628,7 @@ backend:
         name:
           other: Higher Love
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: .
       crazy_in_love:
         name:
           other: Crazy in Love
@@ -666,9 +666,9 @@ backend:
           other: Has 500 up voted posts and gave 1000 up votes.
       enthusiast:
         name:
-          other: Enthusiast
+          other: Entusiasta
         desc:
-          other: Visited 10 consecutive days.
+          other: .
       aficionado:
         name:
           other: Aficionado
@@ -693,7 +693,7 @@ backend:
         name:
           other: Respected
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: .
       admired:
         name:
           other: Admired
