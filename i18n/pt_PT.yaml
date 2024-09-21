@@ -138,7 +138,7 @@ backend:
   pass:
     other: Senha
   original_text:
-    other: This post
+    other: Esta publicação
   email_or_password_wrong_error:
     other: O e-mail e a palavra-passe não coincidem.
   error:
@@ -207,7 +207,7 @@ backend:
       new_password_same_as_previous_setting:
         other: A nova senha é a mesma que a anterior.
       already_deleted:
-        other: This post has been deleted.
+        other: Esta publicação foi removida.
     meta:
       object_not_found:
         other: Meta object not found
@@ -215,7 +215,7 @@ backend:
       already_deleted:
         other: Essa publicação foi deletado.
       under_review:
-        other: Your post is awaiting review. It will be visible after it has been approved.
+        other: Sua postagem está aguardando revisão. Ela ficará visível depois que for aprovada.
       not_found:
         other: Pergunta não encontrada.
       cannot_deleted:
