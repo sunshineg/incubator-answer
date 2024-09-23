@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: Nieprawidłowy URL.
       status_invalid:
-        other: Invalid status.
+        other: Nieprawidłowy status.
     password:
       space_invalid:
         other: Hasło nie może zawierać spacji.
@@ -420,12 +420,12 @@ backend:
     deleted_title:
       other: Usunięte pytanie
     questions_title:
-      other: Questions
+      other: Pytania
   tag:
     tags_title:
-      other: Tags
+      other: Tagi
     no_description:
-      other: The tag has no description.
+      other: Tag nie posiada opisu.
   notification:
     action:
       update_question:
@@ -536,57 +536,57 @@ backend:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Autobiografista
         desc:
           other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
       certified:
         name:
-          other: Certified
+          other: Certyfikowany
         desc:
-          other: Completed our new user tutorial.
+          other: Ukończono nasz nowy samouczek.
       editor:
         name:
-          other: Editor
+          other: Edytor
         desc:
           other: First post edit.
       first_flag:
         name:
-          other: First Flag
+          other: Pierwsza flaga
         desc:
           other: First flagged a post.
       first_upvote:
         name:
-          other: First Upvote
+          other: Pierwszy pozytywny głos
         desc:
           other: First up voted a post.
       first_link:
         name:
-          other: First Link
+          other: Pierwszy odnośnik
         desc:
           other: First dirst added a link to another post.
       first_reaction:
         name:
-          other: First Reaction
+          other: Pierwsza Reakcja
         desc:
           other: First reacted to the post.
       first_share:
         name:
-          other: First Share
+          other: Pierwsze udostępnianie
         desc:
           other: First shared a post.
       scholar:
         name:
           other: Scholar
         desc:
-          other: Asked a question and accepted an answer.
+          other: Zadane pytania i zaakceptowane odpowiedź.
       commentator:
         name:
           other: Commentator
         desc:
-          other: Leave 5 comments.
+          other: Pozostaw 5 komentarzy.
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: Nowy użytkownik miesiąca
         desc:
           other: Outstanding contributions in their first month.
       read_guidelines:
@@ -1524,8 +1524,8 @@ ui:
     answers: Odpowiedzi
     newest: Najnowsze
     active: Aktywne
-    hot: Hot
-    recommend: Recommend
+    hot: Gorące
+    recommend: Polecane
     score: Ocena
     unanswered: Bez odpowiedzi
     modified: zmodyfikowane
@@ -1544,7 +1544,7 @@ ui:
     reputation: Reputacja
     comments: Komentarze
     votes: Głosy
-    badges: Badges
+    badges: Odznaczenia
     newest: Najnowsze
     score: Ocena
     edit_profile: Edytuj Profil
@@ -1705,7 +1705,7 @@ ui:
     login_failed_email_tip: Logowanie nie powiodło się, przed ponowną próbą zezwól na dostęp tej aplikacji do informacji o Twojej skrzynce pocztowej.
   badges:
     modal:
-      title: Congratulations
+      title: Gratulacje
       content: You've earned a new badge.
       close: Close
       confirm: View badges
@@ -1795,10 +1795,10 @@ ui:
         fields:
           display_name:
             label: Display name
-            msg_range: Display name up to 30 characters.
+            msg_range: Wyświetlana nazwa użytkownika maksymalnie 30 znaków.
           username:
             label: Nazwa
-            msg_range: Username up to 30 characters.
+            msg_range: Nazwa użytkownika maksymalnie 30 znaków.
           email:
             label: Email
             msg_invalid: Błędny adresy email.
@@ -2128,10 +2128,10 @@ ui:
       deactivate: Deactivate
       filter:
         placeholder: Filter by name, badge:id
-      group: Group
+      group: Grupa
       inactive: Inactive
       name: Name
-      show_logs: Show logs
+      show_logs: Wyświetl dzienniki
       status: Status
       title: Badges
   form:
