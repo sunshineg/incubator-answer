@@ -538,7 +538,7 @@ backend:
         name:
           other: Autobiógrafo
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Preenchido com <a href="{{ .ProfileURL }}" target="_blank">perfil</a> .
       certified:
         name:
           other: Certificado
@@ -1450,21 +1450,21 @@ ui:
     close: Fechar
     reopen: Reabrir
     ok: OK
-    light: Light
-    dark: Dark
-    system_setting: System setting
-    default: Default
+    light: Claro
+    dark: Escuro
+    system_setting: Definições de sistema
+    default: Padrão
     reset: Reset
-    tag: Tag
-    post_lowercase: post
-    filter: Filter
-    ignore: Ignore
-    submit: Submit
+    tag: Marcador
+    post_lowercase: publicação
+    filter: Filtro
+    ignore: Ignorar
+    submit: Submeter
     normal: Normal
-    closed: Closed
-    deleted: Deleted
-    pending: Pending
-    more: More
+    closed: Fechado
+    deleted: Removido
+    pending: Pendente
+    more: Mais
   search:
     title: Procurar Resultados
     keywords: Palavras-chave
@@ -1481,7 +1481,7 @@ ui:
       more: Mais
     tips:
       title: Dicas de Pesquisa Avançada
-      tag: "<1>[tag]</1> search with a tag"
+      tag: "<1>[tag]</1> pesquisar com um marcador"
       user: "<1>user:username</1> buscar por autor"
       answer: "<1>answers:0</1> perguntas não respondidas"
       score: "<1>score:3</1> postagens com mais de 3+ placares"
@@ -1502,7 +1502,7 @@ ui:
     success: A sua nova conta está confirmada; você será redirecionado para a página inicial.
     link: Continuar para a página inicial.
     oops: Oops!
-    invalid: The link you used no longer works.
+    invalid: O link utilizado não funciona mais.
     confirm_new_email: O seu e-mail foi atualizado.
     confirm_new_email_invalid: >-
       Desculpe, este link de confirmação não é mais válido. Talvez o seu e-mail já tenha sido alterado.
@@ -1524,8 +1524,8 @@ ui:
     answers: Respostas
     newest: Mais recente
     active: Ativo
-    hot: Hot
-    recommend: Recommend
+    hot: Popular
+    recommend: Recomendado
     score: Pontuação
     unanswered: Não Respondido
     modified: modificado
@@ -1544,7 +1544,7 @@ ui:
     reputation: Reputação
     comments: Comentários
     votes: Votos
-    badges: Badges
+    badges: Emblemas
     newest: Mais recente
     score: Pontuação
     edit_profile: Editar Perfil
@@ -1569,9 +1569,9 @@ ui:
     x_votes: votos recebidos
     x_answers: respostas
     x_questions: perguntas
-    recent_badges: Recent Badges
+    recent_badges: Emblemas recentes
   install:
-    title: Installation
+    title: Instalação
     next: Proximo
     done: Completo
     config_yaml_error: Não é possível criar o arquivo config.yaml.
@@ -1610,14 +1610,14 @@ ui:
     site_name:
       label: Site Nome
       msg: Site Nome não pode ser vazio.
-      msg_max_length: Site name must be at maximum 30 characters in length.
+      msg_max_length: O nome do site deve ter no máximo 30 caracteres.
     site_url:
       label: URL do Site
       text: O endereço do seu site.
       msg:
         empty: Site URL não pode ser vazio.
         incorrect: URL do site está incorreto.
-        max_length: Site URL must be at maximum 512 characters in length.
+        max_length: A URL do site deve ter no máximo 512 caracteres.
     contact_email:
       label: E-mail par contato
       text: O endereço de e-mail do contato principal deste site.
@@ -1632,21 +1632,21 @@ ui:
       label: Nome
       msg: Nome não pode ser vazio.
       character: 'Deve usar o conjunto de caracteres "a-z", "0-9", " - . _"'
-      msg_max_length: Name must be at maximum 30 characters in length.
+      msg_max_length: O nome deve ter no máximo 30 caracteres.
     admin_password:
       label: Senha
       text: >-
         You will need this password to log in. Por favor store it in a secure location.
       msg: Senha não pode ser vazio.
-      msg_min_length: Password must be at least 8 characters in length.
-      msg_max_length: Password must be at maximum 32 characters in length.
+      msg_min_length: A senha deve ser ter pelo menos 8 caracteres.
+      msg_max_length: A senha deve ter no máximo 32 caracteres.
     admin_email:
       label: E-mail
       text: Você precisará deste e-mail para efetuar o login.
       msg:
         empty: Email não pode ser vazio.
         incorrect: O formato do e-mail está incorreto.
-    ready_title: Your site is ready
+    ready_title: Seu site está pronto
     ready_desc: >-
       Se você quiser alterar mais configurações, visite <1>seção de administrador</1>; encontre-o no menu do site.
     good_luck: "Divirta-se, e boa sorte!"
@@ -1679,7 +1679,7 @@ ui:
     questions: Perguntas
     answers: Respostas
     users: Usuários
-    badges: Badges
+    badges: Emblemas
     flags: Marcadores
     settings: Configurações
     general: Geral
@@ -1705,23 +1705,23 @@ ui:
     login_failed_email_tip: Falha ao entrar, por favor, permita que este aplicativo acesse a informação do seu e-mail antes de tentar novamente.
   badges:
     modal:
-      title: Congratulations
-      content: You've earned a new badge.
-      close: Close
-      confirm: View badges
-    title: Badges
-    awarded: Awarded
-    earned_×: Earned ×{{ number }}
-    ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: You can earn this multiple times.
-    earned: Earned
+      title: Parabéns
+      content: Você ganhou um novo emblema.
+      close: Fechar
+      confirm: Ver emblemas
+    title: Emblemas
+    awarded: Premiado
+    earned_×: Ganhou ×{{ number }}
+    ×_awarded: "{{ number }} premiado"
+    can_earn_multiple: Você pode ganhar isto várias vezes.
+    earned: Ganhou
   admin:
     admin_header:
       title: Administrador
     dashboard:
       title: Painel
-      welcome: Welcome to Admin!
-      site_statistics: Site statistics
+      welcome: Bem-vindo ao Admin!
+      site_statistics: Estatísticas do site
       questions: "Perguntas:"
       answers: "Respostas:"
       comments: "Comentários:"
@@ -2167,7 +2167,7 @@ ui:
     flag_user_type: Sinalizou este usuário como {{ type }}.
     edit_post: Editar publicação
     list_post: Listar postagem
-    unlist_post: Unlist post
+    unlist_post: Remover postagem da lista
   timeline:
     undeleted: não removido
     deleted: removido
@@ -2218,6 +2218,6 @@ ui:
     post_hide_list: Esta postagem foi ocultada da lista.
     post_show_list: Esta postagem foi exibida à lista.
     post_reopen: Esta publicação foi re-aberta.
-    post_list: This post has been listed.
-    post_unlist: This post has been unlisted.
+    post_list: Esta postagem foi listada.
+    post_unlist: Esta publicação foi removida da lista.
     post_pending: A sua postagem está aguardando revisão. Ela ficará visível depois que for aprovada.
