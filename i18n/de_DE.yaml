@@ -2205,7 +2205,7 @@ ui:
     users_with_the_most_vote: Benutzer, die diese Woche am meisten gestimmt haben
     staffs: Unsere Community Teammitglieder
     reputation: Ansehen
-    votes: stimmen
+    votes: Stimmen
   prompt:
     leave_page: Bist du sicher, dass du die Seite verlassen willst?
     changes_not_save: Deine Änderungen werden möglicherweise nicht gespeichert.
