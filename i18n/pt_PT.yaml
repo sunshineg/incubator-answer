@@ -110,11 +110,11 @@ backend:
     rank_tag_add_label:
       other: Criar marcador
     rank_tag_edit_label:
-      other: Editar descrição de um marcador (precisa revisar)
+      other: Editar descrição de um marcador (revisão necessária)
     rank_question_edit_label:
-      other: Editar pergunta do outro (precisa revisar)
+      other: Editar pergunta do outro (revisão necessária)
     rank_answer_edit_label:
-      other: Editar a resposta do outro (precisa revisar)
+      other: Editar a resposta do outro (revisão necessária)
     rank_question_edit_without_review_label:
       other: Editar a pergunta do outro sem revisar
     rank_answer_edit_without_review_label:
