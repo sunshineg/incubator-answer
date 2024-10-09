@@ -606,14 +606,14 @@ backend:
           other: Ricevuto un voto positivo.
       nice_share:
         name:
-          other: Nice Share
+          other: Condivisione positiva.
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: Ha condiviso un post con 25 visitatori unici.
       good_share:
         name:
-          other: Good Share
+          other: Condivisione positiva.
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: Condiviso un post con 300 visitatori unici.
       great_share:
         name:
           other: Great Share
@@ -741,54 +741,54 @@ backend:
           other: Question score of 10 or more.
       good_question:
         name:
-          other: Good Question
+          other: Buona domanda
         desc:
-          other: Question score of 25 or more.
+          other: Punteggio della domanda di 25 o più
       great_question:
         name:
-          other: Great Question
+          other: Ottima domanda
         desc:
-          other: Question score of 50 or more.
+          other: Punteggio domande pari o superiore a 50.
       popular_question:
         name:
-          other: Popular Question
+          other: Domanda popolare
         desc:
-          other: Question with 500 views.
+          other: "Domanda con 500 visualizzazioni\n"
       notable_question:
         name:
-          other: Notable Question
+          other: Domanda notevole
         desc:
-          other: Question with 1,000 views.
+          other: Domanda con 1.000 visualizzazioni.
       famous_question:
         name:
-          other: Famous Question
+          other: Domanda celebre
         desc:
-          other: Question with 5,000 views.
+          other: "Domanda con 5.000 visualizzazioni.\n."
       popular_link:
         name:
-          other: Popular Link
+          other: Link Popolare
         desc:
-          other: Posted an external link with 50 clicks.
+          other: Pubblicato un link esterno con 50 clic.
       hot_link:
         name:
-          other: Hot Link
+          other: Link popolare
         desc:
-          other: Posted an external link with 300 clicks.
+          other: Pubblicato un link esterno con 300 clic.
       famous_link:
         name:
-          other: Famous Link
+          other: Link celebre
         desc:
-          other: Posted an external link with 100 clicks.
+          other: Pubblicato un link esterno con 100 clic.
     default_badge_groups:
       getting_started:
         name:
-          other: Getting Started
+          other: Primi passi
       community:
         name:
           other: Community
       posting:
         name:
-          other: Posting
+          other: Pubblicazione in corso
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
@@ -843,9 +843,9 @@ ui:
       posts: Messaggi
       invites: Inviti
       votes: Voti
-    answer: Answer
-    question: Question
-    badge_award: Badge
+    answer: Risposta
+    question: Domanda
+    badge_award: Distintivo
   suspended:
     title: Il tuo account è stato sospeso
     until_time: "Il tuo account è stato sospeso fino a {{ time }}."
@@ -1017,9 +1017,9 @@ ui:
     delete:
       title: Elimina questo tag
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p>Non è consentita <strong>l'eliminazione di tag con post</strong>.</p> <p>Rimuovi prima questo tag dai post.</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p>Non è consentita <strong>l'eliminazione di tag con sinonimi</strong>.</p> <p>Per favore, rimuovi prima i sinonimi da questo tag.</p>
       tip: Sei sicuro di voler cancellare?
       close: Chiudi
   edit_tag:
@@ -1041,13 +1041,13 @@ ui:
     hours: ore
     days: giorni
   reaction:
-    heart: heart
-    smile: smile
-    frown: frown
-    btn_label: add or remove reactions
-    undo_emoji: undo {{ emoji }} reaction
-    react_emoji: react with {{ emoji }}
-    unreact_emoji: unreact with {{ emoji }}
+    heart: cuore
+    smile: sorriso
+    frown: disapprovare
+    btn_label: aggiungere o rimuovere le reazioni
+    undo_emoji: annulla reazione {{ emoji }}
+    react_emoji: reagire con {{ emoji }}
+    unreact_emoji: non reagire con {{ emoji }}
   comment:
     btn_add_comment: Aggiungi un commento
     reply_to: Rispondi a
@@ -1185,8 +1185,8 @@ ui:
       label: Nome
       msg:
         empty: Il nome non può essere vuoto.
-        range: Length of name should between 4 to 30 characters.
-        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+        range: La lunghezza del nome deve essere compresa tra 4 e 30 caratteri.
+        character: 'È necessario utilizzare il set di caratteri "a-z", "0-9", " - . _"'
     email:
       label: E-mail
       msg:
@@ -1502,7 +1502,7 @@ ui:
     success: Il tuo nuovo account è confermato; sarai reindirizzato alla home page.
     link: Continua alla Homepage
     oops: Oops!
-    invalid: The link you used no longer works.
+    invalid: Il link che hai usato non è più attivo.
     confirm_new_email: La tua email è stata aggiornata.
     confirm_new_email_invalid: >-
       Siamo spiacenti, questo link di conferma non è più valido. Forse la tua email è già stata modificata?
@@ -1524,8 +1524,8 @@ ui:
     answers: Risposte
     newest: Più recenti
     active: Attivo
-    hot: Hot
-    recommend: Recommend
+    hot: Caldo
+    recommend: Raccomandato
     score: Punteggio
     unanswered: Senza risposta
     modified: Modificato
