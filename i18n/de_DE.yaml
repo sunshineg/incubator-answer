@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: Ungültige URL.
       status_invalid:
-        other: Invalid status.
+        other: Ungültiger Status.
     password:
       space_invalid:
         other: Passwort darf keine Leerzeichen enthalten.
@@ -465,7 +465,7 @@ backend:
       invited_you_to_answer:
         other: hat dich eingeladen, zu antworten
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Du hast das "{{.BadgeName}}" Abzeichen verdient
   email_tpl:
     change_email:
       title:
@@ -536,12 +536,12 @@ backend:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Autobiograph
         desc:
           other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
       certified:
         name:
-          other: Certified
+          other: Zertifiziert
         desc:
           other: Completed our new user tutorial.
       editor:
