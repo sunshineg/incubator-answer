@@ -526,7 +526,7 @@ backend:
     queued_post:
       other: Publicação na fila
     flagged_post:
-      other: Post sinalizado
+      other: Postagem sinalizada
     suggested_post_edit:
       other: Edições sugeridas
   reaction:
@@ -628,7 +628,7 @@ backend:
         name:
           other: Amor Superior
         desc:
-          other: .
+          other: Usou 50 votos positivos em um dia — 5 vezes.
       crazy_in_love:
         name:
           other: Amor Louco
@@ -638,7 +638,7 @@ backend:
         name:
           other: Promotor
         desc:
-          other: Convidou um usuario.
+          other: Convidou um usuário.
       campaigner:
         name:
           other: Ativista
