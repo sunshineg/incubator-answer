@@ -326,9 +326,7 @@ backend:
       name:
         other: scortese o offensivo
       desc:
-        other:
-          - Una persona ragionevole troverebbe questo contenuto inappropriato o irrispettoso
-          - discorso.
+        other: "A reasonable person would find this content inappropriate for respectful discourse."
     a_duplicate:
       name:
         other: duplicato
@@ -340,10 +338,7 @@ backend:
       name:
         other: Non è una risposta
       desc:
-        other:
-          - Questo contenuto è stato pubblicato come una risposta, ma non risponde all'
-          - interrogativo. Dovrebbe possibilmente essere una modifica, un commento, un'altra domanda
-          - o cancellato del tutto.
+        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
     no_longer_needed:
       name:
         other: Non più necessario
@@ -402,9 +397,7 @@ backend:
         name:
           other: richiede maggiori dettagli o chiarezza
         desc:
-          other:
-            - Questa domanda include più domande in una. Dovrebbe concentrarsi su un unico problema
-            - concentrarsi su un solo problema.
+          other: This question currently includes multiple questions in one. It should focus on one problem only.
       other:
         name:
           other: altro
@@ -794,7 +787,7 @@ ui:
   how_to_format:
     title: Come formattare
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url. om)</code></pre></li><li><p class="mb-2">mette i rendimenti tra i paragrafi</p></li><li><p class="mb-2"><em>_italic_</em> o **<strong>grassetto</strong>**</p></li><li><p class="mb-2">trattino di codice per 4 spazi</p></li><li><p class="mb-2">preventivo inserendo <code>&gt;</code> all'inizio della riga</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">crea recinzioni di codice con backticks <code>`</code></p><pre class="mb-0">````<code><br/>codice qui<br/>`````</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">link question or answer: <code>#10010000000000001</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
     prev: Prec
     next: Successivo
@@ -1185,7 +1178,7 @@ ui:
       label: Nome
       msg:
         empty: Il nome non può essere vuoto.
-        range: La lunghezza del nome deve essere compresa tra 4 e 30 caratteri.
+        range: Name must be between 2 to 30 characters in length.
         character: 'È necessario utilizzare il set di caratteri "a-z", "0-9", " - . _"'
     email:
       label: E-mail
@@ -1341,6 +1334,10 @@ ui:
   related_question:
     title: Domande correlate
     answers: risposte
+  linked_question:
+    title: Linked Questions
+    description: Questions linked to
+    no_linked_question: No questions linked from this question.
   invite_to_answer:
     title: Persone Interpellate
     desc: Seleziona le persone che pensi potrebbero conoscere la risposta.
@@ -1559,6 +1556,7 @@ ui:
     top_questions: Domande principali
     stats: Statistiche
     list_empty: Nessun post trovato.<br />Forse desideri selezionare una scheda diversa?
+    content_empty: No posts found.
     accepted: Accettato
     answered: risposto
     asked: chiesto
@@ -1816,7 +1814,7 @@ ui:
             msg: "Inserisci l'email dell'utente, una per riga."
           display_name:
             label: Nome da visualizzare
-            msg: Il nome visualizzato deve avere una lunghezza compresa tra 4 e 30 caratteri.
+            msg: Display name must be 2-30 characters in length.
           email:
             label: E-mail
             msg: L'email non è valida.
