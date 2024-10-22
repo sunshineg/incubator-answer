@@ -326,9 +326,7 @@ backend:
       name:
         other: niegrzeczny lub obraźliwy
       desc:
-        other:
-          - Rozsądna osoba uznałaby tę treść za nieodpowiednią do dyskusji opartej na szacunku
-          - dyskomfort.
+        other: "A reasonable person would find this content inappropriate for respectful discourse."
     a_duplicate:
       name:
         other: duplikat
@@ -340,10 +338,7 @@ backend:
       name:
         other: nie jest odpowiedzią
       desc:
-        other:
-          - To zostało opublikowane jako odpowiedź, ale nie próbuje odpowiedzieć na
-          - pytanie. Powinna być prawdopodobnie edytowana, opatrzona komentarzem, kolejnym pytaniem,
-          - lub całkowicie usunięta.
+        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
     no_longer_needed:
       name:
         other: nie jest już potrzebne
@@ -402,9 +397,7 @@ backend:
         name:
           other: wymaga szczegółów lub wyjaśnienia
         desc:
-          other:
-            - This question currently includes multiple questions in one. It should
-            - focus on one problem only.
+          other: This question currently includes multiple questions in one. It should focus on one problem only.
       other:
         name:
           other: coś innego
@@ -794,7 +787,7 @@ ui:
   how_to_format:
     title: Jak formatować
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url. com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt; </code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">link question or answer: <code>#10010000000000001</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
     prev: Poprzedni
     next: Następny
@@ -1185,7 +1178,7 @@ ui:
       label: Imię
       msg:
         empty: Imię nie może być puste.
-        range: Długość nazwy powinna wynosić od 4 do 30 znaków.
+        range: Name must be between 2 to 30 characters in length.
         character: 'Możesz użyć dozwolone znaki "a-z", "A-Z", "0-9", " - . _"'
     email:
       label: Adres e-mail
@@ -1341,6 +1334,10 @@ ui:
   related_question:
     title: Powiązane pytania
     answers: odpowiedzi
+  linked_question:
+    title: Linked Questions
+    description: Questions linked to
+    no_linked_question: No questions linked from this question.
   invite_to_answer:
     title: Ludzie pytali
     desc: Wybierz osoby, które mogą znać odpowiedź.
@@ -1559,6 +1556,7 @@ ui:
     top_questions: Najlepsze pytania
     stats: Statystyki
     list_empty: Nie znaleziono wpisów. <br />Być może chcesz wybrać inną kartę?
+    content_empty: No posts found.
     accepted: Zaakceptowane
     answered: Udzielone odpowiedzi
     asked: zapytano
@@ -1816,7 +1814,7 @@ ui:
             msg: "Podaj adresy e-mail użytkowników, jeden w każdej linii."
           display_name:
             label: Nazwa wyświetlana
-            msg: Wyświetlana nazwa musi mieć od 4 do 30 znaków.
+            msg: Display name must be 2-30 characters in length.
           email:
             label: E-mail
             msg: Email nie jest prawidłowy.
