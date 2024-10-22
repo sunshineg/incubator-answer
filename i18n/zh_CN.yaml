@@ -326,9 +326,7 @@ backend:
       name:
         other: 粗鲁或辱骂的
       desc:
-        other:
-          - 一个有理智的人都会认为这种内容不适合进行尊重性的讨论。
-          - 论坛
+        other: "A reasonable person would find this content inappropriate for respectful discourse."
     a_duplicate:
       name:
         other: 重复内容
@@ -340,10 +338,7 @@ backend:
       name:
         other: 不是答案
       desc:
-        other:
-          - 这张贴作为答案，但它不会试图回答
-          - 这可能是一个编辑、一个评论、另一个问题。
-          - 或全部删除。
+        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
     no_longer_needed:
       name:
         other: 不再需要
@@ -402,9 +397,7 @@ backend:
         name:
           other: 需要细节或澄清
         desc:
-          other:
-            - 该问题目前涵盖多个问题。它应该侧重在一个问题上。
-            - 只关注一个问题。
+          other: This question currently includes multiple questions in one. It should focus on one problem only.
       other:
         name:
           other: 其他原因
@@ -794,7 +787,7 @@ ui:
   how_to_format:
     title: 如何排版
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">添加链接</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[标题](https://url.com)</code></pre></li><li><p class="mb-2">段落之间使用空行分隔</p></li><li><p class="mb-2"><em>_斜体_</em> 或者 **<strong>粗体</strong>**</p></li><li><p class="mb-2">使用 4 个空格缩进代码</p></li><li><p class="mb-2">在行首添加 <code>&gt;</code> 表示引用</p></li><li><p class="mb-2">反引号进行转义 <code>`像 _这样_`</code></p></li><li><p class="mb-2">使用 <code>```</code> 创建代码块</p><pre class="mb-0"><code>```<br/>这是代码块<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">link question or answer: <code>#10010000000000001</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
     prev: 上一页
     next: 下一页
@@ -1185,7 +1178,7 @@ ui:
       label: 名字
       msg:
         empty: 名字不能为空
-        range: 名字应该在 4 到 30 个字符之间
+        range: Name must be between 2 to 30 characters in length.
         character: '只能由 "a-z"、"A-Z"、"0-9"、" - . _" 组成'
     email:
       label: 邮箱
@@ -1341,6 +1334,10 @@ ui:
   related_question:
     title: 相关问题
     answers: 个回答
+  linked_question:
+    title: Linked Questions
+    description: Questions linked to
+    no_linked_question: No questions linked from this question.
   invite_to_answer:
     title: 受邀人
     desc: 邀请你认为可能知道答案的人。
@@ -1559,6 +1556,7 @@ ui:
     top_questions: 高分问题
     stats: 状态
     list_empty: 没有找到相关的内容。<br />试试看其他选项卡？
+    content_empty: No posts found.
     accepted: 已采纳
     answered: 回答于
     asked: 提问于
@@ -1816,7 +1814,7 @@ ui:
             msg: "请输入用户的邮箱，每行一个。"
           display_name:
             label: 显示名称
-            msg: 显示名称长度必须为 4-30 个字符
+            msg: Display name must be 2-30 characters in length.
           email:
             label: 邮箱
             msg: 邮箱无效。
