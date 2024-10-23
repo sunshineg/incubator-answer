@@ -42,7 +42,7 @@ backend:
     close:
       other: 閉じる
     reopen:
-      other: 開き直す
+      other: Reopen
     forbidden_error:
       other: Forbidden.
     pin:
@@ -315,7 +315,7 @@ backend:
         other: Site config not found.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: バッジオブジェクトが見つかりません
   reason:
     spam:
       name:
@@ -440,9 +440,9 @@ backend:
       your_question_is_closed:
         other: Your question has been closed
       your_question_was_deleted:
-        other: Your question has been deleted
+        other: あなたの質問は削除されました
       your_answer_was_deleted:
-        other: Your answer has been deleted
+        other: あなたの質問は削除されました
       your_comment_was_deleted:
         other: Your comment has been deleted
       up_voted_question:
@@ -822,7 +822,7 @@ ui:
     http_404: HTTP エラー 404
     http_50X: HTTP エラー 500
     http_403: HTTP エラー 403
-    logout: Log Out
+    logout: ログアウト
   notifications:
     title: 通知
     inbox: 受信トレイ
@@ -837,8 +837,8 @@ ui:
       invites: 招待
       votes: 投票
     answer: Answer
-    question: Question
-    badge_award: Badge
+    question: 質問
+    badge_award: バッジ
   suspended:
     title: あなたのアカウントは停止されています。
     until_time: "あなたのアカウントは {{ time }} まで停止されました。"
@@ -973,7 +973,7 @@ ui:
     form:
       fields:
         display_name:
-          label: Display name
+          label: 表示名
           msg:
             empty: 表示名を入力してください。
             range: 表示名は最大 35 文字までです。
@@ -1013,13 +1013,13 @@ ui:
         <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
       tip_with_synonyms: >-
         <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
-      tip: Are you sure you wish to delete?
+      tip: 本当に削除してもよろしいですか？
       close: 閉じる
   edit_tag:
     title: タグを編集
     default_reason: タグを編集
-    default_first_reason: Add tag
-    btn_save_edits: Save edits
+    default_first_reason: タグを追加
+    btn_save_edits: 編集を保存
     btn_cancel: キャンセル
   dates:
     long_date: MMM D
@@ -1100,16 +1100,16 @@ ui:
           label: Title
           placeholder: Be specific and imagine you're asking a question to another person
           msg:
-            empty: Title cannot be empty.
-            range: Title up to 150 characters
+            empty: タイトルを空にすることはできません。
+            range: タイトルは最大150文字までです
         body:
-          label: Body
+          label: 本文
           msg:
-            empty: Body cannot be empty.
+            empty: 本文を空にすることはできません。
         tags:
-          label: Tags
+          label: タグ
           msg:
-            empty: Tags cannot be empty.
+            empty: 少なくとも一つ以上のタグが必要です。
         answer:
           label: Answer
           msg:
@@ -1123,25 +1123,25 @@ ui:
     answer_question: Answer your own question
     post_question&answer: Post your question and answer
   tag_selector:
-    add_btn: Add tag
-    create_btn: Create new tag
+    add_btn: タグを追加
+    create_btn: 新しタグを作成
     search_tag: Search tag
     hint: "Describe what your question is about, at least one tag is required."
     no_result: No tags matched
     tag_required_text: Required tag (at least one)
   header:
     nav:
-      question: Questions
-      tag: Tags
-      user: Users
-      badges: Badges
-      profile: Profile
-      setting: Settings
-      logout: Log out
+      question: 質問
+      tag: タグ
+      user: ユーザー
+      badges: バッジ
+      profile: プロフィール
+      setting: 設定
+      logout: ログアウト
       admin: 管理者
       review: レビュー
       bookmark: ブックマーク
-      moderation: Moderation
+      moderation: モデレーション
     search:
       placeholder: 検索
   footer:
@@ -1161,24 +1161,24 @@ ui:
     info: "If it doesn't arrive, check your spam folder."
     another: >-
       We sent another activation email to you at <bold>{{mail}}</bold>. It might take a few minutes for it to arrive; be sure to check your spam folder.
-    btn_name: Resend activation email
+    btn_name: 認証メールを再送信
     change_btn_name: メールアドレスを変更
     msg:
-      empty: Cannot be empty.
+      empty: 空にすることはできません
     resend_email:
-      url_label: Are you sure you want to resend the activation email?
+      url_label: 本当に認証メールを再送信してもよろしいですか？
       url_text: You can also give the activation link above to the user.
   login:
-    login_to_continue: Log in to continue
-    info_sign: Don't have an account? <1>Sign up</1>
-    info_login: Already have an account? <1>Log in</1>
+    login_to_continue: ログインして続行
+    info_sign: アカウントをお持ちではありませんか？<1>サインアップ</1>
+    info_login: すでにアカウントをお持ちですか？<1>ログイン</1>
     agreements: By registering, you agree to the <1>privacy policy</1> and <3>terms of service</3>.
     forgot_pass: パスワードをお忘れですか?
     name:
-      label: Name
+      label: 名前
       msg:
-        empty: Name cannot be empty.
-        range: Name must be between 2 to 30 characters in length.
+        empty: 名前を空にすることはできません。
+        range: 2～30文字の名前を設定してください。
         character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
     email:
       label: メールアドレス
@@ -1191,7 +1191,7 @@ ui:
         different: The passwords entered on both sides are inconsistent
   account_forgot:
     page_title: パスワードを忘れた方はこちら
-    btn_name: Send me recovery email
+    btn_name: 回復用のメールを送る
     send_success: >-
       If an account matches <strong>{{mail}}</strong>, you should receive an email with instructions on how to reset your password shortly.
     email:
