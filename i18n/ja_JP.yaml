@@ -42,7 +42,7 @@ backend:
     close:
       other: 閉じる
     reopen:
-      other: Reopen
+      other: 開き直す
     forbidden_error:
       other: Forbidden.
     pin:
