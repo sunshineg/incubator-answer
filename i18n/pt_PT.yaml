@@ -1146,7 +1146,7 @@ ui:
       placeholder: Procurar
   footer:
     build_on: >-
-      .
+      Construído com <1> Apache answer </1> o software de código aberto que ajuda comunidades de Q&A.<br />Feito com amor © {{cc}}.
   upload_img:
     name: Mudar
     loading: carregando...
