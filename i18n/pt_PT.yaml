@@ -1615,7 +1615,7 @@ ui:
       msg:
         empty: Site URL não pode ser vazio.
         incorrect: URL do site está incorreto.
-        max_length: A URL do site deve ter no máximo 512 caracteres.
+        max_length: O nome do site deve ter no máximo 512 caracteres.
     contact_email:
       label: E-mail par contato
       text: O endereço de e-mail do contato principal deste site.
