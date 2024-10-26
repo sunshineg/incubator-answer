@@ -581,7 +581,7 @@ backend:
         name:
           other: New User of the Month
         desc:
-          other: Outstanding contributions in their first month.
+          other: Contribuții restante în prima lor lună.
       read_guidelines:
         name:
           other: Read Guidelines
@@ -609,7 +609,7 @@ backend:
           other: Shared a post with 300 unique visitors.
       great_share:
         name:
-          other: Great Share
+          other: Distribuire grozavă
         desc:
           other: Shared a post with 1000 unique visitors.
       out_of_love:
