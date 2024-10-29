@@ -326,7 +326,7 @@ backend:
       name:
         other: rude ou abusivo
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Uma pessoa razoável consideraria esse conteúdo inapropriado para um discurso respeitoso."
     a_duplicate:
       name:
         other: uma duplicação
