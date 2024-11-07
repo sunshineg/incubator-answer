@@ -48,15 +48,15 @@ backend:
     pin:
       other: 置頂
     hide:
-      other: Unlist
+      other: 不公開
     unpin:
-      other: Unpin
+      other: 取消置頂
     show:
-      other: List
+      other: 清單
     invite_someone_to_answer:
-      other: Edit
+      other: 編輯
     undelete:
-      other: Undelete
+      other: 還原
   role:
     name:
       user:
