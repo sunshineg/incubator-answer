@@ -326,7 +326,7 @@ backend:
       name:
         other: грубо чи образливо
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Розумна людина вважатиме такий зміст неприйнятним для ввічливого спілкування."
     a_duplicate:
       name:
         other: дублікат
@@ -338,7 +338,7 @@ backend:
       name:
         other: не відповідь
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Це повідомлення було опубліковане як відповідь, але воно не є спробою відповісти на запитання. Можливо, його слід відредагувати, прокоментувати, поставити інше запитання або взагалі видалити."
     no_longer_needed:
       name:
         other: більше не потрібно
@@ -397,7 +397,7 @@ backend:
         name:
           other: потребує деталей або ясності
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: Наразі це питання включає кілька запитань в одному. Воно має зосереджуватися лише на одній проблемі.
       other:
         name:
           other: інше
@@ -418,13 +418,13 @@ backend:
     tags_title:
       other: Теґи
     no_description:
-      other: The tag has no description.
+      other: Тег не має опису.
   notification:
     action:
       update_question:
         other: оновлене питання
       answer_the_question:
-        other: answered question
+        other: питання з відповіддю
       update_answer:
         other: оновлена відповідь
       accept_answer:
@@ -446,19 +446,19 @@ backend:
       your_comment_was_deleted:
         other: Ваш коментар видалено
       up_voted_question:
-        other: upvoted question
+        other: питання, за яке найбільше проголосували
       down_voted_question:
-        other: downvoted question
+        other: питання, за яке проголосували менше
       up_voted_answer:
-        other: upvoted answer
+        other: відповідь, за яку проголосували найбільше
       down_voted_answer:
         other: downvoted answer
       up_voted_comment:
-        other: upvoted comment
+        other: коментар, за який проголосували
       invited_you_to_answer:
         other: запросив(-ла) вас відповісти
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Ви заробили бейдж "{{.BadgeName}}"
   email_tpl:
     change_email:
       title:
@@ -517,26 +517,26 @@ backend:
       other: редагувати
   review:
     queued_post:
-      other: Queued post
+      other: Допис у черзі
     flagged_post:
       other: Відмічений пост
     suggested_post_edit:
-      other: Suggested edits
+      other: Запропоновані зміни
   reaction:
     tooltip:
-      other: "{{ .Names }} and {{ .Count }} more..."
+      other: "{{ .Names }} і {{ .Count }} більше..."
   badge:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Автобіограф
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Заповнена <a href="{{ .ProfileURL }}" target="_blank">інформація про профіль</a>.
       certified:
         name:
           other: Підтверджений
         desc:
-          other: Completed our new user tutorial.
+          other: Завершено наш новий посібник користувача.
       editor:
         name:
           other: Редактор
@@ -544,19 +544,19 @@ backend:
           other: Перше редагування посту.
       first_flag:
         name:
-          other: First Flag
+          other: Перший прапор
         desc:
-          other: First flagged a post.
+          other: Спочатку позначено допис.
       first_upvote:
         name:
-          other: First Upvote
+          other: Перший голос за
         desc:
-          other: First up voted a post.
+          other: Спочатку голосували за допис.
       first_link:
         name:
           other: Перше посилання
         desc:
-          other: First dirst added a link to another post.
+          other: Перший дирст додав посилання на інший допис.
       first_reaction:
         name:
           other: Перша реакція
