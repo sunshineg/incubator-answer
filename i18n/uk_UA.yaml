@@ -1827,31 +1827,31 @@ ui:
       title: Користувачі
       name: Ім’я
       email: Електронна пошта
-      reputation: Reputation
-      created_at: Created Time
-      delete_at: Deleted Time
+      reputation: Репутація
+      created_at: Створений час
+      delete_at: Видалений час
       suspend_at: Час призупинення
       status: Статус
       role: Роль
-      action: Action
-      change: Change
-      all: All
-      staff: Staff
+      action: Дія
+      change: Зміна
+      all: Усі
+      staff: Персонал
       more: Більше
-      inactive: Inactive
-      suspended: Suspended
-      deleted: Deleted
-      normal: Normal
+      inactive: Неактивні
+      suspended: Призупинено
+      deleted: Видалено
+      normal: Нормальний
       Moderator: Модератор
       Admin: Адмін
       User: Користувач
       filter:
-        placeholder: "Filter by name, user:id"
+        placeholder: "Фільтр на ім'я, користувач:id"
       set_new_password: Встановити новий пароль
-      edit_profile: Edit profile
+      edit_profile: Редагувати профіль
       change_status: Змінити статус
       change_role: Змінити роль
-      show_logs: Show logs
+      show_logs: Показати записи журналу
       add_user: Додати користувача
       deactivate_user:
         title: Деактивувати користувача
@@ -1859,64 +1859,64 @@ ui:
       delete_user:
         title: Видалити цього користувача
         content: Ви впевнені, що хочете видалити цього користувача? Це назавжди!
-        remove: Remove their content
+        remove: Вилучити їх вміст
         label: Видалити всі запитання, відповіді, коментарі тощо.
-        text: Don’t check this if you wish to only delete the user’s account.
+        text: Не позначайте цю опцію, якщо ви хочете лише видалити обліковий запис користувача.
       suspend_user:
         title: Призупинити цього користувача
         content: Призупинений користувач не може увійти в систему.
     questions:
       page_title: Запитання
-      unlisted: Unlisted
+      unlisted: Вилучене зі списку
       post: Опублікувати
-      votes: Votes
-      answers: Answers
+      votes: Голоси
+      answers: Відповіді
       created: Створені
       status: Статус
-      action: Action
-      change: Change
-      pending: Pending
+      action: Дія
+      change: Зміна
+      pending: Очікування
       filter:
-        placeholder: "Filter by title, question:id"
+        placeholder: "Фільтр за назвою, питання:id"
     answers:
       page_title: Відповіді
-      post: Post
-      votes: Votes
-      created: Created
+      post: Допис
+      votes: Голоси
+      created: Створено
       status: Статус
-      action: Action
-      change: Change
+      action: Дія
+      change: Зміна
       filter:
-        placeholder: "Filter by title, answer:id"
+        placeholder: "Фільтр за назвою, відповідь:id"
     general:
-      page_title: General
+      page_title: Основне
       name:
-        label: Site name
-        msg: Site name cannot be empty.
-        text: "The name of this site, as used in the title tag."
+        label: Назва сайту
+        msg: Назва сайту не може бути порожньою.
+        text: "Назва цього сайту як зазначено у заголовку тегу."
       site_url:
-        label: Site URL
-        msg: Site url cannot be empty.
-        validate: Please enter a valid URL.
-        text: The address of your site.
+        label: URL сайту
+        msg: Url сайту не може бути порожньою.
+        validate: Будь ласка, введіть дійсну URL.
+        text: Адреса вашого сайту.
       short_desc:
-        label: Short site description
-        msg: Short site description cannot be empty.
-        text: "Short description, as used in the title tag on homepage."
+        label: Короткий опис сайту
+        msg: Короткий опис сайту не може бути пустим.
+        text: "Короткий опис, як використовується в заголовку на головній сторінці."
       desc:
-        label: Site description
-        msg: Site description cannot be empty.
-        text: "Describe this site in one sentence, as used in the meta description tag."
+        label: Опис сайту
+        msg: Опис сайту не може бути порожнім.
+        text: "Опишіть цей сайт одним реченням, як у тезі метаопису."
       contact_email:
-        label: Contact email
-        msg: Contact email cannot be empty.
-        validate: Contact email is not valid.
-        text: Email address of key contact responsible for this site.
+        label: Контактна електронна пошта
+        msg: Контактна електронна пошта не може бути порожньою.
+        validate: Контактна електронна пошта недійсна.
+        text: Адреса електронної пошти ключової особи, відповідальної за цей сайт.
       check_update:
-        label: Software updates
-        text: Automatically check for updates
+        label: Оновлення програмного забезпечення
+        text: Автоматично перевіряти оновлення
     interface:
-      page_title: Interface
+      page_title: Інтерфейс
       language:
         label: Мова інтерфейсу
         msg: Мова інтерфейсу не може бути пустою.
@@ -2127,55 +2127,55 @@ ui:
       filter:
         placeholder: Фільтрувати за іменем, значок:id
       group: Група
-      inactive: Inactive
+      inactive: Неактивні
       name: Ім’я
-      show_logs: Show logs
-      status: Status
-      title: Badges
+      show_logs: Показати записи журналу
+      status: Статус
+      title: Значки
   form:
-    optional: (optional)
+    optional: (необов'язково)
     empty: не може бути порожнім
-    invalid: is invalid
+    invalid: недійсне
     btn_submit: Зберегти
-    not_found_props: "Required property {{ key }} not found."
+    not_found_props: "Необхідний параметр {{ key }} не знайдено."
     select: Вибрати
   page_review:
-    review: Review
-    proposed: proposed
-    question_edit: Question edit
-    answer_edit: Answer edit
-    tag_edit: Tag edit
-    edit_summary: Edit summary
-    edit_question: Edit question
-    edit_answer: Edit answer
-    edit_tag: Edit tag
-    empty: No review tasks left.
-    approve_revision_tip: Do you approve this revision?
+    review: Огляд
+    proposed: запропоновано
+    question_edit: Редагування питання
+    answer_edit: Редагування відповіді
+    tag_edit: Редагування тегу
+    edit_summary: Редагувати звіт
+    edit_question: Редагувати питання
+    edit_answer: Редагувати відповідь
+    edit_tag: Редагувати тег
+    empty: Не залишилось завдань огляду.
+    approve_revision_tip: Ви схвалюєте цю редакцію?
     approve_flag_tip: Ви схвалюєте цю відмітку?
-    approve_post_tip: Do you approve this post?
-    approve_user_tip: Do you approve this user?
-    suggest_edits: Suggested edits
+    approve_post_tip: Ви схвалюєте цей допис?
+    approve_user_tip: Ви схвалюєте цього користувача?
+    suggest_edits: Запропоновані зміни
     flag_post: Відмітити публікацію
     flag_user: Відмітити користувача
-    queued_post: Queued post
-    queued_user: Queued user
-    filter_label: Type
-    reputation: reputation
+    queued_post: Черговий допис
+    queued_user: Черговий користувач
+    filter_label: Тип
+    reputation: репутація
     flag_post_type: Відмічено цей пост як {{ type }}.
     flag_user_type: Відмічено цього користувача як {{ type }}.
-    edit_post: Edit post
-    list_post: List post
-    unlist_post: Unlist post
+    edit_post: Редагувати допис
+    list_post: Додати допис до списку
+    unlist_post: Видалити допис зі списку
   timeline:
-    undeleted: undeleted
-    deleted: deleted
-    downvote: downvote
-    upvote: upvote
-    accept: accept
-    cancelled: cancelled
-    commented: commented
-    rollback: rollback
-    edited: edited
+    undeleted: не видалений
+    deleted: видалений
+    downvote: голос "проти"
+    upvote: голос "за"
+    accept: прийняти
+    cancelled: скасовано
+    commented: прокоментовано
+    rollback: відкат назад
+    edited: відредаговано
     answered: дано відповідь
     asked: запитано
     closed: закрито
