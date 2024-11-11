@@ -551,7 +551,7 @@ backend:
         name:
           other: Перший голос за
         desc:
-          other: Спочатку голосували за допис.
+          other: Першим голосував за допис.
       first_link:
         name:
           other: Перше посилання
@@ -561,17 +561,17 @@ backend:
         name:
           other: Перша реакція
         desc:
-          other: First reacted to the post.
+          other: Першим відреагував на допис.
       first_share:
         name:
-          other: First Share
+          other: Перше поширення
         desc:
-          other: First shared a post.
+          other: Перший поділився публікацією.
       scholar:
         name:
           other: Вчений
         desc:
-          other: Asked a question and accepted an answer.
+          other: Поставив питання і прийняв відповідь.
       commentator:
         name:
           other: Коментатор
@@ -581,17 +581,17 @@ backend:
         name:
           other: Новий користувач місяця
         desc:
-          other: Outstanding contributions in their first month.
+          other: Видатні внески за їх перший місяць.
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: Прочитайте Інструкцію
         desc:
           other: Прочитайте [рекомендації для спільноти].
       reader:
         name:
           other: Читач
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: Прочитайте кожну відповідь у темі з більш ніж 10 відповідями.
       welcome:
         name:
           other: Ласкаво просимо
@@ -599,34 +599,34 @@ backend:
           other: Отримав голос.
       nice_share:
         name:
-          other: Nice Share
+          other: Гарне поширення
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: Поділилися постом з 25 унікальними відвідувачами.
       good_share:
         name:
-          other: Good Share
+          other: Хороше поширення
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: Поділилися постом з 300 унікальними відвідувачами.
       great_share:
         name:
-          other: Great Share
+          other: Відмінне поширення
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: Поділилися постом з 1000 унікальними відвідувачами.
       out_of_love:
         name:
-          other: Out of Love
+          other: З любові
         desc:
-          other: Used 50 up votes in a day.
+          other: Використав 50 голосів «за» за день.
       higher_love:
         name:
-          other: Higher Love
+          other: Вище кохання
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: Використав 50 голосів «за» за день 5 разів.
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: Божевільний в любові
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: Використав 50 голосів «за» за день 20 разів.
       promoter:
         name:
           other: Промоутер
@@ -634,9 +634,9 @@ backend:
           other: Запросив користувача.
       campaigner:
         name:
-          other: Campaigner
+          other: Агітатор
         desc:
-          other: Invited 3 basic users.
+          other: Запрошено 3 основних користувачів.
       champion:
         name:
           other: Чемпіон
@@ -646,148 +646,148 @@ backend:
         name:
           other: Дякую
         desc:
-          other: Has 20 up voted posts and gave 10 up votes.
+          other: Має 20 дописів, за які проголосували, і віддав 10 голосів «за».
       gives_back:
         name:
-          other: Gives Back
+          other: Дає назад
         desc:
-          other: Has 100 up voted posts and gave 100 up votes.
+          other: Має 100 дописів, за які проголосували, і віддав 100 голосів «за».
       empathetic:
         name:
-          other: Empathetic
+          other: Емпатичний
         desc:
-          other: Has 500 up voted posts and gave 1000 up votes.
+          other: Має 500 дописів, за які проголосували, і віддав 1000 голосів «за».
       enthusiast:
         name:
-          other: Enthusiast
+          other: Ентузіаст
         desc:
-          other: Visited 10 consecutive days.
+          other: Відвідано 10 днів поспіль.
       aficionado:
         name:
-          other: Aficionado
+          other: Шанувальник
         desc:
-          other: Visited 100 consecutive days.
+          other: Відвідано 100 днів поспіль.
       devotee:
         name:
-          other: Devotee
+          other: Відданий
         desc:
-          other: Visited 365 consecutive days.
+          other: Відвідано 365 днів поспіль.
       anniversary:
         name:
-          other: Anniversary
+          other: Річниця
         desc:
-          other: Active member for a year, posted at least once.
+          other: Активний учасник на рік, опублікував принаймні один раз.
       appreciated:
         name:
-          other: Appreciated
+          other: Оцінений
         desc:
-          other: Received 1 up vote on 20 posts.
+          other: Отримано 1 голос за 20 дописів.
       respected:
         name:
           other: Шанований
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: Отримано 2 голоси за 100 дописів.
       admired:
         name:
-          other: Admired
+          other: Захоплений
         desc:
-          other: Received 5 up votes on 300 posts.
+          other: Отримано 5 голосів за 300 дописів.
       solved:
         name:
           other: Вирішено
         desc:
-          other: Have an answer be accepted.
+          other: Нехай відповідь буде прийнята.
       guidance_counsellor:
         name:
-          other: Guidance Counsellor
+          other: Радник супроводу
         desc:
-          other: Have 10 answers be accepted.
+          other: Прийміть 10 відповідей.
       know_it_all:
         name:
-          other: Know-it-All
+          other: Усезнайко
         desc:
-          other: Have 50 answers be accepted.
+          other: Було прийнято 50 відповідей.
       solution_institution:
         name:
-          other: Solution Institution
+          other: Інституція рішення
         desc:
-          other: Have 150 answers be accepted.
+          other: Було прийнято 150 відповідей.
       nice_answer:
         name:
-          other: Nice Answer
+          other: Чудова відповідь
         desc:
-          other: Answer score of 10 or more.
+          other: Оцінка відповіді на 10 або більше.
       good_answer:
         name:
-          other: Good Answer
+          other: Гарна відповідь
         desc:
-          other: Answer score of 25 or more.
+          other: Оцінка відповіді на 25 або більше.
       great_answer:
         name:
-          other: Great Answer
+          other: Чудова відповідь
         desc:
-          other: Answer score of 50 or more.
+          other: Оцінка відповіді на 50 або більше.
       nice_question:
         name:
-          other: Nice Question
+          other: Гарне питання
         desc:
-          other: Question score of 10 or more.
+          other: Оцінка питання на 10 або більше.
       good_question:
         name:
-          other: Good Question
+          other: Хороше питання
         desc:
-          other: Question score of 25 or more.
+          other: Оцінка питання на 25 або більше.
       great_question:
         name:
-          other: Great Question
+          other: Відмінне питання
         desc:
-          other: Question score of 50 or more.
+          other: Оцінка питання на 50 або більше.
       popular_question:
         name:
-          other: Popular Question
+          other: Популярне питання
         desc:
-          other: Question with 500 views.
+          other: Питання з 500 переглядами.
       notable_question:
         name:
-          other: Notable Question
+          other: Помітне питання
         desc:
-          other: Question with 1,000 views.
+          other: Питання з 1000 переглядами.
       famous_question:
         name:
-          other: Famous Question
+          other: Знамените питання
         desc:
-          other: Question with 5,000 views.
+          other: Питання з 5000 переглядами.
       popular_link:
         name:
-          other: Popular Link
+          other: Популярне посилання
         desc:
-          other: Posted an external link with 50 clicks.
+          other: Опубліковано зовнішнє посилання з 50 натисканнями.
       hot_link:
         name:
-          other: Hot Link
+          other: Гаряче посилання
         desc:
-          other: Posted an external link with 300 clicks.
+          other: Опубліковано зовнішнє посилання з 300 натисканнями.
       famous_link:
         name:
-          other: Famous Link
+          other: Знамените Посилання
         desc:
-          other: Posted an external link with 100 clicks.
+          other: Опубліковано зовнішнє посилання зі 100 натисканнями.
     default_badge_groups:
       getting_started:
         name:
-          other: Getting Started
+          other: Початок роботи
       community:
         name:
           other: Спільнота
       posting:
         name:
-          other: Posting
+          other: Публікація
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
     title: Як відформатувати
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">link question or answer: <code>#10010000000000001</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">посилання питання або відповідь: <code>#10010000000000001</code></p></li> <li><p class="mb-2">для створення посилань</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">вставляти повернення між абзацами</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">відступ коду на 4 пробіли</p></li><li><p class="mb-2">цитувати, розмістивши <code>&gt;</code> на початку лінії</p></li><li><p class="mb-2">втечі бектіка <code>`like _this_`</code></p></li><li><p class="mb-2">створювати огорожі коду за допомогою бектіків <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
     prev: Назад
     next: Далі
@@ -796,7 +796,7 @@ ui:
     questions: Запитання
     tag: Теґ
     tags: Теґи
-    tag_wiki: tag wiki
+    tag_wiki: тег вікі
     create_tag: Створити теґ
     edit_tag: Редагувати теґ
     ask_a_question: Додати запитання
@@ -837,8 +837,8 @@ ui:
       invites: Запрошення
       votes: Голоси
     answer: Відповідь
-    question: Question
-    badge_award: Badge
+    question: Запитання
+    badge_award: Значок
   suspended:
     title: Ваш обліковий запис було призупинено
     until_time: "Ваш обліковий запис призупинено до {{ time }}."
@@ -847,16 +847,16 @@ ui:
     contact_us: Зв'яжіться з нами
   editor:
     blockquote:
-      text: Blockquote
+      text: Блок Цитування
     bold:
-      text: Strong
+      text: Надійний
     chart:
       text: Діаграма
       flow_chart: Блок-схема
       sequence_diagram: Діаграма послідовності
       class_diagram: Діаграма класів
       state_diagram: Діаграма станів
-      entity_relationship_diagram: Entity relationship diagram
+      entity_relationship_diagram: Діаграма зв'язків сутностей
       user_defined_diagram: Визначена користувачем діаграма
       gantt_chart: Діаграма Ґанта
       pie_chart: Кругова діаграма
@@ -878,7 +878,7 @@ ui:
       text: Формула
       options:
         inline: Вбудована формула
-        block: Block formula
+        block: Формула блоку
     heading:
       text: Заголовок
       options:
@@ -924,7 +924,7 @@ ui:
     outdent:
       text: Відступ
     italic:
-      text: Emphasis
+      text: Акцент
     link:
       text: Гіперпосилання
       add_link: Додати гіперпосилання
@@ -949,7 +949,7 @@ ui:
   close_modal:
     title: Я закриваю цей пост, оскільки...
     btn_cancel: Скасувати
-    btn_submit: Submit
+    btn_submit: Надіслати
     remark:
       empty: Не може бути порожнім.
     msg:
@@ -961,13 +961,13 @@ ui:
     review_answer_title: Переглянути відповідь
     review_comment_title: Переглянути коментар
     btn_cancel: Скасувати
-    btn_submit: Submit
+    btn_submit: Надіслати
     remark:
       empty: Не може бути порожнім.
     msg:
       empty: Будь ласка, оберіть причину.
-      not_a_url: URL format is incorrect.
-      url_not_match: URL origin does not match the current website.
+      not_a_url: Формат URL неправильний.
+      url_not_match: Походження URL не збігається з поточним вебсайтом.
   tag_modal:
     title: Створити новий теґ
     form:
@@ -978,22 +978,22 @@ ui:
             empty: Ім'я для відображення не може бути порожнім.
             range: Ім'я для відображення до 35 символів.
         slug_name:
-          label: URL slug
-          desc: URL slug up to 35 characters.
+          label: Скорочена URL-адреса
+          desc: Скорочення URL до 35 символів.
           msg:
-            empty: URL slug cannot be empty.
-            range: URL slug up to 35 characters.
-            character: URL slug contains unallowed character set.
+            empty: Скорочення URL не може бути пустим.
+            range: Скорочення URL до 35 символів.
+            character: Скорочення URL містить незадовільний набір символів.
         desc:
           label: Опис
         revision:
-          label: Revision
+          label: Редакція
         edit_summary:
-          label: Edit summary
+          label: Підсумок редагування
           placeholder: >-
             Коротко поясніть ваші зміни (виправлена орфографія, виправлена граматика, покращене форматування)
     btn_cancel: Скасувати
-    btn_submit: Submit
+    btn_submit: Надіслати
     btn_post: Опублікувати новий теґ
   tag_info:
     created_at: Створено
@@ -1010,9 +1010,9 @@ ui:
     delete:
       title: Видалити цей теґ
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p>Ми не дозволяємо <strong>видаляти тег з дописами</strong>.</p> <p>Передусім, будь ласка, вилучіть цей тег з дописів.</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p>Ми не дозволяємо <strong>видаляти тег із синонімами</strong>.</p> <p>Передусім, будь ласка, вилучіть синоніми з цього тега.</p>
       tip: Ви впевнені, що хочете видалити?
       close: Закрити
   edit_tag:
@@ -1026,21 +1026,21 @@ ui:
     long_date_with_year: "МММ Д, РРРР"
     long_date_with_time: "МММ Д, РРРР [о] ГГ:хв"
     now: зараз
-    x_seconds_ago: "{{count}}s ago"
-    x_minutes_ago: "{{count}}m ago"
-    x_hours_ago: "{{count}}h ago"
-    hour: hour
+    x_seconds_ago: "{{count}}сек назад"
+    x_minutes_ago: "{{count}}хв назад"
+    x_hours_ago: "{{count}}год назад"
+    hour: година
     day: день
-    hours: hours
+    hours: годин
     days: дні
   reaction:
-    heart: heart
+    heart: серце
     smile: посмішка
-    frown: frown
-    btn_label: add or remove reactions
-    undo_emoji: undo {{ emoji }} reaction
-    react_emoji: react with {{ emoji }}
-    unreact_emoji: unreact with {{ emoji }}
+    frown: насупився
+    btn_label: додавати або вилучати реакції
+    undo_emoji: скасувати реакцію {{ emoji }}
+    react_emoji: реагувати з {{ emoji }}
+    unreact_emoji: не реагувати з {{ emoji }}
   comment:
     btn_add_comment: Додати коментар
     reply_to: Відповісти на
@@ -1134,7 +1134,7 @@ ui:
       question: Запитання
       tag: Теґи
       user: Користувачі
-      badges: Badges
+      badges: Значки
       profile: Профіль
       setting: Налаштування
       logout: Вийти
@@ -1178,7 +1178,7 @@ ui:
       label: Ім’я
       msg:
         empty: Ім'я не може бути порожнім.
-        range: Name must be between 2 to 30 characters in length.
+        range: Ім'я повинно мати довжину від 2 до 30 символів.
         character: 'Необхідно використовувати набір символів "a-z", "A-Z", "0-9", " - . _"'
     email:
       label: Електронна пошта
@@ -1228,7 +1228,7 @@ ui:
       Ви успішно змінили пароль; вас буде перенаправлено на сторінку входу в систему.
     link_invalid: >-
       На жаль, це посилання для зміни пароля більше недійсне. Можливо, ваш пароль уже скинуто?
-    to_login: Continue to log in page
+    to_login: Продовжити вхід на сторінку
     password:
       label: Пароль
       msg:
@@ -1335,9 +1335,9 @@ ui:
     title: Пов'язані запитання
     answers: відповіді
   linked_question:
-    title: Linked Questions
-    description: Questions linked to
-    no_linked_question: No questions linked from this question.
+    title: Пов'язані питання
+    description: Питання, пов'язані з
+    no_linked_question: Немає питань, пов'язаних з цього питання.
   invite_to_answer:
     title: Люди запитували
     desc: Виберіть людей, які, на вашу думку, можуть знати відповідь.
@@ -1346,7 +1346,7 @@ ui:
     search: Шукати людей
   question_detail:
     action: Дія
-    Asked: Asked
+    Asked: Запитали
     asked: запитали
     update: Змінено
     edit: відредаговано
@@ -1355,26 +1355,26 @@ ui:
     Follow: Підписатися
     Following: Підписані
     follow_tip: Підпишіться на це запитання, щоб отримувати сповіщення
-    answered: answered
-    closed_in: Closed in
+    answered: дано відповідь
+    closed_in: Зачинено в
     show_exist: Показати наявне запитання.
     useful: Корисне
-    question_useful: It is useful and clear
-    question_un_useful: It is unclear or not useful
-    question_bookmark: Bookmark this question
-    answer_useful: It is useful
-    answer_un_useful: It is not useful
+    question_useful: Це корисно і ясно
+    question_un_useful: Це неясно або некорисно
+    question_bookmark: Додати в закладки це питання
+    answer_useful: Це корисно
+    answer_un_useful: Це некорисно
     answers:
-      title: Answers
-      score: Score
-      newest: Newest
-      oldest: Oldest
+      title: Відповіді
+      score: Оцінка
+      newest: Найновіші
+      oldest: Найдавніші
       btn_accept: Прийняти
-      btn_accepted: Accepted
+      btn_accepted: Прийнято
     write_answer:
       title: Ваша відповідь
-      edit_answer: Edit my existing answer
-      btn_name: Post your answer
+      edit_answer: Редагувати мою чинну відповідь
+      btn_name: Опублікувати свою відповідь
       add_another_answer: Add another answer
       confirm_title: Continue to answer
       continue: Continue
@@ -1490,49 +1490,49 @@ ui:
     copy: Copy link
     via: Share post via...
     copied: Copied
-    facebook: Share to Facebook
-    twitter: Share to Twitter
-  cannot_vote_for_self: You can't vote for your own post.
+    facebook: Поділитись на Facebook
+    twitter: Поділитися в Twitter
+  cannot_vote_for_self: Ви не можете проголосувати за власну публікацію.
   modal_confirm:
     title: Помилка...
   account_result:
-    success: Your new account is confirmed; you will be redirected to the home page.
+    success: Ваш новий обліковий запис підтверджено; вас буде перенаправлено на головну сторінку.
     link: Перейти на головну сторінку
     oops: Йой!
-    invalid: The link you used no longer works.
-    confirm_new_email: Your email has been updated.
+    invalid: Посилання, яке ви використовували, більше не працює.
+    confirm_new_email: Вашу адресу електронної пошти було оновлено.
     confirm_new_email_invalid: >-
-      Sorry, this confirmation link is no longer valid. Perhaps your email was already changed?
+      На жаль, це посилання для підтвердження більше не дійсне. Можливо, ваша електронна пошта вже була змінена?
   unsubscribe:
-    page_title: Unsubscribe
-    success_title: Unsubscribe Successful
-    success_desc: You have been successfully removed from this subscriber list and won't receive any further emails from us.
-    link: Change settings
+    page_title: Відписатися
+    success_title: Ви успішно відписалися
+    success_desc: Вас успішно вилучено з цього списку підписників, і ви більше не будете отримувати від нас електронні листи.
+    link: Змінити налаштування
   question:
     following_tags: Підписки на теги
-    edit: Edit
+    edit: Редагувати
     save: Зберегти
     follow_tag_tip: Підпишіться на теги, щоб упорядкувати свій список запитань.
-    hot_questions: Hot Questions
+    hot_questions: Гарячі питання
     all_questions: Всі питання
-    x_questions: "{{ count }} Questions"
-    x_answers: "{{ count }} answers"
+    x_questions: "{{ count }} Питань"
+    x_answers: "{{ count }} відповідей"
     questions: Запитання
     answers: Відповіді
     newest: Найновіші
     active: Активні
-    hot: Hot
-    recommend: Recommend
+    hot: Гаряче
+    recommend: Рекомендовано
     score: Оцінка
     unanswered: Без відповідей
-    modified: modified
-    answered: answered
-    asked: asked
-    closed: closed
+    modified: змінено
+    answered: дано відповідь
+    asked: запитано
+    closed: закрито
     follow_a_tag: Підписатися на тег
     more: Більше
   personal:
-    overview: Overview
+    overview: Загальний огляд
     answers: Відповіді
     answer: відповідь
     questions: Запитання
@@ -1541,58 +1541,58 @@ ui:
     reputation: Репутація
     comments: Коментарі
     votes: Голоси
-    badges: Badges
+    badges: Значки
     newest: Найновіше
-    score: Score
+    score: Оцінка
     edit_profile: Редагувати профіль
-    visited_x_days: "Visited {{ count }} days"
-    viewed: Viewed
-    joined: Joined
+    visited_x_days: "Відвідано {{ count }} днів"
+    viewed: Переглянуто
+    joined: Приєднано
     comma: ","
-    last_login: Seen
+    last_login: Переглянуто
     about_me: Про мене
     about_me_empty: "// Привіт, світ!"
     top_answers: Найкращі відповіді
     top_questions: Найкращі запитання
     stats: Статистика
-    list_empty: No posts found.<br />Perhaps you'd like to select a different tab?
-    content_empty: No posts found.
-    accepted: Accepted
-    answered: answered
-    asked: asked
-    downvoted: downvoted
+    list_empty: Не знайдено жодного допису.<br />Можливо, ви хочете вибрати іншу вкладку?
+    content_empty: Постів не знайдено.
+    accepted: Прийнято
+    answered: дано відповідь
+    asked: запитано
+    downvoted: проголосовано проти
     mod_short: MOD
     mod_long: Модератори
     x_reputation: репутація
     x_votes: отримані голоси
     x_answers: відповіді
     x_questions: запитання
-    recent_badges: Recent Badges
+    recent_badges: Нещодавні значки
   install:
-    title: Installation
+    title: Встановлення
     next: Далі
-    done: Done
-    config_yaml_error: Can't create the config.yaml file.
+    done: Готово
+    config_yaml_error: Не вдалося створити config.yaml файл.
     lang:
       label: Будь ласка, виберіть мову
     db_type:
-      label: Database engine
+      label: Рушій бази даних
     db_username:
       label: Ім'я користувача
-      placeholder: root
-      msg: Username cannot be empty.
+      placeholder: корінь
+      msg: Ім’я користувача не може бути порожнім.
     db_password:
       label: Пароль
-      placeholder: root
+      placeholder: корінь
       msg: Поле паролю не може бути порожнім.
     db_host:
-      label: Database host
+      label: Хост бази даних
       placeholder: "db:3306"
-      msg: Database host cannot be empty.
+      msg: Хост бази даних не може бути порожнім.
     db_name:
-      label: Database name
-      placeholder: answer
-      msg: Database name cannot be empty.
+      label: Назва бази даних
+      placeholder: відповідь
+      msg: Назва бази даних не може бути порожня.
     db_file:
       label: Database file
       placeholder: /data/answer.db
@@ -1694,67 +1694,67 @@ ui:
     css_html: CSS/HTML
     login: Login
     privileges: Privileges
-    plugins: Plugins
-    installed_plugins: Installed Plugins
-  website_welcome: Welcome to {{site_name}}
+    plugins: Плагіни
+    installed_plugins: Встановлені плагіни
+  website_welcome: Ласкаво просимо до {{site_name}}
   user_center:
-    login: Login
-    qrcode_login_tip: Please use {{ agentName }} to scan the QR code and log in.
-    login_failed_email_tip: Login failed, please allow this app to access your email information before try again.
+    login: Вхід
+    qrcode_login_tip: Будь ласка, використовуйте {{ agentName }}, щоб просканувати QR-код і увійти в систему.
+    login_failed_email_tip: Не вдалося увійти, будь ласка, дозвольте цьому додатку отримати доступ до вашої електронної пошти, перш ніж спробувати ще раз.
   badges:
     modal:
-      title: Congratulations
-      content: You've earned a new badge.
+      title: Вітаємо
+      content: Ти отримав новий значок.
       close: Закрити
-      confirm: View badges
-    title: Badges
-    awarded: Awarded
-    earned_×: Earned ×{{ number }}
-    ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: You can earn this multiple times.
+      confirm: Переглянути значки
+    title: Значки
+    awarded: Присвоєно
+    earned_×: Зароблено ×{{ number }}
+    ×_awarded: "Присвоєно {{ number }}"
+    can_earn_multiple: Ви можете заробити це багато разів.
     earned: Зароблено
   admin:
     admin_header:
       title: Адмін
     dashboard:
-      title: Dashboard
-      welcome: Welcome to Admin!
-      site_statistics: Site statistics
+      title: Панель
+      welcome: Ласкаво просимо до адміністратора!
+      site_statistics: Статистика сайту
       questions: "Запитання:"
       answers: "Відповіді:"
       comments: "Коментарі:"
       votes: "Голоси:"
       users: "Користувачі:"
       flags: "Відмітки:"
-      reviews: "Reviews:"
-      site_health: Site health
-      version: "Version:"
+      reviews: "Відгуки:"
+      site_health: Стан сайту
+      version: "Версія:"
       https: "HTTPS:"
       upload_folder: "Завантажити теку:"
-      run_mode: "Running mode:"
-      private: Private
-      public: Public
+      run_mode: "Активний режим:"
+      private: Приватний
+      public: Публічний
       smtp: "SMTP:"
       timezone: "Часовий пояс:"
       system_info: Інформація про систему
-      go_version: "Go version:"
+      go_version: "Перейти до версії:"
       database: "База даних:"
       database_size: "Розмір бази даних:"
       storage_used: "Використаний обсяг пам’яті:"
-      uptime: "Uptime:"
+      uptime: "Час роботи:"
       links: Посилання
       plugins: Плаґіни
       github: GitHub
       blog: Блоґ
       contact: Контакт
-      forum: Forum
+      forum: Форум
       documents: Документи
       feedback: Відгук
       support: Підтримка
-      review: Review
+      review: Огляд
       config: Конфігурація
-      update_to: Update to
-      latest: Latest
+      update_to: Оновити до
+      latest: Останній
       check_failed: Не вдалося перевірити
       "yes": "Так"
       "no": "Ні"
@@ -1762,8 +1762,8 @@ ui:
       allowed: Дозволено
       enabled: Увімкнено
       disabled: Вимкнено
-      writable: Writable
-      not_writable: Not writable
+      writable: Записуваний
+      not_writable: Не можна записувати
     flags:
       title: Відмітки
       pending: В очікуванні
@@ -1774,7 +1774,7 @@ ui:
       action: Дія
       review: Огляд
     user_role_modal:
-      title: Change user role to...
+      title: Змінити роль користувача на...
       btn_cancel: Скасувати
       btn_submit: Надіслати
     new_password_modal:
@@ -1783,8 +1783,8 @@ ui:
         fields:
           password:
             label: Пароль
-            text: The user will be logged out and need to login again.
-            msg: Password must be at 8-32 characters in length.
+            text: Користувача буде виведено з системи, і йому потрібно буде увійти знову.
+            msg: Пароль повинен мати довжину від 8 до 32 символів.
       btn_cancel: Скасувати
       btn_submit: Надіслати
     edit_profile_modal:
@@ -1792,15 +1792,15 @@ ui:
       form:
         fields:
           display_name:
-            label: Display name
-            msg_range: Display name up to 30 characters.
+            label: Зображуване ім'я
+            msg_range: Зображуване ім'я до 30 символів.
           username:
-            label: Username
-            msg_range: Username up to 30 characters.
+            label: Ім'я користувача
+            msg_range: Ім'я користувача до 30 символів.
           email:
             label: Електронна пошта
-            msg_invalid: Invalid Email Address.
-      edit_success: Edited successfully
+            msg_invalid: Невірна адреса електронної пошти.
+      edit_success: Успішно відредаговано
       btn_cancel: Скасувати
       btn_submit: Надіслати
     user_modal:
@@ -1808,19 +1808,19 @@ ui:
       form:
         fields:
           users:
-            label: Bulk add user
-            placeholder: "John Smith, john@example.com, BUSYopr2\nAlice, alice@example.com, fpDntV8q"
-            text: Separate “name, email, password” with commas. One user per line.
-            msg: "Please enter the user's email, one per line."
+            label: Масове додавання користувача
+            placeholder: "Джон Сміт, john@example.com, BUSYopr2\nАліса, alice@example.com, fpDntV8q"
+            text: '“Ім''я, електронну пошту, пароль” розділити комами. Один користувач у рядку.'
+            msg: "Будь ласка, введіть електронну пошту користувача, по одній на рядок."
           display_name:
             label: Ім'я для відображення
-            msg: Display name must be 2-30 characters in length.
+            msg: Ім'я для показу повинно мати довжину від 2 до 30 символів.
           email:
             label: Електронна пошта
-            msg: Email is not valid.
+            msg: Електронна пошта недійсна.
           password:
             label: Пароль
-            msg: Password must be at 8-32 characters in length.
+            msg: Пароль повинен мати довжину від 8 до 32 символів.
       btn_cancel: Скасувати
       btn_submit: Надіслати
     users:
@@ -1918,13 +1918,13 @@ ui:
     interface:
       page_title: Interface
       language:
-        label: Interface language
-        msg: Interface language cannot be empty.
-        text: User interface language. It will change when you refresh the page.
+        label: Мова інтерфейсу
+        msg: Мова інтерфейсу не може бути пустою.
+        text: Мова інтерфейсу користувача. Зміниться, коли ви оновите сторінку.
       time_zone:
-        label: Timezone
-        msg: Timezone cannot be empty.
-        text: Choose a city in the same timezone as you.
+        label: Часовий пояс
+        msg: Часовий пояс не може бути пустим.
+        text: Виберіть місто в тому ж часовому поясі, що й ви.
     smtp:
       page_title: SMTP
       from_email:
@@ -1934,56 +1934,56 @@ ui:
       from_name:
         label: Від імені
         msg: Поле від імені не може бути пустим.
-        text: The name which emails are sent from.
+        text: Ім'я, з якого надсилаються електронні листи.
       smtp_host:
-        label: SMTP host
-        msg: SMTP host cannot be empty.
+        label: SMTP-хост
+        msg: SMTP хост не може бути порожнім.
         text: Ваш поштовий сервер.
       encryption:
         label: Шифрування
         msg: Поле шифрування не може бути пустим.
-        text: For most servers SSL is the recommended option.
+        text: Для більшості серверів SSL є рекомендованим параметром.
         ssl: SSL
         tls: TLS
-        none: None
+        none: Нічого
       smtp_port:
-        label: SMTP port
-        msg: SMTP port must be number 1 ~ 65535.
-        text: The port to your mail server.
+        label: SMTP порт
+        msg: SMTP порт має бути числом 1 ~ 65535.
+        text: Порт на ваш поштовий сервер.
       smtp_username:
-        label: SMTP username
-        msg: SMTP username cannot be empty.
+        label: Ім'я користувача SMTP
+        msg: Ім'я користувача SMTP не може бути порожнім.
       smtp_password:
-        label: SMTP password
-        msg: SMTP password cannot be empty.
+        label: Пароль SMTP
+        msg: Пароль до SMTP не може бути порожнім.
       test_email_recipient:
-        label: Test email recipients
+        label: Тест отримувачів електронної пошти
         text: Вкажіть адресу електронної пошти, на яку будуть надходити тестові надсилання.
-        msg: Test email recipients is invalid
+        msg: Тест отримувачів електронної пошти не вірний
       smtp_authentication:
         label: Увімкнути автентифікацію
-        title: SMTP authentication
-        msg: SMTP authentication cannot be empty.
+        title: SMTP аутентифікація
+        msg: SMTP аутентифікація не може бути порожньою.
         "yes": "Так"
         "no": "Ні"
     branding:
-      page_title: Branding
+      page_title: Брендинг
       logo:
-        label: Logo
-        msg: Logo cannot be empty.
-        text: The logo image at the top left of your site. Use a wide rectangular image with a height of 56 and an aspect ratio greater than 3:1. If left blank, the site title text will be shown.
+        label: Логотип
+        msg: Логотип не може бути порожнім.
+        text: Зображення логотипу у верхньому лівому кутку вашого сайту. Використовуйте широке прямокутне зображення з висотою 56 і співвідношенням сторін більше 3:1. Якщо залишити це поле порожнім, буде показано текст заголовка сайту.
       mobile_logo:
-        label: Mobile logo
-        text: The logo used on mobile version of your site. Use a wide rectangular image with a height of 56. If left blank, the image from the "logo" setting will be used.
+        label: Мобільний логотип
+        text: Логотип, що використовується на мобільній версії вашого сайту. Використовуйте широке прямокутне зображення висотою 56. Якщо залишити поле порожнім, буде використано зображення з налаштування "логотип".
       square_icon:
-        label: Square icon
-        msg: Square icon cannot be empty.
-        text: Image used as the base for metadata icons. Should ideally be larger than 512x512.
+        label: Квадратна іконка
+        msg: Квадратна іконка не може бути пустою.
+        text: Зображення, що використовується як основа для іконок метаданих. В ідеалі має бути більшим за 512x512.
       favicon:
         label: Favicon
-        text: A favicon for your site. To work correctly over a CDN it must be a png. Will be resized to 32x32. If left blank, "square icon" will be used.
+        text: Іконка для вашого сайту. Для коректної роботи через CDN має бути у форматі png. Буде змінено розмір до 32x32. Якщо залишити порожнім, буде використовуватися "квадратна іконка".
     legal:
-      page_title: Legal
+      page_title: Правила та умови
       terms_of_service:
         label: Умови використання
         text: "Ви можете додати вміст про умови використання тут. Якщо у вас уже є документ, розміщений деінде, надайте тут повну URL-адресу."
@@ -1993,26 +1993,26 @@ ui:
     write:
       page_title: Написати
       restrict_answer:
-        title: Answer write
+        title: Відповідь на запис
         label: Кожен користувач може написати лише одну відповідь на кожне запитання
-        text: "Turn off to allow users to write multiple answers to the same question, which may cause answers to be unfocused."
+        text: "Вимкнути, щоб дозволити користувачам писати кілька відповідей на одне і те ж питання, що може призвести до розфокусування відповідей."
       recommend_tags:
-        label: Recommend tags
-        text: "Recommend tags will show in the dropdown list by default."
+        label: Рекомендовані теги
+        text: "За замовчуванням рекомендовані теги будуть показані у спадному списку."
         msg:
-          contain_reserved: "recommended tags cannot contain reserved tags"
+          contain_reserved: "рекомендовані теги не можуть містити зарезервовані теги"
       required_tag:
-        title: Set required tags
-        label: Set “Recommend tags” as required tags
-        text: "Every new question must have at least one recommend tag."
+        title: Встановіть необхідні теги
+        label: Встановіть “Рекомендовані теги” як необхідні теги
+        text: "Кожне нове питання повинно мати принаймні один рекомендований тег."
       reserved_tags:
-        label: Reserved tags
-        text: "Reserved tags can only be used by moderator."
+        label: Зарезервовані теги
+        text: "Зарезервовані теги можуть використовуватися лише модератором."
     seo:
       page_title: SEO
       permalink:
-        label: Permalink
-        text: Custom URL structures can improve the usability, and forward-compatibility of your links.
+        label: Постійне посилання
+        text: Користувацькі структури URL можуть покращити уміння та сумісність з надсиланням посилань.
       robots:
         label: robots.txt
         text: This will permanently override any related site settings.
