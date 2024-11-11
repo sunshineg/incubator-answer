@@ -1375,31 +1375,31 @@ ui:
       title: Ваша відповідь
       edit_answer: Редагувати мою чинну відповідь
       btn_name: Опублікувати свою відповідь
-      add_another_answer: Add another answer
-      confirm_title: Continue to answer
-      continue: Continue
+      add_another_answer: Додати ще одну відповідь
+      confirm_title: Перейти до відповіді
+      continue: Продовжити
       confirm_info: >-
-        <p>Are you sure you want to add another answer?</p><p>You could use the edit link to refine and improve your existing answer, instead.</p>
+        <p>Ви впевнені, що хочете додати ще одну відповідь?</p><p>Натомість ви можете скористатися посиланням редагування, щоб уточнити та покращити вже існуючу відповідь.</p>
       empty: Відповідь не може бути порожньою.
       characters: вміст має бути не менше 6 символів.
       tips:
         header_1: Дякуємо за відповідь
         li1_1: Будь ласка, не забудьте <strong>відповісти на запитання</strong>. Надайте детальну інформацію та поділіться своїми дослідженнями.
         li1_2: Підкріплюйте будь-які ваші твердження посиланнями чи особистим досвідом.
-        header_2: But <strong>avoid</strong> ...
-        li2_1: Asking for help, seeking clarification, or responding to other answers.
+        header_2: Але <strong>уникайте</strong>...
+        li2_1: Просити про допомогу, шукати роз'яснення або реагувати на інші відповіді.
     reopen:
       confirm_btn: Відкрити знову
       title: Повторно відкрити цей допис
       content: Ви впевнені, що хочете повторно відкрити?
     list:
-      confirm_btn: List
-      title: List this post
-      content: Are you sure you want to list?
+      confirm_btn: Список
+      title: Показати цей допис
+      content: Ви впевнені, що хочете скласти список?
     unlist:
-      confirm_btn: Unlist
-      title: Unlist this post
-      content: Are you sure you want to unlist?
+      confirm_btn: Вилучити зі списку
+      title: Вилучити допис зі списку
+      content: Ви впевнені, що хочете вилучити зі списку?
     pin:
       title: Закріпити цей допис
       content: Ви впевнені, що хочете закріпити глобально? Цей допис відображатиметься вгорі всіх списків публікацій.
@@ -1423,73 +1423,73 @@ ui:
     undelete: Скасувати видалення
     list: Список
     unlist: Вилучити зі списку
-    unlisted: Unlisted
+    unlisted: Вилучене зі списку
     login: Увійти
     signup: Зареєструватися
     logout: Вийти
     verify: Підтвердити
     add_question: Додати питання
-    approve: Approve
-    reject: Reject
+    approve: Затвердити
+    reject: Відхилити
     skip: Пропустити
     discard_draft: Видалити чернетку
-    pinned: Pinned
-    all: All
+    pinned: Закріплено
+    all: Усі
     question: Запитання
     answer: Відповідь
     comment: Коментар
     refresh: Оновити
     resend: Надіслати повторно
     deactivate: Деактивувати
-    active: Active
-    suspend: Suspend
-    unsuspend: Unsuspend
+    active: Активні
+    suspend: Призупинити
+    unsuspend: Відновити
     close: Закрити
     reopen: Відкрити знову
     ok: ОК
     light: Світла
     dark: Темна
     system_setting: Налаштування системи
-    default: Default
+    default: За замовчуванням
     reset: Скинути
-    tag: Tag
-    post_lowercase: post
-    filter: Filter
-    ignore: Ignore
-    submit: Submit
-    normal: Normal
-    closed: Closed
+    tag: Тег
+    post_lowercase: допис
+    filter: Фільтр
+    ignore: Ігнорувати
+    submit: Надіслати
+    normal: Нормальний
+    closed: Закриті
     deleted: Видалені
-    pending: Pending
-    more: More
+    pending: Очікування
+    more: Більше
   search:
     title: Результати пошуку
     keywords: Ключові слова
-    options: Options
+    options: Параметри
     follow: Підписатися
     following: Підписані
-    counts: "{{count}} Results"
-    more: More
+    counts: "{{count}} Результатів"
+    more: Більше
     sort_btns:
-      relevance: Relevance
-      newest: Newest
-      active: Active
-      score: Score
-      more: More
+      relevance: Релевантність
+      newest: Найновіші
+      active: Активні
+      score: Оцінка
+      more: Більше
     tips:
-      title: Advanced Search Tips
-      tag: "<1>[tag]</1> search with a tag"
-      user: "<1>user:username</1> search by author"
-      answer: "<1>answers:0</1> unanswered questions"
-      score: "<1>score:3</1> posts with a 3+ score"
-      question: "<1>is:question</1> search questions"
-      is_answer: "<1>is:answer</1> search answers"
-    empty: We couldn't find anything. <br /> Try different or less specific keywords.
+      title: Підказки щодо розширеного пошуку
+      tag: "<1>[tag]</1> шукати за тегом"
+      user: "<1>користувач:ім'я користувача</1> пошук за автором"
+      answer: "<1>відповіді:0</1> питання без відповіді"
+      score: "<1>рахунок: 3</1> записи із 3+ рахунком"
+      question: "<1>є:питання</1> пошукові питання"
+      is_answer: "<1>є:відповідь</1> пошукові відповіді"
+    empty: Ми не змогли нічого знайти. <br /> Спробуйте різні або менш конкретні ключові слова.
   share:
-    name: Share
-    copy: Copy link
-    via: Share post via...
-    copied: Copied
+    name: Поділитись
+    copy: Копіювати посилання
+    via: Поділитися дописом через...
+    copied: Скопійовано
     facebook: Поділитись на Facebook
     twitter: Поділитися в Twitter
   cannot_vote_for_self: Ви не можете проголосувати за власну публікацію.
@@ -1594,24 +1594,24 @@ ui:
       placeholder: відповідь
       msg: Назва бази даних не може бути порожня.
     db_file:
-      label: Database file
+      label: Файл бази даних
       placeholder: /data/answer.db
-      msg: Database file cannot be empty.
+      msg: Файл бази даних не може бути порожнім.
     config_yaml:
-      title: Create config.yaml
-      label: The config.yaml file created.
+      title: Створити config.yaml
+      label: Файл config.yaml створено.
       desc: >-
         Ви можете створити файл <1>config.yaml</1> вручну в каталозі <1>/var/www/xxx/</1> і вставити в нього наступний текст.
-      info: After you've done that, click "Next" button.
-    site_information: Site Information
-    admin_account: Admin Account
+      info: Після цього натисніть кнопку "Далі".
+    site_information: Інформація про сайт
+    admin_account: Обліковий запис адміністратора
     site_name:
-      label: Site name
-      msg: Site name cannot be empty.
-      msg_max_length: Site name must be at maximum 30 characters in length.
+      label: Назва сайту
+      msg: Назва сайту не може бути порожньою.
+      msg_max_length: Назва сайту повинна містити не більше 30 символів.
     site_url:
-      label: Site URL
-      text: The address of your site.
+      label: URL сайту
+      text: Адреса вашого сайту.
       msg:
         empty: URL-адреса сайту не може бути пустою.
         incorrect: Неправильний формат URL-адреси сайту.
@@ -1623,8 +1623,8 @@ ui:
         empty: Контактна електронна адреса не може бути порожньою.
         incorrect: Неправильний формат контактної електронної пошти.
     login_required:
-      label: Private
-      switch: Login required
+      label: Приватний
+      switch: Вхід обов'язковий
       text: Лише авторизовані користувачі можуть отримати доступ до цієї спільноти.
     admin_name:
       label: Ім’я
@@ -1643,57 +1643,57 @@ ui:
       text: Вам знадобиться ця електронна адреса для входу.
       msg:
         empty: Поле електронної пошти не може бути пустим.
-        incorrect: Email incorrect format.
-    ready_title: Your site is ready
+        incorrect: Невірний формат електронної пошти.
+    ready_title: Ваш сайт готовий
     ready_desc: >-
-      If you ever feel like changing more settings, visit <1>admin section</1>; find it in the site menu.
+      Якщо ви коли-небудь захочете змінити інші налаштування, відвідайте <1>розділ адміністрування</1>; знайдіть його в меню сайту.
     good_luck: "Веселіться, і хай щастить!"
-    warn_title: Warning
+    warn_title: Попередження
     warn_desc: >-
-      The file <1>config.yaml</1> already exists. If you need to reset any of the configuration items in this file, please delete it first.
-    install_now: You may try <1>installing now</1>.
+      Файл <1>config.yaml</1> вже існує. Якщо вам потрібно скинути будь-який з елементів конфігурації в цьому файлі, будь ласка, спочатку видаліть його.
+    install_now: Ви можете спробувати <1>встановити зараз</1>.
     installed: Уже встановлено
     installed_desc: >-
       Ви, здається, уже встановили. Щоб перевстановити, спочатку очистіть старі таблиці бази даних.
-    db_failed: Database connection failed
+    db_failed: Не вдалося встановити з'єднання з базою даних
     db_failed_desc: >-
-      This either means that the database information in your <1>config.yaml</1> file is incorrect or that contact with the database server could not be established. This could mean your host's database server is down.
+      Це означає, що інформація про базу даних у вашому файлі <1>config.yaml</1> невірна або що не вдалося встановити контакт із сервером бази даних. Це може означати, що сервер бази даних вашого хоста не працює.
   counts:
-    views: views
-    votes: votes
-    answers: answers
+    views: перегляди
+    votes: голоси
+    answers: відповіді
     accepted: Схвалено
   page_error:
-    http_error: HTTP Error {{ code }}
-    desc_403: You don't have permission to access this page.
-    desc_404: Unfortunately, this page doesn't exist.
-    desc_50X: The server encountered an error and could not complete your request.
-    back_home: Back to homepage
+    http_error: Помилка HTTP {{ code }}
+    desc_403: Ви не маєте дозволу на доступ до цієї сторінки.
+    desc_404: На жаль, такої сторінки не існує.
+    desc_50X: Сервер виявив помилку і не зміг виконати ваш запит.
+    back_home: Повернутися на головну сторінку
   page_maintenance:
-    desc: "We are under maintenance, we'll be back soon."
+    desc: "Ми технічно обслуговуємось, ми скоро повернемося."
   nav_menus:
-    dashboard: Dashboard
-    contents: Contents
-    questions: Questions
-    answers: Answers
-    users: Users
-    badges: Badges
+    dashboard: Панель
+    contents: Зміст
+    questions: Питання
+    answers: Відповіді
+    users: Користувачі
+    badges: Значки
     flags: Відмітки
     settings: Налаштування
-    general: General
-    interface: Interface
+    general: Основне
+    interface: Інтерфейс
     smtp: SMTP
-    branding: Branding
-    legal: Legal
+    branding: Брендинг
+    legal: Правила та умови
     write: Написати
-    tos: Terms of Service
-    privacy: Privacy
+    tos: Умови використання
+    privacy: Приватність
     seo: SEO
     customize: Персоналізувати
-    themes: Themes
+    themes: Теми
     css_html: CSS/HTML
-    login: Login
-    privileges: Privileges
+    login: Вхід
+    privileges: Привілеї
     plugins: Плагіни
     installed_plugins: Встановлені плагіни
   website_welcome: Ласкаво просимо до {{site_name}}
@@ -2015,118 +2015,118 @@ ui:
         text: Користувацькі структури URL можуть покращити уміння та сумісність з надсиланням посилань.
       robots:
         label: robots.txt
-        text: This will permanently override any related site settings.
+        text: Це назавжди замінить будь-які відповідні налаштування сайту.
     themes:
-      page_title: Themes
+      page_title: Теми
       themes:
-        label: Themes
-        text: Select an existing theme.
+        label: Теми
+        text: Виберіть наявну тему.
       color_scheme:
-        label: Color scheme
+        label: Схема кольорів
       navbar_style:
-        label: Navbar style
+        label: Стиль панелі навігації
       primary_color:
         label: Основний колір
-        text: Modify the colors used by your themes
+        text: Змінюйте кольори, що використовуються у ваших темах
     css_and_html:
-      page_title: CSS and HTML
+      page_title: CSS та HTML
       custom_css:
-        label: Custom CSS
+        label: Користувацький CSS
         text: >
 
       head:
-        label: Head
+        label: Головний
         text: >
 
       header:
-        label: Header
+        label: Заголовок
         text: >
 
       footer:
-        label: Footer
-        text: This will insert before &lt;/body>.
+        label: Низ
+        text: Це вставить перед &lt;/body>.
       sidebar:
-        label: Sidebar
-        text: This will insert in sidebar.
+        label: Бічна панель
+        text: Це буде вставлено в бічну панель.
     login:
       page_title: Увійти
       membership:
-        title: Membership
+        title: Членство
         label: Дозволити нові реєстрації
-        text: Turn off to prevent anyone from creating a new account.
+        text: Вимкнути, щоб ніхто не міг створити новий обліковий запис.
       email_registration:
         title: Реєстрація за електронною поштою
         label: Дозволити реєстрацію за електронною поштою
-        text: Turn off to prevent anyone creating new account through email.
+        text: Вимкніть, щоб запобігти створенню нових облікових записів через електронну пошту.
       allowed_email_domains:
-        title: Allowed email domains
-        text: Email domains that users must register accounts with. One domain per line. Ignored when empty.
+        title: Дозволені домени електронної пошти
+        text: Домени електронної пошти, на які користувачі повинні зареєструвати облікові записи. Один домен у рядку. Ігнорується, якщо порожній.
       private:
-        title: Private
-        label: Login required
-        text: Only logged in users can access this community.
+        title: Приватний
+        label: Вхід обов'язковий
+        text: Доступ до цієї спільноти мають лише зареєстровані користувачі.
       password_login:
-        title: Password login
-        label: Allow email and password login
-        text: "WARNING: If turn off, you may be unable to log in if you have not previously configured other login method."
+        title: Вхід через пароль
+        label: Дозволити вхід через електронну пошту і пароль
+        text: "ПОПЕРЕДЖЕННЯ: Якщо вимкнути, ви не зможете увійти в систему, якщо раніше не налаштували інший метод входу."
     installed_plugins:
-      title: Installed Plugins
-      plugin_link: Plugins extend and expand the functionality. You may find plugins in the <1>Plugin Repository</1>.
+      title: Встановлені плагіни
+      plugin_link: Плагіни розширюють і поглиблюють функціональність. Ви можете знайти плагіни у <1>Сховищі плагінів</1>.
       filter:
-        all: All
-        active: Active
-        inactive: Inactive
-        outdated: Outdated
+        all: Усі
+        active: Активні
+        inactive: Неактивні
+        outdated: Застарілі
       plugins:
-        label: Plugins
-        text: Select an existing plugin.
+        label: Плагіни
+        text: Виберіть наявний плагін.
       name: Ім’я
-      version: Version
-      status: Status
-      action: Action
-      deactivate: Deactivate
-      activate: Activate
+      version: Версія
+      status: Статус
+      action: Дія
+      deactivate: Деактивувати
+      activate: Активувати
       settings: Налаштування
     settings_users:
       title: Користувачі
       avatar:
-        label: Default avatar
-        text: For users without a custom avatar of their own.
+        label: Аватар за замовчуванням
+        text: Для користувачів без аватара власного.
       gravatar_base_url:
-        label: Gravatar base URL
-        text: URL of the Gravatar provider's API base. Ignored when empty.
+        label: Основна URL Gravatar
+        text: URL бази API постачальника Gravatar. Ігнорується, якщо порожній.
       profile_editable:
-        title: Profile editable
+        title: Профіль можна редагувати
       allow_update_display_name:
         label: Дозволити користувачам змінювати ім'я для відображення
       allow_update_username:
-        label: Allow users to change their username
+        label: Дозволити користувачам змінювати своє ім'я користувача
       allow_update_avatar:
-        label: Allow users to change their profile image
+        label: Дозволити користувачам змінювати зображення свого профілю
       allow_update_bio:
-        label: Allow users to change their about me
+        label: Дозволити користувачам змінювати дані про себе
       allow_update_website:
-        label: Allow users to change their website
+        label: Дозволити користувачам змінювати свій вебсайт
       allow_update_location:
-        label: Allow users to change their location
+        label: Дозволити користувачам змінювати своє місцеперебування
     privilege:
-      title: Privileges
+      title: Привілеї
       level:
-        label: Reputation required level
-        text: Choose the reputation required for the privileges
+        label: Рівень репутації необхідний
+        text: Виберіть репутацію, необхідну для привілеїв
       msg:
-        should_be_number: the input should be number
-        number_larger_1: number should be equal or larger than 1
+        should_be_number: введення має бути числом
+        number_larger_1: число має бути рівним або більшим за 1
     badges:
-      action: Action
-      active: Active
-      activate: Activate
-      all: All
-      awards: Awards
-      deactivate: Deactivate
+      action: Дія
+      active: Активні
+      activate: Активувати
+      all: Усі
+      awards: Нагороди
+      deactivate: Деактивувати
       filter:
-        placeholder: Filter by name, badge:id
-      group: Group
+        placeholder: Фільтрувати за іменем, значок:id
+      group: Група
       inactive: Inactive
       name: Ім’я
       show_logs: Show logs
@@ -2176,46 +2176,46 @@ ui:
     commented: commented
     rollback: rollback
     edited: edited
-    answered: answered
-    asked: asked
-    closed: closed
-    reopened: reopened
-    created: created
-    pin: pinned
-    unpin: unpinned
-    show: listed
-    hide: unlisted
-    title: "History for"
-    tag_title: "Timeline for"
-    show_votes: "Show votes"
-    n_or_a: N/A
-    title_for_question: "Timeline for"
-    title_for_answer: "Timeline for answer to {{ title }} by {{ author }}"
-    title_for_tag: "Timeline for tag"
-    datetime: Datetime
-    type: Type
-    by: By
-    comment: Comment
-    no_data: "We couldn't find anything."
+    answered: дано відповідь
+    asked: запитано
+    closed: закрито
+    reopened: знову відкрито
+    created: створено
+    pin: закріплено
+    unpin: відкріплено
+    show: додано до списку
+    hide: не внесено до списку
+    title: "Історія для"
+    tag_title: "Хронологія для"
+    show_votes: "Показати голоси"
+    n_or_a: Н/Д
+    title_for_question: "Хронологія для"
+    title_for_answer: "Часова шкала для відповіді на {{ title }} від {{ author }}"
+    title_for_tag: "Часова шкала для тега"
+    datetime: Дата й час
+    type: Тип
+    by: Від
+    comment: Коментар
+    no_data: "Ми не змогли нічого знайти."
   users:
-    title: Users
-    users_with_the_most_reputation: Users with the highest reputation scores this week
-    users_with_the_most_vote: Users who voted the most this week
-    staffs: Our community staff
-    reputation: reputation
-    votes: votes
+    title: Користувачі
+    users_with_the_most_reputation: Користувачі з найвищою репутацією на цьому тижні
+    users_with_the_most_vote: Користувачі, які голосували за найбільше цього тижня
+    staffs: Персонал нашої спільноти
+    reputation: репутація
+    votes: голоси
   prompt:
-    leave_page: Are you sure you want to leave the page?
-    changes_not_save: Your changes may not be saved.
+    leave_page: Ви дійсно хочете покинути сторінку?
+    changes_not_save: Ваші зміни можуть не зберегтися.
   draft:
-    discard_confirm: Are you sure you want to discard your draft?
+    discard_confirm: Ви дійсно бажаєте скасувати чернетку?
   messages:
-    post_deleted: This post has been deleted.
-    post_pin: This post has been pinned.
-    post_unpin: This post has been unpinned.
-    post_hide_list: This post has been hidden from list.
-    post_show_list: This post has been shown to list.
-    post_reopen: This post has been reopened.
-    post_list: This post has been listed.
-    post_unlist: This post has been unlisted.
-    post_pending: Your post is awaiting review. This is a preview, it will be visible after it has been approved.
+    post_deleted: Цей допис було видалено.
+    post_pin: Цей допис було закріплено.
+    post_unpin: Цей допис було відкріплено.
+    post_hide_list: Цей допис було приховано зі списку.
+    post_show_list: Цей допис було показано у списку.
+    post_reopen: Цей допис було знову відкрито.
+    post_list: Цей допис було додано до списку.
+    post_unlist: Цей допис було приховано.
+    post_pending: Ваш допис очікує на розгляд. Це попередній перегляд, його буде видно після того, як його буде схвалено.
