@@ -126,7 +126,7 @@ backend:
     rank_tag_audit_label:
       other: Review tag edits
     rank_tag_edit_without_review_label:
-      other: Edit tag description without review
+      other: レビューなしでタグの説明を編集
     rank_tag_synonym_label:
       other: Manage tag synonyms
   email:
@@ -149,7 +149,7 @@ backend:
         other: Invalid status.
     password:
       space_invalid:
-        other: Password cannot contain spaces.
+        other: パスワードにスペースを含めることはできません。
     admin:
       cannot_update_their_password:
         other: パスワードは変更できません。
