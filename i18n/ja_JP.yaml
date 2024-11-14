@@ -138,7 +138,7 @@ backend:
   pass:
     other: パスワード
   original_text:
-    other: This post
+    other: 投稿
   email_or_password_wrong_error:
     other: メールアドレスとパスワードが一致しません。
   error:
@@ -210,7 +210,7 @@ backend:
         other: この投稿は削除されました。
     meta:
       object_not_found:
-        other: Meta object not found
+        other: メタオブジェクトが見つかりません
     question:
       already_deleted:
         other: この投稿は削除されました。
@@ -226,7 +226,7 @@ backend:
         other: 更新する権限がありません。
     rank:
       fail_to_meet_the_condition:
-        other: Reputation rank fail to meet the condition.
+        other: 評判ランクが条件を満たしていません
       vote_fail_to_meet_the_condition:
         other: フィードバックをありがとうございます。投票には少なくとも {{.Rank}} の評判が必要です。
       no_enough_rank_to_operate:
@@ -252,23 +252,23 @@ backend:
       is_used_cannot_delete:
         other: 使用中のタグは削除できません。
       cannot_set_synonym_as_itself:
-        other: You cannot set the synonym of the current tag as itself.
+        other: 現在のタグの同義語をそのものとして設定することはできません。
     smtp:
       config_from_name_cannot_be_email:
-        other: The from name cannot be a email address.
+        other: Fromの名前はメールアドレスにできません。
     theme:
       not_found:
         other: テーマが見つかりません。
     revision:
       review_underway:
-        other: Can't edit currently, there is a version in the review queue.
+        other: 現在編集できません。レビューキューにバージョンがあります。
       no_permission:
-        other: No permission to revise.
+        other: 権限がありません。
     user:
       external_login_missing_user_id:
-        other: The third-party platform does not provide a unique UserID, so you cannot login, please contact the website administrator.
+        other: サードパーティのプラットフォームは一意のユーザーIDを提供していないため、ログインできません。ウェブサイト管理者にお問い合わせください。
       external_login_unbinding_forbidden:
-        other: Please set a login password for your account before you remove this login.
+        other: ログインを削除する前に、アカウントのログインパスワードを設定してください。
       email_or_password_wrong:
         other:
           other: メールアドレスとパスワードが一致しません。
@@ -295,7 +295,7 @@ backend:
       add_bulk_users_format_error:
         other: "Error {{.Field}} format near '{{.Content}}' at line {{.Line}}. {{.ExtraMessage}}"
       add_bulk_users_amount_error:
-        other: "The number of users you add at once should be in the range of 1-{{.MaxAmount}}."
+        other: "一度に追加するユーザーの数は、1 -{{.MaxAmount}} の範囲にする必要があります。"
     config:
       read_config_failed:
         other: configの読み込みに失敗しました
@@ -338,10 +338,10 @@ backend:
       name:
         other: 回答では無い
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "これは答えとして投稿されましたが、質問に答えようとしません。 それはおそらく編集、コメント、別の質問、または完全に削除されるべきです。"
     no_longer_needed:
       name:
-        other: no longer needed
+        other: 必要では無い
       desc:
         other: このコメントは古く、この投稿とは関係がありません。
     something:
@@ -350,17 +350,17 @@ backend:
       desc:
         other: 上記以外の理由でスタッフの注意が必要です。
       placeholder:
-        other: Let us know specifically what you are concerned about
+        other: あなたが懸念していることを私たちに教えてください
     community_specific:
       name:
         other: コミュニティ固有の理由です
       desc:
-        other: This question doesn't meet a community guideline.
+        other: この質問はコミュニティガイドラインを満たしていません
     not_clarity:
       name:
-        other: needs details or clarity
+        other: 詳細や明快さが必要です
       desc:
-        other: This question currently includes multiple questions in one. It should focus on one problem only.
+        other: この質問には現在複数の質問が含まれています。1つの問題にのみ焦点を当てる必要があります。
     looks_ok:
       name:
         other: LGTM
@@ -368,14 +368,14 @@ backend:
         other: This post is good as-is and not low quality.
     needs_edit:
       name:
-        other: needs edit, and I did it
+        other: 編集する必要があったため変更しました。
       desc:
-        other: Improve and correct problems with this post yourself.
+        other: 自分自身でこの投稿の問題を改善し修正します。
     needs_close:
       name:
         other: クローズする必要がある
       desc:
-        other: A closed question can't answer, but still can edit, vote and comment.
+        other: クローズされた質問は回答できませんが、編集、投票、コメントはできます。
     needs_delete:
       name:
         other: 削除が必要です
@@ -390,7 +390,7 @@ backend:
           other: この質問は以前に質問されており、すでに回答があります。
       guideline:
         name:
-          other: a community-specific reason
+          other: コミュニティ固有の理由です
         desc:
           other: この質問はコミュニティガイドラインを満たしていません
       multiple:
@@ -402,7 +402,7 @@ backend:
         name:
           other: その他
         desc:
-          other: This post requires another reason not listed above.
+          other: 上記以外の理由でスタッフの注意が必要です。
     operation_type:
       asked:
         other: 質問済み
@@ -462,32 +462,32 @@ backend:
   email_tpl:
     change_email:
       title:
-        other: "[{{.SiteName}}] Confirm your new email address"
+        other: "[{{.SiteName}}] 新しいメールアドレスを確認してください"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.\n"
+        other: "あたらいいメールアドレスを確認しリンクをクリックしてください。<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\n身に覚えがない場合はこのメールを無視してください。\n\n{{.SiteName}}"
     new_answer:
       title:
-        other: "[{{.SiteName}}] {{.DisplayName}} answered your question"
+        other: "[{{.SiteName}}] {{.DisplayName}} があなたの質問に回答しました"
       body:
         other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     invited_you_to_answer:
       title:
-        other: "[{{.SiteName}}] {{.DisplayName}} invited you to answer"
+        other: "[{{.SiteName}}] {{.DisplayName}} があなたを回答に招待しました"
       body:
         other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     new_comment:
       title:
-        other: "[{{.SiteName}}] {{.DisplayName}} commented on your post"
+        other: "[{{.SiteName}}] {{.DisplayName}} があなたの投稿にコメントしました"
       body:
         other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     new_question:
       title:
-        other: "[{{.SiteName}}] New question: {{.QuestionTitle}}"
+        other: "[{{.SiteName}}] 新しい質問： {{.QuestionTitle}}"
       body:
         other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     pass_reset:
       title:
-        other: "[{{.SiteName }}] Password reset"
+        other: "[{{.SiteName }}] パスワードリセット"
       body:
         other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n"
     register:
@@ -497,31 +497,31 @@ backend:
         other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n"
     test:
       title:
-        other: "[{{.SiteName}}] Test Email"
+        other: "[{{.SiteName}}] テストメール"
       body:
-        other: "This is a test email."
+        other: "これはテストメールです。"
   action_activity_type:
     upvote:
-      other: upvote
+      other: 高評価
     upvoted:
-      other: upvoted
+      other: 高評価しました
     downvote:
-      other: downvote
+      other: 低評価
     downvoted:
-      other: downvoted
+      other: 低評価しました
     accept:
-      other: accept
+      other: 承認
     accepted:
-      other: accepted
+      other: 承認済み
     edit:
-      other: edit
+      other: 編集
   review:
     queued_post:
-      other: Queued post
+      other: キューに入れられた投稿
     flagged_post:
-      other: Flagged post
+      other: フラグ付き投稿
     suggested_post_edit:
-      other: Suggested edits
+      other: 提案された編集
   reaction:
     tooltip:
       other: "{{ .Names }} and {{ .Count }} more..."
@@ -529,22 +529,22 @@ backend:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: 自伝作家
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: <a href="{{ .ProfileURL }}" target="_blank">プロファイル</a> 情報を入力しました。
       certified:
         name:
-          other: Certified
+          other: 認定済み
         desc:
-          other: Completed our new user tutorial.
+          other: 新しいユーザーがチュートリアルを完了しました。
       editor:
         name:
-          other: Editor
+          other: 編集者
         desc:
-          other: First post edit.
+          other: 最初の投稿の編集
       first_flag:
         name:
-          other: First Flag
+          other: 最初のフラグ
         desc:
           other: First flagged a post.
       first_upvote:
