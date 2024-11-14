@@ -556,7 +556,7 @@ backend:
         name:
           other: はじめてのリンク
         desc:
-          other: First dirst added a link to another post.
+          other: "初めて別の記事へのリンクを追加した。\n"
       first_reaction:
         name:
           other: 初めてのリアクション
@@ -1393,13 +1393,13 @@ ui:
       confirm_title: 回答を続ける
       continue: 続行
       confirm_info: >-
-        <p>Are you sure you want to add another answer?</p><p>You could use the edit link to refine and improve your existing answer, instead.</p>
+         <p>本当に別の答えを追加したいのですか？ </p><p>代わりに、編集リンクを使って既存の答えを洗練させ、改善することができます。</p>
       empty: 回答は空欄にできません
       characters: コンテンツは6文字以上でなければなりません。
       tips:
         header_1: ご回答ありがとうございます。
-        li1_1: Please be sure to <strong>answer the question</strong>. Provide details and share your research.
-        li1_2: Back up any statements you make with references or personal experience.
+        li1_1: " 必ず<strong>質問に答えてください</strong>。詳細を述べ、あなたの研究を共有してください。\n"
+        li1_2: 参考文献や個人的な経験による裏付けを取ること。.
         header_2: しかし、 <strong>は</strong> を避けてください...
         li2_1: 助けを求める、説明を求める、または他の答えに応答する。
     reopen:
@@ -1990,7 +1990,7 @@ ui:
         text: あなたのサイトの左上にあるロゴ画像。 高さが56、アスペクト比が3:1を超える広い矩形画像を使用します。 空白の場合、サイトタイトルテキストが表示されます。
       mobile_logo:
         label: モバイルロゴ
-        text: The logo used on mobile version of your site. Use a wide rectangular image with a height of 56. If left blank, the image from the "logo" setting will be used.
+        text: サイトのモバイル版で使用されるロゴです。高さが56の横長の長方形の画像を使用してください。空白のままにすると、"ロゴ"設定の画像が使用されます。
       square_icon:
         label: アイコン画像
         msg: アイコン画像は空にできません。
@@ -2083,11 +2083,11 @@ ui:
         text: ログインしているユーザーのみがこのコミュニティにアクセスできます。
       password_login:
         title: パスワードログイン
-        label: Allow email and password login
-        text: "WARNING: If turn off, you may be unable to log in if you have not previously configured other login method."
+        label: メールアドレスとパスワードのログインを許可する
+        text: "警告: オフにすると、他のログイン方法を設定していない場合はログインできない可能性があります。"
     installed_plugins:
-      title: Installed Plugins
-      plugin_link: Plugins extend and expand the functionality. You may find plugins in the <1>Plugin Repository</1>.
+      title: インストール済みプラグイン
+      plugin_link: プラグインは機能を拡張します。<1>プラグインリポジトリ</1>にプラグインがあります。
       filter:
         all: すべて
         active: アクティブ
@@ -2149,89 +2149,89 @@ ui:
       status: ステータス
       title: バッジ
   form:
-    optional: (optional)
-    empty: cannot be empty
-    invalid: is invalid
+    optional: (任意)
+    empty: 空にすることはできません
+    invalid: 無効です
     btn_submit: 保存
-    not_found_props: "Required property {{ key }} not found."
-    select: Select
+    not_found_props: "必須プロパティ {{ key }} が見つかりません。"
+    select: 選択
   page_review:
-    review: Review
-    proposed: proposed
-    question_edit: Question edit
-    answer_edit: Answer edit
-    tag_edit: Tag edit
-    edit_summary: Edit summary
-    edit_question: Edit question
-    edit_answer: Edit answer
-    edit_tag: Edit tag
-    empty: No review tasks left.
-    approve_revision_tip: Do you approve this revision?
-    approve_flag_tip: Do you approve this flag?
-    approve_post_tip: Do you approve this post?
-    approve_user_tip: Do you approve this user?
-    suggest_edits: Suggested edits
-    flag_post: Flag post
-    flag_user: Flag user
-    queued_post: Queued post
-    queued_user: Queued user
-    filter_label: Type
-    reputation: reputation
-    flag_post_type: Flagged this post as {{ type }}.
-    flag_user_type: Flagged this user as {{ type }}.
-    edit_post: Edit post
-    list_post: List post
-    unlist_post: Unlist post
+    review: レビュー
+    proposed: 提案された
+    question_edit: 質問の編集
+    answer_edit: 回答の編集
+    tag_edit: タグの編集
+    edit_summary: 概要を編集
+    edit_question: 質問を編集
+    edit_answer: 回答を編集
+    edit_tag: タグを編集
+    empty: レビュータスクは残っていません。
+    approve_revision_tip: この修正を承認しますか？
+    approve_flag_tip: このフラグを承認しますか？
+    approve_post_tip: この投稿を承認しますか？
+    approve_user_tip: このユーザーを承認しますか？
+    suggest_edits: 提案された編集
+    flag_post: フラグ投稿
+    flag_user: ユーザーにフラグを付ける
+    queued_post: キューに入れられた投稿
+    queued_user: キューに入れられたユーザー
+    filter_label: タイプ
+    reputation: 評価
+    flag_post_type: この投稿に {{ type }} としてフラグを立てました。
+    flag_user_type: このユーザーに {{ type }} としてフラグを立てました。
+    edit_post: 投稿を編集
+    list_post: 投稿一覧
+    unlist_post: 投稿のリストを解除
   timeline:
-    undeleted: undeleted
-    deleted: deleted
-    downvote: downvote
-    upvote: upvote
-    accept: accept
-    cancelled: cancelled
-    commented: commented
+    undeleted: 復元する
+    deleted: 削除済み
+    downvote: 低評価
+    upvote: 高評価
+    accept: 承認
+    cancelled: キャンセル済み
+    commented: コメントしました
     rollback: rollback
-    edited: edited
-    answered: answered
-    asked: asked
-    closed: closed
-    reopened: reopened
-    created: created
-    pin: pinned
-    unpin: unpinned
-    show: listed
-    hide: unlisted
-    title: "History for"
-    tag_title: "Timeline for"
-    show_votes: "Show votes"
+    edited: 編集済み
+    answered: 回答済み
+    asked: 質問済み
+    closed: クローズ済み
+    reopened: 再オープン
+    created: 作成済み
+    pin: ピン留め済
+    unpin: ピン留め解除
+    show: リストにあります
+    hide: リストから外した
+    title: "履歴："
+    tag_title: "タイムライン："
+    show_votes: "投票を表示"
     n_or_a: N/A
-    title_for_question: "Timeline for"
-    title_for_answer: "Timeline for answer to {{ title }} by {{ author }}"
-    title_for_tag: "Timeline for tag"
-    datetime: Datetime
-    type: Type
+    title_for_question: "タイムライン："
+    title_for_answer: "{{ title }} の {{ author }} 回答のタイムライン"
+    title_for_tag: "タグのタイムライン："
+    datetime: 日付時刻
+    type: タイプ
     by: By
-    comment: Comment
-    no_data: "We couldn't find anything."
+    comment: コメント
+    no_data: "何も見つけられませんでした"
   users:
     title: ユーザー
-    users_with_the_most_reputation: Users with the highest reputation scores this week
-    users_with_the_most_vote: Users who voted the most this week
-    staffs: Our community staff
-    reputation: reputation
-    votes: votes
+    users_with_the_most_reputation: 今週最も高い評価スコアを持つユーザ
+    users_with_the_most_vote: 今週一番多く投票したユーザー
+    staffs: コミュニティのスタッフ
+    reputation: 評価
+    votes: 投票
   prompt:
-    leave_page: Are you sure you want to leave the page?
-    changes_not_save: Your changes may not be saved.
+    leave_page: このページから移動してもよろしいですか？
+    changes_not_save: 変更が保存されない可能性があります
   draft:
-    discard_confirm: Are you sure you want to discard your draft?
+    discard_confirm: 下書きを破棄してもよろしいですか？
   messages:
-    post_deleted: This post has been deleted.
-    post_pin: This post has been pinned.
-    post_unpin: This post has been unpinned.
-    post_hide_list: This post has been hidden from list.
-    post_show_list: This post has been shown to list.
-    post_reopen: This post has been reopened.
-    post_list: This post has been listed.
-    post_unlist: This post has been unlisted.
+    post_deleted: この投稿は削除されました。
+    post_pin: この投稿はピン留めされています。
+    post_unpin: この投稿のピン留めが解除されました。
+    post_hide_list: この投稿はリストから非表示になっています。
+    post_show_list: この投稿はリストに表示されています。
+    post_reopen: この投稿は再オープンされました。
+    post_list: この投稿はリストされています。
+    post_unlist: この投稿はリストに登録されていません。
     post_pending: Your post is awaiting review. This is a preview, it will be visible after it has been approved.
