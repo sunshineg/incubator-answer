@@ -263,7 +263,7 @@ backend:
       review_underway:
         other: 現在編集できません。レビューキューにバージョンがあります。
       no_permission:
-        other: 権限がありません。
+        other: 編集する権限がありません。
     user:
       external_login_missing_user_id:
         other: サードパーティのプラットフォームは一意のユーザーIDを提供していないため、ログインできません。ウェブサイト管理者にお問い合わせください。
@@ -469,7 +469,7 @@ backend:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} があなたの質問に回答しました"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>もっと見る {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} があなたを回答に招待しました"
@@ -524,7 +524,7 @@ backend:
       other: 提案された編集
   reaction:
     tooltip:
-      other: "{{ .Names }} and {{ .Count }} more..."
+      other: "{{ .Names }} と {{ .Count }} もっと..."
   badge:
     default_badges:
       autobiographer:
@@ -1012,7 +1012,7 @@ ui:
       tip_with_posts: >-
         <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p> <strong>同義語</strong>でタグを削除することはできません。</p> <p>最初にこのタグから同義語を削除してください。</p>
       tip: 本当に削除してもよろしいですか？
       close: 閉じる
   edit_tag:
@@ -1111,24 +1111,24 @@ ui:
           msg:
             empty: 少なくとも一つ以上のタグが必要です。
         answer:
-          label: Answer
+          label: 回答
           msg:
-            empty: Answer cannot be empty.
+            empty: 回答は空欄にできません
         edit_summary:
-          label: Edit summary
+          label: 概要を編集
           placeholder: >-
-            Briefly explain your changes (corrected spelling, fixed grammar, improved formatting)
-    btn_post_question: Post your question
-    btn_save_edits: Save edits
-    answer_question: Answer your own question
-    post_question&answer: Post your question and answer
+            簡単にあなたの変更を説明します(修正スペル、固定文法、改善されたフォーマット)
+    btn_post_question: 質問を投稿する
+    btn_save_edits: 編集内容を保存
+    answer_question: ご自身の質問に答えてください
+    post_question&answer: 質問と回答を投稿する
   tag_selector:
     add_btn: タグを追加
     create_btn: 新しタグを作成
-    search_tag: Search tag
-    hint: "Describe what your question is about, at least one tag is required."
-    no_result: No tags matched
-    tag_required_text: Required tag (at least one)
+    search_tag: タグを検索
+    hint: "質問について説明してください。少なくとも1つのタグが必要です。"
+    no_result: 一致するタグはありません
+    tag_required_text: 必須タグ (少なくとも 1 つ)
   header:
     nav:
       question: 質問
@@ -1151,35 +1151,35 @@ ui:
     name: 変更
     loading: 読み込み中…
   pic_auth_code:
-    title: Captcha
-    placeholder: Type the text above
+    title: CAPTCHA
+    placeholder: 上記のテキストを入力してください
     msg:
-      empty: Captcha cannot be empty.
+      empty: Code を空にすることはできません。
   inactive:
     first: >-
-      You're almost done! We sent an activation mail to <bold>{{mail}}</bold>. Please follow the instructions in the mail to activate your account.
-    info: "If it doesn't arrive, check your spam folder."
+      <bold>{{mail}}</bold>にアクティベーションメールを送信しました。メールの指示に従ってアカウントをアクティベーションしてください。
+    info: "届かない場合は、迷惑メールフォルダを確認してください。"
     another: >-
-      We sent another activation email to you at <bold>{{mail}}</bold>. It might take a few minutes for it to arrive; be sure to check your spam folder.
+      <bold>{{mail}}</bold>に別のアクティベーションメールを送信しました。 到着には数分かかる場合があります。スパムフォルダを確認してください。
     btn_name: 認証メールを再送信
     change_btn_name: メールアドレスを変更
     msg:
       empty: 空にすることはできません
     resend_email:
       url_label: 本当に認証メールを再送信してもよろしいですか？
-      url_text: You can also give the activation link above to the user.
+      url_text: ユーザーに上記のアクティベーションリンクを渡すこともできます。
   login:
     login_to_continue: ログインして続行
     info_sign: アカウントをお持ちではありませんか？<1>サインアップ</1>
     info_login: すでにアカウントをお持ちですか？<1>ログイン</1>
-    agreements: By registering, you agree to the <1>privacy policy</1> and <3>terms of service</3>.
+    agreements: 登録することにより、<1>プライバシーポリシー</1>および<3>サービス規約</3>に同意するものとします。
     forgot_pass: パスワードをお忘れですか?
     name:
       label: 名前
       msg:
         empty: 名前を空にすることはできません。
         range: 2～30文字の名前を設定してください。
-        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+        character: '文字セット "a-z", "A-Z", "0-9", " - " を使用する必要があります。'
     email:
       label: メールアドレス
       msg:
@@ -1188,12 +1188,12 @@ ui:
       label: パスワード
       msg:
         empty: パスワードを入力してください。
-        different: The passwords entered on both sides are inconsistent
+        different: 入力されたパスワードが一致しません
   account_forgot:
     page_title: パスワードを忘れた方はこちら
     btn_name: 回復用のメールを送る
     send_success: >-
-      If an account matches <strong>{{mail}}</strong>, you should receive an email with instructions on how to reset your password shortly.
+      アカウントが <strong>{{mail}}</strong>と一致する場合は、パスワードをすぐにリセットする方法に関するメールが送信されます。
     email:
       label: メールアドレス
       msg:
@@ -1202,22 +1202,22 @@ ui:
     btn_cancel: キャンセル
     btn_update: メールアドレスを更新
     send_success: >-
-      If an account matches <strong>{{mail}}</strong>, you should receive an email with instructions on how to reset your password shortly.
+      アカウントが <strong>{{mail}}</strong>と一致する場合は、パスワードをすぐにリセットする方法に関するメールが送信されます。
     email:
-      label: New email
+      label: 新しいメールアドレス
       msg:
-        empty: Email cannot be empty.
+        empty: メールアドレス欄を空白にしておくことはできません
   oauth:
-    connect: Connect with {{ auth_name }}
-    remove: Remove {{ auth_name }}
+    connect: '{{ auth_name }} と接続'
+    remove: '{{ auth_name }} を削除'
   oauth_bind_email:
-    subtitle: Add a recovery email to your account.
-    btn_update: Update email address
+    subtitle: アカウントに回復用のメールアドレスを追加します。
+    btn_update: メールアドレスを更新
     email:
-      label: Email
+      label: メールアドレス
       msg:
-        empty: Email cannot be empty.
-    modal_title: Email already existes.
+        empty: メールアドレスは空にできません。
+    modal_title: このメールアドレスはすでに存在しています。
     modal_content: このメールアドレスは既に登録されています。既存のアカウントに接続してもよろしいですか？
     modal_cancel: メールアドレスを変更する
     modal_confirm: 既存のアカウントに接続
@@ -1299,51 +1299,51 @@ ui:
         label: 新しいメールアドレス
         msg: 新しいメールアドレスは空にできません。
       pass:
-        label: Current password
-        msg: Password cannot be empty.
+        label: 現在のパスワード
+        msg: パスワードは空白にできません
       password_title: パスワード
       current_pass:
-        label: Current password
+        label: 現在のパスワード
         msg:
-          empty: Current password cannot be empty.
-          length: The length needs to be between 8 and 32.
-          different: The two entered passwords do not match.
+          empty: 現在のパスワードが空欄です
+          length: 長さは 8 から 32 の間である必要があります.
+          different: パスワードが一致しません。
       new_pass:
-        label: New password
+        label: 新しいパスワード
       pass_confirm:
-        label: Confirm new password
+        label: 新しいパスワードの確認 
     interface:
-      heading: Interface
+      heading: 外観
       lang:
-        label: Interface language
-        text: User interface language. It will change when you refresh the page.
+        label: インタフェース言語
+        text: ユーザーインターフェイスの言語。ページを更新すると変更されます。
     my_logins:
-      title: My logins
-      label: Log in or sign up on this site using these accounts.
-      modal_title: Remove login
-      modal_content: Are you sure you want to remove this login from your account?
-      modal_confirm_btn: Remove
-      remove_success: Removed successfully
+      title: ログイン情報
+      label: これらのアカウントを使用してログインまたはこのサイトでサインアップします。
+      modal_title: ログイン情報を削除
+      modal_content: このログイン情報をアカウントから削除してもよろしいですか？
+      modal_confirm_btn: 削除
+      remove_success: 削除に成功しました
   toast:
-    update: update success
-    update_password: Password changed successfully.
-    flag_success: Thanks for flagging.
-    forbidden_operate_self: Forbidden to operate on yourself
-    review: Your revision will show after review.
-    sent_success: Sent successfully
+    update: 更新に成功しました
+    update_password: パスワードの変更に成功しました。
+    flag_success: フラグを付けてくれてありがとう
+    forbidden_operate_self: 自分自身で操作することはできません
+    review: レビュー後にあなたのリビジョンが表示されます。
+    sent_success: 正常に送信されました。
   related_question:
-    title: Related Questions
-    answers: answers
+    title: 関係のある質問
+    answers: 回答
   linked_question:
-    title: Linked Questions
-    description: Questions linked to
-    no_linked_question: No questions linked from this question.
+    title: リンクされた質問
+    description: リンクされている質問
+    no_linked_question: この質問からリンクされた質問はありません。
   invite_to_answer:
     title: People Asked
     desc: Select people who you think might know the answer.
-    invite: Invite to answer
-    add: Add people
-    search: Search people
+    invite: 回答に招待する
+    add: ユーザーを追加
+    search: ユーザーを検索
   question_detail:
     action: Action
     Asked: Asked
@@ -1391,138 +1391,138 @@ ui:
     reopen:
       confirm_btn: Reopen
       title: Reopen this post
-      content: Are you sure you want to reopen?
+      content: 再オープンしてもよろしいですか？
     list:
-      confirm_btn: List
-      title: List this post
-      content: Are you sure you want to list?
+      confirm_btn: 一覧
+      title: この投稿の一覧
+      content: 一覧表示してもよろしいですか？
     unlist:
-      confirm_btn: Unlist
-      title: Unlist this post
-      content: Are you sure you want to unlist?
+      confirm_btn: リストから外す
+      title: この投稿をリストから外す
+      content: リストを削除してもよろしいですか？
     pin:
-      title: Pin this post
-      content: Are you sure you wish to pinned globally? This post will appear at the top of all post lists.
-      confirm_btn: Pin
+      title: この投稿をピン留めする
+      content: グローバルに固定してもよろしいですか？この投稿はすべての投稿リストの上部に表示されます。
+      confirm_btn: ピン留めする
   delete:
-    title: Delete this post
+    title: この投稿を削除
     question: >-
       We do not recommend <strong>deleting questions with answers</strong> because doing so deprives future readers of this knowledge.</p><p>Repeated deletion of answered questions can result in your account being blocked from asking. Are you sure you wish to delete?
     answer_accepted: >-
       <p>We do not recommend <strong>deleting accepted answer</strong> because doing so deprives future readers of this knowledge. </p> Repeated deletion of accepted answers can result in your account being blocked from answering. Are you sure you wish to delete?
-    other: Are you sure you wish to delete?
-    tip_answer_deleted: This answer has been deleted
-    undelete_title: Undelete this post
-    undelete_desc: Are you sure you wish to undelete?
+    other: 本当に削除してもよろしいですか？
+    tip_answer_deleted: この回答は削除されました
+    undelete_title: この投稿を元に戻す
+    undelete_desc: 本当に元に戻しますか？
   btns:
-    confirm: Confirm
-    cancel: Cancel
-    edit: Edit
-    save: Save
-    delete: Delete
-    undelete: Undelete
-    list: List
-    unlist: Unlist
-    unlisted: Unlisted
-    login: Log in
+    confirm: 確認
+    cancel: キャンセル
+    edit: 編集
+    save: 保存
+    delete: 削除
+    undelete: 元に戻す
+    list: リスト
+    unlist: リストから外す
+    unlisted: リストから外した
+    login: ログイン
     signup: 新規登録
-    logout: Log out
-    verify: Verify
-    add_question: Add question
-    approve: Approve
-    reject: Reject
-    skip: Skip
-    discard_draft: Discard draft
-    pinned: Pinned
-    all: All
-    question: Question
-    answer: Answer
-    comment: Comment
-    refresh: Refresh
-    resend: Resend
-    deactivate: Deactivate
-    active: Active
-    suspend: Suspend
-    unsuspend: Unsuspend
-    close: Close
-    reopen: Reopen
+    logout: ログアウト
+    verify: 認証
+    add_question: 質問を追加
+    approve: 承認
+    reject: 却下
+    skip: スキップする
+    discard_draft: 下書きを破棄
+    pinned: ピン留めしました
+    all: すべて
+    question: 質問
+    answer: 回答
+    comment: コメント
+    refresh: 更新
+    resend: 再送
+    deactivate: 無効化する
+    active: 有効
+    suspend: 凍結
+    unsuspend: 凍結解除
+    close: クローズ
+    reopen: 再オープン
     ok: OK
-    light: Light
-    dark: Dark
-    system_setting: System setting
-    default: Default
-    reset: Reset
-    tag: Tag
-    post_lowercase: post
-    filter: Filter
-    ignore: Ignore
-    submit: Submit
-    normal: Normal
-    closed: Closed
-    deleted: Deleted
-    pending: Pending
-    more: More
+    light: ライト
+    dark: ダーク
+    system_setting: システム設定
+    default: 既定
+    reset: リセット
+    tag: タグ
+    post_lowercase: 投稿
+    filter: フィルター
+    ignore: 除外
+    submit: 送信
+    normal: 通常
+    closed: クローズ済み
+    deleted: 削除済み
+    pending: 処理待ち
+    more: もっと見る
   search:
-    title: Search Results
-    keywords: Keywords
-    options: Options
-    follow: Follow
-    following: Following
-    counts: "{{count}} Results"
-    more: More
+    title: 検索結果
+    keywords: キーワード
+    options: オプション
+    follow: フォロー
+    following: フォロー中
+    counts: "結果：{{count}}"
+    more: もっと見る
     sort_btns:
-      relevance: Relevance
-      newest: Newest
-      active: Active
-      score: Score
-      more: More
+      relevance: 関連性
+      newest: 最新
+      active: アクティブ
+      score: スコア
+      more: もっと見る
     tips:
-      title: Advanced Search Tips
-      tag: "<1>[tag]</1> search with a tag"
-      user: "<1>user:username</1> search by author"
-      answer: "<1>answers:0</1> unanswered questions"
-      score: "<1>score:3</1> posts with a 3+ score"
-      question: "<1>is:question</1> search questions"
-      is_answer: "<1>is:answer</1> search answers"
-    empty: We couldn't find anything. <br /> Try different or less specific keywords.
+      title: 詳細検索のヒント
+      tag: "<1>[tag]</1> タグで検索"
+      user: "<1>ユーザー:ユーザー名</1>作成者による検索"
+      answer: "<1>回答:0</1>未回答の質問"
+      score: "<1>スコア:3</1>3以上のスコアを持つ投稿"
+      question: "<1>質問</1>質問を検索"
+      is_answer: "<1>は答え</1>答えを検索"
+    empty: 何も見つかりませんでした。 <br /> 別のキーワードまたはそれ以下の特定のキーワードをお試しください。
   share:
     name: シェア
     copy: リンクをコピー
-    via: Share post via...
-    copied: Copied
+    via: 投稿を共有...
+    copied: コピーしました
     facebook: Facebookで共有
     twitter: Twitterで共有
-  cannot_vote_for_self: You can't vote for your own post.
+  cannot_vote_for_self: 自分の投稿には投票できません。
   modal_confirm:
-    title: Error...
+    title: エラー...
   account_result:
-    success: Your new account is confirmed; you will be redirected to the home page.
-    link: Continue to homepage
-    oops: Oops!
-    invalid: The link you used no longer works.
-    confirm_new_email: Your email has been updated.
+    success: 新しいアカウントが確認されました。ホームページにリダイレクトされます。
+    link: ホームページへ
+    oops: おっと!
+    invalid: 使用したリンクは機能しません。
+    confirm_new_email: メールアドレスが更新されました。
     confirm_new_email_invalid: >-
-      Sorry, this confirmation link is no longer valid. Perhaps your email was already changed?
+      申し訳ありませんが、この確認リンクは無効です。メールアドレスが既に変更されている可能性があります。
   unsubscribe:
-    page_title: Unsubscribe
-    success_title: Unsubscribe Successful
-    success_desc: You have been successfully removed from this subscriber list and won't receive any further emails from us.
-    link: Change settings
+    page_title: 購読解除
+    success_title: 購読解除成功
+    success_desc: 配信リストから削除され、その他のメールの送信が停止されました。
+    link: 設定の変更
   question:
-    following_tags: Following Tags
-    edit: Edit
-    save: Save
-    follow_tag_tip: Follow tags to curate your list of questions.
-    hot_questions: Hot Questions
-    all_questions: All Questions
-    x_questions: "{{ count }} Questions"
-    x_answers: "{{ count }} answers"
+    following_tags: フォロー中のタグ
+    edit: 編集
+    save: 保存
+    follow_tag_tip: タグに従って質問のリストをキュレートします。
+    hot_questions: ホットな質問
+    all_questions: すべての質問
+    x_questions: "{{ count }} の質問"
+    x_answers: "{{ count }} の回答"
     questions: 質問
     answers: 回答
     newest: 最新
     active: 有効
-    hot: Hot
-    recommend: Recommend
+    hot: 人気
+    recommend: おすすめ
     score: スコア
     unanswered: 未回答
     modified: 修正済み
@@ -1536,61 +1536,61 @@ ui:
     answers: 回答
     answer: 回答
     questions: 質問
-    question: question
-    bookmarks: Bookmarks
-    reputation: Reputation
-    comments: Comments
-    votes: Votes
-    badges: Badges
-    newest: Newest
-    score: Score
-    edit_profile: Edit profile
-    visited_x_days: "Visited {{ count }} days"
-    viewed: Viewed
-    joined: Joined
+    question: 質問
+    bookmarks: ブックマーク
+    reputation: 評判
+    comments: コメント
+    votes: 投票
+    badges: バッジ
+    newest: 最新
+    score: スコア
+    edit_profile: プロファイルを編集
+    visited_x_days: "{{ count }}人の閲覧者"
+    viewed: 閲覧回数
+    joined: 参加しました
     comma: ","
-    last_login: Seen
-    about_me: About Me
+    last_login: 閲覧数
+    about_me: 自己紹介
     about_me_empty: "// Hello, World !"
-    top_answers: Top Answers
-    top_questions: Top Questions
-    stats: Stats
-    list_empty: No posts found.<br />Perhaps you'd like to select a different tab?
-    content_empty: No posts found.
-    accepted: Accepted
-    answered: answered
+    top_answers: よくある回答
+    top_questions: よくある質問
+    stats: 統計情報
+    list_empty: 投稿が見つかりませんでした。<br />他のタブを選択しますか？
+    content_empty: 投稿が見つかりませんでした。
+    accepted: 承認済み
+    answered: 回答済み
     asked: 質問済み
-    downvoted: downvoted
+    downvoted: 低評価しました
     mod_short: MOD
     mod_long: モデレーター
-    x_reputation: reputation
-    x_votes: votes received
+    x_reputation: 評価
+    x_votes: 投票を受け取りました
     x_answers: 回答
     x_questions: 質問
-    recent_badges: Recent Badges
+    recent_badges: 最近のバッジ
   install:
     title: Installation
     next: 次へ
     done: 完了
-    config_yaml_error: Can't create the config.yaml file.
+    config_yaml_error: config.yaml を作成できません。
     lang:
-      label: Please choose a language
+      label: 言語を選択してください
     db_type:
-      label: Database engine
+      label: データベースエンジン
     db_username:
       label: ユーザー名
       placeholder: root
-      msg: Username cannot be empty.
+      msg: ユーザー名は空にできません。
     db_password:
       label: パスワード
       placeholder: root
       msg: パスワードを入力してください。
     db_host:
-      label: Database host
+      label: データベースのホスト。
       placeholder: "db:3306"
-      msg: Database host cannot be empty.
+      msg: データベースホストは空にできません。
     db_name:
-      label: Database name
+      label: データベース名
       placeholder: answer
       msg: Database name cannot be empty.
     db_file:
