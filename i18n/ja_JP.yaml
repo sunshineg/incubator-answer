@@ -741,22 +741,22 @@ backend:
         name:
           other: 素晴らしい質問
         desc:
-          other: Question score of 50 or more.
+          other: 50人の閲覧者！！
       popular_question:
         name:
           other: 人気のある質問
         desc:
-          other: Question with 500 views.
+          other: 500人の閲覧者！！！
       notable_question:
         name:
           other: 注目すべき質問
         desc:
-          other: Question with 1,000 views.
+          other: 1,000人の閲覧者！！！！
       famous_question:
         name:
           other: 偉大な質問
         desc:
-          other: Question with 5,000 views.
+          other: 5,000人の閲覧者！！！！！
       popular_link:
         name:
           other: 人気のリンク
@@ -1024,7 +1024,7 @@ ui:
     delete:
       title: このタグを削除
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p> <strong>同義語</strong>でタグを削除することはできません。</p> <p>最初にこのタグから同義語を削除してください。</p>
       tip_with_synonyms: >-
         <p> <strong>同義語</strong>でタグを削除することはできません。</p> <p>最初にこのタグから同義語を削除してください。</p>
       tip: 本当に削除してもよろしいですか？
@@ -1400,7 +1400,7 @@ ui:
         header_1: ご回答ありがとうございます。
         li1_1: Please be sure to <strong>answer the question</strong>. Provide details and share your research.
         li1_2: Back up any statements you make with references or personal experience.
-        header_2: But <strong>avoid</strong> ...
+        header_2: しかし、 <strong>は</strong> を避けてください...
         li2_1: 助けを求める、説明を求める、または他の答えに応答する。
     reopen:
       confirm_btn: 再オープン
@@ -1849,7 +1849,7 @@ ui:
       suspend_at: サスペンド時間
       status: ステータス
       role: ロール
-      action: Action
+      action: 操作
       change: 変更
       all: すべて
       staff: スタッフ
@@ -1900,254 +1900,254 @@ ui:
       votes: 投票
       created: 作成
       status: ステータス
-      action: Action
+      action: 操作
       change: 変更
       filter:
-        placeholder: "Filter by title, answer:id"
+        placeholder: "タイトル、質問:id でフィルター"
     general:
-      page_title: General
+      page_title: 一般
       name:
-        label: Site name
-        msg: Site name cannot be empty.
-        text: "The name of this site, as used in the title tag."
+        label: サイト名
+        msg: サイト名は空にできません．
+        text: "タイトルタグで使用されるこのサイトの名前。"
       site_url:
         label: サイトURL
-        msg: Site url cannot be empty.
+        msg: サイト URL は空にできません．
         validate: 正しいURLを入力してください。
-        text: The address of your site.
+        text: あなたのサイトのアドレス
       short_desc:
-        label: Short site description
-        msg: Short site description cannot be empty.
-        text: "Short description, as used in the title tag on homepage."
+        label: 短いサイトの説明
+        msg: 短いサイト説明は空にできません．
+        text: "ホームページのタイトルタグで使用されている簡単な説明。"
       desc:
-        label: Site description
-        msg: Site description cannot be empty.
-        text: "Describe this site in one sentence, as used in the meta description tag."
+        label: サイトの説明
+        msg: サイト説明を空にすることはできません。
+        text: "メタ説明タグで使用されるように、このサイトを1つの文で説明します。"
       contact_email:
-        label: Contact email
-        msg: Contact email cannot be empty.
-        validate: Contact email is not valid.
-        text: Email address of key contact responsible for this site.
+        label: 連絡先メール アドレス
+        msg: 連絡先メールアドレスを空にすることはできません。
+        validate: 連絡先のメールアドレスが無効です。
+        text: このサイトを担当するキーコンタクトのメールアドレスです。
       check_update:
-        label: Software updates
-        text: Automatically check for updates
+        label: ソフトウェアアップデート
+        text: 自動的に更新を確認
     interface:
-      page_title: Interface
+      page_title: 外観
       language:
-        label: Interface language
-        msg: Interface language cannot be empty.
-        text: User interface language. It will change when you refresh the page.
+        label: インタフェース言語
+        msg: インターフェース言語は空にできません。
+        text: ユーザーインターフェイスの言語。ページを更新すると変更されます。
       time_zone:
-        label: Timezone
-        msg: Timezone cannot be empty.
-        text: Choose a city in the same timezone as you.
+        label: タイムゾーン
+        msg: タイムゾーンを空にすることはできません。
+        text: あなたのタイムゾーンを選択してください。
     smtp:
       page_title: SMTP
       from_email:
-        label: From email
-        msg: From email cannot be empty.
-        text: The email address which emails are sent from.
+        label: 差出人
+        msg: 差出人メールアドレスは空にできません。
+        text: 送信元のメールアドレス
       from_name:
-        label: From name
-        msg: From name cannot be empty.
-        text: The name which emails are sent from.
+        label: 差出人名
+        msg: 差出人名は空にできません
+        text: メールの送信元の名前
       smtp_host:
-        label: SMTP host
-        msg: SMTP host cannot be empty.
-        text: Your mail server.
+        label: SMTP ホスト
+        msg: SMTPホストは空にできません。
+        text: メールサーバー
       encryption:
-        label: Encryption
-        msg: Encryption cannot be empty.
-        text: For most servers SSL is the recommended option.
+        label: 暗号化
+        msg: 暗号化は空にできません。
+        text: ほとんどのサーバではSSLが推奨されます。
         ssl: SSL
         tls: TLS
         none: なし
       smtp_port:
-        label: SMTP port
+        label: SMTPポート
         msg: SMTPポートは1〜65535でなければなりません。
-        text: The port to your mail server.
+        text: メールサーバーへのポート番号
       smtp_username:
-        label: SMTP username
+        label: SMTPユーザ名
         msg: SMTP ユーザー名を空にすることはできません。
       smtp_password:
-        label: SMTP password
+        label: SMTPパスワード
         msg: SMTP パスワードを入力してください。
       test_email_recipient:
-        label: Test email recipients
-        text: Provide email address that will receive test sends.
-        msg: Test email recipients is invalid
+        label: テストメールの受信者
+        text: テスト送信を受信するメールアドレスを入力してください。
+        msg: テストメールの受信者が無効です
       smtp_authentication:
-        label: Enable authentication
-        title: SMTP authentication
-        msg: SMTP authentication cannot be empty.
+        label: 認証を有効にする
+        title: SMTP認証
+        msg: SMTP認証は空にできません。
         "yes": "はい"
         "no": "いいえ"
     branding:
-      page_title: Branding
+      page_title: ブランディング
       logo:
-        label: Logo
-        msg: Logo cannot be empty.
-        text: The logo image at the top left of your site. Use a wide rectangular image with a height of 56 and an aspect ratio greater than 3:1. If left blank, the site title text will be shown.
+        label: ロゴ
+        msg: ロゴは空にできません。
+        text: あなたのサイトの左上にあるロゴ画像。 高さが56、アスペクト比が3:1を超える広い矩形画像を使用します。 空白の場合、サイトタイトルテキストが表示されます。
       mobile_logo:
-        label: Mobile logo
+        label: モバイルロゴ
         text: The logo used on mobile version of your site. Use a wide rectangular image with a height of 56. If left blank, the image from the "logo" setting will be used.
       square_icon:
-        label: Square icon
-        msg: Square icon cannot be empty.
-        text: Image used as the base for metadata icons. Should ideally be larger than 512x512.
+        label: アイコン画像
+        msg: アイコン画像は空にできません。
+        text: メタデータアイコンのベースとして使用される画像。理想的には512x512より大きくなければなりません。
       favicon:
         label: Favicon
-        text: A favicon for your site. To work correctly over a CDN it must be a png. Will be resized to 32x32. If left blank, "square icon" will be used.
+        text: あなたのサイトのファビコン。CDN上で正しく動作するにはpngである必要があります。 32x32にリサイズされます。空白の場合は、"正方形のアイコン"が使用されます。
     legal:
-      page_title: Legal
+      page_title: 法的情報
       terms_of_service:
-        label: Terms of service
-        text: "You can add terms of service content here. If you already have a document hosted elsewhere, provide the full URL here."
+        label: 利用規約
+        text: "ここで利用規約のサービスコンテンツを追加できます。すでに他の場所でホストされているドキュメントがある場合は、こちらにフルURLを入力してください。"
       privacy_policy:
-        label: Privacy policy
-        text: "You can add privacy policy content here. If you already have a document hosted elsewhere, provide the full URL here."
+        label: プライバシーポリシー
+        text: "ここにプライバシーポリシーの内容を追加できます。すでに他の場所でホストされているドキュメントを持っている場合は、こちらにフルURLを入力してください。"
     write:
-      page_title: Write
+      page_title: 編集
       restrict_answer:
-        title: Answer write
+        title: 回答を書く
         label: Each user can only write one answer for each question
-        text: "Turn off to allow users to write multiple answers to the same question, which may cause answers to be unfocused."
+        text: "ユーザが同じ質問に複数の回答を書き込めるようにするにはオフにします。これにより回答がフォーカスされていない可能性があります。"
       recommend_tags:
-        label: Recommend tags
-        text: "Recommend tags will show in the dropdown list by default."
+        label: おすすめタグ
+        text: "デフォルトでドロップダウンリストに推奨タグが表示されます。"
         msg:
-          contain_reserved: "recommended tags cannot contain reserved tags"
+          contain_reserved: "推奨されるタグは予約済みタグを含めることはできません"
       required_tag:
-        title: Set required tags
-        label: Set “Recommend tags” as required tags
-        text: "Every new question must have at least one recommend tag."
+        title: 必須タグを設定
+        label: 必須タグに「推奨タグ」を設定
+        text: "新しい質問には少なくとも1つの推奨タグが必要です。"
       reserved_tags:
-        label: Reserved tags
-        text: "Reserved tags can only be used by moderator."
+        label: 予約済みタグ
+        text: "予約済みのタグはモデレータのみ使用できます。"
     seo:
       page_title: SEO
       permalink:
-        label: Permalink
-        text: Custom URL structures can improve the usability, and forward-compatibility of your links.
+        label: 固定リンク
+        text: カスタム URL 構造は、ユーザビリティとリンクの前方互換性を向上させることができます。
       robots:
         label: robots.txt
-        text: This will permanently override any related site settings.
+        text: これにより、関連するサイト設定が永久に上書きされます。
     themes:
-      page_title: Themes
+      page_title: テーマ
       themes:
-        label: Themes
-        text: Select an existing theme.
+        label: テーマ
+        text: 既存のテーマを選択してください
       color_scheme:
-        label: Color scheme
+        label: 配色
       navbar_style:
-        label: Navbar style
+        label: ナビゲーションバーのスタイル
       primary_color:
-        label: Primary color
-        text: Modify the colors used by your themes
+        label: メインカラー
+        text: テーマで使用される色を変更する
     css_and_html:
-      page_title: CSS and HTML
+      page_title: CSS と HTML
       custom_css:
-        label: Custom CSS
+        label: カスタム CSS
         text: >
 
       head:
-        label: Head
+        label: ヘッド
         text: >
 
       header:
-        label: Header
+        label: ヘッダー
         text: >
 
       footer:
-        label: Footer
-        text: This will insert before &lt;/body>.
+        label: フッター
+        text: これは &lt;/body> の前に挿入されます。
       sidebar:
-        label: Sidebar
-        text: This will insert in sidebar.
+        label: サイドバー
+        text: サイドバーに挿入されます。
     login:
-      page_title: Login
+      page_title: ログイン
       membership:
-        title: Membership
-        label: Allow new registrations
-        text: Turn off to prevent anyone from creating a new account.
+        title: メンバー
+        label: 新しい登録を許可する
+        text: 誰もが新しいアカウントを作成できないようにするには、オフにしてください。
       email_registration:
-        title: Email registration
-        label: Allow email registration
-        text: Turn off to prevent anyone creating new account through email.
+        title: メールアドレスの登録
+        label: メールアドレスの登録を許可
+        text: オフにすると、メールで新しいアカウントを作成できなくなります。
       allowed_email_domains:
-        title: Allowed email domains
-        text: Email domains that users must register accounts with. One domain per line. Ignored when empty.
+        title: 許可されたメールドメイン
+        text: ユーザーがアカウントを登録する必要があるメールドメインです。1行に1つのドメインがあります。空の場合は無視されます。
       private:
-        title: Private
-        label: Login required
-        text: Only logged in users can access this community.
+        title: 非公開
+        label: ログインが必要です
+        text: ログインしているユーザーのみがこのコミュニティにアクセスできます。
       password_login:
-        title: Password login
+        title: パスワードログイン
         label: Allow email and password login
         text: "WARNING: If turn off, you may be unable to log in if you have not previously configured other login method."
     installed_plugins:
       title: Installed Plugins
       plugin_link: Plugins extend and expand the functionality. You may find plugins in the <1>Plugin Repository</1>.
       filter:
-        all: All
-        active: Active
-        inactive: Inactive
-        outdated: Outdated
+        all: すべて
+        active: アクティブ
+        inactive: 非アクティブ
+        outdated: 期限切れ
       plugins:
-        label: Plugins
-        text: Select an existing plugin.
+        label: プラグイン
+        text: 既存のプラグインを選択します
       name: 名前
-      version: Version
-      status: Status
-      action: Action
-      deactivate: Deactivate
-      activate: Activate
-      settings: Settings
+      version: バージョン
+      status: ステータス
+      action: 操作
+      deactivate: 非アクティブ化
+      activate: アクティベート
+      settings: 設定
     settings_users:
-      title: Users
+      title: ユーザー
       avatar:
-        label: Default avatar
-        text: For users without a custom avatar of their own.
+        label: デフォルトのアバター
+        text: 自分のカスタムアバターのないユーザー向け。
       gravatar_base_url:
         label: Gravatar Base URL
-        text: URL of the Gravatar provider's API base. Ignored when empty.
+        text: GravatarプロバイダーのAPIベースのURL。空の場合は無視されます。
       profile_editable:
-        title: Profile editable
+        title: プロフィール編集可能
       allow_update_display_name:
-        label: Allow users to change their display name
+        label: ユーザーが表示名を変更できるようにする
       allow_update_username:
-        label: Allow users to change their username
+        label: ユーザー名の変更を許可する
       allow_update_avatar:
-        label: Allow users to change their profile image
+        label: ユーザーのプロフィール画像の変更を許可する
       allow_update_bio:
-        label: Allow users to change their about me
+        label: ユーザーが自分についての変更を許可する
       allow_update_website:
-        label: Allow users to change their website
+        label: ユーザーのウェブサイトの変更を許可する
       allow_update_location:
-        label: Allow users to change their location
+        label: ユーザーの位置情報の変更を許可する
     privilege:
-      title: Privileges
+      title: 特権
       level:
-        label: Reputation required level
-        text: Choose the reputation required for the privileges
+        label: 評判の必要レベル
+        text: 特権に必要な評判を選択します
       msg:
-        should_be_number: the input should be number
-        number_larger_1: number should be equal or larger than 1
+        should_be_number: 入力は数値でなければなりません
+        number_larger_1: 数値は 1 以上でなければなりません
     badges:
-      action: Action
-      active: Active
-      activate: Activate
-      all: All
-      awards: Awards
-      deactivate: Deactivate
+      action: 操作
+      active: アクティブ
+      activate: アクティベート
+      all: すべて
+      awards: 賞
+      deactivate: 非アクティブ化
       filter:
-        placeholder: Filter by name, badge:id
-      group: Group
-      inactive: Inactive
-      name: Name
-      show_logs: Show logs
-      status: Status
-      title: Badges
+        placeholder: 名前、バッジ:id でフィルター
+      group: グループ
+      inactive: 非アクティブ
+      name: 名前
+      show_logs: ログを表示
+      status: ステータス
+      title: バッジ
   form:
     optional: (optional)
     empty: cannot be empty
