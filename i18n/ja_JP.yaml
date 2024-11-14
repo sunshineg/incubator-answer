@@ -96,7 +96,7 @@ backend:
     rank_comment_vote_up_label:
       other: コメントを高評価
     rank_link_url_limit_label:
-      other: Post more than 2 links at a time
+      other: 一度に2つ以上のリンクを投稿する
     rank_question_vote_up_label:
       other: 質問を高評価
     rank_answer_vote_up_label:
@@ -365,7 +365,7 @@ backend:
       name:
         other: LGTM
       desc:
-        other: This post is good as-is and not low quality.
+        other: この投稿はそのままで良く、改善する必要はありません！
     needs_edit:
       name:
         other: 編集する必要があったため変更しました。
@@ -546,246 +546,246 @@ backend:
         name:
           other: 最初のフラグ
         desc:
-          other: First flagged a post.
+          other: 最初のフラグが立てられた
       first_upvote:
         name:
-          other: First Upvote
+          other: はじめての高評価
         desc:
-          other: First up voted a post.
+          other: はじめて投稿に高評価した
       first_link:
         name:
-          other: First Link
+          other: はじめてのリンク
         desc:
           other: First dirst added a link to another post.
       first_reaction:
         name:
-          other: First Reaction
+          other: 初めてのリアクション
         desc:
-          other: First reacted to the post.
+          other: はじめて投稿にリアクションした
       first_share:
         name:
-          other: First Share
+          other: はじめての共有
         desc:
-          other: First shared a post.
+          other: はじめて投稿を共有した
       scholar:
         name:
-          other: Scholar
+          other: 研究生
         desc:
-          other: Asked a question and accepted an answer.
+          other: 質問をして回答が承認された
       commentator:
         name:
-          other: Commentator
+          other: コメントマン
         desc:
-          other: Leave 5 comments.
+          other: 5つコメントをした
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: 今月の新しいユーザー
         desc:
-          other: Outstanding contributions in their first month.
+          other: 最初の月に優れた貢献
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: ガイドラインを読んだ
         desc:
-          other: Read the [community guidelines].
+          other: '「コミュニティガイドライン」をご覧ください。'
       reader:
         name:
-          other: Reader
+          other: リーダー
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: 10以上の回答を持つトピックのすべての回答を読んだ
       welcome:
         name:
-          other: Welcome
+          other: ようこそ！
         desc:
-          other: Received a up vote.
+          other: 高評価をされた
       nice_share:
         name:
           other: Nice Share
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: 25人の訪問者と投稿を共有した
       good_share:
         name:
           other: Good Share
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: 300の訪問者と投稿を共有した
       great_share:
         name:
           other: Great Share
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: 1000人の訪問者と投稿を共有した
       out_of_love:
         name:
-          other: Out of Love
+          other: お隣さん
         desc:
-          other: Used 50 up votes in a day.
+          other: 1日に50票いれた
       higher_love:
         name:
-          other: Higher Love
+          other: お友達
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: 5日目に50回投票した
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: 崇拝
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: 一日に50回投票を20回した
       promoter:
         name:
-          other: Promoter
+          other: プロモーター
         desc:
-          other: Invited a user.
+          other: ユーザーを招待した
       campaigner:
         name:
-          other: Campaigner
+          other: キャンペーン
         desc:
-          other: Invited 3 basic users.
+          other: 3人のベーシックユーザーを招待しました。
       champion:
         name:
-          other: Champion
+          other: チャンピオン
         desc:
-          other: Invited 5 members.
+          other: 5人のメンバーを招待しました。
       thank_you:
         name:
-          other: Thank You
+          other: Thank you
         desc:
-          other: Has 20 up voted posts and gave 10 up votes.
+          other: 投稿が20件！投票数が10件！
       gives_back:
         name:
-          other: Gives Back
+          other: 返品
         desc:
-          other: Has 100 up voted posts and gave 100 up votes.
+          other: 投稿が100件 !?!? 投票数が100件 !?!?
       empathetic:
         name:
-          other: Empathetic
+          other: 共感性
         desc:
-          other: Has 500 up voted posts and gave 1000 up votes.
+          other: 500の投稿を投票し、1000の投票を与えた。
       enthusiast:
         name:
-          other: Enthusiast
+          other: 楽天家
         desc:
-          other: Visited 10 consecutive days.
+          other: 10日間連続ログイン
       aficionado:
         name:
           other: Aficionado
         desc:
-          other: Visited 100 consecutive days.
+          other: 100日連続ログイン！！！
       devotee:
         name:
-          other: Devotee
+          other: 献身者
         desc:
-          other: Visited 365 consecutive days.
+          other: 365日連続訪問！！！！！！！！
       anniversary:
         name:
-          other: Anniversary
+          other: 周年記念
         desc:
-          other: Active member for a year, posted at least once.
+          other: 年に一回は...
       appreciated:
         name:
-          other: Appreciated
+          other: ありがとう！
         desc:
-          other: Received 1 up vote on 20 posts.
+          other: 20件の投稿に1件の投票を受け取った
       respected:
         name:
-          other: Respected
+          other: 尊敬される
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: 100件の投稿で2件の投票を受け取った
       admired:
         name:
-          other: Admired
+          other: 崇拝された
         desc:
-          other: Received 5 up votes on 300 posts.
+          other: 300の投稿に5票を獲得した
       solved:
         name:
-          other: Solved
+          other: 解決
         desc:
-          other: Have an answer be accepted.
+          other: 答えを受け入れられた
       guidance_counsellor:
         name:
-          other: Guidance Counsellor
+          other: アドバイザー
         desc:
-          other: Have 10 answers be accepted.
+          other: 10個の回答が承認された
       know_it_all:
         name:
-          other: Know-it-All
+          other: 物知り博士
         desc:
-          other: Have 50 answers be accepted.
+          other: 50個の回答が承認された
       solution_institution:
         name:
-          other: Solution Institution
+          other: 解決機関
         desc:
-          other: Have 150 answers be accepted.
+          other: 150個の回答が承認された
       nice_answer:
         name:
-          other: Nice Answer
+          other: 素敵な回答
         desc:
-          other: Answer score of 10 or more.
+          other: 回答スコアは10以上！！
       good_answer:
         name:
-          other: Good Answer
+          other: 良い回答
         desc:
-          other: Answer score of 25 or more.
+          other: 回答スコアは25以上！？！
       great_answer:
         name:
-          other: Great Answer
+          other: 素晴らしい回答
         desc:
-          other: Answer score of 50 or more.
+          other: 回答スコアは50以上！！！！1
       nice_question:
         name:
-          other: Nice Question
+          other: ナイスな質問
         desc:
-          other: Question score of 10 or more.
+          other: 質問スコアは10以上！！
       good_question:
         name:
-          other: Good Question
+          other: よい質問
         desc:
-          other: Question score of 25 or more.
+          other: 質問スコアは25以上！？！
       great_question:
         name:
-          other: Great Question
+          other: 素晴らしい質問
         desc:
           other: Question score of 50 or more.
       popular_question:
         name:
-          other: Popular Question
+          other: 人気のある質問
         desc:
           other: Question with 500 views.
       notable_question:
         name:
-          other: Notable Question
+          other: 注目すべき質問
         desc:
           other: Question with 1,000 views.
       famous_question:
         name:
-          other: Famous Question
+          other: 偉大な質問
         desc:
           other: Question with 5,000 views.
       popular_link:
         name:
-          other: Popular Link
+          other: 人気のリンク
         desc:
-          other: Posted an external link with 50 clicks.
+          other: 外部リンクを50回クリック
       hot_link:
         name:
-          other: Hot Link
+          other: 激アツリンク
         desc:
-          other: Posted an external link with 300 clicks.
+          other: 外部リンクを300回クリック
       famous_link:
         name:
-          other: Famous Link
+          other: 有名なリンク
         desc:
-          other: Posted an external link with 100 clicks.
+          other: 外部リンクを100回クリック
     default_badge_groups:
       getting_started:
         name:
-          other: Getting Started
+          other: はじめに
       community:
         name:
-          other: Community
+          other: コミュニティ
       posting:
         name:
-          other: Posting
+          other: 投稿中
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
-    title: How to Format
+    title: 書式設定
     desc: >-
       <ul class="mb-0"><li><p class="mb-2">link question or answer: <code>#10010000000000001</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
@@ -796,29 +796,29 @@ ui:
     questions: 質問
     tag: タグ
     tags: タグ
-    tag_wiki: tag wiki
+    tag_wiki: タグ wiki
     create_tag: タグを作成
     edit_tag: タグを編集
     ask_a_question: 質問を追加
     edit_question: 質問を編集
     edit_answer: 回答を編集
     search: 検索
-    posts_containing: Posts containing
+    posts_containing: 記事を含む投稿
     settings: 設定
-    notifications: Notifications
+    notifications: お知らせ
     login: ログイン
     sign_up: 新規登録
     account_recovery: アカウントの復旧
-    account_activation: Account Activation
+    account_activation: アカウント有効化
     confirm_email: メールアドレスを確認
-    account_suspended: Account Suspended
+    account_suspended: アカウントは凍結されています
     admin: 管理者
     change_email: メールアドレスを変更
-    install: Answer Installation
-    upgrade: Answer Upgrade
-    maintenance: Website Maintenance
+    install: 回答に応答する
+    upgrade: 回答を改善する
+    maintenance: ウェブサイトのメンテナンス
     users: ユーザー
-    oauth_callback: Processing
+    oauth_callback: 処理中
     http_404: HTTP エラー 404
     http_50X: HTTP エラー 500
     http_403: HTTP エラー 403
@@ -826,49 +826,49 @@ ui:
   notifications:
     title: 通知
     inbox: 受信トレイ
-    achievement: Achievements
-    new_alerts: New alerts
-    all_read: Mark all as read
+    achievement: 実績
+    new_alerts: 新しい通知
+    all_read: すべて既読にする
     show_more: もっと見る
-    someone: Someone
+    someone: 誰か
     inbox_type:
       all: すべて
       posts: 投稿
       invites: 招待
       votes: 投票
-    answer: Answer
+    answer: 回答
     question: 質問
     badge_award: バッジ
   suspended:
     title: あなたのアカウントは停止されています。
     until_time: "あなたのアカウントは {{ time }} まで停止されました。"
     forever: このユーザーは永久に停止されました。
-    end: You don't meet a community guideline.
+    end: コミュニティガイドラインを満たしていません。
     contact_us: お問い合わせ
   editor:
     blockquote:
       text: 引用
     bold:
-      text: Strong
+      text: 強い
     chart:
-      text: Chart
+      text: チャート
       flow_chart: フローチャート
-      sequence_diagram: Sequence diagram
-      class_diagram: Class diagram
-      state_diagram: State diagram
-      entity_relationship_diagram: Entity relationship diagram
-      user_defined_diagram: User defined diagram
-      gantt_chart: Gantt chart
-      pie_chart: Pie chart
+      sequence_diagram: シーケンス図
+      class_diagram: クラス図
+      state_diagram: 状態図
+      entity_relationship_diagram: ER図
+      user_defined_diagram: ユーザー定義図
+      gantt_chart: ガントチャート
+      pie_chart: 円グラフ
     code:
-      text: Code Sample
-      add_code: Add code sample
+      text: コードサンプル
+      add_code: コードサンプルを追加
       form:
         fields:
           code:
             label: コード
             msg:
-              empty: Code cannot be empty.
+              empty: Code を空にすることはできません。
           language:
             label: 言語
             placeholder: 自動検出
@@ -877,8 +877,8 @@ ui:
     formula:
       text: 数式
       options:
-        inline: Inline formula
-        block: Block formula
+        inline: インライン数式
+        block: ブロック数式
     heading:
       text: 見出し
       options:
@@ -891,7 +891,7 @@ ui:
     help:
       text: ヘルプ
     hr:
-      text: Horizontal rule
+      text: 水平方向の罫線
     image:
       text: 画像
       add_image: 画像を追加する
@@ -899,12 +899,12 @@ ui:
       form_image:
         fields:
           file:
-            label: Image file
+            label: 画像ファイル
             btn: 画像を選択する
             msg:
               empty: ファイルは空にできません。
               only_image: 画像ファイルのみが許可されています。
-              max_size: File size cannot exceed 4 MB.
+              max_size: ファイルサイズは4MBを超えることはできません。
           desc:
             label: 説明
       tab_url: 画像URL
@@ -922,12 +922,12 @@ ui:
     indent:
       text: インデント
     outdent:
-      text: Outdent
+      text: アウトデント
     italic:
-      text: Emphasis
+      text: 斜体
     link:
-      text: Hyperlink
-      add_link: Add hyperlink
+      text: ハイパーリンク
+      add_link: ハイパーリンクを追加
       form:
         fields:
           url:
@@ -939,15 +939,15 @@ ui:
       btn_cancel: キャンセル
       btn_confirm: 追加
     ordered_list:
-      text: Numbered list
+      text: 順序付きリスト
     unordered_list:
-      text: Bulleted list
+      text: 箇条書きリスト
     table:
       text: ' テーブル'
       heading: 見出し
       cell: セル
   close_modal:
-    title: I am closing this post as...
+    title: この投稿を次のように閉じます...
     btn_cancel: キャンセル
     btn_submit: 送信
     remark:
@@ -955,19 +955,19 @@ ui:
     msg:
       empty: 理由を選んでください。
   report_modal:
-    flag_title: I am flagging to report this post as...
-    close_title: I am closing this post as...
-    review_question_title: Review question
-    review_answer_title: Review answer
-    review_comment_title: Review comment
+    flag_title: この投稿を報告するフラグを立てています...
+    close_title: この投稿を次のように閉じます...
+    review_question_title: 質問の編集をレビュー
+    review_answer_title: 答えをレビューする
+    review_comment_title: レビューコメント
     btn_cancel: キャンセル
     btn_submit: 送信
     remark:
       empty: 入力してください。
     msg:
       empty: 理由を選んでください。
-      not_a_url: URL format is incorrect.
-      url_not_match: URL origin does not match the current website.
+      not_a_url: URL形式が正しくありません。
+      url_not_match: URL の原点が現在のウェブサイトと一致しません。
   tag_modal:
     title: 新しいタグを作成
     form:
@@ -982,16 +982,16 @@ ui:
           desc: '文字セット「a-z」、「0-9」、「+ # -」を使用する必要があります。'
           msg:
             empty: URL スラッグを空にすることはできません。
-            range: URL slug up to 35 characters.
-            character: URL slug contains unallowed character set.
+            range: タイトルは最大35文字までです.
+            character: URL スラグに許可されていない文字セットが含まれています。
         desc:
           label: 説明
         revision:
-          label: Revision
+          label: 修正
         edit_summary:
-          label: Edit summary
+          label: 概要を編集
           placeholder: >-
-            Briefly explain your changes (corrected spelling, fixed grammar, improved formatting)
+            簡単にあなたの変更を説明します(修正スペル、固定文法、改善されたフォーマット)
     btn_cancel: キャンセル
     btn_submit: 送信
     btn_post: 新しいタグを投稿
@@ -1001,12 +1001,12 @@ ui:
     history: 履歴
     synonyms:
       title: 類義語
-      text: The following tags will be remapped to
-      empty: No synonyms found.
-      btn_add: Add a synonym
+      text: 次のタグが再マップされます
+      empty: 同義語は見つかりません。
+      btn_add: 同義語を追加
       btn_edit: 編集
       btn_save: 保存
-    synonyms_text: The following tags will be remapped to
+    synonyms_text: 次のタグが再マップされます
     delete:
       title: このタグを削除
       tip_with_posts: >-
@@ -1023,39 +1023,39 @@ ui:
     btn_cancel: キャンセル
   dates:
     long_date: MMM D
-    long_date_with_year: "MMM D, YYYY"
+    long_date_with_year: "YYYY年MM月D日"
     long_date_with_time: "MMM D, YYYY [at] HH:mm"
-    now: now
-    x_seconds_ago: "{{count}}s ago"
-    x_minutes_ago: "{{count}}m ago"
-    x_hours_ago: "{{count}}h ago"
+    now: 今
+    x_seconds_ago: "{{count}}秒前"
+    x_minutes_ago: "{{count}}分前"
+    x_hours_ago: "{{count}}時間前"
     hour: 時
     day: 日
     hours: 時
     days: 日
   reaction:
-    heart: heart
-    smile: smile
-    frown: frown
-    btn_label: add or remove reactions
-    undo_emoji: undo {{ emoji }} reaction
-    react_emoji: react with {{ emoji }}
-    unreact_emoji: unreact with {{ emoji }}
+    heart: ハート
+    smile: 笑顔
+    frown: 眉をひそめる
+    btn_label: リアクションの追加または削除
+    undo_emoji: '{{ emoji }} のリアクションを元に戻す'
+    react_emoji: '{{ emoji }} に反応する'
+    unreact_emoji: '{{ emoji }} に反応しない'
   comment:
     btn_add_comment: コメントを追加
-    reply_to: Reply to
+    reply_to: 返信：
     btn_reply: 返信
     btn_edit: 編集
     btn_delete: 削除
     btn_flag: フラグ
     btn_save_edits: 編集内容を保存
     btn_cancel: キャンセル
-    show_more: "{{count}} more comments"
+    show_more: "{{count}} 件のその他のコメント"
     tip_question: >-
-      Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.
+      コメントを使用して、より多くの情報を求めたり、改善を提案したりします。コメントで質問に答えることは避けてください。
     tip_answer: >-
-      Use comments to reply to other users or notify them of changes. If you are adding new information, edit your post instead of commenting.
-    tip_vote: It adds something useful to the post
+      コメントを使用して他のユーザーに返信したり、変更を通知します。新しい情報を追加する場合は、コメントの代わりに投稿を編集します。
+    tip_vote: 投稿に役に立つものを追加します
   edit_answer:
     title: 回答を編集
     default_reason: 回答を編集
@@ -1063,16 +1063,16 @@ ui:
     form:
       fields:
         revision:
-          label: Revision
+          label: 修正
         answer:
-          label: Answer
+          label: 回答
           feedback:
-            characters: content must be at least 6 characters in length.
+            characters: コンテンツは6文字以上でなければなりません。
         edit_summary:
-          label: Edit summary
+          label: 概要を編集
           placeholder: >-
-            Briefly explain your changes (corrected spelling, fixed grammar, improved formatting)
-    btn_save_edits: Save edits
+            簡単にあなたの変更を説明します(修正スペル、固定文法、改善されたフォーマット)
+    btn_save_edits: 編集を保存
     btn_cancel: キャンセル
   tags:
     title: タグ
@@ -1084,8 +1084,8 @@ ui:
     button_following: フォロー中
     tag_label: 質問
     search_placeholder: タグ名でフィルタ
-    no_desc: The tag has no description.
-    more: More
+    no_desc: タグには説明がありません。
+    more: もっと見る
   ask:
     title: 質問を追加
     edit_title: 質問を編集
@@ -1095,10 +1095,10 @@ ui:
     form:
       fields:
         revision:
-          label: Revision
+          label: 修正
         title:
-          label: Title
-          placeholder: Be specific and imagine you're asking a question to another person
+          label: タイトル
+          placeholder: 具体的にして、あなたが他の人に質問していると想像してください
           msg:
             empty: タイトルを空にすることはできません。
             range: タイトルは最大150文字までです
@@ -1218,86 +1218,86 @@ ui:
       msg:
         empty: Email cannot be empty.
     modal_title: Email already existes.
-    modal_content: This email address already registered. Are you sure you want to connect to the existing account?
-    modal_cancel: Change email
-    modal_confirm: Connect to the existing account
+    modal_content: このメールアドレスは既に登録されています。既存のアカウントに接続してもよろしいですか？
+    modal_cancel: メールアドレスを変更する
+    modal_confirm: 既存のアカウントに接続
   password_reset:
     page_title: パスワード再設定
     btn_name: パスワードをリセット
     reset_success: >-
-      You successfully changed your password; you will be redirected to the log in page.
+      パスワードを変更しました。ログインページにリダイレクトされます。
     link_invalid: >-
-      Sorry, this password reset link is no longer valid. Perhaps your password is already reset?
-    to_login: Continue to log in page
+      申し訳ありませんが、このパスワードリセットのリンクは無効になりました。パスワードが既にリセットされている可能性がありますか？
+    to_login: ログインページへ
     password:
       label: パスワード
       msg:
         empty: パスワードを入力してください。
-        length: The length needs to be between 8 and 32
-        different: The passwords entered on both sides are inconsistent
+        length: 長さは 8 から 32 の間である必要があります
+        different: 両側に入力されたパスワードが一致しません
     password_confirm:
-      label: Confirm new password
+      label: 新しいパスワードの確認 
   settings:
     page_title: 設定
-    goto_modify: Go to modify
+    goto_modify: 変更を開く
     nav:
-      profile: Profile
-      notification: Notifications
-      account: Account
-      interface: Interface
+      profile: プロフィール
+      notification: お知らせ
+      account: アカウント
+      interface: 外観
     profile:
-      heading: Profile
-      btn_name: Save
+      heading: プロフィール
+      btn_name: 保存
       display_name:
-        label: Display name
-        msg: Display name cannot be empty.
-        msg_range: Display name up to 30 characters.
+        label: 表示名
+        msg: 表示名は必須です。
+        msg_range: 表示名は最大 30 文字までです。
       username:
         label: ユーザー名
-        caption: People can mention you as "@username".
-        msg: Username cannot be empty.
-        msg_range: Username up to 30 characters.
-        character: 'Must use the character set "a-z", "0-9", " - . _"'
+        caption: ユーザーは "@username" としてあなたをメンションできます。
+        msg: ユーザー名は空にできません。
+        msg_range: 表示名は最大 30 文字までです。
+        character: '文字セット "a-z", "0-9", " - . _" を使用してください。'
       avatar:
         label: プロフィール画像
         gravatar: Gravatar
-        gravatar_text: You can change image on
-        custom: Custom
-        custom_text: You can upload your image.
+        gravatar_text: 画像を変更できます：
+        custom: カスタム
+        custom_text: 画像をアップロードできます。
         default: システム
-        msg: Please upload an avatar
+        msg: アバターをアップロードしてください
       bio:
-        label: About me
+        label: 自己紹介
       website:
         label: ウェブサイト
         placeholder: "http://example.com"
-        msg: Website incorrect format
+        msg: ウェブサイトの形式が正しくありません
       location:
-        label: Location
-        placeholder: "City, Country"
+        label: ロケーション
+        placeholder: "都道府県,国"
     notification:
-      heading: Email Notifications
-      turn_on: Turn on
+      heading: メール通知
+      turn_on: ONにする
       inbox:
-        label: Inbox notifications
-        description: Answers to your questions, comments, invites, and more.
+        label: 受信トレイの通知
+        description: 質問、コメント、招待状などへの回答。
       all_new_question:
-        label: All new questions
-        description: Get notified of all new questions. Up to 50 questions per week.
+        label: すべての新規質問
+        description: すべての新しい質問の通知を受け取ります。週に最大50問まで。
       all_new_question_for_following_tags:
-        label: All new questions for following tags
-        description: Get notified of new questions for following tags.
+        label: 以下のタグに対するすべての新しい質問
+        description: タグをフォローするための新しい質問の通知を受け取る。
     account:
       heading: アカウント
       change_email_btn: メールアドレスを変更する
       change_pass_btn: パスワードを変更する
       change_email_info: >-
-        We've sent an email to that address. Please follow the confirmation instructions.
+        このアドレスにメールを送信しました。メールの指示に従って確認処理を行ってください。
       email:
-        label: Email
+        label: メールアドレス
       new_email:
-        label: New email
-        msg: New email cannot be empty.
+        label: 新しいメールアドレス
+        msg: 新しいメールアドレスは空にできません。
       pass:
         label: Current password
         msg: Password cannot be empty.
