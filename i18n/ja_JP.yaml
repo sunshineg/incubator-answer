@@ -1359,7 +1359,7 @@ ui:
     add: ユーザーを追加
     search: ユーザーを検索
   question_detail:
-    action: Action
+    action: 動作
     Asked: 質問済み
     asked: 質問済み
     update: 修正済み
@@ -1818,7 +1818,7 @@ ui:
             msg_invalid: 無効なメールアドレス
       edit_success: 更新が成功しました
       btn_cancel: キャンセル
-      btn_submit: Submit
+      btn_submit: 送信
     user_modal:
       title: 新しいユーザーを追加
       form:
@@ -1833,19 +1833,19 @@ ui:
             msg: 表示名の長さは 2 ～ 30 文字にする必要があります。
           email:
             label: メールアドレス
-            msg: Email is not valid.
+            msg: メールアドレスが無効です。
           password:
-            label: Password
-            msg: Password must be at 8-32 characters in length.
-      btn_cancel: Cancel
-      btn_submit: Submit
+            label: パスワード
+            msg: パスワードの長さは 8 ～ 32 文字である必要があります。
+      btn_cancel: キャンセル
+      btn_submit: 送信
     users:
-      title: Users
-      name: Name
+      title: ユーザー
+      name: 名前
       email: メールアドレス
-      reputation: Reputation
-      created_at: Created Time
-      delete_at: Deleted Time
+      reputation: 評価
+      created_at: 作成日時
+      delete_at: 削除日時
       suspend_at: サスペンド時間
       status: ステータス
       role: ロール
@@ -1895,13 +1895,13 @@ ui:
       filter:
         placeholder: "タイトル、質問:id でフィルター"
     answers:
-      page_title: Answers
-      post: Post
-      votes: Votes
-      created: Created
-      status: Status
+      page_title: 回答
+      post: 投稿
+      votes: 投票
+      created: 作成
+      status: ステータス
       action: Action
-      change: Change
+      change: 変更
       filter:
         placeholder: "Filter by title, answer:id"
     general:
@@ -1913,7 +1913,7 @@ ui:
       site_url:
         label: サイトURL
         msg: Site url cannot be empty.
-        validate: Please enter a valid URL.
+        validate: 正しいURLを入力してください。
         text: The address of your site.
       short_desc:
         label: Short site description
