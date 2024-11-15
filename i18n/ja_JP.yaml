@@ -81,7 +81,7 @@ backend:
         other: レベル2 少しだけ評判レベルが必要(スタートアップコミュニティ・不特定多数の人数での利用)
     level_3:
       description:
-        other: レベル3　高い評判レベルが必要（成熟したコミュニティ）
+        other: レベル3 高い評判レベルが必要(成熟したコミュニティ)
     level_custom:
       description:
         other: カスタムレベル
