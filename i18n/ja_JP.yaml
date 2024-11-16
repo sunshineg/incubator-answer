@@ -48,11 +48,11 @@ backend:
     pin:
       other: ピン留めする
     hide:
-      other: リストから外す
+      other: 限定公開にする
     unpin:
       other: ピン留め解除
     show:
-      other: リスト
+      other: 限定公開を解除する
     invite_someone_to_answer:
       other: 編集
     undelete:
@@ -1411,12 +1411,12 @@ ui:
       title: この投稿の一覧
       content: 一覧表示してもよろしいですか？
     unlist:
-      confirm_btn: リストから外す
-      title: この投稿をリストから外す
-      content: リストを削除してもよろしいですか？
+      confirm_btn: 限定公開にする
+      title: この投稿を元に戻す
+      content: 本当に元に戻しますか？
     pin:
       title: この投稿をピン留めする
-      content: グローバルに固定してもよろしいですか？この投稿はすべての投稿リストの上部に表示されます。
+      content: "グローバルに固定してもよろしいですか？\nこの投稿はすべての投稿リストの上部に表示されます。"
       confirm_btn: ピン留めする
   delete:
     title: この投稿を削除
@@ -1437,9 +1437,9 @@ ui:
     save: 保存
     delete: 削除
     undelete: 元に戻す
-    list: リスト
-    unlist: リストから外す
-    unlisted: リストから外した
+    list: 限定公開を解除する
+    unlist: 限定公開にする
+    unlisted: 限定公開済み
     login: ログイン
     signup: 新規登録
     logout: ログアウト
@@ -1883,7 +1883,7 @@ ui:
         content: 一時停止中のユーザーはログインできません。
     questions:
       page_title: 質問
-      unlisted: リストから外した
+      unlisted: 限定公開済み
       post: 投稿
       votes: 投票
       answers: 回答
@@ -2181,7 +2181,7 @@ ui:
     flag_user_type: このユーザーは {{ type }} として報告されました
     edit_post: 投稿を編集
     list_post: 投稿一覧
-    unlist_post: 投稿のリストを解除
+    unlist_post: 限定公開投稿
   timeline:
     undeleted: 復元する
     deleted: 削除済み
@@ -2199,8 +2199,8 @@ ui:
     created: 作成済み
     pin: ピン留め済
     unpin: ピン留め解除
-    show: リストにあります
-    hide: リストから外した
+    show: 限定公開解除済み
+    hide: 限定公開済み
     title: "履歴："
     tag_title: "タイムライン："
     show_votes: "投票を表示"
@@ -2229,9 +2229,9 @@ ui:
     post_deleted: この投稿は削除されました。
     post_pin: この投稿はピン留めされています。
     post_unpin: この投稿のピン留めが解除されました。
-    post_hide_list: この投稿はリストから非表示になっています。
-    post_show_list: この投稿はリストに表示されています。
+    post_hide_list: この投稿は一覧から非表示になっています。
+    post_show_list: この投稿は一覧に表示されています。
     post_reopen: この投稿は再オープンされました。
-    post_list: この投稿はリストされています。
-    post_unlist: この投稿はリストに登録されていません。
+    post_list: この投稿は一覧に表示されています。
+    post_unlist: この投稿は一覧に登録されていません。
     post_pending: Your post is awaiting review. This is a preview, it will be visible after it has been approved.
