@@ -832,7 +832,7 @@ ui:
     show_more: Visa mer
     someone: Someone
     inbox_type:
-      all: All
+      all: Alla
       posts: Inlägg
       invites: Inbjudningar
       votes: Röster
@@ -1236,7 +1236,7 @@ ui:
         length: The length needs to be between 8 and 32
         different: The passwords entered on both sides are inconsistent
     password_confirm:
-      label: Confirm new password
+      label: Bekräfta nytt lösenord
   settings:
     page_title: Inställningar
     goto_modify: Go to modify
@@ -1788,21 +1788,21 @@ ui:
       btn_cancel: Avbryt
       btn_submit: Skicka
     edit_profile_modal:
-      title: Edit profile
+      title: Redigera profil
       form:
         fields:
           display_name:
             label: Visningsnamn
             msg_range: Display name up to 30 characters.
           username:
-            label: Username
+            label: Användarnamn
             msg_range: Username up to 30 characters.
           email:
             label: Email
-            msg_invalid: Invalid Email Address.
+            msg_invalid: Ogiltig e-postadress.
       edit_success: Edited successfully
-      btn_cancel: Cancel
-      btn_submit: Submit
+      btn_cancel: Avbryt
+      btn_submit: Skicka
     user_modal:
       title: Lägg till ny användare
       form:
