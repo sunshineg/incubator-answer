@@ -34,7 +34,7 @@ backend:
       other: 重複しています
   action:
     report:
-      other: フラグ
+      other: 通報
     edit:
       other: 編集
     delete:
@@ -92,7 +92,7 @@ backend:
     rank_comment_add_label:
       other: コメントを書く
     rank_report_add_label:
-      other: フラグ
+      other: 通報
     rank_comment_vote_up_label:
       other: コメントを高評価
     rank_link_url_limit_label:
@@ -519,7 +519,7 @@ backend:
     queued_post:
       other: キューに入れられた投稿
     flagged_post:
-      other: フラグ付き投稿
+      other: 投稿を通報
     suggested_post_edit:
       other: 提案された編集
   reaction:
@@ -544,9 +544,9 @@ backend:
           other: 最初の投稿の編集
       first_flag:
         name:
-          other: 最初のフラグ
+          other: 初めての報告
         desc:
-          other: 最初のフラグが立てられた
+          other: 初めての報告
       first_upvote:
         name:
           other: はじめての高評価
@@ -2171,14 +2171,14 @@ ui:
     approve_post_tip: この投稿を承認しますか？
     approve_user_tip: このユーザーを承認しますか？
     suggest_edits: 提案された編集
-    flag_post: フラグ投稿
-    flag_user: ユーザーにフラグを付ける
+    flag_post: 報告された投稿
+    flag_user: 報告されたユーザー
     queued_post: キューに入れられた投稿
     queued_user: キューに入れられたユーザー
     filter_label: タイプ
     reputation: 評価
-    flag_post_type: この投稿に {{ type }} としてフラグを立てました。
-    flag_user_type: このユーザーに {{ type }} としてフラグを立てました。
+    flag_post_type: この投稿は {{ type }} として報告されました
+    flag_user_type: このユーザーは {{ type }} として報告されました
     edit_post: 投稿を編集
     list_post: 投稿一覧
     unlist_post: 投稿のリストを解除
