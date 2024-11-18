@@ -40,7 +40,7 @@ backend:
     delete:
       other: 削除
     close:
-      other: クローズ
+      other: 解決済み
     reopen:
       other: 再オープン
     forbidden_error:
@@ -1544,7 +1544,7 @@ ui:
     modified: 修正済み
     answered: 回答済み
     asked: 質問済み
-    closed: 終了
+    closed: 解決済み
     follow_a_tag: タグをフォロー
     more: その他
   personal:
