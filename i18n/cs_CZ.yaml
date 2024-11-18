@@ -19,114 +19,114 @@
 backend:
   base:
     success:
-      other: Success.
+      other: Úspěch.
     unknown:
-      other: Unknown error.
+      other: Neznámá chyba.
     request_format_error:
-      other: Request format is not valid.
+      other: Formát požadavku není platný.
     unauthorized_error:
-      other: Unauthorized.
+      other: Neautorizováno.
     database_error:
-      other: Data server error.
+      other: Chyba datového serveru.
     forbidden_error:
-      other: Forbidden.
+      other: Zakázáno.
     duplicate_request_error:
-      other: Duplicate submission.
+      other: Duplicitní odeslání.
   action:
     report:
-      other: Flag
+      other: Nahlásit
     edit:
-      other: Edit
+      other: Upravit
     delete:
-      other: Delete
+      other: Smazat
     close:
-      other: Close
+      other: Zavřít
     reopen:
-      other: Reopen
+      other: Znovu otevřít
     forbidden_error:
-      other: Forbidden.
+      other: Zakázáno.
     pin:
-      other: Pin
+      other: Připnout
     hide:
       other: Unlist
     unpin:
-      other: Unpin
+      other: Odepnout
     show:
       other: List
     invite_someone_to_answer:
-      other: Edit
+      other: Upravit
     undelete:
-      other: Undelete
+      other: Obnovit
   role:
     name:
       user:
-        other: User
+        other: Uživatel
       admin:
-        other: Admin
+        other: Administrátor
       moderator:
-        other: Moderator
+        other: Moderátor
     description:
       user:
-        other: Default with no special access.
+        other: Výchozí bez zvláštního přístupu.
       admin:
-        other: Have the full power to access the site.
+        other: Má plnou kontrolu nad stránkou.
       moderator:
-        other: Has access to all posts except admin settings.
+        other: Má přístup ke všem příspěvkům kromě admin nastavení.
   privilege:
     level_1:
       description:
-        other: Level 1 (less reputation required for private team, group)
+        other: Úroveň 1 (méně reputace je vyžadováno pro soukromý tým, skupinu)
     level_2:
       description:
-        other: Level 2 (low reputation required for startup community)
+        other: Úroveň 2 (nízká reputace je vyžadována pro startovací komunitu)
     level_3:
       description:
-        other: Level 3 (high reputation required for mature community)
+        other: Úroveň 3 (vysoká reputace je vyžadována pro vyspělou komunitu)
     level_custom:
       description:
-        other: Custom Level
+        other: Vlastní úroveň
     rank_question_add_label:
-      other: Ask question
+      other: Položit otázku
     rank_answer_add_label:
-      other: Write answer
+      other: Napsat odpověď
     rank_comment_add_label:
-      other: Write comment
+      other: Napsat komentář
     rank_report_add_label:
-      other: Flag
+      other: Nahlásit
     rank_comment_vote_up_label:
-      other: Upvote comment
+      other: Hlasovat pro komentář
     rank_link_url_limit_label:
-      other: Post more than 2 links at a time
+      other: Zveřejnit více než 2 odkazy najednou
     rank_question_vote_up_label:
-      other: Upvote question
+      other: Hlasovat pro otázku
     rank_answer_vote_up_label:
-      other: Upvote answer
+      other: Hlasovat pro odpověď
     rank_question_vote_down_label:
-      other: Downvote question
+      other: Hlasovat proti otázce
     rank_answer_vote_down_label:
-      other: Downvote answer
+      other: Hlasovat proti odpovědi
     rank_invite_someone_to_answer_label:
-      other: Invite someone to answer
+      other: Pozvěte někoho, aby odpověděl
     rank_tag_add_label:
-      other: Create new tag
+      other: Vytvořit nový štítek
     rank_tag_edit_label:
-      other: Edit tag description (need to review)
+      other: Upravit popis štítku (vyžaduje kontrolu)
     rank_question_edit_label:
-      other: Edit other's question (need to review)
+      other: Upravit otázku někoho jiného (vyžaduje kontrolu)
     rank_answer_edit_label:
-      other: Edit other's answer (need to review)
+      other: Upravit odpověď někoho jiného (vyžaduje kontrolu)
     rank_question_edit_without_review_label:
-      other: Edit other's question without review
+      other: Upravit otázku někoho jiného (bez kontroly)
     rank_answer_edit_without_review_label:
-      other: Edit other's answer without review
+      other: Upravit odpověď někoho jiného (bez kontroly)
     rank_question_audit_label:
-      other: Review question edits
+      other: Zkontrolovat úpravy otázek
     rank_answer_audit_label:
-      other: Review answer edits
+      other: Zkontrolovat úpravy odpovědí
     rank_tag_audit_label:
-      other: Review tag edits
+      other: Zkontrolovat úpravy štítků
     rank_tag_edit_without_review_label:
-      other: Edit tag description without review
+      other: Upravit popis štítku (bez kontroly)
     rank_tag_synonym_label:
       other: Manage tag synonyms
   email:
@@ -136,17 +136,17 @@ backend:
   password:
     other: Heslo
   pass:
-    other: Password
+    other: Heslo
   original_text:
-    other: This post
+    other: Tento příspěvek
   email_or_password_wrong_error:
-    other: Email and password do not match.
+    other: Email a heslo nesouhlasí.
   error:
     common:
       invalid_url:
-        other: Invalid URL.
+        other: Neplatná URL.
       status_invalid:
-        other: Invalid status.
+        other: Neplatný stav.
     password:
       space_invalid:
         other: Heslo nesmí obsahovat mezery.
@@ -154,7 +154,7 @@ backend:
       cannot_update_their_password:
         other: Nemůžete změnit své heslo.
       cannot_edit_their_profile:
-        other: You cannot modify your profile.
+        other: Nemůžete upravovat svůj profil.
       cannot_modify_self_status:
         other: Nemůžete změnit svůj stav.
       email_or_password_wrong:
@@ -186,71 +186,71 @@ backend:
         other: Email z této domény není povolen. Použijte jinou doménu.
     lang:
       not_found:
-        other: Language file not found.
+        other: Jazykový soubor nenalezen.
     object:
       captcha_verification_failed:
         other: Nesprávně vyplněná Captcha.
       disallow_follow:
-        other: You are not allowed to follow.
+        other: Nemáte oprávnění sledovat.
       disallow_vote:
-        other: You are not allowed to vote.
+        other: Nemáte oprávnění hlasovat.
       disallow_vote_your_self:
-        other: You can't vote for your own post.
+        other: Nemůžete hlasovat pro svůj vlastní příspěvek.
       not_found:
-        other: Object not found.
+        other: Objekt nenalezen.
       verification_failed:
-        other: Verification failed.
+        other: Ověření se nezdařilo.
       email_or_password_incorrect:
-        other: Email and password do not match.
+        other: Email a heslo nesouhlasí.
       old_password_verification_failed:
-        other: The old password verification failed
+        other: Ověření starého hesla selhalo
       new_password_same_as_previous_setting:
-        other: The new password is the same as the previous one.
+        other: Nové heslo je stejné jako předchozí.
       already_deleted:
-        other: This post has been deleted.
+        other: Tento příspěvek byl odstraněn.
     meta:
       object_not_found:
-        other: Meta object not found
+        other: Meta objekt nenalezen
     question:
       already_deleted:
-        other: This post has been deleted.
+        other: Tento příspěvek byl odstraněn.
       under_review:
-        other: Your post is awaiting review. It will be visible after it has been approved.
+        other: Váš příspěvek čeká na kontrolu. Bude viditelný po jeho schválení.
       not_found:
-        other: Question not found.
+        other: Otázka nenalezena.
       cannot_deleted:
-        other: No permission to delete.
+        other: Nemáte oprávnění k mazání.
       cannot_close:
-        other: No permission to close.
+        other: Nemáte oprávnění k uzavření.
       cannot_update:
-        other: No permission to update.
+        other: Nemáte oprávnění pro aktualizaci.
     rank:
       fail_to_meet_the_condition:
-        other: Reputation rank fail to meet the condition.
+        other: Hodnost reputace nesplňuje podmínku.
       vote_fail_to_meet_the_condition:
-        other: Thanks for the feedback. You need at least {{.Rank}} reputation to cast a vote.
+        other: Děkujeme za zpětnou vazbu. Potřebujete alespoň úroveň {{.Rank}} , abyste mohli hlasovat.
       no_enough_rank_to_operate:
-        other: You need at least {{.Rank}} reputation to do this.
+        other: Potřebujete alespoň úroveň {{.Rank}} k provedení této akce.
     report:
       handle_failed:
-        other: Report handle failed.
+        other: Report selhal.
       not_found:
-        other: Report not found.
+        other: Report nebyl nalezen.
     tag:
       already_exist:
-        other: Tag already exists.
+        other: Štítek již existuje.
       not_found:
-        other: Tag not found.
+        other: Štítek nebyl nalezen.
       recommend_tag_not_found:
-        other: Recommend tag is not exist.
+        other: Doporučený štítek nebyl nalezen.
       recommend_tag_enter:
-        other: Please enter at least one required tag.
+        other: Zadejte prosím alespoň jeden povinný štítek.
       not_contain_synonym_tags:
-        other: Should not contain synonym tags.
+        other: Nemělo by obsahovat synonyma štítků.
       cannot_update:
-        other: No permission to update.
+        other: Nemáte oprávnění pro aktualizaci.
       is_used_cannot_delete:
-        other: You cannot delete a tag that is in use.
+        other: Nemůžete odstranit štítek, který se používá.
       cannot_set_synonym_as_itself:
         other: You cannot set the synonym of the current tag as itself.
     smtp:
@@ -258,12 +258,12 @@ backend:
         other: The from name cannot be a email address.
     theme:
       not_found:
-        other: Theme not found.
+        other: Motiv nebyl nalezen.
     revision:
       review_underway:
         other: Can't edit currently, there is a version in the review queue.
       no_permission:
-        other: No permission to revise.
+        other: Nemáte oprávnění k revizi.
     user:
       external_login_missing_user_id:
         other: The third-party platform does not provide a unique UserID, so you cannot login, please contact the website administrator.
@@ -271,17 +271,17 @@ backend:
         other: Please set a login password for your account before you remove this login.
       email_or_password_wrong:
         other:
-          other: Email and password do not match.
+          other: Email a heslo nesouhlasí.
       not_found:
-        other: User not found.
+        other: Uživatel nebyl nalezen.
       suspended:
-        other: User has been suspended.
+        other: Uživatelský účet byl pozastaven.
       username_invalid:
-        other: Username is invalid.
+        other: Uživatelské jméno je neplatné.
       username_duplicate:
-        other: Username is already in use.
+        other: Uživatelské jméno je již použito.
       set_avatar:
-        other: Avatar set failed.
+        other: Nastavení avataru se nezdařilo.
       cannot_update_your_role:
         other: You cannot modify your role.
       not_allowed_registration:
@@ -333,42 +333,42 @@ backend:
       desc:
         other: This question has been asked before and already has an answer.
       placeholder:
-        other: Enter the existing question link
+        other: Zadejte existující odkaz na otázku
     not_a_answer:
       name:
-        other: not an answer
+        other: není odpověď
       desc:
         other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
     no_longer_needed:
       name:
-        other: no longer needed
+        other: již není potřeba
       desc:
-        other: This comment is outdated, conversational or not relevant to this post.
+        other: Tento komentář je zastaralý, konverzační nebo není relevantní pro tento příspěvek.
     something:
       name:
-        other: something else
+        other: jiný důvod
       desc:
-        other: This post requires staff attention for another reason not listed above.
+        other: Tento příspěvek vyžaduje pozornost moderátorů z jiného důvodu, který není uveden výše.
       placeholder:
-        other: Let us know specifically what you are concerned about
+        other: Dejte nám vědět konkrétně, v čem je problém
     community_specific:
       name:
-        other: a community-specific reason
+        other: důvod specifický pro komunitu
       desc:
-        other: This question doesn't meet a community guideline.
+        other: Tato otázka nesplňuje pravidla komunity.
     not_clarity:
       name:
-        other: needs details or clarity
+        other: vyžaduje detaily nebo upřesnění
       desc:
-        other: This question currently includes multiple questions in one. It should focus on one problem only.
+        other: Tato otázka v současné době obsahuje více otázek. Měla by se zaměřit pouze na jeden problém.
     looks_ok:
       name:
-        other: looks OK
+        other: vypadá v pořádku
       desc:
-        other: This post is good as-is and not low quality.
+        other: Tento příspěvek je dobrý tak jak je, nemá nízkou kvalitu.
     needs_edit:
       name:
-        other: needs edit, and I did it
+        other: potřebuje úpravu, kterou jsem udělal(a)
       desc:
         other: Improve and correct problems with this post yourself.
     needs_close:
@@ -400,7 +400,7 @@ backend:
           other: This question currently includes multiple questions in one. It should focus on one problem only.
       other:
         name:
-          other: something else
+          other: jiný důvod
         desc:
           other: This post requires another reason not listed above.
     operation_type:
