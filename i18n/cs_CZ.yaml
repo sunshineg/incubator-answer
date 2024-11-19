@@ -504,11 +504,11 @@ backend:
     upvote:
       other: hlasovat pro
     upvoted:
-      other: upvoted
+      other: hlasováno pro
     downvote:
-      other: downvote
+      other: hlasovat proti
     downvoted:
-      other: downvoted
+      other: hlasováno proti
     accept:
       other: přijmout
     accepted:
@@ -631,12 +631,12 @@ backend:
         name:
           other: Promotér
         desc:
-          other: Invited a user.
+          other: Pozval(a) uživatele.
       campaigner:
         name:
           other: Campaigner
         desc:
-          other: Invited 3 basic users.
+          other: Pozval(a) 3 uživatele.
       champion:
         name:
           other: Champion
