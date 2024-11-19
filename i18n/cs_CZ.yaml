@@ -48,11 +48,11 @@ backend:
     pin:
       other: Připnout
     hide:
-      other: Unlist
+      other: Skrýt
     unpin:
       other: Odepnout
     show:
-      other: List
+      other: Zobrazit
     invite_someone_to_answer:
       other: Upravit
     undelete:
@@ -128,7 +128,7 @@ backend:
     rank_tag_edit_without_review_label:
       other: Upravit popis štítku (bez kontroly)
     rank_tag_synonym_label:
-      other: Manage tag synonyms
+      other: Správa synonym štítků
   email:
     other: Email
   e_mail:
@@ -252,23 +252,23 @@ backend:
       is_used_cannot_delete:
         other: Nemůžete odstranit štítek, který se používá.
       cannot_set_synonym_as_itself:
-        other: You cannot set the synonym of the current tag as itself.
+        other: Aktuální štítek nelze jako synonymum stejného štítku.
     smtp:
       config_from_name_cannot_be_email:
-        other: The from name cannot be a email address.
+        other: Jméno odesílatele nemůže být e-mailová adresa.
     theme:
       not_found:
         other: Motiv nebyl nalezen.
     revision:
       review_underway:
-        other: Can't edit currently, there is a version in the review queue.
+        other: V současné době nelze upravit, čelá na kontrolu.
       no_permission:
         other: Nemáte oprávnění k revizi.
     user:
       external_login_missing_user_id:
-        other: The third-party platform does not provide a unique UserID, so you cannot login, please contact the website administrator.
+        other: Platforma třetí strany neposkytuje unikátní UserID, takže se nemůžete přihlásit, kontaktujte prosím správce webových stránek.
       external_login_unbinding_forbidden:
-        other: Please set a login password for your account before you remove this login.
+        other: Před odebráním tohoto typu přihlášení nastavte přihlašovací heslo pro svůj účet.
       email_or_password_wrong:
         other:
           other: Email a heslo nesouhlasí.
@@ -283,17 +283,17 @@ backend:
       set_avatar:
         other: Nastavení avataru se nezdařilo.
       cannot_update_your_role:
-        other: You cannot modify your role.
+        other: Nemůžete upravovat svoji roli.
       not_allowed_registration:
-        other: Currently the site is not open for registration.
+        other: Registrace nejsou povolené.
       not_allowed_login_via_password:
-        other: Currently the site is not allowed to login via password.
+        other: Přihlášení přes heslo není povolené.
       access_denied:
-        other: Access denied
+        other: Přístup zamítnut
       page_access_denied:
-        other: You do not have access to this page.
+        other: Nemáte přístup k této stránce.
       add_bulk_users_format_error:
-        other: "Error {{.Field}} format near '{{.Content}}' at line {{.Line}}. {{.ExtraMessage}}"
+        other: "Chyba formátu pole {{.Field}} poblíž '{{.Content}}' na řádku {{.Line}}. {{.ExtraMessage}}"
       add_bulk_users_amount_error:
         other: "The number of users you add at once should be in the range of 1-{{.MaxAmount}}."
     config:
