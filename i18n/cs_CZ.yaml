@@ -510,51 +510,51 @@ backend:
     downvoted:
       other: downvoted
     accept:
-      other: accept
+      other: přijmout
     accepted:
-      other: accepted
+      other: přijato
     edit:
-      other: edit
+      other: upravit
   review:
     queued_post:
-      other: Queued post
+      other: Příspěvek ve frontě
     flagged_post:
-      other: Flagged post
+      other: Nahlášený příspěvek
     suggested_post_edit:
-      other: Suggested edits
+      other: Navrhované úpravy
   reaction:
     tooltip:
-      other: "{{ .Names }} and {{ .Count }} more..."
+      other: "{{ .Names }} a {{ .Count }} dalších..."
   badge:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Životopisec
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: <a href="{{ .ProfileURL }}" target="_blank">Profil</a> vyplněn.
       certified:
         name:
-          other: Certified
+          other: Certifikovaný
         desc:
-          other: Completed our new user tutorial.
+          other: Tutoriál pro nové uživatele dokončen.
       editor:
         name:
           other: Editor
         desc:
-          other: First post edit.
+          other: První úprava příspěvku.
       first_flag:
         name:
-          other: First Flag
+          other: První nahlášení
         desc:
-          other: First flagged a post.
+          other: První nahlášení příspěvku.
       first_upvote:
         name:
-          other: First Upvote
+          other: První hlas pro
         desc:
-          other: First up voted a post.
+          other: První hlas pro příspěvek.
       first_link:
         name:
-          other: First Link
+          other: První odkaz
         desc:
           other: First dirst added a link to another post.
       first_reaction:
@@ -564,9 +564,9 @@ backend:
           other: First reacted to the post.
       first_share:
         name:
-          other: First Share
+          other: První sdílení
         desc:
-          other: First shared a post.
+          other: První sdílení příspěvku.
       scholar:
         name:
           other: Scholar
