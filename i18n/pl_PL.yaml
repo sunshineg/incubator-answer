@@ -315,7 +315,7 @@ backend:
         other: Nie znaleziono konfiguracji strony.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Nie znaleziono obiektu odznaki
   reason:
     spam:
       name:
@@ -326,7 +326,7 @@ backend:
       name:
         other: niegrzeczny lub obraźliwy
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Rozsądna osoba uznałaby tę treść za nieodpowiednią do dyskusji opartej na szacunku."
     a_duplicate:
       name:
         other: duplikat
@@ -338,7 +338,7 @@ backend:
       name:
         other: nie jest odpowiedzią
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Ta wiadomość została zamieszczona jako odpowiedź, ale nie próbuje odpowiedzieć na pytanie. Powinna być prawdopodobnie edycją, komentarzem, kolejnym pytaniem lub całkowicie usunięta."
     no_longer_needed:
       name:
         other: nie jest już potrzebne
@@ -397,7 +397,7 @@ backend:
         name:
           other: wymaga szczegółów lub wyjaśnienia
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: To pytanie obecnie zawiera wiele pytań w jednym. Powinno się skupić tylko na jednym problemie.
       other:
         name:
           other: coś innego
@@ -458,7 +458,7 @@ backend:
       invited_you_to_answer:
         other: zaproszono Cię do odpowiedzi
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Zdobyłeś odznakę "{{.BadgeName}}"
   email_tpl:
     change_email:
       title:
@@ -531,7 +531,7 @@ backend:
         name:
           other: Autobiografista
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Wypełniono informacje <a href="{{ .ProfileURL }}" target="_blank">profil</a>.
       certified:
         name:
           other: Certyfikowany
@@ -541,12 +541,12 @@ backend:
         name:
           other: Edytor
         desc:
-          other: First post edit.
+          other: Pierwsza edycja posta.
       first_flag:
         name:
           other: Pierwsza flaga
         desc:
-          other: First flagged a post.
+          other: Po raz pierwszy oznaczono post.
       first_upvote:
         name:
           other: Pierwszy pozytywny głos
