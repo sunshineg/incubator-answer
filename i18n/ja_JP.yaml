@@ -2010,7 +2010,7 @@ ui:
       page_title: 編集
       restrict_answer:
         title: 回答を書く
-        label: Each user can only write one answer for each question
+        label: 各ユーザーは同じ質問に対して1つの回答しか書けません
         text: "ユーザが同じ質問に複数の回答を書き込めるようにするにはオフにします。これにより回答がフォーカスされていない可能性があります。"
       recommend_tags:
         label: おすすめタグ
