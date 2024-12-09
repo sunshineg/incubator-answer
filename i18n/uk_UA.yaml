@@ -464,42 +464,42 @@ backend:
       title:
         other: "[{{.SiteName}}] Підтвердіть нову адресу електронної пошти"
       body:
-        other: "Підтвердіть нову електронну адресу для {{.SiteName}}, натиснувши на наступне посилання:<br><a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nЯкщо ви не надсилали запит на цю зміну, не звертайте уваги на цей електронний лист.\n"
+        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} відповів(-ла) на ваше запитання"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>Переглянути на {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Відписатися</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} запросив(-ла) вас відповісти"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>Я думаю, ти маєш знати відповідь.</blockquote><br>\n<a href='{{.InviteUrl}}'>Переглянути на {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Відписатися</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} прокоментували ваш допис"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>Переглянути на {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Відписатися</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] Нове питання: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Відписатися</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Скидання пароля"
       body:
-        other: "Хтось попросив скинути ваш пароль на сайті {{.SiteName}}.<br><br>\n\nЯкщо це були не ви, можете спокійно проігнорувати цей електронний лист.<br><br>\n\nНатисніть це посилання, щоб вибрати новий пароль:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n"
+        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
     register:
       title:
         other: "[{{.SiteName}}] Підтвердьте свій новий обліковий запис"
       body:
-        other: "Вітаємо на {{.SiteName}}!<br><br>\n\nНатисніть це посилання, щоб підтвердити й активувати свій новий обліковий запис:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nЯкщо наведене вище посилання не можна натиснути, спробуйте скопіювати та вставити його в адресний рядок веб-переглядача.\n"
+        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
     test:
       title:
         other: "[{{.SiteName}}] Тестовий електронний лист"
       body:
-        other: "Це тестовий електронний лист."
+        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
   action_activity_type:
     upvote:
       other: підтримати
@@ -787,7 +787,7 @@ ui:
   how_to_format:
     title: Як відформатувати
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">посилання питання або відповідь: <code>#10010000000000001</code></p></li> <li><p class="mb-2">для створення посилань</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">вставляти повернення між абзацами</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">відступ коду на 4 пробіли</p></li><li><p class="mb-2">цитувати, розмістивши <code>&gt;</code> на початку лінії</p></li><li><p class="mb-2">втечі бектіка <code>`like _this_`</code></p></li><li><p class="mb-2">створювати огорожі коду за допомогою бектіків <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
     prev: Назад
     next: Далі
@@ -904,7 +904,7 @@ ui:
             msg:
               empty: Файл не може бути порожнім.
               only_image: Допустимі лише файли зображень.
-              max_size: Розмір файлу не може перевищувати 4 МБ.
+              max_size: File size cannot exceed {{size}} MB.
           desc:
             label: Опис
       tab_url: URL зображення
@@ -946,6 +946,10 @@ ui:
       text: Таблиця
       heading: Заголовок
       cell: Клітинка
+    file:
+      text: Attach files
+      not_supported: "Don’t support that file type. Try again with {{file_type}}."
+      max_size: "Attach files size cannot exceed {{size}} MB."
   close_modal:
     title: Я закриваю цей пост, оскільки...
     btn_cancel: Скасувати
@@ -1086,6 +1090,7 @@ ui:
     search_placeholder: Фільтрувати за назвою теґу
     no_desc: Цей теґ не має опису.
     more: Більше
+    wiki: Wiki
   ask:
     title: Додати питання
     edit_title: Редагувати питання
@@ -1522,6 +1527,7 @@ ui:
     newest: Найновіші
     active: Активні
     hot: Гаряче
+    frequent: Frequent
     recommend: Рекомендовано
     score: Оцінка
     unanswered: Без відповідей
@@ -1721,6 +1727,8 @@ ui:
       welcome: Ласкаво просимо до адміністратора!
       site_statistics: Статистика сайту
       questions: "Запитання:"
+      resolved: "Resolved:"
+      unanswered: "Unanswered:"
       answers: "Відповіді:"
       comments: "Коментарі:"
       votes: "Голоси:"
@@ -2008,6 +2016,21 @@ ui:
       reserved_tags:
         label: Зарезервовані теги
         text: "Зарезервовані теги можуть використовуватися лише модератором."
+      image_size:
+        label: Max image size (MB)
+        text: "The maximum image upload size."
+      attachment_size:
+        label: Max attachment size (MB)
+        text: "The maximum attachment files upload size."
+      image_megapixels:
+        label: Max image megapixels
+        text: "Maximum number of megapixels allowed for an image."
+      image_extensions:
+        label: Authorized image extensions
+        text: "A list of file extensions allowed for image display, separate with commas."
+      attachment_extensions:
+        label: Authorized attachment extensions
+        text: "A list of file extensions allowed for upload, separate with commas. WARNING: Allowing uploads may cause security issues."
     seo:
       page_title: SEO
       permalink:
@@ -2211,6 +2234,7 @@ ui:
     discard_confirm: Ви дійсно бажаєте скасувати чернетку?
   messages:
     post_deleted: Цей допис було видалено.
+    post_cancel_deleted: This post has been undeleted.
     post_pin: Цей допис було закріплено.
     post_unpin: Цей допис було відкріплено.
     post_hide_list: Цей допис було приховано зі списку.
@@ -2219,3 +2243,15 @@ ui:
     post_list: Цей допис було додано до списку.
     post_unlist: Цей допис було приховано.
     post_pending: Ваш допис очікує на розгляд. Це попередній перегляд, його буде видно після того, як його буде схвалено.
+    post_closed: This post has been closed.
+    answer_deleted: This answer has been deleted.
+    answer_cancel_deleted: This answer has been undeleted.
+    change_user_role: This user's role has been changed.
+    user_inactive: This user is already inactive.
+    user_normal: This user is already normal.
+    user_suspended: This user has been suspended.
+    user_deleted: This user has been deleted.
+    badge_activated: This badge has been activated.
+    badge_inactivated: This badge has been inactivated.
+
+
