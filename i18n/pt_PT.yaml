@@ -904,7 +904,7 @@ ui:
             msg:
               empty: Arquivo não pode ser vazio.
               only_image: Somente um arquivo de imagem é permitido.
-              max_size: File size cannot exceed {{size}} MB.
+              max_size: O tamanho do arquivo não pode exceder {{size}} MB.
           desc:
             label: Descrição (opcional)
       tab_url: URL da imagem
@@ -947,7 +947,7 @@ ui:
       heading: heading
       cell: Célula
     file:
-      text: Attach files
+      text: Anexar arquivos
       not_supported: "Don’t support that file type. Try again with {{file_type}}."
       max_size: "Attach files size cannot exceed {{size}} MB."
   close_modal:
@@ -2023,14 +2023,14 @@ ui:
         label: Tamanho máximo do anexo (MB)
         text: "The maximum attachment files upload size."
       image_megapixels:
-        label: Max image megapixels
-        text: "Maximum number of megapixels allowed for an image."
+        label: Máx megapíxeis da imagem
+        text: "Número máximo de megapixels permitido para uma imagem."
       image_extensions:
-        label: Authorized image extensions
+        label: Extensões de imagens autorizadas
         text: "A list of file extensions allowed for image display, separate with commas."
       attachment_extensions:
-        label: Authorized attachment extensions
-        text: "A list of file extensions allowed for upload, separate with commas. WARNING: Allowing uploads may cause security issues."
+        label: Extensão autorizada para anexos
+        text: "Uma lista de extensões de arquivo permitidas para upload, separar com vírgulas. AVISO: permitir uploads pode causar problemas de segurança."
     seo:
       page_title: SEO
       permalink:
@@ -2234,7 +2234,7 @@ ui:
     discard_confirm: Tem certeza que deseja descartar o rascunho?
   messages:
     post_deleted: Esta publicação foi removida.
-    post_cancel_deleted: This post has been undeleted.
+    post_cancel_deleted: Esta postagem foi restaurada.
     post_pin: Esta publicação foi fixada.
     post_unpin: Esta postagem foi desafixada.
     post_hide_list: Esta postagem foi ocultada da lista.
@@ -2243,15 +2243,15 @@ ui:
     post_list: Esta postagem foi listada.
     post_unlist: Esta publicação foi removida da lista.
     post_pending: A sua postagem está aguardando revisão. Ela ficará visível depois que for aprovada.
-    post_closed: This post has been closed.
-    answer_deleted: This answer has been deleted.
-    answer_cancel_deleted: This answer has been undeleted.
+    post_closed: Esta postagem foi fechada.
+    answer_deleted: Esta resposta foi excluída.
+    answer_cancel_deleted: Esta resposta foi restaurada.
     change_user_role: This user's role has been changed.
-    user_inactive: This user is already inactive.
-    user_normal: This user is already normal.
-    user_suspended: This user has been suspended.
-    user_deleted: This user has been deleted.
-    badge_activated: This badge has been activated.
+    user_inactive: Este usuário já está inativo.
+    user_normal: Este usuário já está normal.
+    user_suspended: Este usuário foi suspenso.
+    user_deleted: Este usuário foi excluído.
+    badge_activated: Este emblema foi ativado.
     badge_inactivated: Este emblema foi desativado.
 
 
