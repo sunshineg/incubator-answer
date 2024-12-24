@@ -62,7 +62,7 @@ backend:
       user:
         other: Utilisateur
       admin:
-        other: Admin
+        other: Administrateur
       moderator:
         other: Modérateur
     description:
@@ -1614,7 +1614,7 @@ ui:
     site_name:
       label: Nom du site
       msg: Le nom ne peut pas être vide.
-      msg_max_length: Le nom affiché doit avoir une longueur de 2 à 30 caractères.
+      msg_max_length: Le nom affiché doit avoir une longueur de 4 à 30 caractères.
     site_url:
       label: URL du site
       text: L'adresse de ce site.
@@ -1822,7 +1822,7 @@ ui:
             msg: "Veuillez entrer l'email de l'utilisateur, un par ligne."
           display_name:
             label: Nom affiché
-            msg: Le nom affiché doit avoir une longueur de 2 à 30 caractères.
+            msg: Display name must be 2-30 characters in length.
           email:
             label: Email
             msg: L'email n'est pas valide.
