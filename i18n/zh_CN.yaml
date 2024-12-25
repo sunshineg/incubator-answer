@@ -1714,7 +1714,7 @@ ui:
       close: 关闭
       confirm: 查看徽章
     title: 徽章
-    awarded: 授予的
+    awarded: 授予
     earned_×: 以获得 ×{{ number }}
     ×_awarded: "{{ number }} 得到"
     can_earn_multiple: 你可以多次获得
