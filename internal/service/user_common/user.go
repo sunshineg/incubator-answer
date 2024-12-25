@@ -141,6 +141,7 @@ func (us *UserCommon) UpdateQuestionCount(ctx context.Context, userID string, nu
 }
 
 func (us *UserCommon) BatchUserBasicInfoByID(ctx context.Context, userIDs []string) (map[string]*schema.UserBasicInfo, error) {
+	userIDs = checker.FilterEmptyString(userIDs)
 	userMap := make(map[string]*schema.UserBasicInfo)
 	if len(userIDs) == 0 {
 		return userMap, nil
