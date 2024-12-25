@@ -138,15 +138,15 @@ backend:
   pass:
     other: Mot de passe
   original_text:
-    other: This post
+    other: Ce message
   email_or_password_wrong_error:
     other: L'email et le mot de passe ne correspondent pas.
   error:
     common:
       invalid_url:
-        other: Invalid URL.
+        other: URL invalide.
       status_invalid:
-        other: Invalid status.
+        other: Statut invalide.
     password:
       space_invalid:
         other: Le mot de passe ne doit pas comporter d'espaces.
@@ -154,7 +154,7 @@ backend:
       cannot_update_their_password:
         other: Vous ne pouvez pas modifier votre mot de passe.
       cannot_edit_their_profile:
-        other: You cannot modify your profile.
+        other: Vous ne pouvez pas modifier votre profil.
       cannot_modify_self_status:
         other: Vous ne pouvez pas modifier votre statut.
       email_or_password_wrong:
@@ -207,15 +207,15 @@ backend:
       new_password_same_as_previous_setting:
         other: Le nouveau mot de passe est le même que le précédent.
       already_deleted:
-        other: This post has been deleted.
+        other: Ce message a été supprimé.
     meta:
       object_not_found:
-        other: Meta object not found
+        other: Méta objet introuvable
     question:
       already_deleted:
         other: Ce message a été supprimé.
       under_review:
-        other: Your post is awaiting review. It will be visible after it has been approved.
+        other: Votre message est en attente de révision. Il sera visible une fois approuvé.
       not_found:
         other: Question non trouvée.
       cannot_deleted:
@@ -293,7 +293,7 @@ backend:
       page_access_denied:
         other: Vous n'avez pas accès à cette page.
       add_bulk_users_format_error:
-        other: "Error {{.Field}} format near '{{.Content}}' at line {{.Line}}. {{.ExtraMessage}}"
+        other: "Erreur format {{.Field}} près de '{{.Content}}' à la ligne {{.Line}}. {{.ExtraMessage}}"
       add_bulk_users_amount_error:
         other: "Le nombre d'utilisateurs que vous ajoutez simultanément doit être compris entre 1-{{.MaxAmount}}."
     config:
@@ -315,18 +315,18 @@ backend:
         other: Configuration du site introuvable.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Objet badge introuvable
   reason:
     spam:
       name:
-        other: spam
+        other: courrier indésirable
       desc:
         other: Ce message est une publicité ou un vandalisme. Il n'est pas utile ou pertinent pour le sujet actuel.
     rude_or_abusive:
       name:
         other: grossier ou abusif
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Une personne raisonnable trouverait ce contenu inapproprié pour un discours respectueux."
     a_duplicate:
       name:
         other: un doublon
@@ -338,7 +338,7 @@ backend:
       name:
         other: n'est pas une réponse
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Cela a été posté comme une réponse, mais il n'essaie pas de répondre à la question. Il devrait s'agir d'un commentaire, d'une autre question, ou devrait être supprimé totalement."
     no_longer_needed:
       name:
         other: ce n’est plus nécessaire
@@ -385,7 +385,7 @@ backend:
     close:
       duplicate:
         name:
-          other: spam
+          other: courrier indésirable
         desc:
           other: Cette question a déjà été posée auparavant et a déjà une réponse.
       guideline:
@@ -397,7 +397,7 @@ backend:
         name:
           other: a besoin de détails ou de clarté
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: Cette question comprend actuellement plusieurs questions en une seule. Elle ne devrait se concentrer que sur un seul problème.
       other:
         name:
           other: quelque chose d'autre
@@ -416,9 +416,9 @@ backend:
       other: Questions
   tag:
     tags_title:
-      other: Tags
+      other: Étiquettes
     no_description:
-      other: The tag has no description.
+      other: L'étiquette n'a pas de description.
   notification:
     action:
       update_question:
@@ -446,102 +446,102 @@ backend:
       your_comment_was_deleted:
         other: Votre commentaire a été supprimé
       up_voted_question:
-        other: upvoted question
+        other: question approuvée
       down_voted_question:
-        other: downvoted question
+        other: question défavorisée
       up_voted_answer:
         other: voter favorablement la réponse
       down_voted_answer:
-        other: downvoted answer
+        other: réponse défavorisée
       up_voted_comment:
-        other: upvoted comment
+        other: commentaire approuvé
       invited_you_to_answer:
         other: vous invite à répondre
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Vous avez gagné le badge "{{.BadgeName}}"
   email_tpl:
     change_email:
       title:
         other: "[{{.SiteName}}] Confirmez votre nouvelle adresse e-mail"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Confirmez votre nouvelle adresse électronique pour {{.SiteName}} en cliquant sur le lien suivant :<br>\\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\\n\\nSi vous n'avez pas demandé ce changement, veuillez ignorer cet e-mail.<br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} a répondu à votre question"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\\n\\n{{.DisplayName}}:<br>\\n<blockquote>{{.AnswerSummary}}</blockquote><br>\\n<a href='{{.AnswerUrl}}'>Voir sur {{.SiteName}}</a><br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue.<br><br>\\n\\n<small><a href='{{.UnsubscribeUrl}}'>Désabonner</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} vous a invité à répondre"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\\n\\n{{.DisplayName}}:<br>\\n<blockquote>Je pense que vous pourriez connaître la réponse.</blockquote><br>\\n<a href='{{.InviteUrl}}'>Voir sur {{.SiteName}}</a><br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue.<br><br>\\n\\n<small><a href='{{.UnsubscribeUrl}}'>Désabonner</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} a commenté votre message"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\\n\\n{{.DisplayName}}:<br>\\n<blockquote>{{.CommentSummary}}</blockquote><br>\\n<a href='{{.CommentUrl}}'>Voir sur {{.SiteName}}</a><br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue.<br><br>\\n\\n<small><a href='{{.UnsubscribeUrl}}'>Désabonner</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] Nouvelle question : {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\\n<small>{{.Tags}}</small><br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue.<br><br>\\n\\n<a href='{{.UnsubscribeUrl}}'>Désabonner</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Réinitialisation du mot de passe"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Quelqu'un a demandé à réinitialiser votre mot de passe sur {{.SiteName}}.<br><br>\\n\\nSi ce n'était pas vous, vous pouvez ignorer cet e-mail en toute sécurité.<br><br>\\n\\nCliquez sur le lien suivant pour choisir un nouveau mot de passe :<br>\\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\\n<br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue."
     register:
       title:
         other: "[{{.SiteName}}] Confirmez la création de votre compte"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Bienvenue sur {{.SiteName}}!<br><br>\\n\\nCliquez sur le lien suivant pour confirmer et activer votre nouveau compte :<br>\\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\\n\\nSi le lien ci-dessus n'est pas cliquable, essayez de le copier et de le coller dans la barre d'adresse de votre navigateur web.<br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue."
     test:
       title:
         other: "[{{.SiteName}}] Email de test"
       body:
-        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Ceci est un e-mail de test.<br><br>\\n\\n--<br>\\nNote : Ceci est un e-mail automatisé du système, merci de ne pas répondre à ce message car votre réponse ne sera pas vue."
   action_activity_type:
     upvote:
-      other: upvote
+      other: vote positif
     upvoted:
-      other: upvoted
+      other: voté pour
     downvote:
-      other: downvote
+      other: voter contre
     downvoted:
-      other: downvoted
+      other: voté contre
     accept:
       other: accepter
     accepted:
       other: accepté
     edit:
-      other: edit
+      other: éditer
   review:
     queued_post:
-      other: Queued post
+      other: Message en file d'attente
     flagged_post:
-      other: Flagged post
+      other: Message signalé
     suggested_post_edit:
-      other: Suggested edits
+      other: Modifications suggérées
   reaction:
     tooltip:
-      other: "{{ .Names }} and {{ .Count }} more..."
+      other: "{{ .Names }} et {{ .Count }} de plus..."
   badge:
     default_badges:
       autobiographer:
         name:
           other: Autobiographer
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Informations sur le <a href="{{ .ProfileURL }}" target="_blank">profil</a>.
       certified:
         name:
-          other: Certified
+          other: Certifié
         desc:
-          other: Completed our new user tutorial.
+          other: Nous avons terminé notre nouveau tutoriel d'utilisation.
       editor:
         name:
-          other: Editor
+          other: Éditeur
         desc:
-          other: First post edit.
+          other: Première modification du message.
       first_flag:
         name:
           other: First Flag
