@@ -138,7 +138,7 @@ backend:
   pass:
     other: Mot de passe
   original_text:
-    other: Ce message
+    other: Ce post
   email_or_password_wrong_error:
     other: L'email et le mot de passe ne correspondent pas.
   error:
@@ -207,7 +207,7 @@ backend:
       new_password_same_as_previous_setting:
         other: Le nouveau mot de passe est le même que le précédent.
       already_deleted:
-        other: Ce message a été supprimé.
+        other: Ce post a été supprimé.
     meta:
       object_not_found:
         other: Méta objet introuvable
@@ -517,9 +517,9 @@ backend:
       other: éditer
   review:
     queued_post:
-      other: Message en file d'attente
+      other: Post en file d'attente
     flagged_post:
-      other: Message signalé
+      other: Signaler post
     suggested_post_edit:
       other: Modifications suggérées
   reaction:
@@ -541,32 +541,32 @@ backend:
         name:
           other: Éditeur
         desc:
-          other: Première modification du message.
+          other: Première modification du post.
       first_flag:
         name:
           other: Premier drapeau
         desc:
-          other: Premier a signalé un message.
+          other: Premier a signalé un post.
       first_upvote:
         name:
           other: Premier vote positif
         desc:
-          other: Premier a signalé un message.
+          other: Premier a signalé un post.
       first_link:
         name:
           other: Premier lien
         desc:
-          other: La première saleté a ajouté un lien vers un autre message.
+          other: La première saleté a ajouté un lien vers un autre post.
       first_reaction:
         name:
           other: Première réaction
         desc:
-          other: Première réaction au message.
+          other: Première réaction au post.
       first_share:
         name:
           other: Premier partage
         desc:
-          other: Premier message partagé.
+          other: Premier post partagé.
       scholar:
         name:
           other: Érudit
@@ -681,12 +681,12 @@ backend:
         name:
           other: Apprécié
         desc:
-          other: A reçu 1 vote positif sur 20 messages.
+          other: A reçu 1 vote positif sur 20 posts.
       respected:
         name:
           other: Respecté
         desc:
-          other: A reçu 2 vote positif sur 100 messages.
+          other: A reçu 2 vote positif sur 100 posts.
       admired:
         name:
           other: Admirée
@@ -787,7 +787,7 @@ ui:
   how_to_format:
     title: Comment mettre en forme
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">mentionner un post: <code>#post_id</code></p></li><li><p class="mb-2">Pour faire des liens</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">mettre des retour entre les paragraphes</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>gras</strong>**</p></li><li><p class="mb-2">indenter le code par 4 espaces</p></li><li><p class="mb-2">citation en plaçant <code>&gt;</code> au début de la ligne</p></li><li><p class="mb-2">guillemets inversés <code>`comme_ca_`</code></p></li><li><p class="mb-2">créer une banière de code avec les guillemets inversés <code>`</code></p><pre class="mb-0"><code>```<br/>code ici<br/>```</code></pre></li></ul>
   pagination:
     prev: Préc
     next: Suivant
@@ -982,7 +982,7 @@ ui:
             empty: Le nom d'affichage ne peut être vide.
             range: Le nom doit contenir moins de 35 caractères.
         slug_name:
-          label: URL slug
+          label: Limace d'URL
           desc: Titre de 35 caractères maximum.
           msg:
             empty: L'URL ne peut pas être vide.
@@ -1038,7 +1038,7 @@ ui:
     hours: heures
     days: jours
   reaction:
-    heart: heart
+    heart: cœur
     smile: sourire
     frown: froncer les sourcils
     btn_label: ajout et suppression de réactions
@@ -1650,7 +1650,7 @@ ui:
       msg:
         empty: L'email ne peut pas être vide.
         incorrect: Le format de l'email est incorrect.
-    ready_title: Your site is ready
+    ready_title: Votre site est prêt
     ready_desc: >-
       Si vous avez envie de changer plus de paramètres, visitez la <1>section admin</1>; retrouvez la dans le menu du site.
     good_luck: "Amusez-vous et bonne chance !"
@@ -1709,34 +1709,34 @@ ui:
     login_failed_email_tip: La connexion a échoué, veuillez autoriser cette application à accéder à vos informations de messagerie avant de réessayer.
   badges:
     modal:
-      title: Congratulations
-      content: You've earned a new badge.
-      close: Close
-      confirm: View badges
+      title: Félicitations
+      content: Vous avez gagné un nouveau badge.
+      close: Fermer
+      confirm: Voir les badges
     title: Badges
-    awarded: Awarded
-    earned_×: Earned ×{{ number }}
-    ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: You can earn this multiple times.
-    earned: Earned
+    awarded: Octroyé
+    earned_×: Gagné ×{{ number }}
+    ×_awarded: "{{ number }} octroyés"
+    can_earn_multiple: Vous pouvez gagner cela plusieurs fois.
+    earned: Gagné
   admin:
     admin_header:
       title: Admin
     dashboard:
       title: Tableau de bord
-      welcome: Welcome to Admin!
+      welcome: Bienvenue dans l'admin !
       site_statistics: Statistiques du site
       questions: "Questions :"
-      resolved: "Resolved:"
-      unanswered: "Unanswered:"
+      resolved: "Résolu :"
+      unanswered: "Sans réponse :"
       answers: "Réponses :"
       comments: "Commentaires:"
       votes: "Votes :"
       users: "Utilisateurs :"
       flags: "Signalements:"
-      reviews: "Reviews:"
-      site_health: Site health
-      version: "Version:"
+      reviews: "Revoir :"
+      site_health: Etat du site
+      version: "Version :"
       https: "HTTPS :"
       upload_folder: "Dossier de téléversement :"
       run_mode: "Mode de fonctionnement :"
@@ -1750,7 +1750,7 @@ ui:
       database_size: "Taille de la base de données :"
       storage_used: "Stockage utilisé :"
       uptime: "Uptime :"
-      links: Links
+      links: Liens
       plugins: Extensions
       github: GitHub
       blog: Blog
@@ -1796,21 +1796,21 @@ ui:
       btn_cancel: Annuler
       btn_submit: Envoyer
     edit_profile_modal:
-      title: Edit profile
+      title: Éditer le profil
       form:
         fields:
           display_name:
-            label: Display name
-            msg_range: Display name up to 30 characters.
+            label: Nom affiché
+            msg_range: Afficher le nom jusqu'à 30 caractères.
           username:
-            label: Username
-            msg_range: Username up to 30 characters.
+            label: Nom d'utilisateur
+            msg_range: Nom d'utilisateur jusqu'à 30 caractères.
           email:
             label: Email
-            msg_invalid: Invalid Email Address.
-      edit_success: Edited successfully
-      btn_cancel: Cancel
-      btn_submit: Submit
+            msg_invalid: Adresse e-mail non valide.
+      edit_success: Modifié avec succès
+      btn_cancel: Annuler
+      btn_submit: Soumettre
     user_modal:
       title: Ajouter un nouvel utilisateur
       form:
@@ -2145,7 +2145,7 @@ ui:
       active: Actif
       activate: Activer
       all: Tous
-      awards: Awards
+      awards: Récompenses
       deactivate: Désactiver
       filter:
         placeholder: Filtrer par nom, badge:id
@@ -2188,7 +2188,7 @@ ui:
     flag_user_type: A signalé cet utilisateur comme {{ type }}.
     edit_post: Éditer le post
     list_post: Lister le post
-    unlist_post: Unlist post
+    unlist_post: Masquer la post de la liste
   timeline:
     undeleted: restauré
     deleted: supprimé
@@ -2251,7 +2251,7 @@ ui:
     user_normal: Cet utilisateur est déjà normal.
     user_suspended: Cet utilisateur a été suspendu.
     user_deleted: Cet utilisateur a été supprimé.
-    badge_activated: This badge has been activated.
-    badge_inactivated: This badge has been inactivated.
+    badge_activated: Ce badge a été activé.
+    badge_inactivated: Ce badge a été désactivé.
 
 
