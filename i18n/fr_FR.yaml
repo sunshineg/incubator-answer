@@ -319,7 +319,7 @@ backend:
   reason:
     spam:
       name:
-        other: courrier indésirable
+        other: Courrier indésirable
       desc:
         other: Ce message est une publicité ou un vandalisme. Il n'est pas utile ou pertinent pour le sujet actuel.
     rude_or_abusive:
@@ -529,7 +529,7 @@ backend:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Autobiographe
         desc:
           other: Informations sur le <a href="{{ .ProfileURL }}" target="_blank">profil</a>.
       certified:
@@ -544,149 +544,149 @@ backend:
           other: Première modification du message.
       first_flag:
         name:
-          other: First Flag
+          other: Premier drapeau
         desc:
-          other: First flagged a post.
+          other: Premier a signalé un message.
       first_upvote:
         name:
-          other: First Upvote
+          other: Premier vote positif
         desc:
-          other: First up voted a post.
+          other: Premier a signalé un message.
       first_link:
         name:
-          other: First Link
+          other: Premier lien
         desc:
-          other: First dirst added a link to another post.
+          other: La première saleté a ajouté un lien vers un autre message.
       first_reaction:
         name:
-          other: First Reaction
+          other: Première réaction
         desc:
-          other: First reacted to the post.
+          other: Première réaction au message.
       first_share:
         name:
-          other: First Share
+          other: Premier partage
         desc:
-          other: First shared a post.
+          other: Premier message partagé.
       scholar:
         name:
-          other: Scholar
+          other: Érudit
         desc:
-          other: Asked a question and accepted an answer.
+          other: A posé une question et accepté une réponse.
       commentator:
         name:
-          other: Commentator
+          other: Commentateur
         desc:
-          other: Leave 5 comments.
+          other: Laissez 5 commentaires.
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: Nouvel utilisateur du mois
         desc:
-          other: Outstanding contributions in their first month.
+          other: Contributions en suspens au cours de leur premier mois.
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: Lire les lignes de conduite
         desc:
-          other: Read the [community guidelines].
+          other: Lisez les [lignes directrices de la communauté].
       reader:
         name:
-          other: Reader
+          other: Lecteur
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: Lisez toutes les réponses dans un sujet avec plus de 10 réponses.
       welcome:
         name:
-          other: Welcome
+          other: Bienvenue
         desc:
-          other: Received a up vote.
+          other: A reçu un vote positif.
       nice_share:
         name:
-          other: Nice Share
+          other: Bien partagé
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: A partagé un poste avec 25 visiteurs uniques.
       good_share:
         name:
-          other: Good Share
+          other: Bon partage
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: A partagé un poste avec 300 visiteurs uniques.
       great_share:
         name:
-          other: Great Share
+          other: Super Partage
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: A partagé un poste avec 1000 visiteurs uniques.
       out_of_love:
         name:
-          other: Out of Love
+          other: Amoureux
         desc:
-          other: Used 50 up votes in a day.
+          other: A donné 50 likes dans une journée.
       higher_love:
         name:
-          other: Higher Love
+          other: Amour plus grand
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: A donné 50 likes dans une journée 5 fois.
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: Fou d'amour
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: A recueilli 50 votes positifs par jour 20 fois.
       promoter:
         name:
-          other: Promoter
+          other: Promoteur
         desc:
-          other: Invited a user.
+          other: Inviter un utilisateur.
       campaigner:
         name:
-          other: Campaigner
+          other: Propagandiste
         desc:
-          other: Invited 3 basic users.
+          other: A invité 3 utilisateurs de base.
       champion:
         name:
           other: Champion
         desc:
-          other: Invited 5 members.
+          other: A invité 5 membres.
       thank_you:
         name:
-          other: Thank You
+          other: Merci
         desc:
-          other: Has 20 up voted posts and gave 10 up votes.
+          other: A 20 postes votés et a donné 10 votes.
       gives_back:
         name:
-          other: Gives Back
+          other: Redonne
         desc:
-          other: Has 100 up voted posts and gave 100 up votes.
+          other: A 100 postes votés et a donné 100 votes.
       empathetic:
         name:
-          other: Empathetic
+          other: Empathique
         desc:
-          other: Has 500 up voted posts and gave 1000 up votes.
+          other: A 500 postes votés et a donné 1000 votes.
       enthusiast:
         name:
-          other: Enthusiast
+          other: Enthousiaste
         desc:
-          other: Visited 10 consecutive days.
+          other: Visite de 10 jours consécutifs.
       aficionado:
         name:
           other: Aficionado
         desc:
-          other: Visited 100 consecutive days.
+          other: Visite de 100 jours consécutifs.
       devotee:
         name:
           other: Devotee
         desc:
-          other: Visited 365 consecutive days.
+          other: Visite de 365 jours consécutifs.
       anniversary:
         name:
-          other: Anniversary
+          other: Anniversaire
         desc:
-          other: Active member for a year, posted at least once.
+          other: Membre actif pour une année, affiché au moins une fois.
       appreciated:
         name:
-          other: Appreciated
+          other: Apprécié
         desc:
-          other: Received 1 up vote on 20 posts.
+          other: A reçu 1 vote positif sur 20 messages.
       respected:
         name:
-          other: Respected
+          other: Respecté
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: A reçu 2 vote positif sur 100 messages.
       admired:
         name:
           other: Admired
