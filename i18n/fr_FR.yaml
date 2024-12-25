@@ -818,7 +818,7 @@ ui:
     upgrade: Mise à jour d'Answer
     maintenance: Maintenance du site
     users: Utilisateurs
-    oauth_callback: Processing
+    oauth_callback: Traitement
     http_404: Erreur HTTP 404
     http_50X: Erreur HTTP 500
     http_403: Erreur HTTP 403
@@ -891,7 +891,7 @@ ui:
     help:
       text: Aide
     hr:
-      text: Horizontal rule
+      text: Ligne horizontale
     image:
       text: Image
       add_image: Ajouter une image
@@ -904,7 +904,7 @@ ui:
             msg:
               empty: Le fichier ne doit pas être vide.
               only_image: Seules les images sont autorisées.
-              max_size: File size cannot exceed {{size}} MB.
+              max_size: La taille du fichier ne doit pas dépasser {{size}} Mo.
           desc:
             label: Description
       tab_url: URL de l'image
@@ -947,9 +947,9 @@ ui:
       heading: Titre
       cell: Cellule
     file:
-      text: Attach files
-      not_supported: "Don’t support that file type. Try again with {{file_type}}."
-      max_size: "Attach files size cannot exceed {{size}} MB."
+      text: Joindre des fichiers
+      not_supported: "Ne prenez pas en charge ce type de fichier. Réessayez avec {{file_type}}."
+      max_size: "La taille du fichier ne doit pas dépasser {{size}} Mo."
   close_modal:
     title: Je ferme ce post comme...
     btn_cancel: Annuler
@@ -970,8 +970,8 @@ ui:
       empty: Ne peut pas être vide.
     msg:
       empty: Veuillez sélectionner une raison s'il vous plaît.
-      not_a_url: URL format is incorrect.
-      url_not_match: URL origin does not match the current website.
+      not_a_url: Le format de l'URL est incorrect.
+      url_not_match: L'origine de l'URL ne correspond pas au site web actuel.
   tag_modal:
     title: Créer un nouveau tag
     form:
@@ -1562,18 +1562,18 @@ ui:
     top_questions: Questions les plus populaires
     stats: Statistiques
     list_empty: Aucune publication trouvée.<br />Peut-être souhaiteriez-vous sélectionner un autre onglet ?
-    content_empty: No posts found.
+    content_empty: Aucun post trouvé.
     accepted: Accepté
     answered: a répondu
     asked: a demandé
-    downvoted: downvoted
+    downvoted: voté contre
     mod_short: MOD
     mod_long: Modérateurs
     x_reputation: réputation
     x_votes: votes reçus
     x_answers: réponses
     x_questions: questions
-    recent_badges: Recent Badges
+    recent_badges: Badges récents
   install:
     title: Installation
     next: Suivant
@@ -1834,7 +1834,7 @@ ui:
     users:
       title: Utilisateurs
       name: Nom
-      email: Email
+      email: E-mail
       reputation: Réputation
       created_at: Date de création
       delete_at: Date de suppression
@@ -1851,12 +1851,12 @@ ui:
       deleted: Supprimé
       normal: Normal
       Moderator: Modérateur
-      Admin: Admin
+      Admin: Administrateur
       User: Utilisateur
       filter:
         placeholder: "Filtrer par nom, utilisateur:id"
       set_new_password: Définir un nouveau mot de passe
-      edit_profile: Edit profile
+      edit_profile: Éditer le profil
       change_status: Modifier le statut
       change_role: Modifier le rôle
       show_logs: Voir les logs
@@ -1875,7 +1875,7 @@ ui:
         content: Un utilisateur suspendu ne peut pas se connecter.
     questions:
       page_title: Questions
-      unlisted: Unlisted
+      unlisted: Non listé
       post: Publication
       votes: Votes
       answers: Réponses
@@ -1883,7 +1883,7 @@ ui:
       status: Statut
       action: Action
       change: Modifier
-      pending: Pending
+      pending: En attente de traitement
       filter:
         placeholder: "Filtrer par titre, question:id"
     answers:
@@ -1921,8 +1921,8 @@ ui:
         validate: L'email de contact n'est pas valide.
         text: L'adresse email du responsable du site.
       check_update:
-        label: Software updates
-        text: Automatically check for updates
+        label: Mises à jour logicielles
+        text: Rechercher automatiquement les mises à jour
     interface:
       page_title: Interface
       language:
@@ -2001,38 +2001,38 @@ ui:
     write:
       page_title: Écrire
       restrict_answer:
-        title: Answer write
+        title: Écriture de la réponse
         label: Chaque utilisateur ne peut écrire qu'une seule réponse pour chaque question
-        text: "Turn off to allow users to write multiple answers to the same question, which may cause answers to be unfocused."
+        text: "Désactivez pour permettre aux utilisateurs d'écrire plusieurs réponses à la même question, ce qui peut causer une perte de concentration des réponses."
       recommend_tags:
         label: Tags recommandés
-        text: "Recommend tags will show in the dropdown list by default."
+        text: "Les balises recommandées apparaîtront par défaut dans la liste déroulante."
         msg:
-          contain_reserved: "recommended tags cannot contain reserved tags"
+          contain_reserved: "les tags recommandés ne peuvent pas contenir de tags réservés"
       required_tag:
-        title: Set required tags
-        label: Set “Recommend tags” as required tags
+        title: Définir les tags nécessaires
+        label: Définir les balises « Recommander» comme balises requises
         text: "Chaque nouvelle question doit avoir au moins un tag recommandé."
       reserved_tags:
         label: Tags réservés
-        text: "Reserved tags can only be used by moderator."
+        text: "Les tags réservés ne peuvent être ajoutés à un message que par un modérateur."
       image_size:
-        label: Max image size (MB)
-        text: "The maximum image upload size."
+        label: Taille maximale de l'image (MB)
+        text: "La taille maximale de téléchargement d'image."
       attachment_size:
-        label: Max attachment size (MB)
-        text: "The maximum attachment files upload size."
+        label: Taille maximale des pièces jointes (MB)
+        text: "La taille maximale de téléchargement des fichiers joints."
       image_megapixels:
-        label: Max image megapixels
-        text: "Maximum number of megapixels allowed for an image."
+        label: Max mégapixels image
+        text: "Nombre maximum de mégapixels autorisés pour une image."
       image_extensions:
-        label: Authorized image extensions
-        text: "A list of file extensions allowed for image display, separate with commas."
+        label: Extensions de pièces jointes autorisées
+        text: "Une liste d'extensions de fichier autorisées pour l'affichage d'image, séparées par des virgules."
       attachment_extensions:
-        label: Authorized attachment extensions
-        text: "A list of file extensions allowed for upload, separate with commas. WARNING: Allowing uploads may cause security issues."
+        label: Extensions de pièces jointes autorisées
+        text: "Une liste d'extensions de fichier autorisées pour le téléchargement, séparées par des virgules. ATTENTION : Autoriser les envois peut causer des problèmes de sécurité."
     seo:
-      page_title: SEO
+      page_title: Référencement
       permalink:
         label: Lien permanent
         text: Des structures d'URL personnalisées peuvent améliorer la facilité d'utilisation et la compatibilité de vos liens.
@@ -2045,7 +2045,7 @@ ui:
         label: Thèmes
         text: Sélectionne un thème existant.
       color_scheme:
-        label: Color scheme
+        label: Jeu de couleurs
       navbar_style:
         label: Style de la Navbar
       primary_color:
@@ -2094,17 +2094,17 @@ ui:
         text: "AVERTISSEMENT : Si cette option est désactivée, vous ne pourrez peut-être pas vous connecter si vous n'avez pas configuré une autre méthode de connexion."
     installed_plugins:
       title: Extensions installées
-      plugin_link: Plugins extend and expand the functionality. You may find plugins in the <1>Plugin Repository</1>.
+      plugin_link: Les plugins étendent les fonctionnalités d'Answer. Vous pouvez trouver des plugins dans le dépôt <1>Answer Plugin Repositor</1>.
       filter:
         all: Tous
         active: Actif
         inactive: Inactif
-        outdated: Outdated
+        outdated: Est obsolète
       plugins:
         label: Extensions
         text: Sélectionnez une extension existante.
       name: Nom
-      version: Version
+      version: Versión
       status: Statut
       action: Action
       deactivate: Désactiver
@@ -2138,11 +2138,11 @@ ui:
         label: Niveau de réputation requis
         text: Choisissez la réputation requise pour les privilèges
       msg:
-        should_be_number: the input should be number
-        number_larger_1: number should be equal or larger than 1
+        should_be_number: l'entrée doit être un nombre
+        number_larger_1: le nombre doit être égal ou supérieur à 1
     badges:
       action: Action
-      active: Active
+      active: Actif
       activate: Activate
       all: All
       awards: Awards
