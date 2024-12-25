@@ -1014,9 +1014,9 @@ ui:
     delete:
       title: Supprimer cette étiquette
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p>Nous ne permettons pas la <strong>suppression d'un tag avec des posts</strong></p><p>Veuillez d'abord supprimer ce tag des posts.</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p>Nous ne permettons pas de <strong>supprimer un tag avec des synonymes</strong>.</p> <p>Veuillez d'abord supprimer les synonymes de ce tag.</p>
       tip: Êtes-vous sûr de vouloir supprimer ?
       close: Fermer
   edit_tag:
@@ -1039,12 +1039,12 @@ ui:
     days: jours
   reaction:
     heart: heart
-    smile: smile
-    frown: frown
-    btn_label: add or remove reactions
-    undo_emoji: undo {{ emoji }} reaction
-    react_emoji: react with {{ emoji }}
-    unreact_emoji: unreact with {{ emoji }}
+    smile: sourire
+    frown: froncer les sourcils
+    btn_label: ajout et suppression de réactions
+    undo_emoji: annuler la réaction {{ emoji }}
+    react_emoji: réagir à {{ emoji }}
+    unreact_emoji: annuler la réaction avec {{ emoji }}
   comment:
     btn_add_comment: Ajoutez un commentaire
     reply_to: Répondre à
@@ -1059,7 +1059,7 @@ ui:
       Utilisez les commentaires pour demander plus d'informations ou suggérer des améliorations. Évitez de répondre aux questions dans les commentaires.
     tip_answer: >-
       Utilisez des commentaires pour répondre à d'autres utilisateurs ou leur signaler des modifications. Si vous ajoutez de nouvelles informations, modifiez votre message au lieu de commenter.
-    tip_vote: It adds something useful to the post
+    tip_vote: Il ajoute quelque chose d'utile au post
   edit_answer:
     title: Modifier la réponse
     default_reason: Modifier la réponse
@@ -1183,8 +1183,8 @@ ui:
       label: Nom
       msg:
         empty: Le nom ne peut pas être vide.
-        range: Name must be between 2 to 30 characters in length.
-        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+        range: Le nom doit contenir entre 2 et 30 caractères.
+        character: 'Doit utiliser le jeu de caractères "a-z", "0-9", " - . _"'
     email:
       label: Email
       msg:
@@ -1244,7 +1244,7 @@ ui:
       label: Confirmer le nouveau mot de passe
   settings:
     page_title: Paramètres
-    goto_modify: Go to modify
+    goto_modify: Aller modifier
     nav:
       profile: Profil
       notification: Notifications
@@ -1301,8 +1301,8 @@ ui:
       email:
         label: Email
       new_email:
-        label: New email
-        msg: New email cannot be empty.
+        label: Nouvel e-mail
+        msg: La nouvelle adresse e-mail ne peut pas être vide.
       pass:
         label: Mot de passe actuel
         msg: Le mot de passe ne peut pas être vide.
@@ -1340,9 +1340,9 @@ ui:
     title: Questions liées
     answers: réponses
   linked_question:
-    title: Linked Questions
-    description: Questions linked to
-    no_linked_question: No questions linked from this question.
+    title: Questions connexes
+    description: Questions liées à
+    no_linked_question: Aucune question liée à cette question.
   invite_to_answer:
     title: Personnes interrogées
     desc: Invite people who you think might know the answer.
@@ -1355,7 +1355,7 @@ ui:
     asked: demandé
     update: Modifié
     edit: modifié
-    commented: commented
+    commented: commenté
     Views: Consultée
     Follow: S’abonner
     Following: Abonné(s)
@@ -1822,7 +1822,7 @@ ui:
             msg: "Veuillez entrer l'email de l'utilisateur, un par ligne."
           display_name:
             label: Nom affiché
-            msg: Display name must be 2-30 characters in length.
+            msg: Le nom affiché doit avoir une longueur de 2 à 30 caractères.
           email:
             label: Email
             msg: L'email n'est pas valide.
@@ -2143,17 +2143,17 @@ ui:
     badges:
       action: Action
       active: Actif
-      activate: Activate
-      all: All
+      activate: Activer
+      all: Tous
       awards: Awards
-      deactivate: Deactivate
+      deactivate: Désactiver
       filter:
-        placeholder: Filter by name, badge:id
-      group: Group
-      inactive: Inactive
-      name: Name
-      show_logs: Show logs
-      status: Status
+        placeholder: Filtrer par nom, badge:id
+      group: Groupe
+      inactive: Inactif
+      name: Nom
+      show_logs: Voir les logs
+      status: Statut
       title: Badges
   form:
     optional: (optionnel)
@@ -2173,21 +2173,21 @@ ui:
     edit_answer: Modifier la réponse
     edit_tag: Modifier l’étiquette
     empty: Aucune révision restante.
-    approve_revision_tip: Do you approve this revision?
-    approve_flag_tip: Do you approve this flag?
-    approve_post_tip: Do you approve this post?
-    approve_user_tip: Do you approve this user?
-    suggest_edits: Suggested edits
-    flag_post: Flag post
-    flag_user: Flag user
-    queued_post: Queued post
-    queued_user: Queued user
+    approve_revision_tip: Acceptez-vous cette révision?
+    approve_flag_tip: Acceptez-vous ce rapport ?
+    approve_post_tip: Acceptez-vous ce post?
+    approve_user_tip: Acceptez-vous cet utilisateur ?
+    suggest_edits: Modifications suggérées
+    flag_post: Signaler ce message
+    flag_user: Signaler un utilisateur
+    queued_post: Message en file d'attente
+    queued_user: Utilisateur en file d'attente
     filter_label: Type
-    reputation: reputation
-    flag_post_type: Flagged this post as {{ type }}.
-    flag_user_type: Flagged this user as {{ type }}.
-    edit_post: Edit post
-    list_post: List post
+    reputation: réputation
+    flag_post_type: A signalé ce message comme {{ type }}.
+    flag_user_type: A signalé cet utilisateur comme {{ type }}.
+    edit_post: Éditer le post
+    list_post: Lister le post
     unlist_post: Unlist post
   timeline:
     undeleted: restauré
@@ -2234,23 +2234,23 @@ ui:
     discard_confirm: Êtes-vous sûr de vouloir abandonner ce brouillon ?
   messages:
     post_deleted: Ce message a été supprimé.
-    post_cancel_deleted: This post has been undeleted.
+    post_cancel_deleted: Ce post a été restauré.
     post_pin: Ce message a été épinglé.
     post_unpin: Ce message a été déépinglé.
     post_hide_list: Ce message a été masqué de la liste.
     post_show_list: Ce message a été affiché dans la liste.
     post_reopen: Ce message a été rouvert.
-    post_list: This post has been listed.
-    post_unlist: This post has been unlisted.
-    post_pending: Your post is awaiting review. This is a preview, it will be visible after it has been approved.
-    post_closed: This post has been closed.
-    answer_deleted: This answer has been deleted.
-    answer_cancel_deleted: This answer has been undeleted.
-    change_user_role: This user's role has been changed.
-    user_inactive: This user is already inactive.
-    user_normal: This user is already normal.
-    user_suspended: This user has been suspended.
-    user_deleted: This user has been deleted.
+    post_list: Ce post a été ajouté à la liste.
+    post_unlist: Ce post a été retiré de la liste.
+    post_pending: Votre message est en attente de révision. C'est un aperçu, il sera visible une fois qu'il aura été approuvé.
+    post_closed: Ce post a été fermé.
+    answer_deleted: Cette réponse a été supprimée.
+    answer_cancel_deleted: Cette réponse a été restaurée.
+    change_user_role: Le rôle de cet utilisateur a été modifié.
+    user_inactive: Cet utilisateur est déjà inactif.
+    user_normal: Cet utilisateur est déjà normal.
+    user_suspended: Cet utilisateur a été suspendu.
+    user_deleted: Cet utilisateur a été supprimé.
     badge_activated: This badge has been activated.
     badge_inactivated: This badge has been inactivated.
 
