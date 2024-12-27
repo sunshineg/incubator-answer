@@ -2269,3 +2269,6 @@ ui:
     users_deleted: 这些用户已被删除。
     posts_deleted: 这些帖子已被删除。
     answers_deleted: 这些回答已被删除。
+    copy: 复制
+    copied: 已复制
+

@@ -79,7 +79,10 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
       return;
     }
 
-    htmlRender(ref.current);
+    htmlRender(ref.current, {
+      copySuccessText: t('copied', { keyPrefix: 'messages' }),
+      copyText: t('copy', { keyPrefix: 'messages' }),
+    });
   }, [ref.current]);
 
   if (!data?.id) {

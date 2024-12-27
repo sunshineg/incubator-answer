@@ -2307,3 +2307,7 @@ ui:
     users_deleted: These users have been deleted.
     posts_deleted: These questions have been deleted.
     answers_deleted: These answers have been deleted.
+    copy: Copy to clipboard
+    copied: Copied
+
+
