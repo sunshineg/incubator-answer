@@ -616,17 +616,17 @@ backend:
         name:
           other: 失去爱好
         desc:
-          other: 一天内使用了50张选票。
+          other: 一天内使用了 50 个赞。
       higher_love:
         name:
           other: 更高的爱好
         desc:
-          other: 一天内使用了50张选票。
+          other: 一天内使用了 50 个赞 5 次。
       crazy_in_love:
         name:
           other: 爱情疯狂的
         desc:
-          other: 在 20 天内使用了50张选票。
+          other: 一天内使用了 50 个赞 20 次。
       promoter:
         name:
           other: 推荐人
