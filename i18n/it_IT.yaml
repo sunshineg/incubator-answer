@@ -326,7 +326,7 @@ backend:
       name:
         other: scortese o offensivo
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Una persona ragionevole troverebbe questo contenuto inappropriato per un discorso rispettoso."
     a_duplicate:
       name:
         other: duplicato
@@ -338,7 +338,7 @@ backend:
       name:
         other: Non è una risposta
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Questo è stato pubblicato come una risposta, ma non tenta di rispondere alla domanda. Dovrebbe forse essere una modifica, un commento, un'altra domanda,o cancellato del tutto."
     no_longer_needed:
       name:
         other: Non più necessario
@@ -397,7 +397,7 @@ backend:
         name:
           other: richiede maggiori dettagli o chiarezza
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: Questa domanda attualmente include più domande in uno. Dovrebbe concentrarsi su un solo problema.
       other:
         name:
           other: altro
@@ -464,42 +464,42 @@ backend:
       title:
         other: "[{{.SiteName}}] Conferma il tuo nuovo indirizzo email"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Conferma il tuo nuovo indirizzo email per {{.SiteName}} cliccando sul seguente link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nSe non hai richiesto questa modifica, ignora questa email.<br><br>\n\n--<br>\nNota: Si tratta di un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} ha risposto alla tua domanda"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>Visualizza su {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Si tratta di un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancellazione</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} ti ha invitato a rispondere"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>Penso che tu possa sapere la risposta.</blockquote><br>\n<a href='{{.InviteUrl}}'>Visualizza su {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Questa è un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancellazione</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} ha commentato il tuo post"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>Visualizza su {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Si tratta di un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancellazione</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] Nuova domanda: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNota: Questa è un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Cancellazione</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Reimpostazione della password"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Qualcuno ha chiesto di reimpostare la tua password su {{.SiteName}}.<br><br>\n\nSe non sei tu, puoi tranquillamente ignorare questa email.<br><br>\n\nClicca sul seguente link per scegliere una nuova password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNota: Si tratta di un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata."
     register:
       title:
         other: "[{{.SiteName}}] Conferma il tuo nuovo account"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Benvenuto in {{.SiteName}}!<br><br>\n\nClicca il seguente link per confermare e attivare il tuo nuovo account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nSe il link di cui sopra non è cliccabile, prova a copiarlo e incollarlo nella barra degli indirizzi del tuo browser web.\n<br><br>\n\n--<br>\nNota: Si tratta di un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata."
     test:
       title:
         other: "[{{.SiteName}}] Email di prova"
       body:
-        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Questa è una email di prova.\n<br><br>\n\n--<br>\nNota: Questa è un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non verrà visualizzata."
   action_activity_type:
     upvote:
       other: voto a favore
@@ -609,22 +609,22 @@ backend:
           other: Condiviso un post con 300 visitatori unici.
       great_share:
         name:
-          other: Great Share
+          other: Grande Condivisione
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: Condiviso un post con 1000 visitatori unici.
       out_of_love:
         name:
           other: Out of Love
         desc:
-          other: Used 50 up votes in a day.
+          other: Usato 50 voti in su in un giorno.
       higher_love:
         name:
-          other: Higher Love
+          other: Amore Superiore
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: Usato 50 voti in su in un giorno 5 volte.
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: Pazzo innamorato
         desc:
           other: Used 50 up votes in a day 20 times.
       promoter:
@@ -1822,7 +1822,7 @@ ui:
             msg: "Inserisci l'email dell'utente, una per riga."
           display_name:
             label: Nome da visualizzare
-            msg: Il nome visualizzato deve avere una lunghezza compresa tra 4 e 30 caratteri.
+            msg: Display name must be 2-30 characters in length.
           email:
             label: E-mail
             msg: L'email non è valida.
