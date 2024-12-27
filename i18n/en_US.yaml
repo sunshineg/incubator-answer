@@ -2300,5 +2300,7 @@ ui:
     user_deleted: This user has been deleted.
     badge_activated: This badge has been activated.
     badge_inactivated: This badge has been inactivated.
+    copy: Copy to clipboard
+    copied: Copied
 
 

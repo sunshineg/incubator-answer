@@ -2262,5 +2262,6 @@ ui:
     user_deleted: 此用户已被删除
     badge_activated: 此徽章已被激活。
     badge_inactivated: 此徽章已被禁用。
-
+    copy: 复制
+    copied: 已复制
 

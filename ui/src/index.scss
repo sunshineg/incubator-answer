@@ -374,3 +374,24 @@ img[src=""] {
 .mb-12 {
   margin-bottom: 12px;
 }
+
+.a-code-wrap:hover .a-code-tool {
+  display: block;
+}
+.a-code-tool {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 16px;
+  z-index: 1;
+  display: none;
+  .a-copy-code {
+    line-height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+}
