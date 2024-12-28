@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: URL no válido.
       status_invalid:
-        other: Invalid status.
+        other: Estado inválido.
     password:
       space_invalid:
         other: La contraseña no puede contener espacios.
@@ -1822,7 +1822,7 @@ ui:
             msg: "Por favor, introduzca el correo electrónico del usuario, uno por línea."
           display_name:
             label: Nombre público
-            msg: El nombre público debe tener entre 2 y 30 caracteres de longitud.
+            msg: Display name must be 2-30 characters in length.
           email:
             label: Correo
             msg: El correo no es válido.
