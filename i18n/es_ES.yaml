@@ -315,7 +315,7 @@ backend:
         other: Configuración del sitio no encontrada.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Insignia no encontrada
   reason:
     spam:
       name:
@@ -326,7 +326,7 @@ backend:
       name:
         other: grosero u ofensivo
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Alguna persona podría considerar este contenido inapropiado para una discusión respetuosa."
     a_duplicate:
       name:
         other: un duplicado
@@ -338,7 +338,7 @@ backend:
       name:
         other: no es una respuesta
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Esto fue publicado como respuesta pero no intenta responder a la pregunta. Podría ser una edición, un comentario, otra pregunta diferente o ser eliminado por completo."
     no_longer_needed:
       name:
         other: ya no es necesario
@@ -397,7 +397,7 @@ backend:
         name:
           other: necesita más detalles o aclaraciónes
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: Esta pregunta incluye múltiples preguntas en una sola. Debería centrarse únicamente en un solo tema.
       other:
         name:
           other: otra razón
@@ -413,12 +413,12 @@ backend:
     deleted_title:
       other: Pregunta eliminada
     questions_title:
-      other: Questions
+      other: Preguntas
   tag:
     tags_title:
-      other: Tags
+      other: Etiquetas
     no_description:
-      other: The tag has no description.
+      other: La etiqueta no tiene descripción.
   notification:
     action:
       update_question:
@@ -458,48 +458,48 @@ backend:
       invited_you_to_answer:
         other: te invitó a responder
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Ha ganado la insignia "{{.BadgeName}}"
   email_tpl:
     change_email:
       title:
         other: "[{{.SiteName}}] Confirma tu nueva dirección de correo"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Confirme su nueva dirección de correo electrónico para {{.SiteName}} haciendo clic en el siguiente enlace:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nSi no solicitó este cambio, por favor, ignore este mensaje.<br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} respondió tu pregunta"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>Verlo en {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Darse de baja</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} te invitó a responder"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>Es posible que conozca la respuesta.</blockquote><br>\n<a href='{{.InviteUrl}}'>Verlo en {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Darse de baja</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} comentó en tu publicación"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>Verlo en {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Darse de baja</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] Nueva pregunta: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Darse de baja</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Reestablecimiento de contraseña"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Se solicitó el restablecimiento de su contraseña en {{.SiteName}}.<br><br>\n\nSi no lo solicitó, puede ignorar este mensaje.<br><br>\n\nHaga clic en el siguiente enlace para generar una nueva contraseña:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída."
     register:
       title:
         other: "[{{.SiteName}}] Confirma tu nueva cuenta"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "¡Bienvenido a {{.SiteName}}!<br><br>\n\nHaga clic en el siguiente enlace y active su nueva cuenta:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nSi no puede hacer clic en el enlace anterior, intente copiando y pegando el enlace en la barra de dirección en su navegador web.<br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída."
     test:
       title:
         other: "[{{.SiteName}}] Correo de prueba"
       body:
-        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Este es un mensaje de prueba.\n<br><br>\n\n--<br>\nNota: Este es un mensaje automático, por favor, no responda a este mensaje ya que su respuesta no será leída."
   action_activity_type:
     upvote:
       other: votar a favor
@@ -529,19 +529,19 @@ backend:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Autobiógrafo
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Completó la información de su <a href="{{ .ProfileURL }}" target="_blank">perfil</a>.
       certified:
         name:
-          other: Certified
+          other: Certificado
         desc:
-          other: Completed our new user tutorial.
+          other: Completó nuestro nuevo tutorial de usuario.
       editor:
         name:
           other: Editor
         desc:
-          other: First post edit.
+          other: Primer mensaje editado.
       first_flag:
         name:
           other: First Flag
@@ -589,7 +589,7 @@ backend:
           other: Read the [community guidelines].
       reader:
         name:
-          other: Reader
+          other: Lector
         desc:
           other: Read every answers in a topic with more than 10 answers.
       welcome:
