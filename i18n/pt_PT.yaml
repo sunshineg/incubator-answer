@@ -469,7 +469,7 @@ backend:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} respondeu à sua pergunta"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>Visualizar no {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Este é um e-mail de sistema automático, por favor, não responda a esta mensagem, pois a sua resposta não será vista.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancelar inscrição</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} convidou-lhe para responder"
@@ -484,22 +484,22 @@ backend:
       title:
         other: "[{{.SiteName}}] Nova pergunta: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNota: Este é um e-mail de sistema automático, por favor, não responda a esta mensagem, pois a sua resposta não será vista.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancelar Inscrição</a></small><br>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Redefinição de senha"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Alguém pediu para redefinir a sua senha em {{.SiteName}}.<br><br>\n\nSe não foi você, você pode ignorar este e-mail.<br><br>\n\nClique no seguinte link para escolher uma nova senha:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a><br><br>\n\n--<br>\nNota: Este é um e-mail de sistema automático, por favor, não responda a esta mensagem, pois a sua resposta não será vista."
     register:
       title:
         other: "[{{.SiteName}}] Confirme seu novo endereço de e-mail"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Bem-vindo a {{.SiteName}}!<br><br>\n\nClique no seguinte link para confirmar e ativar sua nova conta:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nSe o link acima não for clicável, tente copiá-lo e colá-lo na barra de endereços do seu navegador web.\n<br><br>\n\n--<br>\nNota: Este é um e-mail de sistema automático. por favor, não responda a esta mensagem, pois a sua resposta não será vista."
     test:
       title:
         other: "[{{.SiteName}}] E-mail de teste"
       body:
-        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Este é um e-mail de teste.\n<br><br>\n\n--<br>\nNota: Este é um e-mail automático do sistema, por favor, não responda a esta mensagem, pois a sua resposta não será vista."
   action_activity_type:
     upvote:
       other: voto positivo
@@ -787,7 +787,7 @@ ui:
   how_to_format:
     title: Como formatar
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">mencionar uma postagem: <code>#post_id</code></p></li><li><p class="mb-2">para mais links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Título](https://url.com)</code></pre></li><li><p class="mb-2">colocar retornos entre parágrafos</p></li><li><p class="mb-2"><em>_italic_</em> ou **<strong>bold</strong>**</p></li><li><p class="mb-2">identar código por 4 espaços</p></li><li><p class="mb-2">cotação colocando <code>&gt;</code> no início da linha</p></li><li><p class="mb-2">aspas invertidas <code>`tipo_isso`</code></p></li><li><p class="mb-2">criar cercas de código com aspas invertidas <code>`</code></p><pre class="mb-0"><code>```<br/>código aqui<br/>```</code></pre></li></ul>
   pagination:
     prev: Anterior
     next: Próximo
