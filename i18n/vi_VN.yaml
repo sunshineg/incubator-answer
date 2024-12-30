@@ -484,22 +484,22 @@ backend:
       title:
         other: "[{{.SiteName}}] Câu hỏi mới: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}</a><br>\n<small>{{.Tags}</small><br><br>\n\n--<br>\nLưu ý: Đây là email hệ thống tự động, vui lòng không trả lời thư này vì chúng tôi sẽ không nhìn thấy phản hồi của bạn.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Hủy đăng ký</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nLưu ý: Đây là email hệ thống tự động, vui lòng không trả lời thư này vì chúng tôi sẽ không nhìn thấy phản hồi của bạn.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Hủy đăng ký</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName}}] Đặt lại mật khẩu"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Ai đó đã yêu cầu đặt lại mật khẩu của bạn trên {{.SiteName}}.<br><br>\n\nNếu người đó không phải là bạn thì bạn có thể yên tâm bỏ qua email này.<br><br>\n\nNhấp vào liên kết sau để chọn mật khẩu mới:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nLưu ý: Đây là email hệ thống tự động, vui lòng không trả lời tin nhắn này vì chúng tôi sẽ không nhìn thấy phản hồi của bạn."
     register:
       title:
         other: "[{{.SiteName}}] Xác nhận tài khoản mới của bạn"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Chào mừng bạn đến với {{.SiteName}}!<br><br>\n\nNhấp vào liên kết sau để xác nhận và kích hoạt tài khoản mới của bạn:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nNếu liên kết trên không nhấp vào được, hãy thử sao chép và dán nó vào thanh địa chỉ trình duyệt web của bạn.\n<br><br>\n\n--<br>\nLưu ý: Đây là email hệ thống tự động, vui lòng không trả lời tin nhắn này vì chúng tôi sẽ không nhìn thấy phản hồi của bạn."
     test:
       title:
         other: "[{{.SiteName}}] Email kiểm tra"
       body:
-        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Đây là một email thử nghiệm.\n<br><br>\n\n--<br>\nLưu ý: Đây là email hệ thống tự động, vui lòng không trả lời tin nhắn này vì chúng tôi sẽ không nhìn thấy phản hồi của bạn."
   action_activity_type:
     upvote:
       other: bình chọn lên
@@ -787,7 +787,7 @@ ui:
   how_to_format:
     title: Cách định dạng
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">đề cập đến bài đăng: <code>#post_id</code></p></li> <li><p class ="mb-2">để tạo liên kết</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">đặt trả về giữa đoạn văn</p></li><li><p class="mb-2"><em>_italic_</em> hoặc **<strong>in đậm</strong>**</p></li ><li><p class="mb-2">mã thụt lề 4 dấu cách</p></li><li><p class="mb-2">trích dẫn bằng cách đặt <code>&gt;</ code> ở đầu dòng</p></li><li><p class="mb-2">backtick thoát <code>`like _this_`</code></p></li><li><p class="mb-2">tạo hàng rào mã bằng dấu backticks <code>`</code></p><pre class="mb -0"><code>```<br/>mã vào đây<br/>```</code></pre></li></ul>
   pagination:
     prev: Trước
     next: Tiếp
