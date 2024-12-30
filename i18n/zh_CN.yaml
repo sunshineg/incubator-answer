@@ -2067,7 +2067,7 @@ ui:
 
       footer:
         label: 页脚
-        text: 这将在 </body> 之前插入.
+        text: 这将在 &lt;/body> 之前插入。
       sidebar:
         label: 侧边栏
         text: 这将插入侧边栏中。
