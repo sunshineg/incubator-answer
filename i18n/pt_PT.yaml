@@ -464,7 +464,7 @@ backend:
       title:
         other: "[{{.SiteName}}] Confirme seu novo endereço de e-mail"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Confirme seu novo endereço de e-mail para {{.SiteName}} clicando no seguinte link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nSe você não solicitou esta alteração, por favor, ignore este email.<br><br>\n\n--<br>\nNota: Este é um e-mail automático do sistema, por favor, não responda a esta mensagem, pois a sua resposta não será vista."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} respondeu à sua pergunta"
@@ -474,12 +474,12 @@ backend:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} convidou-lhe para responder"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>acho que você pode saber a resposta.</blockquote><br>\n<a href='{{.InviteUrl}}'>Visualizar na {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Este é um e-mail de sistema automático, por favor, não responda a esta mensagem, pois a sua resposta não será vista.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancelar Inscrição</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} comentou em sua publicação"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>Visualizar no {{.SiteName}}</a><br><br>\n\n--<br>\nNota: Este é um e-mail de sistema automático, por favor, não responda a esta mensagem, pois a sua resposta não será vista.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancelar inscrição</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] Nova pergunta: {{.QuestionTitle}}"
@@ -948,8 +948,8 @@ ui:
       cell: Célula
     file:
       text: Anexar arquivos
-      not_supported: "Don’t support that file type. Try again with {{file_type}}."
-      max_size: "Attach files size cannot exceed {{size}} MB."
+      not_supported: "Não suporta esse tipo de arquivo. Tente novamente com {{file_type}}."
+      max_size: "Anexar arquivos não pode exceder {{size}} MB."
   close_modal:
     title: Estou fechando este post como...
     btn_cancel: Cancelar
@@ -2021,13 +2021,13 @@ ui:
         text: "O tamanho máximo para upload de imagem."
       attachment_size:
         label: Tamanho máximo do anexo (MB)
-        text: "The maximum attachment files upload size."
+        text: "Tamanho máximo para upload de arquivos anexos."
       image_megapixels:
         label: Máx megapíxeis da imagem
         text: "Número máximo de megapixels permitido para uma imagem."
       image_extensions:
         label: Extensões de imagens autorizadas
-        text: "A list of file extensions allowed for image display, separate with commas."
+        text: "Uma lista de extensões de arquivo permitidas para exibição de imagens, separadas com vírgulas."
       attachment_extensions:
         label: Extensão autorizada para anexos
         text: "Uma lista de extensões de arquivo permitidas para upload, separar com vírgulas. AVISO: permitir uploads pode causar problemas de segurança."
@@ -2246,7 +2246,7 @@ ui:
     post_closed: Esta postagem foi fechada.
     answer_deleted: Esta resposta foi excluída.
     answer_cancel_deleted: Esta resposta foi restaurada.
-    change_user_role: This user's role has been changed.
+    change_user_role: O papel deste usuário foi alterado.
     user_inactive: Este usuário já está inativo.
     user_normal: Este usuário já está normal.
     user_suspended: Este usuário foi suspenso.
