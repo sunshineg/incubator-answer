@@ -599,186 +599,186 @@ backend:
           other: Recibió un voto a favor.
       nice_share:
         name:
-          other: Nice Share
+          other: Buena Compartición
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: Compartió un post con 25 visitantes únicos.
       good_share:
         name:
-          other: Good Share
+          other: Buena Compartida
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: Compartió un post con 300 visitantes únicos.
       great_share:
         name:
-          other: Great Share
+          other: Excelente Compartida
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: Compartió un post con 1000 visitantes únicos.
       out_of_love:
         name:
-          other: Out of Love
+          other: Fuera del Amor
         desc:
-          other: Used 50 up votes in a day.
+          other: Utilizó 50 votos positivos en un día.
       higher_love:
         name:
-          other: Higher Love
+          other: Amor Más Alto
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: Utilizó 50 votos positivos en un día 5 veces.
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: Loco(a) por el Amor
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: Utilizó 50 votos positivos en un día 20 veces.
       promoter:
         name:
-          other: Promoter
+          other: Promotor
         desc:
-          other: Invited a user.
+          other: Invitó a un usuario.
       campaigner:
         name:
-          other: Campaigner
+          other: Activista
         desc:
-          other: Invited 3 basic users.
+          other: Invitó a 3 usuarios básicos.
       champion:
         name:
-          other: Champion
+          other: Campeón
         desc:
-          other: Invited 5 members.
+          other: Invitado 5 miembros.
       thank_you:
         name:
-          other: Thank You
+          other: Gracias
         desc:
-          other: Has 20 up voted posts and gave 10 up votes.
+          other: Tiene 20 publicaciones con votos positivos y dio 10 votos positivos.
       gives_back:
         name:
-          other: Gives Back
+          other: Da a Cambio
         desc:
-          other: Has 100 up voted posts and gave 100 up votes.
+          other: Tiene 100 publicaciones con votos positivos y dio 100 votos positivos.
       empathetic:
         name:
-          other: Empathetic
+          other: Empático
         desc:
-          other: Has 500 up voted posts and gave 1000 up votes.
+          other: Tiene 500 publicaciones con votos positivos y dio 1000 votos positivos.
       enthusiast:
         name:
-          other: Enthusiast
+          other: Entusiasta
         desc:
-          other: Visited 10 consecutive days.
+          other: Visita 10 días consecutivos.
       aficionado:
         name:
           other: Aficionado
         desc:
-          other: Visited 100 consecutive days.
+          other: Visita 100 días consecutivos.
       devotee:
         name:
-          other: Devotee
+          other: Devoto
         desc:
-          other: Visited 365 consecutive days.
+          other: Visita 365 días consecutivos.
       anniversary:
         name:
-          other: Anniversary
+          other: Aniversario
         desc:
-          other: Active member for a year, posted at least once.
+          other: Miembro activo por un año, publicó al menos una vez.
       appreciated:
         name:
-          other: Appreciated
+          other: Apreciación
         desc:
-          other: Received 1 up vote on 20 posts.
+          other: Recibió 1 voto positivo en 20 puestos.
       respected:
         name:
-          other: Respected
+          other: Respetado
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: Recibió 2 voto positivo en 100 puestos.
       admired:
         name:
-          other: Admired
+          other: Admirado
         desc:
-          other: Received 5 up votes on 300 posts.
+          other: Recibió 5 voto positivo en 300 puestos.
       solved:
         name:
-          other: Solved
+          other: Resuelto
         desc:
-          other: Have an answer be accepted.
+          other: Tener una respuesta aceptada.
       guidance_counsellor:
         name:
-          other: Guidance Counsellor
+          other: Consejero de Orientación
         desc:
-          other: Have 10 answers be accepted.
+          other: Tener 10 respuestas aceptadas.
       know_it_all:
         name:
-          other: Know-it-All
+          other: Sabelotodo
         desc:
-          other: Have 50 answers be accepted.
+          other: Tener 50 respuestas aceptadas.
       solution_institution:
         name:
-          other: Solution Institution
+          other: Institución de Soluciones
         desc:
-          other: Have 150 answers be accepted.
+          other: Tener 150 respuestas aceptadas.
       nice_answer:
         name:
-          other: Nice Answer
+          other: Buena Respuesta
         desc:
-          other: Answer score of 10 or more.
+          other: Respuesta con una puntuación de 10 o más.
       good_answer:
         name:
-          other: Good Answer
+          other: Excelente Respuesta
         desc:
-          other: Answer score of 25 or more.
+          other: Respuesta con una puntuación de 25 o más.
       great_answer:
         name:
-          other: Great Answer
+          other: Gran Respuesta
         desc:
-          other: Answer score of 50 or more.
+          other: Respuesta con una puntuación de 50 o más.
       nice_question:
         name:
-          other: Nice Question
+          other: Buena Pregunta
         desc:
-          other: Question score of 10 or more.
+          other: Pregunta con una puntuación de 10 o más.
       good_question:
         name:
-          other: Good Question
+          other: Excelente Pregunta
         desc:
-          other: Question score of 25 or more.
+          other: Pregunta con una puntuación de 25 o más.
       great_question:
         name:
-          other: Great Question
+          other: Gran Pregunta
         desc:
-          other: Question score of 50 or more.
+          other: Pregunta con una puntuación de 50 o más.
       popular_question:
         name:
-          other: Popular Question
+          other: Pregunta popular
         desc:
-          other: Question with 500 views.
+          other: Pregunta con 500 puntos de vista.
       notable_question:
         name:
-          other: Notable Question
+          other: Pregunta Notable
         desc:
-          other: Question with 1,000 views.
+          other: Pregunta con 1,000 vistas.
       famous_question:
         name:
-          other: Famous Question
+          other: Pregunta Famosa
         desc:
-          other: Question with 5,000 views.
+          other: Pregunta con 5,000 vistas.
       popular_link:
         name:
-          other: Popular Link
+          other: Enlace Popular
         desc:
-          other: Posted an external link with 50 clicks.
+          other: Publicado un enlace externo con 50 clics.
       hot_link:
         name:
-          other: Hot Link
+          other: Enlace caliente
         desc:
-          other: Posted an external link with 300 clicks.
+          other: Publicado un enlace externo con 300 clics.
       famous_link:
         name:
-          other: Famous Link
+          other: Enlace familiar
         desc:
-          other: Posted an external link with 100 clicks.
+          other: Publicado un enlace externo con 100 clics.
     default_badge_groups:
       getting_started:
         name:
-          other: Getting Started
+          other: Primeros pasos
       community:
         name:
-          other: Community
+          other: Comunidad
       posting:
         name:
           other: Posting
@@ -836,9 +836,9 @@ ui:
       posts: Publicaciones
       invites: Invitaciones
       votes: Votos
-    answer: Answer
-    question: Question
-    badge_award: Badge
+    answer: Respuesta
+    question: Pregunta
+    badge_award: Medalla
   suspended:
     title: Tu cuenta ha sido suspendida
     until_time: "Tu cuenta ha sido suspendida hasta el {{ time }}."
@@ -904,7 +904,7 @@ ui:
             msg:
               empty: El título no puede estar vacío.
               only_image: Solo se permiten archivos de imagen.
-              max_size: File size cannot exceed {{size}} MB.
+              max_size: El tamaño del archivo no puede exceder {{size}} MB.
           desc:
             label: Descripción
       tab_url: URL de la imagen
@@ -947,9 +947,9 @@ ui:
       heading: Encabezado
       cell: Celda
     file:
-      text: Attach files
-      not_supported: "Don’t support that file type. Try again with {{file_type}}."
-      max_size: "Attach files size cannot exceed {{size}} MB."
+      text: Adjuntar archivos
+      not_supported: "No soporta ese tipo de archivo. Inténtalo de nuevo con {{file_type}}."
+      max_size: "El tamaño de los archivos adjuntos no puede exceder {{size}} MB."
   close_modal:
     title: Estoy cerrando este post como...
     btn_cancel: Cancelar
@@ -971,7 +971,7 @@ ui:
     msg:
       empty: Por favor selecciona una razón.
       not_a_url: El formato de la URL es incorrecto.
-      url_not_match: URL origin does not match the current website.
+      url_not_match: El origen de la URL no coincide con el sitio web actual.
   tag_modal:
     title: Crear nueva etiqueta
     form:
@@ -1547,7 +1547,7 @@ ui:
     reputation: Reputación
     comments: Comentarios
     votes: Votos
-    badges: Badges
+    badges: Insignias
     newest: Más reciente
     score: Puntuación
     edit_profile: Editar perfil
@@ -1562,7 +1562,7 @@ ui:
     top_questions: Preguntas Principales
     stats: Estadísticas
     list_empty: No se encontraron publicaciones.<br />¿Quizás le gustaría seleccionar una pestaña diferente?
-    content_empty: No posts found.
+    content_empty: No se han encontrado publicaciones.
     accepted: Aceptada
     answered: respondida
     asked: preguntó
@@ -1573,9 +1573,9 @@ ui:
     x_votes: votos recibidos
     x_answers: respuestas
     x_questions: preguntas
-    recent_badges: Recent Badges
+    recent_badges: Insignias recientes
   install:
-    title: Installation
+    title: Instalación
     next: Próximo
     done: Hecho
     config_yaml_error: No se puede crear el archivo config.yaml.
@@ -1650,7 +1650,7 @@ ui:
       msg:
         empty: El correo electrónico no puede estar vacío.
         incorrect: Correo electrónico con formato incorrecto.
-    ready_title: Your site is ready
+    ready_title: Tu sitio está listo
     ready_desc: >-
       Si alguna vez desea cambiar más configuraciones, visite la <1>sección de administración</1>; encuéntrelo en el menú del sitio.
     good_luck: "¡Diviértete y buena suerte!"
@@ -1683,7 +1683,7 @@ ui:
     questions: Preguntas
     answers: Respuestas
     users: Usuarios
-    badges: Badges
+    badges: Insignias
     flags: Banderas
     settings: Ajustes
     general: General
@@ -1709,15 +1709,15 @@ ui:
     login_failed_email_tip: Error al iniciar sesión, por favor permite el acceso a tu información de correo de esta aplicación antes de intentar nuevamente.
   badges:
     modal:
-      title: Congratulations
-      content: You've earned a new badge.
-      close: Close
-      confirm: View badges
-    title: Badges
+      title: Enhorabuena
+      content: Has ganado una nueva insignia.
+      close: Cerrar
+      confirm: Ver insignia
+    title: Insignias
     awarded: Awarded
-    earned_×: Earned ×{{ number }}
+    earned_×: Obtenidos ×{{ number }}
     ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: You can earn this multiple times.
+    can_earn_multiple: Puedes ganar esto varias veces.
     earned: Earned
   admin:
     admin_header:
