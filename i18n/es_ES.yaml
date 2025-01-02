@@ -781,13 +781,13 @@ backend:
           other: Comunidad
       posting:
         name:
-          other: Posting
+          other: Publicación
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
     title: Cómo formatear
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">menciona una publicación: <code>#post_id</code></p></li> <li><p class ="mb-2">para hacer enlaces</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Título](https://url.com)</code></pre></li><li><p class="mb-2">poner retornos entre párrafos</p></li><li><p class="mb-2"><em>_italic_</em> o **<strong>negrita</ strong>**</p></li><li><p class="mb-2">sangría del código con 4 espacios</p></li><li><p class="mb-2" >cita colocando <code>&gt;</code> al inicio de la línea</p></li><li><p class="mb-2">comillas invertidas se escapa <code>`like _this_`</code></p></li><li><p class="mb-2">crear barreras de código con comillas invertidas <code> `</code></p><pre class="mb-0"><code>```<br/>código aquí<br/>```</code></pre></li> </ul>
   pagination:
     prev: Anterior
     next: Siguiente
@@ -1014,9 +1014,9 @@ ui:
     delete:
       title: Eliminar esta etiqueta
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p>No permitimos <strong>eliminar etiquetas con publicaciones</strong>.</p> <p>Primero elimine esta etiqueta de las publicaciones.</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p>No permitimos <strong>eliminar etiqueta con sinónimos</strong>.</p> <p>Primero elimine los sinónimos de esta etiqueta.</p>
       tip: '¿Estás seguro de que deseas borrarlo?'
       close: Cerrar
   edit_tag:
@@ -1038,13 +1038,13 @@ ui:
     hours: horas
     days: días
   reaction:
-    heart: heart
-    smile: smile
+    heart: corazón
+    smile: sonrisa
     frown: frown
-    btn_label: add or remove reactions
-    undo_emoji: undo {{ emoji }} reaction
-    react_emoji: react with {{ emoji }}
-    unreact_emoji: unreact with {{ emoji }}
+    btn_label: añadir o eliminar reacciones
+    undo_emoji: deshacer reacción de {{ emoji }}
+    react_emoji: reaccionar con {{ emoji }}
+    unreact_emoji: desreaccionar con {{ emoji }}
   comment:
     btn_add_comment: Añadir comentario
     reply_to: Responder a
@@ -1139,7 +1139,7 @@ ui:
       question: Preguntas
       tag: Etiquetas
       user: Usuarios
-      badges: Badges
+      badges: Insignias
       profile: Perfil
       setting: Ajustes
       logout: Cerrar sesión
@@ -1183,8 +1183,8 @@ ui:
       label: Nombre
       msg:
         empty: El nombre no puede estar vacío.
-        range: Name must be between 2 to 30 characters in length.
-        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+        range: El nombre debe tener entre 2 y 30 caracteres de largo.
+        character: 'Debe usar el juego de caracteres "a-z", "A-Z", "0-9", " - . _"'
     email:
       label: Correo electrónico
       msg:
@@ -1340,9 +1340,9 @@ ui:
     title: Preguntas relacionadas
     answers: respuestas
   linked_question:
-    title: Linked Questions
-    description: Questions linked to
-    no_linked_question: No questions linked from this question.
+    title: Preguntas relacionadas
+    description: Pregunta relacionada con
+    no_linked_question: No hay preguntas enlazadas a esta pregunta.
   invite_to_answer:
     title: Personas Preguntadas
     desc: Selecciona personas que creas que sepan la respuesta.
@@ -1355,7 +1355,7 @@ ui:
     asked: preguntada
     update: Modificada
     edit: editada
-    commented: commented
+    commented: comentado
     Views: Visto
     Follow: Seguir
     Following: Siguiendo
@@ -1373,7 +1373,7 @@ ui:
       title: Respuestas
       score: Puntuación
       newest: Más reciente
-      oldest: Oldest
+      oldest: Más antiguo
       btn_accept: Aceptar
       btn_accepted: Aceptada
     write_answer:
@@ -1398,13 +1398,13 @@ ui:
       title: Reabrir esta publicación
       content: '¿Seguro que quieres reabrir esta publicación?'
     list:
-      confirm_btn: List
-      title: List this post
-      content: Are you sure you want to list?
+      confirm_btn: Lista
+      title: Listar esta publicación
+      content: '¿Estás seguro de que quieres listar?'
     unlist:
-      confirm_btn: Unlist
-      title: Unlist this post
-      content: Are you sure you want to unlist?
+      confirm_btn: Deslistar
+      title: No listar esta publicación
+      content: '¿Estás seguro de que quieres dejar de listar?'
     pin:
       title: Fijar esta publicación
       content: '¿Estás seguro de querer fijar esto globalmente? Esta publicación aparecerá por encima de todas las listas de publicaciones.'
@@ -1426,9 +1426,9 @@ ui:
     save: Guardar
     delete: Eliminar
     undelete: Restaurar
-    list: List
-    unlist: Unlist
-    unlisted: Unlisted
+    list: Lista
+    unlist: Deslistar
+    unlisted: Sin enumerar
     login: Acceder
     signup: Registrarse
     logout: Cerrar sesión
@@ -1457,16 +1457,16 @@ ui:
     system_setting: Ajuste de sistema
     default: Por defecto
     reset: Reiniciar
-    tag: Tag
+    tag: Etiqueta
     post_lowercase: publicación
-    filter: Filter
-    ignore: Ignore
-    submit: Submit
+    filter: Filtro
+    ignore: Ignorar
+    submit: Enviar
     normal: Normal
-    closed: Closed
-    deleted: Deleted
-    pending: Pending
-    more: More
+    closed: Cerrado
+    deleted: Eliminado
+    pending: Pendiente
+    more: Más
   search:
     title: Resultados de la búsqueda
     keywords: Palabras claves
@@ -1503,8 +1503,8 @@ ui:
   account_result:
     success: Tu nueva cuenta ha sido confirmada, serás redirigido a la página de inicio.
     link: Continuar a la página de inicio
-    oops: Oops!
-    invalid: The link you used no longer works.
+    oops: '¡Ups!'
+    invalid: El enlace que utilizaste ya no funciona.
     confirm_new_email: Tu email ha sido actualizado.
     confirm_new_email_invalid: >-
       Lo siento, este enlace de confirmación ya no es válido. ¿Quizás ya se haya cambiado tu correo electrónico?
@@ -1526,9 +1526,9 @@ ui:
     answers: Respuestas
     newest: Más reciente
     active: Activo
-    hot: Hot
-    frequent: Frequent
-    recommend: Recommend
+    hot: Popular
+    frequent: Frecuente
+    recommend: Recomendar
     score: Puntuación
     unanswered: Sin respuesta
     modified: modificada
@@ -1714,28 +1714,28 @@ ui:
       close: Cerrar
       confirm: Ver insignia
     title: Insignias
-    awarded: Awarded
+    awarded: Premiado
     earned_×: Obtenidos ×{{ number }}
-    ×_awarded: "{{ number }} awarded"
+    ×_awarded: "{{ number }} adjudicado"
     can_earn_multiple: Puedes ganar esto varias veces.
-    earned: Earned
+    earned: Ganado
   admin:
     admin_header:
       title: Administrador
     dashboard:
       title: Panel
-      welcome: Welcome to Admin!
+      welcome: '¡Bienvenido a Admin!'
       site_statistics: Estadísticas del sitio
       questions: "Preguntas:"
-      resolved: "Resolved:"
-      unanswered: "Unanswered:"
+      resolved: "Resuelto:"
+      unanswered: "Sin respuesta:"
       answers: "Respuestas:"
       comments: "Comentarios:"
       votes: "Votos:"
       users: "Usuarios:"
       flags: "Banderas:"
-      reviews: "Reviews:"
-      site_health: Site health
+      reviews: "Revisar:"
+      site_health: Salud del sitio
       version: "Versión:"
       https: "HTTPS:"
       upload_folder: "Cargar carpeta:"
@@ -1800,8 +1800,8 @@ ui:
       form:
         fields:
           display_name:
-            label: Display name
-            msg_range: Display name up to 30 characters.
+            label: Nombre para mostrar
+            msg_range: Mostrar nombre de hasta 30 caracteres.
           username:
             label: Nombre de usuario
             msg_range: Nombre de usuario hasta 30 caracteres.
@@ -1822,7 +1822,7 @@ ui:
             msg: "Por favor, introduzca el correo electrónico del usuario, uno por línea."
           display_name:
             label: Nombre público
-            msg: Display name must be 2-30 characters in length.
+            msg: El nombre de la pantalla debe tener entre 2 y 30 caracteres de longitud.
           email:
             label: Correo
             msg: El correo no es válido.
@@ -2001,36 +2001,36 @@ ui:
     write:
       page_title: Escribir
       restrict_answer:
-        title: Answer write
+        title: Escribir respuesta
         label: Cada usuario solo puede escribir una respuesta por pregunta
-        text: "Turn off to allow users to write multiple answers to the same question, which may cause answers to be unfocused."
+        text: "Desactivar para permitir a los usuarios escribir múltiples respuestas a la misma pregunta, lo que puede causar que las respuestas no estén enfocadas."
       recommend_tags:
         label: Etiquetas recomendadas
-        text: "Recommend tags will show in the dropdown list by default."
+        text: "Las etiquetas recomendadas se mostrarán en la lista desplegable por defecto."
         msg:
-          contain_reserved: "recommended tags cannot contain reserved tags"
+          contain_reserved: "las etiquetas recomendadas no pueden contener etiquetas reservadas"
       required_tag:
-        title: Set required tags
-        label: Set “Recommend tags” as required tags
+        title: Establecer etiquetas necesarias
+        label: Establecer "Etiquetas recomendadas" como etiquetas requeridas
         text: "Cada nueva pregunta debe tener al menos una etiqueta de recomendación."
       reserved_tags:
         label: Etiquetas reservadas
-        text: "Reserved tags can only be used by moderator."
+        text: "Las etiquetas reservadas sólo pueden ser usadas por el moderador."
       image_size:
-        label: Max image size (MB)
-        text: "The maximum image upload size."
+        label: Tamaño máximo de la imagen (MB)
+        text: "Tamaño máximo de la imagen."
       attachment_size:
-        label: Max attachment size (MB)
-        text: "The maximum attachment files upload size."
+        label: Tamaño máximo del archivo adjunto (MB)
+        text: "El tamaño máximo de subida de archivos adjuntos."
       image_megapixels:
-        label: Max image megapixels
-        text: "Maximum number of megapixels allowed for an image."
+        label: Megapixels de imagen máx
+        text: "Número máximo de megapixels permitidos para una imagen."
       image_extensions:
-        label: Authorized image extensions
-        text: "A list of file extensions allowed for image display, separate with commas."
+        label: Extensiones de adjuntos autorizadas
+        text: "Una lista de extensiones de archivo permitidas para la visualización de imágenes, separadas con comas."
       attachment_extensions:
-        label: Authorized attachment extensions
-        text: "A list of file extensions allowed for upload, separate with commas. WARNING: Allowing uploads may cause security issues."
+        label: Extensiones de adjuntos autorizadas
+        text: "Una lista de extensiones de archivo permitidas para subir, separadas con comas. ADVERTENCIA: Permitir subidas puede causar problemas de seguridad."
     seo:
       page_title: SEO
       permalink:
@@ -2094,7 +2094,7 @@ ui:
         text: "ADVERTENCIA: Si se desactiva, es posible que no pueda iniciar sesión si no ha configurado previamente otro método de inicio de sesión."
     installed_plugins:
       title: Extensiones Instaladas
-      plugin_link: Plugins extend and expand the functionality. You may find plugins in the <1>Plugin Repository</1>.
+      plugin_link: Los plugins extienden y expanden la funcionalidad. Puede encontrar plugins en el <1>Repositorio de plugin</1>.
       filter:
         all: Todos
         active: Activo
@@ -2141,20 +2141,20 @@ ui:
         should_be_number: la entrada debe ser número
         number_larger_1: número debe ser igual o mayor que 1
     badges:
-      action: Action
-      active: Active
-      activate: Activate
+      action: Accin
+      active: Activo
+      activate: Activación
       all: All
-      awards: Awards
-      deactivate: Deactivate
+      awards: Premios
+      deactivate: Desactivar
       filter:
-        placeholder: Filter by name, badge:id
-      group: Group
-      inactive: Inactive
-      name: Name
-      show_logs: Show logs
+        placeholder: Filtrar por nombre, insignia:id
+      group: Grupo
+      inactive: Inactivo
+      name: Nombre
+      show_logs: Mostrar logs
       status: Status
-      title: Badges
+      title: Insignias
   form:
     optional: (opcional)
     empty: no puede estar en blanco
@@ -2234,7 +2234,7 @@ ui:
     discard_confirm: '¿Está seguro de que desea descartar este borrador?'
   messages:
     post_deleted: Esta publicación ha sido eliminada.
-    post_cancel_deleted: This post has been undeleted.
+    post_cancel_deleted: Este publicación ha sido restaurada.
     post_pin: Esta publicación ha sido fijada.
     post_unpin: Esta publicación ha sido desfijada.
     post_hide_list: Esta publicación ha sido ocultada de la lista.
@@ -2243,15 +2243,15 @@ ui:
     post_list: Esta publicación ha sido listada.
     post_unlist: Esta publicación ha sido retirado de la lista..
     post_pending: Su publicación está pendiente de revisión. Esto es una vista previa, será visible después de que haya sido aprobado.
-    post_closed: This post has been closed.
-    answer_deleted: This answer has been deleted.
-    answer_cancel_deleted: This answer has been undeleted.
-    change_user_role: This user's role has been changed.
-    user_inactive: This user is already inactive.
-    user_normal: This user is already normal.
-    user_suspended: This user has been suspended.
-    user_deleted: This user has been deleted.
-    badge_activated: This badge has been activated.
-    badge_inactivated: This badge has been inactivated.
+    post_closed: Esta publicación ha sido cerrada.
+    answer_deleted: Esta respuesta ha sido eliminada.
+    answer_cancel_deleted: Esta respuesta ha sido restaurada.
+    change_user_role: El rol de este usuario ha sido cambiado.
+    user_inactive: Este usuario ya esta inactivo.
+    user_normal: Este usuario ya es normal.
+    user_suspended: Este usuario ha sido suspendido.
+    user_deleted: Este usuario ha sido eliminado.
+    badge_activated: Esta insignia ha sido activada.
+    badge_inactivated: Esta insignia ha sido desactivada.
 
 
