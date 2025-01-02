@@ -544,59 +544,59 @@ backend:
           other: Primer mensaje editado.
       first_flag:
         name:
-          other: First Flag
+          other: Primera Denuncia
         desc:
-          other: First flagged a post.
+          other: Primer denuncia de un post.
       first_upvote:
         name:
-          other: First Upvote
+          other: Primer voto favorable
         desc:
-          other: First up voted a post.
+          other: Primera vez que le doy un 'like' a un post.
       first_link:
         name:
-          other: First Link
+          other: Primer Enlace
         desc:
-          other: First dirst added a link to another post.
+          other: Primero dirst añadió un enlace a otro post.
       first_reaction:
         name:
-          other: First Reaction
+          other: Primera reacción
         desc:
-          other: First reacted to the post.
+          other: Primero reaccionó al post.
       first_share:
         name:
-          other: First Share
+          other: Primer Compartir
         desc:
-          other: First shared a post.
+          other: Primero compartió un post.
       scholar:
         name:
-          other: Scholar
+          other: Erudito
         desc:
-          other: Asked a question and accepted an answer.
+          other: Hecha una pregunta y aceptada una respuesta.
       commentator:
         name:
-          other: Commentator
+          other: Comentador
         desc:
-          other: Leave 5 comments.
+          other: Deja 5 comentarios.
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: Nuevo usuario del mes
         desc:
-          other: Outstanding contributions in their first month.
+          other: Contribuciones pendientes en su primer mes.
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: Lea los lineamientos
         desc:
-          other: Read the [community guidelines].
+          other: Lea las [directrices de la comunidad].
       reader:
         name:
           other: Lector
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: Lee cada respuesta en un tema con más de 10 respuestas.
       welcome:
         name:
-          other: Welcome
+          other: Bienvenido
         desc:
-          other: Received a up vote.
+          other: Recibió un voto a favor.
       nice_share:
         name:
           other: Nice Share
