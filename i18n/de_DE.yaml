@@ -551,100 +551,100 @@ backend:
         name:
           other: Erste Abstimmung
         desc:
-          other: First up voted a post.
+          other: Erste Like eines Beitrags.
       first_link:
         name:
-          other: First Link
+          other: Erster Link
         desc:
-          other: First dirst added a link to another post.
+          other: Hat erstmals einen Link zu einem anderen Beitrag hinzugefügt.
       first_reaction:
         name:
-          other: First Reaction
+          other: Erste Reaktion
         desc:
-          other: First reacted to the post.
+          other: Zuerst reagierte auf den Beitrag.
       first_share:
         name:
-          other: First Share
+          other: Erstes Teilen
         desc:
-          other: First shared a post.
+          other: Zuerst einen Beitrag geteilt.
       scholar:
         name:
-          other: Scholar
+          other: Gelehrter
         desc:
-          other: Asked a question and accepted an answer.
+          other: Hat eine Frage gestellt und eine Antwort akzeptiert.
       commentator:
         name:
-          other: Commentator
+          other: Kommentator
         desc:
-          other: Leave 5 comments.
+          other: Hinterlassen Sie 5 Kommentare.
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: Neuer Benutzer des Monats
         desc:
-          other: Outstanding contributions in their first month.
+          other: Ausstehende Beiträge in ihrem ersten Monat.
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: Lesen Sie die Richtlinien
         desc:
-          other: Read the [community guidelines].
+          other: Lesen Sie die [Community-Richtlinien].
       reader:
         name:
-          other: Reader
+          other: Leser
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: Lesen Sie alle Antworten in einem Thema mit mehr als 10 Antworten.
       welcome:
         name:
-          other: Welcome
+          other: Willkommen
         desc:
-          other: Received a up vote.
+          other: Du hast eine positive Abstimmung erhalten.
       nice_share:
         name:
-          other: Nice Share
+          other: Schöne teilen
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: Hat einen Beitrag mit 25 einzigartigen Besuchern freigegeben.
       good_share:
         name:
-          other: Good Share
+          other: Gute Teile
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: Hat einen Beitrag mit 300 einzigartigen Besuchern freigegeben.
       great_share:
         name:
-          other: Great Share
+          other: Großartiges Teilen
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: Hat einen Beitrag mit 1000 einzigartigen Besuchern freigegeben.
       out_of_love:
         name:
-          other: Out of Love
+          other: Aus Liebe
         desc:
-          other: Used 50 up votes in a day.
+          other: Hat an einem Tag 50 Upvotes verwendet.
       higher_love:
         name:
-          other: Higher Love
+          other: Höhere Liebe
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: Hat an einem Tag 50 Upvotes 5 Mal verwendet.
       crazy_in_love:
         name:
           other: Verrückt in Liebe
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: Hat an einem Tag 50 Upvotes 20 Mal verwendet.
       promoter:
         name:
-          other: Promoter
+          other: Förderer
         desc:
-          other: Invited a user.
+          other: Hat einen Benutzer eingeladen.
       campaigner:
         name:
-          other: Campaigner
+          other: Kampagner
         desc:
-          other: Invited 3 basic users.
+          other: Lade 3 einfache Benutzer ein.
       champion:
         name:
           other: Champion
         desc:
-          other: Invited 5 members.
+          other: Hat 5 Mitglieder eingeladen.
       thank_you:
         name:
-          other: Thank You
+          other: Vielen Dank
         desc:
           other: Has 20 up voted posts and gave 10 up votes.
       gives_back:
