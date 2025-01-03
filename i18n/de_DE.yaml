@@ -315,7 +315,7 @@ backend:
         other: Seiten-Konfiguration nicht gefunden.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Abzeichen-Objekt nicht gefunden
   reason:
     spam:
       name:
@@ -326,7 +326,7 @@ backend:
       name:
         other: unhöflich oder beleidigend
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Eine vernünftige Person würde diesen Inhalt für respektvoll diskutierten Diskurs für unangemessen halten."
     a_duplicate:
       name:
         other: ein Duplikat
@@ -338,7 +338,7 @@ backend:
       name:
         other: keine Antwort
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Das wurde als Antwort gepostet, aber es versucht nicht, die Frage zu beantworten. Sie sollte entweder bearbeitet, kommentiert, als weitere Frage gestellt oder ganz gelöscht werden."
     no_longer_needed:
       name:
         other: nicht mehr benötigt
@@ -397,7 +397,7 @@ backend:
         name:
           other: benötigt Details oder Klarheit
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: Diese Frage enthält derzeit mehrere Fragen in einer. Sie sollte sich auf ein einziges Problem konzentrieren.
       other:
         name:
           other: etwas anderes
@@ -464,12 +464,12 @@ backend:
       title:
         other: "[{{.SiteName}}] Bestätige deine neue E-Mail-Adresse"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Bestätigen Sie Ihre neue E-Mail-Adresse für {{.SiteName}} indem Sie auf den folgenden Link klicken:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nWenn Sie diese Änderung nicht angefordert haben bitte diese E-Mail ignorieren.<br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht angezeigt wird."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} hat deine Frage beantwortet"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n\n<a href='{{.AnswerUrl}}'>Auf {{.SiteName}} anschauen</a><br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht angezeigt wird.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Abmelden</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} hat dich eingeladen zu antworten"
@@ -1183,7 +1183,7 @@ ui:
       label: Name
       msg:
         empty: Der Name darf nicht leer sein.
-        range: Die Länge des Namens sollte zwischen 2 und 30 Zeichen liegen.
+        range: Name must be between 2 to 30 characters in length.
         character: 'Muss den Zeichensatz "a-z", "A-Z", "0-9", " - . _" verwenden'
     email:
       label: E-Mail
@@ -1822,7 +1822,7 @@ ui:
             msg: "Bitte gib die E-Mail des Nutzers ein, eine pro Zeile."
           display_name:
             label: Anzeigename
-            msg: Der Anzeigename muss zwischen 2 und 30 Zeichen lang sein.
+            msg: Display name must be 2-30 characters in length.
           email:
             label: E-Mail
             msg: Die E-Mail ist nicht gültig.
