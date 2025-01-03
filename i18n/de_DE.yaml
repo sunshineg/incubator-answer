@@ -544,12 +544,12 @@ backend:
           other: Erster Beitrag bearbeiten.
       first_flag:
         name:
-          other: First Flag
+          other: Erste Meldung
         desc:
-          other: First flagged a post.
+          other: Erste Meldung eines Beitrags.
       first_upvote:
         name:
-          other: First Upvote
+          other: Erste Abstimmung
         desc:
           other: First up voted a post.
       first_link:
@@ -624,7 +624,7 @@ backend:
           other: Used 50 up votes in a day 5 times.
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: Verrückt in Liebe
         desc:
           other: Used 50 up votes in a day 20 times.
       promoter:
