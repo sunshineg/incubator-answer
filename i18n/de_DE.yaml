@@ -781,7 +781,7 @@ backend:
           other: Gemeinschaft
       posting:
         name:
-          other: Posting
+          other: Freigeben
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
@@ -1714,11 +1714,11 @@ ui:
       close: Schließen
       confirm: Abzeichen ansehen
     title: Abzeichen
-    awarded: Awarded
-    earned_×: Earned ×{{ number }}
-    ×_awarded: "{{ number }} awarded"
-    can_earn_multiple: You can earn this multiple times.
-    earned: Earned
+    awarded: Verliehen
+    earned_×: Verdiente ×{{ number }}
+    ×_awarded: "verliehen {{ number }} "
+    can_earn_multiple: Du kannst das mehrmals verdienen.
+    earned: Verdient
   admin:
     admin_header:
       title: Administrator
@@ -1734,7 +1734,7 @@ ui:
       votes: "Stimmen:"
       users: "Nutzer:"
       flags: "Meldungen:"
-      reviews: "Reviews:"
+      reviews: "Rezension:"
       site_health: Gesundheit der Website
       version: "Version:"
       https: "HTTPS:"
@@ -2145,7 +2145,7 @@ ui:
       active: Aktiv
       activate: Aktivieren
       all: Alle
-      awards: Awards
+      awards: Verliehen
       deactivate: Deaktivieren
       filter:
         placeholder: Nach Namen, Abzeichen:id filtern
@@ -2175,20 +2175,20 @@ ui:
     empty: Keine Überprüfungsaufgaben mehr übrig.
     approve_revision_tip: Akzeptieren Sie diese Revision?
     approve_flag_tip: Sind Sie mit diesem Bericht einverstanden?
-    approve_post_tip: Do you approve this post?
-    approve_user_tip: Do you approve this user?
-    suggest_edits: Suggested edits
+    approve_post_tip: Bestätigen Sie diesen Beitrag?
+    approve_user_tip: Bestätigen Sie diesen Benutzer?
+    suggest_edits: Änderungsvorschläge
     flag_post: Beitrag melden
     flag_user: Nutzer melden
     queued_post: Beitrag in Warteschlange
     queued_user: Benutzer in der Warteschlange
     filter_label: Typ
     reputation: ansehen
-    flag_post_type: Flagged this post as {{ type }}.
-    flag_user_type: Flagged this user as {{ type }}.
+    flag_post_type: Diesen Beitrag als {{ type }} markiert.
+    flag_user_type: Diesen Benutzer als {{ type }} markiert.
     edit_post: Beitrag bearbeiten
-    list_post: List post
-    unlist_post: Unlist post
+    list_post: Ausgestellte Beiträge
+    unlist_post: Versteckte Beiträge
   timeline:
     undeleted: ungelöscht
     deleted: gelöscht
@@ -2234,14 +2234,14 @@ ui:
     discard_confirm: Bist du sicher, dass du deinen Entwurf verwerfen willst?
   messages:
     post_deleted: Dieser Beitrag wurde gelöscht.
-    post_cancel_deleted: This post has been undeleted.
+    post_cancel_deleted: Dieser Beitrag wurde wiederhergestellt.
     post_pin: Dieser Beitrag wurde angepinnt.
     post_unpin: Dieser Beitrag wurde losgelöst.
     post_hide_list: Dieser Beitrag wurde aus der Liste verborgen.
     post_show_list: Dieser Beitrag wird in der Liste angezeigt.
     post_reopen: Dieser Beitrag wurde wieder geöffnet.
-    post_list: This post has been listed.
-    post_unlist: This post has been unlisted.
+    post_list: Dieser Beitrag wurde angezeigt.
+    post_unlist: Dieser Beitrag wurde ausgeblendet.
     post_pending: Dein Beitrag wartet auf eine Überprüfung. Dies ist eine Vorschau, sie wird nach der Genehmigung sichtbar sein.
     post_closed: Dieser Beitrag wurde gelöscht.
     answer_deleted: Diese Antwort wurde gelöscht.
