@@ -474,32 +474,32 @@ backend:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} hat dich eingeladen zu antworten"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>Ich denke, Sie kennen die Antwort.</blockquote><br>\n<a href='{{.InviteUrl}}'> {{.SiteName}}</a><br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht angezeigt wird.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Abmelden</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} hat deinen Beitrag kommentiert"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n\n<a href='{{.CommentUrl}}'>Auf {{.SiteName}} anschauen</a><br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht angezeigt wird.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Abmelden</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] Neue Frage: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht angezeigt wird.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Abmelden</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Passwort zurücksetzen"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Jemand bat darum, Ihr Passwort auf {{.SiteName}}zurückzusetzen.<br><br>\n\nWenn Sie es nicht waren, können Sie diese E-Mail sicher ignorieren.<br><br>\n\nKlicken Sie auf den folgenden Link, um ein neues Passwort auszuwählen:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n\n<br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht angezeigt wird."
     register:
       title:
         other: "[{{.SiteName}}] Bestätige dein neues Konto"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Willkommen in {{.SiteName}}!<br><br>\n\nKlicken Sie auf den folgenden Link, um Ihr neues Konto zu bestätigen und zu aktivieren:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nWenn der obige Link nicht anklickbar ist kopieren und in die Adressleiste Ihres Webbrowsers einfügen.\n<br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht sichtbar ist."
     test:
       title:
         other: "[{{.SiteName}}] Test-E-Mail"
       body:
-        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Dies ist eine Test-E-Mail.\n<br><br>\n\n--<br>\nHinweis: Dies ist eine automatische System-E-Mail, Bitte antworten Sie nicht auf diese Nachricht, da Ihre Antwort nicht angezeigt wird."
   action_activity_type:
     upvote:
       other: positiv bewerten
@@ -524,24 +524,24 @@ backend:
       other: Änderungsvorschläge
   reaction:
     tooltip:
-      other: "{{ .Names }} and {{ .Count }} more..."
+      other: "{{ .Names }} Und {{ .Count }} mehr..."
   badge:
     default_badges:
       autobiographer:
         name:
           other: Autobiograph
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Gefüllt mit <a href="{{ .ProfileURL }}" target="_blank">Profil</a> Informationen.
       certified:
         name:
           other: Zertifiziert
         desc:
-          other: Completed our new user tutorial.
+          other: Erledigte unser neues Benutzerhandbuch.
       editor:
         name:
           other: Editor
         desc:
-          other: First post edit.
+          other: Erster Beitrag bearbeiten.
       first_flag:
         name:
           other: First Flag
