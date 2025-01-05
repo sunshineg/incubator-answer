@@ -397,7 +397,7 @@ backend:
         name:
           other: precisa de detalhes ou clareza
         desc:
-          other: Esta pergunta atualmente inclui várias perguntas em uma. Deve se concentrar em apenas um problema.
+          other: Esta pergunta atualmente inclui várias perguntas em uma só. Por isso, deve focar em apenas um problema.
       other:
         name:
           other: algo mais
@@ -1822,7 +1822,7 @@ ui:
             msg: "Por favor insira o e-mail do usuário, um por linha."
           display_name:
             label: Nome de exibição
-            msg: O nome de exibição deve ter de 2-30 caracteres.
+            msg: O nome de exibição deve ter entre 2 e 30 caracteres.
           email:
             label: E-mail
             msg: E-mail inválido.
@@ -2021,16 +2021,16 @@ ui:
         text: "O tamanho máximo para upload de imagem."
       attachment_size:
         label: Tamanho máximo do anexo (MB)
-        text: "Tamanho máximo para upload de arquivos anexos."
+        text: "O tamanho máximo para o carregamento de arquivos anexados."
       image_megapixels:
-        label: Máx megapíxeis da imagem
+        label: Máximo megapíxels da imagem
         text: "Número máximo de megapixels permitido para uma imagem."
       image_extensions:
         label: Extensões de imagens autorizadas
-        text: "Uma lista de extensões de arquivo permitidas para exibição de imagens, separadas com vírgulas."
+        text: "Uma lista de extensões de arquivo permitidas para exibição de imagens, separadas por vírgula."
       attachment_extensions:
-        label: Extensão autorizada para anexos
-        text: "Uma lista de extensões de arquivo permitidas para upload, separar com vírgulas. AVISO: permitir uploads pode causar problemas de segurança."
+        label: Extensões autorizadas para anexos
+        text: "Uma lista de extensões de arquivo permitidas para carregamento, separar por vírgula. AVISO: permitir o carregamento pode causar problemas de segurança."
     seo:
       page_title: SEO
       permalink:
@@ -2250,7 +2250,7 @@ ui:
     user_inactive: Este usuário já está inativo.
     user_normal: Este usuário já está normal.
     user_suspended: Este usuário foi suspenso.
-    user_deleted: Este usuário foi excluído.
+    user_deleted: Este usuário foi removido.
     badge_activated: Este emblema foi ativado.
     badge_inactivated: Este emblema foi desativado.
 
