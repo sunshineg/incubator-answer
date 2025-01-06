@@ -491,7 +491,7 @@ backend:
       title:
         other: "[{{.SiteName}}] New question: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Password reset"
