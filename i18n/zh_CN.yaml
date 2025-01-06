@@ -751,7 +751,7 @@ backend:
         name:
           other: 值得关注问题
         desc:
-          other: 1 000个问题。
+          other: 1,000 个浏览量。
       famous_question:
         name:
           other: 著名的问题
