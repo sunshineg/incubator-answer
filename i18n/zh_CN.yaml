@@ -756,7 +756,7 @@ backend:
         name:
           other: 著名的问题
         desc:
-          other: 问题有5,000个意见。
+          other: 问题有 5,000 个浏览量。
       popular_link:
         name:
           other: 热门链接
