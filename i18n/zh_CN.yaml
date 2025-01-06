@@ -707,17 +707,17 @@ backend:
         name:
           other: 指导顾问
         desc:
-          other: 接受答案。
+          other: 有10个答案被接受。
       know_it_all:
         name:
           other: 万事通
         desc:
-          other: 接受50个答案。
+          other: 有50个答案被接受。
       solution_institution:
         name:
           other: 解决方案机构
         desc:
-          other: 接受150份答复。
+          other: 有150个答案被接受。
       nice_answer:
         name:
           other: 好答案
@@ -752,17 +752,17 @@ backend:
         name:
           other: 热门问题
         desc:
-          other: 问题有500个意见。
+          other: 问题有5,000个浏览量。
       notable_question:
         name:
           other: 值得关注问题
         desc:
-          other: 1 000个问题。
+          other: 问题有1,000个浏览量。
       famous_question:
         name:
           other: 著名的问题
         desc:
-          other: 问题有5,000个意见。
+          other: 问题有5000的浏览量。
       popular_link:
         name:
           other: 热门链接
