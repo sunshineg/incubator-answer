@@ -17,11 +17,15 @@
  * under the License.
  */
 
-package service_config
+package migrations
 
-type ServiceConfig struct {
-	UploadPath                    string `json:"upload_path" mapstructure:"upload_path" yaml:"upload_path"`
-	CleanUpUploads                bool   `json:"clean_up_uploads" mapstructure:"clean_up_uploads" yaml:"clean_up_uploads"`
-	CleanOrphanUploadsPeriodHours int    `json:"clean_orphan_uploads_period_hours" mapstructure:"clean_orphan_uploads_period_hours" yaml:"clean_orphan_uploads_period_hours"`
-	PurgeDeletedFilesPeriodDays   int    `json:"purge_deleted_files_period_days" mapstructure:"purge_deleted_files_period_days" yaml:"purge_deleted_files_period_days"`
+import (
+	"context"
+
+	"github.com/apache/answer/internal/entity"
+	"xorm.io/xorm"
+)
+
+func addFileRecord(ctx context.Context, x *xorm.Engine) error {
+	return x.Context(ctx).Sync(new(entity.FileRecord))
 }

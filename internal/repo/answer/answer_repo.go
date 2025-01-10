@@ -529,7 +529,24 @@ func (ar *answerRepo) updateSearch(ctx context.Context, answerID string) (err er
 }
 
 func (ar *answerRepo) DeletePermanentlyAnswers(ctx context.Context) error {
-	_, err := ar.data.DB.Context(ctx).Where("status = ?", entity.AnswerStatusDeleted).Delete(&entity.Answer{})
+	// get all deleted answers ids
+	ids := make([]string, 0)
+	err := ar.data.DB.Context(ctx).Select("id").Table(new(entity.Answer).TableName()).
+		Where("status = ?", entity.AnswerStatusDeleted).Find(&ids)
+	if err != nil {
+		return errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+	if len(ids) == 0 {
+		return nil
+	}
+
+	// delete all revisions permanently
+	_, err = ar.data.DB.Context(ctx).In("object_id", ids).Delete(&entity.Revision{})
+	if err != nil {
+		return errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+
+	_, err = ar.data.DB.Context(ctx).Where("status = ?", entity.AnswerStatusDeleted).Delete(&entity.Answer{})
 	if err != nil {
 		return errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
 	}
