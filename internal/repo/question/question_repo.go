@@ -168,6 +168,23 @@ func (qr *questionRepo) UpdateQuestionStatusWithOutUpdateTime(ctx context.Contex
 }
 
 func (qr *questionRepo) DeletePermanentlyQuestions(ctx context.Context) (err error) {
+	// get all deleted question ids
+	ids := make([]string, 0)
+	err = qr.data.DB.Context(ctx).Select("id").Table(new(entity.Question).TableName()).
+		Where("status = ?", entity.QuestionStatusDeleted).Find(&ids)
+	if err != nil {
+		return errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+	if len(ids) == 0 {
+		return nil
+	}
+
+	// delete all revisions permanently
+	_, err = qr.data.DB.Context(ctx).In("object_id", ids).Delete(&entity.Revision{})
+	if err != nil {
+		return errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+
 	_, err = qr.data.DB.Context(ctx).Where("status = ?", entity.QuestionStatusDeleted).Delete(&entity.Question{})
 	if err != nil {
 		return errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()

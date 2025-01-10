@@ -48,6 +48,7 @@ import (
 	"github.com/apache/answer/internal/repo/comment"
 	"github.com/apache/answer/internal/repo/config"
 	"github.com/apache/answer/internal/repo/export"
+	"github.com/apache/answer/internal/repo/file_record"
 	"github.com/apache/answer/internal/repo/limit"
 	"github.com/apache/answer/internal/repo/meta"
 	notification2 "github.com/apache/answer/internal/repo/notification"
@@ -84,6 +85,7 @@ import (
 	"github.com/apache/answer/internal/service/dashboard"
 	"github.com/apache/answer/internal/service/event_queue"
 	export2 "github.com/apache/answer/internal/service/export"
+	file_record2 "github.com/apache/answer/internal/service/file_record"
 	"github.com/apache/answer/internal/service/follow"
 	"github.com/apache/answer/internal/service/importer"
 	meta2 "github.com/apache/answer/internal/service/meta"
@@ -227,10 +229,10 @@ func initApplication(debug bool, serverConf *conf.Server, dbConf *data.Database,
 	contentRevisionService := content.NewRevisionService(revisionRepo, userCommon, questionCommon, answerService, objService, questionRepo, answerRepo, tagRepo, tagCommonService, notificationQueueService, activityQueueService, reportRepo, reviewService, reviewActivityRepo)
 	revisionController := controller.NewRevisionController(contentRevisionService, rankService)
 	rankController := controller.NewRankController(rankService)
-	badgeAwardRepo := badge_award.NewBadgeAwardRepo(dataData, uniqueIDRepo)
+	userAdminRepo := user.NewUserAdminRepo(dataData, authRepo)
 	notificationRepo := notification2.NewNotificationRepo(dataData)
 	pluginUserConfigRepo := plugin_config.NewPluginUserConfigRepo(dataData)
-	userAdminRepo := user.NewUserAdminRepo(dataData, authRepo)
+	badgeAwardRepo := badge_award.NewBadgeAwardRepo(dataData, uniqueIDRepo)
 	userAdminService := user_admin.NewUserAdminService(userAdminRepo, userRoleRelService, authService, userCommon, userActiveActivityRepo, siteInfoCommonService, emailService, questionRepo, answerRepo, commentCommonRepo, userExternalLoginRepo, notificationRepo, pluginUserConfigRepo, badgeAwardRepo)
 	userAdminController := controller_admin.NewUserAdminController(userAdminService)
 	reasonRepo := reason.NewReasonRepo(configService)
@@ -246,7 +248,9 @@ func initApplication(debug bool, serverConf *conf.Server, dbConf *data.Database,
 	notificationController := controller.NewNotificationController(notificationService, rankService)
 	dashboardService := dashboard.NewDashboardService(questionRepo, answerRepo, commentCommonRepo, voteRepo, userRepo, reportRepo, configService, siteInfoCommonService, serviceConf, reviewService, revisionRepo, dataData)
 	dashboardController := controller.NewDashboardController(dashboardService)
-	uploaderService := uploader.NewUploaderService(serviceConf, siteInfoCommonService)
+	fileRecordRepo := file_record.NewFileRecordRepo(dataData)
+	fileRecordService := file_record2.NewFileRecordService(fileRecordRepo, revisionRepo, serviceConf, siteInfoCommonService)
+	uploaderService := uploader.NewUploaderService(serviceConf, siteInfoCommonService, fileRecordService)
 	uploadController := controller.NewUploadController(uploaderService)
 	activityActivityRepo := activity.NewActivityRepo(dataData, configService)
 	activityCommon := activity_common2.NewActivityCommon(activityRepo, activityQueueService)
@@ -287,7 +291,7 @@ func initApplication(debug bool, serverConf *conf.Server, dbConf *data.Database,
 	renderController := controller.NewRenderController()
 	pluginAPIRouter := router.NewPluginAPIRouter(connectorController, userCenterController, captchaController, embedController, renderController)
 	ginEngine := server.NewHTTPServer(debug, staticRouter, answerAPIRouter, swaggerRouter, uiRouter, authUserMiddleware, avatarMiddleware, shortIDMiddleware, templateRouter, pluginAPIRouter, uiConf)
-	scheduledTaskManager := cron.NewScheduledTaskManager(siteInfoCommonService, questionService)
+	scheduledTaskManager := cron.NewScheduledTaskManager(siteInfoCommonService, questionService, fileRecordService, serviceConf)
 	application := newApplication(serverConf, ginEngine, scheduledTaskManager)
 	return application, func() {
 		cleanup2()

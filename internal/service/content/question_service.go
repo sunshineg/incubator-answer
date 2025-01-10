@@ -1398,6 +1398,8 @@ func (qs *QuestionService) GetQuestionPage(ctx context.Context, req *schema.Ques
 				return nil, 0, err
 			}
 			tagIDs = append(synTagIds, tagInfo.ID)
+		} else {
+			return questions, 0, nil
 		}
 	}
 

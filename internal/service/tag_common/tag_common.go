@@ -349,10 +349,17 @@ func (ts *TagCommonService) AddTag(ctx context.Context, req *schema.AddTagReq) (
 	}
 	tagInfoJson, _ := json.Marshal(tagInfo)
 	revisionDTO.Content = string(tagInfoJson)
-	_, err = ts.revisionService.AddRevision(ctx, revisionDTO, true)
+	revisionID, err := ts.revisionService.AddRevision(ctx, revisionDTO, true)
 	if err != nil {
 		return nil, err
 	}
+	ts.activityQueueService.Send(ctx, &schema.ActivityMsg{
+		UserID:           req.UserID,
+		ObjectID:         tagInfo.ID,
+		OriginalObjectID: tagInfo.ID,
+		ActivityTypeKey:  constant.ActTagCreated,
+		RevisionID:       revisionID,
+	})
 	return &schema.AddTagResp{SlugName: tagInfo.SlugName}, nil
 }
 
