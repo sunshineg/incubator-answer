@@ -726,5 +726,5 @@ func (uc *UserController) setVisitCookies(ctx *gin.Context, visitToken string, f
 		return
 	}
 	ctx.SetCookie(constant.UserVisitCookiesCacheKey,
-		visitToken, constant.UserVisitCacheTime, "/", parsedURL.Host, true, true)
+		visitToken, constant.UserVisitCacheTime, "/", parsedURL.Hostname(), true, true)
 }
