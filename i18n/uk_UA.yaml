@@ -2250,8 +2250,8 @@ ui:
     user_inactive: Цей користувач вже неактивний.
     user_normal: Цей користувач вже нормальний.
     user_suspended: Цього користувача було відсторонено.
-    user_deleted: This user has been deleted.
-    badge_activated: This badge has been activated.
-    badge_inactivated: This badge has been inactivated.
+    user_deleted: Цього користувача було видалено.
+    badge_activated: Цей бейдж було активовано.
+    badge_inactivated: Цей бейдж було деактивовано.
 
 
