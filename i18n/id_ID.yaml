@@ -36,13 +36,13 @@ backend:
     report:
       other: Flag
     edit:
-      other: Edit
+      other: Ubah
     delete:
-      other: Delete
+      other: Hapus
     close:
-      other: Close
+      other: Tutup
     reopen:
-      other: Reopen
+      other: Buka kembali
     forbidden_error:
       other: Forbidden.
     pin:
@@ -52,9 +52,9 @@ backend:
     unpin:
       other: Unpin
     show:
-      other: List
+      other: Daftar
     invite_someone_to_answer:
-      other: Edit
+      other: Undang seseorang untuk menjawab
     undelete:
       other: Undelete
   role:
@@ -88,9 +88,9 @@ backend:
     rank_question_add_label:
       other: Ask question
     rank_answer_add_label:
-      other: Write answer
+      other: Tulis jawaban
     rank_comment_add_label:
-      other: Write comment
+      other: Tulis komentar
     rank_report_add_label:
       other: Flag
     rank_comment_vote_up_label:
@@ -106,9 +106,9 @@ backend:
     rank_answer_vote_down_label:
       other: Downvote answer
     rank_invite_someone_to_answer_label:
-      other: Invite someone to answer
+      other: Undang seseorang untuk menjawab
     rank_tag_add_label:
-      other: Create new tag
+      other:
     rank_tag_edit_label:
       other: Edit tag description (need to review)
     rank_question_edit_label:
@@ -130,11 +130,11 @@ backend:
     rank_tag_synonym_label:
       other: Manage tag synonyms
   email:
-    other: Email
+    other:
   e_mail:
     other: Email
   password:
-    other: Password
+    other: Kata sandi
   pass:
     other: Password
   original_text:
@@ -144,12 +144,12 @@ backend:
   error:
     common:
       invalid_url:
-        other: Invalid URL.
+        other: URL salah.
       status_invalid:
         other: Invalid status.
     password:
       space_invalid:
-        other: Password cannot contain spaces.
+        other: Password tidak boleh mengandung spasi.
     admin:
       cannot_update_their_password:
         other: You cannot modify your password.
@@ -205,7 +205,7 @@ backend:
       old_password_verification_failed:
         other: Verifikasi password lama, gagal
       new_password_same_as_previous_setting:
-        other: Password baru sama dengan password yang sebelumnya.
+        other: Kata sandi baru sama dengan kata sandi yang sebelumnya.
       already_deleted:
         other: This post has been deleted.
     meta:
@@ -221,9 +221,9 @@ backend:
       cannot_deleted:
         other: Tidak memiliki izin untuk menghapus.
       cannot_close:
-        other: Tidak memiliki izin untuk menutup.
+        other: Tidak diizinkan untuk menutup.
       cannot_update:
-        other: Tidak memiliki izin untuk memperbaharui.
+        other: Tidak diizinkan untuk memperbarui.
     rank:
       fail_to_meet_the_condition:
         other: Reputation rank fail to meet the condition.
