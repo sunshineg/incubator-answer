@@ -62,16 +62,16 @@ backend:
       user:
         other: Pengguna
       admin:
-        other: Admin
+        other: Administrator
       moderator:
         other: Moderator
     description:
       user:
         other: Default tanpa akses khusus.
       admin:
-        other: Memiliki hak penuh untuk mengakses website.
+        other: Memiliki kontrol penuh atas situs.
       moderator:
-        other: Memiliki hak penuh pada semua pertanyaan, kecuali pengaturan Admin.
+        other: Memiliki kendali atas semua kiriman kecuali pengaturan administrator.
   privilege:
     level_1:
       description:
@@ -86,7 +86,7 @@ backend:
       description:
         other: Custom Level
     rank_question_add_label:
-      other: Ask question
+      other: Tanyakan sesuatu
     rank_answer_add_label:
       other: Tulis jawaban
     rank_comment_add_label:
@@ -96,7 +96,7 @@ backend:
     rank_comment_vote_up_label:
       other: Upvote comment
     rank_link_url_limit_label:
-      other: Post more than 2 links at a time
+      other: Kirim lebih dari 2 tautan secara bersamaan
     rank_question_vote_up_label:
       other: Upvote question
     rank_answer_vote_up_label:
@@ -140,7 +140,7 @@ backend:
   original_text:
     other: This post
   email_or_password_wrong_error:
-    other: Email dan kata sandi tidak cocok.
+    other: '"Email" dan kata sandi tidak cocok.'
   error:
     common:
       invalid_url:
@@ -165,12 +165,12 @@ backend:
       cannot_deleted:
         other: Tidak memiliki izin untuk menghapus.
       cannot_update:
-        other: Tidak memiliki izin untuk memperbaharui.
+        other: Tidak memiliki izin untuk memperbarui.
       question_closed_cannot_add:
         other: Questions are closed and cannot be added.
     comment:
       edit_without_permission:
-        other: Komentar tidak boleh diedit.
+        other: Tidak diizinkan untuk mengubah komentar.
       not_found:
         other: Komentar tidak ditemukan.
       cannot_edit_after_deadline:
@@ -193,7 +193,7 @@ backend:
       disallow_follow:
         other: Anda tidak diizinkan untuk mengikuti.
       disallow_vote:
-        other: Anda tidak diizinkan untuk melakukan voring.
+        other: Anda tisak diizinkan untuk melakukan vote.
       disallow_vote_your_self:
         other: Anda tidak dapat melakukan voting untuk ulasan Anda sendiri.
       not_found:
@@ -277,13 +277,13 @@ backend:
       suspended:
         other: Pengguna ini telah ditangguhkan.
       username_invalid:
-        other: Nama pengguna tidak valid.
+        other: Nama pengguna tidak sesuai.
       username_duplicate:
         other: Nama pengguna sudah digunakan.
       set_avatar:
         other: Set avatar gagal.
       cannot_update_your_role:
-        other: Anda tidak dapat memodifikasi role anda sendiri.
+        other: Anda tidak dapat mengubah peran anda sendiri.
       not_allowed_registration:
         other: Currently the site is not open for registration.
       not_allowed_login_via_password:
