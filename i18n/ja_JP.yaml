@@ -556,7 +556,7 @@ backend:
         name:
           other: はじめてのリンク
         desc:
-          other: "初めて別の記事へのリンクを追加した。\n"
+          other: 初めて別の記事へのリンクを追加した。
       first_reaction:
         name:
           other: 初めてのリアクション
@@ -904,7 +904,7 @@ ui:
             msg:
               empty: ファイルは空にできません。
               only_image: 画像ファイルのみが許可されています。
-              max_size: File size cannot exceed {{size}} MB.
+              max_size: ファイルサイズは {{size}} MBを超えることはできません。
           desc:
             label: 説明
       tab_url: 画像URL
@@ -947,9 +947,9 @@ ui:
       heading: 見出し
       cell: セル
     file:
-      text: Attach files
-      not_supported: "Don’t support that file type. Try again with {{file_type}}."
-      max_size: "Attach files size cannot exceed {{size}} MB."
+      text: ファイルを添付
+      not_supported: "そのファイルタイプをサポートしていません。 {{file_type}} でもう一度お試しください。"
+      max_size: "添付ファイルサイズは {{size}} MB を超えることはできません。"
   close_modal:
     title: この投稿を次のように閉じます...
     btn_cancel: キャンセル
@@ -1729,8 +1729,8 @@ ui:
       welcome: Adminへようこそ！
       site_statistics: サイト統計
       questions: "質問："
-      resolved: "Resolved:"
-      unanswered: "Unanswered:"
+      resolved: "解決済み:"
+      unanswered: "未回答:"
       answers: "回答："
       comments: "評論："
       votes: "投票："
@@ -2019,20 +2019,20 @@ ui:
         label: 予約済みタグ
         text: "予約済みのタグはモデレータのみ使用できます。"
       image_size:
-        label: Max image size (MB)
-        text: "The maximum image upload size."
+        label: 画像ファイルの最大サイズ（MB）
+        text: "画像ファイルの最大アップロードサイズ。"
       attachment_size:
-        label: Max attachment size (MB)
-        text: "The maximum attachment files upload size."
+        label: 添付ファイルの最大サイズ (MB)
+        text: "添付ファイルの最大アップロードサイズ。"
       image_megapixels:
-        label: Max image megapixels
-        text: "Maximum number of megapixels allowed for an image."
+        label: 画像の最大解像度
+        text: "画像ファイルに許可する最大メガピクセル数。"
       image_extensions:
-        label: Authorized image extensions
-        text: "A list of file extensions allowed for image display, separate with commas."
+        label: 認可された画像ファイルの拡張子
+        text: "イメージ表示に許可されるファイル拡張子のリスト(コンマで区切り)"
       attachment_extensions:
-        label: Authorized attachment extensions
-        text: "A list of file extensions allowed for upload, separate with commas. WARNING: Allowing uploads may cause security issues."
+        label: 認可された添付ファイルの拡張子
+        text: "アップロードを許可するファイル拡張子のリスト(カンマ区切り)\n警告: アップロードを許可するとセキュリティ上の問題が発生する可能性があります。"
     seo:
       page_title: SEO
       permalink:
@@ -2236,7 +2236,7 @@ ui:
     discard_confirm: 下書きを破棄してもよろしいですか？
   messages:
     post_deleted: この投稿は削除されました。
-    post_cancel_deleted: This post has been undeleted.
+    post_cancel_deleted: この投稿の削除が取り消されました。
     post_pin: この投稿はピン留めされています。
     post_unpin: この投稿のピン留めが解除されました。
     post_hide_list: この投稿は一覧から非表示になっています。
@@ -2245,15 +2245,15 @@ ui:
     post_list: この投稿は一覧に表示されています。
     post_unlist: この投稿は一覧に登録されていません。
     post_pending: Your post is awaiting review. This is a preview, it will be visible after it has been approved.
-    post_closed: This post has been closed.
-    answer_deleted: This answer has been deleted.
+    post_closed: この投稿はクローズされました。
+    answer_deleted: この回答は削除されました。
     answer_cancel_deleted: この回答の削除が取り消されました。
-    change_user_role: This user's role has been changed.
-    user_inactive: This user is already inactive.
+    change_user_role: このユーザーのロールが変更されました。
+    user_inactive: このユーザーは既に無効です。
     user_normal: このユーザーは既に有効です。
-    user_suspended: This user has been suspended.
-    user_deleted: This user has been deleted.
-    badge_activated: This badge has been activated.
-    badge_inactivated: This badge has been inactivated.
+    user_suspended: このユーザーは凍結されています。
+    user_deleted: このユーザーは削除されました。
+    badge_activated: このバッジは有効化されました。
+    badge_inactivated: このバッジは無効化されています。
 
 
