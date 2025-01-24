@@ -1241,7 +1241,7 @@ ui:
         length: 長さは 8 から 32 の間である必要があります
         different: 両側に入力されたパスワードが一致しません
     password_confirm:
-      label: 新しいパスワードの確認
+      label: 新しいパスワードの確認 
   settings:
     page_title: 設定
     goto_modify: 変更を開く
@@ -1316,7 +1316,7 @@ ui:
       new_pass:
         label: 新しいパスワード
       pass_confirm:
-        label: 新しいパスワードの確認
+        label: 新しいパスワードの確認 
     interface:
       heading: 外観
       lang:
@@ -2247,10 +2247,10 @@ ui:
     post_pending: Your post is awaiting review. This is a preview, it will be visible after it has been approved.
     post_closed: This post has been closed.
     answer_deleted: This answer has been deleted.
-    answer_cancel_deleted: This answer has been undeleted.
+    answer_cancel_deleted: この回答の削除が取り消されました。
     change_user_role: This user's role has been changed.
     user_inactive: This user is already inactive.
-    user_normal: This user is already normal.
+    user_normal: このユーザーは既に有効です。
     user_suspended: This user has been suspended.
     user_deleted: This user has been deleted.
     badge_activated: This badge has been activated.
