@@ -947,7 +947,7 @@ ui:
       heading: Заголовок
       cell: Ячейка
     file:
-      text: Attach files
+      text: Прикрепить файлы
       not_supported: "Don’t support that file type. Try again with {{file_type}}."
       max_size: "Attach files size cannot exceed {{size}} MB."
   close_modal:
@@ -1038,11 +1038,11 @@ ui:
     hours: часов
     days: дней
   reaction:
-    heart: heart
+    heart: сердечко
     smile: smile
     frown: frown
-    btn_label: add or remove reactions
-    undo_emoji: undo {{ emoji }} reaction
+    btn_label: добавить или удалить реакции
+    undo_emoji: отменить реакцию {{ emoji }}
     react_emoji: react with {{ emoji }}
     unreact_emoji: unreact with {{ emoji }}
   comment:
@@ -1139,7 +1139,7 @@ ui:
       question: Вопросы
       tag: Теги
       user: Пользователи
-      badges: Badges
+      badges: Значки
       profile: Профиль
       setting: Настройки
       logout: Выйти
@@ -1156,7 +1156,7 @@ ui:
     name: Изменить
     loading: загрузка...
   pic_auth_code:
-    title: Captcha
+    title: Капча
     placeholder: Введите текст выше
     msg:
       empty: Капча не может быть пустой.
@@ -1301,8 +1301,8 @@ ui:
       email:
         label: Email
       new_email:
-        label: New email
-        msg: New email cannot be empty.
+        label: Новый email
+        msg: Новый email не может быть пустым.
       pass:
         label: Текущий пароль
         msg: Пароль не может быть пустым.
@@ -1340,7 +1340,7 @@ ui:
     title: Похожие вопросы
     answers: ответы
   linked_question:
-    title: Linked Questions
+    title: Связанные вопросы
     description: Questions linked to
     no_linked_question: No questions linked from this question.
   invite_to_answer:
@@ -1398,12 +1398,12 @@ ui:
       title: Открыть повторно этот пост
       content: Вы уверены, что хотите открыть заново?
     list:
-      confirm_btn: List
+      confirm_btn: Список
       title: List this post
       content: Are you sure you want to list?
     unlist:
-      confirm_btn: Unlist
-      title: Unlist this post
+      confirm_btn: Убрать из списка
+      title:
       content: Are you sure you want to unlist?
     pin:
       title: Закрепить сообщение
