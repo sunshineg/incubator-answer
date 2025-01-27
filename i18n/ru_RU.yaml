@@ -146,7 +146,7 @@ backend:
       invalid_url:
         other: Неверная URL.
       status_invalid:
-        other: Invalid status.
+        other: Неверный статус.
     password:
       space_invalid:
         other: Пароль не должен содержать пробелы.
@@ -154,7 +154,7 @@ backend:
       cannot_update_their_password:
         other: Вы не можете изменить свой пароль.
       cannot_edit_their_profile:
-        other: You cannot modify your profile.
+        other: Вы не можете изменять свой профиль.
       cannot_modify_self_status:
         other: Вы не можете изменить свой статус.
       email_or_password_wrong:
@@ -207,7 +207,7 @@ backend:
       new_password_same_as_previous_setting:
         other: Пароль не может быть таким же как прежний.
       already_deleted:
-        other: This post has been deleted.
+        other: Этот пост был удален.
     meta:
       object_not_found:
         other: Meta object not found
@@ -315,7 +315,7 @@ backend:
         other: Конфигурация сайта не найдена.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Объект бейджа не найден
   reason:
     spam:
       name:
@@ -326,7 +326,7 @@ backend:
       name:
         other: Грубость или оскорбления
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "Человек может посчитать такое содержимое неподходящим для уважительной беседы."
     a_duplicate:
       name:
         other: дубликат
@@ -413,12 +413,12 @@ backend:
     deleted_title:
       other: Удаленные вопросы
     questions_title:
-      other: Questions
+      other: Вопросы
   tag:
     tags_title:
-      other: Tags
+      other: Теги
     no_description:
-      other: The tag has no description.
+      other: Тег не имеет описания.
   notification:
     action:
       update_question:
@@ -458,7 +458,7 @@ backend:
       invited_you_to_answer:
         other: пригласил вас ответить
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Вы заработали значок "{{.BadgeName}}"
   email_tpl:
     change_email:
       title:
@@ -519,27 +519,27 @@ backend:
     queued_post:
       other: Queued post
     flagged_post:
-      other: Flagged post
+      other: Отмеченный пост
     suggested_post_edit:
       other: Предложенные исправления
   reaction:
     tooltip:
-      other: "{{ .Names }} and {{ .Count }} more..."
+      other: "{{ .Names }} и {{ .Count }} еще..."
   badge:
     default_badges:
       autobiographer:
         name:
-          other: Autobiographer
+          other: Автобиограф
         desc:
-          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+          other: Заполнена информация об <a href="{{ .ProfileURL }}" target="_blank">профиле</a>.
       certified:
         name:
-          other: Certified
+          other: Сертифицированный
         desc:
-          other: Completed our new user tutorial.
+          other: Завершил наше новое руководство пользователя.
       editor:
         name:
-          other: Editor
+          other: Редактор
         desc:
           other: First post edit.
       first_flag:
@@ -576,7 +576,7 @@ backend:
         name:
           other: Commentator
         desc:
-          other: Leave 5 comments.
+          other: Оставить 5 комментариев.
       new_user_of_the_month:
         name:
           other: New User of the Month
@@ -594,9 +594,9 @@ backend:
           other: Read every answers in a topic with more than 10 answers.
       welcome:
         name:
-          other: Welcome
+          other: Добро пожаловать
         desc:
-          other: Received a up vote.
+          other: Получен голос «за».
       nice_share:
         name:
           other: Nice Share
@@ -644,7 +644,7 @@ backend:
           other: Invited 5 members.
       thank_you:
         name:
-          other: Thank You
+          other: Спасибо
         desc:
           other: Has 20 up voted posts and gave 10 up votes.
       gives_back:
@@ -836,9 +836,9 @@ ui:
       posts: Посты
       invites: Приглашения
       votes: Голоса
-    answer: Answer
-    question: Question
-    badge_award: Badge
+    answer: Ответ
+    question: Вопрос
+    badge_award: Значок
   suspended:
     title: Ваш аккаунт заблокирован
     until_time: "Ваша учетная запись была заблокирована до {{ time }}."
@@ -904,7 +904,7 @@ ui:
             msg:
               empty: Файл не может быть пустым.
               only_image: Разрешены только изображения.
-              max_size: File size cannot exceed {{size}} MB.
+              max_size: Размер файла не может превышать {{size}} МБ.
           desc:
             label: Описание
       tab_url: URL изображения
