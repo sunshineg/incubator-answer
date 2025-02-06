@@ -138,7 +138,7 @@ backend:
   pass:
     other: Пароль
   original_text:
-    other: Этот пост
+    other: Это сообщение
   email_or_password_wrong_error:
     other: Неверное имя пользователя или пароль.
   error:
@@ -210,7 +210,7 @@ backend:
         other: Этот пост был удален.
     meta:
       object_not_found:
-        other: Meta object not found
+        other: Объект мета не найден
     question:
       already_deleted:
         other: Этот пост был удалён.
@@ -338,7 +338,7 @@ backend:
       name:
         other: это не ответ
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Это сообщение было опубликовано в качестве ответа, но оно не пытается ответить на вопрос. Возможно, оно должно быть отредактировано, дополнено, быть другим вопросом или удалено навсегда."
     no_longer_needed:
       name:
         other: Не актуально
@@ -397,7 +397,7 @@ backend:
         name:
           other: нуждается в деталях или ясности
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: В настоящее время этот вопрос включает в себя несколько вопросов в одном. Он должен быть сосредоточен только на одной проблеме.
       other:
         name:
           other: прочее
@@ -464,42 +464,42 @@ backend:
       title:
         other: "[{{.SiteName}}] Подтвердите новый адрес электронной почты"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Подтвердите свой новый адрес электронной почты для {{.SiteName}}, перейдя по следующей ссылке:<br> <a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br> Если вы не запрашивали это изменение, пожалуйста, проигнорируйте это электронное письмо. <br><br> - <br> Примечание: Данное сообщение является автоматическим, отвечать на него не нужно."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} ответил на ваш вопрос"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>Открыть {{.SiteName}}</a><br><br>\n\n--<br>\nПримечание: Данное сообщение является автоматическим, отвечать на него не нужно.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Отписаться.</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} приглашает вас в Answer"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>Я думаю, что вы можете знать ответ.</blockquote><br>\n<a href='{{.InviteUrl}}'>Открыть {{.SiteName}}</a><br><br>\n\n--<br>\nПримечание: Данное сообщение является автоматическим, отвечать на него не нужно.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Отписаться</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} прокомментировал под вашей публикацией"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>Открыть {{.SiteName}}</a><br><br>\n\n--<br>\nПримечание: Данное сообщение является автоматическим, отвечать на него не нужно.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Отписаться</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] Новый вопрос: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nПримечание: Данное сообщение является автоматическим, отвечать на него не нужно.<br><br>\n\n<a href='{{.UnsubscribeUrl}}'>Отписаться</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Пароль сброшен"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Кто-то попросил сбросить ваш пароль на {{.SiteName}}.<br><br>\n\nЕсли это не вы, вы можете проигнорировать это письмо.<br><br>\n\nПерейдите по следующей ссылке, чтобы выбрать новый пароль:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nПримечание: Данное сообщение является автоматическим, отвечать на него не нужно."
     register:
       title:
         other: "[{{.SiteName}}] Подтвердите Ваш новый аккаунт"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Добро пожаловать в {{.SiteName}}!<br><br>\n\nПерейдите по следующей ссылке для подтверждения и активации вашей новой учетной записи:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nЕсли ссылка выше не нажата, попробуйте скопировать и вставить её в адресную строку вашего браузера.\n<br><br>\n\n--<br>\nПримечание: Данное сообщение является автоматическим, отвечать на него не нужно."
     test:
       title:
         other: "[{{.SiteName}}] Проверочное электронное письмо"
       body:
-        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Это тестовое сообщение.\n<br><br>\n\n--<br>\nПримечание: Данное сообщение является автоматическим, отвечать на него не нужно."
   action_activity_type:
     upvote:
       other: проголосовать за
@@ -517,7 +517,7 @@ backend:
       other: редактировать
   review:
     queued_post:
-      other: Queued post
+      other: Задан вопрос
     flagged_post:
       other: Отмеченный пост
     suggested_post_edit:
@@ -541,17 +541,17 @@ backend:
         name:
           other: Редактор
         desc:
-          other: First post edit.
+          other: Впервые отредактировать сообщение
       first_flag:
         name:
-          other: First Flag
+          other: Первый флаг
         desc:
-          other: First flagged a post.
+          other: Впервые проставить флаг в сообщения
       first_upvote:
         name:
-          other: First Upvote
+          other: Первый голос
         desc:
-          other: First up voted a post.
+          other: Впервые добавить голос в сообщении.
       first_link:
         name:
           other: First Link
@@ -586,12 +586,12 @@ backend:
         name:
           other: Read Guidelines
         desc:
-          other: Read the [community guidelines].
+          other: Прочтите [правила сообщества].
       reader:
         name:
-          other: Reader
+          other: Читатель
         desc:
-          other: Read every answers in a topic with more than 10 answers.
+          other: Прочитать каждый ответ в разделе с более чем 10 ответами.
       welcome:
         name:
           other: Добро пожаловать
@@ -599,7 +599,7 @@ backend:
           other: Получен голос «за».
       nice_share:
         name:
-          other: Nice Share
+          other: Неплохо поделился
         desc:
           other: Shared a post with 25 unique visitors.
       good_share:
