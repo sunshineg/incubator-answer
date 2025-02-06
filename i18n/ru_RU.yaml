@@ -138,7 +138,7 @@ backend:
   pass:
     other: Пароль
   original_text:
-    other: This post
+    other: Этот пост
   email_or_password_wrong_error:
     other: Неверное имя пользователя или пароль.
   error:
