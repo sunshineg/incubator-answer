@@ -380,18 +380,10 @@ img[src=""] {
 }
 .a-code-tool {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 0.5rem;
+  right: 0.5rem;
   font-size: 16px;
   z-index: 1;
   display: none;
-  .a-copy-code {
-    line-height: 24px;
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-  }
+  line-height: 1;
 }

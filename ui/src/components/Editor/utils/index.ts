@@ -89,9 +89,9 @@ export function htmlRender(el: HTMLElement | null, config?: htmlRenderConfig) {
     codeTool.className = 'a-code-tool';
     const uniqueId = `a-copy-code-${Date.now().toString().substring(5)}-${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}`;
     const str = `
-      <button type="button" class="btn btn-dark rounded-0 a-copy-code" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${copyText}" id="${uniqueId}">
+      <a role="button" class="link-secondary a-copy-code" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${copyText}" id="${uniqueId}">
         <i class="br bi-copy"></i>
-      </button>
+      </a>
     `;
     codeTool.innerHTML = str;
 
