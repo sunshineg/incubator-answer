@@ -168,9 +168,10 @@ const QuestionList: FC<Props> = ({
                     </NavLink>
                   </h5>
                   {viewType === 'card' && (
-                    <p className="mb-2 small text-body text-truncate-2">
-                      {li.description}
-                    </p>
+                    <p
+                      className="mb-2 small text-body text-truncate-2"
+                      dangerouslySetInnerHTML={{ __html: li.description }}
+                    />
                   )}
 
                   <div className="question-tags mb-12">
