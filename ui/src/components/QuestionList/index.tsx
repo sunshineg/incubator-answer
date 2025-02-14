@@ -112,7 +112,7 @@ const QuestionList: FC<Props> = ({
           />
           <Dropdown align="end" onSelect={handleViewMode}>
             <Dropdown.Toggle variant="outline-secondary" size="sm">
-              <Icon name="list" />
+              <Icon name={viewType === 'card' ? 'view-stacked' : 'list'} />
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
