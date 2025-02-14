@@ -54,7 +54,7 @@ const Index: FC<IProps> = ({
   }
 
   const roundedCls =
-    className && className.indexOf('rounded') !== -1 ? '' : 'rounded';
+    className && className.indexOf('rounded') !== -1 ? '' : 'rounded-circle';
 
   return (
     <>

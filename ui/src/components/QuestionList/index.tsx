@@ -144,7 +144,7 @@ const QuestionList: FC<Props> = ({
                     <BaseUserCard
                       data={li.operator}
                       className="me-1"
-                      avatarClass="me-2"
+                      avatarClass="me-1"
                     />
                     •
                     <FormatTime
