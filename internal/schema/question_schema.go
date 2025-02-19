@@ -440,6 +440,7 @@ type QuestionPageRespOperator struct {
 	Rank        int    `json:"rank"`
 	DisplayName string `json:"display_name"`
 	Status      string `json:"status"`
+	Avatar      string `json:"avatar"`
 }
 
 type AdminQuestionPageReq struct {
