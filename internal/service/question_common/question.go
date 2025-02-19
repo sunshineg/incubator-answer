@@ -23,10 +23,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/apache/answer/internal/service/siteinfo_common"
 	"math"
 	"strings"
 	"time"
+
+	"github.com/apache/answer/internal/service/siteinfo_common"
 
 	"github.com/apache/answer/internal/base/constant"
 	"github.com/apache/answer/internal/base/data"
@@ -456,6 +457,7 @@ func (qs *QuestionCommon) FormatQuestionsPage(
 				item.Operator.Username = userInfo.Username
 				item.Operator.Rank = userInfo.Rank
 				item.Operator.Status = userInfo.Status
+				item.Operator.Avatar = userInfo.Avatar
 			}
 		}
 	}
