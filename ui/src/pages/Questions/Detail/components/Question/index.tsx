@@ -92,13 +92,6 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
   return (
     <div>
       <h1 className="h3 mb-3 text-wrap text-break">
-        {data?.pin === 2 && (
-          <Icon
-            name="pin-fill"
-            className="me-1"
-            title={t('pinned', { keyPrefix: 'btns' })}
-          />
-        )}
         <Link
           className="link-dark"
           reloadDocument
@@ -111,6 +104,16 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
       </h1>
 
       <div className="d-flex flex-wrap align-items-center small mb-3 text-secondary">
+        {data?.pin === 2 && (
+          <div className="me-3">
+            <Icon
+              name="pin-fill"
+              className="me-1"
+              title={t('pinned', { keyPrefix: 'btns' })}
+            />
+            <span>{t('pinned', { keyPrefix: 'btns' })}</span>
+          </div>
+        )}
         <FormatTime
           time={data.create_time}
           preFix={t('Asked')}

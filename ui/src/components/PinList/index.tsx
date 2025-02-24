@@ -18,7 +18,7 @@
  */
 
 import { FC } from 'react';
-import { ListGroup, Stack, Card } from 'react-bootstrap';
+import { ListGroup, Stack } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -41,20 +41,21 @@ const PinList: FC<IProps> = ({ data }) => {
         className="overflow-x-auto align-items-stretch">
         {data.map((item) => {
           return (
-            <Card
+            <ListGroup.Item
+              action
+              as="li"
               key={item.id}
+              className="rounded border-top p-3"
               style={{
                 minWidth: '238px',
                 width: `${100 / data.length}%`,
               }}>
-              <Card.Body>
-                <h6 className="text-wrap text-break">
-                  <NavLink
-                    to={pathFactory.questionLanding(item.id, item.url_title)}
-                    className="link-dark text-truncate-2">
-                    {item.title}
-                    {item.status === 2 ? ` [${t('closed')}]` : ''}
-                  </NavLink>
+              <NavLink
+                to={pathFactory.questionLanding(item.id, item.url_title)}
+                className="h-100 d-flex flex-column justify-content-between">
+                <h6 className="text-wrap link-dark text-break text-truncate-2">
+                  {item.title}
+                  {item.status === 2 ? ` [${t('closed')}]` : ''}
                 </h6>
 
                 <Counts
@@ -67,8 +68,8 @@ const PinList: FC<IProps> = ({ data }) => {
                   showViews={false}
                   className="mt-2 mt-md-0 small text-secondary"
                 />
-              </Card.Body>
-            </Card>
+              </NavLink>
+            </ListGroup.Item>
           );
         })}
       </Stack>

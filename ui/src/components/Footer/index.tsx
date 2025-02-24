@@ -33,11 +33,11 @@ const Index = () => {
   const cc = `${fullYear} ${siteName}`;
 
   return (
-    <footer className="bg-light">
+    <footer className="py-3 bg-light">
       <Container>
         <p className="text-center mb-0 small">
           {/* Link to Terms of Service with right margin */}
-          <Link to="/tos" className="me-2">
+          <Link to="/tos" className="me-3">
             {t('label', { keyPrefix: 'admin.legal.terms_of_service' })}
           </Link>
 

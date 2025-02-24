@@ -73,7 +73,8 @@ const Questions: FC = () => {
       title: t('title', { keyPrefix: 'delete_permanently' }),
       content: t('content', { keyPrefix: 'delete_permanently' }),
       cancelBtnVariant: 'link',
-      confirmText: t('ok', { keyPrefix: 'btns' }),
+      confirmText: t('delete', { keyPrefix: 'btns' }),
+      confirmBtnVariant: 'danger',
       onConfirm: () => {
         deletePermanently('questions').then(() => {
           toastStore.getState().show({
@@ -102,7 +103,7 @@ const Questions: FC = () => {
             sortKey="status"
             i18nKeyPrefix="btns"
           />
-          {curFilter === 'deleted' ? (
+          {curFilter === 'deleted' && count > 0 ? (
             <Button
               variant="outline-danger"
               size="sm"

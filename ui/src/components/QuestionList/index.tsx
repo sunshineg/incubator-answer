@@ -139,7 +139,10 @@ const QuestionList: FC<Props> = ({
               return (
                 <ListGroup.Item
                   key={li.id}
-                  className="bg-transparent py-3 px-2 border-start-0 border-end-0">
+                  action
+                  as={NavLink}
+                  to={pathFactory.questionLanding(li.id, li.url_title)}
+                  className="py-3 px-2 border-start-0 border-end-0">
                   <div className="d-flex flex-wrap text-secondary small mb-12">
                     <BaseUserCard
                       data={li.operator}
@@ -160,12 +163,8 @@ const QuestionList: FC<Props> = ({
                     />
                   </div>
                   <h5 className="text-wrap text-break">
-                    <NavLink
-                      to={pathFactory.questionLanding(li.id, li.url_title)}
-                      className="link-dark">
-                      {li.title}
-                      {li.status === 2 ? ` [${t('closed')}]` : ''}
-                    </NavLink>
+                    {li.title}
+                    {li.status === 2 ? ` [${t('closed')}]` : ''}
                   </h5>
                   {viewType === 'card' && (
                     <p

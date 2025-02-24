@@ -69,7 +69,7 @@ const Index: FC<Props> = ({
       {showAnswers && (
         <div
           className={`d-flex flex-shrink-0 align-items-center ms-3 ${
-            isAccepted ? 'text-bg-success rounded-2 px-2 py-1 lh-1' : ''
+            isAccepted ? 'text-bg-success rounded-pill px-2 ' : ''
           }`}>
           {isAccepted ? (
             <Icon name="check-circle-fill me-1" />
