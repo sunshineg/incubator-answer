@@ -19,7 +19,7 @@
 
 import { FC, useEffect, useState } from 'react';
 import { ListGroup, Dropdown } from 'react-bootstrap';
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { pathFactory } from '@/router/pathFactory';
@@ -64,6 +64,7 @@ const QuestionList: FC<Props> = ({
   isLoading = false,
 }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'question' });
+  const navigate = useNavigate();
   const [urlSearchParams] = useSearchParams();
   const { isSkeletonShow } = useSkeletonControl(isLoading);
   const curOrder =
@@ -82,10 +83,13 @@ const QuestionList: FC<Props> = ({
 
   const [viewType, setViewType] = useState('card');
 
-  // 切换列表预览模式
   const handleViewMode = (key) => {
     Storage.set(LIST_VIEW_STORAGE_KEY, key);
     setViewType(key);
+  };
+
+  const handleNavigate = (href) => {
+    navigate(href);
   };
 
   useEffect(() => {
@@ -140,9 +144,12 @@ const QuestionList: FC<Props> = ({
                 <ListGroup.Item
                   key={li.id}
                   action
-                  as={NavLink}
-                  to={pathFactory.questionLanding(li.id, li.url_title)}
-                  className="py-3 px-2 border-start-0 border-end-0">
+                  onClick={() =>
+                    handleNavigate(
+                      pathFactory.questionLanding(li.id, li.url_title),
+                    )
+                  }
+                  className="py-3 px-2 border-start-0 border-end-0 position-relative">
                   <div className="d-flex flex-wrap text-secondary small mb-12">
                     <BaseUserCard
                       data={li.operator}
@@ -163,12 +170,17 @@ const QuestionList: FC<Props> = ({
                     />
                   </div>
                   <h5 className="text-wrap text-break">
-                    {li.title}
-                    {li.status === 2 ? ` [${t('closed')}]` : ''}
+                    <NavLink
+                      className="link-dark d-block"
+                      to={pathFactory.questionLanding(li.id, li.url_title)}>
+                      {li.title}
+                      {li.status === 2 ? ` [${t('closed')}]` : ''}
+                    </NavLink>
                   </h5>
                   {viewType === 'card' && (
-                    <p
-                      className="mb-2 small text-body text-truncate-2"
+                    <NavLink
+                      to={pathFactory.questionLanding(li.id, li.url_title)}
+                      className="d-block mb-2 small text-body text-truncate-2"
                       dangerouslySetInnerHTML={{ __html: li.description }}
                     />
                   )}
