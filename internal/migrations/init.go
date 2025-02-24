@@ -255,11 +255,14 @@ func (m *Mentor) initSiteInfoPrivilegeRank() {
 func (m *Mentor) initSiteInfoWrite() {
 	writeData := map[string]interface{}{
 		"restrict_answer":                  true,
+		"required_tag":                     false,
+		"recommend_tags":                   []string{},
+		"reserved_tags":                    []string{},
 		"max_image_size":                   4,
 		"max_attachment_size":              8,
 		"max_image_megapixel":              40,
 		"authorized_image_extensions":      []string{"jpg", "jpeg", "png", "gif", "webp"},
-		"authorized_attachment_extensions": make([]string, 0),
+		"authorized_attachment_extensions": []string{},
 	}
 	writeDataBytes, _ := json.Marshal(writeData)
 	_, m.err = m.engine.Context(m.ctx).Insert(&entity.SiteInfo{
