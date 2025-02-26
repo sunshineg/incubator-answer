@@ -45,14 +45,14 @@ const PinList: FC<IProps> = ({ data }) => {
               action
               as="li"
               key={item.id}
-              className="rounded border-top p-3"
+              className="rounded border-top p-0"
               style={{
                 minWidth: '238px',
                 width: `${100 / data.length}%`,
               }}>
               <NavLink
                 to={pathFactory.questionLanding(item.id, item.url_title)}
-                className="h-100 d-flex flex-column justify-content-between">
+                className="h-100 d-flex flex-column justify-content-between p-3">
                 <h6 className="text-wrap link-dark text-break text-truncate-2">
                   {item.title}
                   {item.status === 2 ? ` [${t('closed')}]` : ''}

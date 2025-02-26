@@ -144,6 +144,7 @@ const QuestionList: FC<Props> = ({
                 <ListGroup.Item
                   key={li.id}
                   action
+                  as="li"
                   onClick={() =>
                     handleNavigate(
                       pathFactory.questionLanding(li.id, li.url_title),
@@ -191,7 +192,9 @@ const QuestionList: FC<Props> = ({
                           return (
                             <Tag
                               key={tag.slug_name}
-                              className={`${li.tags.length - 1 === index ? '' : 'me-1'}`}
+                              className={`${
+                                li.tags.length - 1 === index ? '' : 'me-1'
+                              }`}
                               data={tag}
                             />
                           );
