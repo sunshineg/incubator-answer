@@ -150,7 +150,7 @@ const QuestionList: FC<Props> = ({
                       pathFactory.questionLanding(li.id, li.url_title),
                     )
                   }
-                  className="py-3 px-2 border-start-0 border-end-0 position-relative">
+                  className="py-3 px-2 border-start-0 border-end-0 position-relative pointer">
                   <div className="d-flex flex-wrap text-secondary small mb-12">
                     <BaseUserCard
                       data={li.operator}
