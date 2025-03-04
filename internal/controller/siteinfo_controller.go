@@ -133,12 +133,7 @@ func (sc *SiteInfoController) GetManifestJson(ctx *gin.Context) {
 		Revision:        constant.Revision,
 		ShortName:       "Answer",
 		Name:            "answer.apache.org",
-		Icons: map[string]string{
-			"16":  favicon,
-			"32":  favicon,
-			"48":  favicon,
-			"128": favicon,
-		},
+		Icons:           schema.CreateManifestJsonIcons(favicon),
 		StartUrl:        ".",
 		Display:         "standalone",
 		ThemeColor:      "#000000",
@@ -148,10 +143,7 @@ func (sc *SiteInfoController) GetManifestJson(ctx *gin.Context) {
 	if err != nil {
 		log.Error(err)
 	} else if len(branding.Favicon) > 0 {
-		resp.Icons["16"] = branding.Favicon
-		resp.Icons["32"] = branding.Favicon
-		resp.Icons["48"] = branding.Favicon
-		resp.Icons["128"] = branding.Favicon
+		resp.Icons = schema.CreateManifestJsonIcons(branding.Favicon)
 	}
 	siteGeneral, err := sc.siteInfoService.GetSiteGeneral(ctx)
 	if err != nil {
