@@ -8,7 +8,6 @@
     "build": "node ./scripts/env.js && react-app-rewired build",
     "pre-install": "node ./scripts/importPlugins.js && pnpm install && node ./scripts/preinstall.js ",
     "prepare": "pnpm build:packages",
-    "pre-commit": "lint-staged",
     "build:packages": "pnpm -r --filter=./src/plugins/* run build",
     "clean": "rm -rf node_modules && rm -rf src/plugins/**/node_modules",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
