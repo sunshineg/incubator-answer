@@ -13,7 +13,10 @@
     "pre-commit": "lint-staged",
     "build:packages": "pnpm -r --filter=./src/plugins/* run build",
     "clean": "rm -rf node_modules && rm -rf src/plugins/**/node_modules",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "setup-lint": "node scripts/setup-eslint.js && cd .. && husky install",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,scss,md}\"",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@codemirror/lang-markdown": "^6.2.4",
