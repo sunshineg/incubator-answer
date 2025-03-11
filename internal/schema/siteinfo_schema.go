@@ -118,6 +118,7 @@ type SiteLegalReq struct {
 	TermsOfServiceParsedText   string `json:"terms_of_service_parsed_text"`
 	PrivacyPolicyOriginalText  string `json:"privacy_policy_original_text"`
 	PrivacyPolicyParsedText    string `json:"privacy_policy_parsed_text"`
+	ExternalContentDisplay     string `validate:"required,oneof=always_display ask_before_display" json:"external_content_display"`
 }
 
 // GetSiteLegalInfoReq site site legal request
@@ -237,6 +238,11 @@ type SiteWriteResp SiteWriteReq
 // SiteLegalResp site write response
 type SiteLegalResp SiteLegalReq
 
+// SiteLegalSimpleResp site write response
+type SiteLegalSimpleResp struct {
+	ExternalContentDisplay string `validate:"required,oneof=always_display ask_before_display" json:"external_content_display"`
+}
+
 // SiteSeoResp site write response
 type SiteSeoResp SiteSeoReq
 
@@ -251,6 +257,7 @@ type SiteInfoResp struct {
 	SiteSeo       *SiteSeoResp           `json:"site_seo"`
 	SiteUsers     *SiteUsersResp         `json:"site_users"`
 	Write         *SiteWriteResp         `json:"site_write"`
+	Legal         *SiteLegalSimpleResp   `json:"site_legal"`
 	Version       string                 `json:"version"`
 	Revision      string                 `json:"revision"`
 }

@@ -21,11 +21,45 @@ package migrations
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 
 	"github.com/apache/answer/internal/entity"
 	"xorm.io/xorm"
 )
 
 func addFileRecord(ctx context.Context, x *xorm.Engine) error {
-	return x.Context(ctx).Sync(new(entity.FileRecord))
+	if err := x.Context(ctx).Sync(new(entity.FileRecord)); err != nil {
+		return err
+	}
+
+	// Set default external_content_display to always_display
+	legalInfo := &entity.SiteInfo{Type: "legal"}
+	exist, err := x.Context(ctx).Get(legalInfo)
+	if err != nil {
+		return fmt.Errorf("get legal config failed: %w", err)
+	}
+	legalConfig := make(map[string]interface{})
+	if exist {
+		if err := json.Unmarshal([]byte(legalInfo.Content), &legalConfig); err != nil {
+			return fmt.Errorf("unmarshal legal config failed: %w", err)
+		}
+	}
+	legalConfig["external_content_display"] = "always_display"
+	legalConfigBytes, _ := json.Marshal(legalConfig)
+	if exist {
+		legalInfo.Content = string(legalConfigBytes)
+		_, err = x.Context(ctx).ID(legalInfo.ID).Cols("content").Update(legalInfo)
+		if err != nil {
+			return fmt.Errorf("update legal config failed: %w", err)
+		}
+	} else {
+		legalInfo.Content = string(legalConfigBytes)
+		legalInfo.Status = 1
+		_, err = x.Context(ctx).Insert(legalInfo)
+		if err != nil {
+			return fmt.Errorf("insert legal config failed: %w", err)
+		}
+	}
+	return nil
 }

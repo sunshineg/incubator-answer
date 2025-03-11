@@ -96,14 +96,15 @@ type InitEnvironmentResp struct {
 
 // InitBaseInfoReq init base info request
 type InitBaseInfoReq struct {
-	Language      string `validate:"required,gt=0,lte=30" json:"lang"`
-	SiteName      string `validate:"required,sanitizer,gt=0,lte=30" json:"site_name"`
-	SiteURL       string `validate:"required,gt=0,lte=512,url" json:"site_url"`
-	ContactEmail  string `validate:"required,email,gt=0,lte=500" json:"contact_email"`
-	AdminName     string `validate:"required,gt=3,lte=30" json:"name"`
-	AdminPassword string `validate:"required,gte=8,lte=32" json:"password"`
-	AdminEmail    string `validate:"required,email,gt=0,lte=500" json:"email"`
-	LoginRequired bool   `json:"login_required"`
+	Language               string `validate:"required,gt=0,lte=30" json:"lang"`
+	SiteName               string `validate:"required,sanitizer,gt=0,lte=30" json:"site_name"`
+	SiteURL                string `validate:"required,gt=0,lte=512,url" json:"site_url"`
+	ContactEmail           string `validate:"required,email,gt=0,lte=500" json:"contact_email"`
+	AdminName              string `validate:"required,gt=3,lte=30" json:"name"`
+	AdminPassword          string `validate:"required,gte=8,lte=32" json:"password"`
+	AdminEmail             string `validate:"required,email,gt=0,lte=500" json:"email"`
+	LoginRequired          bool   `json:"login_required"`
+	ExternalContentDisplay string `validate:"required,oneof=always_display ask_before_display" json:"external_content_display"`
 }
 
 func (r *InitBaseInfoReq) Check() (errFields []*validator.FormErrorField, err error) {
