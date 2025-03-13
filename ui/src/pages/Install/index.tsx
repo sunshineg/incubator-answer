@@ -115,6 +115,11 @@ const Index: FC = () => {
       isInvalid: false,
       errorMsg: '',
     },
+    external_content_display: {
+      value: 'always_display',
+      isInvalid: false,
+      errorMsg: '',
+    },
     name: {
       value: '',
       isInvalid: false,
@@ -225,10 +230,12 @@ const Index: FC = () => {
       site_url: formData.site_url.value,
       contact_email: formData.contact_email.value,
       login_required: formData.login_required.value,
+      external_content_display: formData.external_content_display.value,
       name: formData.name.value,
       password: formData.password.value,
       email: formData.email.value,
     };
+
     installBaseInfo(params)
       .then(() => {
         handleNext();

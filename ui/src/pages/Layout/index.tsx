@@ -23,7 +23,12 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import { SWRConfig } from 'swr';
 
-import { toastStore, loginToContinueStore, errorCodeStore } from '@/stores';
+import {
+  toastStore,
+  loginToContinueStore,
+  errorCodeStore,
+  siteLealStore,
+} from '@/stores';
 import {
   Header,
   Footer,
@@ -34,12 +39,18 @@ import {
   HttpErrorContent,
 } from '@/components';
 import { LoginToContinueModal, BadgeModal } from '@/components/Modal';
-import { changeTheme } from '@/utils';
+import { changeTheme, Storage } from '@/utils';
 import { useQueryNotificationStatus } from '@/services';
+import { useExternalToast } from '@/hooks';
+import { EXTERNAL_CONTENT_DISPLAY_MODE } from '@/common/constants';
 
 const Layout: FC = () => {
   const location = useLocation();
   const { msg: toastMsg, variant, clear: toastClear } = toastStore();
+  const externalToast = useExternalToast();
+  const externalContentDisplay = siteLealStore(
+    (state) => state.external_content_display,
+  );
   const closeToast = () => {
     toastClear();
   };
@@ -67,6 +78,49 @@ const Layout: FC = () => {
       systemThemeQuery.removeListener(handleSystemThemeChange);
     };
   }, []);
+
+  const replaceImgSrc = (img) => {
+    const storageUserExternalMode = Storage.get(EXTERNAL_CONTENT_DISPLAY_MODE);
+
+    if (
+      storageUserExternalMode !== 'always' &&
+      img.src &&
+      !img.src.startsWith(window.location.origin)
+    ) {
+      externalToast.onShow();
+      img.dataset.src = img.src;
+      img.removeAttribute('src');
+    }
+  };
+
+  useEffect(() => {
+    // Controlling the loading of external image resources
+    const observer = new MutationObserver((mutationsList) => {
+      mutationsList.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeName === 'IMG') {
+              replaceImgSrc(node);
+            }
+            if ((node as Element).querySelectorAll) {
+              const images = (node as Element).querySelectorAll('img');
+              images.forEach(replaceImgSrc);
+            }
+          });
+        }
+      });
+    });
+
+    if (externalContentDisplay !== 'always_display') {
+      // Process all existing images
+      const images = document.querySelectorAll('img');
+      images.forEach(replaceImgSrc);
+      // Process all images added later
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+
+    return () => observer.disconnect();
+  }, [externalContentDisplay]);
   return (
     <HelmetProvider>
       <PageTags />

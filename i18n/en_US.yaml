@@ -1512,6 +1512,9 @@ ui:
     view: View
     card: Card
     compact: Compact
+    display_below: Display below
+    always_display: Always display
+    or: or
   search:
     title: Search Results
     keywords: Keywords
@@ -2057,6 +2060,11 @@ ui:
       privacy_policy:
         label: Privacy policy
         text: "You can add privacy policy content here. If you already have a document hosted elsewhere, provide the full URL here."
+      external_content_display:
+        label: External content
+        text: "Content includes images, videos, and media embedded from external websites."
+        always_display: Always display external content
+        ask_before_display: Ask before displaying external content
     write:
       page_title: Write
       restrict_answer:
@@ -2315,5 +2323,6 @@ ui:
     answers_deleted: These answers have been deleted.
     copy: Copy to clipboard
     copied: Copied
+    external_content_warning: External images/media are not displayed.
 
 

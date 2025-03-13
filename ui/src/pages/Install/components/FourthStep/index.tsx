@@ -267,7 +267,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           {data.contact_email.errorMsg}
         </Form.Control.Feedback>
       </Form.Group>
-
+      <h5>{t('login_required.label')}</h5>
       <Form.Group controlId="login_required" className="mb-3">
         <Form.Label>{t('login_required.label')}</Form.Label>
         <Form.Check
@@ -286,6 +286,36 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           }}
         />
         <Form.Text>{t('login_required.text')}</Form.Text>
+      </Form.Group>
+      <Form.Group controlId="external_content_display" className="mb-3">
+        <Form.Label>
+          {t('external_content_display.label', { keyPrefix: 'admin.legal' })}
+        </Form.Label>
+        <Form.Select
+          value={data.external_content_display.value}
+          onChange={(e) => {
+            changeCallback({
+              external_content_display: {
+                value: e.target.value,
+                isInvalid: false,
+                errorMsg: '',
+              },
+            });
+          }}>
+          <option value="always_display">
+            {t('external_content_display.always_display', {
+              keyPrefix: 'admin.legal',
+            })}
+          </option>
+          <option value="ask_before_display">
+            {t('external_content_display.ask_before_display', {
+              keyPrefix: 'admin.legal',
+            })}
+          </option>
+        </Form.Select>
+        <Form.Text>
+          {t('external_content_display.text', { keyPrefix: 'admin.legal' })}
+        </Form.Text>
       </Form.Group>
 
       <h5>{t('admin_account')}</h5>
