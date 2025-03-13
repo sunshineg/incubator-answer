@@ -1480,6 +1480,9 @@ ui:
     view: 视图
     card: 卡片模式
     compact: 简洁模式
+    display_below: 展示当前
+    always_display: 一直展示
+    or: 或者
   search:
     title: 搜索结果
     keywords: 关键词
@@ -2011,6 +2014,11 @@ ui:
       privacy_policy:
         label: 隐私政策
         text: "您可以在此添加隐私政策内容。如果您已经在别处托管了文档，请在这里提供完整的URL。"
+      external_content_display:
+        label: 外部内容
+        text: "内容包括外部网站嵌入的图片、视频和媒体。"
+        always_display: 始终显示外部内容
+        ask_before_display: 在显示外部内容前进行询问
     write:
       page_title: 编辑
       restrict_answer:
@@ -2271,4 +2279,5 @@ ui:
     answers_deleted: 这些回答已被删除。
     copy: 复制
     copied: 已复制
+    external_content_warning: 不显示外部图像/媒体。
 
