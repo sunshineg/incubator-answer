@@ -105,7 +105,6 @@ export function htmlRender(el: HTMLElement | null, config?: htmlRenderConfig) {
 
     const tooltipTriggerList = el.querySelectorAll('.a-copy-code');
 
-    console.log('tooltipTriggerList', Array.from(tooltipTriggerList).length);
     Array.from(tooltipTriggerList)?.map(
       (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl),
     );
