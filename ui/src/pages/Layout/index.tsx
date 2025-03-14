@@ -86,7 +86,7 @@ const Layout: FC = () => {
     ) as NodeListOf<HTMLImageElement>;
 
     images.forEach((img) => {
-      // 标记为已处理，避免重复处理
+      // Mark as processed to avoid duplication
       img.setAttribute('data-processed', 'true');
 
       if (
@@ -122,7 +122,6 @@ const Layout: FC = () => {
           });
         }
       });
-      // 如果发现新图片，处理它们
       if (hasNewImages) {
         replaceImgSrc();
       }
