@@ -6,14 +6,15 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "node ./scripts/env.js && react-app-rewired build",
-    "lint": "eslint . --cache --fix --ext .ts,.tsx",
-    "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}' --config ./.prettierrc.json",
     "pre-install": "node ./scripts/importPlugins.js && pnpm install && node ./scripts/preinstall.js ",
     "prepare": "pnpm build:packages",
-    "pre-commit": "lint-staged",
     "build:packages": "pnpm -r --filter=./src/plugins/* run build",
     "clean": "rm -rf node_modules && rm -rf src/plugins/**/node_modules",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "setup-lint": "node scripts/setup-eslint.js && cd .. && husky install",
+    "lint": "eslint . --cache --fix --ext .ts,.tsx",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx,css,scss,md}\"",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@codemirror/lang-markdown": "^6.2.4",
