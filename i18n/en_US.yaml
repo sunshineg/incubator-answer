@@ -1655,6 +1655,23 @@ ui:
       label: Database file
       placeholder: /data/answer.db
       msg: Database file cannot be empty.
+    ssl_enabled:
+      label: Enable SSL
+    ssl_enabled_on:
+      label: On
+    ssl_enabled_off:
+      label: Off
+    ssl_mode:
+      label: SSL Mode
+    key_file:
+      placeholder: Key file path
+      msg: Path to Key file cannot be empty
+    cert_file:
+      placeholder: Cert file path
+      msg: Path to Cert file cannot be empty
+    pem_file:
+      placeholder: Pem file path
+      msg: Path to Pem file cannot be empty
     config_yaml:
       title: Create config.yaml
       label: The config.yaml file created.

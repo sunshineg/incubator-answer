@@ -18,7 +18,7 @@
  */
 
 import { FC, FormEvent } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import Progress from '../Progress';
@@ -46,13 +46,36 @@ const sqlData = [
   },
 ];
 
+const sslModes = [
+  {
+    value: 'require',
+  },
+  {
+    value: 'verify-ca',
+  },
+  {
+    value: 'verify-full',
+  },
+];
+
 const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'install' });
 
   const checkValidated = (): boolean => {
     let bol = true;
-    const { db_type, db_username, db_password, db_host, db_name, db_file } =
-      data;
+    const {
+      db_type,
+      db_username,
+      db_password,
+      db_host,
+      db_name,
+      db_file,
+      ssl_enabled,
+      ssl_mode,
+      key_file,
+      cert_file,
+      pem_file,
+    } = data;
 
     if (db_type.value !== 'sqlite3') {
       if (!db_username.value) {
@@ -63,7 +86,6 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           errorMsg: t('db_username.msg'),
         };
       }
-
       if (!db_password.value) {
         bol = false;
         data.db_password = {
@@ -81,7 +103,6 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           errorMsg: t('db_host.msg'),
         };
       }
-
       if (!db_name.value) {
         bol = false;
         data.db_name = {
@@ -89,6 +110,34 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           isInvalid: true,
           errorMsg: t('db_name.msg'),
         };
+      }
+      if (db_type.value === 'postgres') {
+        if (ssl_enabled.value && ssl_mode.value !== 'require') {
+          if (!key_file.value) {
+            bol = false;
+            data.key_file = {
+              value: '',
+              isInvalid: true,
+              errorMsg: t('key_file.msg'),
+            };
+          }
+          if (!pem_file.value) {
+            bol = false;
+            data.pem_file = {
+              value: '',
+              isInvalid: true,
+              errorMsg: t('pem_file.msg'),
+            };
+          }
+          if (!cert_file.value) {
+            bol = false;
+            data.cert_file = {
+              value: '',
+              isInvalid: true,
+              errorMsg: t('cert_file.msg'),
+            };
+          }
+        }
       }
     } else if (!db_file.value) {
       bol = false;
@@ -179,12 +228,147 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
                 });
               }}
             />
-
             <Form.Control.Feedback type="invalid">
               {data.db_password.errorMsg}
             </Form.Control.Feedback>
           </Form.Group>
-
+          {data.db_type.value === 'postgres' && (
+            <Form.Group controlId="ssl_enabled" className="mb-3">
+              <Form.Label>{t('ssl_enabled.label')}</Form.Label>
+              <Form.Check
+                type="switch"
+                label={`${
+                  data.ssl_enabled.value
+                    ? t('ssl_enabled_on.label')
+                    : t('ssl_enabled_off.label')
+                }`}
+                checked={data.ssl_enabled.value}
+                onChange={(e) => {
+                  changeCallback({
+                    ssl_enabled: {
+                      value: e.target.checked,
+                      isInvalid: false,
+                      errorMsg: '',
+                    },
+                    ssl_mode: {
+                      value: 'require',
+                      isInvalid: false,
+                      errorMsg: '',
+                    },
+                    key_file: {
+                      value: '',
+                      isInvalid: false,
+                      errorMsg: '',
+                    },
+                    cert_file: {
+                      value: '',
+                      isInvalid: false,
+                      errorMsg: '',
+                    },
+                    pem_file: {
+                      value: '',
+                      isInvalid: false,
+                      errorMsg: '',
+                    },
+                  });
+                }}
+              />
+            </Form.Group>
+          )}
+          {data.db_type.value === 'postgres' && data.ssl_enabled.value && (
+            <Form.Group controlId="sslmodeOptionsDropdown" className="mb-3">
+              <Form.Label>{t('ssl_mode.label')}</Form.Label>
+              <Form.Select
+                value={data.ssl_mode.value}
+                onChange={(e) => {
+                  changeCallback({
+                    ssl_mode: {
+                      value: e.target.value,
+                      isInvalid: false,
+                      errorMsg: '',
+                    },
+                  });
+                }}>
+                {sslModes.map((item) => {
+                  return (
+                    <option value={item.value} key={item.value}>
+                      {item.value}
+                    </option>
+                  );
+                })}
+              </Form.Select>
+            </Form.Group>
+          )}
+          {data.db_type.value === 'postgres' &&
+            data.ssl_enabled.value &&
+            (data.ssl_mode.value === 'verify-ca' ||
+              data.ssl_mode.value === 'verify-full') && (
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="key_file">
+                  <Form.Control
+                    placeholder={t('key_file.placeholder')}
+                    aria-label="key_file"
+                    aria-describedby="basic-addon1"
+                    isInvalid={data.key_file.isInvalid}
+                    onChange={(e) => {
+                      changeCallback({
+                        key_file: {
+                          value: e.target.value,
+                          isInvalid: false,
+                          errorMsg: '',
+                        },
+                      });
+                    }}
+                    required
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {`${data.key_file.errorMsg}`}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} controlId="cert_file">
+                  <Form.Control
+                    placeholder={t('cert_file.placeholder')}
+                    aria-label="cert_file"
+                    aria-describedby="basic-addon1"
+                    isInvalid={data.cert_file.isInvalid}
+                    onChange={(e) => {
+                      changeCallback({
+                        cert_file: {
+                          value: e.target.value,
+                          isInvalid: false,
+                          errorMsg: '',
+                        },
+                      });
+                    }}
+                    required
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {`${data.cert_file.errorMsg}`}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} controlId="pem_file">
+                  <Form.Control
+                    placeholder={t('pem_file.placeholder')}
+                    aria-label="pem_file"
+                    aria-describedby="basic-addon1"
+                    isInvalid={data.pem_file.isInvalid}
+                    onChange={(e) => {
+                      changeCallback({
+                        pem_file: {
+                          value: e.target.value,
+                          isInvalid: false,
+                          errorMsg: '',
+                        },
+                      });
+                    }}
+                    required
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {`${data.pem_file.errorMsg}`}
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Row>
+            )}
           <Form.Group controlId="db_host" className="mb-3">
             <Form.Label>{t('db_host.label')}</Form.Label>
             <Form.Control
@@ -206,7 +390,6 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
               {data.db_host.errorMsg}
             </Form.Control.Feedback>
           </Form.Group>
-
           <Form.Group controlId="name" className="mb-3">
             <Form.Label>{t('db_name.label')}</Form.Label>
             <Form.Control
