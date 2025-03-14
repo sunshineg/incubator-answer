@@ -146,17 +146,17 @@ const Index: FC = () => {
       isInvalid: false,
       errorMsg: '',
     },
-    pem_file: {
+    ssl_key: {
       value: '',
       isInvalid: false,
       errorMsg: '',
     },
-    key_file: {
+    ssl_root_cert: {
       value: '',
       isInvalid: false,
       errorMsg: '',
     },
-    cert_file: {
+    ssl_cert: {
       value: '',
       isInvalid: false,
       errorMsg: '',
@@ -221,9 +221,9 @@ const Index: FC = () => {
       db_file: formData.db_file.value,
       ssl_enabled: formData.ssl_enabled.value,
       ssl_mode: formData.ssl_mode.value,
-      pem_file: formData.pem_file.value,
-      key_file: formData.key_file.value,
-      cert_file: formData.cert_file.value,
+      ssl_key: formData.ssl_key.value,
+      ssl_root_cert: formData.ssl_root_cert.value,
+      ssl_cert: formData.ssl_cert.value,
     };
     installInit(params)
       .then(() => {
@@ -245,9 +245,9 @@ const Index: FC = () => {
       db_file: formData.db_file.value,
       ssl_enabled: formData.ssl_enabled.value,
       ssl_mode: formData.ssl_mode.value,
-      pem_file: formData.pem_file.value,
-      key_file: formData.key_file.value,
-      cert_file: formData.cert_file.value,
+      ssl_key: formData.ssl_key.value,
+      ssl_root_cert: formData.ssl_root_cert.value,
+      ssl_cert: formData.ssl_cert.value,
     };
     dbCheck(params)
       .then(() => {

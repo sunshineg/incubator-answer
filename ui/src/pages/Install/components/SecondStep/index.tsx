@@ -63,19 +63,8 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
 
   const checkValidated = (): boolean => {
     let bol = true;
-    const {
-      db_type,
-      db_username,
-      db_password,
-      db_host,
-      db_name,
-      db_file,
-      ssl_enabled,
-      ssl_mode,
-      key_file,
-      cert_file,
-      pem_file,
-    } = data;
+    const { db_type, db_username, db_password, db_host, db_name, db_file } =
+      data;
 
     if (db_type.value !== 'sqlite3') {
       if (!db_username.value) {
@@ -110,34 +99,6 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           isInvalid: true,
           errorMsg: t('db_name.msg'),
         };
-      }
-      if (db_type.value === 'postgres') {
-        if (ssl_enabled.value && ssl_mode.value !== 'require') {
-          if (!key_file.value) {
-            bol = false;
-            data.key_file = {
-              value: '',
-              isInvalid: true,
-              errorMsg: t('key_file.msg'),
-            };
-          }
-          if (!pem_file.value) {
-            bol = false;
-            data.pem_file = {
-              value: '',
-              isInvalid: true,
-              errorMsg: t('pem_file.msg'),
-            };
-          }
-          if (!cert_file.value) {
-            bol = false;
-            data.cert_file = {
-              value: '',
-              isInvalid: true,
-              errorMsg: t('cert_file.msg'),
-            };
-          }
-        }
       }
     } else if (!db_file.value) {
       bol = false;
@@ -255,17 +216,17 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
                       isInvalid: false,
                       errorMsg: '',
                     },
-                    key_file: {
+                    ssl_root_cert: {
                       value: '',
                       isInvalid: false,
                       errorMsg: '',
                     },
-                    cert_file: {
+                    ssl_cert: {
                       value: '',
                       isInvalid: false,
                       errorMsg: '',
                     },
-                    pem_file: {
+                    ssl_key: {
                       value: '',
                       isInvalid: false,
                       errorMsg: '',
@@ -304,15 +265,15 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
             (data.ssl_mode.value === 'verify-ca' ||
               data.ssl_mode.value === 'verify-full') && (
               <Row className="mb-3">
-                <Form.Group as={Col} controlId="key_file">
+                <Form.Group as={Col} controlId="ssl_root_cert">
                   <Form.Control
-                    placeholder={t('key_file.placeholder')}
-                    aria-label="key_file"
+                    placeholder={t('ssl_root_cert.placeholder')}
+                    aria-label="ssl_root_cert"
                     aria-describedby="basic-addon1"
-                    isInvalid={data.key_file.isInvalid}
+                    isInvalid={data.ssl_root_cert.isInvalid}
                     onChange={(e) => {
                       changeCallback({
-                        key_file: {
+                        ssl_root_cert: {
                           value: e.target.value,
                           isInvalid: false,
                           errorMsg: '',
@@ -322,18 +283,18 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
                     required
                   />
                   <Form.Control.Feedback type="invalid">
-                    {`${data.key_file.errorMsg}`}
+                    {`${data.ssl_root_cert.errorMsg}`}
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group as={Col} controlId="cert_file">
+                <Form.Group as={Col} controlId="ssl_cert">
                   <Form.Control
-                    placeholder={t('cert_file.placeholder')}
-                    aria-label="cert_file"
+                    placeholder={t('ssl_cert.placeholder')}
+                    aria-label="ssl_cert"
                     aria-describedby="basic-addon1"
-                    isInvalid={data.cert_file.isInvalid}
+                    isInvalid={data.ssl_cert.isInvalid}
                     onChange={(e) => {
                       changeCallback({
-                        cert_file: {
+                        ssl_cert: {
                           value: e.target.value,
                           isInvalid: false,
                           errorMsg: '',
@@ -343,18 +304,18 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
                     required
                   />
                   <Form.Control.Feedback type="invalid">
-                    {`${data.cert_file.errorMsg}`}
+                    {`${data.ssl_cert.errorMsg}`}
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group as={Col} controlId="pem_file">
+                <Form.Group as={Col} controlId="ssl_key">
                   <Form.Control
-                    placeholder={t('pem_file.placeholder')}
-                    aria-label="pem_file"
+                    placeholder={t('ssl_key.placeholder')}
+                    aria-label="ssl_key"
                     aria-describedby="basic-addon1"
-                    isInvalid={data.pem_file.isInvalid}
+                    isInvalid={data.ssl_key.isInvalid}
                     onChange={(e) => {
                       changeCallback({
-                        pem_file: {
+                        ssl_key: {
                           value: e.target.value,
                           isInvalid: false,
                           errorMsg: '',
@@ -364,7 +325,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
                     required
                   />
                   <Form.Control.Feedback type="invalid">
-                    {`${data.pem_file.errorMsg}`}
+                    {`${data.ssl_key.errorMsg}`}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Row>

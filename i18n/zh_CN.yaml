@@ -1621,14 +1621,14 @@ ui:
       label: 关
     ssl_mode:
       label: SSL 模式
-    key_file:
-      placeholder: Key 文件路径
+    ssl_root_cert:
+      placeholder: sslrootcert 文件路径
       msg: 文件路径不能为空
-    cert_file:
-      placeholder: Cert 文件路径
+    ssl_cert:
+      placeholder: sslcert 文件路径
       msg: 文件路径不能为空
-    pem_file:
-      placeholder: Pem 文件路径
+    ssl_key:
+      placeholder: sslkey 文件路径
       msg: 文件路径不能为空
     config_yaml:
       title: 创建 config.yaml
