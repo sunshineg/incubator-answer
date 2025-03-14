@@ -29,7 +29,6 @@ import (
 	"github.com/apache/answer/pkg/checker"
 	"github.com/apache/answer/pkg/dir"
 	"github.com/segmentfault/pacman/errors"
-	"github.com/segmentfault/pacman/log"
 	"xorm.io/xorm/schemas"
 )
 
@@ -42,17 +41,17 @@ type CheckConfigFileResp struct {
 
 // CheckDatabaseReq check database
 type CheckDatabaseReq struct {
-	DbType       string `validate:"required,oneof=postgres sqlite3 mysql" json:"db_type"`
-	DbUsername   string `json:"db_username"`
-	DbPassword   string `json:"db_password"`
-	DbHost       string `json:"db_host"`
-	DbName       string `json:"db_name"`
-	DbFile       string `json:"db_file"`
-	Ssl          bool   `json:"ssl_enabled"`
-	SslMode      string `json:"ssl_mode"`
-	SslCrt       string `json:"pem_file"`
-	SslKey       string `json:"key_file"`
-	SslCrtClient string `json:"cert_file"`
+	DbType      string `validate:"required,oneof=postgres sqlite3 mysql" json:"db_type"`
+	DbUsername  string `json:"db_username"`
+	DbPassword  string `json:"db_password"`
+	DbHost      string `json:"db_host"`
+	DbName      string `json:"db_name"`
+	DbFile      string `json:"db_file"`
+	Ssl         bool   `json:"ssl_enabled"`
+	SslMode     string `json:"ssl_mode"`
+	SslRootCert string `json:"ssl_root_cert"`
+	SslKey      string `json:"ssl_key"`
+	SslCert     string `json:"ssl_cert"`
 }
 
 // GetConnection get connection string
@@ -73,17 +72,18 @@ func (r *CheckDatabaseReq) GetConnection() string {
 			return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
 				host, port, r.DbUsername, r.DbPassword, r.DbName, r.SslMode)
 		} else if r.SslMode == "verify-ca" || r.SslMode == "verify-full" {
-			if dir.CheckFileExist(r.SslCrt) {
-				log.Warnf("ssl crt file not exist: %s", r.SslCrt)
+			connection := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+				host, port, r.DbUsername, r.DbPassword, r.DbName, r.SslMode)
+			if len(r.SslRootCert) > 0 && dir.CheckFileExist(r.SslRootCert) {
+				connection += fmt.Sprintf(" sslrootcert=%s", r.SslRootCert)
 			}
-			if dir.CheckFileExist(r.SslCrtClient) {
-				log.Warnf("ssl crt client file not exist: %s", r.SslCrtClient)
+			if len(r.SslCert) > 0 && dir.CheckFileExist(r.SslCert) {
+				connection += fmt.Sprintf(" sslcert=%s", r.SslCert)
 			}
-			if dir.CheckFileExist(r.SslKey) {
-				log.Warnf("ssl key file not exist: %s", r.SslKey)
+			if len(r.SslKey) > 0 && dir.CheckFileExist(r.SslKey) {
+				connection += fmt.Sprintf(" sslkey=%s", r.SslKey)
 			}
-			return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s sslrootcert=%s sslcert=%s sslkey=%s",
-				host, port, r.DbUsername, r.DbPassword, r.DbName, r.SslMode, r.SslCrt, r.SslCrtClient, r.SslKey)
+			return connection
 		}
 	}
 	return ""

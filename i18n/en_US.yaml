@@ -1663,15 +1663,15 @@ ui:
       label: Off
     ssl_mode:
       label: SSL Mode
-    key_file:
-      placeholder: Key file path
-      msg: Path to Key file cannot be empty
-    cert_file:
-      placeholder: Cert file path
-      msg: Path to Cert file cannot be empty
-    pem_file:
-      placeholder: Pem file path
-      msg: Path to Pem file cannot be empty
+    ssl_root_cert:
+      placeholder: sslrootcert file path
+      msg: Path to sslrootcert file cannot be empty
+    ssl_cert:
+      placeholder: sslcert file path
+      msg: Path to sslcert file cannot be empty
+    ssl_key:
+      placeholder: sslkey file path
+      msg: Path to sslkey file cannot be empty
     config_yaml:
       title: Create config.yaml
       label: The config.yaml file created.
