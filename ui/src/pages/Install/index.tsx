@@ -136,6 +136,31 @@ const Index: FC = () => {
       isInvalid: false,
       errorMsg: '',
     },
+    ssl_enabled: {
+      value: false,
+      isInvalid: false,
+      errorMsg: '',
+    },
+    ssl_mode: {
+      value: '',
+      isInvalid: false,
+      errorMsg: '',
+    },
+    pem_file: {
+      value: '',
+      isInvalid: false,
+      errorMsg: '',
+    },
+    key_file: {
+      value: '',
+      isInvalid: false,
+      errorMsg: '',
+    },
+    cert_file: {
+      value: '',
+      isInvalid: false,
+      errorMsg: '',
+    },
   });
 
   const { update, user } = loggedUserInfoStore();
@@ -156,6 +181,8 @@ const Index: FC = () => {
           db_username: { ...updatedFormData.db_username, value: 'postgres' },
           db_password: { ...updatedFormData.db_password, value: 'postgres' },
           db_host: { ...updatedFormData.db_host, value: 'db:5432' },
+          ssl_enabled: { ...updatedFormData.ssl_enabled, value: false },
+          ssl_mode: { ...updatedFormData.ssl_mode, value: '' },
         };
       }
       return updatedFormData;
@@ -192,6 +219,11 @@ const Index: FC = () => {
       db_host: formData.db_host.value,
       db_name: formData.db_name.value,
       db_file: formData.db_file.value,
+      ssl_enabled: formData.ssl_enabled.value,
+      ssl_mode: formData.ssl_mode.value,
+      pem_file: formData.pem_file.value,
+      key_file: formData.key_file.value,
+      cert_file: formData.cert_file.value,
     };
     installInit(params)
       .then(() => {
@@ -211,6 +243,11 @@ const Index: FC = () => {
       db_host: formData.db_host.value,
       db_name: formData.db_name.value,
       db_file: formData.db_file.value,
+      ssl_enabled: formData.ssl_enabled.value,
+      ssl_mode: formData.ssl_mode.value,
+      pem_file: formData.pem_file.value,
+      key_file: formData.key_file.value,
+      cert_file: formData.cert_file.value,
     };
     dbCheck(params)
       .then(() => {
