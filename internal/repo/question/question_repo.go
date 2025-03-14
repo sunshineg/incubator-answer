@@ -397,7 +397,10 @@ func (qr *questionRepo) GetQuestionPage(ctx context.Context, page, pageSize int,
 	questionList []*entity.Question, total int64, err error) {
 	questionList = make([]*entity.Question, 0)
 	session := qr.data.DB.Context(ctx)
-	status := []int{entity.QuestionStatusAvailable, entity.QuestionStatusClosed}
+	status := []int{entity.QuestionStatusAvailable}
+	if orderCond != "unanswered" {
+		status = append(status, entity.QuestionStatusClosed)
+	}
 	if showPending {
 		status = append(status, entity.QuestionStatusPending)
 	}

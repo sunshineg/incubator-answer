@@ -27,7 +27,9 @@ import (
 	"github.com/apache/answer/internal/base/reason"
 	"github.com/apache/answer/internal/base/validator"
 	"github.com/apache/answer/pkg/checker"
+	"github.com/apache/answer/pkg/dir"
 	"github.com/segmentfault/pacman/errors"
+	"github.com/segmentfault/pacman/log"
 	"xorm.io/xorm/schemas"
 )
 
@@ -40,12 +42,17 @@ type CheckConfigFileResp struct {
 
 // CheckDatabaseReq check database
 type CheckDatabaseReq struct {
-	DbType     string `validate:"required,oneof=postgres sqlite3 mysql" json:"db_type"`
-	DbUsername string `json:"db_username"`
-	DbPassword string `json:"db_password"`
-	DbHost     string `json:"db_host"`
-	DbName     string `json:"db_name"`
-	DbFile     string `json:"db_file"`
+	DbType       string `validate:"required,oneof=postgres sqlite3 mysql" json:"db_type"`
+	DbUsername   string `json:"db_username"`
+	DbPassword   string `json:"db_password"`
+	DbHost       string `json:"db_host"`
+	DbName       string `json:"db_name"`
+	DbFile       string `json:"db_file"`
+	Ssl          bool   `json:"ssl_enabled"`
+	SslMode      string `json:"ssl_mode"`
+	SslCrt       string `json:"pem_file"`
+	SslKey       string `json:"key_file"`
+	SslCrtClient string `json:"cert_file"`
 }
 
 // GetConnection get connection string
@@ -59,8 +66,25 @@ func (r *CheckDatabaseReq) GetConnection() string {
 	}
 	if r.DbType == string(schemas.POSTGRES) {
 		host, port := parsePgSQLHostPort(r.DbHost)
-		return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-			host, port, r.DbUsername, r.DbPassword, r.DbName)
+		if !r.Ssl {
+			return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
+				host, port, r.DbUsername, r.DbPassword, r.DbName)
+		} else if r.SslMode == "require" {
+			return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+				host, port, r.DbUsername, r.DbPassword, r.DbName, r.SslMode)
+		} else if r.SslMode == "verify-ca" || r.SslMode == "verify-full" {
+			if dir.CheckFileExist(r.SslCrt) {
+				log.Warnf("ssl crt file not exist: %s", r.SslCrt)
+			}
+			if dir.CheckFileExist(r.SslCrtClient) {
+				log.Warnf("ssl crt client file not exist: %s", r.SslCrtClient)
+			}
+			if dir.CheckFileExist(r.SslKey) {
+				log.Warnf("ssl key file not exist: %s", r.SslKey)
+			}
+			return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s sslrootcert=%s sslcert=%s sslkey=%s",
+				host, port, r.DbUsername, r.DbPassword, r.DbName, r.SslMode, r.SslCrt, r.SslCrtClient, r.SslKey)
+		}
 	}
 	return ""
 }
