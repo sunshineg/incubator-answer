@@ -79,43 +79,56 @@ const Layout: FC = () => {
     };
   }, []);
 
-  const replaceImgSrc = (img) => {
+  const replaceImgSrc = () => {
     const storageUserExternalMode = Storage.get(EXTERNAL_CONTENT_DISPLAY_MODE);
+    const images = document.querySelectorAll(
+      'img:not([data-processed])',
+    ) as NodeListOf<HTMLImageElement>;
 
-    if (
-      storageUserExternalMode !== 'always' &&
-      img.src &&
-      !img.src.startsWith(window.location.origin)
-    ) {
-      externalToast.onShow();
-      img.dataset.src = img.src;
-      img.removeAttribute('src');
-    }
+    images.forEach((img) => {
+      // 标记为已处理，避免重复处理
+      img.setAttribute('data-processed', 'true');
+
+      if (
+        img.src &&
+        storageUserExternalMode !== 'always' &&
+        !img.src.startsWith('/') &&
+        !img.src.startsWith('data:') &&
+        !img.src.startsWith('blob:') &&
+        !img.src.startsWith(window.location.origin)
+      ) {
+        externalToast.onShow();
+        img.dataset.src = img.src;
+        img.removeAttribute('src');
+      }
+    });
   };
 
   useEffect(() => {
     // Controlling the loading of external image resources
     const observer = new MutationObserver((mutationsList) => {
+      let hasNewImages = false;
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
           mutation.addedNodes.forEach((node) => {
-            if (node.nodeName === 'IMG') {
-              replaceImgSrc(node);
-            }
-            if ((node as Element).querySelectorAll) {
-              const images = (node as Element).querySelectorAll('img');
-              images.forEach(replaceImgSrc);
+            if (
+              node.nodeName === 'IMG' ||
+              (node.nodeType === 1 &&
+                (node as Element).querySelectorAll('img:not([data-processed])')
+                  .length > 0)
+            ) {
+              hasNewImages = true;
             }
           });
         }
       });
+      // 如果发现新图片，处理它们
+      if (hasNewImages) {
+        replaceImgSrc();
+      }
     });
 
     if (externalContentDisplay !== 'always_display') {
-      // Process all existing images
-      const images = document.querySelectorAll('img');
-      images.forEach(replaceImgSrc);
-      // Process all images added later
       observer.observe(document.body, { childList: true, subtree: true });
     }
 
