@@ -1668,8 +1668,8 @@ ui:
     admin_name:
       label: 名字
       msg: 名字不能为空。
-      character: '只能由 "a-z", "0-9", " - . _" 组成'
-      msg_max_length: 名字长度不能超过 30 个字符。
+      character: '只能由 "a-z"、"A-Z"、"0-9"、" - . _" 组成'
+      msg_max_length: 名字长度必须在 2 至 30 个字符之间。
     admin_password:
       label: 密码
       text: >-
