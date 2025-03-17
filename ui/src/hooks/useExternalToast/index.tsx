@@ -28,7 +28,7 @@ import { Storage } from '@/utils';
 
 const toastPortal = document.createElement('div');
 toastPortal.style.position = 'fixed';
-toastPortal.style.top = '90px';
+toastPortal.style.top = '78px';
 toastPortal.style.left = '50%';
 toastPortal.style.transform = 'translate(-50%, 0)';
 toastPortal.style.maxWidth = '100%';
@@ -37,7 +37,7 @@ toastPortal.style.zIndex = '1001';
 const setPortalPosition = () => {
   const header = document.querySelector('#header');
   if (header) {
-    toastPortal.style.top = `${header.getBoundingClientRect().top + 90}px`;
+    toastPortal.style.top = `${header.getBoundingClientRect().top + 78}px`;
   }
 };
 const startHandlePortalPosition = () => {
