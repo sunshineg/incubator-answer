@@ -1506,7 +1506,7 @@ ui:
     via: 分享到...
     copied: 已复制
     facebook: 分享到 Facebook
-    twitter: 分享到 Twitter
+    twitter: 分享到 X
   cannot_vote_for_self: 你不能给自己的帖子投票。
   modal_confirm:
     title: 发生错误...
