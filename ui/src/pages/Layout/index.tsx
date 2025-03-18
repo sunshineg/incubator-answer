@@ -39,7 +39,7 @@ import {
   HttpErrorContent,
 } from '@/components';
 import { LoginToContinueModal, BadgeModal } from '@/components/Modal';
-import { changeTheme, Storage } from '@/utils';
+import { changeTheme, Storage, scrollToElementTop } from '@/utils';
 import { useQueryNotificationStatus } from '@/services';
 import { useExternalToast } from '@/hooks';
 import { EXTERNAL_CONTENT_DISPLAY_MODE } from '@/common/constants';
@@ -57,6 +57,74 @@ const Layout: FC = () => {
   const { code: httpStatusCode, reset: httpStatusReset } = errorCodeStore();
   const { show: showLoginToContinueModal } = loginToContinueStore();
   const { data: notificationData } = useQueryNotificationStatus();
+
+  useEffect(() => {
+    // handle footnote links
+    const fixFootnoteLinks = () => {
+      const footnoteLinks = document.querySelectorAll(
+        'a[href^="#"]:not([data-footnote-fixed])',
+      );
+
+      footnoteLinks.forEach((link) => {
+        link.setAttribute('data-footnote-fixed', 'true');
+        const href = link.getAttribute('href');
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = href?.substring(1) || '';
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            window.history.pushState(null, '', `${location.pathname}${href}`);
+
+            scrollToElementTop(targetElement);
+          }
+        });
+      });
+
+      if (window.location.hash) {
+        const { hash } = window.location;
+        const targetElement = document.getElementById(hash.substring(1));
+
+        if (targetElement) {
+          setTimeout(() => {
+            scrollToElementTop(targetElement);
+          }, 100);
+        }
+      }
+    };
+    fixFootnoteLinks();
+
+    const observer = new MutationObserver(() => {
+      fixFootnoteLinks();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['id', 'href'],
+    });
+
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        const { hash } = window.location;
+        const targetElement = document.getElementById(hash.substring(1));
+
+        if (targetElement) {
+          setTimeout(() => {
+            scrollToElementTop(targetElement);
+          }, 100);
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     httpStatusReset();
