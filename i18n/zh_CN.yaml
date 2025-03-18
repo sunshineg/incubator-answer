@@ -138,7 +138,7 @@ backend:
   pass:
     other: 密码
   old_pass:
-    other: Current password
+    other: 当前密码
   original_text:
     other: 本帖
   email_or_password_wrong_error:
@@ -171,7 +171,7 @@ backend:
       question_closed_cannot_add:
         other: 问题已关闭，无法添加。
       content_cannot_empty:
-        other: Answer content cannot be empty.
+        other: 回答内容不能为空。
     comment:
       edit_without_permission:
         other: 不允许编辑评论。
@@ -180,7 +180,7 @@ backend:
       cannot_edit_after_deadline:
         other: 评论时间太久，无法修改。
       content_cannot_empty:
-        other: Comment content cannot be empty.
+        other: 评论内容不能为空。
     email:
       duplicate:
         other: 邮箱已存在。
@@ -231,7 +231,7 @@ backend:
       cannot_update:
         other: 没有更新权限。
       content_cannot_empty:
-        other: Content cannot be empty.
+        other: 内容不能为空。
     rank:
       fail_to_meet_the_condition:
         other: 声望值未达到要求。
@@ -492,7 +492,7 @@ backend:
       title:
         other: "[{{.SiteName}}] 新问题: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\n这是系统自动发送的电子邮件，请勿回复，因为您的回复将不会被看到 <br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>取消订阅</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] 重置密码"
@@ -654,7 +654,7 @@ backend:
         name:
           other: 谢谢
         desc:
-          other: 拥有20个投票赞成的职位并放弃了10个投票。
+          other: 有 20 个赞成票的帖子，并投了 10 个赞成票。
       gives_back:
         name:
           other: 返回
@@ -754,7 +754,7 @@ backend:
         name:
           other: 热门问题
         desc:
-          other: 问题有500个意见。
+          other: 问题有 500 个浏览量。
       notable_question:
         name:
           other: 值得关注问题
@@ -1473,15 +1473,15 @@ ui:
     normal: 正常
     closed: 已关闭
     deleted: 已删除
-    deleted_permanently: Deleted permanently
+    deleted_permanently: 永久删除
     pending: 等待处理
     more: 更多
-    view: View
-    card: Card
-    compact: Compact
-    display_below: Display below
-    always_display: Always display
-    or: or
+    view: 浏览量
+    card: 卡片
+    compact: 紧凑
+    display_below: 在下方显示
+    always_display: 总是显示
+    or: 或者
   search:
     title: 搜索结果
     keywords: 关键词
@@ -1511,13 +1511,13 @@ ui:
     via: 分享到...
     copied: 已复制
     facebook: 分享到 Facebook
-    twitter: Share to X
+    twitter: 分享至X
   cannot_vote_for_self: 你不能给自己的帖子投票。
   modal_confirm:
     title: 发生错误...
   delete_permanently:
-    title: Delete permanently
-    content: Are you sure you want to delete permanently?
+    title: 永久删除
+    content: 您确定要永久删除吗？
   account_result:
     success: 你的账号已通过验证，即将返回首页。
     link: 返回首页
@@ -1622,22 +1622,22 @@ ui:
       placeholder: /data/answer.db
       msg: 数据库文件不能为空。
     ssl_enabled:
-      label: Enable SSL
+      label: 启用 SSL
     ssl_enabled_on:
       label: On
     ssl_enabled_off:
       label: Off
     ssl_mode:
-      label: SSL Mode
+      label: SSL 模式
     ssl_root_cert:
-      placeholder: sslrootcert file path
-      msg: Path to sslrootcert file cannot be empty
+      placeholder: sslrootcert文件路径
+      msg: sslrootcert 文件的路径不能为空
     ssl_cert:
-      placeholder: sslcert file path
-      msg: Path to sslcert file cannot be empty
+      placeholder: sslcert文件路径
+      msg: sslcert 文件的路径不能为空
     ssl_key:
-      placeholder: sslkey file path
-      msg: Path to sslkey file cannot be empty
+      placeholder: sslkey 文件路径
+      msg: sslcert 文件的路径不能为空
     config_yaml:
       title: 创建 config.yaml
       label: 已创建 config.yaml 文件。
@@ -1670,8 +1670,8 @@ ui:
     admin_name:
       label: 名字
       msg: 名字不能为空。
-      character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
-      msg_max_length: Name must be between 2 to 30 characters in length.
+      character: '只能由 "a-z"、"A-Z"、"0-9"、" - . _" 组成'
+      msg_max_length: 名称长度必须在 2 至 30 个字符之间。
     admin_password:
       label: 密码
       text: >-
@@ -1680,9 +1680,9 @@ ui:
       msg_min_length: 密码必须至少 8 个字符长。
       msg_max_length: 密码长度不能超过 32 个字符。
     admin_confirm_password:
-      label: "Confirm Password"
-      text: "Please re-enter your password to confirm."
-      msg: "Confirm password does not match."
+      label: "确认密码"
+      text: "请重新输入您的密码以确认。"
+      msg: "确认密码不一致。"
     admin_email:
       label: 邮箱
       text: 您需要此电子邮件才能登录。
@@ -2038,10 +2038,10 @@ ui:
         label: 隐私政策
         text: "您可以在此添加隐私政策内容。如果您已经在别处托管了文档，请在这里提供完整的URL。"
       external_content_display:
-        label: External content
-        text: "Content includes images, videos, and media embedded from external websites."
-        always_display: Always display external content
-        ask_before_display: Ask before displaying external content
+        label: 外部内容
+        text: "内容包括从外部网站嵌入的图像、视频和媒体。"
+        always_display: 总是显示外部内容
+        ask_before_display: 在显示外部内容之前询问
     write:
       page_title: 编辑
       restrict_answer:
@@ -2297,11 +2297,11 @@ ui:
     user_deleted: 此用户已被删除
     badge_activated: 此徽章已被激活。
     badge_inactivated: 此徽章已被禁用。
-    users_deleted: These users have been deleted.
-    posts_deleted: These questions have been deleted.
-    answers_deleted: These answers have been deleted.
-    copy: Copy to clipboard
-    copied: Copied
-    external_content_warning: External images/media are not displayed.
+    users_deleted: 这些用户已被删除。
+    posts_deleted: 这些问题已被删除。
+    answers_deleted: 这些答案已被删除。
+    copy: 复制到剪贴板
+    copied: 已复制
+    external_content_warning: 外部图像/媒体未显示。
 
 
