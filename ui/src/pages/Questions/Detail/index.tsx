@@ -265,13 +265,11 @@ const Index = () => {
         });
       });
 
-      // 检查当前URL是否包含锚点，如果有，自动滚动到正确位置
       if (window.location.hash) {
         const { hash } = window.location;
         const targetElement = document.getElementById(hash.substring(1));
 
         if (targetElement) {
-          // 给浏览器一点时间来完成渲染
           setTimeout(() => {
             scrollToElementTop(targetElement);
           }, 100);
@@ -291,7 +289,6 @@ const Index = () => {
       attributeFilter: ['id', 'href'],
     });
 
-    // 监听 URL hash 变化
     const handleHashChange = () => {
       if (window.location.hash) {
         const { hash } = window.location;
