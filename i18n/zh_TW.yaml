@@ -137,6 +137,8 @@ backend:
     other: 密碼
   pass:
     other: Password
+  old_pass:
+    other: Current password
   original_text:
     other: This post
   email_or_password_wrong_error:
@@ -1496,7 +1498,7 @@ ui:
     via: 分享在...
     copied: 已複製
     facebook: 分享到 Facebook
-    twitter: 分享到 Twitter
+    twitter: 分享到 X
   cannot_vote_for_self: You can't vote for your own post.
   modal_confirm:
     title: 發生錯誤...
@@ -2253,5 +2255,3 @@ ui:
     user_deleted: This user has been deleted.
     badge_activated: This badge has been activated.
     badge_inactivated: This badge has been inactivated.
-
-
