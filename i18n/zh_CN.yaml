@@ -137,6 +137,8 @@ backend:
     other: 密码
   pass:
     other: 密码
+  old_pass:
+    other: Current password
   original_text:
     other: 本帖
   email_or_password_wrong_error:
@@ -168,6 +170,8 @@ backend:
         other: 没有更新权限。
       question_closed_cannot_add:
         other: 问题已关闭，无法添加。
+      content_cannot_empty:
+        other: Answer content cannot be empty.
     comment:
       edit_without_permission:
         other: 不允许编辑评论。
@@ -175,6 +179,8 @@ backend:
         other: 评论未找到。
       cannot_edit_after_deadline:
         other: 评论时间太久，无法修改。
+      content_cannot_empty:
+        other: Comment content cannot be empty.
     email:
       duplicate:
         other: 邮箱已存在。
@@ -224,6 +230,8 @@ backend:
         other: 没有关闭权限。
       cannot_update:
         other: 没有更新权限。
+      content_cannot_empty:
+        other: Content cannot be empty.
     rank:
       fail_to_meet_the_condition:
         other: 声望值未达到要求。
@@ -484,7 +492,7 @@ backend:
       title:
         other: "[{{.SiteName}}] 新问题: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\n这是系统自动发送的电子邮件，请勿回复，因为您的回复将不会被看到 <br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>取消订阅</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] 重置密码"
@@ -616,17 +624,17 @@ backend:
         name:
           other: 失去爱好
         desc:
-          other: 一天内使用了50张选票。
+          other: 一天内使用了 50 个赞。
       higher_love:
         name:
           other: 更高的爱好
         desc:
-          other: 一天内使用了50张选票。
+          other: 一天内使用了 50 个赞 5 次。
       crazy_in_love:
         name:
           other: 爱情疯狂的
         desc:
-          other: 在 20 天内使用了50张选票。
+          other: 一天内使用了 50 个赞 20 次。
       promoter:
         name:
           other: 推荐人
@@ -751,12 +759,12 @@ backend:
         name:
           other: 值得关注问题
         desc:
-          other: 1 000个问题。
+          other: 1,000 个浏览量。
       famous_question:
         name:
           other: 著名的问题
         desc:
-          other: 问题有5,000个意见。
+          other: 问题有 5,000 个浏览量。
       popular_link:
         name:
           other: 热门链接
@@ -787,7 +795,7 @@ ui:
   how_to_format:
     title: 如何排版
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">引用问题或答案: <code>#post_id</code></p></li><li><p class="mb-2">添加链接</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[标题](https://url.com)</code></pre></li><li><p class="mb-2">段落之间使用空行分隔</p></li><li><p class="mb-2"><em>_斜体_</em> 或者 **<strong>粗体</strong>**</p></li><li><p class="mb-2">使用  个空格缩进代码</p></li><li><p class="mb-2">在行首添加 <code>&gt;</code> 表示引用</p></li><li><p class="mb-2">反引号进行转义 <code>`像 _这样_`</code></p></li><li><p class="mb-2">使用 <code>```</code> 创建代码块</p><pre class="mb-0"><code>```<br/>这是代码块<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">引用问题或答案: <code>#4</code></p></li><li><p class="mb-2">添加链接</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[标题](https://url.com)</code></pre></li><li><p class="mb-2">段落之间使用空行分隔</p></li><li><p class="mb-2"><em>_斜体_</em> 或者 **<strong>粗体</strong>**</p></li><li><p class="mb-2">使用  个空格缩进代码</p></li><li><p class="mb-2">在行首添加 <code>&gt;</code> 表示引用</p></li><li><p class="mb-2">反引号进行转义 <code>`像 _这样_`</code></p></li><li><p class="mb-2">使用 <code>```</code> 创建代码块</p><pre class="mb-0"><code>```<br/>这是代码块<br/>```</code></pre></li></ul>
   pagination:
     prev: 上一页
     next: 下一页
@@ -1465,8 +1473,15 @@ ui:
     normal: 正常
     closed: 已关闭
     deleted: 已删除
+    deleted_permanently: Deleted permanently
     pending: 等待处理
     more: 更多
+    view: View
+    card: Card
+    compact: Compact
+    display_below: Display below
+    always_display: Always display
+    or: or
   search:
     title: 搜索结果
     keywords: 关键词
@@ -1496,10 +1511,13 @@ ui:
     via: 分享到...
     copied: 已复制
     facebook: 分享到 Facebook
-    twitter: 分享到 Twitter
+    twitter: Share to X
   cannot_vote_for_self: 你不能给自己的帖子投票。
   modal_confirm:
     title: 发生错误...
+  delete_permanently:
+    title: Delete permanently
+    content: Are you sure you want to delete permanently?
   account_result:
     success: 你的账号已通过验证，即将返回首页。
     link: 返回首页
@@ -1603,6 +1621,23 @@ ui:
       label: 数据库文件
       placeholder: /data/answer.db
       msg: 数据库文件不能为空。
+    ssl_enabled:
+      label: Enable SSL
+    ssl_enabled_on:
+      label: On
+    ssl_enabled_off:
+      label: Off
+    ssl_mode:
+      label: SSL Mode
+    ssl_root_cert:
+      placeholder: sslrootcert file path
+      msg: Path to sslrootcert file cannot be empty
+    ssl_cert:
+      placeholder: sslcert file path
+      msg: Path to sslcert file cannot be empty
+    ssl_key:
+      placeholder: sslkey file path
+      msg: Path to sslkey file cannot be empty
     config_yaml:
       title: 创建 config.yaml
       label: 已创建 config.yaml 文件。
@@ -1635,8 +1670,8 @@ ui:
     admin_name:
       label: 名字
       msg: 名字不能为空。
-      character: '只能由 "a-z", "0-9", " - . _" 组成'
-      msg_max_length: 名字长度不能超过 30 个字符。
+      character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+      msg_max_length: Name must be between 2 to 30 characters in length.
     admin_password:
       label: 密码
       text: >-
@@ -1644,6 +1679,10 @@ ui:
       msg: 密码不能为空。
       msg_min_length: 密码必须至少 8 个字符长。
       msg_max_length: 密码长度不能超过 32 个字符。
+    admin_confirm_password:
+      label: "Confirm Password"
+      text: "Please re-enter your password to confirm."
+      msg: "Confirm password does not match."
     admin_email:
       label: 邮箱
       text: 您需要此电子邮件才能登录。
@@ -1714,7 +1753,7 @@ ui:
       close: 关闭
       confirm: 查看徽章
     title: 徽章
-    awarded: 授予的
+    awarded: 授予
     earned_×: 以获得 ×{{ number }}
     ×_awarded: "{{ number }} 得到"
     can_earn_multiple: 你可以多次获得
@@ -1998,6 +2037,11 @@ ui:
       privacy_policy:
         label: 隐私政策
         text: "您可以在此添加隐私政策内容。如果您已经在别处托管了文档，请在这里提供完整的URL。"
+      external_content_display:
+        label: External content
+        text: "Content includes images, videos, and media embedded from external websites."
+        always_display: Always display external content
+        ask_before_display: Ask before displaying external content
     write:
       page_title: 编辑
       restrict_answer:
@@ -2067,7 +2111,7 @@ ui:
 
       footer:
         label: 页脚
-        text: 这将在 </body> 之前插入.
+        text: 这将在 &lt;/body> 之前插入。
       sidebar:
         label: 侧边栏
         text: 这将插入侧边栏中。
@@ -2253,5 +2297,11 @@ ui:
     user_deleted: 此用户已被删除
     badge_activated: 此徽章已被激活。
     badge_inactivated: 此徽章已被禁用。
+    users_deleted: These users have been deleted.
+    posts_deleted: These questions have been deleted.
+    answers_deleted: These answers have been deleted.
+    copy: Copy to clipboard
+    copied: Copied
+    external_content_warning: External images/media are not displayed.
 
 
