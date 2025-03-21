@@ -166,7 +166,11 @@ const Answers: FC = () => {
                 <td>{li.vote_count}</td>
                 <td>
                   <Stack>
-                    <BaseUserCard data={li.user_info} nameMaxWidth="200px" />
+                    <BaseUserCard
+                      avatarSize="20"
+                      data={li.user_info}
+                      nameMaxWidth="200px"
+                    />
 
                     <FormatTime
                       className="small text-secondary"

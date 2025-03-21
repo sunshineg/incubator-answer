@@ -165,7 +165,11 @@ const Questions: FC = () => {
                 </td>
                 <td>
                   <Stack>
-                    <BaseUserCard data={li.user_info} nameMaxWidth="130px" />
+                    <BaseUserCard
+                      avatarSize="20"
+                      data={li.user_info}
+                      nameMaxWidth="130px"
+                    />
                     <FormatTime
                       className="small text-secondary"
                       time={li.create_time}

@@ -86,9 +86,9 @@ const Index: FC<Props> = ({
             'summary-stat ms-3 flex-shrink-0',
             data.views >= 100 * 1000
               ? 'view-level3'
-              : data.views >= 1000
+              : data.views >= 10000
                 ? 'view-level2'
-                : data.views >= 100
+                : data.views >= 1000
                   ? 'view-level1'
                   : '',
           )}>

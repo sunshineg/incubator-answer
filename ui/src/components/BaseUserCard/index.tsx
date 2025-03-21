@@ -38,7 +38,7 @@ const Index: FC<Props> = ({
   data,
   showAvatar = true,
   avatarClass = '',
-  avatarSize = '20px',
+  avatarSize = '24px',
   className = 'small',
   avatarSearchStr = 's=48',
   showReputation = true,
