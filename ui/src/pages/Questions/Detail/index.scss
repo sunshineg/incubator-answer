@@ -27,7 +27,8 @@
         background-color: var(--bs-gray-100);
       }
 
-      &:active, &.active {
+      &:active,
+      &.active {
         background-color: var(--bs-gray-200);
       }
     }
@@ -47,7 +48,7 @@
   z-index: 80;
   display: block;
   cursor: default;
-  content: " ";
+  content: ' ';
 }
 
 @media screen and (max-width: 768px) {
