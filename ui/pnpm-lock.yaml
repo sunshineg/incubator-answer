@@ -153,6 +153,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.11.0
         version: 6.21.0(eslint@8.57.1)(typescript@4.9.5)
+      buffer:
+        specifier: 6.0.3
+        version: 6.0.3
       customize-cra:
         specifier: ^1.0.0
         version: 1.0.0
@@ -2303,6 +2306,9 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
+  base64-js@1.5.1:
+    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+
   batch@0.6.1:
     resolution: {integrity: sha512-x+VAiMRL6UPkx+kudNvxTl6hB2XNNCG2r+7wixVfIYwu/2HKRXimwQyaumLjMveWvT2Hkd/cAJw+QBMfJ/EKVw==}
 
@@ -2366,6 +2372,9 @@ packages:
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+
+  buffer@6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
 
   builtin-modules@3.3.0:
     resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
@@ -3862,6 +3871,9 @@ packages:
   identity-obj-proxy@3.0.0:
     resolution: {integrity: sha512-00n6YnVHKrinT9t0d9+5yZC6UBNJANpYEQvL2LlX6Ab9lnmxzIRcEmTPuyGScvl1+jKuCICX1Z0Ab1pPKKdikA==}
     engines: {node: '>=4'}
+
+  ieee754@1.2.1:
+    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
@@ -9765,6 +9777,8 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
+  base64-js@1.5.1: {}
+
   batch@0.6.1: {}
 
   bfj@7.1.0:
@@ -9840,6 +9854,11 @@ snapshots:
   btoa@1.2.1: {}
 
   buffer-from@1.1.2: {}
+
+  buffer@6.0.3:
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
 
   builtin-modules@3.3.0: {}
 
@@ -11592,6 +11611,8 @@ snapshots:
   identity-obj-proxy@3.0.0:
     dependencies:
       harmony-reflect: 1.6.2
+
+  ieee754@1.2.1: {}
 
   ignore@5.3.2: {}
 
