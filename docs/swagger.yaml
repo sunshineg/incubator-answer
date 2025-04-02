@@ -6037,7 +6037,6 @@ paths:
             $ref: '#/definitions/handler.RespBody'
       security:
       - ApiKeyAuth: []
-      - ApiKeyAuth: []
       summary: add report
       tags:
       - Report
@@ -6061,7 +6060,6 @@ paths:
           schema:
             $ref: '#/definitions/handler.RespBody'
       security:
-      - ApiKeyAuth: []
       - ApiKeyAuth: []
       summary: review report
       tags:
@@ -6120,7 +6118,6 @@ paths:
           schema:
             $ref: '#/definitions/handler.RespBody'
       security:
-      - ApiKeyAuth: []
       - ApiKeyAuth: []
       summary: update review
       tags:
@@ -6784,7 +6781,6 @@ paths:
           schema:
             type: string
       security:
-      - ApiKeyAuth: []
       - ApiKeyAuth: []
       summary: UserVerifyEmailSend
       tags:

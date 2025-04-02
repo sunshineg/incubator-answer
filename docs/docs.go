@@ -5035,9 +5035,6 @@ const docTemplate = `{
                 "security": [
                     {
                         "ApiKeyAuth": []
-                    },
-                    {
-                        "ApiKeyAuth": []
                     }
                 ],
                 "description": "add report \u003cbr\u003e source (question, answer, comment, user)",
@@ -5075,9 +5072,6 @@ const docTemplate = `{
         "/answer/api/v1/report/review": {
             "put": {
                 "security": [
-                    {
-                        "ApiKeyAuth": []
-                    },
                     {
                         "ApiKeyAuth": []
                     }
@@ -5180,9 +5174,6 @@ const docTemplate = `{
         "/answer/api/v1/review/pending/post": {
             "put": {
                 "security": [
-                    {
-                        "ApiKeyAuth": []
-                    },
                     {
                         "ApiKeyAuth": []
                     }
@@ -6295,9 +6286,6 @@ const docTemplate = `{
         "/answer/api/v1/user/email/verification/send": {
             "post": {
                 "security": [
-                    {
-                        "ApiKeyAuth": []
-                    },
                     {
                         "ApiKeyAuth": []
                     }
