@@ -1,0 +1,7 @@
+#mobileSideNav {
+  top: 60px !important;
+  width: 240px !important;
+  height: calc(100vh - 60px) !important;
+  overflow-y: auto;
+  flex: none;
+}

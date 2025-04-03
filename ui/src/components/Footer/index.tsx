@@ -19,7 +19,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import { Trans, useTranslation } from 'react-i18next';
 
 import dayjs from 'dayjs';
@@ -33,32 +32,30 @@ const Index = () => {
   const cc = `${fullYear} ${siteName}`;
 
   return (
-    <footer className="py-3 bg-light">
-      <Container>
-        <p className="text-center mb-0 small">
-          {/* Link to Terms of Service with right margin */}
-          <Link to="/tos" className="me-3">
-            {t('label', { keyPrefix: 'admin.legal.terms_of_service' })}
-          </Link>
+    <footer className="py-3 bg-light w-100">
+      <p className="text-center mb-0 small">
+        {/* Link to Terms of Service with right margin */}
+        <Link to="/tos" className="me-3">
+          {t('label', { keyPrefix: 'admin.legal.terms_of_service' })}
+        </Link>
 
-          {/* Link to Privacy Policy with right margin for spacing */}
-          <Link to="/privacy">
-            {t('label', { keyPrefix: 'admin.legal.privacy_policy' })}
-          </Link>
-        </p>
-        <p className="text-center mb-0 small">
-          <Trans i18nKey="footer.build_on" values={{ cc }}>
-            Powered by
-            {/* eslint-disable-next-line react/jsx-no-target-blank */}
-            <a href="https://answer.apache.org" target="_blank">
-              Apache Answer
-            </a>
-            - the open-source software that powers Q&A communities.
-            <br />
-            Made with love. © 2022 Answer.
-          </Trans>
-        </p>
-      </Container>
+        {/* Link to Privacy Policy with right margin for spacing */}
+        <Link to="/privacy">
+          {t('label', { keyPrefix: 'admin.legal.privacy_policy' })}
+        </Link>
+      </p>
+      <p className="text-center mb-0 small">
+        <Trans i18nKey="footer.build_on" values={{ cc }}>
+          Powered by
+          {/* eslint-disable-next-line react/jsx-no-target-blank */}
+          <a href="https://answer.apache.org" target="_blank">
+            Apache Answer
+          </a>
+          - the open-source software that powers Q&A communities.
+          <br />
+          Made with love. © 2022 Answer.
+        </Trans>
+      </p>
     </footer>
   );
 };
