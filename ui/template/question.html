@@ -53,9 +53,9 @@
 
               <h5 class="text-wrap text-break">
                 {{if $.useTitle }}
-                <a class="link-dark d-block" href="{{$.baseURL}}/questions/{{.ID}}/{{urlTitle .Title}}"
-                  >{{.Title}}</a
-                >
+                <a class="link-dark d-block" href="{{$.baseURL}}/questions/{{.ID}}/{{urlTitle .Title}}">
+                  {{.Title}}
+                </a>
                 {{else}}
                 <a class="link-dark d-block" href="{{$.baseURL}}/questions/{{.ID}}">{{.Title}}</a>
                 {{end}}
@@ -63,9 +63,8 @@
 
               <div class="text-truncate-2 mb-2">
                 {{if $.useTitle }}
-                <a class="d-block small text-body" href="{{$.baseURL}}/questions/{{.ID}}/{{urlTitle .Title}}"
-                  >{{.Description}}</a
-                >
+                <a class="d-block small text-body" href="{{$.baseURL}}/questions/{{.ID}}/{{urlTitle .Title}}">{{.Description}}
+                </a>
                 {{else}}
                 <a class="d-block small text-body" href="{{$.baseURL}}/questions/{{.ID}}">{{.Description}}</a>
                 {{end}}
@@ -75,8 +74,7 @@
                 {{range .Tags }}
                 <a
                   href="{{$.baseURL}}/tags/{{.SlugName}}"
-                  class="badge-tag rounded-1 {{if .Reserved}}badge-tag-reserved{{end}} {{if .Recommend}}badge-tag-required{{end}} me-1"
-                >
+                  class="badge-tag rounded-1 {{if .Reserved}}badge-tag-reserved{{end}} {{if .Recommend}}badge-tag-required{{end}} me-1">
                   <span class="">{{.SlugName}}</span>
                 </a>
                 {{end}}
