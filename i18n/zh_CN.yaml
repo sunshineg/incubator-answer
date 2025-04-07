@@ -564,7 +564,7 @@ backend:
         name:
           other: 第一个链接
         desc:
-          other: 第一个脏添加了一个链接到另一个帖子。
+          other: 第一次添加了一个链接到另一个帖子。
       first_reaction:
         name:
           other: 第一个响应
