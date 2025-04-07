@@ -1482,6 +1482,7 @@ ui:
     display_below: 展示当前
     always_display: 一直展示
     or: 或者
+    back_sites: 返回网站
   search:
     title: 搜索结果
     keywords: 关键词

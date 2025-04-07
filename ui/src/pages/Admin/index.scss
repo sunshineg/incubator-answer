@@ -18,8 +18,9 @@
  */
 
 .admin-container {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  .page-right-side {
+    box-sizing: border-box;
+  }
 }
 
 .min-w-15 {

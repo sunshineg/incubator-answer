@@ -51,8 +51,10 @@ function MenuNode({
           }}
           className={classNames(
             'text-nowrap d-flex flex-nowrap align-items-center w-100',
-            { expanding, 'link-dark': activeKey !== menu.path },
+            { expanding, active: activeKey === menu.path },
           )}>
+          {menu?.icon && <Icon name={menu.icon} className="me-2" />}
+
           <span className="me-auto text-truncate">
             {menu.displayName ? menu.displayName : t(menu.name)}
           </span>
@@ -73,8 +75,9 @@ function MenuNode({
           }}
           className={classNames(
             'text-nowrap d-flex flex-nowrap align-items-center w-100',
-            { expanding, 'link-dark': activeKey !== menu.path },
+            { expanding, active: activeKey === menu.path },
           )}>
+          {menu?.icon && <Icon name={menu.icon} className="me-2" />}
           <span className="me-auto text-truncate">
             {menu.displayName ? menu.displayName : t(menu.name)}
           </span>
@@ -88,7 +91,7 @@ function MenuNode({
       )}
 
       {menu.children.length ? (
-        <Accordion.Collapse eventKey={menu.path} className="ms-3">
+        <Accordion.Collapse eventKey={menu.path} className="ms-4">
           <>
             {menu.children.map((leaf) => {
               return (
@@ -169,7 +172,7 @@ const AccordionNav: FC<AccordionProps> = ({ menus = [], path = '/' }) => {
     setOpenKey(getOpenKey());
   }, [activeKey, menus]);
   return (
-    <Accordion activeKey={openKey} flush>
+    <Accordion activeKey={openKey} flush id="answerAccordion">
       <Nav variant="pills" className="flex-column" activeKey={activeKey}>
         {menus.map((li) => {
           return (

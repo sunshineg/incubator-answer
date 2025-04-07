@@ -1515,6 +1515,7 @@ ui:
     display_below: Display below
     always_display: Always display
     or: or
+    back_sites: Back to sites
   search:
     title: Search Results
     keywords: Keywords
