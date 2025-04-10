@@ -18,15 +18,9 @@
  */
 
 import { FC, memo, useState, useEffect } from 'react';
-import { Navbar, Nav, Form, FormControl, Col } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import {
-  useSearchParams,
-  Link,
-  useNavigate,
-  useLocation,
-  useMatch,
-} from 'react-router-dom';
+import { Link, NavLink, useLocation, useMatch } from 'react-router-dom';
 
 import classnames from 'classnames';
 
@@ -43,23 +37,22 @@ import { logout, useQueryNotificationStatus } from '@/services';
 import { Icon, MobileSideNav } from '@/components';
 
 import NavItems from './components/NavItems';
+import SearchInput from './components/SearchInput';
 
 import './index.scss';
 
 const Header: FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const [urlSearch] = useSearchParams();
-  const q = urlSearch.get('q');
   const { user, clear: clearUserStore } = loggedUserInfoStore();
   const { t } = useTranslation();
-  const [searchStr, setSearch] = useState('');
   const siteInfo = siteInfoStore((state) => state.siteInfo);
   const brandingInfo = brandingStore((state) => state.branding);
   const loginSetting = loginSettingStore((state) => state.login);
   const { updateReview } = sideNavStore();
   const { data: redDot } = useQueryNotificationStatus();
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
+
+  const [showMobileSearchInput, setShowMobileSearchInput] = useState(false);
   /**
    * Automatically append `tag` information when creating a question
    */
@@ -76,18 +69,6 @@ const Header: FC = () => {
     });
   }, [redDot]);
 
-  const handleInput = (val) => {
-    setSearch(val);
-  };
-  const handleSearch = (evt) => {
-    evt.preventDefault();
-    if (!searchStr) {
-      return;
-    }
-    const searchUrl = `/search?q=${encodeURIComponent(searchStr)}`;
-    navigate(searchUrl);
-  };
-
   const handleLogout = async (evt) => {
     evt.preventDefault();
     await logout();
@@ -96,16 +77,7 @@ const Header: FC = () => {
   };
 
   useEffect(() => {
-    if (q && location.pathname === '/search') {
-      handleInput(q);
-    }
-  }, [q]);
-
-  useEffect(() => {
-    // clear search input when navigate to other page
-    if (location.pathname !== '/search' && searchStr) {
-      setSearch('');
-    }
+    setShowMobileSearchInput(false);
     setShowMobileSideNav(false);
   }, [location.pathname]);
 
@@ -119,6 +91,7 @@ const Header: FC = () => {
     const handleResize = () => {
       if (window.innerWidth >= 1199.9) {
         setShowMobileSideNav(false);
+        setShowMobileSearchInput(false);
       }
     };
 
@@ -129,151 +102,112 @@ const Header: FC = () => {
   }, []);
 
   return (
-    <>
-      <Navbar
-        variant={navbarStyle === 'theme-colored' ? 'dark' : ''}
-        expand="xl"
-        className={classnames('sticky-top', navbarStyle)}
-        id="header">
-        <div className="w-100 d-flex align-items-center px-3">
-          <Navbar.Toggle
-            className="answer-navBar me-2"
+    <Navbar
+      variant={navbarStyle === 'theme-colored' ? 'dark' : ''}
+      expand="xl"
+      className={classnames('sticky-top', navbarStyle)}
+      id="header">
+      <div className="w-100 d-flex align-items-center px-3">
+        <Navbar.Toggle
+          className="answer-navBar me-2"
+          onClick={() => {
+            setShowMobileSideNav(!showMobileSideNav);
+            setShowMobileSearchInput(false);
+          }}
+        />
+
+        <Navbar.Brand
+          to="/"
+          as={Link}
+          className="lh-1 me-0 me-sm-5 p-0 nav-text">
+          {brandingInfo.logo ? (
+            <>
+              <img
+                className="d-none d-xl-block logo me-0"
+                src={brandingInfo.logo}
+                alt={siteInfo.name}
+              />
+
+              <img
+                className="xl-none logo me-0"
+                src={brandingInfo.mobile_logo || brandingInfo.logo}
+                alt={siteInfo.name}
+              />
+            </>
+          ) : (
+            <span>{siteInfo.name}</span>
+          )}
+        </Navbar.Brand>
+
+        <SearchInput className="d-none d-lg-block maxw-560" />
+
+        <Nav className="d-block d-lg-none me-2">
+          <Button
+            variant="link"
             onClick={() => {
-              setShowMobileSideNav(!showMobileSideNav);
+              setShowMobileSideNav(false);
+              setShowMobileSearchInput(!showMobileSearchInput);
             }}
-          />
+            className="p-0 btn-no-border icon-link nav-link d-flex align-items-center justify-content-center">
+            <Icon name="search" className="lh-1 fs-4" />
+          </Button>
+        </Nav>
 
-          <div className="d-flex justify-content-between align-items-center nav-grow flex-nowrap">
-            <Navbar.Brand to="/" as={Link} className="lh-1 me-0 me-sm-5 p-0">
-              {brandingInfo.logo ? (
-                <>
-                  <img
-                    className="d-none d-xl-block logo me-0"
-                    src={brandingInfo.logo}
-                    alt={siteInfo.name}
-                  />
+        {/* pc nav */}
+        {user?.username ? (
+          <Nav className="d-flex align-items-center flex-nowrap flex-row ms-auto">
+            <Nav.Item className="me-2 d-block d-xl-none">
+              <NavLink
+                to={askUrl}
+                className="d-block icon-link nav-link text-center">
+                <Icon name="plus-lg" className="lh-1 fs-4" />
+              </NavLink>
+            </Nav.Item>
 
-                  <img
-                    className="xl-none logo me-0"
-                    src={brandingInfo.mobile_logo || brandingInfo.logo}
-                    alt={siteInfo.name}
-                  />
-                </>
-              ) : (
-                <span>{siteInfo.name}</span>
-              )}
-            </Navbar.Brand>
+            <Nav.Item className="me-2 d-none d-xl-block">
+              <NavLink
+                to={askUrl}
+                className="nav-link d-flex align-items-center text-capitalize text-nowrap">
+                <Icon name="plus-lg" className="me-2 lh-1 fs-4" />
+                <span>{t('btns.create')}</span>
+              </NavLink>
+            </Nav.Item>
 
-            {/* mobile nav */}
-            <div className="d-flex xl-none align-items-center flex-lg-nowrap">
-              {user?.username ? (
-                <NavItems
-                  redDot={redDot}
-                  userInfo={user}
-                  logOut={(e) => handleLogout(e)}
-                />
-              ) : (
-                <>
-                  <Link
-                    className={classnames('me-2 btn btn-link', {
-                      'link-light': navbarStyle === 'theme-colored',
-                      'link-primary': navbarStyle !== 'theme-colored',
-                    })}
-                    onClick={() => floppyNavigation.storageLoginRedirect()}
-                    to={userCenter.getLoginUrl()}>
-                    {t('btns.login')}
-                  </Link>
-                  {loginSetting.allow_new_registrations && (
-                    <Link
-                      className={classnames(
-                        'btn',
-                        navbarStyle === 'theme-colored'
-                          ? 'btn-light'
-                          : 'btn-primary',
-                      )}
-                      to={userCenter.getSignUpUrl()}>
-                      {t('btns.signup')}
-                    </Link>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
+            <NavItems redDot={redDot} userInfo={user} logOut={handleLogout} />
+          </Nav>
+        ) : (
+          <>
+            <Link
+              className={classnames('me-2 btn btn-link', {
+                'link-light': navbarStyle === 'theme-colored',
+                'link-primary': navbarStyle !== 'theme-colored',
+              })}
+              onClick={() => floppyNavigation.storageLoginRedirect()}
+              to={userCenter.getLoginUrl()}>
+              {t('btns.login')}
+            </Link>
+            {loginSetting.allow_new_registrations && (
+              <Link
+                className={classnames(
+                  'btn',
+                  navbarStyle === 'theme-colored' ? 'btn-light' : 'btn-primary',
+                )}
+                to={userCenter.getSignUpUrl()}>
+                {t('btns.signup')}
+              </Link>
+            )}
+          </>
+        )}
+      </div>
 
-          <div className="d-none d-xl-flex flex-grow-1 me-auto">
-            <Col lg={8} className="d-none d-xl-block ps-0">
-              <Form
-                action="/search"
-                className="w-100 maxw-400 position-relative"
-                onSubmit={handleSearch}>
-                <div className="search-wrap" onClick={handleSearch}>
-                  <Icon name="search" className="search-icon" />
-                </div>
-                <FormControl
-                  type="search"
-                  placeholder="sddfsdf"
-                  className="placeholder-search"
-                  value={searchStr}
-                  name="q"
-                  onChange={(e) => handleInput(e.target.value)}
-                />
-              </Form>
-            </Col>
-
-            {/* pc nav */}
-            <Col
-              lg={4}
-              className="d-none d-xl-flex justify-content-start justify-content-sm-end">
-              {user?.username ? (
-                <Nav className="d-flex align-items-center flex-lg-nowrap">
-                  <Nav.Item className="me-3">
-                    <Link
-                      to={askUrl}
-                      className={classnames('text-capitalize text-nowrap btn', {
-                        'btn-light': navbarStyle !== 'theme-light',
-                        'btn-primary': navbarStyle === 'theme-light',
-                      })}>
-                      {t('btns.add_question')}
-                    </Link>
-                  </Nav.Item>
-
-                  <NavItems
-                    redDot={redDot}
-                    userInfo={user}
-                    logOut={handleLogout}
-                  />
-                </Nav>
-              ) : (
-                <>
-                  <Link
-                    className={classnames('me-2 btn btn-link', {
-                      'link-light': navbarStyle === 'theme-colored',
-                      'link-primary': navbarStyle !== 'theme-colored',
-                    })}
-                    onClick={() => floppyNavigation.storageLoginRedirect()}
-                    to={userCenter.getLoginUrl()}>
-                    {t('btns.login')}
-                  </Link>
-                  {loginSetting.allow_new_registrations && (
-                    <Link
-                      className={classnames(
-                        'btn',
-                        navbarStyle === 'theme-colored'
-                          ? 'btn-light'
-                          : 'btn-primary',
-                      )}
-                      to={userCenter.getSignUpUrl()}>
-                      {t('btns.signup')}
-                    </Link>
-                  )}
-                </>
-              )}
-            </Col>
-          </div>
+      {showMobileSearchInput && (
+        <div className="w-100 px-3 mt-2 d-block d-lg-none">
+          <SearchInput />
         </div>
-      </Navbar>
+      )}
+
       <MobileSideNav show={showMobileSideNav} onHide={setShowMobileSideNav} />
-    </>
+    </Navbar>
   );
 };
 

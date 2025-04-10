@@ -1441,7 +1441,7 @@ ui:
     signup: 注册
     logout: 退出
     verify: 验证
-    add_question: 我要提问
+    create: 创建
     approve: 批准
     reject: 拒绝
     skip: 跳过
