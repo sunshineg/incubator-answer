@@ -141,7 +141,7 @@ const Header: FC = () => {
 
         <SearchInput className="d-none d-lg-block maxw-560" />
 
-        <Nav className="d-block d-lg-none me-2">
+        <Nav className="d-block d-lg-none me-2 ms-auto">
           <Button
             variant="link"
             onClick={() => {
@@ -155,7 +155,7 @@ const Header: FC = () => {
 
         {/* pc nav */}
         {user?.username ? (
-          <Nav className="d-flex align-items-center flex-nowrap flex-row ms-auto">
+          <Nav className="d-flex align-items-center flex-nowrap flex-row">
             <Nav.Item className="me-2 d-block d-xl-none">
               <NavLink
                 to={askUrl}

@@ -41,15 +41,6 @@
     }
   }
 
-  .nav-text {
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 10px;
-    min-width: 0;
-  }
-
   .search-mobile {
     color: var(--bs-nav-link-color);
   }
@@ -140,6 +131,18 @@
 
     .maxw-400 {
       max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #header {
+    .nav-text {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
     }
   }
 }
