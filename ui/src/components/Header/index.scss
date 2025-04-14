@@ -21,7 +21,6 @@
 @import 'bootstrap/scss/variables';
 #header {
   z-index: 1041;
-  transform: translate3d(0, 0, 0);
   --bs-navbar-padding-y: 0.75rem;
   background: var(--bs-primary);
   box-shadow:
@@ -31,11 +30,19 @@
     max-height: 2rem;
   }
 
+  .create-icon {
+    color: var(--bs-nav-link-color);
+  }
+
   .nav-link {
     &.icon-link {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
     }
+  }
+
+  .search-mobile {
+    color: var(--bs-nav-link-color);
   }
 
   .answer-navBar {
@@ -99,15 +106,15 @@
     }
   }
 
-  .maxw-400 {
-    max-width: 400px;
+  .maxw-560 {
+    max-width: 560px;
   }
 
   .search-wrap {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 11px 13px;
+    padding: 10px 13px;
     line-height: 1;
   }
 }
@@ -124,6 +131,18 @@
 
     .maxw-400 {
       max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #header {
+    .nav-text {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
     }
   }
 }

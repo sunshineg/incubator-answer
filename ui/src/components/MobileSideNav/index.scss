@@ -1,7 +1,10 @@
 #mobileSideNav {
-  top: 60px !important;
+  top: 62px !important;
   width: 240px !important;
-  height: calc(100vh - 60px) !important;
+  height: calc(100vh - 62px) !important;
   overflow-y: auto;
   flex: none;
+  .navbar-nav {
+    --bs-nav-link-padding-x: 1rem;
+  }
 }

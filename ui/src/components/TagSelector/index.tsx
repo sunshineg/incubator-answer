@@ -233,7 +233,6 @@ const TagSelector: FC<IProps> = ({
     e.stopPropagation();
     const { keyCode } = e;
     if (keyCode === 9) {
-      console.log('tab====9');
       // handleTagSelectorBlur();
       return;
     }
