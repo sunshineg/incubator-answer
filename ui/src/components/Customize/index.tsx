@@ -109,7 +109,6 @@ const handleCustomHeader = (content) => {
 };
 
 const handleCustomFooter = (content) => {
-  console.log('handleCustomFooter', content);
   const el = document.body;
   renderCustomArea(el, CUSTOM_MARK_FOOTER, 'beforeend', content);
 };

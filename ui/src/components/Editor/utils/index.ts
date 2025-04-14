@@ -119,7 +119,6 @@ export function htmlRender(el: HTMLElement | null, config?: htmlRenderConfig) {
       tooltipInstance?.setContent({ '.tooltip-inner': copySuccessText });
       const myTooltipEl = document.querySelector(`#${uniqueId}`);
       myTooltipEl?.addEventListener('hidden.bs.tooltip', () => {
-        console.log('hidden.bs.tooltip');
         tooltipInstance.setContent({ '.tooltip-inner': copyText });
       });
     });
