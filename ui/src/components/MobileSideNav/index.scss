@@ -4,4 +4,7 @@
   height: calc(100vh - 62px) !important;
   overflow-y: auto;
   flex: none;
+  .navbar-nav {
+    --bs-nav-link-padding-x: 1rem;
+  }
 }
