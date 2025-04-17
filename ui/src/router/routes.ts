@@ -54,7 +54,9 @@ const routes: RouteNode[] = [
       if (!gr.ok) {
         return gr;
       }
-      return guard.notForbidden();
+      return {
+        ok: true,
+      };
     },
     children: [
       // question and answer
@@ -309,7 +311,7 @@ const routes: RouteNode[] = [
         path: '/users/account-suspended',
         page: 'pages/Users/Suspended',
         guard: () => {
-          return guard.forbidden();
+          return guard.notLogged();
         },
       },
       {
