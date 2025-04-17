@@ -565,7 +565,7 @@ backend:
         name:
           other: First Link
         desc:
-          other: First dirst added a link to another post.
+          other: First added a link to another post.
       first_reaction:
         name:
           other: First Reaction

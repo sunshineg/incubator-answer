@@ -26,6 +26,7 @@ import (
 	"time"
 
 	"github.com/apache/answer/internal/service/event_queue"
+	"github.com/apache/answer/plugin"
 
 	"github.com/apache/answer/internal/base/constant"
 	"github.com/apache/answer/internal/base/handler"
@@ -1313,7 +1314,35 @@ func (qs *QuestionService) GetQuestionsByTitle(ctx context.Context, title string
 	if len(title) == 0 {
 		return resp, nil
 	}
-	questions, err := qs.questionRepo.GetQuestionsByTitle(ctx, title, 10)
+	// check search plugin
+	var finder plugin.Search
+	_ = plugin.CallSearch(func(search plugin.Search) error {
+		finder = search
+		return nil
+	})
+
+	var questions []*entity.Question
+	if finder != nil {
+		// call search plugin if available
+		words := []string{title}
+		res, _, err := finder.SearchQuestions(ctx, &plugin.SearchBasicCond{
+			Words:    words,
+			Page:     1,
+			PageSize: 10,
+		})
+		if err != nil {
+			return resp, err
+		}
+		// get question ids from res
+		questionIDs := make([]string, 0)
+		for _, question := range res {
+			questionIDs = append(questionIDs, question.ID)
+		}
+		questions, err = qs.questionRepo.FindByID(ctx, questionIDs)
+	} else {
+		questions, err = qs.questionRepo.GetQuestionsByTitle(ctx, title, 10)
+	}
+
 	if err != nil {
 		return resp, err
 	}

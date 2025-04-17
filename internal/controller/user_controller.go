@@ -162,6 +162,11 @@ func (uc *UserController) UserEmailLogin(ctx *gin.Context) {
 	if !isAdmin {
 		uc.actionService.ActionRecordDel(ctx, entity.CaptchaActionPassword, ctx.ClientIP())
 	}
+	if resp.Status == constant.UserSuspended {
+		handler.HandleResponse(ctx, errors.Forbidden(reason.UserSuspended),
+			&schema.ForbiddenResp{Type: schema.ForbiddenReasonTypeUserSuspended})
+		return
+	}
 	uc.setVisitCookies(ctx, resp.VisitToken, true)
 	handler.HandleResponse(ctx, nil, resp)
 }
@@ -335,7 +340,6 @@ func (uc *UserController) UserVerifyEmail(ctx *gin.Context) {
 // UserVerifyEmailSend godoc
 // @Summary UserVerifyEmailSend
 // @Description UserVerifyEmailSend
-// @Security ApiKeyAuth
 // @Tags User
 // @Accept json
 // @Produce json
