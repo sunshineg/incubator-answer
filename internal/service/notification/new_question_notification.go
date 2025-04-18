@@ -162,6 +162,9 @@ func (ns *ExternalNotificationService) checkSendNewQuestionNotificationEmailLimi
 
 func (ns *ExternalNotificationService) sendNewQuestionNotificationEmail(ctx context.Context,
 	userID string, rawData *schema.NewQuestionTemplateRawData) {
+	if unavailable := ns.checkUserStatusBeforeNotification(ctx, userID); unavailable {
+		return
+	}
 	userInfo, exist, err := ns.userRepo.GetByUserID(ctx, userID)
 	if err != nil {
 		log.Error(err)

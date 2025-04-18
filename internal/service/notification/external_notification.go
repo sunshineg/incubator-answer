@@ -24,6 +24,7 @@ import (
 
 	"github.com/apache/answer/internal/base/data"
 	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/entity"
 	"github.com/apache/answer/internal/schema"
 	"github.com/apache/answer/internal/service/activity_common"
 	"github.com/apache/answer/internal/service/export"
@@ -93,4 +94,17 @@ func (ns *ExternalNotificationService) Handler(ctx context.Context, msg *schema.
 	}
 	log.Errorf("unknown notification message: %+v", msg)
 	return nil
+}
+
+func (ns *ExternalNotificationService) checkUserStatusBeforeNotification(ctx context.Context, userID string) (
+	unavailable bool) {
+	userInfo, exist, err := ns.userRepo.GetByUserID(ctx, userID)
+	if err != nil {
+		log.Errorf("get user %s info error: %v", userID, err)
+		return true
+	}
+	if !exist || userInfo.Status != entity.UserStatusAvailable {
+		return true
+	}
+	return false
 }
