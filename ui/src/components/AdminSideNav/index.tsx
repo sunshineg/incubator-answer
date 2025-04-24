@@ -9,8 +9,6 @@ import { ADMIN_NAV_MENUS } from '@/common/constants';
 import { useQueryPlugins } from '@/services';
 import { interfaceStore } from '@/stores';
 
-import './index.scss';
-
 const AdminSideNav = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'btns' });
   const interfaceLang = interfaceStore((_) => _.interface.language);
