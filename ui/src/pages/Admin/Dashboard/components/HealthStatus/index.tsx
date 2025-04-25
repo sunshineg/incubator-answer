@@ -62,7 +62,7 @@ const HealthStatus: FC<IProps> = ({ data }) => {
               <a
                 className="ms-1 badge rounded-pill text-bg-warning"
                 target="_blank"
-                href="https://github.com/apache/answer/releases"
+                href={`https://answer.apache.org/download?from_version=${version}`}
                 rel="noreferrer">
                 {t('update_to')} {remote_version}
               </a>
