@@ -74,7 +74,7 @@ func (rc *RevisionController) GetRevisionList(ctx *gin.Context) {
 	resp, err := rc.revisionListService.GetRevisionList(ctx, req)
 	list := make([]schema.GetRevisionResp, 0)
 	for _, item := range resp {
-		if item.Status == entity.RevisioNnormalStatus || item.Status == entity.RevisionReviewPassStatus {
+		if item.Status == entity.RevisionNormalStatus || item.Status == entity.RevisionReviewPassStatus {
 			list = append(list, item)
 		}
 	}

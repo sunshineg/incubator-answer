@@ -265,7 +265,7 @@ func (ds *dashboardService) voteCount(ctx context.Context) int64 {
 }
 
 func (ds *dashboardService) remoteVersion(ctx context.Context) string {
-	req, _ := http.NewRequest("GET", "https://getlatest.answer.dev/", nil)
+	req, _ := http.NewRequest("GET", "https://answer.apache.org/data/latest.json?from_version="+constant.Version, nil)
 	req.Header.Set("User-Agent", "Answer/"+constant.Version)
 	httpClient := &http.Client{}
 	httpClient.Timeout = 15 * time.Second
