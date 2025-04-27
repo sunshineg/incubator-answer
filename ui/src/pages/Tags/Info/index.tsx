@@ -37,7 +37,8 @@ import {
 } from '@/services';
 import { pathFactory } from '@/router/pathFactory';
 import { loggedUserInfoStore, toastStore } from '@/stores';
-import { MergeTagModal } from '@/components/Modal';
+
+import MergeTagModal from './components/MergeTagModal';
 
 const TagIntroduction = () => {
   const userInfo = loggedUserInfoStore((state) => state.user);
