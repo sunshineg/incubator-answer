@@ -57,6 +57,8 @@ backend:
       other: 编辑
     undelete:
       other: 撤消删除
+    merge:
+      other: 合并
   role:
     name:
       user:
@@ -1027,6 +1029,13 @@ ui:
         <p>我们不允许 <strong>删除带有同义词的标签</strong>。</p> <p>请先从此标签中删除同义词。</p>
       tip: 确定要删除吗？
       close: 关闭
+    merge:
+      title: 合并标签
+      source_tag_title: 源标签
+      source_tag_description: 源标签及其相关数据将重新映射到目标标签。
+      target_tag_title: 目标标签
+      target_tag_description: 合并后将在这两个标签之间将创建一个同义词。
+      no_results: 没有匹配的标签
   edit_tag:
     title: 编辑标签
     default_reason: 编辑标签

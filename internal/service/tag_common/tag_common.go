@@ -77,6 +77,7 @@ type TagRelRepo interface {
 	BatchGetObjectTagRelList(ctx context.Context, objectIds []string) (tagListList []*entity.TagRel, err error)
 	CountTagRelByTagID(ctx context.Context, tagID string) (count int64, err error)
 	GetTagRelDefaultStatusByObjectID(ctx context.Context, objectID string) (status int, err error)
+	MigrateTagObjects(ctx context.Context, sourceTagId, targetTagId string) error
 }
 
 // TagCommonService user service
@@ -137,6 +138,7 @@ func (ts *TagCommonService) SearchTagLike(ctx context.Context, req *schema.Searc
 		}
 		mainTagID := converter.IntToString(tag.MainTagID)
 		if _, ok := mainTagMap[mainTagID]; ok {
+			tag.ID = mainTagMap[mainTagID].ID
 			tag.SlugName = mainTagMap[mainTagID].SlugName
 			tag.DisplayName = mainTagMap[mainTagID].DisplayName
 			tag.Reserved = mainTagMap[mainTagID].Reserved
@@ -148,6 +150,7 @@ func (ts *TagCommonService) SearchTagLike(ctx context.Context, req *schema.Searc
 	for _, tag := range tags {
 		if _, ok := repetitiveTag[tag.SlugName]; !ok {
 			item := schema.GetTagBasicResp{}
+			item.TagID = tag.ID
 			item.SlugName = tag.SlugName
 			item.DisplayName = tag.DisplayName
 			item.Recommend = tag.Recommend
@@ -927,4 +930,9 @@ func (ts *TagCommonService) UpdateTag(ctx context.Context, req *schema.UpdateTag
 	}
 
 	return
+}
+
+// MigrateTagQuestions migrate tag question
+func (ts *TagCommonService) MigrateTagQuestions(ctx context.Context, sourceTagID, targetTagID string) (err error) {
+	return ts.tagRelRepo.MigrateTagObjects(ctx, sourceTagID, targetTagID)
 }
