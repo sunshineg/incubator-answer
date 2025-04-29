@@ -57,6 +57,8 @@ backend:
       other: Chỉnh sửa
     undelete:
       other: Khôi phục
+    merge:
+      other: Merge
   role:
     name:
       user:
@@ -564,7 +566,7 @@ backend:
         name:
           other: Liên kết đầu tiên
         desc:
-          other: Đầu tiên, Dirst đã thêm một liên kết đến một bài viết khác.
+          other: First added a link to another post.
       first_reaction:
         name:
           other: Phản ứng đầu tiên
@@ -1027,6 +1029,15 @@ ui:
         <p>Chúng tôi không cho phép <strong>xóa thẻ có từ đồng nghĩa</strong>.</p> <p>Vui lòng xóa các từ đồng nghĩa khỏi thẻ này trước.</p>
       tip: Bạn có chắc chắn muốn xóa không?
       close: Đóng
+    merge:
+      title: Merge tag
+      source_tag_title: Source tag
+      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      target_tag_title: Target tag
+      target_tag_description: A synonym between these two tags will be created after merging.
+      no_results: No tags matched
+      btn_submit: Submit
+      btn_close: Close
   edit_tag:
     title: Chỉnh sửa Thẻ
     default_reason: Chỉnh sửa thẻ
@@ -1441,7 +1452,7 @@ ui:
     signup: Đăng ký
     logout: Đăng xuất
     verify: Xác minh
-    add_question: Thêm câu hỏi
+    create: Create
     approve: Phê duyệt
     reject: Từ chối
     skip: Bỏ qua
@@ -1482,6 +1493,7 @@ ui:
     display_below: Display below
     always_display: Always display
     or: or
+    back_sites: Back to sites
   search:
     title: Kết quả tìm kiếm
     keywords: Từ khóa
