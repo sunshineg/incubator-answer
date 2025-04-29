@@ -58,7 +58,7 @@ backend:
     undelete:
       other: 撤消删除
     merge:
-      other: 合并
+      other: Merge
   role:
     name:
       user:
@@ -551,7 +551,7 @@ backend:
         name:
           other: 编辑者
         desc:
-          other: 首次编辑帖子。
+          other: 首次帖子编辑。
       first_flag:
         name:
           other: 第一次举报
@@ -566,7 +566,7 @@ backend:
         name:
           other: 第一个链接
         desc:
-          other: 第一次添加了一个链接到另一个帖子。
+          other: First added a link to another post.
       first_reaction:
         name:
           other: 第一个响应
@@ -581,7 +581,7 @@ backend:
         name:
           other: 学者
         desc:
-          other: 提问了一个问题并接受了一个答案。
+          other: 问了一个问题并接受了一个答案。
       commentator:
         name:
           other: 评论员
@@ -601,7 +601,7 @@ backend:
         name:
           other: 读者
         desc:
-          other: 阅读超过 10 个回答的主题中的每个回答。
+          other: 用10个以上的答案在主题中阅读每个答案。
       welcome:
         name:
           other: 欢迎
@@ -624,7 +624,7 @@ backend:
           other: 分享了一个拥有1000个唯一访客的帖子。
       out_of_love:
         name:
-          other: 出于爱
+          other: 失去爱好
         desc:
           other: 一天内使用了 50 个赞。
       higher_love:
@@ -661,12 +661,12 @@ backend:
         name:
           other: 返回
         desc:
-          other: 有 100 个赞成票的帖子，并投了 100 个赞成票。
+          other: 拥有100个投票赞成的职位并放弃了100个投票。
       empathetic:
         name:
           other: 情随境迁
         desc:
-          other: 有 500 个赞成票的帖子，并投了 1000 个赞成票。
+          other: 拥有500个投票赞成的职位并放弃了1000个投票。
       enthusiast:
         name:
           other: 狂热
@@ -711,17 +711,17 @@ backend:
         name:
           other: 指导顾问
         desc:
-          other: 有10个答案被接受。
+          other: 接受答案。
       know_it_all:
         name:
           other: 万事通
         desc:
-          other: 有50个答案被接受。
+          other: 接受50个答案。
       solution_institution:
         name:
           other: 解决方案机构
         desc:
-          other: 有150个答案被接受。
+          other: 接受150份答复。
       nice_answer:
         name:
           other: 好答案
@@ -761,7 +761,7 @@ backend:
         name:
           other: 值得关注问题
         desc:
-          other: 问题有1,000 个浏览量。
+          other: 1,000 个浏览量。
       famous_question:
         name:
           other: 著名的问题
@@ -797,7 +797,7 @@ ui:
   how_to_format:
     title: 如何排版
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">引用问题或答案: <code>#post_id</code></p></li><li><p class="mb-2">添加链接</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[标题](https://url.com)</code></pre></li><li><p class="mb-2">段落之间使用空行分隔</p></li><li><p class="mb-2"><em>_斜体_</em> 或者 **<strong>粗体</strong>**</p></li><li><p class="mb-2">使用  个空格缩进代码</p></li><li><p class="mb-2">在行首添加 <code>&gt;</code> 表示引用</p></li><li><p class="mb-2">反引号进行转义 <code>`像 _这样_`</code></p></li><li><p class="mb-2">使用 <code>```</code> 创建代码块</p><pre class="mb-0"><code>```<br/>这是代码块<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">引用问题或答案: <code>#4</code></p></li><li><p class="mb-2">添加链接</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[标题](https://url.com)</code></pre></li><li><p class="mb-2">段落之间使用空行分隔</p></li><li><p class="mb-2"><em>_斜体_</em> 或者 **<strong>粗体</strong>**</p></li><li><p class="mb-2">使用  个空格缩进代码</p></li><li><p class="mb-2">在行首添加 <code>&gt;</code> 表示引用</p></li><li><p class="mb-2">反引号进行转义 <code>`像 _这样_`</code></p></li><li><p class="mb-2">使用 <code>```</code> 创建代码块</p><pre class="mb-0"><code>```<br/>这是代码块<br/>```</code></pre></li></ul>
   pagination:
     prev: 上一页
     next: 下一页
@@ -1030,12 +1030,14 @@ ui:
       tip: 确定要删除吗？
       close: 关闭
     merge:
-      title: 合并标签
-      source_tag_title: 源标签
-      source_tag_description: 源标签及其相关数据将重新映射到目标标签。
-      target_tag_title: 目标标签
-      target_tag_description: 合并后将在这两个标签之间将创建一个同义词。
-      no_results: 没有匹配的标签
+      title: Merge tag
+      source_tag_title: Source tag
+      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      target_tag_title: Target tag
+      target_tag_description: A synonym between these two tags will be created after merging.
+      no_results: No tags matched
+      btn_submit: Submit
+      btn_close: Close
   edit_tag:
     title: 编辑标签
     default_reason: 编辑标签
@@ -1450,7 +1452,7 @@ ui:
     signup: 注册
     logout: 退出
     verify: 验证
-    create: 创建
+    create: Create
     approve: 批准
     reject: 拒绝
     skip: 跳过
@@ -1485,13 +1487,13 @@ ui:
     deleted_permanently: 永久删除
     pending: 等待处理
     more: 更多
-    view: 视图
-    card: 卡片模式
-    compact: 简洁模式
-    display_below: 展示当前
-    always_display: 一直展示
+    view: 浏览量
+    card: 卡片
+    compact: 紧凑
+    display_below: 在下方显示
+    always_display: 总是显示
     or: 或者
-    back_sites: 返回网站
+    back_sites: Back to sites
   search:
     title: 搜索结果
     keywords: 关键词
@@ -1521,7 +1523,7 @@ ui:
     via: 分享到...
     copied: 已复制
     facebook: 分享到 Facebook
-    twitter: 分享到 X
+    twitter: 分享至X
   cannot_vote_for_self: 你不能给自己的帖子投票。
   modal_confirm:
     title: 发生错误...
@@ -1632,22 +1634,22 @@ ui:
       placeholder: /data/answer.db
       msg: 数据库文件不能为空。
     ssl_enabled:
-      label: 使能够 SSL
+      label: 启用 SSL
     ssl_enabled_on:
-      label: 开
+      label: On
     ssl_enabled_off:
-      label: 关
+      label: Off
     ssl_mode:
       label: SSL 模式
     ssl_root_cert:
-      placeholder: sslrootcert 文件路径
-      msg: 文件路径不能为空
+      placeholder: sslrootcert文件路径
+      msg: sslrootcert 文件的路径不能为空
     ssl_cert:
-      placeholder: sslcert 文件路径
-      msg: 文件路径不能为空
+      placeholder: sslcert文件路径
+      msg: sslcert 文件的路径不能为空
     ssl_key:
       placeholder: sslkey 文件路径
-      msg: 文件路径不能为空
+      msg: sslcert 文件的路径不能为空
     config_yaml:
       title: 创建 config.yaml
       label: 已创建 config.yaml 文件。
@@ -2049,9 +2051,9 @@ ui:
         text: "您可以在此添加隐私政策内容。如果您已经在别处托管了文档，请在这里提供完整的URL。"
       external_content_display:
         label: 外部内容
-        text: "内容包括外部网站嵌入的图片、视频和媒体。"
-        always_display: 始终显示外部内容
-        ask_before_display: 在显示外部内容前进行询问
+        text: "内容包括从外部网站嵌入的图像、视频和媒体。"
+        always_display: 总是显示外部内容
+        ask_before_display: 在显示外部内容之前询问
     write:
       page_title: 编辑
       restrict_answer:
