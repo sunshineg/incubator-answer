@@ -3109,7 +3109,7 @@ const docTemplate = `{
         },
         "/answer/api/v1/embed/config": {
             "get": {
-                "description": "GetEmbedConfig",
+                "description": "get embed plugin config",
                 "consumes": [
                     "application/json"
                 ],
@@ -3117,9 +3117,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "PluginEmbed"
+                    "Plugin"
                 ],
-                "summary": "GetEmbedConfig",
+                "summary": "get embed plugin config",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -5815,6 +5815,45 @@ const docTemplate = `{
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/schema.RemoveTagReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.RespBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/answer/api/v1/tag/merge": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "merge tag",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tag"
+                ],
+                "summary": "merge tag",
+                "parameters": [
+                    {
+                        "description": "tag",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schema.AddTagReq"
                         }
                     }
                 ],
@@ -9084,6 +9123,9 @@ const docTemplate = `{
                     "type": "boolean"
                 },
                 "slug_name": {
+                    "type": "string"
+                },
+                "tag_id": {
                     "type": "string"
                 }
             }
