@@ -57,6 +57,8 @@ backend:
       other: Редактировать
     undelete:
       other: Отменить удаление
+    merge:
+      other: Merge
   role:
     name:
       user:
@@ -564,7 +566,7 @@ backend:
         name:
           other: First Link
         desc:
-          other: First dirst added a link to another post.
+          other: First added a link to another post.
       first_reaction:
         name:
           other: First Reaction
@@ -1027,6 +1029,15 @@ ui:
         <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
       tip: Вы уверены, что хотите удалить?
       close: Закрыть
+    merge:
+      title: Merge tag
+      source_tag_title: Source tag
+      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      target_tag_title: Target tag
+      target_tag_description: A synonym between these two tags will be created after merging.
+      no_results: No tags matched
+      btn_submit: Submit
+      btn_close: Close
   edit_tag:
     title: Изменить тег
     default_reason: Правка тега
@@ -1441,7 +1452,7 @@ ui:
     signup: Регистрация
     logout: Выйти
     verify: Подтвердить
-    add_question: Задать вопрос
+    create: Create
     approve: Одобрить
     reject: Отклонить
     skip: Пропустить
@@ -1482,6 +1493,7 @@ ui:
     display_below: Display below
     always_display: Always display
     or: or
+    back_sites: Back to sites
   search:
     title: Результаты поиска
     keywords: Ключевые слова
