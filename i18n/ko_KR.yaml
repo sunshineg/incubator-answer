@@ -57,6 +57,8 @@ backend:
       other: 편집
     undelete:
       other: 삭제 취소
+    merge:
+      other: Merge
   role:
     name:
       user:
@@ -564,7 +566,7 @@ backend:
         name:
           other: First Link
         desc:
-          other: First dirst added a link to another post.
+          other: First added a link to another post.
       first_reaction:
         name:
           other: First Reaction
@@ -1027,6 +1029,15 @@ ui:
         <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
       tip: 정말로 삭제하시겠습니까?
       close: 닫기
+    merge:
+      title: Merge tag
+      source_tag_title: Source tag
+      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      target_tag_title: Target tag
+      target_tag_description: A synonym between these two tags will be created after merging.
+      no_results: No tags matched
+      btn_submit: Submit
+      btn_close: Close
   edit_tag:
     title: 태그 수정
     default_reason: 태그 수정
@@ -1441,7 +1452,7 @@ ui:
     signup: 가입하기
     logout: 로그아웃
     verify: 확인
-    add_question: 질문 추가
+    create: Create
     approve: 승인
     reject: 거부
     skip: 건너뛰기
@@ -1482,6 +1493,7 @@ ui:
     display_below: Display below
     always_display: Always display
     or: or
+    back_sites: Back to sites
   search:
     title: 검색 결과
     keywords: 키워드
