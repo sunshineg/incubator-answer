@@ -57,6 +57,8 @@ backend:
       other: Rediger
     undelete:
       other: Genopret
+    merge:
+      other: Merge
   role:
     name:
       user:
@@ -564,7 +566,7 @@ backend:
         name:
           other: First Link
         desc:
-          other: First dirst added a link to another post.
+          other: First added a link to another post.
       first_reaction:
         name:
           other: First Reaction
@@ -1027,6 +1029,15 @@ ui:
         <p>Vi tillader ikke <strong>at slette tag med indlæg</strong>.</p> <p>Fjern venligst dette tag fra indlæggene først.</p>
       tip: Er du sikker på, at du vil slette?
       close: Luk
+    merge:
+      title: Merge tag
+      source_tag_title: Source tag
+      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      target_tag_title: Target tag
+      target_tag_description: A synonym between these two tags will be created after merging.
+      no_results: No tags matched
+      btn_submit: Submit
+      btn_close: Close
   edit_tag:
     title: Rediger tag
     default_reason: Rediger tag
@@ -1441,7 +1452,7 @@ ui:
     signup: Opret konto
     logout: Log Ud
     verify: Verificér
-    add_question: Tilføj spørgsmål
+    create: Create
     approve: Godkend
     reject: Afvis
     skip: Spring Over
@@ -1482,6 +1493,7 @@ ui:
     display_below: Display below
     always_display: Always display
     or: or
+    back_sites: Back to sites
   search:
     title: Søgeresultater
     keywords: Nøgleord
@@ -1511,7 +1523,7 @@ ui:
     via: Del indlæg via...
     copied: Kopieret
     facebook: Del på Facebook
-    twitter: Del på X
+    twitter: Share to X
   cannot_vote_for_self: Du kan ikke stemme på dit eget indlæg.
   modal_confirm:
     title: Fejl...
