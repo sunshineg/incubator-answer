@@ -58,7 +58,7 @@ backend:
     undelete:
       other: 撤消删除
     merge:
-      other: Merge
+      other: 合并
   role:
     name:
       user:
@@ -566,7 +566,7 @@ backend:
         name:
           other: 第一个链接
         desc:
-          other: First added a link to another post.
+          other: 第一次添加链接到另一篇文章。
       first_reaction:
         name:
           other: 第一个响应
@@ -1030,14 +1030,14 @@ ui:
       tip: 确定要删除吗？
       close: 关闭
     merge:
-      title: Merge tag
-      source_tag_title: Source tag
-      source_tag_description: The source tag and its associated data will be remapped to the target tag.
-      target_tag_title: Target tag
-      target_tag_description: A synonym between these two tags will be created after merging.
-      no_results: No tags matched
-      btn_submit: Submit
-      btn_close: Close
+      title: 合并标签
+      source_tag_title: 源标签
+      source_tag_description: 源标签及其相关数据将被重新映射到目标标签。
+      target_tag_title: 目标标签
+      target_tag_description: 合并后将创建这两个标签之间的同义词。
+      no_results: 没有匹配的标签
+      btn_submit: 提交
+      btn_close: 关闭
   edit_tag:
     title: 编辑标签
     default_reason: 编辑标签
@@ -1452,7 +1452,7 @@ ui:
     signup: 注册
     logout: 退出
     verify: 验证
-    create: Create
+    create: 创建
     approve: 批准
     reject: 拒绝
     skip: 跳过
@@ -1493,7 +1493,7 @@ ui:
     display_below: 在下方显示
     always_display: 总是显示
     or: 或者
-    back_sites: Back to sites
+    back_sites: 返回站点
   search:
     title: 搜索结果
     keywords: 关键词
