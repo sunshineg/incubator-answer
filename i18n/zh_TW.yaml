@@ -57,6 +57,8 @@ backend:
       other: 編輯
     undelete:
       other: 還原
+    merge:
+      other: Merge
   role:
     name:
       user:
@@ -564,7 +566,7 @@ backend:
         name:
           other: First Link
         desc:
-          other: First dirst added a link to another post.
+          other: First added a link to another post.
       first_reaction:
         name:
           other: First Reaction
@@ -1027,6 +1029,15 @@ ui:
         <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
       tip: 你確定要刪除嗎？
       close: 關閉
+    merge:
+      title: Merge tag
+      source_tag_title: Source tag
+      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      target_tag_title: Target tag
+      target_tag_description: A synonym between these two tags will be created after merging.
+      no_results: No tags matched
+      btn_submit: Submit
+      btn_close: Close
   edit_tag:
     title: 編輯標籤
     default_reason: 編輯標籤
@@ -1441,7 +1452,7 @@ ui:
     signup: 註冊
     logout: 登出
     verify: 驗證
-    add_question: 發問
+    create: Create
     approve: 核准
     reject: 拒絕
     skip: 略過
@@ -1482,6 +1493,7 @@ ui:
     display_below: Display below
     always_display: Always display
     or: or
+    back_sites: Back to sites
   search:
     title: 搜尋結果
     keywords: 關鍵詞
