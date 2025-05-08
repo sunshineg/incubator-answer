@@ -1088,15 +1088,15 @@ ui:
         revision:
           label: Revizyon
         answer:
-          label: Answer
+          label: Cevap
           feedback:
-            characters: content must be at least 6 characters in length.
+            characters: içerik en az 6 karakter uzunluğunda olmalıdır.
         edit_summary:
-          label: Edit summary
+          label: Düzenleme özeti
           placeholder: >-
-            Briefly explain your changes (corrected spelling, fixed grammar, improved formatting)
-    btn_save_edits: Save edits
-    btn_cancel: Cancel
+            Yaptığınız değişiklikleri kısaca açıklayın (düzeltilmiş yazım geliştirilmiş biçimlendirme)
+    btn_save_edits: Düzenlemeleri kaydet
+    btn_cancel: İptal
   tags:
     title: Etiketler
     sort_buttons:
