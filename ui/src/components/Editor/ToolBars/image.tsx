@@ -285,6 +285,10 @@ const Image = ({ editorInstance }) => {
 
     traverse(body);
 
+    markdownText = markdownText.replace(/[\n\s]+/g, (match) => {
+      return match.length > 1 ? '\n\n' : match;
+    });
+
     editor.replaceSelection(markdownText);
   };
   const handleClick = () => {
