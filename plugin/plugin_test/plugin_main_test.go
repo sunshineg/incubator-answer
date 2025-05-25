@@ -92,7 +92,7 @@ func TestMain(t *testing.M) {
 	log.Info("init test database successfully")
 
 	if ret := t.Run(); ret != 0 {
-		panic(ret)
+		os.Exit(ret)
 	}
 }
 
