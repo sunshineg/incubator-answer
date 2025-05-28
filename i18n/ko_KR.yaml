@@ -1275,12 +1275,12 @@ ui:
       display_name:
         label: 표시 이름
         msg: 표시 이름을 입력하세요.
-        msg_range: 표시 이름은 최대 30자까지 가능합니다.
+        msg_range: Display name must be 2-30 characters in length.
       username:
         label: 사용자 이름
         caption: 다른 사용자가 "@사용자이름"으로 멘션할 수 있습니다.
         msg: 사용자 이름을 입력하세요.
-        msg_range: 사용자 이름은 최대 30자까지 가능합니다.
+        msg_range: Username must be 2-30 characters in length.
         character: '문자 집합 "a-z", "0-9", " - . _"을 사용해야 합니다.'
       avatar:
         label: 프로필 이미지
@@ -1748,11 +1748,11 @@ ui:
     seo: 검색 엔진 최적화
     customize: 사용자 정의
     themes: 테마
-    css_html: CSS/HTML
     login: 로그인
     privileges: 권한
     plugins: 플러그인
     installed_plugins: 설치된 플러그인
+    apperance: Appearance
   website_welcome: '{{site_name}}에 오신 것을 환영합니다'
   user_center:
     login: 로그인
@@ -1852,10 +1852,10 @@ ui:
         fields:
           display_name:
             label: 표시 이름
-            msg_range: 최대 30 자까지 표시 이름을 설정할 수 있습니다.
+            msg_range: Display name must be 2-30 characters in length.
           username:
             label: 사용자 이름
-            msg_range: 최대 30 자까지 사용자명을 설정할 수 있습니다.
+            msg_range: Username must be 2-30 characters in length.
           email:
             label: 이메일
             msg_invalid: 유효하지 않은 이메일 주소.
@@ -1887,9 +1887,9 @@ ui:
       name: 이름
       email: 이메일
       reputation: 평판
-      created_at: 생성 시간
-      delete_at: 삭제된 시간
-      suspend_at: 정지된 시간
+      created_at: Created time
+      delete_at: Deleted time
+      suspend_at: Suspended time
       status: 상태
       role: 역할
       action: 동작
@@ -2103,7 +2103,7 @@ ui:
       color_scheme:
         label: 색상 스키마
       navbar_style:
-        label: 네비게이션 바 스타일
+        label: Navbar background style
       primary_color:
         label: 주요 색상
         text: 테마에서 사용할 색상을 수정합니다.
