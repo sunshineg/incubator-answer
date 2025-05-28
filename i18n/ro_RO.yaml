@@ -1275,12 +1275,12 @@ ui:
       display_name:
         label: Nume afișat
         msg: Numele afișat nu poate fi gol.
-        msg_range: Nume afișat până la 30 de caractere.
+        msg_range: Display name must be 2-30 characters in length.
       username:
         label: Nume de utilizator
         caption: Oamenii te pot menționa ca "@utilizator".
         msg: Numele de utilizator nu poate fi gol.
-        msg_range: Nume utilizator de până la 30 de caractere.
+        msg_range: Username must be 2-30 characters in length.
         character: 'Trebuie să utilizați setul de caractere "a-z", "0-9", " - . _"'
       avatar:
         label: Imaginea de profil
@@ -1748,11 +1748,11 @@ ui:
     seo: SEO
     customize: Personalizează
     themes: Teme
-    css_html: CSS/HTML
     login: Autentifică-te
     privileges: Privilegii
     plugins: Extensii
     installed_plugins: Extensii instalate
+    apperance: Appearance
   website_welcome: Bun venit la {{site_name}}
   user_center:
     login: Autentifică-te
@@ -1852,10 +1852,10 @@ ui:
         fields:
           display_name:
             label: Display name
-            msg_range: Display name up to 30 characters.
+            msg_range: Display name must be 2-30 characters in length.
           username:
             label: Username
-            msg_range: Username up to 30 characters.
+            msg_range: Username must be 2-30 characters in length.
           email:
             label: Email
             msg_invalid: Invalid Email Address.
@@ -1887,9 +1887,9 @@ ui:
       name: Nume
       email: E-mail
       reputation: Reputație
-      created_at: Ora crearii
-      delete_at: Oră ștergerii
-      suspend_at: Ora suspendării
+      created_at: Created time
+      delete_at: Deleted time
+      suspend_at: Suspended time
       status: Stare
       role: Rol
       action: Acţiune
@@ -2103,7 +2103,7 @@ ui:
       color_scheme:
         label: Paletă de culori
       navbar_style:
-        label: Navbar style
+        label: Navbar background style
       primary_color:
         label: Culoare primară
         text: Modifică culorile folosite de temele tale
