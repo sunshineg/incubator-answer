@@ -23,15 +23,15 @@ backend:
     unknown:
       other: 未知的錯誤。
     request_format_error:
-      other: 請求格式錯誤。
+      other: 要求格式錯誤。
     unauthorized_error:
       other: 未授權。
     database_error:
-      other: 資料庫錯誤。
+      other: 資料伺服器錯誤。
     forbidden_error:
-      other: 訪問被拒絕。
+      other: 已拒絕存取。
     duplicate_request_error:
-      other: 提交重複。
+      other: 重複送出。
   action:
     report:
       other: 檢舉
@@ -156,7 +156,7 @@ backend:
         other: 密碼不能包含空白字元。
     admin:
       cannot_update_their_password:
-        other: 您不能修改自己的密码。
+        other: 你不能修改自己的密码。
       cannot_edit_their_profile:
         other: You cannot modify your profile.
       cannot_modify_self_status:
@@ -185,16 +185,16 @@ backend:
         other: Comment content cannot be empty.
     email:
       duplicate:
-        other: 該電子郵件已被使用。
+        other: 這個電子郵件地址已被使用。
       need_to_be_verified:
-        other: 需驗證電子郵件
+        other: 需驗證電子郵件地址。
       verify_url_expired:
-        other: 電子郵件驗證網址已過期，請重發電子郵件。
+        other: 電子郵件地址驗證網址已過期，請重寄電子郵件。
       illegal_email_domain_error:
         other: Email is not allowed from that email domain. Please use another one.
     lang:
       not_found:
-        other: 未找到语言文件。
+        other: 未找到語言檔。
     object:
       captcha_verification_failed:
         other: 驗證碼錯誤。
@@ -209,7 +209,7 @@ backend:
       verification_failed:
         other: 驗證失敗。
       email_or_password_incorrect:
-        other: 電郵和密碼不匹配。
+        other: 電子郵件地址和密碼不匹配。
       old_password_verification_failed:
         other: 舊密碼驗證失敗
       new_password_same_as_previous_setting:
@@ -262,7 +262,7 @@ backend:
       is_used_cannot_delete:
         other: You cannot delete a tag that is in use.
       cannot_set_synonym_as_itself:
-        other: 你不能將當前標籤的同義詞設置為本身。
+        other: 你不能將目前標籤的同義詞設定為本身。
     smtp:
       config_from_name_cannot_be_email:
         other: The from name cannot be a email address.
@@ -289,9 +289,9 @@ backend:
       username_invalid:
         other: 使用者名稱無效。
       username_duplicate:
-        other: 用戶名已被使用
+        other: 使用者名稱已被使用。
       set_avatar:
-        other: 頭像設置錯誤。
+        other: 大頭照設定錯誤。
       cannot_update_your_role:
         other: 您不能修改自己的角色。
       not_allowed_registration:
@@ -308,10 +308,10 @@ backend:
         other: "The number of users you add at once should be in the range of 1-{{.MaxAmount}}."
     config:
       read_config_failed:
-        other: 讀取配置失敗
+        other: 讀取組態失敗
     database:
       connection_failed:
-        other: 資料庫連接失敗
+        other: 資料庫連線失敗
       create_table_failed:
         other: 表建立失敗
     install:
@@ -395,7 +395,7 @@ backend:
     close:
       duplicate:
         name:
-          other: 垃圾信息
+          other: 垃圾訊息
         desc:
           other: 此問題以前就有人問過，而且已經有了答案。
       guideline:
@@ -440,9 +440,9 @@ backend:
       accept_answer:
         other: 已接受的回答
       comment_question:
-        other: 評論了問題
+        other: 留言了問題
       comment_answer:
-        other: 評論了答案
+        other: 留言了答案
       reply_to_you:
         other: 回覆了你
       mention_you:
@@ -454,7 +454,7 @@ backend:
       your_answer_was_deleted:
         other: 你的答案已被刪除
       your_comment_was_deleted:
-        other: 你的評論已被刪除
+        other: 你的留言已被刪除
       up_voted_question:
         other: upvoted question
       down_voted_question:
@@ -795,7 +795,7 @@ backend:
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
-    title: 如何設定文本格式
+    title: 如何設定文字格式
     desc: >-
       <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
@@ -813,7 +813,7 @@ ui:
     edit_question: 編輯問題
     edit_answer: 編輯回答
     search: 搜尋
-    posts_containing: 包含的帖子
+    posts_containing: 包含的貼文
     settings: 設定
     notifications: 通知
     login: 登入
@@ -821,13 +821,13 @@ ui:
     account_recovery: 帳號恢復
     account_activation: 帳號啟用
     confirm_email: 確認電子郵件
-    account_suspended: 帳號已封禁
+    account_suspended: 帳號已被停權
     admin: 後台管理
     change_email: 修改電子郵件
     install: Answer 安裝
     upgrade: Answer 升級
     maintenance: 網站維護
-    users: 用戶
+    users: 使用者
     oauth_callback: Processing
     http_404: HTTP 錯誤 404
     http_50X: HTTP 錯誤 500
