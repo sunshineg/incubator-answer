@@ -21,6 +21,8 @@ package converter
 
 import (
 	"bytes"
+	"regexp"
+	"strings"
 
 	"github.com/asaskevich/govalidator"
 	"github.com/microcosm-cc/bluemonday"
@@ -38,7 +40,7 @@ import (
 // Markdown2HTML convert markdown to html
 func Markdown2HTML(source string) string {
 	mdConverter := goldmark.New(
-		goldmark.WithExtensions(&DangerousHTMLFilterExtension{}, extension.GFM),
+		goldmark.WithExtensions(&DangerousHTMLFilterExtension{}, extension.GFM, extension.Footnote),
 		goldmark.WithParserOptions(
 			parser.WithAutoHeadingID(),
 		),
@@ -58,11 +60,13 @@ func Markdown2HTML(source string) string {
 	filter.RequireParseableURLs(false)
 	filter.RequireNoFollowOnFullyQualifiedLinks(false)
 	filter.AllowElements("kbd")
-	html = filter.Sanitize(html)
+	filter.AllowAttrs("title").Matching(regexp.MustCompile(`^[\p{L}\p{N}\s\-_',\[\]!\./\\\(\)]*$|^@embed?$`)).Globally()
+	filter.AllowAttrs("start").OnElements("ol")
+	html = strings.TrimSpace(filter.Sanitize(html))
 	return html
 }
 
-// Markdown2BasicHTML convert markdown to html ,Only basic syntax can be used
+// Markdown2BasicHTML convert markdown to html, Only basic syntax can be used
 func Markdown2BasicHTML(source string) string {
 	content := Markdown2HTML(source)
 	filter := bluemonday.NewPolicy()
@@ -96,7 +100,6 @@ func (r *DangerousHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegis
 	reg.Register(ast.KindRawHTML, r.renderRawHTML)
 	reg.Register(ast.KindLink, r.renderLink)
 	reg.Register(ast.KindAutoLink, r.renderAutoLink)
-
 }
 
 func (r *DangerousHTMLRenderer) renderRawHTML(w util.BufWriter, source []byte, node ast.Node, entering bool) (ast.WalkStatus, error) {
@@ -122,7 +125,7 @@ func (r *DangerousHTMLRenderer) renderHTMLBlock(w util.BufWriter, source []byte,
 		l := n.Lines().Len()
 		for i := 0; i < l; i++ {
 			line := n.Lines().At(i)
-			r.Writer.SecureWrite(w, r.Filter.SanitizeBytes(line.Value(source)))
+			r.Writer.SecureWrite(w, line.Value(source))
 		}
 	} else {
 		if n.HasClosure() {
@@ -134,7 +137,6 @@ func (r *DangerousHTMLRenderer) renderHTMLBlock(w util.BufWriter, source []byte,
 }
 
 func (r *DangerousHTMLRenderer) renderLink(w util.BufWriter, source []byte, node ast.Node, entering bool) (ast.WalkStatus, error) {
-
 	n := node.(*ast.Link)
 	if entering && r.renderLinkIsUrl(string(n.Destination)) {
 		_, _ = w.WriteString("<a href=\"")
@@ -184,5 +186,7 @@ func (r *DangerousHTMLRenderer) renderAutoLink(w util.BufWriter, source []byte, 
 }
 
 func (r *DangerousHTMLRenderer) renderLinkIsUrl(verifyUrl string) bool {
-	return govalidator.IsURL(verifyUrl)
+	isURL := govalidator.IsURL(verifyUrl)
+	isPath, _ := regexp.MatchString(`^/`, verifyUrl)
+	return isURL || isPath
 }

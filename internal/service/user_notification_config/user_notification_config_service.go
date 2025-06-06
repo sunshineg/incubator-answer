@@ -21,10 +21,10 @@ package user_notification_config
 
 import (
 	"context"
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	usercommon "github.com/apache/incubator-answer/internal/service/user_common"
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	usercommon "github.com/apache/answer/internal/service/user_common"
 )
 
 type UserNotificationConfigRepo interface {
@@ -96,7 +96,9 @@ func (us *UserNotificationConfigService) SetDefaultUserNotificationConfig(ctx co
 }
 
 func (us *UserNotificationConfigService) convertToEntity(ctx context.Context, userID string,
-	source constant.NotificationSource, channels schema.NotificationChannels) (c *entity.UserNotificationConfig) {
+	source constant.NotificationSource, channel schema.NotificationChannelConfig) (c *entity.UserNotificationConfig) {
+	var channels schema.NotificationChannels
+	channels = append(channels, &channel)
 	c = &entity.UserNotificationConfig{
 		UserID:   userID,
 		Source:   string(source),
@@ -109,18 +111,4 @@ func (us *UserNotificationConfigService) convertToEntity(ctx context.Context, us
 		}
 	}
 	return c
-}
-
-func (us *UserNotificationConfigService) CheckEnable(
-	ctx context.Context, userID string, source constant.NotificationSource,
-	channel constant.NotificationChannelKey) (enable bool, err error) {
-	conf, exist, err := us.userNotificationConfigRepo.GetByUserIDAndSource(ctx, userID, source)
-	if err != nil {
-		return false, err
-	}
-	if !exist {
-		return false, nil
-	}
-	notificationChannels := schema.NewNotificationChannelsFormJson(conf.Channels)
-	return notificationChannels.CheckEnable(channel), nil
 }

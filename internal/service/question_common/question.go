@@ -22,28 +22,33 @@ package questioncommon
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"math"
+	"strings"
 	"time"
 
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/service/activity_common"
-	"github.com/apache/incubator-answer/internal/service/activity_queue"
-	"github.com/apache/incubator-answer/internal/service/config"
-	"github.com/apache/incubator-answer/internal/service/meta"
-	"github.com/apache/incubator-answer/pkg/checker"
-	"github.com/apache/incubator-answer/pkg/htmltext"
-	"github.com/apache/incubator-answer/pkg/uid"
+	"github.com/apache/answer/internal/service/siteinfo_common"
+
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/service/activity_common"
+	"github.com/apache/answer/internal/service/activity_queue"
+	"github.com/apache/answer/internal/service/config"
+	metacommon "github.com/apache/answer/internal/service/meta_common"
+	"github.com/apache/answer/internal/service/revision"
+	"github.com/apache/answer/pkg/checker"
+	"github.com/apache/answer/pkg/htmltext"
+	"github.com/apache/answer/pkg/uid"
 	"github.com/segmentfault/pacman/errors"
 
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	answercommon "github.com/apache/incubator-answer/internal/service/answer_common"
-	collectioncommon "github.com/apache/incubator-answer/internal/service/collection_common"
-	tagcommon "github.com/apache/incubator-answer/internal/service/tag_common"
-	usercommon "github.com/apache/incubator-answer/internal/service/user_common"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	answercommon "github.com/apache/answer/internal/service/answer_common"
+	collectioncommon "github.com/apache/answer/internal/service/collection_common"
+	tagcommon "github.com/apache/answer/internal/service/tag_common"
+	usercommon "github.com/apache/answer/internal/service/user_common"
 	"github.com/segmentfault/pacman/log"
 )
 
@@ -54,10 +59,12 @@ type QuestionRepo interface {
 	UpdateQuestion(ctx context.Context, question *entity.Question, Cols []string) (err error)
 	GetQuestion(ctx context.Context, id string) (question *entity.Question, exist bool, err error)
 	GetQuestionList(ctx context.Context, question *entity.Question) (questions []*entity.Question, err error)
-	GetQuestionPage(ctx context.Context, page, pageSize int, userID, tagID, orderCond string, inDays int) (
+	GetQuestionPage(ctx context.Context, page, pageSize int, tagIDs []string, userID, orderCond string, inDays int, showHidden, showPending bool) (
 		questionList []*entity.Question, total int64, err error)
+	GetRecommendQuestionPageByTags(ctx context.Context, userID string, tagIDs, followedQuestionIDs []string, page, pageSize int) (questionList []*entity.Question, total int64, err error)
 	UpdateQuestionStatus(ctx context.Context, questionID string, status int) (err error)
 	UpdateQuestionStatusWithOutUpdateTime(ctx context.Context, question *entity.Question) (err error)
+	DeletePermanentlyQuestions(ctx context.Context) (err error)
 	RecoverQuestion(ctx context.Context, questionID string) (err error)
 	UpdateQuestionOperation(ctx context.Context, question *entity.Question) (err error)
 	GetQuestionsByTitle(ctx context.Context, title string, pageSize int) (questionList []*entity.Question, err error)
@@ -69,9 +76,19 @@ type QuestionRepo interface {
 	FindByID(ctx context.Context, id []string) (questionList []*entity.Question, err error)
 	AdminQuestionPage(ctx context.Context, search *schema.AdminQuestionPageReq) ([]*entity.Question, int64, error)
 	GetQuestionCount(ctx context.Context) (count int64, err error)
-	GetUserQuestionCount(ctx context.Context, userID string) (count int64, err error)
+	GetUnansweredQuestionCount(ctx context.Context) (count int64, err error)
+	GetResolvedQuestionCount(ctx context.Context) (count int64, err error)
+	GetUserQuestionCount(ctx context.Context, userID string, show int) (count int64, err error)
 	SitemapQuestions(ctx context.Context, page, pageSize int) (questionIDList []*schema.SiteMapQuestionInfo, err error)
 	RemoveAllUserQuestion(ctx context.Context, userID string) (err error)
+	UpdateSearch(ctx context.Context, questionID string) (err error)
+	LinkQuestion(ctx context.Context, link ...*entity.QuestionLink) (err error)
+	GetLinkedQuestionIDs(ctx context.Context, questionID string, status int) (questionIDs []string, err error)
+	UpdateQuestionLinkCount(ctx context.Context, questionID string) (err error)
+	RemoveQuestionLink(ctx context.Context, link ...*entity.QuestionLink) (err error)
+	RecoverQuestionLink(ctx context.Context, link ...*entity.QuestionLink) (err error)
+	UpdateQuestionLinkStatus(ctx context.Context, status int, links ...*entity.QuestionLink) (err error)
+	GetQuestionLink(ctx context.Context, page, pageSize int, questionID string, orderCond string, inDays int) (questions []*entity.Question, total int64, err error)
 }
 
 // QuestionCommon user service
@@ -84,9 +101,11 @@ type QuestionCommon struct {
 	userCommon           *usercommon.UserCommon
 	collectionCommon     *collectioncommon.CollectionCommon
 	AnswerCommon         *answercommon.AnswerCommon
-	metaService          *meta.MetaService
+	metaCommonService    *metacommon.MetaCommonService
 	configService        *config.ConfigService
 	activityQueueService activity_queue.ActivityQueueService
+	revisionRepo         revision.RevisionRepo
+	siteInfoService      siteinfo_common.SiteInfoCommonService
 	data                 *data.Data
 }
 
@@ -98,9 +117,11 @@ func NewQuestionCommon(questionRepo QuestionRepo,
 	userCommon *usercommon.UserCommon,
 	collectionCommon *collectioncommon.CollectionCommon,
 	answerCommon *answercommon.AnswerCommon,
-	metaService *meta.MetaService,
+	metaCommonService *metacommon.MetaCommonService,
 	configService *config.ConfigService,
 	activityQueueService activity_queue.ActivityQueueService,
+	revisionRepo revision.RevisionRepo,
+	siteInfoService siteinfo_common.SiteInfoCommonService,
 	data *data.Data,
 ) *QuestionCommon {
 	return &QuestionCommon{
@@ -112,15 +133,25 @@ func NewQuestionCommon(questionRepo QuestionRepo,
 		userCommon:           userCommon,
 		collectionCommon:     collectionCommon,
 		AnswerCommon:         answerCommon,
-		metaService:          metaService,
+		metaCommonService:    metaCommonService,
 		configService:        configService,
 		activityQueueService: activityQueueService,
+		revisionRepo:         revisionRepo,
+		siteInfoService:      siteInfoService,
 		data:                 data,
 	}
 }
 
 func (qs *QuestionCommon) GetUserQuestionCount(ctx context.Context, userID string) (count int64, err error) {
-	return qs.questionRepo.GetUserQuestionCount(ctx, userID)
+	return qs.questionRepo.GetUserQuestionCount(ctx, userID, 0)
+}
+
+func (qs *QuestionCommon) GetPersonalUserQuestionCount(ctx context.Context, loginUserID, userID string, isAdmin bool) (count int64, err error) {
+	show := entity.QuestionShow
+	if loginUserID == userID || isAdmin {
+		show = 0
+	}
+	return qs.questionRepo.GetUserQuestionCount(ctx, userID, show)
 }
 
 func (qs *QuestionCommon) UpdatePv(ctx context.Context, questionID string) error {
@@ -131,6 +162,15 @@ func (qs *QuestionCommon) UpdateAnswerCount(ctx context.Context, questionID stri
 	count, err := qs.answerRepo.GetCountByQuestionID(ctx, questionID)
 	if err != nil {
 		return err
+	}
+	if count == 0 {
+		err = qs.questionRepo.UpdateLastAnswer(ctx, &entity.Question{
+			ID:           questionID,
+			LastAnswerID: "0",
+		})
+		if err != nil {
+			return err
+		}
 	}
 	return qs.questionRepo.UpdateAnswerCount(ctx, questionID, int(count))
 }
@@ -167,8 +207,8 @@ func (qs *QuestionCommon) UpdatePostSetTime(ctx context.Context, questionID stri
 	return qs.questionRepo.UpdateQuestion(ctx, questioninfo, []string{"post_update_time"})
 }
 
-func (qs *QuestionCommon) FindInfoByID(ctx context.Context, questionIDs []string, loginUserID string) (map[string]*schema.QuestionInfo, error) {
-	list := make(map[string]*schema.QuestionInfo)
+func (qs *QuestionCommon) FindInfoByID(ctx context.Context, questionIDs []string, loginUserID string) (map[string]*schema.QuestionInfoResp, error) {
+	list := make(map[string]*schema.QuestionInfoResp)
 	questionList, err := qs.questionRepo.FindByID(ctx, questionIDs)
 	if err != nil {
 		return list, err
@@ -211,30 +251,27 @@ func (qs *QuestionCommon) InviteUserInfo(ctx context.Context, questionID string)
 	return InviteUserInfo, nil
 }
 
-func (qs *QuestionCommon) Info(ctx context.Context, questionID string, loginUserID string) (showinfo *schema.QuestionInfo, err error) {
-	dbinfo, has, err := qs.questionRepo.GetQuestion(ctx, questionID)
+func (qs *QuestionCommon) Info(ctx context.Context, questionID string, loginUserID string) (resp *schema.QuestionInfoResp, err error) {
+	questionInfo, has, err := qs.questionRepo.GetQuestion(ctx, questionID)
 	if err != nil {
-		return showinfo, err
+		return resp, err
 	}
-	dbinfo.ID = uid.DeShortID(dbinfo.ID)
+	questionInfo.ID = uid.DeShortID(questionInfo.ID)
 	if !has {
-		return showinfo, errors.NotFound(reason.QuestionNotFound)
+		return resp, errors.NotFound(reason.QuestionNotFound)
 	}
-	showinfo = qs.ShowFormat(ctx, dbinfo)
-
-	if showinfo.Status == 2 {
-		var metainfo *entity.Meta
-		metainfo, err = qs.metaService.GetMetaByObjectIdAndKey(ctx, dbinfo.ID, entity.QuestionCloseReasonKey)
+	resp = qs.ShowFormat(ctx, questionInfo)
+	if resp.Status == entity.QuestionStatusClosed {
+		metaInfo, err := qs.metaCommonService.GetMetaByObjectIdAndKey(ctx, questionInfo.ID, entity.QuestionCloseReasonKey)
 		if err != nil {
 			log.Error(err)
 		} else {
-			// metainfo.Value
-			closemsg := &schema.CloseQuestionMeta{}
-			err = json.Unmarshal([]byte(metainfo.Value), closemsg)
+			closeMsg := &schema.CloseQuestionMeta{}
+			err = json.Unmarshal([]byte(metaInfo.Value), closeMsg)
 			if err != nil {
 				log.Error("json.Unmarshal CloseQuestionMeta error", err.Error())
 			} else {
-				cfg, err := qs.configService.GetConfigByID(ctx, closemsg.CloseType)
+				cfg, err := qs.configService.GetConfigByID(ctx, closeMsg.CloseType)
 				if err != nil {
 					log.Error("json.Unmarshal QuestionCloseJson error", err.Error())
 				} else {
@@ -244,76 +281,84 @@ func (qs *QuestionCommon) Info(ctx context.Context, questionID string, loginUser
 					operation := &schema.Operation{}
 					operation.Type = reasonItem.Name
 					operation.Description = reasonItem.Description
-					operation.Msg = closemsg.CloseMsg
-					operation.Time = metainfo.CreatedAt.Unix()
+					operation.Msg = closeMsg.CloseMsg
+					operation.Time = metaInfo.CreatedAt.Unix()
 					operation.Level = schema.OperationLevelInfo
-					showinfo.Operation = operation
+					resp.Operation = operation
 				}
 			}
 		}
 	}
 
-	tagmap, err := qs.tagCommon.GetObjectTag(ctx, questionID)
-	if err != nil {
-		return showinfo, err
+	if resp.Status != entity.QuestionStatusDeleted {
+		if resp.Tags, err = qs.tagCommon.GetObjectTag(ctx, questionID); err != nil {
+			return resp, err
+		}
+	} else {
+		revisionInfo, exist, err := qs.revisionRepo.GetLastRevisionByObjectID(ctx, questionID)
+		if err != nil {
+			log.Errorf("get revision error %s", err)
+		}
+		if exist {
+			questionWithTagsRevision := &entity.QuestionWithTagsRevision{}
+			if err = json.Unmarshal([]byte(revisionInfo.Content), questionWithTagsRevision); err != nil {
+				log.Errorf("revision parsing error %s", err)
+				return resp, nil
+			}
+			for _, tag := range questionWithTagsRevision.Tags {
+				resp.Tags = append(resp.Tags, &schema.TagResp{
+					ID:              tag.ID,
+					SlugName:        tag.SlugName,
+					DisplayName:     tag.DisplayName,
+					MainTagSlugName: tag.MainTagSlugName,
+					Recommend:       tag.Recommend,
+					Reserved:        tag.Reserved,
+				})
+			}
+		}
 	}
-	showinfo.Tags = tagmap
 
 	userIds := make([]string, 0)
-	if checker.IsNotZeroString(dbinfo.UserID) {
-		userIds = append(userIds, dbinfo.UserID)
+	if checker.IsNotZeroString(questionInfo.UserID) {
+		userIds = append(userIds, questionInfo.UserID)
 	}
-	if checker.IsNotZeroString(dbinfo.LastEditUserID) {
-		userIds = append(userIds, dbinfo.LastEditUserID)
+	if checker.IsNotZeroString(questionInfo.LastEditUserID) {
+		userIds = append(userIds, questionInfo.LastEditUserID)
 	}
-	if checker.IsNotZeroString(showinfo.LastAnsweredUserID) {
-		userIds = append(userIds, showinfo.LastAnsweredUserID)
+	if checker.IsNotZeroString(resp.LastAnsweredUserID) {
+		userIds = append(userIds, resp.LastAnsweredUserID)
 	}
 	userInfoMap, err := qs.userCommon.BatchUserBasicInfoByID(ctx, userIds)
 	if err != nil {
-		return showinfo, err
+		return resp, err
+	}
+	resp.UserInfo = userInfoMap[questionInfo.UserID]
+	resp.UpdateUserInfo = userInfoMap[questionInfo.LastEditUserID]
+	resp.LastAnsweredUserInfo = userInfoMap[resp.LastAnsweredUserID]
+	if len(loginUserID) == 0 {
+		return resp, nil
 	}
 
-	_, ok := userInfoMap[dbinfo.UserID]
-	if ok {
-		showinfo.UserInfo = userInfoMap[dbinfo.UserID]
-	}
-	_, ok = userInfoMap[dbinfo.LastEditUserID]
-	if ok {
-		showinfo.UpdateUserInfo = userInfoMap[dbinfo.LastEditUserID]
-	}
-	_, ok = userInfoMap[showinfo.LastAnsweredUserID]
-	if ok {
-		showinfo.LastAnsweredUserInfo = userInfoMap[showinfo.LastAnsweredUserID]
-	}
+	resp.VoteStatus = qs.voteRepo.GetVoteStatus(ctx, questionID, loginUserID)
+	resp.IsFollowed, _ = qs.followCommon.IsFollowed(ctx, loginUserID, questionID)
 
-	if loginUserID == "" {
-		return showinfo, nil
-	}
-
-	showinfo.VoteStatus = qs.voteRepo.GetVoteStatus(ctx, questionID, loginUserID)
-
-	// // check is followed
-	isFollowed, _ := qs.followCommon.IsFollowed(ctx, loginUserID, questionID)
-	showinfo.IsFollowed = isFollowed
-
-	ids, err := qs.AnswerCommon.SearchAnswerIDs(ctx, loginUserID, dbinfo.ID)
+	ids, err := qs.AnswerCommon.SearchAnswerIDs(ctx, loginUserID, questionInfo.ID)
 	if err != nil {
 		log.Error("AnswerFunc.SearchAnswerIDs", err)
 	}
-	showinfo.Answered = len(ids) > 0
-	if showinfo.Answered {
-		showinfo.FirstAnswerId = ids[0]
+	resp.Answered = len(ids) > 0
+	if resp.Answered {
+		resp.FirstAnswerId = ids[0]
 	}
 
-	collectedMap, err := qs.collectionCommon.SearchObjectCollected(ctx, loginUserID, []string{dbinfo.ID})
+	collectedMap, err := qs.collectionCommon.SearchObjectCollected(ctx, loginUserID, []string{questionInfo.ID})
 	if err != nil {
 		return nil, err
 	}
 	if len(collectedMap) > 0 {
-		showinfo.Collected = true
+		resp.Collected = true
 	}
-	return showinfo, nil
+	return resp, nil
 }
 
 func (qs *QuestionCommon) FormatQuestionsPage(
@@ -340,6 +385,7 @@ func (qs *QuestionCommon) FormatQuestionsPage(
 			LastAnswerID:     questionInfo.LastAnswerID,
 			Pin:              questionInfo.Pin,
 			Show:             questionInfo.Show,
+			Operator:         &schema.QuestionPageRespOperator{ID: questionInfo.UserID},
 		}
 
 		questionIDs = append(questionIDs, questionInfo.ID)
@@ -364,19 +410,18 @@ func (qs *QuestionCommon) FormatQuestionsPage(
 			}
 		}
 
-		// if order condition is newest or nobody edited or nobody answered, only show question author
-		if orderCond == schema.QuestionOrderCondNewest || (!haveEdited && !haveAnswered) {
-			t.OperationType = schema.QuestionPageRespOperationTypeAsked
-			t.OperatedAt = questionInfo.CreatedAt.Unix()
-			t.Operator = &schema.QuestionPageRespOperator{ID: questionInfo.UserID}
-		} else {
-			// if no one
+		// The default operation is to ask questions
+		t.OperationType = schema.QuestionPageRespOperationTypeAsked
+		t.OperatedAt = questionInfo.CreatedAt.Unix()
+		t.Operator = &schema.QuestionPageRespOperator{ID: questionInfo.UserID}
+
+		// If the order is active, the last operation time is the last edit or answer time if it exists
+		if orderCond == schema.QuestionOrderCondActive {
 			if haveEdited {
 				t.OperationType = schema.QuestionPageRespOperationTypeModified
 				t.OperatedAt = questionInfo.UpdatedAt.Unix()
 				t.Operator = &schema.QuestionPageRespOperator{ID: questionInfo.LastEditUserID}
 			}
-
 			if haveAnswered {
 				if t.LastAnsweredAt.Unix() > t.OperatedAt {
 					t.OperationType = schema.QuestionPageRespOperationTypeAnswered
@@ -385,6 +430,7 @@ func (qs *QuestionCommon) FormatQuestionsPage(
 				}
 			}
 		}
+
 		formattedQuestions = append(formattedQuestions, t)
 	}
 
@@ -411,15 +457,15 @@ func (qs *QuestionCommon) FormatQuestionsPage(
 				item.Operator.Username = userInfo.Username
 				item.Operator.Rank = userInfo.Rank
 				item.Operator.Status = userInfo.Status
+				item.Operator.Avatar = userInfo.Avatar
 			}
 		}
-
 	}
 	return formattedQuestions, nil
 }
 
-func (qs *QuestionCommon) FormatQuestions(ctx context.Context, questionList []*entity.Question, loginUserID string) ([]*schema.QuestionInfo, error) {
-	list := make([]*schema.QuestionInfo, 0)
+func (qs *QuestionCommon) FormatQuestions(ctx context.Context, questionList []*entity.Question, loginUserID string) ([]*schema.QuestionInfoResp, error) {
+	list := make([]*schema.QuestionInfoResp, 0)
 	objectIds := make([]string, 0)
 	userIds := make([]string, 0)
 
@@ -510,7 +556,7 @@ func (qs *QuestionCommon) CloseQuestion(ctx context.Context, req *schema.CloseQu
 		CloseType: req.CloseType,
 		CloseMsg:  req.CloseMsg,
 	})
-	err = qs.metaService.AddMeta(ctx, req.ID, entity.QuestionCloseReasonKey, string(closeMeta))
+	err = qs.metaCommonService.AddMeta(ctx, req.ID, entity.QuestionCloseReasonKey, string(closeMeta))
 	if err != nil {
 		return err
 	}
@@ -525,8 +571,8 @@ func (qs *QuestionCommon) CloseQuestion(ctx context.Context, req *schema.CloseQu
 }
 
 // RemoveAnswer delete answer
-func (as *QuestionCommon) RemoveAnswer(ctx context.Context, id string) (err error) {
-	answerinfo, has, err := as.answerRepo.GetByID(ctx, id)
+func (qs *QuestionCommon) RemoveAnswer(ctx context.Context, id string) (err error) {
+	answerinfo, has, err := qs.answerRepo.GetByID(ctx, id)
 	if err != nil {
 		return err
 	}
@@ -536,20 +582,20 @@ func (as *QuestionCommon) RemoveAnswer(ctx context.Context, id string) (err erro
 
 	// user add question count
 
-	err = as.UpdateAnswerCount(ctx, answerinfo.QuestionID)
+	err = qs.UpdateAnswerCount(ctx, answerinfo.QuestionID)
 	if err != nil {
 		log.Error("UpdateAnswerCount error", err.Error())
 	}
-	userAnswerCount, err := as.answerRepo.GetCountByUserID(ctx, answerinfo.UserID)
+	userAnswerCount, err := qs.answerRepo.GetCountByUserID(ctx, answerinfo.UserID)
 	if err != nil {
 		log.Error("GetCountByUserID error", err.Error())
 	}
-	err = as.userCommon.UpdateAnswerCount(ctx, answerinfo.UserID, int(userAnswerCount))
+	err = qs.userCommon.UpdateAnswerCount(ctx, answerinfo.UserID, int(userAnswerCount))
 	if err != nil {
 		log.Error("user UpdateAnswerCount error", err.Error())
 	}
 
-	return as.answerRepo.RemoveAnswer(ctx, id)
+	return qs.answerRepo.RemoveAnswer(ctx, id)
 }
 
 func (qs *QuestionCommon) SitemapCron(ctx context.Context) {
@@ -589,12 +635,12 @@ func (qs *QuestionCommon) SetCache(ctx context.Context, cachekey string, info in
 	return nil
 }
 
-func (qs *QuestionCommon) ShowListFormat(ctx context.Context, data *entity.Question) *schema.QuestionInfo {
+func (qs *QuestionCommon) ShowListFormat(ctx context.Context, data *entity.Question) *schema.QuestionInfoResp {
 	return qs.ShowFormat(ctx, data)
 }
 
-func (qs *QuestionCommon) ShowFormat(ctx context.Context, data *entity.Question) *schema.QuestionInfo {
-	info := schema.QuestionInfo{}
+func (qs *QuestionCommon) ShowFormat(ctx context.Context, data *entity.Question) *schema.QuestionInfoResp {
+	info := schema.QuestionInfoResp{}
 	info.ID = data.ID
 	if handler.GetEnableShortID(ctx) {
 		info.ID = uid.EnShortID(data.ID)
@@ -640,7 +686,7 @@ func (qs *QuestionCommon) ShowFormat(ctx context.Context, data *entity.Question)
 	info.Tags = make([]*schema.TagResp, 0)
 	return &info
 }
-func (qs *QuestionCommon) ShowFormatWithTag(ctx context.Context, data *entity.QuestionWithTagsRevision) *schema.QuestionInfo {
+func (qs *QuestionCommon) ShowFormatWithTag(ctx context.Context, data *entity.QuestionWithTagsRevision) *schema.QuestionInfoResp {
 	info := qs.ShowFormat(ctx, &data.Question)
 	Tags := make([]*schema.TagResp, 0)
 	for _, tag := range data.Tags {
@@ -653,4 +699,203 @@ func (qs *QuestionCommon) ShowFormatWithTag(ctx context.Context, data *entity.Qu
 	}
 	info.Tags = Tags
 	return info
+}
+
+func (qs *QuestionCommon) UpdateQuestionLink(ctx context.Context, questionID, answerID, parsedText, originalText string) (string, error) {
+	err := qs.questionRepo.RemoveQuestionLink(ctx, &entity.QuestionLink{
+		FromQuestionID: uid.DeShortID(questionID),
+		FromAnswerID:   uid.DeShortID(answerID),
+	})
+	if err != nil {
+		return parsedText, err
+	}
+	// Update the number of question links that have been removed
+	linkedQuestionIDs, err := qs.questionRepo.GetLinkedQuestionIDs(ctx, uid.DeShortID(questionID), entity.QuestionLinkStatusDeleted)
+	if err != nil {
+		log.Errorf("get linked question ids error %v", err)
+	} else {
+		for _, id := range linkedQuestionIDs {
+			if err := qs.questionRepo.UpdateQuestionLinkCount(ctx, id); err != nil {
+				log.Errorf("update question link count error %v", err)
+			}
+		}
+	}
+
+	links := checker.GetQuestionLink(originalText)
+	if len(links) == 0 {
+		return parsedText, nil
+	}
+
+	// get answer ids and question ids
+	answerIDs := make([]string, 0, len(links))
+	questionIDs := make([]string, 0, len(links))
+	for _, link := range links {
+		if link.AnswerID != "" {
+			answerIDs = append(answerIDs, link.AnswerID)
+		}
+		if link.QuestionID != "" {
+			questionIDs = append(questionIDs, link.QuestionID)
+		}
+	}
+
+	// get answer info and build cache
+	answerInfoList, err := qs.answerRepo.GetByIDs(ctx, answerIDs...)
+	if err != nil {
+		return parsedText, err
+	}
+	answerCache := make(map[string]string, len(answerInfoList))
+	for _, ans := range answerInfoList {
+		answerID := uid.DeShortID(ans.ID)
+		questionID := ans.QuestionID
+		answerCache[answerID] = questionID
+	}
+
+	// get question info and build cache
+	questionInfoList, err := qs.questionRepo.FindByID(ctx, questionIDs)
+	if err != nil {
+		return parsedText, err
+	}
+	questionCache := make(map[string]struct{}, len(questionInfoList))
+	for _, q := range questionInfoList {
+		questionID := uid.DeShortID(q.ID)
+		questionCache[questionID] = struct{}{}
+	}
+
+	// process links and generate new QuestionLink
+	validLinks := make([]*entity.QuestionLink, 0, len(links))
+	for _, link := range links {
+		linkQuestionID := uid.DeShortID(link.QuestionID)
+		linkAnswerID := uid.DeShortID(link.AnswerID)
+		// validate question id
+		if _, exists := questionCache[linkQuestionID]; linkQuestionID != "0" && !exists {
+			continue
+		}
+
+		// validate answer id
+		if linkAnswerID != "0" {
+			linkedQuestionID, exists := answerCache[linkAnswerID]
+			if !exists {
+				continue
+			}
+			// if question id is empty, get it from answer cache
+			if link.QuestionID == "" {
+				link.QuestionID = linkedQuestionID
+			}
+		}
+
+		// build new link
+		newLink := &entity.QuestionLink{
+			FromQuestionID: uid.DeShortID(questionID),
+			FromAnswerID:   uid.DeShortID(answerID),
+			ToQuestionID:   uid.DeShortID(link.QuestionID),
+			ToAnswerID:     uid.DeShortID(link.AnswerID),
+		}
+		// replace link in parsed text
+		if link.QuestionID != "" {
+			htmlLink := fmt.Sprintf("<a href=\"/questions/%s\">#%s</a>", link.QuestionID, link.QuestionID)
+			parsedText = strings.ReplaceAll(parsedText, "#"+link.QuestionID, htmlLink)
+		}
+		if link.AnswerID != "" {
+			linkedQuestionID := answerCache[linkAnswerID]
+			htmlLink := fmt.Sprintf("<a href=\"/questions/%s/%s\">#%s</a>", linkedQuestionID, link.AnswerID, link.AnswerID)
+			parsedText = strings.ReplaceAll(parsedText, "#"+link.AnswerID, htmlLink)
+			newLink.ToQuestionID = uid.DeShortID(linkedQuestionID)
+		}
+		// avoid link to self
+		if newLink.FromQuestionID != newLink.ToQuestionID {
+			validLinks = append(validLinks, newLink)
+		}
+	}
+
+	// add new links to repo
+	if len(validLinks) > 0 {
+		err = qs.questionRepo.LinkQuestion(ctx, validLinks...)
+		if err != nil {
+			return parsedText, err
+		}
+	}
+
+	// update question linked count
+	for _, link := range validLinks {
+		if len(link.ToQuestionID) == 0 {
+			continue
+		}
+		if err := qs.questionRepo.UpdateQuestionLinkCount(ctx, link.ToQuestionID); err != nil {
+			log.Errorf("update question link count error %v", err)
+		}
+	}
+
+	return parsedText, nil
+}
+
+// AddQuestionLinkForCloseReason When the reason about close question is a question link, add the link to the question
+func (qs *QuestionCommon) AddQuestionLinkForCloseReason(ctx context.Context,
+	questionInfo *entity.Question, closeMsg string) {
+	questionID := qs.tryToGetQuestionIDFromMsg(ctx, closeMsg)
+	if len(questionID) == 0 {
+		return
+	}
+
+	linkedQuestion, exist, err := qs.questionRepo.GetQuestion(ctx, questionID)
+	if err != nil {
+		log.Errorf("get question error %s", err)
+		return
+	}
+	if !exist {
+		return
+	}
+	err = qs.questionRepo.LinkQuestion(ctx, &entity.QuestionLink{
+		FromQuestionID: questionInfo.ID,
+		ToQuestionID:   linkedQuestion.ID,
+		Status:         entity.QuestionLinkStatusAvailable,
+	})
+	if err != nil {
+		log.Errorf("link question error %s", err)
+	}
+}
+
+func (qs *QuestionCommon) RemoveQuestionLinkForReopen(ctx context.Context, questionInfo *entity.Question) {
+	questionInfo.ID = uid.DeShortID(questionInfo.ID)
+	metaInfo, err := qs.metaCommonService.GetMetaByObjectIdAndKey(ctx, questionInfo.ID, entity.QuestionCloseReasonKey)
+	if err != nil {
+		return
+	}
+
+	closeMsgMeta := &schema.CloseQuestionMeta{}
+	_ = json.Unmarshal([]byte(metaInfo.Value), closeMsgMeta)
+
+	linkedQuestionID := qs.tryToGetQuestionIDFromMsg(ctx, closeMsgMeta.CloseMsg)
+	if len(linkedQuestionID) == 0 {
+		return
+	}
+	err = qs.questionRepo.RemoveQuestionLink(ctx, &entity.QuestionLink{
+		FromQuestionID: questionInfo.ID,
+		ToQuestionID:   linkedQuestionID,
+	})
+	if err != nil {
+		log.Errorf("remove question link error %s", err)
+	}
+}
+
+func (qs *QuestionCommon) tryToGetQuestionIDFromMsg(ctx context.Context, closeMsg string) (questionID string) {
+	siteGeneral, err := qs.siteInfoService.GetSiteGeneral(ctx)
+	if err != nil {
+		log.Errorf("get site general error %s", err)
+		return
+	}
+	if !strings.HasPrefix(closeMsg, siteGeneral.SiteUrl) {
+		return
+	}
+	// get question id from url
+	// the url may like: https://xxx.com/questions/D1401/xxx
+	// the D1401 is question id
+	questionID = strings.TrimPrefix(closeMsg, siteGeneral.SiteUrl)
+	questionID = strings.TrimPrefix(questionID, "/questions/")
+	t := strings.Split(questionID, "/")
+	if len(t) < 1 {
+		return ""
+	}
+	questionID = t[0]
+	questionID = uid.DeShortID(questionID)
+	return questionID
 }

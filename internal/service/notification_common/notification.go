@@ -24,17 +24,22 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service/activity_common"
-	"github.com/apache/incubator-answer/internal/service/notice_queue"
-	"github.com/apache/incubator-answer/internal/service/object_info"
-	usercommon "github.com/apache/incubator-answer/internal/service/user_common"
-	"github.com/apache/incubator-answer/pkg/uid"
-	"github.com/apache/incubator-answer/plugin"
+	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/service/siteinfo_common"
+	"github.com/apache/answer/internal/service/user_external_login"
+	"github.com/apache/answer/pkg/display"
+
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/activity_common"
+	"github.com/apache/answer/internal/service/notice_queue"
+	"github.com/apache/answer/internal/service/object_info"
+	usercommon "github.com/apache/answer/internal/service/user_common"
+	"github.com/apache/answer/pkg/uid"
+	"github.com/apache/answer/plugin"
 	"github.com/goccy/go-json"
 	"github.com/jinzhu/copier"
 	"github.com/segmentfault/pacman/errors"
@@ -49,6 +54,9 @@ type NotificationRepo interface {
 	GetByUserIdObjectIdTypeId(ctx context.Context, userID, objectID string, notificationType int) (*entity.Notification, bool, error)
 	UpdateNotificationContent(ctx context.Context, notification *entity.Notification) (err error)
 	GetById(ctx context.Context, id string) (*entity.Notification, bool, error)
+	CountNotificationByUser(ctx context.Context, cond *entity.Notification) (int64, error)
+	DeleteNotification(ctx context.Context, userID string) (err error)
+	DeleteUserNotificationConfig(ctx context.Context, userID string) (err error)
 }
 
 type NotificationCommon struct {
@@ -59,6 +67,8 @@ type NotificationCommon struct {
 	userCommon               *usercommon.UserCommon
 	objectInfoService        *object_info.ObjService
 	notificationQueueService notice_queue.NotificationQueueService
+	userExternalLoginRepo    user_external_login.UserExternalLoginRepo
+	siteInfoService          siteinfo_common.SiteInfoCommonService
 }
 
 func NewNotificationCommon(
@@ -69,6 +79,8 @@ func NewNotificationCommon(
 	followRepo activity_common.FollowRepo,
 	objectInfoService *object_info.ObjService,
 	notificationQueueService notice_queue.NotificationQueueService,
+	userExternalLoginRepo user_external_login.UserExternalLoginRepo,
+	siteInfoService siteinfo_common.SiteInfoCommonService,
 ) *NotificationCommon {
 	notification := &NotificationCommon{
 		data:                     data,
@@ -78,6 +90,8 @@ func NewNotificationCommon(
 		userCommon:               userCommon,
 		objectInfoService:        objectInfoService,
 		notificationQueueService: notificationQueueService,
+		userExternalLoginRepo:    userExternalLoginRepo,
+		siteInfoService:          siteInfoService,
 	}
 	notificationQueueService.RegisterHandler(notification.AddNotification)
 	return notification
@@ -92,7 +106,7 @@ func NewNotificationCommon(
 // ObjectInfo.Title
 // ObjectInfo.ObjectID
 // ObjectInfo.ObjectType
-func (ns *NotificationCommon) AddNotification(ctx context.Context, msg *schema.NotificationMsg) error {
+func (ns *NotificationCommon) AddNotification(ctx context.Context, msg *schema.NotificationMsg) (err error) {
 	if msg.Type == schema.NotificationTypeAchievement && plugin.RankAgentEnabled() {
 		return nil
 	}
@@ -108,17 +122,25 @@ func (ns *NotificationCommon) AddNotification(ctx context.Context, msg *schema.N
 		Type:               msg.Type,
 	}
 	var questionID string // just for notify all followers
-	objInfo, err := ns.objectInfoService.GetInfo(ctx, req.ObjectInfo.ObjectID)
-	if err != nil {
-		log.Error(err)
-	} else {
-		req.ObjectInfo.Title = objInfo.Title
-		questionID = objInfo.QuestionID
+	var objInfo *schema.SimpleObjectInfo
+	if msg.ObjectType == constant.BadgeAwardObjectType {
+		req.ObjectInfo.Title = msg.Title
 		objectMap := make(map[string]string)
-		objectMap["question"] = uid.DeShortID(objInfo.QuestionID)
-		objectMap["answer"] = uid.DeShortID(objInfo.AnswerID)
-		objectMap["comment"] = objInfo.CommentID
+		objectMap["badge_id"] = msg.ExtraInfo["badge_id"]
 		req.ObjectInfo.ObjectMap = objectMap
+	} else {
+		objInfo, err = ns.objectInfoService.GetInfo(ctx, req.ObjectInfo.ObjectID)
+		if err != nil {
+			log.Error(err)
+		} else {
+			req.ObjectInfo.Title = objInfo.Title
+			questionID = objInfo.QuestionID
+			objectMap := make(map[string]string)
+			objectMap["question"] = uid.DeShortID(objInfo.QuestionID)
+			objectMap["answer"] = uid.DeShortID(objInfo.AnswerID)
+			objectMap["comment"] = objInfo.CommentID
+			req.ObjectInfo.ObjectMap = objectMap
+		}
 	}
 
 	if msg.Type == schema.NotificationTypeAchievement {
@@ -177,28 +199,131 @@ func (ns *NotificationCommon) AddNotification(ctx context.Context, msg *schema.N
 	if err != nil {
 		return fmt.Errorf("add notification error: %w", err)
 	}
-	err = ns.addRedDot(ctx, info.UserID, info.Type)
+	err = ns.addRedDot(ctx, info.UserID, msg.Type)
 	if err != nil {
 		log.Error("addRedDot Error", err.Error())
 	}
+	if req.ObjectInfo.ObjectType == constant.BadgeAwardObjectType {
+		err = ns.AddBadgeAwardAlertCache(ctx, info.UserID, info.ID, req.ObjectInfo.ObjectMap["badge_id"])
+	}
 
 	go ns.SendNotificationToAllFollower(ctx, msg, questionID)
+
+	if msg.Type == schema.NotificationTypeInbox {
+		ns.syncNotificationToPlugin(ctx, objInfo, msg)
+	}
 	return nil
 }
 
-func (ns *NotificationCommon) addRedDot(ctx context.Context, userID string, botType int) error {
-	key := fmt.Sprintf("answer_RedDot_%d_%s", botType, userID)
-	err := ns.data.Cache.SetInt64(ctx, key, 1, 30*24*time.Hour) //Expiration time is one month.
+func (ns *NotificationCommon) addRedDot(ctx context.Context, userID string, noticeType int) error {
+	var key string
+	if noticeType == schema.NotificationTypeInbox {
+		key = fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeInbox, userID)
+	} else {
+		key = fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeAchievement, userID)
+	}
+	_, exist, err := ns.data.Cache.GetInt64(ctx, key)
+	if err != nil {
+		return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
+	}
+	if exist {
+		if _, err := ns.data.Cache.Increase(ctx, key, 1); err != nil {
+			return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
+		}
+		return nil
+	}
+	err = ns.data.Cache.SetInt64(ctx, key, 1, constant.RedDotCacheTime)
 	if err != nil {
 		return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
 	}
 	return nil
 }
 
+func (ns *NotificationCommon) DecreaseRedDot(ctx context.Context, userID string, notificationType int) error {
+	var key string
+	if notificationType == schema.NotificationTypeInbox {
+		key = fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeInbox, userID)
+	} else {
+		key = fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeAchievement, userID)
+	}
+	_, exist, err := ns.data.Cache.GetInt64(ctx, key)
+	if err != nil {
+		return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
+	}
+	if !exist {
+		return nil
+	}
+	res, err := ns.data.Cache.Decrease(ctx, key, 1)
+	if err != nil {
+		return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
+	}
+	if res <= 0 {
+		return ns.DeleteRedDot(ctx, userID, notificationType)
+	}
+	return nil
+}
+
+func (ns *NotificationCommon) DeleteRedDot(ctx context.Context, userID string, notificationType int) error {
+	var key string
+	if notificationType == schema.NotificationTypeInbox {
+		key = fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeInbox, userID)
+	} else {
+		key = fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeAchievement, userID)
+	}
+	err := ns.data.Cache.Del(ctx, key)
+	if err != nil {
+		return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
+	}
+	return nil
+}
+
+// AddBadgeAwardAlertCache add badge award alert cache
+func (ns *NotificationCommon) AddBadgeAwardAlertCache(ctx context.Context, userID, notificationID, badgeID string) (err error) {
+	key := fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeBadgeAchievement, userID)
+	cacheData, exist, err := ns.data.Cache.GetString(ctx, key)
+	if err != nil {
+		return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
+	}
+	if !exist {
+		c := schema.NewRedDotBadgeAwardCache()
+		c.AddBadgeAward(&schema.RedDotBadgeAward{
+			NotificationID: notificationID,
+			BadgeID:        badgeID,
+		})
+		return ns.data.Cache.SetString(ctx, key, c.ToJSON(), constant.RedDotCacheTime)
+	}
+	c := schema.NewRedDotBadgeAwardCache()
+	c.FromJSON(cacheData)
+	c.AddBadgeAward(&schema.RedDotBadgeAward{
+		NotificationID: notificationID,
+		BadgeID:        badgeID,
+	})
+	return ns.data.Cache.SetString(ctx, key, c.ToJSON(), constant.RedDotCacheTime)
+}
+
+// RemoveBadgeAwardAlertCache remove badge award alert cache
+func (ns *NotificationCommon) RemoveBadgeAwardAlertCache(ctx context.Context, userID, notificationID string) (err error) {
+	key := fmt.Sprintf(constant.RedDotCacheKey, constant.NotificationTypeBadgeAchievement, userID)
+	cacheData, exist, err := ns.data.Cache.GetString(ctx, key)
+	if err != nil {
+		return errors.InternalServer(reason.UnknownError).WithError(err).WithStack()
+	}
+	if !exist {
+		return nil
+	}
+	c := schema.NewRedDotBadgeAwardCache()
+	c.FromJSON(cacheData)
+	c.RemoveBadgeAward(notificationID)
+	if len(c.BadgeAwardList) == 0 {
+		return ns.data.Cache.Del(ctx, key)
+	}
+	return ns.data.Cache.SetString(ctx, key, c.ToJSON(), constant.RedDotCacheTime)
+}
+
 // SendNotificationToAllFollower send notification to all followers
 func (ns *NotificationCommon) SendNotificationToAllFollower(ctx context.Context, msg *schema.NotificationMsg,
 	questionID string) {
-	if msg.NoNeedPushAllFollow {
+	if msg.NoNeedPushAllFollow || len(questionID) == 0 {
 		return
 	}
 	if msg.NotificationAction != constant.NotificationUpdateQuestion &&
@@ -225,4 +350,82 @@ func (ns *NotificationCommon) SendNotificationToAllFollower(ctx context.Context,
 		t.NoNeedPushAllFollow = true
 		ns.notificationQueueService.Send(ctx, t)
 	}
+}
+
+func (ns *NotificationCommon) syncNotificationToPlugin(ctx context.Context, objInfo *schema.SimpleObjectInfo,
+	msg *schema.NotificationMsg) {
+	siteInfo, err := ns.siteInfoService.GetSiteGeneral(ctx)
+	if err != nil {
+		log.Errorf("get site general info failed: %v", err)
+		return
+	}
+	seoInfo, err := ns.siteInfoService.GetSiteSeo(ctx)
+	if err != nil {
+		log.Errorf("get site seo info failed: %v", err)
+		return
+	}
+	interfaceInfo, err := ns.siteInfoService.GetSiteInterface(ctx)
+	if err != nil {
+		log.Errorf("get site interface info failed: %v", err)
+		return
+	}
+
+	objInfo.QuestionID = uid.DeShortID(objInfo.QuestionID)
+	objInfo.AnswerID = uid.DeShortID(objInfo.AnswerID)
+	pluginNotificationMsg := plugin.NotificationMessage{
+		Type:           plugin.NotificationType(msg.NotificationAction),
+		ReceiverUserID: msg.ReceiverUserID,
+		TriggerUserID:  msg.TriggerUserID,
+		QuestionTitle:  objInfo.Title,
+	}
+
+	if len(objInfo.QuestionID) > 0 {
+		pluginNotificationMsg.QuestionUrl =
+			display.QuestionURL(seoInfo.Permalink, siteInfo.SiteUrl, objInfo.QuestionID, objInfo.Title)
+	}
+	if len(objInfo.AnswerID) > 0 {
+		pluginNotificationMsg.AnswerUrl =
+			display.AnswerURL(seoInfo.Permalink, siteInfo.SiteUrl, objInfo.QuestionID, objInfo.Title, objInfo.AnswerID)
+	}
+	if len(objInfo.CommentID) > 0 {
+		pluginNotificationMsg.CommentUrl =
+			display.CommentURL(seoInfo.Permalink, siteInfo.SiteUrl, objInfo.QuestionID, objInfo.Title, objInfo.AnswerID, objInfo.CommentID)
+	}
+
+	if len(msg.TriggerUserID) > 0 {
+		triggerUser, exist, err := ns.userCommon.GetUserBasicInfoByID(ctx, msg.TriggerUserID)
+		if err != nil {
+			log.Errorf("get trigger user basic info failed: %v", err)
+			return
+		}
+		if exist {
+			pluginNotificationMsg.TriggerUserID = triggerUser.ID
+			pluginNotificationMsg.TriggerUserDisplayName = triggerUser.DisplayName
+			pluginNotificationMsg.TriggerUserUrl = display.UserURL(siteInfo.SiteUrl, triggerUser.Username)
+		}
+	}
+
+	if len(pluginNotificationMsg.ReceiverLang) == 0 && len(msg.ReceiverUserID) > 0 {
+		userInfo, _, _ := ns.userCommon.GetUserBasicInfoByID(ctx, msg.ReceiverUserID)
+		if userInfo != nil {
+			pluginNotificationMsg.ReceiverLang = userInfo.Language
+		}
+		// If receiver not set language, use site default language.
+		if len(pluginNotificationMsg.ReceiverLang) == 0 || pluginNotificationMsg.ReceiverLang == translator.DefaultLangOption {
+			pluginNotificationMsg.ReceiverLang = interfaceInfo.Language
+		}
+	}
+
+	_ = plugin.CallNotification(func(fn plugin.Notification) error {
+		userInfo, exist, err := ns.userExternalLoginRepo.GetByUserID(ctx, fn.Info().SlugName, msg.ReceiverUserID)
+		if err != nil {
+			log.Errorf("get user external login info failed: %v", err)
+			return nil
+		}
+		if exist {
+			pluginNotificationMsg.ReceiverExternalID = userInfo.ExternalID
+		}
+		fn.Notify(pluginNotificationMsg)
+		return nil
+	})
 }

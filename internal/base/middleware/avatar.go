@@ -21,15 +21,16 @@ package middleware
 
 import (
 	"fmt"
+	"net/http"
 	"net/url"
 	"os"
 	"path"
 	"path/filepath"
 	"strings"
 
-	"github.com/apache/incubator-answer/internal/service/service_config"
-	"github.com/apache/incubator-answer/internal/service/uploader"
-	"github.com/apache/incubator-answer/pkg/converter"
+	"github.com/apache/answer/internal/service/service_config"
+	"github.com/apache/answer/internal/service/uploader"
+	"github.com/apache/answer/pkg/converter"
 	"github.com/gin-gonic/gin"
 	"github.com/segmentfault/pacman/log"
 )
@@ -62,7 +63,8 @@ func (am *AvatarMiddleware) AvatarThumb() gin.HandlerFunc {
 				filePath, err = am.uploaderService.AvatarThumbFile(ctx, filename, size)
 				if err != nil {
 					log.Error(err)
-					ctx.Abort()
+					ctx.AbortWithStatus(http.StatusNotFound)
+					return
 				}
 			}
 			avatarFile, err := os.ReadFile(filePath)

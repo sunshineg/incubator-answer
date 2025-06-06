@@ -24,7 +24,7 @@ import type * as Type from '@/common/interface';
 import { getPageCustom, putPageCustom } from '@/services';
 import { SchemaForm, JSONSchema, initFormData, UISchema } from '@/components';
 import { useToast } from '@/hooks';
-import { handleFormError } from '@/utils';
+import { handleFormError, scrollToElementTop } from '@/utils';
 import { customizeStore } from '@/stores';
 
 const Index: FC = () => {
@@ -124,6 +124,8 @@ const Index: FC = () => {
         if (err.isError) {
           const data = handleFormError(err, formData);
           setFormData({ ...data });
+          const ele = document.getElementById(err.list[0].error_field);
+          scrollToElementTop(ele);
         }
       });
   };
@@ -148,7 +150,7 @@ const Index: FC = () => {
 
   return (
     <>
-      <h3 className="mb-4">{t('page_title')}</h3>
+      <h3 className="mb-4">{t('customize', { keyPrefix: 'nav_menus' })}</h3>
       <SchemaForm
         schema={schema}
         formData={formData}

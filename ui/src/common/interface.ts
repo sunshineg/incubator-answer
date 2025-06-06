@@ -56,6 +56,7 @@ export interface TagBase {
 export interface Tag extends TagBase {
   main_tag_slug_name?: string;
   parsed_text?: string;
+  tag_id?: string;
 }
 
 export interface SynonymsTag extends Tag {
@@ -172,7 +173,7 @@ export interface UserInfoRes extends UserInfoBase {
   [prop: string]: any;
 }
 
-export type UploadType = 'post' | 'avatar' | 'branding';
+export type UploadType = 'post' | 'avatar' | 'branding' | 'post_attachment';
 export interface UploadReq {
   file: FormData;
 }
@@ -219,11 +220,19 @@ export interface SetNoticeReq {
   notice_switch: boolean;
 }
 
+export interface NotificationBadgeAward {
+  notification_id: string;
+  badge_id: string;
+  name: string;
+  icon: string;
+  level: number;
+}
 export interface NotificationStatus {
   inbox: number;
   achievement: number;
   revision: number;
   can_revision: boolean;
+  badge_award: NotificationBadgeAward | null;
 }
 
 export interface QuestionDetailRes {
@@ -250,7 +259,7 @@ export interface QuestionDetailRes {
 }
 
 export interface AnswersReq extends Paging {
-  order?: 'default' | 'updated';
+  order?: 'default' | 'updated' | 'created';
   question_id: string;
 }
 
@@ -287,11 +296,13 @@ export interface LangsType {
  * @description interface for Question
  */
 export type QuestionOrderBy =
+  | 'recommend'
   | 'newest'
   | 'active'
-  | 'frequent'
+  | 'hot'
   | 'score'
-  | 'unanswered';
+  | 'unanswered'
+  | 'frequent';
 
 export interface QueryQuestionsReq extends Paging {
   order: QuestionOrderBy;
@@ -299,9 +310,13 @@ export interface QueryQuestionsReq extends Paging {
   in_days?: number;
 }
 
-export type AdminQuestionStatus = 'available' | 'closed' | 'deleted';
+export type AdminQuestionStatus =
+  | 'available'
+  | 'pending'
+  | 'closed'
+  | 'deleted';
 
-export type AdminContentsFilterBy = 'normal' | 'closed' | 'deleted';
+export type AdminContentsFilterBy = 'normal' | 'pending' | 'closed' | 'deleted';
 
 export interface AdminContentsReq extends Paging {
   status: AdminContentsFilterBy;
@@ -322,6 +337,8 @@ export type UserFilterBy =
   | 'inactive'
   | 'suspended'
   | 'deleted';
+
+export type BadgeFilterBy = 'all' | 'active' | 'inactive';
 
 export type InstalledPluginsFilterBy =
   | 'all'
@@ -347,6 +364,8 @@ export interface AdminSettingsGeneral {
   description: string;
   site_url: string;
   contact_email: string;
+  check_update: boolean;
+  permalink?: number;
 }
 
 export interface HelmetBase {
@@ -400,6 +419,7 @@ export interface SiteSettings {
   site_write: AdminSettingsWrite;
   version: string;
   revision: string;
+  site_legal: AdminSettingsLegal;
 }
 
 export interface AdminSettingBranding {
@@ -410,6 +430,7 @@ export interface AdminSettingBranding {
 }
 
 export interface AdminSettingsLegal {
+  external_content_display: string;
   privacy_policy_original_text?: string;
   privacy_policy_parsed_text?: string;
   terms_of_service_original_text?: string;
@@ -418,9 +439,14 @@ export interface AdminSettingsLegal {
 
 export interface AdminSettingsWrite {
   restrict_answer?: boolean;
-  recommend_tags?: string[];
-  required_tag?: string;
-  reserved_tags?: string[];
+  recommend_tags?: Tag[];
+  required_tag?: boolean;
+  reserved_tags?: Tag[];
+  max_image_size?: number;
+  max_attachment_size?: number;
+  max_image_megapixel?: number;
+  authorized_image_extensions?: string[];
+  authorized_attachment_extensions?: string[];
 }
 
 export interface AdminSettingsSeo {
@@ -440,6 +466,7 @@ export type themeConfig = {
 };
 export interface AdminSettingsTheme {
   theme: string;
+  color_scheme: string;
   theme_options?: { label: string; value: string }[];
   theme_config: Record<string, themeConfig>;
 }
@@ -505,6 +532,10 @@ export interface SearchRes extends ListResult<SearchResItem> {
 export interface AdminDashboard {
   info: {
     question_count: number;
+    resolved_count: number;
+    resolved_rate: string;
+    unanswered_count: number;
+    unanswered_rate: string;
     answer_count: number;
     comment_count: number;
     vote_count: number;
@@ -560,7 +591,7 @@ export interface TimelineRes {
   timeline: TimelineItem[];
 }
 
-export interface ReviewItem {
+export interface SuggestReviewItem {
   type: 'question' | 'answer' | 'tag';
   info: {
     url_title?: string;
@@ -582,9 +613,60 @@ export interface ReviewItem {
     content: Tag | QuestionDetailRes | AnswerItem;
   };
 }
-export interface ReviewResp {
+export interface SuggestReviewResp {
   count: number;
-  list: ReviewItem[];
+  list: SuggestReviewItem[];
+}
+
+export interface ReasonItem {
+  content_type: string;
+  description: string;
+  name: string;
+  placeholder: string;
+  reason_type: number;
+}
+
+export interface BaseReviewItem {
+  object_type: 'question' | 'answer' | 'comment' | 'user';
+  object_id: string;
+  object_show_status: number;
+  object_status: number;
+  tags: Tag[];
+  title: string;
+  original_text: string;
+  author_user_info: UserInfoBase;
+  created_at: number;
+  submit_at: number;
+  comment_id: string;
+  question_id: string;
+  answer_id: string;
+  answer_count: number;
+  answer_accepted?: boolean;
+  flag_id: string;
+  url_title: string;
+  parsed_text: string;
+}
+
+export interface FlagReviewItem extends BaseReviewItem {
+  reason: ReasonItem;
+  reason_content: string;
+  submitter_user: UserInfoBase;
+}
+
+export interface FlagReviewResp {
+  count: number;
+  list: FlagReviewItem[];
+}
+
+export interface QueuedReviewItem extends BaseReviewItem {
+  review_id: number;
+  reason: string;
+  submitter_display_name: string;
+}
+
+export interface QueuedReviewResp {
+  count: number;
+  list: QueuedReviewItem[];
 }
 
 export interface UserRoleItem {
@@ -622,12 +704,105 @@ export interface NotificationConfigItem {
   key: string;
 }
 export interface NotificationConfig {
-  all_new_question: NotificationConfigItem[];
-  all_new_question_for_following_tags: NotificationConfigItem[];
-  inbox: NotificationConfigItem[];
+  all_new_question: NotificationConfigItem;
+  all_new_question_for_following_tags: NotificationConfigItem;
+  inbox: NotificationConfigItem;
 }
 
 export interface ActivatedPlugin {
+  slug_name: string;
+  enabled: boolean;
+}
+
+export interface UserPluginsConfigRes {
   name: string;
   slug_name: string;
+}
+
+export interface ReviewTypeItem {
+  label: string;
+  name: string;
+  todo_amount: number;
+}
+
+export interface PutFlagReviewParams {
+  operation_type:
+    | 'edit_post'
+    | 'close_post'
+    | 'delete_post'
+    | 'unlist_post'
+    | 'ignore_report';
+  flag_id: string;
+  close_msg?: string;
+  close_type?: number;
+  title?: string;
+  content?: string;
+  tags?: Tag[];
+  // mention_username_list?: any;
+  captcha_code?: any;
+  captcha_id?: any;
+}
+
+/**
+ * @description response for reaction
+ */
+export interface ReactionItems {
+  reaction_summary: ReactionItem[];
+}
+
+export interface ReactionItem {
+  emoji: string;
+  count: number;
+  tooltip: string;
+  is_active: boolean;
+}
+
+export interface BadgeListItem {
+  id: string;
+  name: string;
+  icon: string;
+  award_count: number;
+  earned: boolean;
+  /** 1: bronze 2: silver 3:gold */
+  level: number;
+  earned_count?: number;
+}
+
+export interface BadgeListGroupItem {
+  badges: BadgeListItem[];
+  group_name: string;
+}
+
+export interface BadgeInfo extends BadgeListItem {
+  description: string;
+  earned_count: number;
+  is_single: boolean;
+}
+
+export interface AdminBadgeListItem extends BadgeListItem {
+  group_name: string;
+  status: string;
+  description: string;
+}
+
+export interface BadgeDetailListReq {
+  page: number;
+  page_size: number;
+  badge_id: string;
+  username?: string | null;
+}
+export interface BadgeDetailListItem {
+  created_at: number;
+  author_user_info: UserInfoBase;
+  object_type: string;
+  object_id: string;
+  url_title: string;
+  question_id: string;
+  answer_id: string;
+  comment_id: string;
+}
+
+export interface BadgeDetailListRes {
+  count: number;
+  list: BadgeDetailListItem[];
 }

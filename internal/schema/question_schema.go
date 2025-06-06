@@ -23,10 +23,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/incubator-answer/internal/base/validator"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/pkg/converter"
-	"github.com/apache/incubator-answer/pkg/uid"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/segmentfault/pacman/errors"
+
+	"github.com/apache/answer/internal/base/validator"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/pkg/converter"
+	"github.com/apache/answer/pkg/uid"
 )
 
 const (
@@ -86,6 +89,8 @@ type QuestionAdd struct {
 	QuestionPermission
 	CaptchaID   string `json:"captcha_id"` // captcha_id
 	CaptchaCode string `json:"captcha_code"`
+	IP          string `json:"-"`
+	UserAgent   string `json:"-"`
 }
 
 func (req *QuestionAdd) Check() (errFields []*validator.FormErrorField, err error) {
@@ -94,6 +99,12 @@ func (req *QuestionAdd) Check() (errFields []*validator.FormErrorField, err erro
 		if len(tag.OriginalText) > 0 {
 			tag.ParsedText = converter.Markdown2HTML(tag.OriginalText)
 		}
+	}
+	if req.HTML == "" {
+		return append(errFields, &validator.FormErrorField{
+			ErrorField: "content",
+			ErrorMsg:   reason.QuestionContentCannotEmpty,
+		}), errors.BadRequest(reason.QuestionContentCannotEmpty)
 	}
 	return nil, nil
 }
@@ -115,6 +126,8 @@ type QuestionAddByAnswer struct {
 	QuestionPermission
 	CaptchaID   string `json:"captcha_id"` // captcha_id
 	CaptchaCode string `json:"captcha_code"`
+	IP          string `json:"-"`
+	UserAgent   string `json:"-"`
 }
 
 func (req *QuestionAddByAnswer) Check() (errFields []*validator.FormErrorField, err error) {
@@ -124,6 +137,21 @@ func (req *QuestionAddByAnswer) Check() (errFields []*validator.FormErrorField, 
 		if len(tag.OriginalText) > 0 {
 			tag.ParsedText = converter.Markdown2HTML(tag.OriginalText)
 		}
+	}
+	if req.HTML == "" {
+		errFields = append(errFields, &validator.FormErrorField{
+			ErrorField: "content",
+			ErrorMsg:   reason.QuestionContentCannotEmpty,
+		})
+	}
+	if req.AnswerHTML == "" {
+		errFields = append(errFields, &validator.FormErrorField{
+			ErrorField: "answer_content",
+			ErrorMsg:   reason.AnswerContentCannotEmpty,
+		})
+	}
+	if req.HTML == "" || req.AnswerHTML == "" {
+		return errFields, errors.BadRequest(reason.QuestionContentCannotEmpty)
 	}
 	return nil, nil
 }
@@ -199,6 +227,12 @@ type QuestionUpdateInviteUser struct {
 
 func (req *QuestionUpdate) Check() (errFields []*validator.FormErrorField, err error) {
 	req.HTML = converter.Markdown2HTML(req.Content)
+	if req.HTML == "" {
+		return append(errFields, &validator.FormErrorField{
+			ErrorField: "content",
+			ErrorMsg:   reason.QuestionContentCannotEmpty,
+		}), errors.BadRequest(reason.QuestionContentCannotEmpty)
+	}
 	return nil, nil
 }
 
@@ -214,7 +248,7 @@ type QuestionBaseInfo struct {
 	AcceptedAnswer  bool   `json:"accepted_answer"`
 }
 
-type QuestionInfo struct {
+type QuestionInfoResp struct {
 	ID                   string         `json:"id" `
 	Title                string         `json:"title"`
 	UrlTitle             string         `json:"url_title"`
@@ -265,6 +299,8 @@ type AdminQuestionInfo struct {
 	ID               string         `json:"id"`
 	Title            string         `json:"title"`
 	VoteCount        int            `json:"vote_count"`
+	Show             int            `json:"show"`
+	Pin              int            `json:"pin"`
 	AnswerCount      int            `json:"answer_count"`
 	AcceptedAnswerID string         `json:"accepted_answer_id"`
 	CreateTime       int64          `json:"create_time"`
@@ -277,9 +313,10 @@ type AdminQuestionInfo struct {
 type OperationLevel string
 
 const (
-	OperationLevelInfo    OperationLevel = "info"
-	OperationLevelDanger  OperationLevel = "danger"
-	OperationLevelWarning OperationLevel = "warning"
+	OperationLevelInfo      OperationLevel = "info"
+	OperationLevelDanger    OperationLevel = "danger"
+	OperationLevelWarning   OperationLevel = "warning"
+	OperationLevelSecondary OperationLevel = "secondary"
 )
 
 type Operation struct {
@@ -336,16 +373,21 @@ type UserQuestionInfo struct {
 const (
 	QuestionOrderCondNewest     = "newest"
 	QuestionOrderCondActive     = "active"
-	QuestionOrderCondFrequent   = "frequent"
+	QuestionOrderCondHot        = "hot"
 	QuestionOrderCondScore      = "score"
 	QuestionOrderCondUnanswered = "unanswered"
+	QuestionOrderCondRecommend  = "recommend"
+	QuestionOrderCondFrequent   = "frequent"
+
+	// HotInDays limit max days of the hottest question
+	HotInDays = 90
 )
 
 // QuestionPageReq query questions page
 type QuestionPageReq struct {
 	Page      int    `validate:"omitempty,min=1" form:"page"`
 	PageSize  int    `validate:"omitempty,min=1" form:"page_size"`
-	OrderCond string `validate:"omitempty,oneof=newest active frequent score unanswered" form:"order"`
+	OrderCond string `validate:"omitempty,oneof=newest active hot score unanswered recommend frequent" form:"order"`
 	Tag       string `validate:"omitempty,gt=0,lte=100" form:"tag"`
 	Username  string `validate:"omitempty,gt=0,lte=100" form:"username"`
 	InDays    int    `validate:"omitempty,min=1" form:"in_days"`
@@ -353,6 +395,7 @@ type QuestionPageReq struct {
 	LoginUserID      string `json:"-"`
 	UserIDBeSearched string `json:"-"`
 	TagID            string `json:"-"`
+	ShowPending      bool   `json:"-"`
 }
 
 const (
@@ -398,12 +441,13 @@ type QuestionPageRespOperator struct {
 	Rank        int    `json:"rank"`
 	DisplayName string `json:"display_name"`
 	Status      string `json:"status"`
+	Avatar      string `json:"avatar"`
 }
 
 type AdminQuestionPageReq struct {
 	Page        int    `validate:"omitempty,min=1" form:"page"`
 	PageSize    int    `validate:"omitempty,min=1" form:"page_size"`
-	StatusCond  string `validate:"omitempty,oneof=normal closed deleted" form:"status"`
+	StatusCond  string `validate:"omitempty,oneof=normal closed deleted pending" form:"status"`
 	Query       string `validate:"omitempty,gt=0,lte=100" json:"query" form:"query" `
 	Status      int    `json:"-"`
 	LoginUserID string `json:"-"`
@@ -424,7 +468,7 @@ func (req *AdminQuestionPageReq) Check() (errField []*validator.FormErrorField, 
 type AdminAnswerPageReq struct {
 	Page          int    `validate:"omitempty,min=1" form:"page"`
 	PageSize      int    `validate:"omitempty,min=1" form:"page_size"`
-	StatusCond    string `validate:"omitempty,oneof=normal deleted" form:"status"`
+	StatusCond    string `validate:"omitempty,oneof=normal deleted pending" form:"status"`
 	Query         string `validate:"omitempty,gt=0,lte=100" form:"query"`
 	QuestionID    string `validate:"omitempty,gt=0,lte=24" form:"question_id"`
 	QuestionTitle string `json:"-"`
@@ -467,21 +511,37 @@ type AdminUpdateQuestionStatusReq struct {
 type PersonalQuestionPageReq struct {
 	Page        int    `validate:"omitempty,min=1" form:"page"`
 	PageSize    int    `validate:"omitempty,min=1" form:"page_size"`
-	OrderCond   string `validate:"omitempty,oneof=newest active frequent score unanswered" form:"order"`
+	OrderCond   string `validate:"omitempty,oneof=newest active hot score unanswered" form:"order"`
 	Username    string `validate:"omitempty,gt=0,lte=100" form:"username"`
 	LoginUserID string `json:"-"`
+	IsAdmin     bool   `json:"-"`
 }
 
 type PersonalAnswerPageReq struct {
 	Page        int    `validate:"omitempty,min=1" form:"page"`
 	PageSize    int    `validate:"omitempty,min=1" form:"page_size"`
-	OrderCond   string `validate:"omitempty,oneof=newest active frequent score unanswered" form:"order"`
+	OrderCond   string `validate:"omitempty,oneof=newest active hot score unanswered" form:"order"`
 	Username    string `validate:"omitempty,gt=0,lte=100" form:"username"`
 	LoginUserID string `json:"-"`
+	IsAdmin     bool   `json:"-"`
 }
 
 type PersonalCollectionPageReq struct {
 	Page     int    `validate:"omitempty,min=1" form:"page"`
 	PageSize int    `validate:"omitempty,min=1" form:"page_size"`
 	UserID   string `json:"-"`
+}
+
+type GetQuestionLinkReq struct {
+	Page       int    `validate:"omitempty,min=1" form:"page"`
+	PageSize   int    `validate:"omitempty,min=1,max=100" form:"page_size"`
+	QuestionID string `validate:"required" form:"question_id"`
+	OrderCond  string `validate:"omitempty,oneof=newest active hot score unanswered recommend frequent" form:"order"`
+	InDays     int    `validate:"omitempty,min=1" form:"in_days"`
+
+	LoginUserID string `json:"-"`
+}
+
+type GetQuestionLinkResp struct {
+	QuestionPageResp
 }

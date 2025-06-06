@@ -21,23 +21,28 @@ import { useEffect, useState, memo } from 'react';
 import { Button, Form, Modal, Tab, Tabs } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-import type { Editor } from 'codemirror';
-
 import { Modal as AnswerModal } from '@/components';
 import ToolItem from '../toolItem';
-import { IEditorContext } from '../types';
+import { IEditorContext, Editor } from '../types';
 import { uploadImage } from '@/services';
+import { writeSettingStore } from '@/stores';
 
 let context: IEditorContext;
 const Image = ({ editorInstance }) => {
   const [editor, setEditor] = useState<Editor>(editorInstance);
   const { t } = useTranslation('translation', { keyPrefix: 'editor' });
+  const {
+    max_image_size = 4,
+    max_attachment_size = 8,
+    authorized_image_extensions = [],
+    authorized_attachment_extensions = [],
+  } = writeSettingStore((state) => state.write);
 
   const loadingText = `![${t('image.uploading')}...]()`;
 
   const item = {
-    label: 'image',
-    keyMap: ['Ctrl-G'],
+    label: 'image-fill',
+    keyMap: ['Ctrl-g'],
     tip: `${t('image.text')} (Ctrl+G)`,
   };
   const [currentTab, setCurrentTab] = useState('localImage');
@@ -54,58 +59,101 @@ const Image = ({ editorInstance }) => {
     isInvalid: false,
     errorMsg: '',
   });
+
   const verifyImageSize = (files: FileList) => {
     if (files.length === 0) {
       return false;
     }
-    const filteredFiles = Array.from(files).filter(
-      (file) => file.type.indexOf('image') === -1,
-    );
 
-    if (filteredFiles.length > 0) {
+    /**
+     * When allowing attachments to be uploaded, verification logic for attachment information has been added. In order to avoid abnormal judgment caused by the order of drag and drop upload, the drag and drop upload verification of attachments and the drag and drop upload of images are put together.
+     *
+     */
+    const canUploadAttachment = authorized_attachment_extensions.length > 0;
+    const allowedAllType = [
+      ...authorized_image_extensions,
+      ...authorized_attachment_extensions,
+    ];
+    const unSupportFiles = Array.from(files).filter((file) => {
+      const fileName = file.name.toLowerCase();
+      return canUploadAttachment
+        ? !allowedAllType.find((v) => fileName.endsWith(v))
+        : file.type.indexOf('image') === -1;
+    });
+
+    if (unSupportFiles.length > 0) {
       AnswerModal.confirm({
-        content: t('image.form_image.fields.file.msg.only_image'),
+        content: canUploadAttachment
+          ? t('file.not_supported', { file_type: allowedAllType.join(', ') })
+          : t('image.form_image.fields.file.msg.only_image'),
+        showCancel: false,
       });
       return false;
     }
-    const filteredImages = Array.from(files).filter(
-      (file) => file.size / 1024 / 1024 > 4,
-    );
 
-    if (filteredImages.length > 0) {
+    const otherFiles = Array.from(files).filter((file) => {
+      return file.type.indexOf('image') === -1;
+    });
+
+    if (canUploadAttachment && otherFiles.length > 0) {
+      const attachmentOverSizeFiles = otherFiles.filter(
+        (file) => file.size / 1024 / 1024 > max_attachment_size,
+      );
+      if (attachmentOverSizeFiles.length > 0) {
+        AnswerModal.confirm({
+          content: t('file.max_size', { size: max_attachment_size }),
+          showCancel: false,
+        });
+        return false;
+      }
+    }
+
+    const imageFiles = Array.from(files).filter(
+      (file) => file.type.indexOf('image') > -1,
+    );
+    const oversizedImages = imageFiles.filter(
+      (file) => file.size / 1024 / 1024 > max_image_size,
+    );
+    if (oversizedImages.length > 0) {
       AnswerModal.confirm({
-        content: t('image.form_image.fields.file.msg.max_size'),
+        content: t('image.form_image.fields.file.msg.max_size', {
+          size: max_image_size,
+        }),
+        showCancel: false,
       });
       return false;
     }
+
     return true;
   };
+
   const upload = (
     files: FileList,
-  ): Promise<{ url: string; name: string }[]> => {
+  ): Promise<{ url: string; name: string; type: string }[]> => {
     const promises = Array.from(files).map(async (file) => {
-      const url = await uploadImage({ file, type: 'post' });
+      const type = file.type.indexOf('image') > -1 ? 'post' : 'post_attachment';
+      const url = await uploadImage({ file, type });
 
       return {
         name: file.name,
         url,
+        type,
       };
     });
 
     return Promise.all(promises);
   };
-  function dragenter(_, e) {
+  function dragenter(e) {
     e.stopPropagation();
     e.preventDefault();
   }
 
-  function dragover(_, e) {
+  function dragover(e) {
     e.stopPropagation();
     e.preventDefault();
   }
-  const drop = async (_, e) => {
+  const drop = async (e) => {
     const fileList = e.dataTransfer.files;
-
     const bool = verifyImageSize(fileList);
 
     if (!bool) {
@@ -113,49 +161,63 @@ const Image = ({ editorInstance }) => {
     }
 
     const startPos = editor.getCursor();
+
     const endPos = { ...startPos, ch: startPos.ch + loadingText.length };
 
     editor.replaceSelection(loadingText);
-    const urls = await upload(fileList).catch((ex) => {
-      console.log('ex: ', ex);
-    });
+    editor.setReadOnly(true);
+    const urls = await upload(fileList)
+      .catch(() => {
+        editor.replaceRange('', startPos, endPos);
+      })
+      .finally(() => {
+        editor.setReadOnly(false);
+        editor.focus();
+      });
 
     const text: string[] = [];
     if (Array.isArray(urls)) {
-      urls.forEach(({ name, url }) => {
+      urls.forEach(({ name, url, type }) => {
         if (name && url) {
-          text.push(`![${name}](${url})`);
+          text.push(`${type === 'post' ? '!' : ''}[${name}](${url})`);
         }
       });
     }
     if (text.length) {
       editor.replaceRange(text.join('\n'), startPos, endPos);
     } else {
-      // Clear loading text
       editor.replaceRange('', startPos, endPos);
     }
   };
 
-  const paste = async (_, event) => {
+  const paste = async (event) => {
     const clipboard = event.clipboardData;
 
     const bool = verifyImageSize(clipboard.files);
 
     if (bool) {
       event.preventDefault();
-      editor.setOption('readOnly', true);
-      const startPos = editor.getCursor('');
+      const startPos = editor.getCursor();
       const endPos = { ...startPos, ch: startPos.ch + loadingText.length };
 
       editor.replaceSelection(loadingText);
-      const urls = await upload(clipboard.files);
-      const text = urls.map(({ name, url }) => {
-        return `![${name}](${url})`;
-      });
+      editor.setReadOnly(true);
+      upload(clipboard.files)
+        .then((urls) => {
+          const text = urls.map(({ name, url, type }) => {
+            return `${type === 'post' ? '!' : ''}[${name}](${url})`;
+          });
 
-      editor.replaceRange(text.join('\n'), startPos, endPos);
+          editor.replaceRange(text.join('\n'), startPos, endPos);
+        })
+        .catch(() => {
+          editor.replaceRange('', startPos, endPos);
+        })
+        .finally(() => {
+          editor.setReadOnly(false);
+          editor.focus();
+        });
 
-      editor.setOption('readOnly', false);
       return;
     }
 
@@ -166,18 +228,68 @@ const Image = ({ editorInstance }) => {
       return;
     }
     event.preventDefault();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlStr, 'text/html');
+    const { body } = doc;
 
-    const newHtml = new DOMParser()
-      .parseFromString(
-        htmlStr.replace(
-          /<img([\s\S]*?) src\s*=\s*(['"])([\s\S]*?)\2([^>]*)>/gi,
-          `<p>\n![${t('image.text')}]($3)\n</p>`,
-        ),
-        'text/html',
-      )
-      .querySelector('body')?.innerText as string;
+    let markdownText = '';
 
-    editor.replaceSelection(newHtml);
+    function traverse(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        // text node
+        markdownText += node.textContent;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // element node
+        const tagName = node.tagName.toLowerCase();
+
+        if (tagName === 'img') {
+          // img node
+          const src = node.getAttribute('src');
+          const alt = node.getAttribute('alt') || t('image.text');
+          markdownText += `![${alt}](${src})`;
+        } else if (tagName === 'br') {
+          // br node
+          markdownText += '\n';
+        } else {
+          for (let i = 0; i < node.childNodes.length; i += 1) {
+            traverse(node.childNodes[i]);
+          }
+        }
+
+        const blockLevelElements = [
+          'p',
+          'div',
+          'h1',
+          'h2',
+          'h3',
+          'h4',
+          'h5',
+          'h6',
+          'ul',
+          'ol',
+          'li',
+          'blockquote',
+          'pre',
+          'table',
+          'thead',
+          'tbody',
+          'tr',
+          'th',
+          'td',
+        ];
+        if (blockLevelElements.includes(tagName)) {
+          markdownText += '\n\n';
+        }
+      }
+    }
+
+    traverse(body);
+
+    markdownText = markdownText.replace(/[\n\s]+/g, (match) => {
+      return match.length > 1 ? '\n\n' : match;
+    });
+
+    editor.replaceSelection(markdownText);
   };
   const handleClick = () => {
     if (!link.value) {
@@ -238,6 +350,7 @@ const Image = ({ editorInstance }) => {
 
     uploadImage({ file: e.target.files[0], type: 'post' }).then((url) => {
       setLink({ ...link, value: url });
+      setImageName({ ...imageName, value: files[0].name });
     });
   };
 
@@ -269,6 +382,7 @@ const Image = ({ editorInstance }) => {
                     type="file"
                     onChange={onUpload}
                     isInvalid={currentTab === 'localImage' && link.isInvalid}
+                    accept="image/*"
                   />
 
                   <Form.Control.Feedback type="invalid">

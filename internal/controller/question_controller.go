@@ -20,30 +20,31 @@
 package controller
 
 import (
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/middleware"
-	"github.com/apache/incubator-answer/internal/base/pager"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/base/translator"
-	"github.com/apache/incubator-answer/internal/base/validator"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service"
-	"github.com/apache/incubator-answer/internal/service/action"
-	"github.com/apache/incubator-answer/internal/service/permission"
-	"github.com/apache/incubator-answer/internal/service/rank"
-	"github.com/apache/incubator-answer/internal/service/siteinfo_common"
-	"github.com/apache/incubator-answer/pkg/uid"
+	"net/http"
+
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/middleware"
+	"github.com/apache/answer/internal/base/pager"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/base/validator"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/action"
+	"github.com/apache/answer/internal/service/content"
+	"github.com/apache/answer/internal/service/permission"
+	"github.com/apache/answer/internal/service/rank"
+	"github.com/apache/answer/internal/service/siteinfo_common"
+	"github.com/apache/answer/pkg/uid"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/copier"
 	"github.com/segmentfault/pacman/errors"
-	"net/http"
 )
 
 // QuestionController question controller
 type QuestionController struct {
-	questionService     *service.QuestionService
-	answerService       *service.AnswerService
+	questionService     *content.QuestionService
+	answerService       *content.AnswerService
 	rankService         *rank.RankService
 	siteInfoService     siteinfo_common.SiteInfoCommonService
 	actionService       *action.CaptchaService
@@ -52,8 +53,8 @@ type QuestionController struct {
 
 // NewQuestionController new controller
 func NewQuestionController(
-	questionService *service.QuestionService,
-	answerService *service.AnswerService,
+	questionService *content.QuestionService,
+	answerService *content.AnswerService,
 	rankService *rank.RankService,
 	siteInfoService siteinfo_common.SiteInfoCommonService,
 	actionService *action.CaptchaService,
@@ -223,7 +224,6 @@ func (qc *QuestionController) ReopenQuestion(ctx *gin.Context) {
 // @Summary get question details
 // @Description get question details
 // @Tags Question
-// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Param id query string true "Question TagID"  default(1)
@@ -278,7 +278,6 @@ func (qc *QuestionController) GetQuestion(ctx *gin.Context) {
 // @Summary get question invite user info
 // @Description get question invite user info
 // @Tags Question
-// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Param id query string true "Question ID"  default(1)
@@ -332,6 +331,39 @@ func (qc *QuestionController) QuestionPage(ctx *gin.Context) {
 	req.LoginUserID = middleware.GetLoginUserIDFromContext(ctx)
 
 	questions, total, err := qc.questionService.GetQuestionPage(ctx, req)
+	if err != nil {
+		handler.HandleResponse(ctx, err, nil)
+		return
+	}
+	if pager.ValPageOutOfRange(total, req.Page, req.PageSize) {
+		handler.HandleResponse(ctx, errors.NotFound(reason.RequestFormatError), nil)
+		return
+	}
+	handler.HandleResponse(ctx, nil, pager.NewPageModel(total, questions))
+}
+
+// QuestionRecommendPage get recommend questions by page
+// @Summary get recommend questions by page
+// @Description get recommend questions by page
+// @Tags Question
+// @Accept  json
+// @Produce  json
+// @Param data body schema.QuestionPageReq  true "QuestionPageReq"
+// @Success 200 {object} handler.RespBody{data=pager.PageModel{list=[]schema.QuestionPageResp}}
+// @Router /answer/api/v1/question/recommend/page [get]
+func (qc *QuestionController) QuestionRecommendPage(ctx *gin.Context) {
+	req := &schema.QuestionPageReq{}
+	if handler.BindAndCheck(ctx, req) {
+		return
+	}
+	req.LoginUserID = middleware.GetLoginUserIDFromContext(ctx)
+
+	if req.LoginUserID == "" {
+		handler.HandleResponse(ctx, errors.Unauthorized(reason.UnauthorizedError), nil)
+		return
+	}
+
+	questions, total, err := qc.questionService.GetRecommendQuestionPage(ctx, req)
 	if err != nil {
 		handler.HandleResponse(ctx, err, nil)
 		return
@@ -433,6 +465,9 @@ func (qc *QuestionController) AddQuestion(ctx *gin.Context) {
 		return
 	}
 
+	req.UserAgent = ctx.GetHeader("User-Agent")
+	req.IP = ctx.ClientIP()
+
 	resp, err := qc.questionService.AddQuestion(ctx, req)
 	if err != nil {
 		errlist, ok := resp.([]*validator.FormErrorField)
@@ -525,6 +560,8 @@ func (qc *QuestionController) AddQuestionByAnswer(ctx *gin.Context) {
 		return
 	}
 
+	req.UserAgent = ctx.GetHeader("User-Agent")
+	req.IP = ctx.ClientIP()
 	resp, err := qc.questionService.AddQuestion(ctx, questionReq)
 	if err != nil {
 		errlist, ok := resp.([]*validator.FormErrorField)
@@ -542,7 +579,7 @@ func (qc *QuestionController) AddQuestionByAnswer(ctx *gin.Context) {
 		return
 	}
 	//add the question id to the answer
-	questionInfo, ok := resp.(*schema.QuestionInfo)
+	questionInfo, ok := resp.(*schema.QuestionInfoResp)
 	if ok {
 		answerReq := &schema.AnswerAddReq{}
 		answerReq.QuestionID = uid.DeShortID(questionInfo.ID)
@@ -656,7 +693,7 @@ func (qc *QuestionController) UpdateQuestion(ctx *gin.Context) {
 		handler.HandleResponse(ctx, err, resp)
 		return
 	}
-	respInfo, ok := resp.(*schema.QuestionInfo)
+	respInfo, ok := resp.(*schema.QuestionInfoResp)
 	if !ok {
 		handler.HandleResponse(ctx, err, resp)
 		return
@@ -782,7 +819,6 @@ func (qc *QuestionController) GetSimilarQuestions(ctx *gin.Context) {
 // @Tags Question
 // @Accept json
 // @Produce json
-// @Security ApiKeyAuth
 // @Param username query string true "username"  default(string)
 // @Success 200 {object} handler.RespBody
 // @Router /answer/api/v1/personal/qa/top [get]
@@ -816,6 +852,7 @@ func (qc *QuestionController) PersonalQuestionPage(ctx *gin.Context) {
 	}
 
 	req.LoginUserID = middleware.GetLoginUserIDFromContext(ctx)
+	req.IsAdmin = middleware.GetUserIsAdminModerator(ctx)
 	resp, err := qc.questionService.PersonalQuestionPage(ctx, req)
 	handler.HandleResponse(ctx, err, resp)
 }
@@ -840,6 +877,7 @@ func (qc *QuestionController) PersonalAnswerPage(ctx *gin.Context) {
 	}
 
 	req.LoginUserID = middleware.GetLoginUserIDFromContext(ctx)
+	req.IsAdmin = middleware.GetUserIsAdminModerator(ctx)
 	resp, err := qc.questionService.PersonalAnswerPage(ctx, req)
 	handler.HandleResponse(ctx, err, resp)
 }
@@ -869,14 +907,14 @@ func (qc *QuestionController) PersonalCollectionPage(ctx *gin.Context) {
 
 // AdminQuestionPage admin question page
 // @Summary AdminQuestionPage admin question page
-// @Description Status:[available,closed,deleted]
+// @Description Status:[available,closed,deleted,pending]
 // @Tags admin
 // @Accept json
 // @Produce json
 // @Security ApiKeyAuth
 // @Param page query int false "page size"
 // @Param page_size query int false "page size"
-// @Param status query string false "user status" Enums(available, closed, deleted)
+// @Param status query string false "user status" Enums(available, closed, deleted, pending)
 // @Param query query string false "question id or title"
 // @Success 200 {object} handler.RespBody
 // @Router /answer/admin/api/question/page [get]
@@ -893,14 +931,14 @@ func (qc *QuestionController) AdminQuestionPage(ctx *gin.Context) {
 
 // AdminAnswerPage admin answer page
 // @Summary AdminAnswerPage admin answer page
-// @Description Status:[available,deleted]
+// @Description Status:[available,deleted,pending]
 // @Tags admin
 // @Accept json
 // @Produce json
 // @Security ApiKeyAuth
 // @Param page query int false "page size"
 // @Param page_size query int false "page size"
-// @Param status query string false "user status" Enums(available,deleted)
+// @Param status query string false "user status" Enums(available,deleted,pending)
 // @Param query query string false "answer id or question title"
 // @Param question_id query string false "question id"
 // @Success 200 {object} handler.RespBody
@@ -936,4 +974,26 @@ func (qc *QuestionController) AdminUpdateQuestionStatus(ctx *gin.Context) {
 
 	err := qc.questionService.AdminSetQuestionStatus(ctx, req)
 	handler.HandleResponse(ctx, err, nil)
+}
+
+// GetQuestionLink get question link
+// @Summary get question link
+// @Description get question link
+// @Tags Question
+// @Param data query schema.GetQuestionLinkReq  true "GetQuestionLinkReq"
+// @Success 200 {object} handler.RespBody{data=pager.PageModel{list=[]schema.QuestionPageResp}}
+// @Router /answer/api/v1/question/link [get]
+func (qc *QuestionController) GetQuestionLink(ctx *gin.Context) {
+	req := &schema.GetQuestionLinkReq{}
+	if handler.BindAndCheck(ctx, req) {
+		return
+	}
+	req.LoginUserID = middleware.GetLoginUserIDFromContext(ctx)
+	req.QuestionID = uid.DeShortID(req.QuestionID)
+	questions, total, err := qc.questionService.GetQuestionLink(ctx, req)
+	if err != nil {
+		handler.HandleResponse(ctx, err, nil)
+		return
+	}
+	handler.HandleResponse(ctx, nil, pager.NewPageModel(total, questions))
 }

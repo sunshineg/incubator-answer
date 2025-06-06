@@ -35,7 +35,7 @@ env:
     # [DEBUG INFO WARN ERROR]
     value: "INFO"
   # uncomment the below values to use AUTO_INSTALL and not have to go through the setup process.
-  # Once used to do the initial setup, these variables wont be used moving forward.
+  # Once used to do the initial setup, these variables won't be used moving forward.
   # You must at a minimum comment AUTO_INSTALL after initial setup to prevent an error about the database already being initiated.
   # - name: AUTO_INSTALL
   #   value: "true"
@@ -68,7 +68,7 @@ env:
 
 # Configure extra containers
 extraContainers: []
-  # - name: cloudsql-proxy 
+  # - name: cloudsql-proxy
   #   image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.1.2
   #   command:
   #     - /cloud-sql-proxy
@@ -91,6 +91,12 @@ persistence:
   accessMode: ReadWriteOnce
   size: 5Gi
   annotations: {}
+  # To restore a PVC from a VolumeSnapshot, set the dataSource;
+  # the kind and apiGroup are optional and default to the shown values
+  dataSource: {}
+    # name: my-volume-snapshot
+    # kind: VolumeSnapshot
+    # apiGroup: snapshot.storage.k8s.io
 
 imagePullSecrets: []
 nameOverride: ""

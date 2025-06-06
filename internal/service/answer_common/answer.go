@@ -22,11 +22,11 @@ package answercommon
 import (
 	"context"
 
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/pkg/htmltext"
-	"github.com/apache/incubator-answer/pkg/uid"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/pkg/htmltext"
+	"github.com/apache/answer/pkg/uid"
 )
 
 type AnswerRepo interface {
@@ -39,14 +39,19 @@ type AnswerRepo interface {
 	GetAnswerPage(ctx context.Context, page, pageSize int, answer *entity.Answer) (answerList []*entity.Answer, total int64, err error)
 	UpdateAcceptedStatus(ctx context.Context, acceptedAnswerID string, questionID string) error
 	GetByID(ctx context.Context, answerID string) (*entity.Answer, bool, error)
+	GetByIDs(ctx context.Context, answerIDs ...string) ([]*entity.Answer, error)
 	GetCountByQuestionID(ctx context.Context, questionID string) (int64, error)
 	GetCountByUserID(ctx context.Context, userID string) (int64, error)
 	GetIDsByUserIDAndQuestionID(ctx context.Context, userID string, questionID string) ([]string, error)
 	SearchList(ctx context.Context, search *entity.AnswerSearch) ([]*entity.Answer, int64, error)
+	GetPersonalAnswerPage(ctx context.Context, cond *entity.PersonalAnswerPageQueryCond) (
+		resp []*entity.Answer, total int64, err error)
 	AdminSearchList(ctx context.Context, search *schema.AdminAnswerPageReq) ([]*entity.Answer, int64, error)
 	UpdateAnswerStatus(ctx context.Context, answerID string, status int) (err error)
 	GetAnswerCount(ctx context.Context) (count int64, err error)
 	RemoveAllUserAnswer(ctx context.Context, userID string) (err error)
+	SumVotesByQuestionID(ctx context.Context, questionID string) (float64, error)
+	DeletePermanentlyAnswers(ctx context.Context) (err error)
 }
 
 // AnswerCommon user service
@@ -86,6 +91,11 @@ func (as *AnswerCommon) Search(ctx context.Context, search *entity.AnswerSearch)
 		return list, count, err
 	}
 	return list, count, err
+}
+
+func (as *AnswerCommon) PersonalAnswerPage(ctx context.Context,
+	cond *entity.PersonalAnswerPageQueryCond) ([]*entity.Answer, int64, error) {
+	return as.answerRepo.GetPersonalAnswerPage(ctx, cond)
 }
 
 func (as *AnswerCommon) ShowFormat(ctx context.Context, data *entity.Answer) *schema.AnswerInfo {

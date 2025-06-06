@@ -59,7 +59,8 @@ const Index: FC<Props> = ({
   });
   const [searchParams] = useSearchParams();
   const answerRef = useRef<HTMLDivElement>(null);
-  useRenderHtmlPlugin(answerRef.current);
+
+  useRenderHtmlPlugin(answerRef.current?.querySelector('.fmt') as HTMLElement);
 
   const acceptAnswer = () => {
     acceptanceAnswer({
@@ -75,8 +76,13 @@ const Index: FC<Props> = ({
       return;
     }
 
-    htmlRender(answerRef.current.querySelector('.fmt'));
+    htmlRender(answerRef.current.querySelector('.fmt'), {
+      copySuccessText: t('copied', { keyPrefix: 'messages' }),
+      copyText: t('copy', { keyPrefix: 'messages' }),
+    });
+  }, [answerRef.current]);
 
+  useEffect(() => {
     if (aid === data.id) {
       setTimeout(() => {
         const element = answerRef.current;
@@ -86,7 +92,7 @@ const Index: FC<Props> = ({
         }
       }, 100);
     }
-  }, [data.id, answerRef.current]);
+  }, [data.id]);
 
   if (!data?.id) {
     return null;
@@ -99,6 +105,12 @@ const Index: FC<Props> = ({
           {t('post_deleted', { keyPrefix: 'messages' })}
         </Alert>
       )}
+      {data.status === 11 && (
+        <Alert variant="secondary" className="mb-4">
+          {t('post_pending', { keyPrefix: 'messages' })}
+        </Alert>
+      )}
+
       {data?.accepted === 2 && (
         <div className="mb-3 lh-1">
           <Badge bg="success" pill>

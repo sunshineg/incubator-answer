@@ -21,11 +21,12 @@ package notification
 
 import (
 	"context"
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/schema"
+	"time"
+
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/schema"
 	"github.com/segmentfault/pacman/i18n"
 	"github.com/segmentfault/pacman/log"
-	"time"
 )
 
 func (ns *ExternalNotificationService) handleNewCommentNotification(ctx context.Context,
@@ -49,19 +50,22 @@ func (ns *ExternalNotificationService) handleNewCommentNotification(ctx context.
 			ns.sendNewCommentNotificationEmail(ctx, msg.ReceiverUserID, msg.ReceiverEmail, msg.ReceiverLang, msg.NewCommentTemplateRawData)
 		}
 	}
-
 	return nil
 }
 
 func (ns *ExternalNotificationService) sendNewCommentNotificationEmail(ctx context.Context,
 	userID, email, lang string, rawData *schema.NewCommentTemplateRawData) {
+	if unavailable := ns.checkUserStatusBeforeNotification(ctx, userID); unavailable {
+		return
+	}
 	codeContent := &schema.EmailCodeContent{
 		SourceType: schema.UnsubscribeSourceType,
 		NotificationSources: []constant.NotificationSource{
 			constant.InboxSource,
 		},
-		Email:  email,
-		UserID: userID,
+		Email:                    email,
+		UserID:                   userID,
+		SkipValidationLatestCode: true,
 	}
 	// If receiver has set language, use it to send email.
 	if len(lang) > 0 {
@@ -74,5 +78,5 @@ func (ns *ExternalNotificationService) sendNewCommentNotificationEmail(ctx conte
 	}
 
 	ns.emailService.SendAndSaveCodeWithTime(
-		ctx, email, title, body, rawData.UnsubscribeCode, codeContent.ToJSONString(), 1*24*time.Hour)
+		ctx, userID, email, title, body, rawData.UnsubscribeCode, codeContent.ToJSONString(), 1*24*time.Hour)
 }

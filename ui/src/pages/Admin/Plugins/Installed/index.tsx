@@ -66,7 +66,7 @@ const Users: FC = () => {
       plugin_slug_name: plugin.slug_name,
     }).then(() => {
       updatePlugins();
-      PluginKit.changePluginActiveStatus(plugin.slug_name, !plugin.enabled);
+      PluginKit.refresh();
       if (plugin.have_config) {
         emitPluginChange('refreshConfigurablePlugins');
       }
@@ -82,13 +82,13 @@ const Users: FC = () => {
       <h3>{t('title')}</h3>
       <div className="mb-4">
         <Trans i18nKey="admin.installed_plugins.plugin_link">
-          Plugins extend and expand the functionality of Answer. You may find
-          plugins in the
+          Plugins extend and expand the functionality. You may find plugins in
+          the
           <a
-            href="https://github.com/apache/incubator-answer-plugins"
+            href="https://github.com/apache/answer-plugins"
             target="_blank"
             rel="noreferrer">
-            Answer Plugin Repository
+            Plugin Repository
           </a>
           .
         </Trans>
@@ -103,10 +103,10 @@ const Users: FC = () => {
           />
         </Stack>
       </div>
-      <Table>
+      <Table responsive="md">
         <thead>
           <tr>
-            <th>{t('name')}</th>
+            <th className="min-w-15">{t('name')}</th>
             <th style={{ width: '17%' }}>{t('version')}</th>
             <th style={{ width: '11%' }}>{t('status')}</th>
             {curFilter !== 'deleted' ? (

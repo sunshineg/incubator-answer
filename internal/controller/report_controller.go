@@ -20,18 +20,18 @@
 package controller
 
 import (
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/middleware"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/base/translator"
-	"github.com/apache/incubator-answer/internal/base/validator"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service/action"
-	"github.com/apache/incubator-answer/internal/service/permission"
-	"github.com/apache/incubator-answer/internal/service/rank"
-	"github.com/apache/incubator-answer/internal/service/report"
-	"github.com/apache/incubator-answer/pkg/uid"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/middleware"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/base/validator"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/action"
+	"github.com/apache/answer/internal/service/permission"
+	"github.com/apache/answer/internal/service/rank"
+	"github.com/apache/answer/internal/service/report"
+	"github.com/apache/answer/pkg/uid"
 	"github.com/gin-gonic/gin"
 	"github.com/segmentfault/pacman/errors"
 )
@@ -59,7 +59,6 @@ func NewReportController(
 // AddReport add report
 // @Summary add report
 // @Description add report <br> source (question, answer, comment, user)
-// @Security ApiKeyAuth
 // @Tags Report
 // @Accept json
 // @Produce json
@@ -101,5 +100,55 @@ func (rc *ReportController) AddReport(ctx *gin.Context) {
 	if !isAdmin {
 		rc.actionService.ActionRecordAdd(ctx, entity.CaptchaActionReport, req.UserID)
 	}
+	handler.HandleResponse(ctx, err, nil)
+}
+
+// GetUnreviewedReportPostPage get unreviewed report post page
+// @Summary get unreviewed report post page
+// @Description get unreviewed report post page
+// @Tags Report
+// @Accept json
+// @Produce json
+// @Security ApiKeyAuth
+// @Param page query int false "page"
+// @Success 200 {object} handler.RespBody{data=pager.PageModel{list=[]schema.GetReportListPageResp}}
+// @Router /answer/api/v1/report/unreviewed/post [get]
+func (rc *ReportController) GetUnreviewedReportPostPage(ctx *gin.Context) {
+	req := &schema.GetUnreviewedReportPostPageReq{}
+	if handler.BindAndCheck(ctx, req) {
+		return
+	}
+
+	req.UserID = middleware.GetLoginUserIDFromContext(ctx)
+	req.IsAdmin = middleware.GetUserIsAdminModerator(ctx)
+
+	resp, err := rc.reportService.GetUnreviewedReportPostPage(ctx, req)
+	handler.HandleResponse(ctx, err, resp)
+}
+
+// ReviewReport review report
+// @Summary review report
+// @Description review report
+// @Tags Report
+// @Accept json
+// @Produce json
+// @Security ApiKeyAuth
+// @Param data body schema.ReviewReportReq true "flag"
+// @Success 200 {object} handler.RespBody
+// @Router /answer/api/v1/report/review [put]
+func (rc *ReportController) ReviewReport(ctx *gin.Context) {
+	req := &schema.ReviewReportReq{}
+	if handler.BindAndCheck(ctx, req) {
+		return
+	}
+
+	req.UserID = middleware.GetLoginUserIDFromContext(ctx)
+	req.IsAdmin = middleware.GetUserIsAdminModerator(ctx)
+	if !req.IsAdmin {
+		handler.HandleResponse(ctx, errors.Forbidden(reason.ForbiddenError), nil)
+		return
+	}
+
+	err := rc.reportService.ReviewReport(ctx, req)
 	handler.HandleResponse(ctx, err, nil)
 }

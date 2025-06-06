@@ -20,8 +20,8 @@
 package migrations
 
 import (
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/service/permission"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/service/permission"
 )
 
 const (
@@ -37,6 +37,7 @@ Disallow: /users/oauth/*
 Disallow: /users/*/*
 Disallow: /answer/api
 Disallow: /*?code*
+Disallow: /swagger/*
 
 Sitemap: `
 )
@@ -52,6 +53,7 @@ var (
 		&entity.Meta{},
 		&entity.Notification{},
 		&entity.Question{},
+		&entity.QuestionLink{},
 		&entity.Report{},
 		&entity.Revision{},
 		&entity.SiteInfo{},
@@ -67,6 +69,13 @@ var (
 		&entity.PluginConfig{},
 		&entity.UserExternalLogin{},
 		&entity.UserNotificationConfig{},
+		&entity.PluginUserConfig{},
+		&entity.Review{},
+		&entity.Badge{},
+		&entity.BadgeGroup{},
+		&entity.BadgeAward{},
+		&entity.FileRecord{},
+		&entity.PluginKVStorage{},
 	}
 
 	roles = []*entity.Role{
@@ -274,7 +283,7 @@ var (
 		{ID: 61, Key: "reason.not_a_answer", Value: `{"name":"not a answer","description":"This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question, or deleted altogether.","content_type":""}`},
 		{ID: 62, Key: "reason.no_longer_needed", Value: `{"name":"no longer needed","description":"This comment is outdated, conversational or not relevant to this post."}`},
 		{ID: 63, Key: "reason.community_specific", Value: `{"name":"a community-specific reason","description":"This question doesn't meet a community guideline."}`},
-		{ID: 64, Key: "reason.not_clarity", Value: `{"name":"needs details or clarity","description":"This question currently includes multiple questions in one. It should focus on one problem only.","content_type":"text"}`},
+		{ID: 64, Key: "reason.not_clarity", Value: `{"name":"needs details or clarity","description":"This question currently includes multiple questions in one. It should focus on one problem only."}`},
 		{ID: 65, Key: "reason.normal", Value: `{"name":"normal","description":"A normal post available to everyone."}`},
 		{ID: 66, Key: "reason.normal.user", Value: `{"name":"normal","description":"A normal user can ask and answer questions."}`},
 		{ID: 67, Key: "reason.closed", Value: `{"name":"closed","description":"A closed question can't answer, but still can edit, vote and comment."}`},
@@ -341,5 +350,161 @@ var (
 		{ID: 128, Key: "rank.answer.undeleted", Value: `-1`},
 		{ID: 129, Key: "rank.question.undeleted", Value: `-1`},
 		{ID: 130, Key: "rank.tag.undeleted", Value: `-1`},
+	}
+
+	defaultBadgeGroupTable = []*entity.BadgeGroup{
+		{ID: "1", Name: "badge.default_badge_groups.getting_started.name"},
+		{ID: "2", Name: "badge.default_badge_groups.community.name"},
+		{ID: "3", Name: "badge.default_badge_groups.posting.name"},
+	}
+
+	defaultBadgeTable = []*entity.Badge{
+		{
+			Name:         "badge.default_badges.autobiographer.name",
+			Icon:         "person-badge-fill",
+			Description:  "badge.default_badges.autobiographer.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 1,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "FirstUpdateUserProfile",
+		},
+		{
+			Name:         "badge.default_badges.editor.name",
+			Icon:         "pencil-fill",
+			Description:  "badge.default_badges.editor.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 1,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "FirstPostEdit",
+		},
+		{
+			Name:         "badge.default_badges.first_flag.name",
+			Icon:         "flag-fill",
+			Description:  "badge.default_badges.first_flag.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 1,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "FirstFlaggedPost",
+		},
+		{
+			Name:         "badge.default_badges.first_upvote.name",
+			Icon:         "hand-thumbs-up-fill",
+			Description:  "badge.default_badges.first_upvote.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 1,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "FirstVotedPost",
+		},
+		{
+			Name:         "badge.default_badges.first_reaction.name",
+			Icon:         "emoji-smile-fill",
+			Description:  "badge.default_badges.first_reaction.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 1,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "FirstReactedPost",
+		},
+		{
+			Name:         "badge.default_badges.first_share.name",
+			Icon:         "share-fill",
+			Description:  "badge.default_badges.first_share.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 1,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "FirstSharedPost",
+		},
+		{
+			Name:         "badge.default_badges.scholar.name",
+			Icon:         "check-circle-fill",
+			Description:  "badge.default_badges.scholar.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 1,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "FirstAcceptAnswer",
+		},
+		{
+			Name:         "badge.default_badges.solved.name",
+			Icon:         "check-square-fill",
+			Description:  "badge.default_badges.solved.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 2,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeSingleAward,
+			Handler:      "ReachAnswerAcceptedAmount",
+			Param:        `{"amount":"1"}`,
+		},
+		{
+			Name:         "badge.default_badges.nice_answer.name",
+			Icon:         "chat-square-text-fill",
+			Description:  "badge.default_badges.nice_answer.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 3,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeMultiAward,
+			Handler:      "ReachAnswerVote",
+			Param:        `{"amount":"10"}`,
+		},
+		{
+			Name:         "badge.default_badges.good_answer.name",
+			Icon:         "chat-square-text-fill",
+			Description:  "badge.default_badges.good_answer.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 3,
+			Level:        entity.BadgeLevelSilver,
+			Single:       entity.BadgeMultiAward,
+			Handler:      "ReachAnswerVote",
+			Param:        `{"amount":"25"}`,
+		},
+		{
+			Name:         "badge.default_badges.great_answer.name",
+			Icon:         "chat-square-text-fill",
+			Description:  "badge.default_badges.great_answer.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 3,
+			Level:        entity.BadgeLevelGold,
+			Single:       entity.BadgeMultiAward,
+			Handler:      "ReachAnswerVote",
+			Param:        `{"amount":"50"}`,
+		},
+		{
+			Name:         "badge.default_badges.nice_question.name",
+			Icon:         "question-circle-fill",
+			Description:  "badge.default_badges.nice_question.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 3,
+			Level:        entity.BadgeLevelBronze,
+			Single:       entity.BadgeMultiAward,
+			Handler:      "ReachQuestionVote",
+			Param:        `{"amount":"10"}`,
+		},
+		{
+			Name:         "badge.default_badges.good_question.name",
+			Icon:         "question-circle-fill",
+			Description:  "badge.default_badges.good_question.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 3,
+			Level:        entity.BadgeLevelSilver,
+			Single:       entity.BadgeMultiAward,
+			Handler:      "ReachQuestionVote",
+			Param:        `{"amount":"25"}`,
+		},
+		{
+			Name:         "badge.default_badges.great_question.name",
+			Icon:         "question-circle-fill",
+			Description:  "badge.default_badges.great_question.desc",
+			Status:       entity.BadgeStatusActive,
+			BadgeGroupID: 3,
+			Level:        entity.BadgeLevelGold,
+			Single:       entity.BadgeMultiAward,
+			Handler:      "ReachQuestionVote",
+			Param:        `{"amount":"50"}`,
+		},
 	}
 )

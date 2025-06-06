@@ -24,11 +24,12 @@ import (
 	"database/sql"
 	"fmt"
 	"os"
+	"path/filepath"
 	"testing"
 	"time"
 
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/migrations"
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/migrations"
 	"github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"
 	"github.com/segmentfault/pacman/cache"
@@ -56,7 +57,7 @@ var (
 	}
 	sqlite3DBSetting = TestDBSetting{
 		Driver:     string(schemas.SQLITE),
-		Connection: os.TempDir() + "answer-test-data.db",
+		Connection: filepath.Join(os.TempDir(), "answer-test-data.db"),
 	}
 	dbSettingMapping = map[string]TestDBSetting{
 		mysqlDBSetting.Driver:    mysqlDBSetting,

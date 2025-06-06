@@ -21,7 +21,7 @@ import React, { FormEvent, useState, useEffect } from 'react';
 import { Form, Button, Stack, ButtonGroup } from 'react-bootstrap';
 import { Trans, useTranslation } from 'react-i18next';
 
-import MD5 from 'md5';
+import { sha256 } from 'js-sha256';
 
 import type { FormDataType } from '@/common/interface';
 import { UploadImg, Avatar, Icon, ImgViewer } from '@/components';
@@ -33,7 +33,7 @@ import {
   getUcSettings,
   UcSettingAgent,
 } from '@/services';
-import { handleFormError } from '@/utils';
+import { handleFormError, scrollToElementTop } from '@/utils';
 
 const Index: React.FC = () => {
   const { t } = useTranslation('translation', {
@@ -209,6 +209,13 @@ const Index: React.FC = () => {
     setFormData({
       ...formData,
     });
+    if (!bol) {
+      const errObj = Object.keys(formData).filter(
+        (key) => formData[key].isInvalid,
+      );
+      const ele = document.getElementById(errObj[0]);
+      scrollToElementTop(ele);
+    }
     return bol;
   };
 
@@ -247,6 +254,8 @@ const Index: React.FC = () => {
         if (err.isError) {
           const data = handleFormError(err, formData);
           setFormData({ ...data });
+          const ele = document.getElementById(err.list[0].error_field);
+          scrollToElementTop(ele);
         }
       });
   };
@@ -264,7 +273,7 @@ const Index: React.FC = () => {
       setFormData({ ...formData });
       if (res.e_mail) {
         const str = res.e_mail.toLowerCase().trim();
-        const hash = MD5(str);
+        const hash = sha256(str);
         setMailHash(hash);
       }
     });
@@ -295,7 +304,7 @@ const Index: React.FC = () => {
       ) : null}
       {!ucAgent?.enabled || profileAgent?.enabled === false ? (
         <Form noValidate onSubmit={handleSubmit}>
-          <Form.Group controlId="displayName" className="mb-3">
+          <Form.Group controlId="display_name" className="mb-3">
             <Form.Label>{t('display_name.label')}</Form.Label>
             <Form.Control
               required
@@ -318,7 +327,7 @@ const Index: React.FC = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group controlId="userName" className="mb-3">
+          <Form.Group controlId="username" className="mb-3">
             <Form.Label>{t('username.label')}</Form.Label>
             <Form.Control
               required
@@ -498,7 +507,7 @@ const Index: React.FC = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group controlId="email" className="mb-3">
+          <Form.Group controlId="location" className="mb-3">
             <Form.Label>{`${t('location.label')} ${t('optional', {
               keyPrefix: 'form',
             })}`}</Form.Label>

@@ -20,12 +20,13 @@
 package controller_admin
 
 import (
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/middleware"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service/user_admin"
-	"github.com/apache/incubator-answer/plugin"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/middleware"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/user_admin"
+	"github.com/apache/answer/plugin"
 	"github.com/gin-gonic/gin"
 	"github.com/segmentfault/pacman/errors"
 )
@@ -152,6 +153,35 @@ func (uc *UserAdminController) UpdateUserPassword(ctx *gin.Context) {
 	handler.HandleResponse(ctx, err, nil)
 }
 
+// EditUserProfile edit user profile
+// @Summary edit user profile
+// @Description edit user profile
+// @Security ApiKeyAuth
+// @Tags admin
+// @Accept json
+// @Produce json
+// @Param data body schema.EditUserProfileReq true "user"
+// @Success 200 {object} handler.RespBody
+// @Router /answer/admin/api/user/profile [put]
+func (uc *UserAdminController) EditUserProfile(ctx *gin.Context) {
+	req := &schema.EditUserProfileReq{}
+	if handler.BindAndCheck(ctx, req) {
+		return
+	}
+
+	req.IsAdmin = middleware.GetUserIsAdminModerator(ctx)
+	if !req.IsAdmin {
+		handler.HandleResponse(ctx, errors.Forbidden(reason.ForbiddenError), nil)
+		return
+	}
+
+	errFields, err := uc.userService.EditUserProfile(ctx, req)
+	for _, field := range errFields {
+		field.ErrorMsg = translator.Tr(handler.GetLang(ctx), field.ErrorMsg)
+	}
+	handler.HandleResponse(ctx, err, errFields)
+}
+
 // GetUserPage get user page
 // @Summary get user page
 // @Description get user page
@@ -210,5 +240,25 @@ func (uc *UserAdminController) SendUserActivation(ctx *gin.Context) {
 	}
 
 	err := uc.userService.SendUserActivation(ctx, req)
+	handler.HandleResponse(ctx, err, nil)
+}
+
+// DeletePermanently delete permanently
+// @Summary delete permanently
+// @Description delete permanently
+// @Security ApiKeyAuth
+// @Tags admin
+// @Accept json
+// @Produce json
+// @Param data body schema.DeletePermanentlyReq true "DeletePermanentlyReq"
+// @Success 200 {object} handler.RespBody
+// @Router /answer/admin/api/delete/permanently [delete]
+func (uc *UserAdminController) DeletePermanently(ctx *gin.Context) {
+	req := &schema.DeletePermanentlyReq{}
+	if handler.BindAndCheck(ctx, req) {
+		return
+	}
+
+	err := uc.userService.DeletePermanently(ctx, req)
 	handler.HandleResponse(ctx, err, nil)
 }

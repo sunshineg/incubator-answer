@@ -25,10 +25,10 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/apache/incubator-answer/internal/repo/unique"
+	"github.com/apache/answer/internal/repo/unique"
 
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/repo/tag"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/repo/tag"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -36,13 +36,13 @@ var (
 	tagRelOnce     sync.Once
 	testTagRelList = []*entity.TagRel{
 		{
-			ObjectID: "10010000000000001",
-			TagID:    "10030000000000001",
+			ObjectID: "10010000000000101",
+			TagID:    "10030000000000101",
 			Status:   entity.TagRelStatusAvailable,
 		},
 		{
-			ObjectID: "10010000000000002",
-			TagID:    "10030000000000002",
+			ObjectID: "10010000000000202",
+			TagID:    "10030000000000202",
 			Status:   entity.TagRelStatusAvailable,
 		},
 	}
@@ -68,7 +68,7 @@ func Test_tagListRepo_BatchGetObjectTagRelList(t *testing.T) {
 func Test_tagListRepo_CountTagRelByTagID(t *testing.T) {
 	tagRelOnce.Do(addTagRelList)
 	tagRelRepo := tag.NewTagRelRepo(testDataSource, unique.NewUniqueIDRepo(testDataSource))
-	count, err := tagRelRepo.CountTagRelByTagID(context.TODO(), "10030000000000001")
+	count, err := tagRelRepo.CountTagRelByTagID(context.TODO(), "10030000000000101")
 	assert.NoError(t, err)
 	assert.Equal(t, int64(1), count)
 }
@@ -96,7 +96,7 @@ func Test_tagListRepo_GetObjectTagRelWithoutStatus(t *testing.T) {
 	err = tagRelRepo.RemoveTagRelListByIDs(context.TODO(), ids)
 	assert.NoError(t, err)
 
-	count, err := tagRelRepo.CountTagRelByTagID(context.TODO(), "10030000000000001")
+	count, err := tagRelRepo.CountTagRelByTagID(context.TODO(), "10030000000000101")
 	assert.NoError(t, err)
 	assert.Equal(t, int64(0), count)
 
@@ -104,10 +104,10 @@ func Test_tagListRepo_GetObjectTagRelWithoutStatus(t *testing.T) {
 	assert.NoError(t, err)
 	assert.True(t, exist)
 
-	err = tagRelRepo.EnableTagRelByIDs(context.TODO(), ids)
+	err = tagRelRepo.EnableTagRelByIDs(context.TODO(), ids, false)
 	assert.NoError(t, err)
 
-	count, err = tagRelRepo.CountTagRelByTagID(context.TODO(), "10030000000000001")
+	count, err = tagRelRepo.CountTagRelByTagID(context.TODO(), "10030000000000101")
 	assert.NoError(t, err)
 	assert.Equal(t, int64(1), count)
 }

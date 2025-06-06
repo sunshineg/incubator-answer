@@ -22,28 +22,27 @@ package controller_admin
 import (
 	"encoding/json"
 
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service/plugin_common"
-	"github.com/apache/incubator-answer/plugin"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/plugin_common"
+	"github.com/apache/answer/plugin"
 	"github.com/gin-gonic/gin"
 )
 
 // PluginController role controller
 type PluginController struct {
-	PluginCommonService *plugin_common.PluginCommonService
+	pluginCommonService *plugin_common.PluginCommonService
 }
 
 // NewPluginController new controller
-func NewPluginController(PluginCommonService *plugin_common.PluginCommonService) *PluginController {
-	return &PluginController{PluginCommonService: PluginCommonService}
+func NewPluginController(pluginCommonService *plugin_common.PluginCommonService) *PluginController {
+	return &PluginController{pluginCommonService: pluginCommonService}
 }
 
 // GetAllPluginStatus get all plugins status
 // @Summary get all plugins status
 // @Description get all plugins status
 // @Tags Plugin
-// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} handler.RespBody{data=[]schema.GetPluginListResp}
@@ -150,7 +149,7 @@ func (pc *PluginController) UpdatePluginStatus(ctx *gin.Context) {
 	}
 
 	plugin.StatusManager.Enable(req.PluginSlugName, req.Enabled)
-	err := pc.PluginCommonService.UpdatePluginStatus(ctx)
+	err := pc.pluginCommonService.UpdatePluginStatus(ctx)
 	handler.HandleResponse(ctx, err, nil)
 }
 
@@ -220,6 +219,6 @@ func (pc *PluginController) UpdatePluginConfig(ctx *gin.Context) {
 		return
 	}
 
-	err = pc.PluginCommonService.UpdatePluginConfig(ctx, req)
+	err = pc.pluginCommonService.UpdatePluginConfig(ctx, req)
 	handler.HandleResponse(ctx, err, nil)
 }

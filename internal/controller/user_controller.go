@@ -20,30 +20,31 @@
 package controller
 
 import (
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/middleware"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/base/translator"
-	"github.com/apache/incubator-answer/internal/base/validator"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service"
-	"github.com/apache/incubator-answer/internal/service/action"
-	"github.com/apache/incubator-answer/internal/service/auth"
-	"github.com/apache/incubator-answer/internal/service/export"
-	"github.com/apache/incubator-answer/internal/service/siteinfo_common"
-	"github.com/apache/incubator-answer/internal/service/user_notification_config"
-	"github.com/apache/incubator-answer/pkg/checker"
+	"net/url"
+
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/middleware"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/base/validator"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/action"
+	"github.com/apache/answer/internal/service/auth"
+	"github.com/apache/answer/internal/service/content"
+	"github.com/apache/answer/internal/service/export"
+	"github.com/apache/answer/internal/service/siteinfo_common"
+	"github.com/apache/answer/internal/service/user_notification_config"
+	"github.com/apache/answer/pkg/checker"
 	"github.com/gin-gonic/gin"
 	"github.com/segmentfault/pacman/errors"
 	"github.com/segmentfault/pacman/log"
-	"net/url"
 )
 
 // UserController user controller
 type UserController struct {
-	userService                   *service.UserService
+	userService                   *content.UserService
 	authService                   *auth.AuthService
 	actionService                 *action.CaptchaService
 	emailService                  *export.EmailService
@@ -54,7 +55,7 @@ type UserController struct {
 // NewUserController new controller
 func NewUserController(
 	authService *auth.AuthService,
-	userService *service.UserService,
+	userService *content.UserService,
 	actionService *action.CaptchaService,
 	emailService *export.EmailService,
 	siteInfoCommonService siteinfo_common.SiteInfoCommonService,
@@ -114,7 +115,10 @@ func (uc *UserController) GetOtherUserInfoByUsername(ctx *gin.Context) {
 		return
 	}
 
-	resp, err := uc.userService.GetOtherUserInfoByUsername(ctx, req.Username)
+	req.UserID = middleware.GetLoginUserIDFromContext(ctx)
+	req.IsAdmin = middleware.GetUserIsAdminModerator(ctx)
+
+	resp, err := uc.userService.GetOtherUserInfoByUsername(ctx, req)
 	handler.HandleResponse(ctx, err, resp)
 }
 
@@ -157,6 +161,11 @@ func (uc *UserController) UserEmailLogin(ctx *gin.Context) {
 	}
 	if !isAdmin {
 		uc.actionService.ActionRecordDel(ctx, entity.CaptchaActionPassword, ctx.ClientIP())
+	}
+	if resp.Status == constant.UserSuspended {
+		handler.HandleResponse(ctx, errors.Forbidden(reason.UserSuspended),
+			&schema.ForbiddenResp{Type: schema.ForbiddenReasonTypeUserSuspended})
+		return
 	}
 	uc.setVisitCookies(ctx, resp.VisitToken, true)
 	handler.HandleResponse(ctx, nil, resp)
@@ -222,6 +231,7 @@ func (uc *UserController) UseRePassWord(ctx *gin.Context) {
 // UserLogout user logout
 // @Summary user logout
 // @Description user logout
+// @Security ApiKeyAuth
 // @Tags User
 // @Accept json
 // @Produce json
@@ -384,7 +394,7 @@ func (uc *UserController) UserModifyPassWord(ctx *gin.Context) {
 	req.AccessToken = middleware.ExtractToken(ctx)
 	isAdmin := middleware.GetUserIsAdminModerator(ctx)
 	if !isAdmin {
-		captchaPass := uc.actionService.ActionRecordVerifyCaptcha(ctx, entity.CaptchaActionPassword, req.UserID,
+		captchaPass := uc.actionService.ActionRecordVerifyCaptcha(ctx, entity.CaptchaActionEditUserinfo, req.UserID,
 			req.CaptchaID, req.CaptchaCode)
 		if !captchaPass {
 			errFields := append([]*validator.FormErrorField{}, &validator.FormErrorField{
@@ -394,7 +404,7 @@ func (uc *UserController) UserModifyPassWord(ctx *gin.Context) {
 			handler.HandleResponse(ctx, errors.BadRequest(reason.CaptchaVerificationFailed), errFields)
 			return
 		}
-		_, err := uc.actionService.ActionRecordAdd(ctx, entity.CaptchaActionPassword, req.UserID)
+		_, err := uc.actionService.ActionRecordAdd(ctx, entity.CaptchaActionEditUserinfo, req.UserID)
 		if err != nil {
 			log.Error(err)
 		}
@@ -424,7 +434,7 @@ func (uc *UserController) UserModifyPassWord(ctx *gin.Context) {
 	}
 	err = uc.userService.UserModifyPassword(ctx, req)
 	if err == nil {
-		uc.actionService.ActionRecordDel(ctx, entity.CaptchaActionPassword, req.UserID)
+		uc.actionService.ActionRecordDel(ctx, entity.CaptchaActionEditUserinfo, req.UserID)
 	}
 	handler.HandleResponse(ctx, err, nil)
 }
@@ -505,19 +515,6 @@ func (uc *UserController) ActionRecord(ctx *gin.Context) {
 
 }
 
-// UserRegisterCaptcha godoc
-// @Summary UserRegisterCaptcha
-// @Description UserRegisterCaptcha
-// @Tags User
-// @Accept json
-// @Produce json
-// @Success 200 {object} handler.RespBody{data=schema.UserLoginResp}
-// @Router /answer/api/v1/user/register/captcha [get]
-func (uc *UserController) UserRegisterCaptcha(ctx *gin.Context) {
-	resp, err := uc.actionService.UserRegisterCaptcha(ctx)
-	handler.HandleResponse(ctx, err, resp)
-}
-
 // GetUserNotificationConfig get user's notification config
 // @Summary get user's notification config
 // @Description get user's notification config
@@ -557,6 +554,7 @@ func (uc *UserController) UpdateUserNotificationConfig(ctx *gin.Context) {
 // UserChangeEmailSendCode send email to the user email then change their email
 // @Summary send email to the user email then change their email
 // @Description send email to the user email then change their email
+// @Security ApiKeyAuth
 // @Tags User
 // @Accept json
 // @Produce json
@@ -645,11 +643,30 @@ func (uc *UserController) UserChangeEmailVerify(ctx *gin.Context) {
 // @Tags User
 // @Accept json
 // @Produce json
-// @Security ApiKeyAuth
 // @Success 200 {object} handler.RespBody{data=schema.UserRankingResp}
 // @Router /answer/api/v1/user/ranking [get]
 func (uc *UserController) UserRanking(ctx *gin.Context) {
 	resp, err := uc.userService.UserRanking(ctx)
+	handler.HandleResponse(ctx, err, resp)
+}
+
+// UserStaff get user staff
+// @Summary get user staff
+// @Description get user staff
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param username query string true "username"
+// @Param page_size query string true "page_size"
+// @Success 200 {object} handler.RespBody{data=schema.GetUserStaffResp}
+// @Router /answer/api/v1/user/staff [get]
+func (uc *UserController) UserStaff(ctx *gin.Context) {
+	req := &schema.GetUserStaffReq{}
+	if handler.BindAndCheck(ctx, req) {
+		return
+	}
+
+	resp, err := uc.userService.GetUserStaff(ctx, req)
 	handler.HandleResponse(ctx, err, resp)
 }
 
@@ -700,9 +717,12 @@ func (uc *UserController) SearchUserListByName(ctx *gin.Context) {
 }
 
 func (uc *UserController) setVisitCookies(ctx *gin.Context, visitToken string, force bool) {
-	cookie, err := ctx.Cookie(constant.UserVisitCookiesCacheKey)
-	if err == nil && len(cookie) > 0 && !force {
-		return
+	if !force {
+		cookie, _ := ctx.Cookie(constant.UserVisitCookiesCacheKey)
+		// If the cookie is the same as the visitToken, no need to set it again
+		if cookie == visitToken {
+			return
+		}
 	}
 	general, err := uc.siteInfoCommonService.GetSiteGeneral(ctx)
 	if err != nil {
@@ -715,5 +735,5 @@ func (uc *UserController) setVisitCookies(ctx *gin.Context, visitToken string, f
 		return
 	}
 	ctx.SetCookie(constant.UserVisitCookiesCacheKey,
-		visitToken, constant.UserVisitCacheTime, "/", parsedURL.Host, true, true)
+		visitToken, constant.UserVisitCacheTime, "/", parsedURL.Hostname(), true, true)
 }

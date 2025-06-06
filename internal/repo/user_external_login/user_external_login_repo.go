@@ -23,12 +23,12 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service/user_external_login"
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/user_external_login"
 	"github.com/segmentfault/pacman/errors"
 )
 
@@ -72,6 +72,17 @@ func (ur *userExternalLoginRepo) GetByExternalID(ctx context.Context, provider, 
 	return
 }
 
+// GetByUserID get by user ID
+func (ur *userExternalLoginRepo) GetByUserID(ctx context.Context, provider, userID string) (
+	userInfo *entity.UserExternalLogin, exist bool, err error) {
+	userInfo = &entity.UserExternalLogin{}
+	exist, err = ur.data.DB.Context(ctx).Where("user_id = ?", userID).Where("provider = ?", provider).Get(userInfo)
+	if err != nil {
+		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+	return
+}
+
 // GetUserExternalLoginList get by external ID
 func (ur *userExternalLoginRepo) GetUserExternalLoginList(ctx context.Context, userID string) (
 	resp []*entity.UserExternalLogin, err error) {
@@ -87,6 +98,16 @@ func (ur *userExternalLoginRepo) GetUserExternalLoginList(ctx context.Context, u
 func (ur *userExternalLoginRepo) DeleteUserExternalLogin(ctx context.Context, userID, externalID string) (err error) {
 	cond := &entity.UserExternalLogin{}
 	_, err = ur.data.DB.Context(ctx).Where("user_id = ? AND external_id = ?", userID, externalID).Delete(cond)
+	if err != nil {
+		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+	return
+}
+
+// DeleteUserExternalLoginByUserID delete external user login info by user ID
+func (ur *userExternalLoginRepo) DeleteUserExternalLoginByUserID(ctx context.Context, userID string) (err error) {
+	cond := &entity.UserExternalLogin{}
+	_, err = ur.data.DB.Context(ctx).Where("user_id = ?", userID).Delete(cond)
 	if err != nil {
 		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
 	}

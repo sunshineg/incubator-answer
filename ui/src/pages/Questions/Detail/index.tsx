@@ -30,7 +30,7 @@ import { useTranslation } from 'react-i18next';
 import { Pagination, CustomSidebar } from '@/components';
 import { loggedUserInfoStore, toastStore } from '@/stores';
 import { scrollToElementTop, scrollToDocTop } from '@/utils';
-import { usePageTags, usePageUsers } from '@/hooks';
+import { usePageTags, usePageUsers, useSkeletonControl } from '@/hooks';
 import type {
   ListResult,
   QuestionDetailRes,
@@ -47,6 +47,7 @@ import {
   Alert,
   ContentLoader,
   InviteToAnswer,
+  LinkedQuestions,
 } from './components';
 
 import './index.scss';
@@ -68,6 +69,7 @@ const Index = () => {
   const order = urlSearch.get('order') || '';
   const [question, setQuestion] = useState<QuestionDetailRes | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { isSkeletonShow } = useSkeletonControl(isLoading);
   const [answers, setAnswers] = useState<ListResult<AnswerItem>>({
     count: -1,
     list: [],
@@ -79,20 +81,25 @@ const Index = () => {
   const isModerator = userInfo?.role_id === 3;
   const isLogged = Boolean(userInfo?.access_token);
   const loggedUserRank = userInfo?.rank;
-  const { state: locationState } = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
-    if (locationState?.isReview) {
+    if (location.state?.isReview) {
       toastStore.getState().show({
         msg: t('review', { keyPrefix: 'toast' }),
         variant: 'warning',
       });
+
+      // remove state isReview
+      const newLocation = { ...location };
+      delete newLocation.state;
+      window.history.replaceState(null, '', newLocation.pathname);
     }
-  }, [locationState]);
+  }, [location.state]);
 
   const requestAnswers = async () => {
     const res = await getAnswers({
-      order: order === 'updated' ? order : 'default',
+      order: order === 'updated' || order === 'created' ? order : 'default',
       question_id: qid,
       page: 1,
       page_size: 999,
@@ -208,7 +215,6 @@ const Index = () => {
     if (!qid) {
       return;
     }
-    scrollToDocTop();
     getDetail();
     requestAnswers();
   }, [qid]);
@@ -225,6 +231,7 @@ const Index = () => {
   });
 
   const showInviteToAnswer = question?.id;
+  const showLinkedQuestions = question?.id && question.id !== '';
   let canInvitePeople = false;
   if (showInviteToAnswer && Array.isArray(question.extends_actions)) {
     const inviteAct = question.extends_actions.find((op) => {
@@ -239,7 +246,7 @@ const Index = () => {
     <Row className="questionDetailPage pt-4 mb-5">
       <Col className="page-main flex-auto">
         {question?.operation?.level && <Alert data={question.operation} />}
-        {isLoading ? (
+        {isSkeletonShow ? (
           <ContentLoader />
         ) : (
           <Question
@@ -294,13 +301,14 @@ const Index = () => {
       </Col>
       <Col className="page-right-side mt-4 mt-xl-0">
         <CustomSidebar />
-        <RelatedQuestions id={question?.id || ''} />
         {showInviteToAnswer ? (
           <InviteToAnswer
             questionId={question.id}
             readOnly={!canInvitePeople}
           />
         ) : null}
+        {showLinkedQuestions ? <LinkedQuestions id={question.id} /> : null}
+        <RelatedQuestions id={question?.id || ''} />
       </Col>
     </Row>
   );

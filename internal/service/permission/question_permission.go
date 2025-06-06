@@ -21,11 +21,11 @@ package permission
 
 import (
 	"context"
-	"github.com/apache/incubator-answer/internal/entity"
+	"github.com/apache/answer/internal/entity"
 
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/translator"
-	"github.com/apache/incubator-answer/internal/schema"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/schema"
 )
 
 // GetQuestionPermission get question permission
@@ -92,7 +92,8 @@ func GetQuestionPermission(ctx context.Context, userID string, creatorUserID str
 			Type:   "confirm",
 		})
 	}
-	if canDelete || userID == creatorUserID {
+
+	if (canDelete || userID == creatorUserID) && status != entity.QuestionStatusDeleted {
 		actions = append(actions, &schema.PermissionMemberAction{
 			Action: "delete",
 			Name:   translator.Tr(lang, deleteActionName),

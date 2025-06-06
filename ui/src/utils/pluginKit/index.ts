@@ -17,14 +17,18 @@
  * under the License.
  */
 
-import { NamedExoticComponent, FC } from 'react';
+import { RefObject } from 'react';
 
 import builtin from '@/plugins/builtin';
 import * as allPlugins from '@/plugins';
 import type * as Type from '@/common/interface';
+import { LOGGED_TOKEN_STORAGE_KEY } from '@/common/constants';
 import { getPluginsStatus } from '@/services';
+import Storage from '@/utils/storage';
+import request from '@/utils/request';
 
 import { initI18nResource } from './utils';
+import { Plugin, PluginInfo, PluginType } from './interface';
 
 /**
  * This information is to be defined for all components.
@@ -38,34 +42,29 @@ import { initI18nResource } from './utils';
  * @field description: Plugin description, optionally configurable. Usually read from the `i18n` file
  */
 
-export type PluginType = 'connector' | 'search' | 'editor';
-export interface PluginInfo {
-  slug_name: string;
-  type: PluginType;
-  name?: string;
-  description?: string;
-}
-
-export interface Plugin {
-  info: PluginInfo;
-  component: NamedExoticComponent | FC;
-  i18nConfig?;
-  hooks?: {
-    useRender?: Array<(element: HTMLElement | null) => void>;
-  };
-  activated?: boolean;
-}
-
 class Plugins {
   plugins: Plugin[] = [];
 
-  constructor() {
-    this.registerBuiltin();
-    this.registerPlugins();
+  registeredPlugins: Type.ActivatedPlugin[] = [];
 
-    getPluginsStatus().then((plugins) => {
-      this.activatePlugins(plugins);
-    });
+  initialization: Promise<void>;
+
+  constructor() {
+    this.initialization = this.init();
+  }
+
+  async init() {
+    this.registerBuiltin();
+
+    // Note: The /install stage does not allow access to the getPluginsStatus api, so an initial value needs to be given
+    const plugins = (await getPluginsStatus().catch(() => [])) || [];
+    this.registeredPlugins = plugins.filter((p) => p.enabled);
+    await this.registerPlugins();
+  }
+
+  refresh() {
+    this.plugins = [];
+    this.init();
   }
 
   validate(plugin: Plugin) {
@@ -97,9 +96,16 @@ class Plugins {
   }
 
   registerPlugins() {
-    Object.keys(allPlugins).forEach((key) => {
-      const plugin = allPlugins[key];
-      this.register(plugin);
+    const plugins = this.registeredPlugins
+      .map((p) => {
+        const func = allPlugins[p.slug_name];
+
+        return func;
+      })
+      .filter((p) => p);
+    return Promise.all(plugins.map((p) => p())).then((resolvedPlugins) => {
+      resolvedPlugins.forEach((plugin) => this.register(plugin));
+      return true;
     });
   }
 
@@ -111,30 +117,17 @@ class Plugins {
     if (plugin.i18nConfig) {
       initI18nResource(plugin.i18nConfig);
     }
+    plugin.activated = true;
     this.plugins.push(plugin);
-  }
-
-  activatePlugins(activatedPlugins: Type.ActivatedPlugin[]) {
-    this.plugins.forEach((plugin: any) => {
-      const { slug_name } = plugin.info;
-      const activatedPlugin: any = activatedPlugins?.find(
-        (p) => p.slug_name === slug_name,
-      );
-      if (activatedPlugin) {
-        plugin.activated = activatedPlugin?.enabled;
-      }
-    });
-  }
-
-  changePluginActiveStatus(slug_name: string, active: boolean) {
-    const plugin = this.getPlugin(slug_name);
-    if (plugin) {
-      plugin.activated = active;
-    }
   }
 
   getPlugin(slug_name: string) {
     return this.plugins.find((p) => p.info.slug_name === slug_name);
+  }
+
+  getOnePluginHooks(slug_name: string) {
+    const plugin = this.getPlugin(slug_name);
+    return plugin?.hooks;
   }
 
   getPlugins() {
@@ -144,16 +137,143 @@ class Plugins {
 
 const plugins = new Plugins();
 
-const useRenderHtmlPlugin = (element: HTMLElement | null) => {
+const getRoutePlugins = async () => {
+  await plugins.initialization;
+  return plugins
+    .getPlugins()
+    .filter((plugin) => plugin.info.type === PluginType.Route);
+};
+
+const defaultProps = () => {
+  const token = Storage.get(LOGGED_TOKEN_STORAGE_KEY) || '';
+  return {
+    key: token,
+    headers: {
+      Authorization: token,
+    },
+  };
+};
+
+const validateRoutePlugin = async (slugName) => {
+  let registeredPlugin;
+  if (plugins.registeredPlugins.length === 0) {
+    const pluginsStatus = await getPluginsStatus();
+    registeredPlugin = pluginsStatus.find((p) => p.slug_name === slugName);
+  } else {
+    registeredPlugin = plugins.registeredPlugins.find(
+      (p) => p.slug_name === slugName,
+    );
+  }
+
+  return Boolean(registeredPlugin?.enabled);
+};
+
+const mergeRoutePlugins = async (routes) => {
+  const routePlugins = await getRoutePlugins();
+  if (routePlugins.length === 0) {
+    return routes;
+  }
+  routes.forEach((route) => {
+    if (route.page === 'pages/Layout') {
+      route.children?.forEach((child) => {
+        if (child.page === 'pages/SideNavLayout') {
+          routePlugins.forEach((plugin) => {
+            const { route: path, slug_name } = plugin.info;
+            child.children.push({
+              page: plugin.component,
+              path,
+              loader: async () => {
+                const bool = await validateRoutePlugin(slug_name);
+                return bool;
+              },
+              guard: (params) => {
+                if (params.loaderData) {
+                  return {
+                    ok: true,
+                  };
+                }
+
+                return {
+                  ok: false,
+                  error: {
+                    code: 404,
+                  },
+                };
+              },
+            });
+          });
+        }
+      });
+    }
+  });
+  return routes;
+};
+
+/**
+ * Only used to enhance the capabilities of the markdown editor
+ * Add RefObject type to solve the problem of dom being null in hooks
+ */
+const useRenderHtmlPlugin = (
+  element: HTMLElement | RefObject<HTMLElement> | null,
+) => {
   plugins
     .getPlugins()
-    .filter((plugin) => plugin.activated && plugin.hooks?.useRender)
+    .filter((plugin) => {
+      return (
+        plugin.activated &&
+        plugin.hooks?.useRender &&
+        (plugin.info.type === PluginType.Editor ||
+          plugin.info.type === PluginType.Render)
+      );
+    })
     .forEach((plugin) => {
       plugin.hooks?.useRender?.forEach((hook) => {
-        hook(element);
+        hook(element, request);
       });
     });
 };
 
-export { useRenderHtmlPlugin };
+// Only for render type plugins
+const useRenderPlugin = (
+  element: HTMLElement | RefObject<HTMLElement> | null,
+) => {
+  return plugins
+    .getPlugins()
+    .filter((plugin) => {
+      return (
+        plugin.activated &&
+        plugin.hooks?.useRender &&
+        plugin.info.type === PluginType.Render
+      );
+    })
+    .forEach((plugin) => {
+      plugin.hooks?.useRender?.forEach((hook) => {
+        hook(element, request);
+      });
+    });
+};
+
+// Only one captcha type plug-in can be enabled at the same time
+const useCaptchaPlugin = (key: Type.CaptchaKey) => {
+  const captcha = plugins
+    .getPlugins()
+    .filter(
+      (plugin) => plugin.info.type === PluginType.Captcha && plugin.activated,
+    );
+  const pluginHooks = plugins.getOnePluginHooks(captcha[0]?.info.slug_name);
+  return pluginHooks?.useCaptcha?.({
+    captchaKey: key,
+    commonProps: defaultProps(),
+  });
+};
+
+export type { Plugin, PluginInfo };
+
+export {
+  useRenderHtmlPlugin,
+  mergeRoutePlugins,
+  useCaptchaPlugin,
+  useRenderPlugin,
+  PluginType,
+};
 export default plugins;

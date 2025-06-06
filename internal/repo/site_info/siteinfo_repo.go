@@ -23,11 +23,11 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/service/siteinfo_common"
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/service/siteinfo_common"
 	"github.com/segmentfault/pacman/errors"
 	"github.com/segmentfault/pacman/log"
 	"xorm.io/builder"
@@ -100,4 +100,19 @@ func (sr *siteInfoRepo) setCache(ctx context.Context, siteType string, siteInfo 
 	if err != nil {
 		log.Error(err)
 	}
+}
+
+func (sr *siteInfoRepo) IsBrandingFileUsed(ctx context.Context, filePath string) (bool, error) {
+	siteInfo := &entity.SiteInfo{}
+	count, err := sr.data.DB.Context(ctx).
+		Table("site_info").
+		Where(builder.Eq{"type": "branding"}).
+		And(builder.Like{"content", "%" + filePath + "%"}).
+		Count(&siteInfo)
+
+	if err != nil {
+		return false, errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+
+	return count > 0, nil
 }

@@ -57,6 +57,8 @@ backend:
       other: Edit
     undelete:
       other: Undelete
+    merge:
+      other: Merge
   role:
     name:
       user:
@@ -82,6 +84,9 @@ backend:
     level_3:
       description:
         other: Level 3 (high reputation required for mature community)
+    level_custom:
+      description:
+        other: Custom Level
     rank_question_add_label:
       other: Ask question
     rank_answer_add_label:
@@ -134,15 +139,26 @@ backend:
     other: Heslo
   pass:
     other: Password
+  old_pass:
+    other: Current password
+  original_text:
+    other: This post
   email_or_password_wrong_error:
     other: E-mail a heslo sa nezhodujú.
   error:
+    common:
+      invalid_url:
+        other: Invalid URL.
+      status_invalid:
+        other: Invalid status.
     password:
       space_invalid:
         other: Password cannot contain spaces.
     admin:
       cannot_update_their_password:
         other: Svoje heslo upraviť.
+      cannot_edit_their_profile:
+        other: You cannot modify your profile.
       cannot_modify_self_status:
         other: Nemôžete upraviť svoj stav.
       email_or_password_wrong:
@@ -156,6 +172,8 @@ backend:
         other: Žiadne povolenie na aktualizáciu.
       question_closed_cannot_add:
         other: Questions are closed and cannot be added.
+      content_cannot_empty:
+        other: Answer content cannot be empty.
     comment:
       edit_without_permission:
         other: Komentár nie je dovolené upravovať.
@@ -163,6 +181,8 @@ backend:
         other: Komentár sa nenašiel.
       cannot_edit_after_deadline:
         other: Čas na úpravu komentára bol príliš dlhý.
+      content_cannot_empty:
+        other: Comment content cannot be empty.
     email:
       duplicate:
         other: E-mail už existuje.
@@ -194,9 +214,16 @@ backend:
         other: Overenie starého hesla zlyhalo
       new_password_same_as_previous_setting:
         other: Nové heslo je rovnaké ako predchádzajúce.
+      already_deleted:
+        other: This post has been deleted.
+    meta:
+      object_not_found:
+        other: Meta object not found
     question:
       already_deleted:
         other: Tento príspevok bol odstránený.
+      under_review:
+        other: Your post is awaiting review. It will be visible after it has been approved.
       not_found:
         other: Otázka sa nenašla.
       cannot_deleted:
@@ -205,6 +232,8 @@ backend:
         other: Žiadne povolenie na uzavretie.
       cannot_update:
         other: Žiadne povolenie na aktualizáciu.
+      content_cannot_empty:
+        other: Content cannot be empty.
     rank:
       fail_to_meet_the_condition:
         other: Reputation rank fail to meet the condition.
@@ -294,6 +323,9 @@ backend:
     site_info:
       config_not_found:
         other: Site config not found.
+    badge:
+      object_not_found:
+        other: Badge object not found
   reason:
     spam:
       name:
@@ -304,7 +336,7 @@ backend:
       name:
         other: rude or abusive
       desc:
-        other: A reasonable person would find this content inappropriate for respectful discourse.
+        other: "A reasonable person would find this content inappropriate for respectful discourse."
     a_duplicate:
       name:
         other: a duplicate
@@ -316,7 +348,7 @@ backend:
       name:
         other: not an answer
       desc:
-        other: This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question, or deleted altogether.
+        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
     no_longer_needed:
       name:
         other: no longer needed
@@ -375,7 +407,7 @@ backend:
         name:
           other: potrebuje podrobnosti alebo jasnosť
         desc:
-          other: Táto otázka momentálne obsahuje viacero otázok v jednej. Malo by sa zamerať len na jeden problém.
+          other: This question currently includes multiple questions in one. It should focus on one problem only.
       other:
         name:
           other: niečo iné
@@ -390,6 +422,13 @@ backend:
         other: upravený
     deleted_title:
       other: Deleted question
+    questions_title:
+      other: Questions
+  tag:
+    tags_title:
+      other: Tags
+    no_description:
+      other: The tag has no description.
   notification:
     action:
       update_question:
@@ -428,47 +467,49 @@ backend:
         other: upvoted comment
       invited_you_to_answer:
         other: invited you to answer
+      earned_badge:
+        other: You've earned the "{{.BadgeName}}" badge
   email_tpl:
     change_email:
       title:
         other: "[{{.SiteName}}] Confirm your new email address"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.\n"
+        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} answered your question"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} invited you to answer"
       body:
-        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.InviteUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>I think you may know the answer.</blockquote><br>\n<a href='{{.InviteUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     new_comment:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} commented on your post"
       body:
-        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.CommentUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.CommentSummary}}</blockquote><br>\n<a href='{{.CommentUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     new_question:
       title:
         other: "[{{.SiteName}}] New question: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Password reset"
       body:
-        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n"
+        other: "Somebody asked to reset your password on {{.SiteName}}.<br><br>\n\nIf it was not you, you can safely ignore this email.<br><br>\n\nClick the following link to choose a new password:<br>\n<a href='{{.PassResetUrl}}' target='_blank'>{{.PassResetUrl}}</a>\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
     register:
       title:
         other: "[{{.SiteName}}] Confirm your new account"
       body:
-        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n"
+        other: "Welcome to {{.SiteName}}!<br><br>\n\nClick the following link to confirm and activate your new account:<br>\n<a href='{{.RegisterUrl}}' target='_blank'>{{.RegisterUrl}}</a><br><br>\n\nIf the above link is not clickable, try copying and pasting it into the address bar of your web browser.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
     test:
       title:
         other: "[{{.SiteName}}] Test Email"
       body:
-        other: "This is a test email."
+        other: "This is a test email.\n<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
   action_activity_type:
     upvote:
       other: upvote
@@ -482,12 +523,281 @@ backend:
       other: accept
     accepted:
       other: accepted
+    edit:
+      other: edit
+  review:
+    queued_post:
+      other: Queued post
+    flagged_post:
+      other: Flagged post
+    suggested_post_edit:
+      other: Suggested edits
+  reaction:
+    tooltip:
+      other: "{{ .Names }} and {{ .Count }} more..."
+  badge:
+    default_badges:
+      autobiographer:
+        name:
+          other: Autobiographer
+        desc:
+          other: Filled out <a href="{{ .ProfileURL }}" target="_blank">profile</a> information.
+      certified:
+        name:
+          other: Certified
+        desc:
+          other: Completed our new user tutorial.
+      editor:
+        name:
+          other: Editor
+        desc:
+          other: First post edit.
+      first_flag:
+        name:
+          other: First Flag
+        desc:
+          other: First flagged a post.
+      first_upvote:
+        name:
+          other: First Upvote
+        desc:
+          other: First up voted a post.
+      first_link:
+        name:
+          other: First Link
+        desc:
+          other: First added a link to another post.
+      first_reaction:
+        name:
+          other: First Reaction
+        desc:
+          other: First reacted to the post.
+      first_share:
+        name:
+          other: First Share
+        desc:
+          other: First shared a post.
+      scholar:
+        name:
+          other: Scholar
+        desc:
+          other: Asked a question and accepted an answer.
+      commentator:
+        name:
+          other: Commentator
+        desc:
+          other: Leave 5 comments.
+      new_user_of_the_month:
+        name:
+          other: New User of the Month
+        desc:
+          other: Outstanding contributions in their first month.
+      read_guidelines:
+        name:
+          other: Read Guidelines
+        desc:
+          other: Read the [community guidelines].
+      reader:
+        name:
+          other: Reader
+        desc:
+          other: Read every answers in a topic with more than 10 answers.
+      welcome:
+        name:
+          other: Welcome
+        desc:
+          other: Received a up vote.
+      nice_share:
+        name:
+          other: Nice Share
+        desc:
+          other: Shared a post with 25 unique visitors.
+      good_share:
+        name:
+          other: Good Share
+        desc:
+          other: Shared a post with 300 unique visitors.
+      great_share:
+        name:
+          other: Great Share
+        desc:
+          other: Shared a post with 1000 unique visitors.
+      out_of_love:
+        name:
+          other: Out of Love
+        desc:
+          other: Used 50 up votes in a day.
+      higher_love:
+        name:
+          other: Higher Love
+        desc:
+          other: Used 50 up votes in a day 5 times.
+      crazy_in_love:
+        name:
+          other: Crazy in Love
+        desc:
+          other: Used 50 up votes in a day 20 times.
+      promoter:
+        name:
+          other: Promoter
+        desc:
+          other: Invited a user.
+      campaigner:
+        name:
+          other: Campaigner
+        desc:
+          other: Invited 3 basic users.
+      champion:
+        name:
+          other: Champion
+        desc:
+          other: Invited 5 members.
+      thank_you:
+        name:
+          other: Thank You
+        desc:
+          other: Has 20 up voted posts and gave 10 up votes.
+      gives_back:
+        name:
+          other: Gives Back
+        desc:
+          other: Has 100 up voted posts and gave 100 up votes.
+      empathetic:
+        name:
+          other: Empathetic
+        desc:
+          other: Has 500 up voted posts and gave 1000 up votes.
+      enthusiast:
+        name:
+          other: Enthusiast
+        desc:
+          other: Visited 10 consecutive days.
+      aficionado:
+        name:
+          other: Aficionado
+        desc:
+          other: Visited 100 consecutive days.
+      devotee:
+        name:
+          other: Devotee
+        desc:
+          other: Visited 365 consecutive days.
+      anniversary:
+        name:
+          other: Anniversary
+        desc:
+          other: Active member for a year, posted at least once.
+      appreciated:
+        name:
+          other: Appreciated
+        desc:
+          other: Received 1 up vote on 20 posts.
+      respected:
+        name:
+          other: Respected
+        desc:
+          other: Received 2 up votes on 100 posts.
+      admired:
+        name:
+          other: Admired
+        desc:
+          other: Received 5 up votes on 300 posts.
+      solved:
+        name:
+          other: Solved
+        desc:
+          other: Have an answer be accepted.
+      guidance_counsellor:
+        name:
+          other: Guidance Counsellor
+        desc:
+          other: Have 10 answers be accepted.
+      know_it_all:
+        name:
+          other: Know-it-All
+        desc:
+          other: Have 50 answers be accepted.
+      solution_institution:
+        name:
+          other: Solution Institution
+        desc:
+          other: Have 150 answers be accepted.
+      nice_answer:
+        name:
+          other: Nice Answer
+        desc:
+          other: Answer score of 10 or more.
+      good_answer:
+        name:
+          other: Good Answer
+        desc:
+          other: Answer score of 25 or more.
+      great_answer:
+        name:
+          other: Great Answer
+        desc:
+          other: Answer score of 50 or more.
+      nice_question:
+        name:
+          other: Nice Question
+        desc:
+          other: Question score of 10 or more.
+      good_question:
+        name:
+          other: Good Question
+        desc:
+          other: Question score of 25 or more.
+      great_question:
+        name:
+          other: Great Question
+        desc:
+          other: Question score of 50 or more.
+      popular_question:
+        name:
+          other: Popular Question
+        desc:
+          other: Question with 500 views.
+      notable_question:
+        name:
+          other: Notable Question
+        desc:
+          other: Question with 1,000 views.
+      famous_question:
+        name:
+          other: Famous Question
+        desc:
+          other: Question with 5,000 views.
+      popular_link:
+        name:
+          other: Popular Link
+        desc:
+          other: Posted an external link with 50 clicks.
+      hot_link:
+        name:
+          other: Hot Link
+        desc:
+          other: Posted an external link with 300 clicks.
+      famous_link:
+        name:
+          other: Famous Link
+        desc:
+          other: Posted an external link with 100 clicks.
+    default_badge_groups:
+      getting_started:
+        name:
+          other: Getting Started
+      community:
+        name:
+          other: Community
+      posting:
+        name:
+          other: Posting
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
     title: Ako formátovať
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">na vytváranie odkazov</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">vracať medzi odsekmi</p></li><li><p class="mb-2"><em>_italic_</em> alebo **<strong>tučné</strong>**</p></li><li><p class="mb-2">odsadenie kódu o 4 medzery</p></li><li><p class="mb-2">citát umiestnením <code>&gt;</code> na začiatku riadku</p></li><li><p class="mb-2">backtick uniká <code>`ako _this_`</code></p></li><li><p class="mb-2">vytvorte kódové ploty s <code>`</code></p><pre class="mb-0"><code>```<br/>kódom tu<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
   pagination:
     prev: Predch
     next: Ďalšie
@@ -536,6 +846,9 @@ ui:
       posts: Posts
       invites: Invites
       votes: Votes
+    answer: Answer
+    question: Question
+    badge_award: Badge
   suspended:
     title: Váš účet bol pozastavený
     until_time: "Váš účet bol pozastavený do {{ time }}."
@@ -601,7 +914,7 @@ ui:
             msg:
               empty: Názov súboru nemôže byť prázdny.
               only_image: Povolené sú iba obrázkové súbory.
-              max_size: File size cannot exceed 4 MB.
+              max_size: File size cannot exceed {{size}} MB.
           desc:
             label: Popis
       tab_url: URL obrázka
@@ -643,6 +956,10 @@ ui:
       text: Table
       heading: Heading
       cell: Bunka
+    file:
+      text: Attach files
+      not_supported: "Don’t support that file type. Try again with {{file_type}}."
+      max_size: "Attach files size cannot exceed {{size}} MB."
   close_modal:
     title: Tento príspevok uzatváram ako...
     btn_cancel: Zrušiť
@@ -663,6 +980,8 @@ ui:
       empty: Nemôže byť prázdny.
     msg:
       empty: Vyberte dôvod.
+      not_a_url: URL format is incorrect.
+      url_not_match: URL origin does not match the current website.
   tag_modal:
     title: Vytvorte novú značku
     form:
@@ -681,6 +1000,12 @@ ui:
             character: URL slug obsahuje nepovolenú znakovú sadu.
         desc:
           label: Opis
+        revision:
+          label: Revision
+        edit_summary:
+          label: Edit summary
+          placeholder: >-
+            Briefly explain your changes (corrected spelling, fixed grammar, improved formatting)
     btn_cancel: Zrušiť
     btn_submit: Potvrdiť
     btn_post: Post new tag
@@ -699,30 +1024,24 @@ ui:
     delete:
       title: Odstrániť túto značku
       tip_with_posts: >-
-        <p>Nepovoľujeme <strong>odstraňovať značku s príspevkami</strong>.</p> <p>Najskôr odstráňte túto značku z príspevkov.</p>
+        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
       tip_with_synonyms: >-
-        <p>Nepovoľujeme <strong>odstraňovať značku so synonymami</strong>.</p> <p>Najskôr odstráňte z tejto značky synonymá.</p>
+        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
       tip: Naozaj chcete odstrániť?
       close: Zavrieť
+    merge:
+      title: Merge tag
+      source_tag_title: Source tag
+      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      target_tag_title: Target tag
+      target_tag_description: A synonym between these two tags will be created after merging.
+      no_results: No tags matched
+      btn_submit: Submit
+      btn_close: Close
   edit_tag:
     title: Upraviť značku
     default_reason: Upraviť značku
     default_first_reason: Add tag
-    form:
-      fields:
-        revision:
-          label: Revízia
-        display_name:
-          label: Display name
-        slug_name:
-          label: URL slug
-          info: 'Musíte použiť znakovú sadu "a-z", "0-9", "+ # - ."'
-        desc:
-          label: Opis
-        edit_summary:
-          label: Edit summary
-          placeholder: >-
-            Stručne vysvetlite svoje zmeny (opravený pravopis, opravená gramatika, vylepšené formátovanie)
     btn_save_edits: Uložiť úpravy
     btn_cancel: Zrušiť
   dates:
@@ -737,6 +1056,14 @@ ui:
     day: deň
     hours: hours
     days: days
+  reaction:
+    heart: heart
+    smile: smile
+    frown: frown
+    btn_label: add or remove reactions
+    undo_emoji: undo {{ emoji }} reaction
+    react_emoji: react with {{ emoji }}
+    unreact_emoji: unreact with {{ emoji }}
   comment:
     btn_add_comment: Pridať komentár
     reply_to: Odpovedať
@@ -746,7 +1073,7 @@ ui:
     btn_flag: Vlajka
     btn_save_edits: Uložiť zmeny
     btn_cancel: Zrušiť
-    show_more: Zobraziť viac komentárov
+    show_more: "{{count}} more comments"
     tip_question: >-
       Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.
     tip_answer: >-
@@ -782,6 +1109,7 @@ ui:
     search_placeholder: Filtrujte podľa názvu značky
     no_desc: Značka nemá popis.
     more: Viac
+    wiki: Wiki
   ask:
     title: Pridať otázku
     edit_title: Upraviť otázku
@@ -830,6 +1158,7 @@ ui:
       question: Otázky
       tag: Značky
       user: Užívatelia
+      badges: Badges
       profile: Profil
       setting: Nastavenia
       logout: Odhlásiť sa
@@ -873,8 +1202,8 @@ ui:
       label: Prihlasovacie meno
       msg:
         empty: Prihlasovacie meno nemôže byť prázdne.
-        range: Prihlasovacie meno nesmie mať viac ako 30 znakov.
-        character: 'Must use the character set "a-z", "0-9", " - . _"'
+        range: Name must be between 2 to 30 characters in length.
+        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
     email:
       label: E-mail
       msg:
@@ -946,12 +1275,12 @@ ui:
       display_name:
         label: Display name
         msg: Zobrazované meno nemôže byť prázdne.
-        msg_range: Zobrazované meno nesmie mať viac ako 30 znakov.
+        msg_range: Display name must be 2-30 characters in length.
       username:
         label: Užívateľské meno
         caption: Ľudia vás môžu spomenúť ako „@používateľské meno“.
         msg: Užívateľské meno nemôže byť prázdne.
-        msg_range: Používateľské meno nesmie mať viac ako 30 znakov.
+        msg_range: Username must be 2-30 characters in length.
         character: 'Musíte použiť znakovú sadu "a-z", "0-9", "- . _"'
       avatar:
         label: Profile image
@@ -971,10 +1300,10 @@ ui:
         label: Poloha
         placeholder: "Mesto, Krajina"
     notification:
-      heading: Oznámenia
-      email: Email
+      heading: Email Notifications
+      turn_on: Turn on
       inbox:
-        label: Email notifications
+        label: Inbox notifications
         description: Answers to your questions, comments, invites, and more.
       all_new_question:
         label: All new questions
@@ -989,6 +1318,8 @@ ui:
       change_email_info: >-
         Na túto adresu sme poslali e-mail. Postupujte podľa pokynov na potvrdenie.
       email:
+        label: Email
+      new_email:
         label: New email
         msg: New email cannot be empty.
       pass:
@@ -1027,9 +1358,13 @@ ui:
   related_question:
     title: Súvisiace otázky
     answers: odpovede
+  linked_question:
+    title: Linked Questions
+    description: Questions linked to
+    no_linked_question: No questions linked from this question.
   invite_to_answer:
     title: People Asked
-    desc: Invite people who you think might know the answer.
+    desc: Select people who you think might know the answer.
     invite: Invite to answer
     add: Add people
     search: Search people
@@ -1039,6 +1374,7 @@ ui:
     asked: opýtané
     update: Aktualizované
     edit: upravené
+    commented: commented
     Views: Videné
     Follow: Sledovať
     Following: Sledované
@@ -1056,6 +1392,7 @@ ui:
       title: Odpovede
       score: Skóre
       newest: Najnovšie
+      oldest: Oldest
       btn_accept: Súhlasiť
       btn_accepted: Prijaté
     write_answer:
@@ -1079,6 +1416,14 @@ ui:
       confirm_btn: Reopen
       title: Znovu otvoriť tento príspevok
       content: Ste si istý, že ho chcete znovu otvoriť?
+    list:
+      confirm_btn: List
+      title: List this post
+      content: Are you sure you want to list?
+    unlist:
+      confirm_btn: Unlist
+      title: Unlist this post
+      content: Are you sure you want to unlist?
     pin:
       title: Pin this post
       content: Are you sure you wish to pinned globally? This post will appear at the top of all post lists.
@@ -1100,11 +1445,14 @@ ui:
     save: Uložiť
     delete: Vymazať
     undelete: Undelete
+    list: List
+    unlist: Unlist
+    unlisted: Unlisted
     login: Prihlásiť sa
     signup: Registrovať sa
     logout: Odhlásiť sa
     verify: Preveriť
-    add_question: Pridať otázku
+    create: Create
     approve: Schváliť
     reject: Odmietnuť
     skip: Preskočiť
@@ -1123,6 +1471,29 @@ ui:
     close: Close
     reopen: Reopen
     ok: OK
+    light: Light
+    dark: Dark
+    system_setting: System setting
+    default: Default
+    reset: Reset
+    tag: Tag
+    post_lowercase: post
+    filter: Filter
+    ignore: Ignore
+    submit: Submit
+    normal: Normal
+    closed: Closed
+    deleted: Deleted
+    deleted_permanently: Deleted permanently
+    pending: Pending
+    more: More
+    view: View
+    card: Card
+    compact: Compact
+    display_below: Display below
+    always_display: Always display
+    or: or
+    back_sites: Back to sites
   search:
     title: Výsledky vyhľadávania
     keywords: Kľúčové slová
@@ -1152,15 +1523,18 @@ ui:
     via: Zdieľajte príspevok cez...
     copied: Skopírované
     facebook: Zdieľať na Facebooku
-    twitter: Zdieľať na Twitteri
+    twitter: Share to X
   cannot_vote_for_self: You can't vote for your own post.
   modal_confirm:
     title: Chyba...
+  delete_permanently:
+    title: Delete permanently
+    content: Are you sure you want to delete permanently?
   account_result:
     success: Váš nový účet je potvrdený; Budete presmerovaný na domovskú stránku.
     link: Pokračovať na domovskú stránku
-    invalid: >-
-      Ospravedlňujeme sa, tento odkaz na potvrdenie účtu už nie je platný. Váš profil už možno je aktívny.
+    oops: Oops!
+    invalid: The link you used no longer works.
     confirm_new_email: Váš e-mail bol aktualizovaný.
     confirm_new_email_invalid: >-
       Ospravedlňujeme sa, tento potvrdzovací odkaz už nie je platný. Váš e-mail je už môžno zmenený.
@@ -1182,7 +1556,9 @@ ui:
     answers: Odpovede
     newest: Najnovšie
     active: Aktívne
-    frequent: Časté
+    hot: Hot
+    frequent: Frequent
+    recommend: Recommend
     score: Skóre
     unanswered: Nezodpovedané
     modified: upravené
@@ -1201,12 +1577,14 @@ ui:
     reputation: Reputácia
     comments: Komentáre
     votes: Hlasovanie
+    badges: Badges
     newest: Najnovšie
     score: Skóre
     edit_profile: Edit profile
     visited_x_days: "Navštívené {{ count }} dni"
     viewed: Videné
     joined: Pripojené
+    comma: ","
     last_login: Videné
     about_me: O mne
     about_me_empty: "// Dobrý deň, svet!"
@@ -1214,6 +1592,7 @@ ui:
     top_questions: Najlepšie otázky
     stats: Štatistiky
     list_empty: Nenašli sa žiadne príspevky.<br />Možno by ste chceli vybrať inú kartu?
+    content_empty: No posts found.
     accepted: Prijaté
     answered: zodpovedané
     asked: opýtané
@@ -1224,8 +1603,9 @@ ui:
     x_votes: prijatých hlasov
     x_answers: odpovede
     x_questions: otázky
+    recent_badges: Recent Badges
   install:
-    title: Odpoveď
+    title: Installation
     next: Ďalšie
     done: Hotový
     config_yaml_error: Nie je možné vytvoriť súbor config.yaml.
@@ -1253,6 +1633,23 @@ ui:
       label: Database file
       placeholder: /data/answer.db
       msg: Database file cannot be empty.
+    ssl_enabled:
+      label: Enable SSL
+    ssl_enabled_on:
+      label: On
+    ssl_enabled_off:
+      label: Off
+    ssl_mode:
+      label: SSL Mode
+    ssl_root_cert:
+      placeholder: sslrootcert file path
+      msg: Path to sslrootcert file cannot be empty
+    ssl_cert:
+      placeholder: sslcert file path
+      msg: Path to sslcert file cannot be empty
+    ssl_key:
+      placeholder: sslkey file path
+      msg: Path to sslkey file cannot be empty
     config_yaml:
       title: Vytvoriť config.yaml
       label: Vytvorený súbor Config.yaml.
@@ -1285,8 +1682,8 @@ ui:
     admin_name:
       label: Meno
       msg: Meno nemôže byť prázdne.
-      character: 'Must use the character set "a-z", "0-9", " - . _"'
-      msg_max_length: Name must be at maximum 30 characters in length.
+      character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+      msg_max_length: Name must be between 2 to 30 characters in length.
     admin_password:
       label: Heslo
       text: >-
@@ -1294,13 +1691,17 @@ ui:
       msg: Heslo nemôže byť prázdne.
       msg_min_length: Password must be at least 8 characters in length.
       msg_max_length: Password must be at maximum 32 characters in length.
+    admin_confirm_password:
+      label: "Confirm Password"
+      text: "Please re-enter your password to confirm."
+      msg: "Confirm password does not match."
     admin_email:
       label: E-mail
       text: Na prihlásenie budete potrebovať tento e-mail.
       msg:
         empty: E-mail nemôže byť prázdny.
         incorrect: Nesprávny formát e-mailu
-    ready_title: Your Answer is ready!
+    ready_title: Your site is ready
     ready_desc: >-
       Ak niekedy budete chcieť zmeniť viac nastavení, navštívte stránku <1>admin section</1>; Nájdete ju v ponuke stránok.
     good_luck: "„Bavte sa a veľa šťastia!“"
@@ -1333,6 +1734,7 @@ ui:
     questions: Otázky
     answers: Odpovede
     users: Užívatelia
+    badges: Badges
     flags: Vlajky
     settings: Nastavenia
     general: Všeobecné
@@ -1346,30 +1748,45 @@ ui:
     seo: SEO
     customize: Prispôsobiť
     themes: Témy
-    css_html: CSS/HTML
     login: Prihlásiť sa
     privileges: Privileges
     plugins: Plugins
     installed_plugins: Installed Plugins
+    apperance: Appearance
   website_welcome: Welcome to {{site_name}}
   user_center:
     login: Login
     qrcode_login_tip: Please use {{ agentName }} to scan the QR code and log in.
     login_failed_email_tip: Login failed, please allow this app to access your email information before try again.
+  badges:
+    modal:
+      title: Congratulations
+      content: You've earned a new badge.
+      close: Close
+      confirm: View badges
+    title: Badges
+    awarded: Awarded
+    earned_×: Earned ×{{ number }}
+    ×_awarded: "{{ number }} awarded"
+    can_earn_multiple: You can earn this multiple times.
+    earned: Earned
   admin:
     admin_header:
       title: Administrátor
     dashboard:
       title: Nástenka
-      welcome: Vitajte v Administrátorovi odpovedí!
+      welcome: Welcome to Admin!
       site_statistics: Site statistics
       questions: "Otázky:"
+      resolved: "Resolved:"
+      unanswered: "Unanswered:"
       answers: "Odpovede:"
       comments: "Komentáre:"
       votes: "Hlasy:"
       users: "Users:"
       flags: "Vlajky:"
-      site_health_status: Site health status
+      reviews: "Reviews:"
+      site_health: Site health
       version: "Verzia:"
       https: "HTTPS:"
       upload_folder: "Upload folder:"
@@ -1384,11 +1801,12 @@ ui:
       database_size: "Database size:"
       storage_used: "Použité úložisko:"
       uptime: "Doba prevádzky:"
-      answer_links: Answer links
+      links: Links
       plugins: Plugins
       github: GitHub
       blog: Blog
       contact: Contact
+      forum: Forum
       documents: Dokumenty
       feedback: Spätná väzba
       support: Podpora
@@ -1428,6 +1846,22 @@ ui:
             msg: Password must be at 8-32 characters in length.
       btn_cancel: Cancel
       btn_submit: Submit
+    edit_profile_modal:
+      title: Edit profile
+      form:
+        fields:
+          display_name:
+            label: Display name
+            msg_range: Display name must be 2-30 characters in length.
+          username:
+            label: Username
+            msg_range: Username must be 2-30 characters in length.
+          email:
+            label: Email
+            msg_invalid: Invalid Email Address.
+      edit_success: Edited successfully
+      btn_cancel: Cancel
+      btn_submit: Submit
     user_modal:
       title: Add new user
       form:
@@ -1439,7 +1873,7 @@ ui:
             msg: "Please enter the user's email, one per line."
           display_name:
             label: Display name
-            msg: Display name must be at 4-30 characters in length.
+            msg: Display name must be 2-30 characters in length.
           email:
             label: Email
             msg: Email is not valid.
@@ -1453,9 +1887,9 @@ ui:
       name: Meno
       email: E-mail
       reputation: Reputácia
-      created_at: Čas vytvorenia
-      delete_at: Čas vymazania
-      suspend_at: Čas pozastavenia
+      created_at: Created time
+      delete_at: Deleted time
+      suspend_at: Suspended time
       status: Stav
       role: Rola
       action: Akcia
@@ -1473,6 +1907,7 @@ ui:
       filter:
         placeholder: "Filter podľa mena, používateľ: ID"
       set_new_password: Nastaviť nové heslo
+      edit_profile: Edit profile
       change_status: Zmentiť stavu
       change_role: Zmeniť rolu
       show_logs: Zobraziť protokoly
@@ -1491,9 +1926,7 @@ ui:
         content: A suspended user can't log in.
     questions:
       page_title: Otázky
-      normal: Normalne
-      closed: Uzatvorené
-      deleted: Vymazané
+      unlisted: Unlisted
       post: poslané
       votes: Hlasy
       answers: Odpovede
@@ -1501,12 +1934,11 @@ ui:
       status: Stav
       action: Akcia
       change: Zmena
+      pending: Pending
       filter:
         placeholder: "Filter podľa názvu, otázka:id"
     answers:
       page_title: Odpovede
-      normal: Normalne
-      deleted: Vymazané
       post: Poslané
       votes: Hlasy
       created: Vytvorené
@@ -1539,6 +1971,9 @@ ui:
         msg: Kontaktný e-mail nemôže byť prázdny.
         validate: Kontaktný e-mail je neplatný.
         text: E-mailová adresa kontaktu zodpovedného za túto stránku.
+      check_update:
+        label: Software updates
+        text: Automatically check for updates
     interface:
       page_title: Rozhranie
       language:
@@ -1568,6 +2003,7 @@ ui:
         msg: Šifrovanie nemôže byť prázdne.
         text: Pre väčšinu serverov je SSL odporúčaná možnosť.
         ssl: SSL
+        tls: TLS
         none: Žiadne
       smtp_port:
         label: SMTP port
@@ -1613,22 +2049,44 @@ ui:
       privacy_policy:
         label: Privacy policy
         text: "Tu môžete pridať obsah zásad ochrany osobných údajov. Ak už máte dokument umiestnený inde, uveďte tu celú URL adresu."
+      external_content_display:
+        label: External content
+        text: "Content includes images, videos, and media embedded from external websites."
+        always_display: Always display external content
+        ask_before_display: Ask before displaying external content
     write:
       page_title: Písať
       restrict_answer:
-        title: Restrict answer
+        title: Answer write
         label: Each user can only write one answer for each question
-        text: "They can use the edit link to refine and improve their existing answer, instead."
+        text: "Turn off to allow users to write multiple answers to the same question, which may cause answers to be unfocused."
       recommend_tags:
         label: Recommend tags
-        text: "Vyššie zadajte tag slug, jednu značku na riadok."
+        text: "Recommend tags will show in the dropdown list by default."
+        msg:
+          contain_reserved: "recommended tags cannot contain reserved tags"
       required_tag:
-        title: Required tag
-        label: Nastavte odporúčanú značku podľa potreby
+        title: Set required tags
+        label: Set “Recommend tags” as required tags
         text: "Každá nová otázka musí mať aspoň jedenu odporúčaciu značku."
       reserved_tags:
         label: Reserved tags
-        text: "Vyhradené štítky môže k príspevku pridať iba moderátor."
+        text: "Reserved tags can only be used by moderator."
+      image_size:
+        label: Max image size (MB)
+        text: "The maximum image upload size."
+      attachment_size:
+        label: Max attachment size (MB)
+        text: "The maximum attachment files upload size."
+      image_megapixels:
+        label: Max image megapixels
+        text: "Maximum number of megapixels allowed for an image."
+      image_extensions:
+        label: Authorized image extensions
+        text: "A list of file extensions allowed for image display, separate with commas."
+      attachment_extensions:
+        label: Authorized attachment extensions
+        text: "A list of file extensions allowed for upload, separate with commas. WARNING: Allowing uploads may cause security issues."
     seo:
       page_title: SEO
       permalink:
@@ -1642,11 +2100,12 @@ ui:
       themes:
         label: Témy
         text: Vyberte existujúcu tému.
+      color_scheme:
+        label: Color scheme
       navbar_style:
-        label: Štýl navigačnej lišty
-        text: Vyberte existujúcu tému.
+        label: Navbar background style
       primary_color:
-        label: Primárna farba
+        label: Primary color
         text: Upraviť farby používané vašími motívmi
     css_and_html:
       page_title: CSS a HTML
@@ -1691,7 +2150,7 @@ ui:
         text: "WARNING: If turn off, you may be unable to log in if you have not previously configured other login method."
     installed_plugins:
       title: Installed Plugins
-      plugin_link: Plugins extend and expand the functionality of Answer. You may find plugins in the <1>Answer Plugin Repository</1>.
+      plugin_link: Plugins extend and expand the functionality. You may find plugins in the <1>Plugin Repository</1>.
       filter:
         all: All
         active: Active
@@ -1734,6 +2193,24 @@ ui:
       level:
         label: Reputation required level
         text: Choose the reputation required for the privileges
+      msg:
+        should_be_number: the input should be number
+        number_larger_1: number should be equal or larger than 1
+    badges:
+      action: Action
+      active: Active
+      activate: Activate
+      all: All
+      awards: Awards
+      deactivate: Deactivate
+      filter:
+        placeholder: Filter by name, badge:id
+      group: Group
+      inactive: Inactive
+      name: Name
+      show_logs: Show logs
+      status: Status
+      title: Badges
   form:
     optional: (voliteľné)
     empty: nemôže byť prázdne
@@ -1752,6 +2229,22 @@ ui:
     edit_answer: Upraviť odpoveď
     edit_tag: Upraviť značku
     empty: Nezostali žiadne úlohy kontroly.
+    approve_revision_tip: Do you approve this revision?
+    approve_flag_tip: Do you approve this flag?
+    approve_post_tip: Do you approve this post?
+    approve_user_tip: Do you approve this user?
+    suggest_edits: Suggested edits
+    flag_post: Flag post
+    flag_user: Flag user
+    queued_post: Queued post
+    queued_user: Queued user
+    filter_label: Type
+    reputation: reputation
+    flag_post_type: Flagged this post as {{ type }}.
+    flag_user_type: Flagged this user as {{ type }}.
+    edit_post: Edit post
+    list_post: List post
+    unlist_post: Unlist post
   timeline:
     undeleted: zrušené zmazanie
     deleted: vymazané
@@ -1797,8 +2290,30 @@ ui:
     discard_confirm: Naozaj chcete zahodiť svoj koncept?
   messages:
     post_deleted: Tento príspevok bol odstránený.
+    post_cancel_deleted: This post has been undeleted.
     post_pin: This post has been pinned.
     post_unpin: This post has been unpinned.
     post_hide_list: This post has been hidden from list.
     post_show_list: This post has been shown to list.
     post_reopen: This post has been reopened.
+    post_list: This post has been listed.
+    post_unlist: This post has been unlisted.
+    post_pending: Your post is awaiting review. This is a preview, it will be visible after it has been approved.
+    post_closed: This post has been closed.
+    answer_deleted: This answer has been deleted.
+    answer_cancel_deleted: This answer has been undeleted.
+    change_user_role: This user's role has been changed.
+    user_inactive: This user is already inactive.
+    user_normal: This user is already normal.
+    user_suspended: This user has been suspended.
+    user_deleted: This user has been deleted.
+    badge_activated: This badge has been activated.
+    badge_inactivated: This badge has been inactivated.
+    users_deleted: These users have been deleted.
+    posts_deleted: These questions have been deleted.
+    answers_deleted: These answers have been deleted.
+    copy: Copy to clipboard
+    copied: Copied
+    external_content_warning: External images/media are not displayed.
+
+

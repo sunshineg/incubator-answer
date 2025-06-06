@@ -21,11 +21,22 @@ package plugin
 
 import (
 	"encoding/json"
+	"sync"
 
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/translator"
+	"github.com/segmentfault/pacman/cache"
+	"github.com/segmentfault/pacman/i18n"
+	"xorm.io/xorm"
+
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/translator"
 	"github.com/gin-gonic/gin"
 )
+
+// Data is defined here to avoid circular dependency with internal/base/data
+type Data struct {
+	DB    *xorm.Engine
+	Cache cache.Cache
+}
 
 // GinContext is a wrapper of gin.Context
 // We export it to make it easy to use in plugins
@@ -46,6 +57,10 @@ func Register(p Base) {
 
 	if _, ok := p.(Config); ok {
 		registerConfig(p.(Config))
+	}
+
+	if _, ok := p.(UserConfig); ok {
+		registerUserConfig(p.(UserConfig))
 	}
 
 	if _, ok := p.(Connector); ok {
@@ -78,6 +93,38 @@ func Register(p Base) {
 
 	if _, ok := p.(Search); ok {
 		registerSearch(p.(Search))
+	}
+
+	if _, ok := p.(Notification); ok {
+		registerNotification(p.(Notification))
+	}
+
+	if _, ok := p.(Reviewer); ok {
+		registerReviewer(p.(Reviewer))
+	}
+
+	if _, ok := p.(Captcha); ok {
+		registerCaptcha(p.(Captcha))
+	}
+
+	if _, ok := p.(Embed); ok {
+		registerEmbed(p.(Embed))
+	}
+
+	if _, ok := p.(Render); ok {
+		registerRender(p.(Render))
+	}
+
+	if _, ok := p.(CDN); ok {
+		registerCDN(p.(CDN))
+	}
+
+	if _, ok := p.(Importer); ok {
+		registerImporter(p.(Importer))
+	}
+
+	if _, ok := p.(KVStorage); ok {
+		registerKVStorage(p.(KVStorage))
 	}
 }
 
@@ -124,11 +171,26 @@ func MakePlugin[T Base](super bool) (CallFn[T], RegisterFn[T]) {
 }
 
 type statusManager struct {
+	lock   sync.Mutex
 	status map[string]bool
 }
 
 func (m *statusManager) Enable(name string, enabled bool) {
+	m.lock.Lock()
+	defer m.lock.Unlock()
+	if !enabled {
+		m.status[name] = enabled
+		return
+	}
 	m.status[name] = enabled
+
+	for _, slugName := range coordinatedCaptchaPlugins(name) {
+		m.status[slugName] = false
+	}
+
+	for _, slugName := range coordinatedCDNPlugins(name) {
+		m.status[slugName] = false
+	}
 }
 
 func (m *statusManager) IsEnabled(name string) bool {
@@ -153,6 +215,11 @@ func Translate(ctx *GinContext, key string) string {
 	return translator.Tr(handler.GetLang(ctx), key)
 }
 
+// TranslateWithData translates the key to the language with data
+func TranslateWithData(lang i18n.Language, key string, data any) string {
+	return translator.TrWithData(lang, key, data)
+}
+
 // TranslateFn presents a generator of translated string.
 // We use it to delegate the translation work outside the plugin.
 type TranslateFn func(ctx *GinContext) string
@@ -172,7 +239,7 @@ func MakeTranslator(key string) Translator {
 
 // Translate translates the key to the current language of the context
 func (t Translator) Translate(ctx *GinContext) string {
-	if &t == nil || t.Fn == nil {
+	if t.Fn == nil {
 		return ""
 	}
 	return t.Fn(ctx)

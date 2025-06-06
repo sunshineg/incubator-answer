@@ -24,6 +24,7 @@ import Color from 'color';
 
 import { shiftColor, tintColor, shadeColor } from '@/utils';
 import { themeSettingStore } from '@/stores';
+import { DEFAULT_THEME_COLOR } from '@/common/constants';
 
 const Index: FC = () => {
   const { theme, theme_config } = themeSettingStore((_) => _);
@@ -34,7 +35,9 @@ const Index: FC = () => {
   const setThemeColor = () => {
     const themeMetaNode = document.querySelector('meta[name="theme-color"]');
     if (themeMetaNode) {
-      const themeColor = primaryColor ? primaryColor.hex() : '#0033ff';
+      const themeColor = primaryColor
+        ? primaryColor.hex()
+        : DEFAULT_THEME_COLOR;
       themeMetaNode.setAttribute('content', themeColor);
     }
   };
@@ -57,6 +60,22 @@ const Index: FC = () => {
                 --bs-link-hover-color-rgb: ${shiftColor(primaryColor, 0.8)
                   .round()
                   .array()}
+              }
+              :root[data-bs-theme='dark'] {
+                --bs-link-color: ${tintColor(primaryColor, 0.6).hex()};
+                --bs-link-color-rgb: ${tintColor(primaryColor, 0.6)
+                  .round()
+                  .array()};
+                --bs-link-hover-color: ${shiftColor(
+                  tintColor(primaryColor, 0.6),
+                  -0.8,
+                ).hex()};
+                --bs-link-hover-color-rgb: ${shiftColor(
+                  tintColor(primaryColor, 0.6),
+                  -0.8,
+                )
+                  .round()
+                  .array()};
               }
               .nav-pills {
                 --bs-nav-pills-link-active-bg: ${primaryColor.hex()};
@@ -109,6 +128,12 @@ const Index: FC = () => {
                   0.5,
                 )}%27/%3e%3c/svg%3e");
               }
+              .tag-selector-wrap--focus {
+                box-shadow: 0 0 0 0.25rem ${primaryColor
+                  .fade(0.75)
+                  .string()} !important;
+                border-color: ${tintColor(primaryColor, 0.5)} !important;
+              }
               .dropdown-menu {
                 --bs-dropdown-link-active-bg: rgb(var(--bs-primary-rgb));
               }
@@ -118,16 +143,7 @@ const Index: FC = () => {
               .link-primary:hover, .link-primary:focus {
                 color: ${shadeColor(primaryColor, 0.8).hex()}!important;
               }
-              .badge-tag:not(.badge-tag-reserved, .badge-tag-required) {
-                background-color: rgba(${tintColor(primaryColor, 0.2)
-                  .rgb()
-                  .array()
-                  .join(',')}, .5);
-                color: ${shadeColor(primaryColor, 0.6).hex()}
-              }
-              .badge-tag:not(.badge-tag-reserved, .badge-tag-required):hover {
-                 background-color: ${tintColor(primaryColor, 0.2).hex()};
-              }
+
             `}
         </style>
       )}

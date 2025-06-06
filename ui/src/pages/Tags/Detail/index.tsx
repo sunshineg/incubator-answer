@@ -38,9 +38,8 @@ import {
 } from '@/services';
 import QuestionList, { QUESTION_ORDER_KEYS } from '@/components/QuestionList';
 import HotQuestions from '@/components/HotQuestions';
-import { escapeRemove, guard, Storage, scrollToDocTop } from '@/utils';
+import { guard } from '@/utils';
 import { pathFactory } from '@/router/pathFactory';
-import { QUESTIONS_ORDER_STORAGE_KEY } from '@/common/constants';
 
 const Index: FC = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'tags' });
@@ -48,12 +47,8 @@ const Index: FC = () => {
   const routeParams = useParams();
   const curTagName = routeParams.tagName || '';
   const [urlSearchParams] = useSearchParams();
-  const storageOrder = Storage.get(QUESTIONS_ORDER_STORAGE_KEY);
-  const curOrder =
-    urlSearchParams.get('order') || storageOrder || QUESTION_ORDER_KEYS[0];
-  if (curOrder !== storageOrder) {
-    Storage.set(QUESTIONS_ORDER_STORAGE_KEY, curOrder);
-  }
+  const curOrder = (urlSearchParams.get('order') ||
+    QUESTION_ORDER_KEYS[0]) as Type.QuestionOrderBy;
   const curPage = Number(urlSearchParams.get('page')) || 1;
   const reqParams: Type.QueryQuestionsReq = {
     page_size: 20,
@@ -79,12 +74,6 @@ const Index: FC = () => {
       object_id: tagInfo.tag_id,
     });
   };
-
-  useEffect(() => {
-    if (!listLoading) {
-      scrollToDocTop();
-    }
-  }, [listLoading]);
 
   useEffect(() => {
     if (tagResp) {
@@ -154,12 +143,10 @@ const Index: FC = () => {
               </Link>
             </h3>
 
-            <p className="text-break">
-              {escapeRemove(tagInfo.excerpt) || t('no_desc')}
-              <Link to={pathFactory.tagInfo(curTagName)} className="ms-1">
-                [{t('more')}]
-              </Link>
-            </p>
+            <div
+              className="text-break"
+              dangerouslySetInnerHTML={{ __html: tagInfo.excerpt }}
+            />
 
             <div className="box-ft">
               {tagInfo.is_follower ? (
@@ -168,17 +155,29 @@ const Index: FC = () => {
                     {t('button_following')}
                   </Button>
                   <Link
+                    to={pathFactory.tagInfo(curTagName)}
+                    className="btn btn-outline-secondary ms-2">
+                    {t('wiki')}
+                  </Link>
+                  <Link
                     className="btn btn-outline-secondary ms-2"
                     to="/users/settings/notify">
                     <Icon name="bell-fill" />
                   </Link>
                 </div>
               ) : (
-                <Button
-                  variant="outline-primary"
-                  onClick={() => toggleFollow()}>
-                  {t('button_follow')}
-                </Button>
+                <div>
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => toggleFollow()}>
+                    {t('button_follow')}
+                  </Button>
+                  <Link
+                    to={pathFactory.tagInfo(curTagName)}
+                    className="btn btn-outline-secondary ms-2">
+                    {t('wiki')}
+                  </Link>
+                </div>
               )}
             </div>
           </div>
@@ -187,6 +186,7 @@ const Index: FC = () => {
           source="tag"
           data={listData}
           order={curOrder}
+          orderList={QUESTION_ORDER_KEYS.filter((k) => k !== 'recommend')}
           isLoading={listLoading}
         />
       </Col>

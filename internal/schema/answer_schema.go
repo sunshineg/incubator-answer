@@ -20,8 +20,10 @@
 package schema
 
 import (
-	"github.com/apache/incubator-answer/internal/base/validator"
-	"github.com/apache/incubator-answer/pkg/converter"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/base/validator"
+	"github.com/apache/answer/pkg/converter"
+	"github.com/segmentfault/pacman/errors"
 )
 
 // RemoveAnswerReq delete answer request
@@ -54,10 +56,18 @@ type AnswerAddReq struct {
 	CanRecover  bool   `json:"-"`
 	CaptchaID   string `json:"captcha_id"`
 	CaptchaCode string `json:"captcha_code"`
+	IP          string `json:"-"`
+	UserAgent   string `json:"-"`
 }
 
 func (req *AnswerAddReq) Check() (errFields []*validator.FormErrorField, err error) {
 	req.HTML = converter.Markdown2HTML(req.Content)
+	if req.HTML == "" {
+		return append(errFields, &validator.FormErrorField{
+			ErrorField: "content",
+			ErrorMsg:   reason.AnswerContentCannotEmpty,
+		}), errors.BadRequest(reason.AnswerContentCannotEmpty)
+	}
 	return nil, nil
 }
 
@@ -77,6 +87,12 @@ type AnswerUpdateReq struct {
 
 func (req *AnswerUpdateReq) Check() (errFields []*validator.FormErrorField, err error) {
 	req.HTML = converter.Markdown2HTML(req.Content)
+	if req.HTML == "" {
+		return append(errFields, &validator.FormErrorField{
+			ErrorField: "content",
+			ErrorMsg:   reason.AnswerContentCannotEmpty,
+		}), errors.BadRequest(reason.AnswerContentCannotEmpty)
+	}
 	return nil, nil
 }
 
@@ -98,22 +114,22 @@ type AnswerListReq struct {
 }
 
 type AnswerInfo struct {
-	ID             string         `json:"id"`
-	QuestionID     string         `json:"question_id"`
-	Content        string         `json:"content"`
-	HTML           string         `json:"html"`
-	CreateTime     int64          `json:"create_time"`
-	UpdateTime     int64          `json:"update_time"`
-	Accepted       int            `json:"accepted"`
-	UserID         string         `json:"-"`
-	UpdateUserID   string         `json:"-"`
-	UserInfo       *UserBasicInfo `json:"user_info,omitempty"`
-	UpdateUserInfo *UserBasicInfo `json:"update_user_info,omitempty"`
-	Collected      bool           `json:"collected"`
-	VoteStatus     string         `json:"vote_status"`
-	VoteCount      int            `json:"vote_count"`
-	QuestionInfo   *QuestionInfo  `json:"question_info,omitempty"`
-	Status         int            `json:"status"`
+	ID             string            `json:"id"`
+	QuestionID     string            `json:"question_id"`
+	Content        string            `json:"content"`
+	HTML           string            `json:"html"`
+	CreateTime     int64             `json:"create_time"`
+	UpdateTime     int64             `json:"update_time"`
+	Accepted       int               `json:"accepted"`
+	UserID         string            `json:"-"`
+	UpdateUserID   string            `json:"-"`
+	UserInfo       *UserBasicInfo    `json:"user_info,omitempty"`
+	UpdateUserInfo *UserBasicInfo    `json:"update_user_info,omitempty"`
+	Collected      bool              `json:"collected"`
+	VoteStatus     string            `json:"vote_status"`
+	VoteCount      int               `json:"vote_count"`
+	QuestionInfo   *QuestionInfoResp `json:"question_info,omitempty"`
+	Status         int               `json:"status"`
 
 	// MemberActions
 	MemberActions []*PermissionMemberAction `json:"member_actions"`

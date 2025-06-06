@@ -24,11 +24,14 @@ import usePageUsers from './usePageUsers';
 import useChangeUserRoleModal from './useChangeUserRoleModal';
 import useUserModal from './useUserModal';
 import useChangePasswordModal from './useChangePasswordModal';
+import useChangeProfileModal from './useChangeProfileModal';
 import usePageTags from './usePageTags';
 import useLoginRedirect from './useLoginRedirect';
 import usePromptWithUnload from './usePrompt';
 import useActivationEmailModal from './useActivationEmailModal';
 import useCaptchaModal from './useCaptchaModal';
+import useSkeletonControl from './useSkeletonControl';
+import useExternalToast from './useExternalToast';
 
 export {
   useTagModal,
@@ -38,9 +41,12 @@ export {
   useChangeUserRoleModal,
   useUserModal,
   useChangePasswordModal,
+  useChangeProfileModal,
   usePageTags,
   useLoginRedirect,
   usePromptWithUnload,
   useActivationEmailModal,
   useCaptchaModal,
+  useSkeletonControl,
+  useExternalToast,
 };

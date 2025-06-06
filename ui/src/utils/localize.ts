@@ -22,17 +22,24 @@ import i18next from 'i18next';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
-import { interfaceStore, loggedUserInfoStore } from '@/stores';
+import {
+  interfaceStore,
+  loggedUserInfoStore,
+  themeSettingStore,
+} from '@/stores';
 import {
   CURRENT_LANG_STORAGE_KEY,
   DEFAULT_LANG,
   LANG_RESOURCE_STORAGE_KEY,
+  DEFAULT_THEME,
 } from '@/common/constants';
 import {
   getAdminLanguageOptions,
+  getInstallLanguageConfig,
   getLanguageConfig,
   getLanguageOptions,
 } from '@/services';
+import { changeTheme } from '@/utils/common';
 
 import Storage from './storage';
 
@@ -55,6 +62,15 @@ export const loadLanguageOptions = async (forAdmin = false) => {
 };
 
 const pullLanguageConf = (res) => {
+  if (window.location.pathname === '/install') {
+    return getInstallLanguageConfig(res.lng).then((langConf) => {
+      if (langConf && langConf.ui) {
+        res.resources = langConf.ui;
+        Storage.set(LANG_RESOURCE_STORAGE_KEY, res);
+      }
+    });
+  }
+
   return getLanguageConfig().then((langConf) => {
     if (langConf && langConf.ui) {
       res.resources = langConf.ui;
@@ -62,6 +78,7 @@ const pullLanguageConf = (res) => {
     }
   });
 };
+
 const addI18nResource = async (langName) => {
   const res = { lng: langName, resources: undefined };
   const storageResource = Storage.get(LANG_RESOURCE_STORAGE_KEY);
@@ -70,7 +87,7 @@ const addI18nResource = async (langName) => {
       const { default: resConf } = await import(`@i18n/${langName}.yaml`);
       res.resources = resConf.ui;
     } catch (ex) {
-      console.log('ex: ', ex);
+      console.error('addI18nResource error: ', ex);
     }
   } else if (storageResource && storageResource.lng === res.lng) {
     res.resources = storageResource.resources;
@@ -103,6 +120,18 @@ export const getCurrentLang = () => {
   return currentLang;
 };
 
+export const getCurrentTheme = () => {
+  const loggedUser = loggedUserInfoStore.getState().user;
+  const adminTheme = themeSettingStore.getState().color_scheme;
+  const fallbackTheme = DEFAULT_THEME;
+  let currentTheme = loggedUser.color_scheme;
+  if (/default/i.test(currentTheme)) {
+    currentTheme = adminTheme;
+  }
+  currentTheme ||= fallbackTheme;
+  return currentTheme;
+};
+
 /**
  * localize for Day.js
  */
@@ -115,9 +144,7 @@ const localeDayjs = (langName) => {
 
 export const setupAppLanguage = async () => {
   const lang = getCurrentLang();
-  if (!i18next.getDataByLanguage(lang)) {
-    await addI18nResource(lang);
-  }
+  await addI18nResource(lang);
   localeDayjs(lang);
   i18next.changeLanguage(lang);
 };
@@ -127,4 +154,15 @@ export const setupAppTimeZone = () => {
   if (adminInterface.time_zone) {
     dayjs.tz.setDefault(adminInterface.time_zone);
   }
+};
+
+export const setupAppTheme = () => {
+  const theme = getCurrentTheme();
+  changeTheme(theme);
+};
+
+export const setupInstallLanguage = async (lang) => {
+  await addI18nResource(lang);
+  localeDayjs(lang);
+  i18next.changeLanguage(lang);
 };

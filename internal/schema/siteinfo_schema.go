@@ -24,12 +24,14 @@ import (
 	"fmt"
 	"net/mail"
 	"net/url"
+	"path/filepath"
+	"strings"
 
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/base/translator"
-	"github.com/apache/incubator-answer/internal/base/validator"
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/internal/base/validator"
 	"github.com/segmentfault/pacman/errors"
 )
 
@@ -40,6 +42,7 @@ type SiteGeneralReq struct {
 	Description      string `validate:"omitempty,sanitizer,gt=3,lte=2000" form:"description" json:"description"`
 	SiteUrl          string `validate:"required,sanitizer,gt=1,lte=512,url" form:"site_url" json:"site_url"`
 	ContactEmail     string `validate:"required,sanitizer,gt=1,lte=512,email" form:"contact_email" json:"contact_email"`
+	CheckUpdate      bool   `validate:"omitempty,sanitizer" form:"check_update" json:"check_update"`
 }
 
 func (r *SiteGeneralReq) FormatSiteUrl() {
@@ -48,6 +51,10 @@ func (r *SiteGeneralReq) FormatSiteUrl() {
 		return
 	}
 	r.SiteUrl = fmt.Sprintf("%s://%s", parsedUrl.Scheme, parsedUrl.Host)
+	if len(parsedUrl.Path) > 0 {
+		r.SiteUrl = r.SiteUrl + parsedUrl.Path
+		r.SiteUrl = strings.TrimSuffix(r.SiteUrl, "/")
+	}
 }
 
 // SiteInterfaceReq site interface request
@@ -66,11 +73,43 @@ type SiteBrandingReq struct {
 
 // SiteWriteReq site write request
 type SiteWriteReq struct {
-	RestrictAnswer bool     `validate:"omitempty" form:"restrict_answer" json:"restrict_answer"`
-	RequiredTag    bool     `validate:"omitempty" form:"required_tag" json:"required_tag"`
-	RecommendTags  []string `validate:"omitempty" form:"recommend_tags" json:"recommend_tags"`
-	ReservedTags   []string `validate:"omitempty" form:"reserved_tags" json:"reserved_tags"`
-	UserID         string   `json:"-"`
+	RestrictAnswer                 bool            `validate:"omitempty" json:"restrict_answer"`
+	RequiredTag                    bool            `validate:"omitempty" json:"required_tag"`
+	RecommendTags                  []*SiteWriteTag `validate:"omitempty,dive" json:"recommend_tags"`
+	ReservedTags                   []*SiteWriteTag `validate:"omitempty,dive" json:"reserved_tags"`
+	MaxImageSize                   int             `validate:"omitempty,gt=0" json:"max_image_size"`
+	MaxAttachmentSize              int             `validate:"omitempty,gt=0" json:"max_attachment_size"`
+	MaxImageMegapixel              int             `validate:"omitempty,gt=0" json:"max_image_megapixel"`
+	AuthorizedImageExtensions      []string        `validate:"omitempty" json:"authorized_image_extensions"`
+	AuthorizedAttachmentExtensions []string        `validate:"omitempty" json:"authorized_attachment_extensions"`
+	UserID                         string          `json:"-"`
+}
+
+func (s *SiteWriteResp) GetMaxImageSize() int64 {
+	if s.MaxImageSize <= 0 {
+		return constant.DefaultMaxImageSize
+	}
+	return int64(s.MaxImageSize) * 1024 * 1024
+}
+
+func (s *SiteWriteResp) GetMaxAttachmentSize() int64 {
+	if s.MaxAttachmentSize <= 0 {
+		return constant.DefaultMaxAttachmentSize
+	}
+	return int64(s.MaxAttachmentSize) * 1024 * 1024
+}
+
+func (s *SiteWriteResp) GetMaxImageMegapixel() int {
+	if s.MaxImageMegapixel <= 0 {
+		return constant.DefaultMaxImageMegapixel
+	}
+	return s.MaxImageMegapixel * 1000 * 1000
+}
+
+// SiteWriteTag site write response tag
+type SiteWriteTag struct {
+	SlugName    string `validate:"required" json:"slug_name"`
+	DisplayName string `json:"display_name"`
 }
 
 // SiteLegalReq site branding request
@@ -79,6 +118,7 @@ type SiteLegalReq struct {
 	TermsOfServiceParsedText   string `json:"terms_of_service_parsed_text"`
 	PrivacyPolicyOriginalText  string `json:"privacy_policy_original_text"`
 	PrivacyPolicyParsedText    string `json:"privacy_policy_parsed_text"`
+	ExternalContentDisplay     string `validate:"required,oneof=always_display ask_before_display" json:"external_content_display"`
 }
 
 // GetSiteLegalInfoReq site site legal request
@@ -136,6 +176,7 @@ type SiteCustomCssHTMLReq struct {
 type SiteThemeReq struct {
 	Theme       string                 `validate:"required,gt=0,lte=255" json:"theme"`
 	ThemeConfig map[string]interface{} `validate:"omitempty" json:"theme_config"`
+	ColorScheme string                 `validate:"omitempty,gt=0,lte=100" json:"color_scheme"`
 }
 
 type SiteSeoReq struct {
@@ -171,6 +212,7 @@ type SiteThemeResp struct {
 	ThemeOptions []*ThemeOption         `json:"theme_options"`
 	Theme        string                 `json:"theme"`
 	ThemeConfig  map[string]interface{} `json:"theme_config"`
+	ColorScheme  string                 `json:"color_scheme"`
 }
 
 func (s *SiteThemeResp) TrTheme(ctx context.Context) {
@@ -196,6 +238,11 @@ type SiteWriteResp SiteWriteReq
 // SiteLegalResp site write response
 type SiteLegalResp SiteLegalReq
 
+// SiteLegalSimpleResp site write response
+type SiteLegalSimpleResp struct {
+	ExternalContentDisplay string `validate:"required,oneof=always_display ask_before_display" json:"external_content_display"`
+}
+
 // SiteSeoResp site write response
 type SiteSeoResp SiteSeoReq
 
@@ -210,6 +257,7 @@ type SiteInfoResp struct {
 	SiteSeo       *SiteSeoResp           `json:"site_seo"`
 	SiteUsers     *SiteUsersResp         `json:"site_users"`
 	Write         *SiteWriteResp         `json:"site_write"`
+	Legal         *SiteLegalSimpleResp   `json:"site_legal"`
 	Version       string                 `json:"version"`
 	Revision      string                 `json:"revision"`
 }
@@ -233,7 +281,7 @@ type UpdateSMTPConfigReq struct {
 	FromName           string `validate:"omitempty,gt=0,lte=256" json:"from_name"`
 	SMTPHost           string `validate:"omitempty,gt=0,lte=256" json:"smtp_host"`
 	SMTPPort           int    `validate:"omitempty,min=1,max=65535" json:"smtp_port"`
-	Encryption         string `validate:"omitempty,oneof=SSL" json:"encryption"` // "" SSL
+	Encryption         string `validate:"omitempty,oneof=SSL TLS" json:"encryption"` // "" SSL TLS
 	SMTPUsername       string `validate:"omitempty,gt=0,lte=256" json:"smtp_username"`
 	SMTPPassword       string `validate:"omitempty,gt=0,lte=256" json:"smtp_password"`
 	SMTPAuthentication bool   `validate:"omitempty" json:"smtp_authentication"`
@@ -257,7 +305,7 @@ type GetSMTPConfigResp struct {
 	FromName           string `json:"from_name"`
 	SMTPHost           string `json:"smtp_host"`
 	SMTPPort           int    `json:"smtp_port"`
-	Encryption         string `json:"encryption"` // "" SSL
+	Encryption         string `json:"encryption"` // "" SSL TLS
 	SMTPUsername       string `json:"smtp_username"`
 	SMTPPassword       string `json:"smtp_password"`
 	SMTPAuthentication bool   `json:"smtp_authentication"`
@@ -265,16 +313,54 @@ type GetSMTPConfigResp struct {
 
 // GetManifestJsonResp get manifest json response
 type GetManifestJsonResp struct {
-	ManifestVersion int               `json:"manifest_version"`
-	Version         string            `json:"version"`
-	Revision        string            `json:"revision"`
-	ShortName       string            `json:"short_name"`
-	Name            string            `json:"name"`
-	Icons           map[string]string `json:"icons"`
-	StartUrl        string            `json:"start_url"`
-	Display         string            `json:"display"`
-	ThemeColor      string            `json:"theme_color"`
-	BackgroundColor string            `json:"background_color"`
+	ManifestVersion int                `json:"manifest_version"`
+	Version         string             `json:"version"`
+	Revision        string             `json:"revision"`
+	ShortName       string             `json:"short_name"`
+	Name            string             `json:"name"`
+	Icons           []ManifestJsonIcon `json:"icons"`
+	StartUrl        string             `json:"start_url"`
+	Display         string             `json:"display"`
+	ThemeColor      string             `json:"theme_color"`
+	BackgroundColor string             `json:"background_color"`
+}
+
+type ManifestJsonIcon struct {
+	Src   string `json:"src"`
+	Sizes string `json:"sizes"`
+	Type  string `json:"type"`
+}
+
+func CreateManifestJsonIcons(icon string) []ManifestJsonIcon {
+	ext := filepath.Ext(icon)
+	if ext == "" {
+		ext = "png"
+	} else {
+		ext = strings.ToLower(ext[1:])
+	}
+	iconType := fmt.Sprintf("image/%s", ext)
+	return []ManifestJsonIcon{
+		{
+			Src:   icon,
+			Sizes: "16x16",
+			Type:  iconType,
+		},
+		{
+			Src:   icon,
+			Sizes: "32x32",
+			Type:  iconType,
+		},
+		{
+			Src:   icon,
+			Sizes: "48x48",
+			Type:  iconType,
+		},
+		{
+			Src:   icon,
+			Sizes: "128x128",
+			Type:  iconType,
+		},
+	}
 }
 
 const (
@@ -284,6 +370,8 @@ const (
 	PrivilegeLevel2 PrivilegeLevel = 2
 	// PrivilegeLevel3 high
 	PrivilegeLevel3 PrivilegeLevel = 3
+	// PrivilegeLevelCustom custom
+	PrivilegeLevelCustom PrivilegeLevel = 99
 )
 
 type PrivilegeLevel int
@@ -308,16 +396,18 @@ type GetPrivilegesConfigResp struct {
 type PrivilegeOption struct {
 	Level      PrivilegeLevel        `json:"level"`
 	LevelDesc  string                `json:"level_desc"`
-	Privileges []*constant.Privilege `json:"privileges"`
+	Privileges []*constant.Privilege `validate:"dive" json:"privileges"`
 }
 
 // UpdatePrivilegesConfigReq update privileges config request
 type UpdatePrivilegesConfigReq struct {
-	Level PrivilegeLevel `validate:"required,min=1,max=3" json:"level"`
+	Level            PrivilegeLevel        `validate:"required,min=1,max=3|eq=99" json:"level"`
+	CustomPrivileges []*constant.Privilege `validate:"dive" json:"custom_privileges"`
 }
 
 var (
 	DefaultPrivilegeOptions      PrivilegeOptions
+	DefaultCustomPrivilegeOption *PrivilegeOption
 	privilegeOptionsLevelMapping = map[string][]int{
 		constant.RankQuestionAddKey:               {1, 1, 1},
 		constant.RankAnswerAddKey:                 {1, 1, 1},
@@ -367,5 +457,12 @@ func init() {
 				Key:   privilege.Key,
 			})
 		}
+	}
+
+	// set up default custom privilege option
+	DefaultCustomPrivilegeOption = &PrivilegeOption{
+		Level:      PrivilegeLevelCustom,
+		LevelDesc:  reason.PrivilegeLevelCustomDesc,
+		Privileges: DefaultPrivilegeOptions[0].Privileges,
 	}
 }

@@ -25,6 +25,20 @@ import type * as Type from '@/common/interface';
 
 export const useQuestionList = (params: Type.QueryQuestionsReq) => {
   const apiUrl = `/answer/api/v1/question/page?${qs.stringify(params)}`;
+  const { data, error } = useSWR<Type.ListResult, Error>(apiUrl, (url) =>
+    request.get(url, { allow404: true }),
+  );
+  return {
+    data,
+    isLoading: !data && !error,
+    error,
+  };
+};
+
+export const useQuestionRecommendList = (params: Type.QueryQuestionsReq) => {
+  const apiUrl = `/answer/api/v1/question/recommend/page?${qs.stringify(
+    params,
+  )}`;
   const { data, error } = useSWR<Type.ListResult, Error>(
     [apiUrl],
     request.instance.get,
@@ -40,7 +54,7 @@ export const useHotQuestions = (
   params: Type.QueryQuestionsReq = {
     page: 1,
     page_size: 6,
-    order: 'frequent',
+    order: 'hot',
     in_days: 7,
   },
 ) => {

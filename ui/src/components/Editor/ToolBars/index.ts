@@ -18,7 +18,6 @@
  */
 
 import Table from './table';
-import Formula from './formula';
 import OL from './ol';
 import UL from './ul';
 import Indent from './indent';
@@ -33,10 +32,10 @@ import BlockQuote from './blockquote';
 import Image from './image';
 import Help from './help';
 import Chart from './chart';
+import File from './file';
 
 export {
   Table,
-  Formula,
   OL,
   UL,
   Indent,
@@ -51,4 +50,5 @@ export {
   Image,
   Help,
   Chart,
+  File,
 };

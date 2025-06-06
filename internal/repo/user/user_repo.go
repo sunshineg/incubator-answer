@@ -24,15 +24,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	usercommon "github.com/apache/incubator-answer/internal/service/user_common"
-	"github.com/apache/incubator-answer/pkg/converter"
-	"github.com/apache/incubator-answer/plugin"
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	usercommon "github.com/apache/answer/internal/service/user_common"
+	"github.com/apache/answer/pkg/converter"
+	"github.com/apache/answer/plugin"
 	"github.com/segmentfault/pacman/errors"
 	"github.com/segmentfault/pacman/log"
+	"xorm.io/builder"
 	"xorm.io/xorm"
 )
 
@@ -155,8 +156,9 @@ func (ur *userRepo) UpdateEmail(ctx context.Context, userID, email string) (err 
 	return
 }
 
-func (ur *userRepo) UpdateLanguage(ctx context.Context, userID, language string) (err error) {
-	_, err = ur.data.DB.Context(ctx).Where("id = ?", userID).Update(&entity.User{Language: language})
+func (ur *userRepo) UpdateUserInterface(ctx context.Context, userID, language, colorSchema string) (err error) {
+	session := ur.data.DB.Context(ctx).Where("id = ?", userID)
+	_, err = session.Cols("language", "color_scheme").Update(&entity.User{Language: language, ColorScheme: colorSchema})
 	if err != nil {
 		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
 	}
@@ -167,6 +169,16 @@ func (ur *userRepo) UpdateLanguage(ctx context.Context, userID, language string)
 func (ur *userRepo) UpdateInfo(ctx context.Context, userInfo *entity.User) (err error) {
 	_, err = ur.data.DB.Context(ctx).Where("id = ?", userInfo.ID).
 		Cols("username", "display_name", "avatar", "bio", "bio_html", "website", "location").Update(userInfo)
+	if err != nil {
+		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+	return
+}
+
+// UpdateUserProfile update user profile
+func (ur *userRepo) UpdateUserProfile(ctx context.Context, userInfo *entity.User) (err error) {
+	_, err = ur.data.DB.Context(ctx).Where("id = ?", userInfo.ID).
+		Cols("username", "e_mail", "mail_status", "display_name").Update(userInfo)
 	if err != nil {
 		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
 	}
@@ -245,12 +257,16 @@ func (ur *userRepo) GetUserCount(ctx context.Context) (count int64, err error) {
 	return count, nil
 }
 
-func (ur *userRepo) SearchUserListByName(ctx context.Context, name string, limit int) (userList []*entity.User, err error) {
+func (ur *userRepo) SearchUserListByName(ctx context.Context, name string, limit int,
+	onlyStaff bool) (userList []*entity.User, err error) {
 	userList = make([]*entity.User, 0)
 	session := ur.data.DB.Context(ctx)
+	if onlyStaff {
+		session.Join("INNER", "user_role_rel", "`user`.id = `user_role_rel`.user_id AND `user_role_rel`.role_id > 1")
+	}
 	session.Where("status = ?", entity.UserStatusAvailable)
 	session.Where("username LIKE ? OR display_name LIKE ?", strings.ToLower(name)+"%", name+"%")
-	session.OrderBy("username ASC, id DESC")
+	session.OrderBy("username ASC, `user`.id DESC")
 	session.Limit(limit)
 	err = session.Find(&userList)
 	if err != nil {
@@ -286,10 +302,6 @@ func tryToDecorateUserInfoFromUserCenter(ctx context.Context, data *data.Data, o
 		return errors.BadRequest(reason.UserNotFound).WithError(err).WithStack()
 	}
 
-	// In general, usernames should be guaranteed unique by the User Center plugin, so there are no inconsistencies.
-	if original.Username != userCenterBasicUserInfo.Username {
-		log.Warnf("user %s username is inconsistent with user center", original.ID)
-	}
 	decorateByUserCenterUser(original, userCenterBasicUserInfo)
 	return nil
 }
@@ -368,4 +380,18 @@ func decorateByUserCenterUser(original *entity.User, ucUser *plugin.UserCenterBa
 	if ucUser.Status != plugin.UserStatusAvailable {
 		original.Status = int(ucUser.Status)
 	}
+}
+
+func (ur *userRepo) IsAvatarFileUsed(ctx context.Context, filePath string) (bool, error) {
+	user := &entity.User{}
+	count, err := ur.data.DB.Context(ctx).
+		Table("user").
+		Where(builder.Like{"avatar", "%" + filePath + "%"}).
+		Count(&user)
+
+	if err != nil {
+		return false, errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+
+	return count > 0, nil
 }

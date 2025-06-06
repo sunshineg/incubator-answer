@@ -3,6 +3,7 @@
 *.rej
 *.so
 *~
+*.db
 .DS_Store
 ._*
 /.idea
@@ -29,3 +30,6 @@ vendor/
 /new_answer
 
 dist/
+
+# Lint setup generated file
+.husky/

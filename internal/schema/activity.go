@@ -19,7 +19,7 @@
 
 package schema
 
-import "github.com/apache/incubator-answer/internal/base/constant"
+import "github.com/apache/answer/internal/base/constant"
 
 // ActivityMsg activity message
 type ActivityMsg struct {
@@ -100,4 +100,13 @@ type ObjectTimelineTag struct {
 	MainTagSlugName string `json:"main_tag_slug_name"`
 	Recommend       bool   `json:"recommend"`
 	Reserved        bool   `json:"reserved"`
+}
+
+// PassReviewActivity pass review activity
+type PassReviewActivity struct {
+	UserID           string `json:"user_id"`
+	TriggerUserID    string `json:"trigger_user_id"`
+	ObjectID         string `json:"object_id"`
+	OriginalObjectID string `json:"original_object_id"`
+	RevisionID       string `json:"revision_id"`
 }

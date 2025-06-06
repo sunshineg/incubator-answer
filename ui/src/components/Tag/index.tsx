@@ -38,11 +38,14 @@ const Index: FC<IProps> = ({
   className = '',
   textClassName = '',
 }) => {
-  href ||= pathFactory.tagLanding(encodeURIComponent(data.slug_name));
+  href ||= pathFactory.tagLanding(data.slug_name);
 
   return (
     <Link
       to={href}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
       className={classNames(
         'badge-tag rounded-1',
         data.reserved && 'badge-tag-reserved',

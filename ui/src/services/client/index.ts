@@ -29,3 +29,5 @@ export * from './timeline';
 export * from './revision';
 export * from './user';
 export * from './Oauth';
+export * from './review';
+export * from './badges';

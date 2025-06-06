@@ -21,15 +21,16 @@ package comment
 
 import (
 	"context"
+
 	"github.com/segmentfault/pacman/log"
 
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/base/pager"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/service/comment"
-	"github.com/apache/incubator-answer/internal/service/comment_common"
-	"github.com/apache/incubator-answer/internal/service/unique"
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/base/pager"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/service/comment"
+	"github.com/apache/answer/internal/service/comment_common"
+	"github.com/apache/answer/internal/service/unique"
 	"github.com/segmentfault/pacman/errors"
 )
 
@@ -93,6 +94,17 @@ func (cr *commentRepo) UpdateCommentContent(
 
 // GetComment get comment one
 func (cr *commentRepo) GetComment(ctx context.Context, commentID string) (
+	comment *entity.Comment, exist bool, err error) {
+	comment = &entity.Comment{}
+	exist, err = cr.data.DB.Context(ctx).Where("status = ?", entity.CommentStatusAvailable).ID(commentID).Get(comment)
+	if err != nil {
+		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+	return
+}
+
+// GetCommentWithoutStatus get comment one without status
+func (cr *commentRepo) GetCommentWithoutStatus(ctx context.Context, commentID string) (
 	comment *entity.Comment, exist bool, err error) {
 	comment = &entity.Comment{}
 	exist, err = cr.data.DB.Context(ctx).ID(commentID).Get(comment)

@@ -21,12 +21,13 @@ package tag
 
 import (
 	"context"
-	"github.com/apache/incubator-answer/internal/base/data"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/service/tag_common"
-	"github.com/apache/incubator-answer/internal/service/unique"
-	"github.com/apache/incubator-answer/pkg/converter"
+
+	"github.com/apache/answer/internal/base/data"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/service/tag_common"
+	"github.com/apache/answer/internal/service/unique"
+	"github.com/apache/answer/pkg/converter"
 	"github.com/segmentfault/pacman/errors"
 	"xorm.io/builder"
 )
@@ -76,7 +77,7 @@ func (tr *tagRepo) RecoverTag(ctx context.Context, tagID string) (err error) {
 	return
 }
 
-// MustGetTagByID get tag by id
+// MustGetTagByNameOrID get tag by name or id
 func (tr *tagRepo) MustGetTagByNameOrID(ctx context.Context, tagID, slugName string) (
 	tag *entity.Tag, exist bool, err error) {
 	if len(tagID) == 0 && len(slugName) == 0 {
@@ -112,6 +113,15 @@ func (tr *tagRepo) UpdateTagSynonym(ctx context.Context, tagSlugNameList []strin
 
 func (tr *tagRepo) GetTagSynonymCount(ctx context.Context, tagID string) (count int64, err error) {
 	count, err = tr.data.DB.Context(ctx).Count(&entity.Tag{MainTagID: converter.StringToInt64(tagID), Status: entity.TagStatusAvailable})
+	if err != nil {
+		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+	}
+	return
+}
+
+func (tr *tagRepo) GetIDsByMainTagId(ctx context.Context, mainTagID string) (tagIDs []string, err error) {
+	session := tr.data.DB.Context(ctx).Table(entity.Tag{}.TableName()).Where(builder.Eq{"status": entity.TagStatusAvailable, "main_tag_id": converter.StringToInt64(mainTagID)}).Cols("id")
+	err = session.Find(&tagIDs)
 	if err != nil {
 		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
 	}

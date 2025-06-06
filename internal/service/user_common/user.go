@@ -21,19 +21,20 @@ package usercommon
 
 import (
 	"context"
-	"github.com/apache/incubator-answer/internal/base/constant"
-	"github.com/apache/incubator-answer/pkg/converter"
 	"strings"
 
-	"github.com/Chain-Zhang/pinyin"
-	"github.com/apache/incubator-answer/internal/base/reason"
-	"github.com/apache/incubator-answer/internal/entity"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service/auth"
-	"github.com/apache/incubator-answer/internal/service/role"
-	"github.com/apache/incubator-answer/internal/service/siteinfo_common"
-	"github.com/apache/incubator-answer/pkg/checker"
-	"github.com/apache/incubator-answer/pkg/random"
+	"github.com/apache/answer/internal/base/constant"
+	"github.com/apache/answer/pkg/converter"
+
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/apache/answer/internal/entity"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/auth"
+	"github.com/apache/answer/internal/service/role"
+	"github.com/apache/answer/internal/service/siteinfo_common"
+	"github.com/apache/answer/pkg/checker"
+	"github.com/apache/answer/pkg/random"
+	"github.com/mozillazg/go-pinyin"
 	"github.com/segmentfault/pacman/errors"
 	"github.com/segmentfault/pacman/log"
 )
@@ -48,16 +49,18 @@ type UserRepo interface {
 	UpdateEmailStatus(ctx context.Context, userID string, emailStatus int) error
 	UpdateNoticeStatus(ctx context.Context, userID string, noticeStatus int) error
 	UpdateEmail(ctx context.Context, userID, email string) error
-	UpdateLanguage(ctx context.Context, userID, language string) error
+	UpdateUserInterface(ctx context.Context, userID, language, colorSchema string) (err error)
 	UpdatePass(ctx context.Context, userID, pass string) error
 	UpdateInfo(ctx context.Context, userInfo *entity.User) (err error)
+	UpdateUserProfile(ctx context.Context, userInfo *entity.User) (err error)
 	GetByUserID(ctx context.Context, userID string) (userInfo *entity.User, exist bool, err error)
 	BatchGetByID(ctx context.Context, ids []string) ([]*entity.User, error)
 	GetByUsername(ctx context.Context, username string) (userInfo *entity.User, exist bool, err error)
 	GetByUsernames(ctx context.Context, usernames []string) ([]*entity.User, error)
 	GetByEmail(ctx context.Context, email string) (userInfo *entity.User, exist bool, err error)
 	GetUserCount(ctx context.Context) (count int64, err error)
-	SearchUserListByName(ctx context.Context, name string, limit int) (userList []*entity.User, err error)
+	SearchUserListByName(ctx context.Context, name string, limit int, onlyStaff bool) (userList []*entity.User, err error)
+	IsAvatarFileUsed(ctx context.Context, filePath string) (bool, error)
 }
 
 // UserCommon user service
@@ -118,6 +121,18 @@ func (us *UserCommon) BatchGetUserBasicInfoByUserNames(ctx context.Context, user
 	return infomap, nil
 }
 
+func (us *UserCommon) GetByEmail(ctx context.Context, email string) (userInfo *entity.User, exist bool, err error) {
+	return us.userRepo.GetByEmail(ctx, email)
+}
+
+func (us *UserCommon) GetByUsername(ctx context.Context, username string) (userInfo *entity.User, exist bool, err error) {
+	return us.userRepo.GetByUsername(ctx, username)
+}
+
+func (us *UserCommon) UpdateUserProfile(ctx context.Context, userInfo *entity.User) (err error) {
+	return us.userRepo.UpdateUserProfile(ctx, userInfo)
+}
+
 func (us *UserCommon) UpdateAnswerCount(ctx context.Context, userID string, num int) error {
 	return us.userRepo.UpdateAnswerCount(ctx, userID, num)
 }
@@ -127,6 +142,7 @@ func (us *UserCommon) UpdateQuestionCount(ctx context.Context, userID string, nu
 }
 
 func (us *UserCommon) BatchUserBasicInfoByID(ctx context.Context, userIDs []string) (map[string]*schema.UserBasicInfo, error) {
+	userIDs = checker.FilterEmptyString(userIDs)
 	userMap := make(map[string]*schema.UserBasicInfo)
 	if len(userIDs) == 0 {
 		return userMap, nil
@@ -141,6 +157,15 @@ func (us *UserCommon) BatchUserBasicInfoByID(ctx context.Context, userIDs []stri
 		info.Avatar = avatarMapping[user.ID].GetURL()
 		userMap[user.ID] = info
 	}
+	for _, id := range userIDs {
+		if _, ok := userMap[id]; !ok {
+			userMap[id] = &schema.UserBasicInfo{
+				ID:          id,
+				DisplayName: "user" + converter.DeleteUserDisplay(id),
+				Status:      constant.UserDeleted,
+			}
+		}
+	}
 	return userMap, nil
 }
 
@@ -153,6 +178,7 @@ func (us *UserCommon) FormatUserBasicInfo(ctx context.Context, userInfo *entity.
 	userBasicInfo.DisplayName = userInfo.DisplayName
 	userBasicInfo.Website = userInfo.Website
 	userBasicInfo.Location = userInfo.Location
+	userBasicInfo.Language = userInfo.Language
 	userBasicInfo.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
 	if userBasicInfo.Status == constant.UserDeleted {
 		userBasicInfo.Avatar = ""
@@ -166,12 +192,7 @@ func (us *UserCommon) FormatUserBasicInfo(ctx context.Context, userInfo *entity.
 func (us *UserCommon) MakeUsername(ctx context.Context, displayName string) (username string, err error) {
 	// Chinese processing
 	if has := checker.IsChinese(displayName); has {
-		str, err := pinyin.New(displayName).Split("").Mode(pinyin.WithoutTone).Convert()
-		if err != nil {
-			return "", errors.BadRequest(reason.UsernameInvalid)
-		} else {
-			displayName = str
-		}
+		displayName = strings.Join(pinyin.LazyConvert(displayName, nil), "")
 	}
 
 	username = strings.ReplaceAll(displayName, " ", "-")
@@ -219,9 +240,19 @@ func (us *UserCommon) CacheLoginUserInfo(ctx context.Context, userID string, use
 		return "", nil, err
 	}
 	if userCacheInfo.RoleID == role.RoleAdminID {
-		if err = us.authService.SetAdminUserCacheInfo(ctx, accessToken, &entity.UserCacheInfo{UserID: userID}); err != nil {
+		if err = us.authService.SetAdminUserCacheInfo(ctx, accessToken, userCacheInfo); err != nil {
 			return "", nil, err
 		}
 	}
 	return accessToken, userCacheInfo, nil
+}
+
+func (us *UserCommon) IsAvatarFileUsed(ctx context.Context, filePath string) bool {
+	used, err := us.userRepo.IsAvatarFileUsed(ctx, filePath)
+	if err != nil {
+		log.Errorf("error checking if branding file is used: %v", err)
+		// will try again with the next clean up
+		return true
+	}
+	return used
 }

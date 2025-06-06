@@ -20,11 +20,12 @@
 package schema
 
 import (
-	"github.com/apache/incubator-answer/internal/base/translator"
+	"github.com/apache/answer/internal/base/translator"
 	"github.com/segmentfault/pacman/i18n"
 )
 
 type ReasonItem struct {
+	ReasonKey   string `json:"reason_key"`
 	ReasonType  int    `json:"reason_type"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
@@ -52,9 +53,10 @@ func (r *ReasonItem) Translate(keyPrefix string, lang i18n.Language) {
 			return fieldTr
 		}
 		// If i18n key not exists, return fieldData original value
-		return fieldData + "没翻译"
+		return fieldData
 	}
 
+	r.ReasonKey = keyPrefix
 	r.Name = trField("name", r.Name)
 	r.Description = trField("desc", r.Description)
 	r.Placeholder = trField("placeholder", r.Placeholder)

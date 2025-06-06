@@ -37,3 +37,20 @@ const (
 	// PermalinkQuestionIDByShortID /questions/11
 	PermalinkQuestionIDByShortID
 )
+
+const (
+	ColorSchemeDefault = "default"
+	ColorSchemeLight   = "light"
+	ColorSchemeDark    = "dark"
+	ColorSchemeSystem  = "system"
+)
+
+const (
+	EmailConfigKey = "email.config"
+)
+
+const (
+	DefaultMaxImageMegapixel = 40 * 1000 * 1000
+	DefaultMaxImageSize      = 4 * 1024 * 1024
+	DefaultMaxAttachmentSize = 8 * 1024 * 1024
+)

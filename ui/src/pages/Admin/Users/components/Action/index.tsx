@@ -23,11 +23,17 @@ import { useTranslation } from 'react-i18next';
 import { Modal, Icon } from '@/components';
 import {
   useChangeUserRoleModal,
+  useChangeProfileModal,
   useChangePasswordModal,
   useActivationEmailModal,
   useToast,
 } from '@/hooks';
-import { updateUserPassword, changeUserStatus } from '@/services';
+import {
+  updateUserPassword,
+  changeUserStatus,
+  updateUserProfile,
+} from '@/services';
+import { toastStore } from '@/stores';
 
 interface Props {
   showActionPassword?: boolean;
@@ -52,7 +58,13 @@ const UserOperation = ({
   const Toast = useToast();
 
   const changeUserRoleModal = useChangeUserRoleModal({
-    callback: refreshUsers,
+    callback: () => {
+      Toast.onShow({
+        msg: t('change_user_role', { keyPrefix: 'messages' }),
+        variant: 'success',
+      });
+      refreshUsers?.();
+    },
   });
   const changePasswordModal = useChangePasswordModal({
     onConfirm: (rd) => {
@@ -71,6 +83,29 @@ const UserOperation = ({
       });
     },
   });
+  const changeProfileModal = useChangeProfileModal(
+    {
+      onConfirm: (rd) => {
+        return new Promise((resolve, reject) => {
+          updateUserProfile(rd)
+            .then(() => {
+              Toast.onShow({
+                msg: t('edit_success', {
+                  keyPrefix: 'admin.edit_profile_modal',
+                }),
+                variant: 'success',
+              });
+              resolve(true);
+              refreshUsers?.();
+            })
+            .catch((e) => {
+              reject(e);
+            });
+        });
+      },
+    },
+    userData,
+  );
 
   const activationEmailModal = useActivationEmailModal();
 
@@ -79,6 +114,10 @@ const UserOperation = ({
       user_id: userData.user_id,
       status: statusType,
     }).then(() => {
+      toastStore.getState().show({
+        msg: t(`user_${statusType}`, { keyPrefix: 'messages' }),
+        variant: 'success',
+      });
       refreshUsers?.();
       // onClose();
     });
@@ -103,6 +142,10 @@ const UserOperation = ({
 
     if (type === 'password') {
       changePasswordModal.onShow(user_id);
+    }
+
+    if (type === 'profile') {
+      changeProfileModal.onShow(user_id);
     }
 
     if (type === 'activation') {
@@ -160,12 +203,15 @@ const UserOperation = ({
         <Dropdown.Toggle variant="link" className="no-toggle p-0">
           <Icon name="three-dots-vertical" title={t('action')} />
         </Dropdown.Toggle>
-        <Dropdown.Menu>
+        <Dropdown.Menu align="end">
           {showActionPassword ? (
             <Dropdown.Item onClick={() => handleAction('password')}>
               {t('set_new_password')}
             </Dropdown.Item>
           ) : null}
+          <Dropdown.Item onClick={() => handleAction('profile')}>
+            {t('edit_profile')}
+          </Dropdown.Item>
           {showActionRole ? (
             <Dropdown.Item onClick={() => handleAction('role')}>
               {t('change_role')}

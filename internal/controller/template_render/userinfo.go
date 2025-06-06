@@ -20,10 +20,10 @@
 package templaterender
 
 import (
-	"github.com/apache/incubator-answer/internal/schema"
+	"github.com/apache/answer/internal/schema"
 	"golang.org/x/net/context"
 )
 
 func (q *TemplateRenderController) UserInfo(ctx context.Context, req *schema.GetOtherUserInfoByUsernameReq) (resp *schema.GetOtherUserInfoByUsernameResp, err error) {
-	return q.userService.GetOtherUserInfoByUsername(ctx, req.Username)
+	return q.userService.GetOtherUserInfoByUsername(ctx, req)
 }

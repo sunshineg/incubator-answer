@@ -32,6 +32,9 @@ const (
 	AdminTokenCacheKey                         = "answer:admin:token:"
 	AdminTokenCacheTime                        = 7 * 24 * time.Hour
 	UserTokenMappingCacheKey                   = "answer:user-token:mapping:"
+	UserEmailCodeCacheKey                      = "answer:user:email-code:"
+	UserEmailCodeCacheTime                     = 10 * time.Minute
+	UserLatestEmailCodeCacheKey                = "answer:user-id:email-code:"
 	SiteInfoCacheKey                           = "answer:site-info:"
 	SiteInfoCacheTime                          = 1 * time.Hour
 	ConfigID2KEYCacheKeyPrefix                 = "answer:config:id:"
@@ -47,4 +50,6 @@ const (
 	NewQuestionNotificationLimitMax            = 50
 	RateLimitCacheKeyPrefix                    = "answer:rate-limit:"
 	RateLimitCacheTime                         = 5 * time.Minute
+	RedDotCacheKey                             = "answer:red-dot:%s:%s"
+	RedDotCacheTime                            = 30 * 24 * time.Hour
 )

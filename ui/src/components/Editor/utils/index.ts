@@ -17,89 +17,32 @@
  * under the License.
  */
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
-import type { Editor, Position } from 'codemirror';
-import type CodeMirror from 'codemirror';
-import 'codemirror/lib/codemirror.css';
+import { minimalSetup } from 'codemirror';
+import { EditorState, Compartment } from '@codemirror/state';
+import { EditorView, placeholder } from '@codemirror/view';
+import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
+import { languages } from '@codemirror/language-data';
+import copy from 'copy-to-clipboard';
+import Tooltip from 'bootstrap/js/dist/tooltip';
 
-export function createEditorUtils(
-  codemirror: typeof CodeMirror,
-  editor: Editor,
-) {
-  editor.wrapText = (before: string, after = before, defaultText) => {
-    const range = editor.somethingSelected()
-      ? editor.listSelections()[0]
-      : editor.findWordAt(editor.getCursor());
+import { Editor } from '../types';
+import { isDarkTheme } from '@/utils/common';
 
-    const from = range.from();
-    const to = range.to();
-    const text = editor.getRange(from, to) || defaultText;
-    const fromBefore = codemirror.Pos(from.line, from.ch - before.length);
-    const toAfter = codemirror.Pos(to.line, to.ch + after.length);
+import createEditorUtils from './extension';
 
-    if (
-      editor.getRange(fromBefore, from) === before &&
-      editor.getRange(to, toAfter) === after
-    ) {
-      editor.replaceRange(text, fromBefore, toAfter);
-      editor.setSelection(
-        fromBefore,
-        codemirror.Pos(fromBefore.line, fromBefore.ch + text.length),
-      );
-    } else {
-      editor.replaceRange(before + text + after, from, to);
-      const cursor = editor.getCursor();
-
-      editor.setSelection(
-        codemirror.Pos(cursor.line, cursor.ch - after.length - text.length),
-        codemirror.Pos(cursor.line, cursor.ch - after.length),
-      );
-    }
-  };
-  editor.replaceLines = (
-    replace: Parameters<Array<string>['map']>[0],
-    symbolLen = 0,
-  ) => {
-    const [selection] = editor.listSelections();
-
-    const range = [
-      codemirror.Pos(selection.from().line, 0),
-      codemirror.Pos(selection.to().line),
-    ] as const;
-    const lines = editor.getRange(...range).split('\n');
-
-    editor.replaceRange(lines.map(replace).join('\n'), ...range);
-    const newRange = range;
-
-    if (symbolLen > 0) {
-      newRange[0].ch = symbolLen;
-    }
-    editor.setSelection(...newRange);
-  };
-  editor.appendBlock = (content: string): Position => {
-    const cursor = editor.getCursor();
-
-    let emptyLine = -1;
-
-    for (let i = cursor.line; i < editor.lineCount(); i += 1) {
-      if (!editor.getLine(i).trim()) {
-        emptyLine = i;
-        break;
-      }
-    }
-    if (emptyLine === -1) {
-      editor.replaceRange('\n', codemirror.Pos(editor.lineCount()));
-      emptyLine = editor.lineCount();
-    }
-
-    editor.replaceRange(`\n${content}`, codemirror.Pos(emptyLine));
-    return codemirror.Pos(emptyLine + 1, 0);
-  };
+const editableCompartment = new Compartment();
+interface htmlRenderConfig {
+  copyText: string;
+  copySuccessText: string;
 }
-
-export function htmlRender(el: HTMLElement | null) {
+export function htmlRender(el: HTMLElement | null, config?: htmlRenderConfig) {
   if (!el) return;
+  const { copyText = '', copySuccessText = '' } = config || {
+    copyText: 'Copy to clipboard',
+    copySuccessText: 'Copied!',
+  };
   // Replace all br tags with newlines
   // Fixed an issue where the BR tag in the editor block formula HTML caused rendering errors.
   el.querySelectorAll('p').forEach((p) => {
@@ -127,7 +70,7 @@ export function htmlRender(el: HTMLElement | null) {
     div.appendChild(table);
   });
 
-  // add rel nofollow for link not inlcludes domain
+  // add rel nofollow for link not includes domain
   el.querySelectorAll('a').forEach((a) => {
     const base = window.location.origin;
     const targetUrl = new URL(a.href, base);
@@ -136,63 +79,126 @@ export function htmlRender(el: HTMLElement | null) {
       a.rel = 'nofollow';
     }
   });
+
+  // Add copy button to all pre tags
+  el.querySelectorAll('pre').forEach((pre) => {
+    // Create copy button
+    const codeWrap = document.createElement('div');
+    codeWrap.className = 'position-relative a-code-wrap';
+    const codeTool = document.createElement('div');
+    codeTool.className = 'a-code-tool';
+    const uniqueId = `a-copy-code-${Date.now().toString().substring(5)}-${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}`;
+    const str = `
+      <a role="button" class="link-secondary a-copy-code" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${copyText}" id="${uniqueId}">
+        <i class="br bi-copy"></i>
+      </a>
+    `;
+    codeTool.innerHTML = str;
+
+    // Add copy button to pre tag
+    pre.style.position = 'relative';
+
+    // 将 codeTool 和 pre 插入到 codeWrap 中, 并且使用 codeWrap 替换 pre
+    codeWrap.appendChild(codeTool);
+    pre.parentNode?.replaceChild(codeWrap, pre);
+    codeWrap.appendChild(pre);
+
+    const tooltipTriggerList = el.querySelectorAll('.a-copy-code');
+
+    Array.from(tooltipTriggerList)?.map(
+      (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl),
+    );
+
+    // Copy pre content on button click
+    const copyBtn = codeTool.querySelector('.a-copy-code');
+    copyBtn?.addEventListener('click', () => {
+      const textToCopy = pre.textContent || '';
+      copy(textToCopy);
+      // Change tooltip text on copy success
+      const tooltipInstance = Tooltip.getOrCreateInstance(`#${uniqueId}`);
+      tooltipInstance?.setContent({ '.tooltip-inner': copySuccessText });
+      const myTooltipEl = document.querySelector(`#${uniqueId}`);
+      myTooltipEl?.addEventListener('hidden.bs.tooltip', () => {
+        tooltipInstance.setContent({ '.tooltip-inner': copyText });
+      });
+    });
+  });
 }
 
 export const useEditor = ({
   editorRef,
-  placeholder,
+  placeholder: placeholderText,
   autoFocus,
   onChange,
   onFocus,
   onBlur,
 }) => {
-  const [editor, setEditor] = useState<CodeMirror.Editor | null>(null);
+  const [editor, setEditor] = useState<Editor | null>(null);
   const [value, setValue] = useState<string>('');
-  const isMountedRef = useRef(false);
-
-  const onEnter = (cm) => {
-    const cursor = cm.getCursor();
-    const text = cm.getLine(cursor.line);
-    const doc = cm.getDoc();
-
-    const olRegexData = text.match(/^(\s{0,})(\d+)\.\s/);
-    const ulRegexData = text.match(/^(\s{0,})(-|\*)\s/);
-    const blockquoteData = text.match(/^>\s+?/g);
-
-    if (olRegexData && text !== olRegexData[0]) {
-      const num = olRegexData[2];
-
-      doc.replaceSelection(`\n${olRegexData[1]}${Number(num) + 1}. `);
-    } else if (ulRegexData && text !== ulRegexData[0]) {
-      doc.replaceSelection(`\n${ulRegexData[1]}${ulRegexData[2]} `);
-    } else if (blockquoteData && text !== blockquoteData[0]) {
-      doc.replaceSelection(`\n> `);
-    } else if (
-      text.trim() === '>' ||
-      text.trim().match(/^\d{1,}\.$/) ||
-      text.trim().match(/^(\*|-)$/)
-    ) {
-      doc.replaceRange(`\n`, { ...cursor, ch: 0 }, cursor);
-    } else {
-      doc.replaceSelection(`\n`);
-    }
-  };
-
   const init = async () => {
-    if (isMountedRef.current) {
-      return false;
-    }
-    isMountedRef.current = true;
+    const isDark = isDarkTheme();
 
-    const { default: codeMirror } = await import('codemirror');
-    await import('codemirror/mode/markdown/markdown');
-    await import('codemirror/addon/display/placeholder');
-
-    const cm = codeMirror(editorRef?.current, {
-      mode: 'markdown',
-      lineWrapping: true,
-      placeholder,
+    const theme = EditorView.theme({
+      '&': {
+        height: '100%',
+        padding: '.375rem .75rem',
+      },
+      '&.cm-focused': {
+        outline: 'none',
+      },
+      '.cm-content': {
+        width: '100%',
+      },
+      '.cm-line': {
+        whiteSpace: 'pre-wrap',
+        wordWrap: 'break-word',
+      },
+      '.ͼ7, .ͼ6': {
+        textDecoration: 'none',
+      },
+      '.cm-cursor': {
+        'border-left-color': isDark ? 'white' : 'black',
+      },
     });
+
+    const startState = EditorState.create({
+      extensions: [
+        minimalSetup,
+        markdown({
+          codeLanguages: languages,
+          base: markdownLanguage,
+        }),
+        theme,
+        placeholder(placeholderText),
+        EditorView.lineWrapping,
+        editableCompartment.of(EditorView.editable.of(true)),
+        EditorView.domEventHandlers({
+          paste(event) {
+            const clipboard = event.clipboardData as DataTransfer;
+            const htmlStr = clipboard.getData('text/html');
+            const imgRegex =
+              /<img([\s\S]*?) src\s*=\s*(['"])([\s\S]*?)\2([^>]*)>/;
+
+            return Boolean(htmlStr.match(imgRegex));
+          },
+        }),
+      ],
+    });
+
+    const view = new EditorView({
+      parent: editorRef.current,
+      state: startState,
+    });
+
+    const cm = createEditorUtils(view as Editor);
+
+    cm.setReadOnly = (readOnly: boolean) => {
+      cm.dispatch({
+        effects: editableCompartment.reconfigure(
+          EditorView.editable.of(!readOnly),
+        ),
+      });
+    };
 
     if (autoFocus) {
       setTimeout(() => {
@@ -200,25 +206,21 @@ export const useEditor = ({
       }, 10);
     }
 
-    cm.on('change', (e) => {
-      const newValue = e.getValue();
+    cm.on('change', () => {
+      const newValue = cm.getValue();
       setValue(newValue);
     });
 
     cm.on('focus', () => {
       onFocus?.();
     });
+
     cm.on('blur', () => {
       onBlur?.();
     });
 
     setEditor(cm);
-    createEditorUtils(codeMirror, cm);
 
-    cm.setSize('100%', '100%');
-    cm.addKeyMap({
-      Enter: onEnter,
-    });
     return cm;
   };
 
@@ -227,11 +229,14 @@ export const useEditor = ({
   }, [value]);
 
   useEffect(() => {
-    if (!(editorRef.current instanceof HTMLElement)) {
+    if (!editorRef.current) {
       return;
     }
-    init();
-  }, [editorRef]);
+    if (editorRef.current.children.length > 0 || editor) {
+      return;
+    }
 
+    init();
+  }, [editor]);
   return editor;
 };

@@ -24,12 +24,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/apache/incubator-answer/pkg/converter"
+	"github.com/apache/answer/pkg/converter"
 )
 
 const (
 	CommentStatusAvailable = 1
 	CommentStatusDeleted   = 10
+	CommentStatusPending   = 11
 )
 
 // Comment comment

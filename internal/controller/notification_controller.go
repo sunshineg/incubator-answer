@@ -20,12 +20,12 @@
 package controller
 
 import (
-	"github.com/apache/incubator-answer/internal/base/handler"
-	"github.com/apache/incubator-answer/internal/base/middleware"
-	"github.com/apache/incubator-answer/internal/schema"
-	"github.com/apache/incubator-answer/internal/service/notification"
-	"github.com/apache/incubator-answer/internal/service/permission"
-	"github.com/apache/incubator-answer/internal/service/rank"
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/middleware"
+	"github.com/apache/answer/internal/schema"
+	"github.com/apache/answer/internal/service/notification"
+	"github.com/apache/answer/internal/service/permission"
+	"github.com/apache/answer/internal/service/rank"
 	"github.com/gin-gonic/gin"
 )
 
@@ -70,6 +70,7 @@ func (nc *NotificationController) GetRedDot(ctx *gin.Context) {
 	req.CanReviewQuestion = canList[0]
 	req.CanReviewAnswer = canList[1]
 	req.CanReviewTag = canList[2]
+	req.IsAdmin = middleware.GetUserIsAdminModerator(ctx)
 
 	resp, err := nc.notificationService.GetRedDot(ctx, req)
 	handler.HandleResponse(ctx, err, resp)
@@ -104,8 +105,8 @@ func (nc *NotificationController) ClearRedDot(ctx *gin.Context) {
 	req.CanReviewAnswer = canList[1]
 	req.CanReviewTag = canList[2]
 
-	RedDot, err := nc.notificationService.ClearRedDot(ctx, req)
-	handler.HandleResponse(ctx, err, RedDot)
+	resp, err := nc.notificationService.ClearRedDot(ctx, req)
+	handler.HandleResponse(ctx, err, resp)
 }
 
 // ClearUnRead
@@ -124,7 +125,7 @@ func (nc *NotificationController) ClearUnRead(ctx *gin.Context) {
 		return
 	}
 	userID := middleware.GetLoginUserIDFromContext(ctx)
-	err := nc.notificationService.ClearUnRead(ctx, userID, req.TypeStr)
+	err := nc.notificationService.ClearUnRead(ctx, userID, req.NotificationType)
 	handler.HandleResponse(ctx, err, gin.H{})
 }
 

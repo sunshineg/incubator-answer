@@ -27,7 +27,11 @@ export const CAPTCHA_CODE_STORAGE_KEY = '_a_captcha_';
 export const DRAFT_QUESTION_STORAGE_KEY = '_a_dq_';
 export const DRAFT_ANSWER_STORAGE_KEY = '_a_da_';
 export const DRAFT_TIMESIGH_STORAGE_KEY = '|_a_t_s_|';
-export const QUESTIONS_ORDER_STORAGE_KEY = '_a_qok_';
+export const DEFAULT_THEME = 'system';
+export const ADMIN_PRIVILEGE_CUSTOM_LEVEL = 99;
+export const SKELETON_SHOW_TIME = 1000;
+export const LIST_VIEW_STORAGE_KEY = '_a_list_view_';
+export const EXTERNAL_CONTENT_DISPLAY_MODE = '_a_ecd_';
 
 export const USER_AGENT_NAMES = {
   SegmentFault: 'SegmentFault',
@@ -52,6 +56,11 @@ export const ADMIN_LIST_STATUS = {
     variant: 'text-bg-danger',
     name: 'deleted',
   },
+  // pending
+  11: {
+    variant: 'text-bg-warning',
+    name: 'pending',
+  },
   normal: {
     variant: 'text-bg-success',
     name: 'normal',
@@ -64,42 +73,54 @@ export const ADMIN_LIST_STATUS = {
     variant: 'text-bg-danger',
     name: 'deleted',
   },
+  pending: {
+    variant: 'text-bg-warning',
+    name: 'pending',
+  },
+  unlisted: {
+    variant: 'text-bg-secondary',
+    name: 'unlisted',
+  },
 };
 
 export const ADMIN_NAV_MENUS = [
   {
     name: 'dashboard',
+    icon: 'speedometer',
     children: [],
   },
   {
     name: 'contents',
+    icon: 'file-earmark-text-fill',
     children: [{ name: 'questions' }, { name: 'answers' }],
   },
   {
     name: 'users',
+    icon: 'people-fill',
   },
   {
-    name: 'flags',
-    // badgeContent: 5,
+    name: 'badges',
+    icon: 'award-fill',
   },
   {
-    name: 'customize',
+    name: 'apperance',
+    icon: 'palette-fill',
     children: [
       {
         name: 'themes',
       },
       {
-        name: 'css_html',
-        path: 'css-html',
+        name: 'customize',
       },
+      { name: 'branding' },
     ],
   },
   {
     name: 'settings',
+    icon: 'gear-fill',
     children: [
       { name: 'general' },
       { name: 'interface' },
-      { name: 'branding' },
       { name: 'smtp' },
       { name: 'legal' },
       { name: 'write' },
@@ -111,6 +132,7 @@ export const ADMIN_NAV_MENUS = [
   },
   {
     name: 'plugins',
+    icon: 'plugin',
     children: [
       {
         name: 'installed_plugins',
@@ -634,3 +656,7 @@ export const SYSTEM_AVATAR_OPTIONS = [
     value: 'gravatar',
   },
 ];
+
+export const TAG_SLUG_NAME_MAX_LENGTH = 35;
+
+export const DEFAULT_THEME_COLOR = '#0033ff';

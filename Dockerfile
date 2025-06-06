@@ -15,8 +15,8 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM golang:1.19-alpine AS golang-builder
-LABEL maintainer="aichy@sf.com"
+FROM golang:1.22-alpine AS golang-builder
+LABEL maintainer="linkinstar@apache.org"
 
 ARG GOPROXY
 # ENV GOPROXY ${GOPROXY:-direct}
@@ -24,7 +24,7 @@ ARG GOPROXY
 
 ENV GOPATH /go
 ENV GOROOT /usr/local/go
-ENV PACKAGE github.com/apache/incubator-answer
+ENV PACKAGE github.com/apache/answer
 ENV BUILD_DIR ${GOPATH}/src/${PACKAGE}
 ENV ANSWER_MODULE ${BUILD_DIR}
 
@@ -34,7 +34,7 @@ ARG CGO_EXTRA_CFLAGS
 
 COPY . ${BUILD_DIR}
 WORKDIR ${BUILD_DIR}
-RUN apk --no-cache add build-base git bash nodejs npm && npm install -g pnpm@latest \
+RUN apk --no-cache add build-base git bash nodejs npm && npm install -g pnpm@9.7.0 \
     && make clean build
 
 RUN chmod 755 answer
@@ -47,7 +47,9 @@ RUN mkdir -p /data/uploads && chmod 777 /data/uploads \
 FROM alpine
 LABEL maintainer="linkinstar@apache.org"
 
-ENV TZ "Asia/Shanghai"
+ARG TIMEZONE
+ENV TIMEZONE=${TIMEZONE:-"Asia/Shanghai"}
+
 RUN apk update \
     && apk --no-cache add \
         bash \
@@ -58,7 +60,9 @@ RUN apk update \
         openssh \
         sqlite \
         gnupg \
-    && echo "Asia/Shanghai" > /etc/timezone
+        tzdata \
+    && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+    && echo "${TIMEZONE}" > /etc/timezone
 
 COPY --from=golang-builder /usr/bin/answer /usr/bin/answer
 COPY --from=golang-builder /data /data

@@ -20,22 +20,31 @@
 package router
 
 import (
-	"github.com/apache/incubator-answer/internal/controller"
+	"github.com/apache/answer/internal/controller"
 	"github.com/gin-gonic/gin"
 )
 
 type PluginAPIRouter struct {
 	connectorController  *controller.ConnectorController
 	userCenterController *controller.UserCenterController
+	captchaController    *controller.CaptchaController
+	embedController      *controller.EmbedController
+	renderController     *controller.RenderController
 }
 
 func NewPluginAPIRouter(
 	connectorController *controller.ConnectorController,
 	userCenterController *controller.UserCenterController,
+	captchaController *controller.CaptchaController,
+	embedController *controller.EmbedController,
+	renderController *controller.RenderController,
 ) *PluginAPIRouter {
 	return &PluginAPIRouter{
 		connectorController:  connectorController,
 		userCenterController: userCenterController,
+		captchaController:    captchaController,
+		embedController:      embedController,
+		renderController:     renderController,
 	}
 }
 
@@ -54,6 +63,11 @@ func (pr *PluginAPIRouter) RegisterUnAuthConnectorRouter(r *gin.RouterGroup) {
 	r.GET(controller.UserCenterSignUpRedirectRouter, pr.userCenterController.UserCenterSignUpRedirect)
 	r.GET("/user-center/login/callback", pr.userCenterController.UserCenterLoginCallback)
 	r.GET("/user-center/sign-up/callback", pr.userCenterController.UserCenterSignUpCallback)
+
+	// captcha plugin
+	r.GET("/captcha/config", pr.captchaController.GetCaptchaConfig)
+	r.GET("/embed/config", pr.embedController.GetEmbedConfig)
+	r.GET("/render/config", pr.renderController.GetRenderConfig)
 }
 
 func (pr *PluginAPIRouter) RegisterAuthUserConnectorRouter(r *gin.RouterGroup) {

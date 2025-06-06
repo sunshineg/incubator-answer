@@ -29,7 +29,7 @@ import {
   putUsersSetting,
   AdminSettingsUsers,
 } from '@/services';
-import { handleFormError } from '@/utils';
+import { handleFormError, scrollToElementTop } from '@/utils';
 import * as Type from '@/common/interface';
 import { siteInfoStore } from '@/stores';
 
@@ -94,6 +94,9 @@ const Index: FC = () => {
     },
     gravatar_base_url: {
       'ui:widget': 'input',
+      'ui:options': {
+        placeholder: 'https://www.gravatar.com/avatar/',
+      },
     },
     profile_editable: {
       'ui:widget': 'legend',
@@ -137,7 +140,7 @@ const Index: FC = () => {
       'ui:widget': 'switch',
       'ui:options': {
         label: t('allow_update_location.label'),
-        fieldClassName: 'mb-3',
+        field_class_name: 'mb-3',
         simplify: true,
       },
     },
@@ -168,6 +171,8 @@ const Index: FC = () => {
         if (err.isError) {
           const data = handleFormError(err, formData);
           setFormData({ ...data });
+          const ele = document.getElementById(err.list[0].error_field);
+          scrollToElementTop(ele);
         }
       });
   };
@@ -184,7 +189,7 @@ const Index: FC = () => {
           v = 'system';
         }
         if (k === 'gravatar_base_url' && !v) {
-          v = 'https://www.gravatar.com/avatar/';
+          v = '';
         }
         formMeta[k] = { ...formData[k], value: v };
       });

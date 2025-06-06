@@ -619,7 +619,8 @@ ui:
       label: Name
       msg:
         empty: Name cannot be empty.
-        range: Name up to 30 characters.
+        range: Name must be between 2 to 30 characters in length.
+        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
     email:
       label: Email
       msg:
@@ -677,12 +678,12 @@ ui:
       display_name:
         label: Display Name
         msg: Display name cannot be empty.
-        msg_range: Display name up to 30 characters.
+        msg_range: Display name must be 2-30 characters in length.
       username:
         label: Username
         caption: People can mention you as "@username".
         msg: Username cannot be empty.
-        msg_range: Username up to 30 characters.
+        msg_range: Username must be 2-30 characters in length.
         character: 'Must use the character set "a-z", "0-9", " - . _"'
       avatar:
         label: Profile Image
@@ -715,7 +716,9 @@ ui:
         We've sent an email to that address. Please follow the confirmation instructions.
       email:
         label: Email
-        msg: Email cannot be empty.
+      new_email:
+        label: New email
+        msg: New email cannot be empty.
       password_title: Password
       current_pass:
         label: Current Password
@@ -811,7 +814,7 @@ ui:
       more: More
     tips:
       title: Advanced Search Tips
-      tag: "<1>[tag]</1> search withing a tag"
+      tag: "<1>[tag]</1> search with a tag"
       user: "<1>user:username</1> search by author"
       answer: "<1>answers:0</1> unanswered questions"
       score: "<1>score:3</1> posts with a 3+ score"
@@ -824,7 +827,7 @@ ui:
     via: Share post via...
     copied: Copied
     facebook: Share to Facebook
-    twitter: Share to Twitter
+    twitter: Share to X
   cannot_vote_for_self: You can't vote for your own post
   modal_confirm:
     title: Error...
@@ -855,7 +858,7 @@ ui:
     answers: Answers
     newest: Newest
     active: Active
-    frequent: Frequent
+    hot: Hot
     score: Score
     unanswered: Unanswered
     modified: modified
@@ -899,7 +902,7 @@ ui:
     x_answers: answers
     x_questions: questions
   install:
-    title: Answer
+    title: Installation
     next: Next
     done: Done
     config_yaml_error: Can't create the config.yaml file.
@@ -964,7 +967,7 @@ ui:
       msg:
         empty: Email cannot be empty.
         incorrect: Email incorrect format.
-    ready_title: Your Answer is Ready!
+    ready_title: Your site is ready
     ready_desc: >-
       If you ever feel like changing more settings, visit <1>admin section</1>; find it in the site menu.
     good_luck: "Have fun, and good luck!"
@@ -1017,7 +1020,7 @@ ui:
       title: Admin
     dashboard:
       title: Dashboard
-      welcome: Welcome to Answer Admin!
+      welcome: Welcome to Admin!
       site_statistics: Site Statistics
       questions: "Questions:"
       answers: "Answers:"
@@ -1133,7 +1136,7 @@ ui:
           fields:
             display_name:
               label: Display Name
-              msg: Display Name must be at 4-30 characters in length.
+              msg: Display name must be 2-30 characters in length.
             email:
               label: Email
               msg: Email is not valid.
@@ -1379,5 +1382,3 @@ ui:
     staffs: Our community staff
     reputation: reputation
     votes: votes
-
-
