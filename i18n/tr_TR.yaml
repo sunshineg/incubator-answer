@@ -1275,12 +1275,12 @@ ui:
       display_name:
         label: Görünen ad
         msg: Görünen ad boş olamaz.
-        msg_range: Display name must be 2-30 characters in length.
+        msg_range: Görünen ad 2-30 karakter uzunluğunda olmalıdır.
       username:
         label: Kullanıcı adı
         caption: İnsanlar size "@kullaniciadi" şeklinde bahsedebilir.
         msg: Kullanıcı adı boş olamaz.
-        msg_range: Username must be 2-30 characters in length.
+        msg_range: Kullanıcı adı 2-30 karakter uzunluğunda olmalıdır.
         character: '"a-z", "0-9", "- . _" karakter setini kullanmalısınız'
       avatar:
         label: Profil resmi
@@ -1752,7 +1752,7 @@ ui:
     privileges: Ayrıcalıklar
     plugins: Eklentiler
     installed_plugins: Kurulu Eklentiler
-    apperance: Appearance
+    apperance: Görünüm
   website_welcome: '{{site_name}} sitesine hoş geldiniz'
   user_center:
     login: Giriş
@@ -1852,10 +1852,10 @@ ui:
         fields:
           display_name:
             label: Görünen ad
-            msg_range: Display name must be 2-30 characters in length.
+            msg_range: Görünen ad 2-30 karakter uzunluğunda olmalıdır.
           username:
             label: Kullanıcı adı
-            msg_range: Username must be 2-30 characters in length.
+            msg_range: Kullanıcı adı 2-30 karakter uzunluğunda olmalıdır.
           email:
             label: E-posta
             msg_invalid: Geçersiz E-posta Adresi.
@@ -1887,9 +1887,9 @@ ui:
       name: İsim
       email: E-posta
       reputation: İtibar
-      created_at: Created time
-      delete_at: Deleted time
-      suspend_at: Suspended time
+      created_at: Oluşturulma zamanı
+      delete_at: Silinme zamanı
+      suspend_at: Askıya Alınma Zamanı
       status: Durum
       role: Rol
       action: Eylem
@@ -2103,7 +2103,7 @@ ui:
       color_scheme:
         label: Renk şeması
       navbar_style:
-        label: Navbar background style
+        label: Gezinme çubuğu arka plan stili
       primary_color:
         label: Ana renk
         text: Temalarınızda kullanılan renkleri değiştirin
