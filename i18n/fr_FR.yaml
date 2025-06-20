@@ -58,7 +58,7 @@ backend:
     undelete:
       other: Annuler la suppression
     merge:
-      other: Merge
+      other: Fusionner
   role:
     name:
       user:
@@ -140,7 +140,7 @@ backend:
   pass:
     other: Mot de passe
   old_pass:
-    other: Current password
+    other: Mot de passe actuel
   original_text:
     other: Ce post
   email_or_password_wrong_error:
