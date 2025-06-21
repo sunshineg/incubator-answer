@@ -494,7 +494,7 @@ backend:
       title:
         other: "[{{.SiteName}}] Nouvelle question : {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote : Il s'agit d'un email automatique, merci de ne pas répondre à ce message, votre réponse ne pourra être considérée.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Se désabonner</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote : Il s'agit d'un e-mail automatique, merci de ne pas répondre à ce message, votre réponse ne pourra être considérée.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Se désabonner</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Réinitialisation du mot de passe"
@@ -2052,8 +2052,8 @@ ui:
       external_content_display:
         label: Contenu externe
         text: "Le contenu comprend des images, des vidéos et des médias intégrés à partir de sites web externes."
-        always_display: Always display external content
-        ask_before_display: Ask before displaying external content
+        always_display: Toujours afficher le contenu externe
+        ask_before_display: Demander avant d'afficher le contenu externe
     write:
       page_title: Écrire
       restrict_answer:
@@ -2103,7 +2103,7 @@ ui:
       color_scheme:
         label: Jeu de couleurs
       navbar_style:
-        label: Navbar background style
+        label: Style d'arrière-plan de la barre de navigation
       primary_color:
         label: Couleur primaire
         text: Modifier les couleurs utilisées par vos thèmes
@@ -2309,11 +2309,11 @@ ui:
     user_deleted: Cet utilisateur a été supprimé.
     badge_activated: Ce badge a été activé.
     badge_inactivated: Ce badge a été désactivé.
-    users_deleted: These users have been deleted.
-    posts_deleted: These questions have been deleted.
-    answers_deleted: These answers have been deleted.
-    copy: Copy to clipboard
-    copied: Copied
-    external_content_warning: External images/media are not displayed.
+    users_deleted: Ces utilisateurs ont été supprimés.
+    posts_deleted: Ces questions ont été supprimées.
+    answers_deleted: Ces réponses ont été supprimées.
+    copy: Copier dans le presse-papier
+    copied: Copié
+    external_content_warning: Les images/médias externes ne sont pas affichés.
 
 
