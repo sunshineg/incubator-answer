@@ -292,7 +292,7 @@ func (ac *AnswerController) AddAnswer(ctx *gin.Context) {
 	})
 }
 
-// Update godoc
+// UpdateAnswer update answer
 // @Summary Update Answer
 // @Description Update Answer
 // @Tags Answer
@@ -300,9 +300,9 @@ func (ac *AnswerController) AddAnswer(ctx *gin.Context) {
 // @Produce json
 // @Security ApiKeyAuth
 // @Param data body schema.AnswerUpdateReq true "AnswerUpdateReq"
-// @Success 200 {string} string ""
+// @Success 200 {object} handler.RespBody{}
 // @Router /answer/api/v1/answer [put]
-func (ac *AnswerController) Update(ctx *gin.Context) {
+func (ac *AnswerController) UpdateAnswer(ctx *gin.Context) {
 	req := &schema.AnswerUpdateReq{}
 	if handler.BindAndCheck(ctx, req) {
 		return
@@ -402,17 +402,17 @@ func (ac *AnswerController) AnswerList(ctx *gin.Context) {
 	})
 }
 
-// Accepted godoc
-// @Summary Accepted
-// @Description Accepted
+// AcceptAnswer accept answer
+// @Summary Accept Answer
+// @Description Accept Answer
 // @Tags Answer
 // @Accept json
 // @Produce json
 // @Security ApiKeyAuth
 // @Param data body schema.AcceptAnswerReq true "AcceptAnswerReq"
-// @Success 200 {string} string ""
+// @Success 200 {object} handler.RespBody{}
 // @Router /answer/api/v1/answer/acceptance [post]
-func (ac *AnswerController) Accepted(ctx *gin.Context) {
+func (ac *AnswerController) AcceptAnswer(ctx *gin.Context) {
 	req := &schema.AcceptAnswerReq{}
 	if handler.BindAndCheck(ctx, req) {
 		return
