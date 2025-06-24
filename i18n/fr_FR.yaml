@@ -233,7 +233,7 @@ backend:
       cannot_update:
         other: Pas de permission pour mettre à jour.
       content_cannot_empty:
-        other: Le champ est obligatoire.
+        other: Le contenu ne peut pas être vide.
     rank:
       fail_to_meet_the_condition:
         other: Le rang de réputation ne remplit pas la condition.
