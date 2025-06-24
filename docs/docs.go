@@ -2134,7 +2134,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "api-answer"
+                    "Answer"
                 ],
                 "summary": "Update Answer",
                 "parameters": [
@@ -2163,7 +2163,7 @@ const docTemplate = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Insert Answer",
+                "description": "add answer",
                 "consumes": [
                     "application/json"
                 ],
@@ -2171,12 +2171,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "api-answer"
+                    "Answer"
                 ],
-                "summary": "Insert Answer",
+                "summary": "Add Answer",
                 "parameters": [
                     {
-                        "description": "AnswerAddReq",
+                        "description": "add answer request",
                         "name": "data",
                         "in": "body",
                         "required": true,
@@ -2189,7 +2189,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handler.RespBody"
                         }
                     }
                 }
@@ -2208,7 +2208,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "api-answer"
+                    "Answer"
                 ],
                 "summary": "delete answer",
                 "parameters": [
@@ -2247,7 +2247,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "api-answer"
+                    "Answer"
                 ],
                 "summary": "Accepted",
                 "parameters": [
@@ -2273,7 +2273,7 @@ const docTemplate = `{
         },
         "/answer/api/v1/answer/info": {
             "get": {
-                "description": "Get Answer",
+                "description": "Get Answer Detail",
                 "consumes": [
                     "application/json"
                 ],
@@ -2281,14 +2281,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "api-answer"
+                    "Answer"
                 ],
-                "summary": "Get Answer",
+                "summary": "Get Answer Detail",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "1",
-                        "description": "Answer TagID",
+                        "description": "id",
                         "name": "id",
                         "in": "query",
                         "required": true
@@ -2298,7 +2297,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handler.RespBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/schema.GetAnswerInfoResp"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -2314,7 +2325,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "api-answer"
+                    "Answer"
                 ],
                 "summary": "AnswerList",
                 "parameters": [
@@ -2364,7 +2375,7 @@ const docTemplate = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "recover deleted answer",
+                "description": "recover the deleted answer",
                 "consumes": [
                     "application/json"
                 ],
@@ -7992,6 +8003,60 @@ const docTemplate = `{
                 }
             }
         },
+        "schema.AnswerInfo": {
+            "type": "object",
+            "properties": {
+                "accepted": {
+                    "type": "integer"
+                },
+                "collected": {
+                    "type": "boolean"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "integer"
+                },
+                "html": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "member_actions": {
+                    "description": "MemberActions",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.PermissionMemberAction"
+                    }
+                },
+                "question_id": {
+                    "type": "string"
+                },
+                "question_info": {
+                    "$ref": "#/definitions/schema.QuestionInfoResp"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "update_time": {
+                    "type": "integer"
+                },
+                "update_user_info": {
+                    "$ref": "#/definitions/schema.UserBasicInfo"
+                },
+                "user_info": {
+                    "$ref": "#/definitions/schema.UserBasicInfo"
+                },
+                "vote_count": {
+                    "type": "integer"
+                },
+                "vote_status": {
+                    "type": "string"
+                }
+            }
+        },
         "schema.AnswerUpdateReq": {
             "type": "object",
             "required": [
@@ -8349,6 +8414,17 @@ const docTemplate = `{
                 "is_followed": {
                     "description": "if user is followed object will be true,otherwise false",
                     "type": "boolean"
+                }
+            }
+        },
+        "schema.GetAnswerInfoResp": {
+            "type": "object",
+            "properties": {
+                "info": {
+                    "$ref": "#/definitions/schema.AnswerInfo"
+                },
+                "question": {
+                    "$ref": "#/definitions/schema.QuestionInfoResp"
                 }
             }
         },
@@ -9585,6 +9661,41 @@ const docTemplate = `{
                 }
             }
         },
+        "schema.Operation": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "level": {
+                    "$ref": "#/definitions/schema.OperationLevel"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "schema.OperationLevel": {
+            "type": "string",
+            "enum": [
+                "info",
+                "danger",
+                "warning",
+                "secondary"
+            ],
+            "x-enum-varnames": [
+                "OperationLevelInfo",
+                "OperationLevelDanger",
+                "OperationLevelWarning",
+                "OperationLevelSecondary"
+            ]
+        },
         "schema.OperationQuestionReq": {
             "type": "object",
             "required": [
@@ -9735,6 +9846,117 @@ const docTemplate = `{
                     "type": "string",
                     "maxLength": 150,
                     "minLength": 6
+                }
+            }
+        },
+        "schema.QuestionInfoResp": {
+            "type": "object",
+            "properties": {
+                "accepted_answer_id": {
+                    "type": "string"
+                },
+                "answer_count": {
+                    "type": "integer"
+                },
+                "answered": {
+                    "type": "boolean"
+                },
+                "collected": {
+                    "type": "boolean"
+                },
+                "collection_count": {
+                    "type": "integer"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "edit_time": {
+                    "type": "integer"
+                },
+                "extends_actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.PermissionMemberAction"
+                    }
+                },
+                "first_answer_id": {
+                    "type": "string"
+                },
+                "follow_count": {
+                    "type": "integer"
+                },
+                "html": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_followed": {
+                    "type": "boolean"
+                },
+                "last_answer_id": {
+                    "type": "string"
+                },
+                "last_answered_user_info": {
+                    "$ref": "#/definitions/schema.UserBasicInfo"
+                },
+                "member_actions": {
+                    "description": "MemberActions",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.PermissionMemberAction"
+                    }
+                },
+                "operation": {
+                    "$ref": "#/definitions/schema.Operation"
+                },
+                "pin": {
+                    "type": "integer"
+                },
+                "show": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.TagResp"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "unique_view_count": {
+                    "type": "integer"
+                },
+                "update_time": {
+                    "type": "integer"
+                },
+                "update_user_info": {
+                    "$ref": "#/definitions/schema.UserBasicInfo"
+                },
+                "url_title": {
+                    "type": "string"
+                },
+                "user_info": {
+                    "$ref": "#/definitions/schema.UserBasicInfo"
+                },
+                "view_count": {
+                    "type": "integer"
+                },
+                "vote_count": {
+                    "type": "integer"
+                },
+                "vote_status": {
+                    "type": "string"
                 }
             }
         },

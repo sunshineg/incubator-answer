@@ -349,6 +349,42 @@ definitions:
     required:
     - content
     type: object
+  schema.AnswerInfo:
+    properties:
+      accepted:
+        type: integer
+      collected:
+        type: boolean
+      content:
+        type: string
+      create_time:
+        type: integer
+      html:
+        type: string
+      id:
+        type: string
+      member_actions:
+        description: MemberActions
+        items:
+          $ref: '#/definitions/schema.PermissionMemberAction'
+        type: array
+      question_id:
+        type: string
+      question_info:
+        $ref: '#/definitions/schema.QuestionInfoResp'
+      status:
+        type: integer
+      update_time:
+        type: integer
+      update_user_info:
+        $ref: '#/definitions/schema.UserBasicInfo'
+      user_info:
+        $ref: '#/definitions/schema.UserBasicInfo'
+      vote_count:
+        type: integer
+      vote_status:
+        type: string
+    type: object
   schema.AnswerUpdateReq:
     properties:
       captcha_code:
@@ -594,6 +630,13 @@ definitions:
       is_followed:
         description: if user is followed object will be true,otherwise false
         type: boolean
+    type: object
+  schema.GetAnswerInfoResp:
+    properties:
+      info:
+        $ref: '#/definitions/schema.AnswerInfo'
+      question:
+        $ref: '#/definitions/schema.QuestionInfoResp'
     type: object
   schema.GetBadgeInfoResp:
     properties:
@@ -1455,6 +1498,31 @@ definitions:
       toast_return_message:
         type: boolean
     type: object
+  schema.Operation:
+    properties:
+      description:
+        type: string
+      level:
+        $ref: '#/definitions/schema.OperationLevel'
+      msg:
+        type: string
+      time:
+        type: integer
+      type:
+        type: string
+    type: object
+  schema.OperationLevel:
+    enum:
+    - info
+    - danger
+    - warning
+    - secondary
+    type: string
+    x-enum-varnames:
+    - OperationLevelInfo
+    - OperationLevelDanger
+    - OperationLevelWarning
+    - OperationLevelSecondary
   schema.OperationQuestionReq:
     properties:
       id:
@@ -1564,6 +1632,80 @@ definitions:
     - content
     - tags
     - title
+    type: object
+  schema.QuestionInfoResp:
+    properties:
+      accepted_answer_id:
+        type: string
+      answer_count:
+        type: integer
+      answered:
+        type: boolean
+      collected:
+        type: boolean
+      collection_count:
+        type: integer
+      content:
+        type: string
+      create_time:
+        type: integer
+      description:
+        type: string
+      edit_time:
+        type: integer
+      extends_actions:
+        items:
+          $ref: '#/definitions/schema.PermissionMemberAction'
+        type: array
+      first_answer_id:
+        type: string
+      follow_count:
+        type: integer
+      html:
+        type: string
+      id:
+        type: string
+      is_followed:
+        type: boolean
+      last_answer_id:
+        type: string
+      last_answered_user_info:
+        $ref: '#/definitions/schema.UserBasicInfo'
+      member_actions:
+        description: MemberActions
+        items:
+          $ref: '#/definitions/schema.PermissionMemberAction'
+        type: array
+      operation:
+        $ref: '#/definitions/schema.Operation'
+      pin:
+        type: integer
+      show:
+        type: integer
+      status:
+        type: integer
+      tags:
+        items:
+          $ref: '#/definitions/schema.TagResp'
+        type: array
+      title:
+        type: string
+      unique_view_count:
+        type: integer
+      update_time:
+        type: integer
+      update_user_info:
+        $ref: '#/definitions/schema.UserBasicInfo'
+      url_title:
+        type: string
+      user_info:
+        $ref: '#/definitions/schema.UserBasicInfo'
+      view_count:
+        type: integer
+      vote_count:
+        type: integer
+      vote_status:
+        type: string
     type: object
   schema.QuestionPageReq:
     properties:
@@ -4263,13 +4405,13 @@ paths:
       - ApiKeyAuth: []
       summary: delete answer
       tags:
-      - api-answer
+      - Answer
     post:
       consumes:
       - application/json
-      description: Insert Answer
+      description: add answer
       parameters:
-      - description: AnswerAddReq
+      - description: add answer request
         in: body
         name: data
         required: true
@@ -4281,12 +4423,12 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/handler.RespBody'
       security:
       - ApiKeyAuth: []
-      summary: Insert Answer
+      summary: Add Answer
       tags:
-      - api-answer
+      - Answer
     put:
       consumes:
       - application/json
@@ -4309,7 +4451,7 @@ paths:
       - ApiKeyAuth: []
       summary: Update Answer
       tags:
-      - api-answer
+      - Answer
   /answer/api/v1/answer/acceptance:
     post:
       consumes:
@@ -4333,15 +4475,14 @@ paths:
       - ApiKeyAuth: []
       summary: Accepted
       tags:
-      - api-answer
+      - Answer
   /answer/api/v1/answer/info:
     get:
       consumes:
       - application/json
-      description: Get Answer
+      description: Get Answer Detail
       parameters:
-      - default: "1"
-        description: Answer TagID
+      - description: id
         in: query
         name: id
         required: true
@@ -4352,10 +4493,15 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
-      summary: Get Answer
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.GetAnswerInfoResp'
+              type: object
+      summary: Get Answer Detail
       tags:
-      - api-answer
+      - Answer
   /answer/api/v1/answer/page:
     get:
       consumes:
@@ -4391,12 +4537,12 @@ paths:
             type: string
       summary: AnswerList
       tags:
-      - api-answer
+      - Answer
   /answer/api/v1/answer/recover:
     post:
       consumes:
       - application/json
-      description: recover deleted answer
+      description: recover the deleted answer
       parameters:
       - description: answer
         in: body
