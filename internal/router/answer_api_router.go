@@ -157,7 +157,7 @@ func (a *AnswerAPIRouter) RegisterUnAuthAnswerAPIRouter(r *gin.RouterGroup) {
 	r.GET("/user/staff", a.userController.UserStaff)
 
 	// answer
-	r.GET("/answer/info", a.answerController.Get)
+	r.GET("/answer/info", a.answerController.GetAnswerInfo)
 	r.GET("/answer/page", a.answerController.AnswerList)
 	r.GET("/personal/answer/page", a.questionController.PersonalAnswerPage)
 
@@ -265,7 +265,7 @@ func (a *AnswerAPIRouter) RegisterAnswerAPIRouter(r *gin.RouterGroup) {
 	r.POST("/question/recover", a.questionController.QuestionRecover)
 
 	// answer
-	r.POST("/answer", a.answerController.Add)
+	r.POST("/answer", a.answerController.AddAnswer)
 	r.PUT("/answer", a.answerController.Update)
 	r.POST("/answer/acceptance", a.answerController.Accepted)
 	r.DELETE("/answer", a.answerController.RemoveAnswer)
