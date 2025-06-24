@@ -2152,7 +2152,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handler.RespBody"
                         }
                     }
                 }
@@ -2239,7 +2239,7 @@ const docTemplate = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Accepted",
+                "description": "Accept Answer",
                 "consumes": [
                     "application/json"
                 ],
@@ -2249,7 +2249,7 @@ const docTemplate = `{
                 "tags": [
                     "Answer"
                 ],
-                "summary": "Accepted",
+                "summary": "Accept Answer",
                 "parameters": [
                     {
                         "description": "AcceptAnswerReq",
@@ -2265,7 +2265,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handler.RespBody"
                         }
                     }
                 }

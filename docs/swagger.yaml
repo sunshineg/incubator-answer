@@ -4446,7 +4446,7 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/handler.RespBody'
       security:
       - ApiKeyAuth: []
       summary: Update Answer
@@ -4456,7 +4456,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: Accepted
+      description: Accept Answer
       parameters:
       - description: AcceptAnswerReq
         in: body
@@ -4470,10 +4470,10 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/handler.RespBody'
       security:
       - ApiKeyAuth: []
-      summary: Accepted
+      summary: Accept Answer
       tags:
       - Answer
   /answer/api/v1/answer/info:
