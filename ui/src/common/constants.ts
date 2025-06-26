@@ -663,42 +663,52 @@ export const DEFAULT_THEME_COLOR = '#0033ff';
 export const SUSPENSE_USER_TIME = [
   {
     label: 'hours',
-    value: '24',
+    time: '24',
+    value: '24h',
   },
   {
     label: 'hours',
-    value: '48',
+    time: '48',
+    value: '48h',
   },
   {
     label: 'hours',
-    value: '72',
+    time: '72',
+    value: '72h',
   },
   {
     label: 'days',
-    value: '7',
+    time: '7',
+    value: '7d',
   },
   {
     label: 'days',
-    value: '14',
+    time: '14',
+    value: '14d',
   },
   {
     label: 'months',
-    value: '1',
+    time: '1',
+    value: '1m',
   },
   {
     label: 'months',
-    value: '2',
+    time: '2',
+    value: '2m',
   },
   {
     label: 'months',
-    value: '3',
+    time: '3',
+    value: '3m',
   },
   {
     label: 'months',
-    value: '6',
+    time: '6',
+    value: '6m',
   },
   {
     label: 'year',
-    value: '1',
+    time: '1',
+    value: '1y',
   },
 ];

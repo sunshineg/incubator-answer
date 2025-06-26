@@ -23,6 +23,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import classNames from 'classnames';
+import dayjs from 'dayjs';
 
 import {
   Pagination,
@@ -297,7 +298,14 @@ const Users: FC = () => {
                       <FormatTime time={user.suspended_at} />
                     </td>
                     <td className="text-nowrap">
-                      <FormatTime time={user.suspended_at} />
+                      {user.suspended_until <= 0 ||
+                      Number(
+                        dayjs(user.suspended_until * 1000).format('YYYY'),
+                      ) > 2099
+                        ? t('suspend_user.forever')
+                        : dayjs(user.suspended_until * 1000).format(
+                            t('long_date_with_time', { keyPrefix: 'dates' }),
+                          )}
                     </td>
                   </>
                 )}
@@ -357,13 +365,14 @@ const Users: FC = () => {
       />
       <SuspenseUserModal
         show={suspenseUserModalState.show}
+        userId={suspenseUserModalState.userId}
         onClose={() => {
           handleSuspenseUserModalState({
             show: false,
             userId: '',
           });
         }}
-        onDelete={(val) => handleDelete(val)}
+        refreshUsers={refreshUsers}
       />
     </>
   );
