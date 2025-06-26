@@ -1064,6 +1064,9 @@ ui:
     day: 天
     hours: 小时
     days: 日
+    month: 月
+    months: 月
+    year: 年
   reaction:
     heart: 爱心
     smile: 微笑
@@ -1899,6 +1902,7 @@ ui:
       created_at: 创建时间
       delete_at: 删除时间
       suspend_at: 封禁时间
+      suspend_until: 封禁到期
       status: 状态
       role: 角色
       action: 操作
@@ -1933,6 +1937,8 @@ ui:
       suspend_user:
         title: 挂起此用户
         content: 被封禁的用户将无法登录。
+        label: 用户将被封禁多长时间？
+        forever: 永久
     questions:
       page_title: 问题
       unlisted: 已隐藏
@@ -1993,6 +1999,12 @@ ui:
         label: 时区
         msg: 时区不能为空。
         text: 选择一个与您相同时区的城市。
+      avatar:
+        label: 默认头像
+        text: 没有自定义头像的用户。
+      gravatar_base_url:
+        label: Gravatar 根路径 URL
+        text: Gravatar 提供商的 API 基础的 URL。当为空时忽略。
     smtp:
       page_title: SMTP
       from_email:
