@@ -527,7 +527,7 @@ func (us *UserAdminService) GetUserPage(ctx context.Context, req *schema.GetUser
 		} else if u.Status == entity.UserStatusSuspended {
 			t.Status = constant.UserSuspended
 			t.SuspendedAt = u.SuspendedAt.Unix()
-			if !u.SuspendedUntil.IsZero() && u.SuspendedUntil != entity.PermanentSuspensionTime {
+			if !u.SuspendedUntil.IsZero() {
 				t.SuspendedUntil = u.SuspendedUntil.Unix()
 			}
 		} else if u.MailStatus == entity.EmailStatusToBeVerified {

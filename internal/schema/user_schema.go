@@ -109,7 +109,7 @@ func (r *UserLoginResp) ConvertFromUserEntity(userInfo *entity.User) {
 	r.LastLoginDate = userInfo.LastLoginDate.Unix()
 	r.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
 	r.HavePassword = len(userInfo.Pass) > 0
-	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+	if !userInfo.SuspendedUntil.IsZero() {
 		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
 	}
 }
@@ -127,7 +127,7 @@ func (r *GetCurrentLoginUserInfoResp) ConvertFromUserEntity(userInfo *entity.Use
 	if len(r.ColorScheme) == 0 {
 		r.ColorScheme = constant.ColorSchemeDefault
 	}
-	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+	if !userInfo.SuspendedUntil.IsZero() {
 		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
 	}
 }
@@ -176,7 +176,7 @@ func (r *GetOtherUserInfoByUsernameResp) ConvertFromUserEntity(userInfo *entity.
 	r.CreatedAt = userInfo.CreatedAt.Unix()
 	r.LastLoginDate = userInfo.LastLoginDate.Unix()
 	r.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
-	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+	if !userInfo.SuspendedUntil.IsZero() {
 		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
 	}
 	r.StatusMsg = ""
@@ -187,9 +187,6 @@ func (r *GetOtherUserInfoByUsernameResp) ConvertFromUserEntityWithLang(ctx conte
 	r.CreatedAt = userInfo.CreatedAt.Unix()
 	r.LastLoginDate = userInfo.LastLoginDate.Unix()
 	r.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
-	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
-		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
-	}
 
 	lang := handler.GetLangByCtx(ctx)
 	if userInfo.MailStatus == entity.EmailStatusToBeVerified {
@@ -197,10 +194,11 @@ func (r *GetOtherUserInfoByUsernameResp) ConvertFromUserEntityWithLang(ctx conte
 	}
 	switch userInfo.Status {
 	case entity.UserStatusSuspended:
-		if userInfo.SuspendedUntil.IsZero() || userInfo.SuspendedUntil == entity.PermanentSuspensionTime {
+		if userInfo.SuspendedUntil.IsZero() || userInfo.SuspendedUntil.Year() >= 2099 {
 			r.StatusMsg = translator.Tr(lang, reason.UserStatusSuspendedForever)
 		} else {
-			trans := translator.GlobalTrans.Tr(lang, "ui.dates.long_date_with_year")
+			r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
+			trans := translator.GlobalTrans.Tr(lang, "ui.dates.long_date_with_time")
 			suspendedUntilFormatted := day.Format(userInfo.SuspendedUntil.Unix(), trans, "UTC")
 			r.StatusMsg = translator.TrWithData(lang, reason.UserStatusSuspendedUntil, map[string]interface{}{
 				"SuspendedUntil": suspendedUntilFormatted,

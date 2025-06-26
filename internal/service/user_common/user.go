@@ -180,7 +180,7 @@ func (us *UserCommon) FormatUserBasicInfo(ctx context.Context, userInfo *entity.
 	userBasicInfo.Location = userInfo.Location
 	userBasicInfo.Language = userInfo.Language
 	userBasicInfo.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
-	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+	if !userInfo.SuspendedUntil.IsZero() {
 		userBasicInfo.SuspendedUntil = userInfo.SuspendedUntil.Unix()
 	}
 	if userBasicInfo.Status == constant.UserDeleted {
