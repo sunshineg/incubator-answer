@@ -20,10 +20,13 @@
 package schema
 
 import (
+	"context"
 	"encoding/json"
 
+	"github.com/apache/answer/internal/base/handler"
 	"github.com/apache/answer/internal/base/reason"
 	"github.com/apache/answer/internal/base/translator"
+	"github.com/apache/answer/pkg/day"
 	"github.com/segmentfault/pacman/errors"
 
 	"github.com/apache/answer/internal/base/constant"
@@ -176,29 +179,36 @@ func (r *GetOtherUserInfoByUsernameResp) ConvertFromUserEntity(userInfo *entity.
 	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
 		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
 	}
-	if userInfo.MailStatus == entity.EmailStatusToBeVerified {
-		statusMsgShow, ok := UserStatusShowMsg[11]
-		if ok {
-			r.StatusMsg = statusMsgShow
-		}
-	} else {
-		statusMsgShow, ok := UserStatusShowMsg[userInfo.Status]
-		if ok {
-			r.StatusMsg = statusMsgShow
-		}
-	}
+	r.StatusMsg = ""
 }
 
-const (
-	NoticeStatusOn  = 1
-	NoticeStatusOff = 2
-)
+func (r *GetOtherUserInfoByUsernameResp) ConvertFromUserEntityWithLang(ctx context.Context, userInfo *entity.User) {
+	_ = copier.Copy(r, userInfo)
+	r.CreatedAt = userInfo.CreatedAt.Unix()
+	r.LastLoginDate = userInfo.LastLoginDate.Unix()
+	r.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
+	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
+	}
 
-var UserStatusShowMsg = map[int]string{
-	1:  "",
-	9:  "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline.",
-	10: "This user was deleted.",
-	11: "This user is inactive.",
+	lang := handler.GetLangByCtx(ctx)
+	if userInfo.MailStatus == entity.EmailStatusToBeVerified {
+		r.StatusMsg = translator.Tr(lang, reason.UserStatusInactive)
+	}
+	switch userInfo.Status {
+	case entity.UserStatusSuspended:
+		if userInfo.SuspendedUntil.IsZero() || userInfo.SuspendedUntil == entity.PermanentSuspensionTime {
+			r.StatusMsg = translator.Tr(lang, reason.UserStatusSuspendedForever)
+		} else {
+			trans := translator.GlobalTrans.Tr(lang, "ui.dates.long_date_with_year")
+			suspendedUntilFormatted := day.Format(userInfo.SuspendedUntil.Unix(), trans, "UTC")
+			r.StatusMsg = translator.TrWithData(lang, reason.UserStatusSuspendedUntil, map[string]interface{}{
+				"SuspendedUntil": suspendedUntilFormatted,
+			})
+		}
+	case entity.UserStatusDeleted:
+		r.StatusMsg = translator.Tr(lang, reason.UserStatusDeleted)
+	}
 }
 
 // UserEmailLoginReq user email login request

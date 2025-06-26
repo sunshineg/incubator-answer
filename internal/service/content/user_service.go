@@ -141,7 +141,7 @@ func (us *UserService) GetOtherUserInfoByUsername(ctx context.Context, req *sche
 		return nil, errors.NotFound(reason.UserNotFound)
 	}
 	resp = &schema.GetOtherUserInfoByUsernameResp{}
-	resp.ConvertFromUserEntity(userInfo)
+	resp.ConvertFromUserEntityWithLang(ctx, userInfo)
 	resp.Avatar = us.siteInfoService.FormatAvatar(ctx, userInfo.Avatar, userInfo.EMail, userInfo.Status).GetURL()
 
 	// Only the user himself and the administrator can see the hidden questions

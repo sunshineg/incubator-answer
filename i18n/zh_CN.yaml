@@ -306,6 +306,14 @@ backend:
         other: "发生错误，{{.Field}} 格式错误，在 '{{.Content}}' 行数 {{.Line}}. {{.ExtraMessage}}"
       add_bulk_users_amount_error:
         other: "一次性添加的用户数量应在 1-{{.MaxAmount}} 之间。"
+      status_suspended_forever:
+        other: "<strong>该用户已被永久封禁。</strong>该用户不符合社区准则。"
+      status_suspended_until:
+        other: "<strong>该用户已被封禁至 {{.SuspendedUntil}}。</strong>该用户不符合社区准则。"
+      status_deleted:
+        other: "该用户已被删除。"
+      status_inactive:
+        other: "该用户未激活。"
     config:
       read_config_failed:
         other: 读取配置失败
