@@ -23,6 +23,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/apache/answer/internal/base/constant"
 	"github.com/apache/answer/internal/entity"
@@ -30,7 +31,18 @@ import (
 	"xorm.io/xorm"
 )
 
+func addSuspendedUntilToUser(ctx context.Context, x *xorm.Engine) error {
+	type User struct {
+		SuspendedUntil *time.Time `xorm:"DATETIME suspended_until"`
+	}
+	return x.Context(ctx).Sync(new(User))
+}
+
 func moveUserConfigToInterface(ctx context.Context, x *xorm.Engine) error {
+	if err := addSuspendedUntilToUser(ctx, x); err != nil {
+		return fmt.Errorf("add suspended_until to user failed: %w", err)
+	}
+
 	// Get old interface config
 	interfaceSiteInfo := &entity.SiteInfo{Type: constant.SiteTypeInterface}
 	exist, err := x.Context(ctx).Get(interfaceSiteInfo)
@@ -42,7 +54,7 @@ func moveUserConfigToInterface(ctx context.Context, x *xorm.Engine) error {
 	}
 
 	interfaceConfig := &schema.SiteInterfaceReq{}
-	_ = json.Unmarshal([]byte(interfaceSiteInfo.Content), interfaceSiteInfo)
+	_ = json.Unmarshal([]byte(interfaceSiteInfo.Content), interfaceConfig)
 
 	// Get old user config
 	usersConfig := &entity.SiteInfo{Type: constant.SiteTypeUsers}

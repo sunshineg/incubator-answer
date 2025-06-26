@@ -873,6 +873,9 @@ definitions:
       status:
         description: user status
         type: string
+      suspended_until:
+        description: suspended until timestamp
+        type: integer
       username:
         description: username
         type: string
@@ -959,6 +962,9 @@ definitions:
         type: string
       status_msg:
         type: string
+      suspended_until:
+        description: suspended until timestamp
+        type: integer
       username:
         description: username
         type: string
@@ -1400,6 +1406,9 @@ definitions:
         type: string
       suspended_at:
         description: suspended time
+        type: integer
+      suspended_until:
+        description: suspended until time
         type: integer
       user_id:
         description: user id
@@ -2214,6 +2223,13 @@ definitions:
     type: object
   schema.SiteInterfaceReq:
     properties:
+      default_avatar:
+        enum:
+        - system
+        - gravatar
+        type: string
+      gravatar_base_url:
+        type: string
       language:
         maxLength: 128
         type: string
@@ -2221,11 +2237,19 @@ definitions:
         maxLength: 128
         type: string
     required:
+    - default_avatar
     - language
     - time_zone
     type: object
   schema.SiteInterfaceResp:
     properties:
+      default_avatar:
+        enum:
+        - system
+        - gravatar
+        type: string
+      gravatar_base_url:
+        type: string
       language:
         maxLength: 128
         type: string
@@ -2233,6 +2257,7 @@ definitions:
         maxLength: 128
         type: string
     required:
+    - default_avatar
     - language
     - time_zone
     type: object
@@ -2845,6 +2870,20 @@ definitions:
         - deleted
         - inactive
         type: string
+      suspend_duration:
+        enum:
+        - 24h
+        - 48h
+        - 72h
+        - 7d
+        - 14d
+        - 1m
+        - 2m
+        - 3m
+        - 6m
+        - 1y
+        - forever
+        type: string
       user_id:
         type: string
     required:
@@ -2867,6 +2906,9 @@ definitions:
         type: integer
       status:
         type: string
+      suspended_until:
+        description: suspended until timestamp
+        type: integer
       username:
         type: string
       website:
@@ -2984,6 +3026,9 @@ definitions:
       status:
         description: user status
         type: string
+      suspended_until:
+        description: suspended until timestamp
+        type: integer
       username:
         description: username
         type: string

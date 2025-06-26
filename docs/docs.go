@@ -8755,6 +8755,10 @@ const docTemplate = `{
                     "description": "user status",
                     "type": "string"
                 },
+                "suspended_until": {
+                    "description": "suspended until timestamp",
+                    "type": "integer"
+                },
                 "username": {
                     "description": "username",
                     "type": "string"
@@ -8870,6 +8874,10 @@ const docTemplate = `{
                 },
                 "status_msg": {
                     "type": "string"
+                },
+                "suspended_until": {
+                    "description": "suspended until timestamp",
+                    "type": "integer"
                 },
                 "username": {
                     "description": "username",
@@ -9518,6 +9526,10 @@ const docTemplate = `{
                 },
                 "suspended_at": {
                     "description": "suspended time",
+                    "type": "integer"
+                },
+                "suspended_until": {
+                    "description": "suspended until time",
                     "type": "integer"
                 },
                 "user_id": {
@@ -10696,10 +10708,21 @@ const docTemplate = `{
         "schema.SiteInterfaceReq": {
             "type": "object",
             "required": [
+                "default_avatar",
                 "language",
                 "time_zone"
             ],
             "properties": {
+                "default_avatar": {
+                    "type": "string",
+                    "enum": [
+                        "system",
+                        "gravatar"
+                    ]
+                },
+                "gravatar_base_url": {
+                    "type": "string"
+                },
                 "language": {
                     "type": "string",
                     "maxLength": 128
@@ -10713,10 +10736,21 @@ const docTemplate = `{
         "schema.SiteInterfaceResp": {
             "type": "object",
             "required": [
+                "default_avatar",
                 "language",
                 "time_zone"
             ],
             "properties": {
+                "default_avatar": {
+                    "type": "string",
+                    "enum": [
+                        "system",
+                        "gravatar"
+                    ]
+                },
+                "gravatar_base_url": {
+                    "type": "string"
+                },
                 "language": {
                     "type": "string",
                     "maxLength": 128
@@ -11621,6 +11655,22 @@ const docTemplate = `{
                         "inactive"
                     ]
                 },
+                "suspend_duration": {
+                    "type": "string",
+                    "enum": [
+                        "24h",
+                        "48h",
+                        "72h",
+                        "7d",
+                        "14d",
+                        "1m",
+                        "2m",
+                        "3m",
+                        "6m",
+                        "1y",
+                        "forever"
+                    ]
+                },
                 "user_id": {
                     "type": "string"
                 }
@@ -11649,6 +11699,10 @@ const docTemplate = `{
                 },
                 "status": {
                     "type": "string"
+                },
+                "suspended_until": {
+                    "description": "suspended until timestamp",
+                    "type": "integer"
                 },
                 "username": {
                     "type": "string"
@@ -11811,6 +11865,10 @@ const docTemplate = `{
                 "status": {
                     "description": "user status",
                     "type": "string"
+                },
+                "suspended_until": {
+                    "description": "suspended until timestamp",
+                    "type": "integer"
                 },
                 "username": {
                     "description": "username",

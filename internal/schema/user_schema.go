@@ -96,6 +96,8 @@ type UserLoginResp struct {
 	HavePassword bool `json:"have_password"`
 	// visit token
 	VisitToken string `json:"visit_token"`
+	// suspended until timestamp
+	SuspendedUntil int64 `json:"suspended_until"`
 }
 
 func (r *UserLoginResp) ConvertFromUserEntity(userInfo *entity.User) {
@@ -104,6 +106,9 @@ func (r *UserLoginResp) ConvertFromUserEntity(userInfo *entity.User) {
 	r.LastLoginDate = userInfo.LastLoginDate.Unix()
 	r.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
 	r.HavePassword = len(userInfo.Pass) > 0
+	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
+	}
 }
 
 type GetCurrentLoginUserInfoResp struct {
@@ -118,6 +123,9 @@ func (r *GetCurrentLoginUserInfoResp) ConvertFromUserEntity(userInfo *entity.Use
 	r.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
 	if len(r.ColorScheme) == 0 {
 		r.ColorScheme = constant.ColorSchemeDefault
+	}
+	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
 	}
 }
 
@@ -156,6 +164,8 @@ type GetOtherUserInfoByUsernameResp struct {
 	Location  string `json:"location"`
 	Status    string `json:"status"`
 	StatusMsg string `json:"status_msg,omitempty"`
+	// suspended until timestamp
+	SuspendedUntil int64 `json:"suspended_until"`
 }
 
 func (r *GetOtherUserInfoByUsernameResp) ConvertFromUserEntity(userInfo *entity.User) {
@@ -163,6 +173,9 @@ func (r *GetOtherUserInfoByUsernameResp) ConvertFromUserEntity(userInfo *entity.
 	r.CreatedAt = userInfo.CreatedAt.Unix()
 	r.LastLoginDate = userInfo.LastLoginDate.Unix()
 	r.Status = constant.ConvertUserStatus(userInfo.Status, userInfo.MailStatus)
+	if !userInfo.SuspendedUntil.IsZero() && userInfo.SuspendedUntil != entity.PermanentSuspensionTime {
+		r.SuspendedUntil = userInfo.SuspendedUntil.Unix()
+	}
 	if userInfo.MailStatus == entity.EmailStatusToBeVerified {
 		statusMsgShow, ok := UserStatusShowMsg[11]
 		if ok {
@@ -348,15 +361,16 @@ type ActionRecordResp struct {
 }
 
 type UserBasicInfo struct {
-	ID          string `json:"id"`
-	Username    string `json:"username"`
-	Rank        int    `json:"rank"`
-	DisplayName string `json:"display_name"`
-	Avatar      string `json:"avatar"`
-	Website     string `json:"website"`
-	Location    string `json:"location"`
-	Language    string `json:"language"`
-	Status      string `json:"status"`
+	ID             string `json:"id"`
+	Username       string `json:"username"`
+	Rank           int    `json:"rank"`
+	DisplayName    string `json:"display_name"`
+	Avatar         string `json:"avatar"`
+	Website        string `json:"website"`
+	Location       string `json:"location"`
+	Language       string `json:"language"`
+	Status         string `json:"status"`
+	SuspendedUntil int64  `json:"suspended_until"`
 }
 
 type GetOtherUserInfoByUsernameReq struct {
