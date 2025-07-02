@@ -163,11 +163,6 @@ const QuestionList: FC<Props> = ({
                         curOrder === 'active' ? li.operated_at : li.created_at
                       }
                       className="text-secondary ms-1 flex-shrink-0"
-                      preFix={
-                        curOrder === 'active'
-                          ? t(li.operation_type)
-                          : t('asked')
-                      }
                     />
                   </div>
                   <h5 className="text-wrap text-break">
