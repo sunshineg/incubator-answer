@@ -817,7 +817,7 @@ ui:
     tag_wiki: 标签维基
     create_tag: 创建标签
     edit_tag: 编辑标签
-    ask_a_question: 提问题
+    ask_a_question: 创建问题
     edit_question: 编辑问题
     edit_answer: 编辑回答
     search: 搜索
@@ -1122,10 +1122,10 @@ ui:
     more: 更多
     wiki: 维基
   ask:
-    title: 新增问题
+    title: 创建问题
     edit_title: 编辑问题
     default_reason: 编辑问题
-    default_first_reason: 新增问题
+    default_first_reason: 创建问题
     similar_questions: 相似问题
     form:
       fields:
@@ -1133,7 +1133,7 @@ ui:
           label: 修订版本
         title:
           label: 标题
-          placeholder: 请详细描述你的问题，想象你在问一个人
+          placeholder: 你的主题是什么？请具体说明。
           msg:
             empty: 标题不能为空。
             range: 标题最多 150 个字符
@@ -1161,7 +1161,7 @@ ui:
     add_btn: 添加标签
     create_btn: 创建新标签
     search_tag: 搜索标签
-    hint: "描述您的问题是关于什么，至少需要一个标签。"
+    hint: "描述您的内容是关于什么，至少需要一个标签。"
     no_result: 没有匹配的标签
     tag_required_text: 必选标签（至少一个）
   header:
@@ -1367,12 +1367,12 @@ ui:
     review: 您的修订将在审阅通过后显示。
     sent_success: 发送成功
   related_question:
-    title: 相关问题
+    title: 相似
     answers: 个回答
   linked_question:
-    title: 关联的问题
-    description: 问题关联到
-    no_linked_question: 这个问题没有相关联的问题。
+    title: 关联
+    description: 帖子关联到
+    no_linked_question: 没有与之关联的贴子。
   invite_to_answer:
     title: 受邀人
     desc: 邀请你认为可能知道答案的人。
@@ -1564,6 +1564,7 @@ ui:
     all_questions: 全部问题
     x_questions: "{{ count }} 个问题"
     x_answers: "{{ count }} 个回答"
+    x_posts: "{{ count }} 个帖子"
     questions: 问题
     answers: 回答
     newest: 最新

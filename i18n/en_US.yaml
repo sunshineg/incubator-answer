@@ -828,7 +828,7 @@ ui:
     tag_wiki: tag wiki
     create_tag: Create Tag
     edit_tag: Edit Tag
-    ask_a_question: Add Question
+    ask_a_question: Create Question
     edit_question: Edit Question
     edit_answer: Edit Answer
     search: Search
@@ -1139,10 +1139,10 @@ ui:
     more: More
     wiki: Wiki
   ask:
-    title: Add Question
+    title: Create Question
     edit_title: Edit Question
     default_reason: Edit question
-    default_first_reason: Add question
+    default_first_reason: Create question
     similar_questions: Similar questions
     form:
       fields:
@@ -1150,7 +1150,7 @@ ui:
           label: Revision
         title:
           label: Title
-          placeholder: Be specific and imagine you're asking a question to another person
+          placeholder: What's your topic? Be specific.
           msg:
             empty: Title cannot be empty.
             range: Title up to 150 characters
@@ -1179,7 +1179,7 @@ ui:
     add_btn: Add tag
     create_btn: Create new tag
     search_tag: Search tag
-    hint: "Describe what your question is about, at least one tag is required."
+    hint: "Describe what your content is about, at least one tag is required."
     no_result: No tags matched
     tag_required_text: Required tag (at least one)
   header:
@@ -1393,12 +1393,12 @@ ui:
     review: Your revision will show after review.
     sent_success: Sent successfully
   related_question:
-    title: Related Questions
+    title: Related
     answers: answers
   linked_question:
-    title: Linked Questions
-    description: Questions linked to
-    no_linked_question: No questions linked from this question.
+    title: Linked
+    description: Posts linked to
+    no_linked_question: No contents linked from this content.
   invite_to_answer:
     title: Invite People
     desc: Invite people you think can answer.
@@ -1598,6 +1598,7 @@ ui:
     all_questions: All Questions
     x_questions: "{{ count }} Questions"
     x_answers: "{{ count }} answers"
+    x_posts: "{{ count }} Posts"
     questions: Questions
     answers: Answers
     newest: Newest

@@ -103,7 +103,9 @@ const QuestionList: FC<Props> = ({
         <h5 className="fs-5 text-nowrap mb-3 mb-md-0">
           {source === 'questions'
             ? t('all_questions')
-            : t('x_questions', { count })}
+            : source === 'linked'
+              ? t('x_posts', { count })
+              : t('x_questions', { count })}
         </h5>
         <div className="d-flex flex-wrap">
           <QueryGroup
