@@ -307,13 +307,13 @@ backend:
       add_bulk_users_amount_error:
         other: "一次性添加的用户数量应在 1-{{.MaxAmount}} 之间。"
       status_suspended_forever:
-        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+        other: "<strong>该用户已被永久封禁。</strong>该用户不符合社区准则。"
       status_suspended_until:
-        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+        other: "<strong>该用户已被封禁至 {{.SuspendedUntil}}。</strong>该用户不符合社区准则。"
       status_deleted:
-        other: "This user was deleted."
+        other: "该用户已被删除。"
       status_inactive:
-        other: "This user is inactive."
+        other: "该用户未激活。"
     config:
       read_config_failed:
         other: 读取配置失败
@@ -817,7 +817,7 @@ ui:
     tag_wiki: 标签维基
     create_tag: 创建标签
     edit_tag: 编辑标签
-    ask_a_question: Create Question
+    ask_a_question: 创建问题
     edit_question: 编辑问题
     edit_answer: 编辑回答
     search: 搜索
@@ -1064,9 +1064,9 @@ ui:
     day: 天
     hours: 小时
     days: 日
-    month: month
-    months: months
-    year: year
+    month: 月
+    months: 月
+    year: 年
   reaction:
     heart: 爱心
     smile: 微笑
@@ -1122,10 +1122,10 @@ ui:
     more: 更多
     wiki: 维基
   ask:
-    title: Create Question
+    title: 创建问题
     edit_title: 编辑问题
     default_reason: 编辑问题
-    default_first_reason: Create question
+    default_first_reason: 创建问题
     similar_questions: 相似问题
     form:
       fields:
@@ -1133,7 +1133,7 @@ ui:
           label: 修订版本
         title:
           label: 标题
-          placeholder: What's your topic? Be specific.
+          placeholder: 你的主题是什么？请具体说明。
           msg:
             empty: 标题不能为空。
             range: 标题最多 150 个字符
@@ -1161,7 +1161,7 @@ ui:
     add_btn: 添加标签
     create_btn: 创建新标签
     search_tag: 搜索标签
-    hint: "Describe what your content is about, at least one tag is required."
+    hint: "描述您的内容是关于什么，至少需要一个标签。"
     no_result: 没有匹配的标签
     tag_required_text: 必选标签（至少一个）
   header:
@@ -1367,12 +1367,12 @@ ui:
     review: 您的修订将在审阅通过后显示。
     sent_success: 发送成功
   related_question:
-    title: Related
+    title: 相似
     answers: 个回答
   linked_question:
-    title: Linked
-    description: Posts linked to
-    no_linked_question: No contents linked from this content.
+    title: 关联
+    description: 帖子关联到
+    no_linked_question: 没有与之关联的贴子。
   invite_to_answer:
     title: 受邀人
     desc: 邀请你认为可能知道答案的人。
@@ -1512,7 +1512,7 @@ ui:
     follow: 关注
     following: 已关注
     counts: "{{count}} 个结果"
-    counts_loading: "... Results"
+    counts_loading: "... 个结果"
     more: 更多
     sort_btns:
       relevance: 相关性
@@ -1564,7 +1564,7 @@ ui:
     all_questions: 全部问题
     x_questions: "{{ count }} 个问题"
     x_answers: "{{ count }} 个回答"
-    x_posts: "{{ count }} Posts"
+    x_posts: "{{ count }} 个帖子"
     questions: 问题
     answers: 回答
     newest: 最新
@@ -1903,7 +1903,7 @@ ui:
       created_at: 创建时间
       delete_at: 删除时间
       suspend_at: 封禁时间
-      suspend_until: Suspend until
+      suspend_until: 封禁到期
       status: 状态
       role: 角色
       action: 操作
@@ -1938,8 +1938,8 @@ ui:
       suspend_user:
         title: 挂起此用户
         content: 被封禁的用户将无法登录。
-        label: How long will the user be suspended for?
-        forever: Forever
+        label: 用户将被封禁多长时间？
+        forever: 永久
     questions:
       page_title: 问题
       unlisted: 已隐藏
@@ -2001,11 +2001,11 @@ ui:
         msg: 时区不能为空。
         text: 选择一个与您相同时区的城市。
       avatar:
-        label: Default avatar
-        text: For users without a custom avatar of their own.
+        label: 默认头像
+        text: 没有自定义头像的用户。
       gravatar_base_url:
-        label: Gravatar base URL
-        text: URL of the Gravatar provider's API base. Ignored when empty.
+        label: Gravatar 根路径 URL
+        text: Gravatar 提供商的 API 基础的 URL。当为空时忽略。
     smtp:
       page_title: SMTP
       from_email:
