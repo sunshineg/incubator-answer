@@ -306,6 +306,14 @@ backend:
         other: "Erreur format {{.Field}} près de '{{.Content}}' à la ligne {{.Line}}. {{.ExtraMessage}}"
       add_bulk_users_amount_error:
         other: "Le nombre d'utilisateurs que vous ajoutez simultanément doit être compris entre 1-{{.MaxAmount}}."
+      status_suspended_forever:
+        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+      status_suspended_until:
+        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+      status_deleted:
+        other: "This user was deleted."
+      status_inactive:
+        other: "This user is inactive."
     config:
       read_config_failed:
         other: La lecture de la configuration a échoué
@@ -809,7 +817,7 @@ ui:
     tag_wiki: tag wiki
     create_tag: Créer un tag
     edit_tag: Modifier l'étiquette
-    ask_a_question: Ajouter une question
+    ask_a_question: Create Question
     edit_question: Modifier la question
     edit_answer: Modifier la réponse
     search: Rechercher
@@ -1056,6 +1064,9 @@ ui:
     day: jour
     hours: heures
     days: jours
+    month: month
+    months: months
+    year: year
   reaction:
     heart: cœur
     smile: sourire
@@ -1111,10 +1122,10 @@ ui:
     more: Plus
     wiki: Wiki
   ask:
-    title: Ajouter une question
+    title: Create Question
     edit_title: Modifier la question
     default_reason: Modifier la question
-    default_first_reason: Ajouter une question
+    default_first_reason: Create question
     similar_questions: Questions similaires
     form:
       fields:
@@ -1122,7 +1133,7 @@ ui:
           label: Modification
         title:
           label: Titre
-          placeholder: Soyez précis et imaginez que vous posez une question à une autre personne
+          placeholder: What's your topic? Be specific.
           msg:
             empty: Le titre ne peut pas être vide.
             range: Titre de 150 caractères maximum
@@ -1150,7 +1161,7 @@ ui:
     add_btn: Ajouter une étiquette
     create_btn: Créer une nouvelle étiquette
     search_tag: Rechercher une étiquette
-    hint: "Décrivez en quoi consiste votre question, au moins une étiquette est requise."
+    hint: "Describe what your content is about, at least one tag is required."
     no_result: Aucune étiquette correspondante
     tag_required_text: Étiquette requise (au moins une)
   header:
@@ -1356,12 +1367,12 @@ ui:
     review: Votre révision s'affichera après vérification.
     sent_success: Envoyé avec succès
   related_question:
-    title: Questions liées
+    title: Related
     answers: réponses
   linked_question:
-    title: Questions connexes
-    description: Questions liées à
-    no_linked_question: Aucune question liée à cette question.
+    title: Linked
+    description: Posts linked to
+    no_linked_question: No contents linked from this content.
   invite_to_answer:
     title: Personnes interrogées
     desc: Invite people who you think might know the answer.
@@ -1501,6 +1512,7 @@ ui:
     follow: Suivre
     following: Abonnements
     counts: "{{count}} Résultats"
+    counts_loading: "... Results"
     more: Plus
     sort_btns:
       relevance: Pertinence
@@ -1552,6 +1564,7 @@ ui:
     all_questions: Toutes les questions
     x_questions: "{{ count }} questions"
     x_answers: "{{ count }} réponses"
+    x_posts: "{{ count }} Posts"
     questions: Questions
     answers: Réponses
     newest: Les plus récents
@@ -1890,6 +1903,7 @@ ui:
       created_at: Date de création
       delete_at: Date de suppression
       suspend_at: Date de suspension
+      suspend_until: Suspend until
       status: Statut
       role: Rôle
       action: Action
@@ -1924,6 +1938,8 @@ ui:
       suspend_user:
         title: Suspendre cet utilisateur
         content: Un utilisateur suspendu ne peut pas se connecter.
+        label: How long will the user be suspended for?
+        forever: Forever
     questions:
       page_title: Questions
       unlisted: Non listé
@@ -1984,6 +2000,12 @@ ui:
         label: Fuseau Horaire
         msg: Le fuseau horaire ne peut pas être vide.
         text: Choisissez une ville dans le même fuseau horaire que vous.
+      avatar:
+        label: Default avatar
+        text: For users without a custom avatar of their own.
+      gravatar_base_url:
+        label: Gravatar base URL
+        text: URL of the Gravatar provider's API base. Ignored when empty.
     smtp:
       page_title: SMTP
       from_email:
