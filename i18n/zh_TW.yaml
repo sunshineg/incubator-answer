@@ -306,6 +306,14 @@ backend:
         other: "Error {{.Field}} format near '{{.Content}}' at line {{.Line}}. {{.ExtraMessage}}"
       add_bulk_users_amount_error:
         other: "The number of users you add at once should be in the range of 1-{{.MaxAmount}}."
+      status_suspended_forever:
+        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+      status_suspended_until:
+        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+      status_deleted:
+        other: "This user was deleted."
+      status_inactive:
+        other: "This user is inactive."
     config:
       read_config_failed:
         other: 讀取組態失敗
@@ -809,7 +817,7 @@ ui:
     tag_wiki: 標籤 wiki
     create_tag: Create Tag
     edit_tag: 編輯標籤
-    ask_a_question: 提問題
+    ask_a_question: Create Question
     edit_question: 編輯問題
     edit_answer: 編輯回答
     search: 搜尋
@@ -1056,6 +1064,9 @@ ui:
     day: 天
     hours: hours
     days: days
+    month: month
+    months: months
+    year: year
   reaction:
     heart: heart
     smile: smile
@@ -1111,10 +1122,10 @@ ui:
     more: 更多
     wiki: Wiki
   ask:
-    title: 發問
+    title: Create Question
     edit_title: 編輯問題
     default_reason: 編輯問題
-    default_first_reason: Add question
+    default_first_reason: Create question
     similar_questions: 相似的問題
     form:
       fields:
@@ -1122,7 +1133,7 @@ ui:
           label: 編輯歷史
         title:
           label: 標題
-          placeholder: 具體一點，想像你是在向另一個人提出問題
+          placeholder: What's your topic? Be specific.
           msg:
             empty: 標題不能為空
             range: 標題最多 150 個字元
@@ -1150,7 +1161,7 @@ ui:
     add_btn: 建立標籤
     create_btn: 建立新標籤
     search_tag: 搜尋標籤
-    hint: "请描述您的問題，至少需要一個標籤。"
+    hint: "Describe what your content is about, at least one tag is required."
     no_result: 沒有匹配的標籤
     tag_required_text: 必填標籤 (至少一個)
   header:
@@ -1356,12 +1367,12 @@ ui:
     review: 您的修訂將在審核通過後顯示。
     sent_success: Sent successfully
   related_question:
-    title: 相關問題
+    title: Related
     answers: 個回答
   linked_question:
-    title: Linked Questions
-    description: Questions linked to
-    no_linked_question: No questions linked from this question.
+    title: Linked
+    description: Posts linked to
+    no_linked_question: No contents linked from this content.
   invite_to_answer:
     title: People Asked
     desc: Invite people who you think might know the answer.
@@ -1501,6 +1512,7 @@ ui:
     follow: 追蹤
     following: 已關注
     counts: "{{count}} 個結果"
+    counts_loading: "... Results"
     more: 更多
     sort_btns:
       relevance: 相關性
@@ -1552,6 +1564,7 @@ ui:
     all_questions: 全部問題
     x_questions: "{{ count }} 個問題"
     x_answers: "{{ count }} 個回答"
+    x_posts: "{{ count }} Posts"
     questions: 個問題
     answers: 回答
     newest: 最新的
@@ -1890,6 +1903,7 @@ ui:
       created_at: Created time
       delete_at: Deleted time
       suspend_at: Suspended time
+      suspend_until: Suspend until
       status: 狀態
       role: 角色
       action: 操作
@@ -1924,6 +1938,8 @@ ui:
       suspend_user:
         title: Suspend this user
         content: A suspended user can't log in.
+        label: How long will the user be suspended for?
+        forever: Forever
     questions:
       page_title: 問題
       unlisted: Unlisted
@@ -1984,6 +2000,12 @@ ui:
         label: 時區
         msg: 時區不能為空。
         text: 選擇一個與您相同時區的城市。
+      avatar:
+        label: Default avatar
+        text: For users without a custom avatar of their own.
+      gravatar_base_url:
+        label: Gravatar base URL
+        text: URL of the Gravatar provider's API base. Ignored when empty.
     smtp:
       page_title: SMTP
       from_email:
