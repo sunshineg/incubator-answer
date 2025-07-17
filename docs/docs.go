@@ -11701,7 +11701,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "suspended_until": {
-                    "description": "suspended until timestamp",
                     "type": "integer"
                 },
                 "username": {

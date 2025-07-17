@@ -2907,7 +2907,6 @@ definitions:
       status:
         type: string
       suspended_until:
-        description: suspended until timestamp
         type: integer
       username:
         type: string
