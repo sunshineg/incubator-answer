@@ -356,7 +356,7 @@ backend:
       name:
         other: این یک پاسخ نیست
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "."
     no_longer_needed:
       name:
         other: دیگر نیازی نیست
