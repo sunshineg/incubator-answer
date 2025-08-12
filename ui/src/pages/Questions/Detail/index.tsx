@@ -253,7 +253,6 @@ const Index = () => {
             data={question}
             initPage={initPage}
             hasAnswer={answers.count > 0}
-            isLogged={isLogged}
           />
         )}
         {!isLoading && answers.count > 0 && (

@@ -26,7 +26,7 @@ import {
   Tag,
   Actions,
   Operate,
-  UserCard,
+  BaseUserCard,
   Comment,
   FormatTime,
   htmlRender,
@@ -40,11 +40,10 @@ import { pathFactory } from '@/router/pathFactory';
 interface Props {
   data: any;
   hasAnswer: boolean;
-  isLogged: boolean;
   initPage: (type: string) => void;
 }
 
-const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
+const Index: FC<Props> = ({ data, initPage, hasAnswer }) => {
   const { t } = useTranslation('translation', {
     keyPrefix: 'question_detail',
   });
@@ -90,7 +89,7 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
 
   return (
     <div>
-      <h1 className="h3 mb-3 text-wrap text-break">
+      <h1 className="h3 mb-2 text-wrap text-break pb-1">
         <Link
           className="link-dark"
           reloadDocument
@@ -102,18 +101,21 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
         </Link>
       </h1>
 
-      <div className="d-flex flex-wrap align-items-center small mb-3 text-secondary">
+      <div className="d-flex flex-wrap align-items-center small mb-4 text-secondary border-bottom pb-3">
+        <BaseUserCard data={data.user_info} className="me-3" />
+
         <FormatTime
           time={data.create_time}
-          preFix={t('Asked')}
+          preFix={t('created')}
           className="me-3"
         />
 
         <FormatTime
-          time={data.update_time}
-          preFix={t('update')}
+          time={data.edit_time}
+          preFix={t('Edited')}
           className="me-3"
         />
+
         {data?.view_count > 0 && (
           <div className="me-3">
             {t('Views')} {formatCount(data.view_count)}
@@ -131,18 +133,20 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
           </Button>
         </OverlayTrigger>
       </div>
+
+      <ImgViewer>
+        <article
+          ref={ref}
+          className="fmt text-break text-wrap"
+          dangerouslySetInnerHTML={{ __html: data?.html }}
+        />
+      </ImgViewer>
+
       <div className="m-n1">
         {data?.tags?.map((item: any) => {
           return <Tag className="m-1" key={item.slug_name} data={item} />;
         })}
       </div>
-      <ImgViewer>
-        <article
-          ref={ref}
-          className="fmt text-break text-wrap mt-4"
-          dangerouslySetInnerHTML={{ __html: data?.html }}
-        />
-      </ImgViewer>
 
       <Actions
         className="mt-4"
@@ -158,8 +162,11 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
         }}
       />
 
-      <div className="d-block d-md-flex flex-wrap mt-4 mb-3">
-        <div className="mb-3 mb-md-0 me-4 flex-grow-1">
+      <div className="mt-4">
+        <Comment
+          objectId={data?.id}
+          mode="question"
+          commentId={String(searchParams.get('commentId'))}>
           <Operate
             qid={data?.id}
             type="question"
@@ -169,49 +176,8 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
             isAccepted={Boolean(data?.accepted_answer_id)}
             callback={initPage}
           />
-        </div>
-        <div style={{ minWidth: '196px' }} className="mb-3 me-4 mb-md-0">
-          {data.update_user_info &&
-          data.update_user_info?.username !== data.user_info?.username ? (
-            <UserCard
-              data={data?.update_user_info}
-              time={data.edit_time}
-              preFix={t('edit')}
-              isLogged={isLogged}
-              timelinePath={`/posts/${data.id}/timeline`}
-            />
-          ) : isLogged ? (
-            <Link to={`/posts/${data.id}/timeline`}>
-              <FormatTime
-                time={data.edit_time}
-                preFix={t('edit')}
-                className="link-secondary small"
-              />
-            </Link>
-          ) : (
-            <FormatTime
-              time={data.edit_time}
-              preFix={t('edit')}
-              className="text-secondary small"
-            />
-          )}
-        </div>
-        <div style={{ minWidth: '196px' }}>
-          <UserCard
-            data={data?.user_info}
-            time={data.create_time}
-            preFix={t('asked')}
-            isLogged={isLogged}
-            timelinePath={`/posts/${data.id}/timeline`}
-          />
-        </div>
+        </Comment>
       </div>
-
-      <Comment
-        objectId={data?.id}
-        mode="question"
-        commentId={searchParams.get('commentId')}
-      />
     </div>
   );
 };

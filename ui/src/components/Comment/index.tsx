@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -50,7 +50,14 @@ import { Form, ActionBar, Reply } from './components';
 
 import './index.scss';
 
-const Comment = ({ objectId, mode, commentId }) => {
+interface IProps {
+  objectId: string;
+  mode?: 'answer' | 'question';
+  commentId?: string;
+  children?: React.ReactNode;
+}
+
+const Comment: FC<IProps> = ({ objectId, mode, commentId, children }) => {
   const pageUsers = usePageUsers();
   const [pageIndex, setPageIndex] = useState(0);
   const [visibleComment, setVisibleComment] = useState(false);
@@ -374,11 +381,18 @@ const Comment = ({ objectId, mode, commentId }) => {
 
   return (
     <>
-      <Reactions
-        objectId={objectId}
-        showAddCommentBtn={comments.length === 0}
-        handleClickComment={handleAddComment}
-      />
+      <div
+        className={classNames(
+          'd-flex flex-wrap justify-content-between align-items-center',
+          comments.length === 0 ? '' : 'mb-3',
+        )}>
+        <Reactions
+          objectId={objectId}
+          showAddCommentBtn={comments.length === 0}
+          handleClickComment={handleAddComment}
+        />
+        {children}
+      </div>
       <div
         className={classNames(
           'comments-wrap',
