@@ -104,17 +104,21 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer }) => {
       <div className="d-flex flex-wrap align-items-center small mb-4 text-secondary border-bottom pb-3">
         <BaseUserCard data={data.user_info} className="me-3" />
 
-        <FormatTime
-          time={data.create_time}
-          preFix={t('created')}
-          className="me-3"
-        />
+        <Link to={`/posts/${data.id}/timeline`}>
+          <FormatTime
+            time={data.create_time}
+            preFix={t('created')}
+            className="me-3 link-secondary"
+          />
+        </Link>
 
-        <FormatTime
-          time={data.edit_time}
-          preFix={t('Edited')}
-          className="me-3"
-        />
+        <Link to={`/posts/${data.id}/timeline`}>
+          <FormatTime
+            time={data.edit_time}
+            preFix={t('Edited')}
+            className="me-3 link-secondary"
+          />
+        </Link>
 
         {data?.view_count > 0 && (
           <div className="me-3">
@@ -137,7 +141,7 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer }) => {
       <ImgViewer>
         <article
           ref={ref}
-          className="fmt text-break text-wrap"
+          className="fmt text-break text-wrap last-p mb-4"
           dangerouslySetInnerHTML={{ __html: data?.html }}
         />
       </ImgViewer>
