@@ -19,11 +19,14 @@
 
 import { FC } from 'react';
 import { Nav } from 'react-bootstrap';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { loggedUserInfoStore, sideNavStore } from '@/stores';
-import { Icon } from '@/components';
+import { Icon, PluginRender } from '@/components';
+import { PluginType } from '@/utils/pluginKit';
+import request from '@/utils/request';
+
 import './index.scss';
 
 const Index: FC = () => {
@@ -31,6 +34,7 @@ const Index: FC = () => {
   const { pathname } = useLocation();
   const { user: userInfo } = loggedUserInfoStore();
   const { can_revision, revision } = sideNavStore();
+  const navigate = useNavigate();
 
   return (
     <Nav variant="pills" className="flex-column" id="sideNav">
@@ -61,6 +65,13 @@ const Index: FC = () => {
         <Icon name="award-fill" className="me-2" />
         <span>{t('header.nav.badges')}</span>
       </NavLink>
+
+      <PluginRender
+        slug_name="quick_links"
+        type={PluginType.Sidebar}
+        request={request}
+        navigate={navigate}
+      />
 
       {can_revision || userInfo?.role_id === 2 ? (
         <>
