@@ -123,7 +123,7 @@ const Index: FC<Props> = ({ redDot, userInfo, logOut }) => {
       {ucAgent?.enabled &&
       (ucAgent?.agent_info?.url ||
         ucAgent?.agent_info?.control_center?.length) ? (
-        <Dropdown align="end">
+        <Dropdown align="end" data-bs-theme={isDarkTheme() ? 'dark' : 'light'}>
           <Dropdown.Toggle
             variant="success"
             id="dropdown-uca"
