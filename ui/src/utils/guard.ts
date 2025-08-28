@@ -410,14 +410,12 @@ export const googleSnapshotRedirect = () => {
 };
 
 export const askRedirect = () => {
-  const searchStr = new URLSearchParams(window.location.search);
-  const gr: TGuardResult = {
+  // 获取当前路径的查询参数部分
+  const queryString = window.location.search;
+  return {
     ok: false,
-    redirect: searchStr
-      ? `/questions/add?${searchStr.toString()}`
-      : '/questions/add',
+    redirect: `/questions/add${queryString}`,
   };
-  return gr;
 };
 
 let appInitialized = false;
