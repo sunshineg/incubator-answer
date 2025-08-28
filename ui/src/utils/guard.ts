@@ -392,7 +392,7 @@ export const initAppSettingsStore = async () => {
 };
 
 export const googleSnapshotRedirect = () => {
-  const gr: TGuardResult = { ok: true };
+  const gr: TGuardResult = { ok: false };
   const searchStr = new URLSearchParams(window.location.search)?.get('q') || '';
   if (window.location.host !== 'webcache.googleusercontent.com') {
     return gr;
@@ -406,6 +406,17 @@ export const googleSnapshotRedirect = () => {
     return gr;
   }
 
+  return gr;
+};
+
+export const askRedirect = () => {
+  const searchStr = new URLSearchParams(window.location.search);
+  const gr: TGuardResult = {
+    ok: false,
+    redirect: searchStr
+      ? `/questions/add?${searchStr.toString()}`
+      : '/questions/add',
+  };
   return gr;
 };
 

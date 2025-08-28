@@ -76,6 +76,13 @@ const routes: RouteNode[] = [
             path: 'questions/ask',
             page: 'pages/Questions/Ask',
             guard: () => {
+              return guard.askRedirect();
+            },
+          },
+          {
+            path: 'questions/add',
+            page: 'pages/Questions/Ask',
+            guard: () => {
               return guard.activated();
             },
           },

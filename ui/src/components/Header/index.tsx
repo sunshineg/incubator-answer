@@ -57,7 +57,7 @@ const Header: FC = () => {
    * Automatically append `tag` information when creating a question
    */
   const tagMatch = useMatch('/tags/:slugName');
-  let askUrl = '/questions/ask';
+  let askUrl = '/questions/add';
   if (tagMatch && tagMatch.params.slugName) {
     askUrl = `${askUrl}?tags=${encodeURIComponent(tagMatch.params.slugName)}`;
   }
