@@ -410,8 +410,8 @@ export const googleSnapshotRedirect = () => {
 };
 
 export const askRedirect = () => {
-  // 获取当前路径的查询参数部分
   const queryString = window.location.search;
+
   return {
     ok: false,
     redirect: `/questions/add${queryString}`,
