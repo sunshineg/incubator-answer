@@ -68,7 +68,7 @@ const Index: FC<Props> = ({ data }) => {
         <span
           className="float-start me-2 badge text-bg-dark"
           style={{ marginTop: '2px' }}>
-          {data.object_type === 'question' ? 'Q' : 'A'}
+          {t(data.object_type, { keyPrefix: 'btns' })}
         </span>
         <Link className="h5 mb-0 link-dark text-break" to={itemUrl}>
           <HighlightText text={data.object.title} keywords={keywords} />
