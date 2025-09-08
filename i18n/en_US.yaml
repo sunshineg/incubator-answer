@@ -1235,7 +1235,7 @@ ui:
       msg:
         empty: Name cannot be empty.
         range: Name must be between 2 to 30 characters in length.
-        character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+        character: 'Must use the character set "a-z", "0-9", " - . _"'
     email:
       label: Email
       msg:
@@ -1732,7 +1732,7 @@ ui:
     admin_name:
       label: Name
       msg: Name cannot be empty.
-      character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+      character: 'Must use the character set "a-z", "0-9", " - . _"'
       msg_max_length: Name must be between 2 to 30 characters in length.
     admin_password:
       label: Password
@@ -2279,7 +2279,6 @@ ui:
     btn_submit: Save
     not_found_props: "Required property {{ key }} not found."
     select: Select
-
   page_review:
     review: Review
     proposed: proposed
