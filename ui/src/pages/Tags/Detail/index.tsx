@@ -24,6 +24,7 @@ import {
   Link,
   useNavigate,
   useSearchParams,
+  useMatch,
 } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -65,6 +66,8 @@ const Index: FC = () => {
     tagInfo?.tag_id,
     tagInfo?.status,
   );
+  const matchQuestions = useMatch('/tags/:tagName/questions');
+  const matchPosts = useMatch('/tags/:tagName');
   const toggleFollow = () => {
     if (!guard.tryNormalLogged(true)) {
       return;
@@ -100,9 +103,16 @@ const Index: FC = () => {
   }, [tagResp, followResp]);
   let pageTitle = '';
   if (tagInfo?.display_name) {
-    pageTitle = `'${tagInfo.display_name}' ${t('questions', {
-      keyPrefix: 'page_title',
-    })}`;
+    if (matchQuestions) {
+      pageTitle = `'${tagInfo.display_name}' ${t('questions', {
+        keyPrefix: 'page_title',
+      })}`;
+    }
+    if (matchPosts) {
+      pageTitle = `'${tagInfo.display_name}' ${t('posts', {
+        keyPrefix: 'page_title',
+      })}`;
+    }
   }
   const keywords: string[] = [];
   if (tagInfo?.slug_name) {

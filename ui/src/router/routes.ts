@@ -141,6 +141,10 @@ const routes: RouteNode[] = [
             page: 'pages/Tags/Detail',
           },
           {
+            path: 'tags/:tagName/questions',
+            page: 'pages/Tags/Detail',
+          },
+          {
             path: 'tags/:tagName/info',
             page: 'pages/Tags/Info',
           },

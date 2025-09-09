@@ -852,6 +852,7 @@ ui:
     http_50X: HTTP Error 500
     http_403: HTTP Error 403
     logout: Log Out
+    posts: Posts
   notifications:
     title: Notifications
     inbox: Inbox
