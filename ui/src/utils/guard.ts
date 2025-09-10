@@ -400,6 +400,16 @@ export const askRedirect = () => {
   };
 };
 
+export const linkedRedirect = () => {
+  const queryString = window.location.search;
+  const pathname = window.location.pathname.replace('/questions', '');
+
+  return {
+    ok: false,
+    redirect: `${pathname}${queryString}`,
+  };
+};
+
 let appInitialized = false;
 export const setupApp = async () => {
   /**

@@ -117,7 +117,14 @@ const routes: RouteNode[] = [
             page: 'pages/Questions/Detail',
           },
           {
-            path: 'questions/linked/:qid',
+            path: '/questions/linked/:qid',
+            page: 'pages/Questions/Linked',
+            guard: () => {
+              return guard.linkedRedirect();
+            },
+          },
+          {
+            path: '/linked/:qid',
             page: 'pages/Questions/Linked',
           },
           {
