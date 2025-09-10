@@ -841,6 +841,7 @@ ui:
     http_50X: HTTP 错误 500
     http_403: HTTP 错误 403
     logout: 退出
+    posts: 帖子
   notifications:
     title: 通知
     inbox: 收件箱
