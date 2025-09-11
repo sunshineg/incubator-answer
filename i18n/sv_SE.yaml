@@ -90,7 +90,7 @@ backend:
     rank_question_add_label:
       other: Ask question
     rank_answer_add_label:
-      other: Write answer
+      other: Skriv ett svar
     rank_comment_add_label:
       other: Write comment
     rank_report_add_label:
