@@ -41,9 +41,10 @@ interface Props {
   data: any;
   hasAnswer: boolean;
   initPage: (type: string) => void;
+  isLogged: boolean;
 }
 
-const Index: FC<Props> = ({ data, initPage, hasAnswer }) => {
+const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
   const { t } = useTranslation('translation', {
     keyPrefix: 'question_detail',
   });
@@ -104,21 +105,39 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer }) => {
       <div className="d-flex flex-wrap align-items-center small mb-4 text-secondary border-bottom pb-3">
         <BaseUserCard data={data.user_info} className="me-3" />
 
-        <Link to={`/posts/${data.id}/timeline`}>
-          <FormatTime
-            time={data.create_time}
-            preFix={t('created')}
-            className="me-3 link-secondary"
-          />
-        </Link>
+        {isLogged ? (
+          <>
+            <Link to={`/posts/${data.id}/timeline`}>
+              <FormatTime
+                time={data.create_time}
+                preFix={t('created')}
+                className="me-3 link-secondary"
+              />
+            </Link>
 
-        <Link to={`/posts/${data.id}/timeline`}>
-          <FormatTime
-            time={data.edit_time}
-            preFix={t('Edited')}
-            className="me-3 link-secondary"
-          />
-        </Link>
+            <Link to={`/posts/${data.id}/timeline`}>
+              <FormatTime
+                time={data.edit_time}
+                preFix={t('Edited')}
+                className="me-3 link-secondary"
+              />
+            </Link>
+          </>
+        ) : (
+          <>
+            <FormatTime
+              time={data.create_time}
+              preFix={t('created')}
+              className="me-3 link-secondary"
+            />
+
+            <FormatTime
+              time={data.edit_time}
+              preFix={t('Edited')}
+              className="me-3 link-secondary"
+            />
+          </>
+        )}
 
         {data?.view_count > 0 && (
           <div className="me-3">
