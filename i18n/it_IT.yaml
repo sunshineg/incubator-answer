@@ -1865,7 +1865,7 @@ ui:
         fields:
           display_name:
             label: Visualizza nome
-            msg_range: Display name must be 2-30 characters in length.
+            msg_range: Il nome visualizzato deve essere di 2-30 caratteri di lunghezza.
           username:
             label: Nome utente
             msg_range: Username must be 2-30 characters in length.
