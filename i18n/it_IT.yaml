@@ -307,13 +307,13 @@ backend:
       add_bulk_users_amount_error:
         other: "Il numero di utenti che aggiungi contemporaneamente dovrebbe essere compreso tra 1 e {{.MaxAmount}}."
       status_suspended_forever:
-        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Questo utente è stato sospeso per sempre.</strong> Questo utente non soddisfa le linee guida della comunità."
       status_suspended_until:
-        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Questo utente è stato sospeso fino a {{.SuspendedUntil}}.</strong> Questo utente non soddisfa le linee guida della comunità."
       status_deleted:
-        other: "This user was deleted."
+        other: "Utente eliminato."
       status_inactive:
-        other: "This user is inactive."
+        other: "L'utente è inattivo."
     config:
       read_config_failed:
         other: Configurazione lettura fallita
@@ -502,7 +502,7 @@ backend:
       title:
         other: "[{{.SiteName}}] Nuova domanda: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNota: Si tratta di un'email di sistema automatica, non rispondere a questo messaggio perché la tua risposta non sarà visualizzata.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Cancellati</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Reimpostazione della password"
@@ -574,7 +574,7 @@ backend:
         name:
           other: Primo Link
         desc:
-          other: First added a link to another post.
+          other: Per prima cosa è stato aggiunto un link ad un altro post.
       first_reaction:
         name:
           other: Prima Reazione
@@ -817,7 +817,7 @@ ui:
     tag_wiki: tag wiki
     create_tag: Crea tag
     edit_tag: Modifica Tag
-    ask_a_question: Create Question
+    ask_a_question: Crea domanda
     edit_question: Modifica Domanda
     edit_answer: Modifica risposta
     search: Cerca
@@ -1038,9 +1038,9 @@ ui:
       tip: Sei sicuro di voler cancellare?
       close: Chiudi
     merge:
-      title: Merge tag
-      source_tag_title: Source tag
-      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      title: Unisci tag
+      source_tag_title: Cerca tag
+      source_tag_description: Il tag sorgente e i dati associati verranno rimappati al tag di destinazione.
       target_tag_title: Target tag
       target_tag_description: A synonym between these two tags will be created after merging.
       no_results: No tags matched
@@ -1695,7 +1695,7 @@ ui:
     admin_name:
       label: Nome
       msg: Il nome non può essere vuoto.
-      character: 'Must use the character set "a-z", "A-Z", "0-9", " - . _"'
+      character: 'È necessario utilizzare il set di caratteri "a-z", "0-9", " - . _"'
       msg_max_length: Name must be between 2 to 30 characters in length.
     admin_password:
       label: Password
@@ -1903,7 +1903,7 @@ ui:
       created_at: Created time
       delete_at: Deleted time
       suspend_at: Suspended time
-      suspend_until: Suspend until
+      suspend_until: Sospendi fino al
       status: Stato
       role: Ruolo
       action: Azione
@@ -1938,8 +1938,8 @@ ui:
       suspend_user:
         title: Sospendi questo utente
         content: Un utente sospeso non può accedere.
-        label: How long will the user be suspended for?
-        forever: Forever
+        label: Per quanto tempo vuoi sospendere l'utente?
+        forever: Per sempre
     questions:
       page_title: Domande
       unlisted: Rimosso dall'elenco
@@ -2001,8 +2001,8 @@ ui:
         msg: Il fuso orario non può essere vuoto.
         text: Scegli una città con il tuo stesso fuso orario.
       avatar:
-        label: Default avatar
-        text: For users without a custom avatar of their own.
+        label: Avatar Predefinito
+        text: Per gli utenti senza un proprio avatar personalizzato.
       gravatar_base_url:
         label: Gravatar base URL
         text: URL of the Gravatar provider's API base. Ignored when empty.
