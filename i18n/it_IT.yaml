@@ -58,7 +58,7 @@ backend:
     undelete:
       other: Ripristina
     merge:
-      other: Merge
+      other: Unisci
   role:
     name:
       user:
@@ -140,7 +140,7 @@ backend:
   pass:
     other: Password
   old_pass:
-    other: Current password
+    other: Password attuale
   original_text:
     other: Questo post
   email_or_password_wrong_error:
@@ -173,7 +173,7 @@ backend:
       question_closed_cannot_add:
         other: Le domande sono chiuse e non possono essere aggiunte.
       content_cannot_empty:
-        other: Answer content cannot be empty.
+        other: Il contenuto della risposta non può essere vuoto.
     comment:
       edit_without_permission:
         other: Non si hanno di privilegi sufficienti per modificare il commento.
@@ -182,7 +182,7 @@ backend:
       cannot_edit_after_deadline:
         other: Il tempo per editare è scaduto.
       content_cannot_empty:
-        other: Comment content cannot be empty.
+        other: Il commento non può essere vuoto.
     email:
       duplicate:
         other: Email già esistente.
@@ -233,7 +233,7 @@ backend:
       cannot_update:
         other: Nessun permesso per l'aggiornamento.
       content_cannot_empty:
-        other: Content cannot be empty.
+        other: Il contenuto non può essere vuoto.
     rank:
       fail_to_meet_the_condition:
         other: Il rango di reputazione non soddisfa le condizioni.
