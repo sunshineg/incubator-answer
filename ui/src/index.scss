@@ -52,6 +52,10 @@ img[src=''] {
   visibility: hidden !important;
 }
 
+.page-main {
+  overflow-x: auto;
+}
+
 .btn-link {
   text-decoration: none;
 }
@@ -280,6 +284,8 @@ img[src=''] {
       color: var(--an-212529);
       padding: 2px 4px;
       border-radius: 0.25rem;
+      overflow-wrap: normal;
+      white-space: inherit;
     }
   }
   pre {
@@ -288,6 +294,11 @@ img[src=''] {
     padding: 1rem;
     max-height: 38rem;
     white-space: pre-wrap;
+    overflow: auto;
+    code {
+      overflow-wrap: normal;
+      white-space: inherit;
+    }
   }
   blockquote {
     border-left: 0.25rem solid #ced4da;
