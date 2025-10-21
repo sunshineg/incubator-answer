@@ -229,13 +229,17 @@ func (qs *QuestionService) AddQuestionCheckTags(ctx context.Context, Tags []*ent
 	return []string{}, nil
 }
 func (qs *QuestionService) CheckAddQuestion(ctx context.Context, req *schema.QuestionAdd) (errorlist any, err error) {
-	if len(req.Tags) == 0 {
+	minimumTags, err := qs.tagCommon.GetMinimumTags(ctx)
+	if err != nil {
+		return
+	}
+	if len(req.Tags) < minimumTags {
 		errorlist := make([]*validator.FormErrorField, 0)
 		errorlist = append(errorlist, &validator.FormErrorField{
 			ErrorField: "tags",
-			ErrorMsg:   translator.Tr(handler.GetLangByCtx(ctx), reason.TagNotFound),
+			ErrorMsg:   translator.Tr(handler.GetLangByCtx(ctx), reason.TagMinCount),
 		})
-		err = errors.BadRequest(reason.RecommendTagEnter)
+		err = errors.BadRequest(reason.TagMinCount)
 		return errorlist, err
 	}
 	recommendExist, err := qs.tagCommon.ExistRecommend(ctx, req.Tags)
@@ -284,13 +288,17 @@ func (qs *QuestionService) HasNewTag(ctx context.Context, tags []*schema.TagItem
 
 // AddQuestion add question
 func (qs *QuestionService) AddQuestion(ctx context.Context, req *schema.QuestionAdd) (questionInfo any, err error) {
-	if len(req.Tags) == 0 {
+	minimumTags, err := qs.tagCommon.GetMinimumTags(ctx)
+	if err != nil {
+		return
+	}
+	if len(req.Tags) < minimumTags {
 		errorlist := make([]*validator.FormErrorField, 0)
 		errorlist = append(errorlist, &validator.FormErrorField{
 			ErrorField: "tags",
-			ErrorMsg:   translator.Tr(handler.GetLangByCtx(ctx), reason.TagNotFound),
+			ErrorMsg:   translator.Tr(handler.GetLangByCtx(ctx), reason.TagMinCount),
 		})
-		err = errors.BadRequest(reason.RecommendTagEnter)
+		err = errors.BadRequest(reason.TagMinCount)
 		return errorlist, err
 	}
 	recommendExist, err := qs.tagCommon.ExistRecommend(ctx, req.Tags)
@@ -370,9 +378,9 @@ func (qs *QuestionService) AddQuestion(ctx context.Context, req *schema.Question
 	objectTagData.ObjectID = question.ID
 	objectTagData.Tags = req.Tags
 	objectTagData.UserID = req.UserID
-	err = qs.ChangeTag(ctx, &objectTagData)
+	errorlist, err := qs.ChangeTag(ctx, &objectTagData)
 	if err != nil {
-		return
+		return errorlist, err
 	}
 	_ = qs.questionRepo.UpdateSearch(ctx, question.ID)
 
@@ -413,8 +421,15 @@ func (qs *QuestionService) AddQuestion(ctx context.Context, req *schema.Question
 	})
 
 	if question.Status == entity.QuestionStatusAvailable {
-		qs.externalNotificationQueueService.Send(ctx,
-			schema.CreateNewQuestionNotificationMsg(question.ID, question.Title, question.UserID, tags))
+		newTags, newTagsErr := qs.tagCommon.GetTagListByNames(ctx, tagNameList)
+		if newTagsErr != nil {
+			log.Error("get question newTags error %v", newTagsErr)
+			qs.externalNotificationQueueService.Send(ctx,
+				schema.CreateNewQuestionNotificationMsg(question.ID, question.Title, question.UserID, tags))
+		} else {
+			qs.externalNotificationQueueService.Send(ctx,
+				schema.CreateNewQuestionNotificationMsg(question.ID, question.Title, question.UserID, newTags))
+		}
 	}
 	qs.eventQueueService.Send(ctx, schema.NewEvent(constant.EventQuestionCreate, req.UserID).TID(question.ID).
 		QID(question.ID, question.UserID))
@@ -993,9 +1008,9 @@ func (qs *QuestionService) UpdateQuestion(ctx context.Context, req *schema.Quest
 		objectTagData.ObjectID = question.ID
 		objectTagData.Tags = req.Tags
 		objectTagData.UserID = req.UserID
-		tagerr := qs.ChangeTag(ctx, &objectTagData)
+		errorlist, tagerr := qs.ChangeTag(ctx, &objectTagData)
 		if tagerr != nil {
-			return questionInfo, tagerr
+			return errorlist, tagerr
 		}
 	}
 
@@ -1095,8 +1110,12 @@ func (qs *QuestionService) InviteUserInfo(ctx context.Context, questionID string
 	return qs.questioncommon.InviteUserInfo(ctx, questionID)
 }
 
-func (qs *QuestionService) ChangeTag(ctx context.Context, objectTagData *schema.TagChange) error {
-	return qs.tagCommon.ObjectChangeTag(ctx, objectTagData)
+func (qs *QuestionService) ChangeTag(ctx context.Context, objectTagData *schema.TagChange) (errorlist []*validator.FormErrorField, err error) {
+	minimumTags, err := qs.tagCommon.GetMinimumTags(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return qs.tagCommon.ObjectChangeTag(ctx, objectTagData, minimumTags)
 }
 
 func (qs *QuestionService) CheckChangeReservedTag(ctx context.Context, oldobjectTagData, objectTagData []*entity.Tag) (bool, bool, []string, []string) {
