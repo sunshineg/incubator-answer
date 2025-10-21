@@ -297,15 +297,16 @@ const TagSelector: FC<IProps> = ({
 
   const handleTagHint = () => {
     if (!writeInfo || writeInfo.min_tags === undefined || !writeInfo.min_tags) {
-      return t(`hint_zero_tags`);
+      return t('hint_zero_tags');
     }
 
     if (writeInfo.min_tags === 1) {
-      return t(`hint`);
+      return t('hint');
     }
 
-    let str: string = t(`hint_more_than_one_tag`);
-    str = str.replace(`{{ min_tags_number }}`, writeInfo.min_tags.toString());
+    const str = t('hint_more_than_one_tag', {
+      min_content_length: writeInfo.min_tags,
+    });
     return str;
   };
 
