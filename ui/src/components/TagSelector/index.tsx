@@ -304,10 +304,9 @@ const TagSelector: FC<IProps> = ({
       return t('hint');
     }
 
-    const str = t('hint_more_than_one_tag', {
-      min_content_length: writeInfo.min_tags,
+    return t(`hint_more_than_one_tag`, {
+      min_tags_number: writeInfo.min_tags,
     });
-    return str;
   };
 
   useEffect(() => {
