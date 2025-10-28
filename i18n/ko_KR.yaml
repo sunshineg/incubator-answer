@@ -234,6 +234,8 @@ backend:
         other: 업데이트 권한이 없습니다.
       content_cannot_empty:
         other: 내용은 비워둘 수 없습니다.
+      content_less_than_minumum:
+        other: Not enough content entered.
     rank:
       fail_to_meet_the_condition:
         other: 등급이 조건을 충족하지 못합니다.
@@ -263,6 +265,8 @@ backend:
         other: 사용 중인 태그는 삭제할 수 없습니다.
       cannot_set_synonym_as_itself:
         other: 현재 태그의 동의어로 자기 자신을 설정할 수 없습니다.
+      minimum_count:
+        other: Not enough tags were entered.
     smtp:
       config_from_name_cannot_be_email:
         other: 발신자 이름은 이메일 주소가 될 수 없습니다.
@@ -841,6 +845,7 @@ ui:
     http_50X: HTTP 오류 500
     http_403: HTTP 오류 403
     logout: 로그아웃
+    posts: Posts
   notifications:
     title: 알림
     inbox: 받은 편지함
@@ -1141,6 +1146,9 @@ ui:
           label: 본문
           msg:
             empty: 본문을 입력하세요.
+          hint:
+            optional_body: Share what the question is about.
+            minimum_characters: "Share what the question is about, at least {{min_content_length}} characters are required."
         tags:
           label: 태그
           msg:
@@ -1161,7 +1169,9 @@ ui:
     add_btn: 태그 추가
     create_btn: 새 태그 생성
     search_tag: 태그 검색
-    hint: "질문의 주제를 설명하세요. 적어도 하나의 태그가 필요합니다."
+    hint: 질문의 주제를 설명하세요. 적어도 하나의 태그가 필요합니다.
+    hint_zero_tags: Describe what your content is about.
+    hint_more_than_one_tag: "Describe what your content is about, at least {{min_tags_number}} tags are required."
     no_result: 일치하는 태그가 없습니다.
     tag_required_text: 필수 태그 (적어도 하나)
   header:
@@ -1214,7 +1224,7 @@ ui:
       msg:
         empty: 이름을 입력하세요.
         range: 이름은 2 자에서 30 자 사이여야 합니다.
-        character: '문자 집합 "a-z", "0-9", " - . _"를 사용해야 합니다'
+        character: 'Must use the character set "a-z", "0-9", " - . _"'
     email:
       label: 이메일
       msg:
@@ -1292,7 +1302,7 @@ ui:
         caption: 다른 사용자가 "@사용자이름"으로 멘션할 수 있습니다.
         msg: 사용자 이름을 입력하세요.
         msg_range: 유저 이름은 2-30 자 길이여야 합니다.
-        character: '문자 집합 "a-z", "0-9", " - . _"을 사용해야 합니다.'
+        character: 'Must use the character set "a-z", "0-9", "- . _"'
       avatar:
         label: 프로필 이미지
         gravatar: Gravatar
@@ -1381,9 +1391,11 @@ ui:
     search: 사람 검색
   question_detail:
     action: 동작
+    created: Created
     Asked: 질문함
     asked: 질문 작성
     update: 수정됨
+    Edited: Edited
     edit: 편집됨
     commented: 댓글 작성
     Views: 조회수
@@ -1695,7 +1707,7 @@ ui:
     admin_name:
       label: 이름
       msg: 이름을 입력하세요.
-      character: '"a-z", "A-Z", "0-9", " - . _" 문자 집합을 사용해야 합니다'
+      character: 'Must use the character set "a-z", "0-9", " - . _"'
       msg_max_length: 이름은 2 자 이상 30 자 이하여야 합니다.
     admin_password:
       label: 비밀번호
@@ -2078,10 +2090,16 @@ ui:
         ask_before_display: 외부 콘텐츠 표시 전 확인
     write:
       page_title: 작성
+      min_content:
+        label: Minimum question body length
+        text: Minimum allowed question body length in characters.
       restrict_answer:
         title: 답변 작성
         label: 각 사용자는 각 질문에 대해 단 하나의 답변만 작성할 수 있습니다.
         text: "기존 답변을 개선하고 향상시키기 위해 편집 링크를 사용할 수 있습니다."
+      min_tags:
+        label: "Minimum tags per question"
+        text: "Minimum number of tags required in a question."
       recommend_tags:
         label: 추천 태그
         text: "추천 태그가 기본적으로 드롭다운 목록에 표시됩니다."
