@@ -1147,8 +1147,8 @@ ui:
           msg:
             empty: Corpul mesajului trebuie să conțină text.
           hint:
-            optional_body: Share what the question is about.
-            minimum_characters: "Share what the question is about, at least {{min_content_length}} characters are required."
+            optional_body: Describe what the question is about.
+            minimum_characters: "Describe what the question is about, at least {{min_content_length}} characters are required."
         tags:
           label: Etichete
           msg:
