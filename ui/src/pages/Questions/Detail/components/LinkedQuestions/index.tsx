@@ -53,7 +53,7 @@ const Index: FC<Props> = ({ id }) => {
     <Card className="mb-4">
       <Card.Header className="text-nowrap d-flex justify-content-between text-capitalize">
         {t('title')}
-        <Link to={`/questions/linked/${id}`} className="btn btn-link p-0">
+        <Link to={`/linked/${id}`} className="btn btn-link p-0">
           {t('more', { keyPrefix: 'btns' })}
         </Link>
       </Card.Header>

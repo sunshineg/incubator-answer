@@ -17,27 +17,37 @@
  * under the License.
  */
 
-package converter
+package path
 
 import (
-	"regexp"
-
-	"github.com/segmentfault/pacman/utils"
+	"path/filepath"
+	"sync"
 )
 
-func DeleteUserDisplay(userID string) string {
-	return utils.EnShortID(StringToInt64(userID), 100)
+const (
+	DefaultConfigFileName                  = "config.yaml"
+	DefaultCacheFileName                   = "cache.db"
+	DefaultReservedUsernamesConfigFileName = "reserved-usernames.json"
+)
+
+var (
+	ConfigFileDir     = "/conf/"
+	UploadFilePath    = "/uploads/"
+	I18nPath          = "/i18n/"
+	CacheDir          = "/cache/"
+	formatAllPathOnce sync.Once
+)
+
+func FormatAllPath(dataDirPath string) {
+	formatAllPathOnce.Do(func() {
+		ConfigFileDir = filepath.Join(dataDirPath, ConfigFileDir)
+		UploadFilePath = filepath.Join(dataDirPath, UploadFilePath)
+		I18nPath = filepath.Join(dataDirPath, I18nPath)
+		CacheDir = filepath.Join(dataDirPath, CacheDir)
+	})
 }
 
-func GetMentionUsernameList(text string) []string {
-	re := regexp.MustCompile(`\[@([^\]]+)\]\(/users/[^\)]+\)`)
-	matches := re.FindAllStringSubmatch(text, -1)
-
-	var usernames []string
-	for _, match := range matches {
-		if len(match) > 1 {
-			usernames = append(usernames, match[1])
-		}
-	}
-	return usernames
+// GetConfigFilePath get config file path
+func GetConfigFilePath() string {
+	return filepath.Join(ConfigFileDir, DefaultConfigFileName)
 }

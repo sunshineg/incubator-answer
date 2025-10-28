@@ -37,6 +37,16 @@ const initFormData = {
     errorMsg: '',
     isInvalid: false,
   },
+  min_content: {
+    value: 0,
+    errorMsg: '',
+    isInvalid: false,
+  },
+  min_tags: {
+    value: 0,
+    errorMsg: '',
+    isInvalid: false,
+  },
   recommend_tags: {
     value: [] as Type.Tag[],
     errorMsg: '',
@@ -133,9 +143,11 @@ const Index: FC = () => {
     }
     const reqParams: Type.AdminSettingsWrite = {
       recommend_tags: formData.recommend_tags.value,
+      min_tags: Number(formData.min_tags.value),
       reserved_tags: formData.reserved_tags.value,
       required_tag: formData.required_tag.value,
       restrict_answer: formData.restrict_answer.value,
+      min_content: Number(formData.min_content.value),
       max_image_size: Number(formData.max_image_size.value),
       max_attachment_size: Number(formData.max_attachment_size.value),
       max_image_megapixel: Number(formData.max_image_megapixel.value),
@@ -177,6 +189,8 @@ const Index: FC = () => {
       if (Array.isArray(res.recommend_tags)) {
         formData.recommend_tags.value = res.recommend_tags;
       }
+      formData.min_content.value = res.min_content;
+      formData.min_tags.value = res.min_tags;
       formData.required_tag.value = res.required_tag;
       formData.restrict_answer.value = res.restrict_answer;
       if (Array.isArray(res.reserved_tags)) {
@@ -196,10 +210,6 @@ const Index: FC = () => {
   useEffect(() => {
     initData();
   }, []);
-
-  // const handleOnChange = (data) => {
-  //   setFormData(data);
-  // };
 
   return (
     <>
@@ -247,7 +257,27 @@ const Index: FC = () => {
             errMsg={formData.recommend_tags.errorMsg}
           />
         </Form.Group>
-
+        <Form.Group className="mb-3" controlId="min_tags">
+          <Form.Label>{t('min_tags.label')}</Form.Label>
+          <Form.Control
+            type="number"
+            value={formData.min_tags.value}
+            isInvalid={formData.min_tags.isInvalid}
+            onChange={(evt) => {
+              handleValueChange({
+                min_tags: {
+                  value: evt.target.value,
+                  errorMsg: '',
+                  isInvalid: false,
+                },
+              });
+            }}
+          />
+          <Form.Text>{t('min_tags.text')}</Form.Text>
+          <Form.Control.Feedback type="invalid">
+            {formData.min_tags.errorMsg}
+          </Form.Control.Feedback>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="required_tag">
           <Form.Label>{t('required_tag.title')}</Form.Label>
           <Form.Switch
@@ -268,7 +298,27 @@ const Index: FC = () => {
             {formData.required_tag.errorMsg}
           </Form.Control.Feedback>
         </Form.Group>
-
+        <Form.Group className="mb-3" controlId="min_content">
+          <Form.Label>{t('min_content.label')}</Form.Label>
+          <Form.Control
+            type="number"
+            value={formData.min_content.value}
+            isInvalid={formData.min_content.isInvalid}
+            onChange={(evt) => {
+              handleValueChange({
+                min_content: {
+                  value: evt.target.value,
+                  errorMsg: '',
+                  isInvalid: false,
+                },
+              });
+            }}
+          />
+          <Form.Text>{t('min_content.text')}</Form.Text>
+          <Form.Control.Feedback type="invalid">
+            {formData.min_content.errorMsg}
+          </Form.Control.Feedback>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="restrict_answer">
           <Form.Label>{t('restrict_answer.title')}</Form.Label>
           <Form.Switch

@@ -21,8 +21,6 @@ import { FC, memo, useEffect, useState } from 'react';
 import { Button, OverlayTrigger, Popover, Tooltip } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-import classNames from 'classnames';
-
 import { Icon } from '@/components';
 import { queryReactions, updateReaction } from '@/services';
 import { tryNormalLogged } from '@/utils/guard';
@@ -111,10 +109,7 @@ const Index: FC<Props> = ({
   );
 
   return (
-    <div
-      className={classNames('d-flex flex-wrap', {
-        'mb-3': !showAddCommentBtn,
-      })}>
+    <div className="d-flex flex-wrap">
       {showAddCommentBtn && (
         <Button
           className="rounded-pill me-2 link-secondary btn-reaction"

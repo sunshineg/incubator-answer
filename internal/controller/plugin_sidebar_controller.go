@@ -17,30 +17,32 @@
  * under the License.
  */
 
-.answer-container {
-  width: 100%;
-  min-height: calc(100vh - 95px - 62px);
-  max-width: 1072px;
+package controller
+
+import (
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/plugin"
+	"github.com/gin-gonic/gin"
+)
+
+// SidebarController is the controller for the sidebar plugin.
+type SidebarController struct{}
+
+// NewSidebarController creates a new instance of SidebarController.
+func NewSidebarController() *SidebarController {
+	return &SidebarController{}
 }
 
-.page-right-side {
-  flex: none;
-  width: 300px;
-  box-sizing: content-box;
-}
-
-// lg
-@media screen and (max-width: 1199.9px) {
-  .answer-container {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-  .page-main {
-    max-width: 100%;
-  }
-  .page-right-side {
-    width: 100%;
-    box-sizing: border-box;
-  }
+// GetSidebarConfig retrieves the sidebar configuration from the registered sidebar plugins.
+func (uc *SidebarController) GetSidebarConfig(ctx *gin.Context) {
+	resp := &plugin.SidebarConfig{}
+	_ = plugin.CallSidebar(func(fn plugin.Sidebar) error {
+		cfg, err := fn.GetSidebarConfig()
+		if err != nil {
+			return err
+		}
+		resp = cfg
+		return nil
+	})
+	handler.HandleResponse(ctx, nil, resp)
 }

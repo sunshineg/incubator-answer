@@ -17,30 +17,21 @@
  * under the License.
  */
 
-.answer-container {
-  width: 100%;
-  min-height: calc(100vh - 95px - 62px);
-  max-width: 1072px;
+// Package plugin
+package plugin
+
+type SidebarConfig struct {
+	Tags      []*TagSelectorOption `json:"tags"`
+	LinksText string               `json:"links_text"`
 }
 
-.page-right-side {
-  flex: none;
-  width: 300px;
-  box-sizing: content-box;
+type Sidebar interface {
+	Base
+	GetSidebarConfig() (sidebarConfig *SidebarConfig, err error)
 }
 
-// lg
-@media screen and (max-width: 1199.9px) {
-  .answer-container {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-  .page-main {
-    max-width: 100%;
-  }
-  .page-right-side {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
+var (
+	// CallRender is a function that calls all registered parsers
+	CallSidebar,
+	registerSidebar = MakePlugin[Sidebar](false)
+)

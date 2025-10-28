@@ -126,6 +126,10 @@ func Register(p Base) {
 	if _, ok := p.(KVStorage); ok {
 		registerKVStorage(p.(KVStorage))
 	}
+
+	if _, ok := p.(Sidebar); ok {
+		registerSidebar(p.(Sidebar))
+	}
 }
 
 type Stack[T Base] struct {

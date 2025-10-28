@@ -76,6 +76,13 @@ const routes: RouteNode[] = [
             path: 'questions/ask',
             page: 'pages/Questions/Ask',
             guard: () => {
+              return guard.askRedirect();
+            },
+          },
+          {
+            path: 'questions/add',
+            page: 'pages/Questions/Ask',
+            guard: () => {
               return guard.activated();
             },
           },
@@ -110,15 +117,19 @@ const routes: RouteNode[] = [
             page: 'pages/Questions/Detail',
           },
           {
-            path: 'questions/linked/:qid',
+            path: '/questions/linked/:qid',
+            page: 'pages/Questions/Linked',
+            guard: () => {
+              return guard.linkedRedirect();
+            },
+          },
+          {
+            path: '/linked/:qid',
             page: 'pages/Questions/Linked',
           },
           {
             path: '/search',
             page: 'pages/Search',
-            guard: () => {
-              return guard.googleSnapshotRedirect();
-            },
           },
           // tags
           {
@@ -134,6 +145,10 @@ const routes: RouteNode[] = [
           },
           {
             path: 'tags/:tagName',
+            page: 'pages/Tags/Detail',
+          },
+          {
+            path: 'tags/:tagName/questions',
             page: 'pages/Tags/Detail',
           },
           {

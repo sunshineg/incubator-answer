@@ -391,22 +391,23 @@ export const initAppSettingsStore = async () => {
   }
 };
 
-export const googleSnapshotRedirect = () => {
-  const gr: TGuardResult = { ok: true };
-  const searchStr = new URLSearchParams(window.location.search)?.get('q') || '';
-  if (window.location.host !== 'webcache.googleusercontent.com') {
-    return gr;
-  }
-  if (searchStr.indexOf('cache:') === 0 && searchStr.includes(':http')) {
-    const redirectUrl = `http${searchStr.split(':http')[1]}`;
-    const pathname = redirectUrl.replace(new URL(redirectUrl).origin, '');
+export const askRedirect = () => {
+  const queryString = window.location.search;
 
-    gr.ok = false;
-    gr.redirect = pathname || '/';
-    return gr;
-  }
+  return {
+    ok: false,
+    redirect: `/questions/add${queryString}`,
+  };
+};
 
-  return gr;
+export const linkedRedirect = () => {
+  const queryString = window.location.search;
+  const pathname = window.location.pathname.replace('/questions', '');
+
+  return {
+    ok: false,
+    redirect: `${pathname}${queryString}`,
+  };
 };
 
 let appInitialized = false;

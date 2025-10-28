@@ -841,6 +841,7 @@ ui:
     http_50X: HTTP 错误 500
     http_403: HTTP 错误 403
     logout: 退出
+    posts: 帖子
   notifications:
     title: 通知
     inbox: 收件箱
@@ -1214,7 +1215,7 @@ ui:
       msg:
         empty: 名字不能为空
         range: 名称长度必须在 2 至 30 个字符之间。
-        character: '只能由 "a-z"、"A-Z"、"0-9"、" - . _" 组成'
+        character: '只能由 "a-z"、"0-9"、" - . _" 组成'
     email:
       label: 邮箱
       msg:
@@ -1292,7 +1293,7 @@ ui:
         caption: 用户可以通过 "@用户名" 来提及你。
         msg: 用户名不能为空
         msg_range: 显示名称长度必须为 2-30 个字符。
-        character: '只能由 "a-z"、"A-Z"、"0-9"、" - . _" 组成'
+        character: '只能由 "a-z"、"0-9"、"- . _" 组成'
       avatar:
         label: 头像
         gravatar: Gravatar
@@ -1381,9 +1382,11 @@ ui:
     search: 搜索人员
   question_detail:
     action: 操作
+    created: 创建于
     Asked: 提问于
     asked: 提问于
     update: 修改于
+    Edited: 编辑于
     edit: 编辑于
     commented: 评论
     Views: 阅读次数
@@ -1695,7 +1698,7 @@ ui:
     admin_name:
       label: 名字
       msg: 名字不能为空。
-      character: '只能由 "a-z"、"A-Z"、"0-9"、" - . _" 组成'
+      character: '只能由 "a-z"、"0-9"、" - . _" 组成'
       msg_max_length: 名称长度必须在 2 至 30 个字符之间。
     admin_password:
       label: 密码
