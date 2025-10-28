@@ -235,7 +235,7 @@ backend:
       content_cannot_empty:
         other: 内容不能为空。
       content_less_than_minumum:
-        other: Not enough content entered.
+        other: 输入的内容不足。
     rank:
       fail_to_meet_the_condition:
         other: 声望值未达到要求。
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: 你不能将当前标签设为自己的同义词。
       minimum_count:
-        other: Not enough tags were entered.
+        other: 没有输入足够的标签。
     smtp:
       config_from_name_cannot_be_email:
         other: 发件人名称不能是邮箱地址。
@@ -845,7 +845,7 @@ ui:
     http_50X: HTTP 错误 500
     http_403: HTTP 错误 403
     logout: 退出
-    posts: Posts
+    posts: 帖子
   notifications:
     title: 通知
     inbox: 收件箱
@@ -1147,8 +1147,8 @@ ui:
           msg:
             empty: 内容不能为空。
           hint:
-            optional_body: Share what the question is about.
-            minimum_characters: "Share what the question is about, at least {{min_content_length}} characters are required."
+            optional_body: Describe what the question is about.
+            minimum_characters: "Describe what the question is about, at least {{min_content_length}} characters are required."
         tags:
           label: 标签
           msg:
@@ -1224,7 +1224,7 @@ ui:
       msg:
         empty: 名字不能为空
         range: 名称长度必须在 2 至 30 个字符之间。
-        character: 'Must use the character set "a-z", "0-9", " - . _"'
+        character: '只能由 "a-z", "0-9", " - . _" 组成'
     email:
       label: 邮箱
       msg:
@@ -1302,7 +1302,7 @@ ui:
         caption: 用户可以通过 "@用户名" 来提及你。
         msg: 用户名不能为空
         msg_range: 显示名称长度必须为 2-30 个字符。
-        character: 'Must use the character set "a-z", "0-9", "- . _"'
+        character: '只能由 "a-z", "0-9", " - . _" 组成'
       avatar:
         label: 头像
         gravatar: Gravatar
@@ -1391,11 +1391,11 @@ ui:
     search: 搜索人员
   question_detail:
     action: 操作
-    created: Created
+    created: 创建于
     Asked: 提问于
     asked: 提问于
     update: 修改于
-    Edited: Edited
+    Edited: 编辑于
     edit: 编辑于
     commented: 评论
     Views: 阅读次数
@@ -1707,7 +1707,7 @@ ui:
     admin_name:
       label: 名字
       msg: 名字不能为空。
-      character: 'Must use the character set "a-z", "0-9", " - . _"'
+      character: '只能由 "a-z", "0-9", " - . _" 组成'
       msg_max_length: 名称长度必须在 2 至 30 个字符之间。
     admin_password:
       label: 密码
@@ -2091,15 +2091,15 @@ ui:
     write:
       page_title: 编辑
       min_content:
-        label: Minimum question body length
-        text: Minimum allowed question body length in characters.
+        label: 最小问题长度
+        text: 最小允许的问题内容长度（字符）。
       restrict_answer:
         title: 回答编辑
         label: 每个用户对于每个问题只能有一个回答
         text: "用户可以使用编辑按钮优化已有的回答"
       min_tags:
-        label: "Minimum tags per question"
-        text: "Minimum number of tags required in a question."
+        label: "问题的最少标签数"
+        text: "一个问题所需标签的最小数量。"
       recommend_tags:
         label: 推荐标签
         text: "推荐标签将默认显示在下拉列表中。"
