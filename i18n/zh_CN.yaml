@@ -1147,8 +1147,8 @@ ui:
           msg:
             empty: 内容不能为空。
           hint:
-            optional_body: Describe what the question is about.
-            minimum_characters: "Describe what the question is about, at least {{min_content_length}} characters are required."
+            optional_body: 描述这个问题是什么。
+            minimum_characters: "详细描述这个问题，至少需要 {{min_content_length}} 字符。"
         tags:
           label: 标签
           msg:
@@ -1170,8 +1170,8 @@ ui:
     create_btn: 创建新标签
     search_tag: 搜索标签
     hint: 描述您的内容是关于什么，至少需要一个标签。
-    hint_zero_tags: Describe what your content is about.
-    hint_more_than_one_tag: "Describe what your content is about, at least {{min_tags_number}} tags are required."
+    hint_zero_tags: 描述您的内容与什么有关。
+    hint_more_than_one_tag: "描述您的内容是关于什么，至少需要{{min_tags_number}}个标签。"
     no_result: 没有匹配的标签
     tag_required_text: 必选标签（至少一个）
   header:
