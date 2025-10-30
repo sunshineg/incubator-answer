@@ -178,3 +178,5 @@ require (
 replace lukechampine.com/uint128 v1.1.1 => github.com/aichy126/uint128 v1.1.1
 
 replace modernc.org/cc/v3 v3.40.0 => gitlab.com/cznic/cc/v3 v3.40.0
+
+replace github.com/lyft/protoc-gen-validate v0.0.13 => github.com/LinkinStars/protoc-gen-validate v0.0.0-20251030022322-3fddbbe5a0e6
