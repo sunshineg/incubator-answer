@@ -235,7 +235,7 @@ backend:
       content_cannot_empty:
         other: İçerik boş olamaz.
       content_less_than_minumum:
-        other: Not enough content entered.
+        other: Yeterli içerik girilmedi.
     rank:
       fail_to_meet_the_condition:
         other: İtibar seviyesi koşulu karşılamıyor.
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: Bir etiketin eş anlamlısını kendisi olarak ayarlayamazsınız.
       minimum_count:
-        other: Not enough tags were entered.
+        other: Yeterli etiket girilmedi.
     smtp:
       config_from_name_cannot_be_email:
         other: Gönderen adı bir e-posta adresi olamaz.
@@ -311,13 +311,13 @@ backend:
       add_bulk_users_amount_error:
         other: "Bir kerede eklediğiniz kullanıcı sayısı 1-{{.MaxAmount}} aralığında olmalıdır."
       status_suspended_forever:
-        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Bu kullanıcı kalıcı olarak uzaklaştırıldı.</strong> Bu kullanıcı topluluk yönergelerine uymuyor."
       status_suspended_until:
-        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Bu kullanıcı {{.SuspendedUntil}} tarihine kadar askıya alındı.</strong> Bu kullanıcı topluluk yönergelerine uymuyor."
       status_deleted:
-        other: "This user was deleted."
+        other: "Bu kullanıcı silindi."
       status_inactive:
-        other: "This user is inactive."
+        other: "Bu kullanıcı aktif değil."
     config:
       read_config_failed:
         other: Yapılandırma okunamadı.
@@ -821,7 +821,7 @@ ui:
     tag_wiki: etiket wikisi
     create_tag: Etiket Oluştur
     edit_tag: Etiketi Düzenle
-    ask_a_question: Create Question
+    ask_a_question: Soru Oluştur
     edit_question: Soruyu Düzenle
     edit_answer: Cevabı Düzenle
     search: Ara
@@ -845,7 +845,7 @@ ui:
     http_50X: HTTP Hatası 500
     http_403: HTTP Hatası 403
     logout: Çıkış Yap
-    posts: Posts
+    posts: Gönderiler
   notifications:
     title: Bildirimler
     inbox: Gelen Kutusu
@@ -1069,9 +1069,9 @@ ui:
     day: gün
     hours: saatler
     days: günler
-    month: month
-    months: months
-    year: year
+    month: ay
+    months: aylar
+    year: yıl
   reaction:
     heart: kalp
     smile: gülümseme
@@ -1127,10 +1127,10 @@ ui:
     more: Daha Fazla
     wiki: Wiki
   ask:
-    title: Create Question
+    title: Soru Oluştur
     edit_title: Soruyu Düzenle
     default_reason: Soruyu düzenle
-    default_first_reason: Create question
+    default_first_reason: Soru oluştur
     similar_questions: Benzer sorular
     form:
       fields:
@@ -1138,7 +1138,7 @@ ui:
           label: Revizyon
         title:
           label: Başlık
-          placeholder: What's your topic? Be specific.
+          placeholder: Konu nedir? Ayrıntılı yaz.
           msg:
             empty: Başlık boş olamaz.
             range: Başlık en fazla 150 karakter olabilir
@@ -1147,8 +1147,8 @@ ui:
           msg:
             empty: İçerik boş olamaz.
           hint:
-            optional_body: Describe what the question is about.
-            minimum_characters: "Describe what the question is about, at least {{min_content_length}} characters are required."
+            optional_body: Sorunun neyle ilgili olduğunu açıklayın.
+            minimum_characters: "Sorunun neyle ilgili olduğunu açıklayın, en az {{min_content_length}} karakter gereklidir."
         tags:
           label: Etiketler
           msg:
@@ -1169,9 +1169,9 @@ ui:
     add_btn: Etiket ekle
     create_btn: Yeni etiket oluştur
     search_tag: Etiket ara
-    hint: Describe what your content is about, at least one tag is required.
-    hint_zero_tags: Describe what your content is about.
-    hint_more_than_one_tag: "Describe what your content is about, at least {{min_tags_number}} tags are required."
+    hint: Sorunuzun ne hakkında olduğunu tanımlayın, en az bir etiket gereklidir.
+    hint_zero_tags: İçeriğinizin neyle ilgili olduğunu açıklayın.
+    hint_more_than_one_tag: "İçeriğinizin neyle ilgili olduğunu açıklayın, en az {{min_tags_number}} etiket gereklidir."
     no_result: Eşleşen etiket bulunamadı
     tag_required_text: Gerekli etiket (en az bir tane)
   header:
@@ -1224,7 +1224,7 @@ ui:
       msg:
         empty: İsim boş olamaz.
         range: İsim 2 ile 30 karakter arasında olmalıdır.
-        character: 'Must use the character set "a-z", "0-9", " - . _"'
+        character: 'Yalnızca "a-z", "0-9", " - . _" karakterleri kullanılabilir'
     email:
       label: E-posta
       msg:
@@ -1377,10 +1377,10 @@ ui:
     review: Revizyonunuz incelendikten sonra görünecek.
     sent_success: Başarıyla gönderildi
   related_question:
-    title: Related
+    title: İle ilgili
     answers: cevap
   linked_question:
-    title: Linked
+    title: Bağlantılı
     description: Posts linked to
     no_linked_question: No contents linked from this content.
   invite_to_answer:
