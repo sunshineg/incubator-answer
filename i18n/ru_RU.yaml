@@ -58,7 +58,7 @@ backend:
     undelete:
       other: Отменить удаление
     merge:
-      other: Merge
+      other:
   role:
     name:
       user:
@@ -233,9 +233,9 @@ backend:
       cannot_update:
         other: Нет разрешения на обновление.
       content_cannot_empty:
-        other: Content cannot be empty.
+        other: .
       content_less_than_minumum:
-        other: Not enough content entered.
+        other: Введено недостаточно содержимого.
     rank:
       fail_to_meet_the_condition:
         other: Ранг репутации не соответствует условию.
@@ -698,10 +698,10 @@ backend:
         name:
           other: Anniversary
         desc:
-          other: Active member for a year, posted at least once.
+          other: Активный участник на год, опубликовал по крайней мере один раз.
       appreciated:
         name:
-          other: Appreciated
+          other:
         desc:
           other: Received 1 up vote on 20 posts.
       respected:
