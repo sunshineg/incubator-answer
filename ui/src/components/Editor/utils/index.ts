@@ -30,7 +30,7 @@ import Tooltip from 'bootstrap/js/dist/tooltip';
 import { Editor } from '../types';
 import { isDarkTheme } from '@/utils/common';
 
-import createEditorUtils from './extension';
+import { createCodeMirrorAdapter } from './codemirror/adapter';
 
 const editableCompartment = new Compartment();
 interface htmlRenderConfig {
@@ -190,7 +190,7 @@ export const useEditor = ({
       state: startState,
     });
 
-    const cm = createEditorUtils(view as Editor);
+    const cm = createCodeMirrorAdapter(view as Editor);
 
     cm.setReadOnly = (readOnly: boolean) => {
       cm.dispatch({

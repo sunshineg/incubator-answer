@@ -18,11 +18,12 @@
  */
 
 import {
-  useEffect,
   useRef,
+  useState,
   ForwardRefRenderFunction,
   forwardRef,
   useImperativeHandle,
+  useCallback,
 } from 'react';
 
 import classNames from 'classnames';
@@ -47,9 +48,12 @@ import {
   UL,
   File,
 } from './ToolBars';
-import { htmlRender, useEditor } from './utils';
+import { htmlRender } from './utils';
 import Viewer from './Viewer';
 import { EditorContext } from './EditorContext';
+import WysiwygEditor from './WysiwygEditor';
+import MarkdownEditor from './MarkdownEditor';
+import { Editor } from './types';
 
 import './index.scss';
 
@@ -82,75 +86,106 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
   },
   ref,
 ) => {
-  const editorRef = useRef<HTMLDivElement>(null);
+  const [mode, setMode] = useState<'markdown' | 'wysiwyg'>('markdown');
+  const [currentEditor, setCurrentEditor] = useState<Editor | null>(null);
   const previewRef = useRef<{ getHtml; element } | null>(null);
 
   useRenderPlugin(previewRef.current?.element);
 
-  const editor = useEditor({
-    editorRef,
-    onChange,
-    onFocus,
-    onBlur,
-    placeholder: editorPlaceholder,
-    autoFocus,
-  });
+  const handleModeChange = useCallback(
+    (newMode: 'markdown' | 'wysiwyg') => {
+      if (newMode === mode) {
+        return;
+      }
 
-  const getHtml = () => {
+      setMode(newMode);
+      setCurrentEditor(null);
+    },
+    [mode, currentEditor],
+  );
+
+  const getHtml = useCallback(() => {
     return previewRef.current?.getHtml();
-  };
+  }, []);
 
-  useImperativeHandle(ref, () => ({
-    getHtml,
-  }));
+  useImperativeHandle(
+    ref,
+    () => ({
+      getHtml,
+    }),
+    [getHtml],
+  );
 
-  useEffect(() => {
-    if (!editor) {
-      return;
-    }
-    if (editor.getValue() !== value) {
-      editor.setValue(value || '');
-    }
-  }, [editor, value]);
+  const EditorComponent = mode === 'markdown' ? MarkdownEditor : WysiwygEditor;
 
   return (
     <>
       <div className={classNames('md-editor-wrap rounded', className)}>
-        <EditorContext.Provider value={editor}>
-          {editor && (
-            <PluginRender
-              type={PluginType.Editor}
-              className="toolbar-wrap px-3 d-flex align-items-center flex-wrap"
-              editor={editor}
-              previewElement={previewRef.current?.element}>
-              <Heading />
-              <Bold />
-              <Italice />
-              <div className="toolbar-divider" />
-              <Code />
-              <LinkItem />
-              <BlockQuote />
-              <Image editorInstance={editor} />
-              <File editorInstance={editor} />
-              <Table />
-              <div className="toolbar-divider" />
-              <OL />
-              <UL />
-              <Indent />
-              <Outdent />
-              <Hr />
-              <div className="toolbar-divider" />
-              <Help />
-            </PluginRender>
-          )}
-        </EditorContext.Provider>
+        <div className="toolbar-wrap px-3 d-flex align-items-center flex-wrap">
+          <EditorContext.Provider value={currentEditor}>
+            {currentEditor && (
+              <PluginRender
+                type={PluginType.Editor}
+                className="d-flex align-items-center flex-wrap"
+                editor={currentEditor}
+                previewElement={previewRef.current?.element}>
+                <Heading />
+                <Bold />
+                <Italice />
+                <div className="toolbar-divider" />
+                <Code />
+                <LinkItem />
+                <BlockQuote />
+                <Image />
+                <File />
+                <Table />
+                <div className="toolbar-divider" />
+                <OL />
+                <UL />
+                <Indent />
+                <Outdent />
+                <Hr />
+                <div className="toolbar-divider" />
+                <Help />
+              </PluginRender>
+            )}
+          </EditorContext.Provider>
 
-        <div className="content-wrap">
-          <div
-            className="md-editor position-relative w-100 h-100"
-            ref={editorRef}
-          />
+          <div className="btn-group ms-auto" role="group">
+            <button
+              type="button"
+              className={`btn btn-sm ${
+                mode === 'markdown' ? 'btn-primary' : 'btn-outline-secondary'
+              }`}
+              title="Markdown 模式"
+              onClick={() => handleModeChange('markdown')}>
+              <i className="bi bi-filetype-md" />
+            </button>
+            <button
+              type="button"
+              className={`btn btn-sm ${
+                mode === 'wysiwyg' ? 'btn-primary' : 'btn-outline-secondary'
+              }`}
+              title="WYSIWYG 模式"
+              onClick={() => handleModeChange('wysiwyg')}>
+              <i className="bi bi-type" />
+            </button>
+          </div>
         </div>
+
+        <EditorComponent
+          value={value}
+          onChange={(markdown) => {
+            onChange?.(markdown);
+          }}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          placeholder={editorPlaceholder}
+          autoFocus={autoFocus}
+          onEditorReady={(editor) => {
+            setCurrentEditor(editor);
+          }}
+        />
       </div>
       <Viewer ref={previewRef} value={value} />
     </>

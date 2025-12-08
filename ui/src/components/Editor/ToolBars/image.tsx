@@ -17,19 +17,28 @@
  * under the License.
  */
 
-import { useEffect, useState, memo } from 'react';
+import { useEffect, useState, memo, useContext } from 'react';
 import { Button, Form, Modal, Tab, Tabs } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import { Modal as AnswerModal } from '@/components';
 import ToolItem from '../toolItem';
-import { IEditorContext, Editor } from '../types';
+import { EditorContext } from '../EditorContext';
+import { Editor } from '../types';
 import { uploadImage } from '@/services';
 import { writeSettingStore } from '@/stores';
 
-let context: IEditorContext;
-const Image = ({ editorInstance }) => {
-  const [editor, setEditor] = useState<Editor>(editorInstance);
+const Image = () => {
+  const editor = useContext(EditorContext);
+  const [editorState, setEditorState] = useState<Editor | null>(editor);
+
+  // 当 editor 改变时，更新 editor state
+  // 这样切换编辑器模式时，事件监听器会重新绑定
+  useEffect(() => {
+    if (editor) {
+      setEditorState(editor);
+    }
+  }, [editor]);
   const { t } = useTranslation('translation', { keyPrefix: 'editor' });
   const {
     max_image_size = 4,
@@ -160,19 +169,22 @@ const Image = ({ editorInstance }) => {
       return;
     }
 
-    const startPos = editor.getCursor();
+    if (!editorState) {
+      return;
+    }
+    const startPos = editorState.getCursor();
 
     const endPos = { ...startPos, ch: startPos.ch + loadingText.length };
 
-    editor.replaceSelection(loadingText);
-    editor.setReadOnly(true);
+    editorState.replaceSelection(loadingText);
+    editorState.setReadOnly(true);
     const urls = await upload(fileList)
       .catch(() => {
-        editor.replaceRange('', startPos, endPos);
+        editorState.replaceRange('', startPos, endPos);
       })
       .finally(() => {
-        editor.setReadOnly(false);
-        editor.focus();
+        editorState?.setReadOnly(false);
+        editorState?.focus();
       });
 
     const text: string[] = [];
@@ -184,9 +196,9 @@ const Image = ({ editorInstance }) => {
       });
     }
     if (text.length) {
-      editor.replaceRange(text.join('\n'), startPos, endPos);
+      editorState.replaceRange(text.join('\n'), startPos, endPos);
     } else {
-      editor.replaceRange('', startPos, endPos);
+      editorState?.replaceRange('', startPos, endPos);
     }
   };
 
@@ -197,25 +209,28 @@ const Image = ({ editorInstance }) => {
 
     if (bool) {
       event.preventDefault();
-      const startPos = editor.getCursor();
+      if (!editorState) {
+        return;
+      }
+      const startPos = editorState.getCursor();
       const endPos = { ...startPos, ch: startPos.ch + loadingText.length };
 
-      editor.replaceSelection(loadingText);
-      editor.setReadOnly(true);
+      editorState?.replaceSelection(loadingText);
+      editorState?.setReadOnly(true);
       upload(clipboard.files)
         .then((urls) => {
           const text = urls.map(({ name, url, type }) => {
             return `${type === 'post' ? '!' : ''}[${name}](${url})`;
           });
 
-          editor.replaceRange(text.join('\n'), startPos, endPos);
+          editorState.replaceRange(text.join('\n'), startPos, endPos);
         })
         .catch(() => {
-          editor.replaceRange('', startPos, endPos);
+          editorState.replaceRange('', startPos, endPos);
         })
         .finally(() => {
-          editor.setReadOnly(false);
-          editor.focus();
+          editorState?.setReadOnly(false);
+          editorState?.focus();
         });
 
       return;
@@ -289,7 +304,9 @@ const Image = ({ editorInstance }) => {
       return match.length > 1 ? '\n\n' : match;
     });
 
-    editor.replaceSelection(markdownText);
+    if (editorState) {
+      editorState.replaceSelection(markdownText);
+    }
   };
   const handleClick = () => {
     if (!link.value) {
@@ -298,28 +315,35 @@ const Image = ({ editorInstance }) => {
     }
     setLink({ ...link, type: '' });
 
-    const text = `![${imageName.value}](${link.value})`;
-
-    editor.replaceSelection(text);
+    if (editorState) {
+      editorState.insertImage(link.value, imageName.value || undefined);
+    }
 
     setVisible(false);
 
-    editor.focus();
+    editorState?.focus();
     setLink({ ...link, value: '' });
     setImageName({ ...imageName, value: '' });
   };
   useEffect(() => {
-    editor?.on('dragenter', dragenter);
-    editor?.on('dragover', dragover);
-    editor?.on('drop', drop);
-    editor?.on('paste', paste);
+    if (!editorState) {
+      return undefined;
+    }
+    // 绑定事件监听器
+    editorState.on('dragenter', dragenter);
+    editorState.on('dragover', dragover);
+    editorState.on('drop', drop);
+    editorState.on('paste', paste);
     return () => {
-      editor?.off('dragenter', dragenter);
-      editor?.off('dragover', dragover);
-      editor?.off('drop', drop);
-      editor?.off('paste', paste);
+      // 清理事件监听器
+      editorState.off('dragenter', dragenter);
+      editorState.off('dragover', dragover);
+      editorState.off('drop', drop);
+      editorState.off('paste', paste);
     };
-  }, [editor]);
+    // 注意：dragenter, dragover, drop, paste 函数在组件生命周期内是稳定的
+    // 它们不依赖任何会变化的值，所以不需要加入依赖项
+  }, [editorState]);
 
   useEffect(() => {
     if (link.value && link.type === 'drop') {
@@ -327,10 +351,9 @@ const Image = ({ editorInstance }) => {
     }
   }, [link.value]);
 
-  const addLink = (ctx) => {
-    context = ctx;
-    setEditor(context.editor);
-    const text = context.editor?.getSelection();
+  const addLink = (editorInstance: Editor) => {
+    setEditorState(editorInstance);
+    const text = editorInstance?.getSelection();
 
     setImageName({ ...imageName, value: text });
 
