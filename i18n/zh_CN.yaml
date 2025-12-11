@@ -234,8 +234,8 @@ backend:
         other: 没有更新权限。
       content_cannot_empty:
         other: 内容不能为空。
-      content_less_than_minumum:
-        other: 输入的内容不足。
+      content_less_than_minimum:
+        other: Not enough content entered.
     rank:
       fail_to_meet_the_condition:
         other: 声望值未达到要求。
@@ -1190,8 +1190,7 @@ ui:
     search:
       placeholder: 搜索
   footer:
-    build_on: >-
-      由 <1>Apache Answer</1> 提供动力 - 驱动问答社区的开源软件。<br />用爱制造 © {{cc}}.
+    build_on: Powered by <1> Apache Answer </1>
   upload_img:
     name: 更改
     loading: 加载中...
@@ -1768,6 +1767,7 @@ ui:
     branding: 品牌
     legal: 法律条款
     write: 撰写
+    terms: Terms
     tos: 服务条款
     privacy: 隐私政策
     seo: SEO
