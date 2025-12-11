@@ -235,7 +235,7 @@ backend:
       content_cannot_empty:
         other: 内容不能为空。
       content_less_than_minimum:
-        other: Not enough content entered.
+        other: 输入的内容不足。
     rank:
       fail_to_meet_the_condition:
         other: 声望值未达到要求。
@@ -1767,7 +1767,7 @@ ui:
     branding: 品牌
     legal: 法律条款
     write: 撰写
-    terms: Terms
+    terms: 服务条款
     tos: 服务条款
     privacy: 隐私政策
     seo: SEO
