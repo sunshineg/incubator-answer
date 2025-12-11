@@ -234,7 +234,7 @@ backend:
         other: Nu aveți permisiunea de a actualiza.
       content_cannot_empty:
         other: Conținutul nu poate fi gol.
-      content_less_than_minumum:
+      content_less_than_minimum:
         other: Not enough content entered.
     rank:
       fail_to_meet_the_condition:
@@ -1190,8 +1190,7 @@ ui:
     search:
       placeholder: Caută
   footer:
-    build_on: >-
-      Susținut de <1> Apache Răspuns </1>- software-ul open-source care asigură Q&A comunități.<br />Făcut cu dragoste ©️ {{cc}}.
+    build_on: Powered by <1> Apache Answer </1>
   upload_img:
     name: Schimbare
     loading: încarcare...
@@ -1768,6 +1767,7 @@ ui:
     branding: Marcă
     legal: Juridic
     write: Scrie
+    terms: Terms
     tos: Condiții de utilizare
     privacy: Confidențialitate
     seo: SEO
