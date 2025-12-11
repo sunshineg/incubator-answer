@@ -234,8 +234,8 @@ backend:
         other: Нет разрешения на обновление.
       content_cannot_empty:
         other: .
-      content_less_than_minumum:
-        other: Введено недостаточно содержимого.
+      content_less_than_minimum:
+        other: Not enough content entered.
     rank:
       fail_to_meet_the_condition:
         other: Ранг репутации не соответствует условию.
@@ -1190,8 +1190,7 @@ ui:
     search:
       placeholder: Поиск
   footer:
-    build_on: >-
-      Работает на <1> Apache Answer </1> - программном обеспечении с открытым исходным кодом, которое поддерживает сообщества вопросов и ответов.<br />Сделано с любовью © {{cc}}.
+    build_on: Powered by <1> Apache Answer </1>
   upload_img:
     name: Изменить
     loading: загрузка...
@@ -1768,6 +1767,7 @@ ui:
     branding: Фирменное оформление
     legal: Правовая информация
     write: Написать
+    terms: Terms
     tos: Пользовательское Соглашение
     privacy: Конфиденциальность
     seo: SEO
