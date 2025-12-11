@@ -234,7 +234,7 @@ backend:
         other: Brak uprawnień do edycji.
       content_cannot_empty:
         other: Content cannot be empty.
-      content_less_than_minumum:
+      content_less_than_minimum:
         other: Not enough content entered.
     rank:
       fail_to_meet_the_condition:
@@ -1190,8 +1190,7 @@ ui:
     search:
       placeholder: Szukaj
   footer:
-    build_on: >-
-      Zbudowane na platformie <1> Apache Answer </1> - oprogramowanie open-source, które napędza społeczności pytań i odpowiedzi.<br />Stworzone z miłością © {{cc}}.
+    build_on: Powered by <1> Apache Answer </1>
   upload_img:
     name: Zmień
     loading: Wczytywanie...
@@ -1768,6 +1767,7 @@ ui:
     branding: Marka
     legal: Prawne
     write: Pisanie
+    terms: Terms
     tos: Warunki korzystania z usługi
     privacy: Prywatność
     seo: SEO
