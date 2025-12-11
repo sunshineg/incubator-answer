@@ -234,7 +234,7 @@ backend:
         other: Немає дозволу на оновлення.
       content_cannot_empty:
         other: Content cannot be empty.
-      content_less_than_minumum:
+      content_less_than_minimum:
         other: Not enough content entered.
     rank:
       fail_to_meet_the_condition:
@@ -1190,8 +1190,7 @@ ui:
     search:
       placeholder: Пошук
   footer:
-    build_on: >-
-      Працює на основі <1> Apache Answer </1> - програмного забезпечення з відкритим вихідним кодом, яке забезпечує роботу спільнот запитань та відповідей.<br />Зроблено з любов'ю © {{cc}}.
+    build_on: Powered by <1> Apache Answer </1>
   upload_img:
     name: Змінити
     loading: завантаження...
@@ -1768,6 +1767,7 @@ ui:
     branding: Брендинг
     legal: Правила та умови
     write: Написати
+    terms: Terms
     tos: Умови використання
     privacy: Приватність
     seo: SEO
