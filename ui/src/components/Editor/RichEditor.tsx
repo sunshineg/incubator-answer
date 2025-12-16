@@ -33,7 +33,7 @@ import { TableKit } from '@tiptap/extension-table';
 import { Editor } from './types';
 import { createTipTapAdapter } from './utils/tiptap/adapter';
 
-interface WysiwygEditorProps {
+interface RichEditorProps {
   value: string;
   onChange?: (value: string) => void;
   onFocus?: () => void;
@@ -43,7 +43,7 @@ interface WysiwygEditorProps {
   onEditorReady?: (editor: Editor) => void;
 }
 
-const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
+const RichEditor: React.FC<RichEditorProps> = ({
   value,
   onChange,
   onFocus,
@@ -153,10 +153,10 @@ const WysiwygEditor: React.FC<WysiwygEditorProps> = ({
   }
 
   return (
-    <div className="wysiwyg-editor-wrap">
+    <div className="rich-editor-wrap">
       <EditorContent editor={editor} />
     </div>
   );
 };
 
-export default WysiwygEditor;
+export default RichEditor;

@@ -29,7 +29,7 @@ import { createCommandMethods } from './commands';
  * Adapts TipTap editor to CodeMirror editor interface
  *
  * This adapter function converts TipTap editor's API to a CodeMirror-compatible interface,
- * enabling toolbar components to work properly in WYSIWYG mode. The adapter implements
+ * enabling toolbar components to work properly in Rich mode. The adapter implements
  * the complete `ExtendEditor` interface, including base methods, event handling, and command methods.
  *
  * @param editor - TipTap editor instance

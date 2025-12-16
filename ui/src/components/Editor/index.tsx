@@ -51,7 +51,7 @@ import {
 import { htmlRender } from './utils';
 import Viewer from './Viewer';
 import { EditorContext } from './EditorContext';
-import WysiwygEditor from './WysiwygEditor';
+import RichEditor from './RichEditor';
 import MarkdownEditor from './MarkdownEditor';
 import { Editor } from './types';
 
@@ -86,14 +86,14 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
   },
   ref,
 ) => {
-  const [mode, setMode] = useState<'markdown' | 'wysiwyg'>('markdown');
+  const [mode, setMode] = useState<'markdown' | 'rich'>('markdown');
   const [currentEditor, setCurrentEditor] = useState<Editor | null>(null);
   const previewRef = useRef<{ getHtml; element } | null>(null);
 
   useRenderPlugin(previewRef.current?.element);
 
   const handleModeChange = useCallback(
-    (newMode: 'markdown' | 'wysiwyg') => {
+    (newMode: 'markdown' | 'rich') => {
       if (newMode === mode) {
         return;
       }
@@ -116,7 +116,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
     [getHtml],
   );
 
-  const EditorComponent = mode === 'markdown' ? MarkdownEditor : WysiwygEditor;
+  const EditorComponent = mode === 'markdown' ? MarkdownEditor : RichEditor;
 
   return (
     <>
@@ -155,17 +155,17 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
               className={`btn btn-sm ${
                 mode === 'markdown' ? 'btn-primary' : 'btn-outline-secondary'
               }`}
-              title="Markdown 模式"
+              title="Markdown Mode"
               onClick={() => handleModeChange('markdown')}>
               <i className="bi bi-filetype-md" />
             </button>
             <button
               type="button"
               className={`btn btn-sm ${
-                mode === 'wysiwyg' ? 'btn-primary' : 'btn-outline-secondary'
+                mode === 'rich' ? 'btn-primary' : 'btn-outline-secondary'
               }`}
-              title="WYSIWYG 模式"
-              onClick={() => handleModeChange('wysiwyg')}>
+              title="Rich Mode"
+              onClick={() => handleModeChange('rich')}>
               <i className="bi bi-type" />
             </button>
           </div>
