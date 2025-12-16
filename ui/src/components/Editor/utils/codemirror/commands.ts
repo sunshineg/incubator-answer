@@ -33,7 +33,8 @@ import { Editor, Level } from '../../types';
  * @returns Object containing all command methods
  */
 export function createCommandMethods(editor: Editor) {
-  return {
+  // Create methods object that allows self-reference
+  const methods = {
     wrapText: (before: string, after = before, defaultText) => {
       const range = editor.state.selection.ranges[0];
       const selectedText = editor.state.sliceDoc(range.from, range.to);
@@ -79,39 +80,39 @@ export function createCommandMethods(editor: Editor) {
     },
 
     insertBold: (text?: string) => {
-      editor.wrapText('**', '**', text || 'bold text');
+      methods.wrapText('**', '**', text || 'bold text');
     },
 
     insertItalic: (text?: string) => {
-      editor.wrapText('*', '*', text || 'italic text');
+      methods.wrapText('*', '*', text || 'italic text');
     },
 
     insertCode: (text?: string) => {
-      editor.wrapText('`', '`', text || 'code');
+      methods.wrapText('`', '`', text || 'code');
     },
 
     insertStrikethrough: (text?: string) => {
-      editor.wrapText('~~', '~~', text || 'strikethrough text');
+      methods.wrapText('~~', '~~', text || 'strikethrough text');
     },
 
     insertHeading: (level: Level, text?: string) => {
       const headingText = '#'.repeat(level);
-      editor.wrapText(`${headingText} `, '', text || 'heading');
+      methods.wrapText(`${headingText} `, '', text || 'heading');
     },
 
     insertBlockquote: (text?: string) => {
-      editor.wrapText('> ', '', text || 'quote');
+      methods.wrapText('> ', '', text || 'quote');
     },
 
     insertCodeBlock: (language?: string, code?: string) => {
       const lang = language || '';
       const codeText = code || '';
       const block = `\`\`\`${lang}\n${codeText}\n\`\`\``;
-      editor.appendBlock(block);
+      methods.appendBlock(block);
     },
 
     insertHorizontalRule: () => {
-      editor.appendBlock('---');
+      methods.appendBlock('---');
     },
 
     insertOrderedList: () => {
@@ -121,7 +122,7 @@ export function createCommandMethods(editor: Editor) {
       if (/^\d+\.\s/.test(lineText)) {
         return;
       }
-      editor.replaceLines((lineItem) => {
+      methods.replaceLines((lineItem) => {
         if (lineItem.trim() === '') {
           return lineItem;
         }
@@ -136,7 +137,7 @@ export function createCommandMethods(editor: Editor) {
       if (/^[-*+]\s/.test(lineText)) {
         return;
       }
-      editor.replaceLines((lineItem) => {
+      methods.replaceLines((lineItem) => {
         if (lineItem.trim() === '') {
           return lineItem;
         }
@@ -149,11 +150,11 @@ export function createCommandMethods(editor: Editor) {
       const line = editor.state.doc.line(cursor.line);
       const lineText = line.text.trim();
       if (/^\d+\.\s/.test(lineText)) {
-        editor.replaceLines((lineItem) => {
+        methods.replaceLines((lineItem) => {
           return lineItem.replace(/^\d+\.\s/, '');
         });
       } else {
-        editor.insertOrderedList();
+        methods.insertOrderedList();
       }
     },
 
@@ -162,22 +163,22 @@ export function createCommandMethods(editor: Editor) {
       const line = editor.state.doc.line(cursor.line);
       const lineText = line.text.trim();
       if (/^[-*+]\s/.test(lineText)) {
-        editor.replaceLines((lineItem) => {
+        methods.replaceLines((lineItem) => {
           return lineItem.replace(/^[-*+]\s/, '');
         });
       } else {
-        editor.insertUnorderedList();
+        methods.insertUnorderedList();
       }
     },
 
     insertLink: (url: string, text?: string) => {
       const linkText = text || url;
-      editor.wrapText('[', `](${url})`, linkText);
+      methods.wrapText('[', `](${url})`, linkText);
     },
 
     insertImage: (url: string, alt?: string) => {
       const altText = alt || '';
-      editor.wrapText('![', `](${url})`, altText);
+      methods.wrapText('![', `](${url})`, altText);
     },
 
     insertTable: (rows = 3, cols = 3) => {
@@ -192,11 +193,11 @@ export function createCommandMethods(editor: Editor) {
           table.push(`| ${'---'.repeat(cols).split('').join(' | ')} |`);
         }
       }
-      editor.appendBlock(table.join('\n'));
+      methods.appendBlock(table.join('\n'));
     },
 
     indent: () => {
-      editor.replaceLines((line) => {
+      methods.replaceLines((line) => {
         if (line.trim() === '') {
           return line;
         }
@@ -205,7 +206,7 @@ export function createCommandMethods(editor: Editor) {
     },
 
     outdent: () => {
-      editor.replaceLines((line) => {
+      methods.replaceLines((line) => {
         if (line.trim() === '') {
           return line;
         }
@@ -261,4 +262,6 @@ export function createCommandMethods(editor: Editor) {
       return /^[-*+]\s/.test(lineText);
     },
   };
+
+  return methods;
 }

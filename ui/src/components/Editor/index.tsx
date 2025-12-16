@@ -123,32 +123,30 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
       <div className={classNames('md-editor-wrap rounded', className)}>
         <div className="toolbar-wrap px-3 d-flex align-items-center flex-wrap">
           <EditorContext.Provider value={currentEditor}>
-            {currentEditor && (
-              <PluginRender
-                type={PluginType.Editor}
-                className="d-flex align-items-center flex-wrap"
-                editor={currentEditor}
-                previewElement={previewRef.current?.element}>
-                <Heading />
-                <Bold />
-                <Italice />
-                <div className="toolbar-divider" />
-                <Code />
-                <LinkItem />
-                <BlockQuote />
-                <Image />
-                <File />
-                <Table />
-                <div className="toolbar-divider" />
-                <OL />
-                <UL />
-                <Indent />
-                <Outdent />
-                <Hr />
-                <div className="toolbar-divider" />
-                <Help />
-              </PluginRender>
-            )}
+            <PluginRender
+              type={PluginType.Editor}
+              className="d-flex align-items-center flex-wrap"
+              editor={currentEditor}
+              previewElement={previewRef.current?.element}>
+              <Heading />
+              <Bold />
+              <Italice />
+              <div className="toolbar-divider" />
+              <Code />
+              <LinkItem />
+              <BlockQuote />
+              <Image />
+              <File />
+              <Table />
+              <div className="toolbar-divider" />
+              <OL />
+              <UL />
+              <Indent />
+              <Outdent />
+              <Hr />
+              <div className="toolbar-divider" />
+              <Help />
+            </PluginRender>
           </EditorContext.Provider>
 
           <div className="btn-group ms-auto" role="group">

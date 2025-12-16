@@ -55,30 +55,25 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
     autoFocus,
   });
 
-  // 初始化内容（只在编辑器创建时执行）
   useEffect(() => {
     if (!editor) {
       return;
     }
 
-    // 初始化编辑器内容
     editor.setValue(value || '');
     lastSyncedValueRef.current = value || '';
     onEditorReady?.(editor);
-  }, [editor]); // 只在编辑器创建时执行
+  }, [editor]);
 
-  // 当外部 value 变化时更新（但不是用户输入导致的）
   useEffect(() => {
     if (!editor) {
       return;
     }
 
-    // 如果 value 和 lastSyncedValueRef 相同，说明是用户输入导致的更新，跳过
     if (value === lastSyncedValueRef.current) {
       return;
     }
 
-    // 外部 value 真正变化，更新编辑器
     const currentValue = editor.getValue();
     if (currentValue !== value) {
       editor.setValue(value || '');
@@ -86,11 +81,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
     }
   }, [editor, value]);
 
-  // 清理：组件卸载时销毁编辑器
   useEffect(() => {
     return () => {
       if (editor) {
-        // CodeMirror EditorView 有 destroy 方法
         const view = editor as unknown as EditorView;
         if (view.destroy) {
           view.destroy();
