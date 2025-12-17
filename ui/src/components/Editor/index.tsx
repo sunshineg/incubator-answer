@@ -86,7 +86,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
   },
   ref,
 ) => {
-  const [mode, setMode] = useState<'markdown' | 'rich'>('markdown');
+  const [mode, setMode] = useState<'markdown' | 'rich'>('rich');
   const [currentEditor, setCurrentEditor] = useState<Editor | null>(null);
   const previewRef = useRef<{ getHtml; element } | null>(null);
 
@@ -186,7 +186,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
           }}
         />
       </div>
-      <Viewer ref={previewRef} value={value} />
+      {mode === 'markdown' && <Viewer ref={previewRef} value={value} />}
     </>
   );
 };

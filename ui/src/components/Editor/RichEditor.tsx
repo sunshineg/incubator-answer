@@ -28,10 +28,11 @@ import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import { Markdown } from '@tiptap/markdown';
 import Image from '@tiptap/extension-image';
-import { TableKit } from '@tiptap/extension-table';
+import { TableRow, TableCell, TableHeader } from '@tiptap/extension-table';
 
 import { Editor, BaseEditorProps } from './types';
 import { createTipTapAdapter } from './utils/tiptap/adapter';
+import { TableWithWrapper } from './utils/tiptap/tableExtension';
 
 interface RichEditorProps extends BaseEditorProps {}
 
@@ -117,7 +118,23 @@ const RichEditor: React.FC<RichEditorProps> = ({
       StarterKit,
       Markdown,
       Image,
-      TableKit,
+      TableWithWrapper.configure({
+        HTMLAttributes: {
+          class: 'table table-bordered',
+          style: {
+            width: '100%',
+          },
+        },
+        resizable: true,
+        wrapperClass: 'table-responsive',
+      }),
+      TableRow.configure({
+        HTMLAttributes: {
+          class: 'table-row',
+        },
+      }),
+      TableCell,
+      TableHeader,
       Placeholder.configure({
         placeholder,
       }),
@@ -128,7 +145,7 @@ const RichEditor: React.FC<RichEditorProps> = ({
     onBlur: handleBlur,
     editorProps: {
       attributes: {
-        class: 'tiptap-editor',
+        class: 'tiptap-editor fmt',
       },
     },
   });
