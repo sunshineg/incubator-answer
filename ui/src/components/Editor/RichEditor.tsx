@@ -30,18 +30,10 @@ import { Markdown } from '@tiptap/markdown';
 import Image from '@tiptap/extension-image';
 import { TableKit } from '@tiptap/extension-table';
 
-import { Editor } from './types';
+import { Editor, BaseEditorProps } from './types';
 import { createTipTapAdapter } from './utils/tiptap/adapter';
 
-interface RichEditorProps {
-  value: string;
-  onChange?: (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  placeholder?: string;
-  autoFocus?: boolean;
-  onEditorReady?: (editor: Editor) => void;
-}
+interface RichEditorProps extends BaseEditorProps {}
 
 const RichEditor: React.FC<RichEditorProps> = ({
   value,
@@ -53,14 +45,60 @@ const RichEditor: React.FC<RichEditorProps> = ({
   onEditorReady,
 }) => {
   const lastSyncedValueRef = useRef<string>(value);
-
   const adaptedEditorRef = useRef<Editor | null>(null);
+  const isInitializedRef = useRef<boolean>(false);
+  const isUpdatingFromPropsRef = useRef<boolean>(false);
+  const onEditorReadyRef = useRef(onEditorReady);
+  const autoFocusRef = useRef(autoFocus);
+  const initialValueRef = useRef<string>(value);
+
+  useEffect(() => {
+    onEditorReadyRef.current = onEditorReady;
+    autoFocusRef.current = autoFocus;
+  }, [onEditorReady, autoFocus]);
+
+  const isViewAvailable = (editorInstance: TipTapEditor | null): boolean => {
+    if (!editorInstance) {
+      return false;
+    }
+    if (editorInstance.isDestroyed) {
+      return false;
+    }
+    return !!(editorInstance.view && editorInstance.state);
+  };
+
+  const handleCreate = useCallback(
+    ({ editor: editorInstance }: { editor: TipTapEditor }) => {
+      if (isInitializedRef.current || !isViewAvailable(editorInstance)) {
+        return;
+      }
+
+      isInitializedRef.current = true;
+
+      const initialValue = initialValueRef.current;
+      if (initialValue && initialValue.trim() !== '') {
+        editorInstance.commands.setContent(initialValue, {
+          contentType: 'markdown',
+        });
+        lastSyncedValueRef.current = initialValue;
+      }
+
+      adaptedEditorRef.current = createTipTapAdapter(editorInstance);
+      onEditorReadyRef.current?.(adaptedEditorRef.current);
+
+      if (autoFocusRef.current) {
+        editorInstance.commands.focus();
+      }
+    },
+    [],
+  );
 
   const handleUpdate = useCallback(
     ({ editor: editorInstance }: { editor: TipTapEditor }) => {
-      if (onChange) {
+      if (onChange && !isUpdatingFromPropsRef.current) {
         const markdown = editorInstance.getMarkdown();
         onChange(markdown);
+        lastSyncedValueRef.current = markdown;
       }
     },
     [onChange],
@@ -84,7 +122,7 @@ const RichEditor: React.FC<RichEditorProps> = ({
         placeholder,
       }),
     ],
-    content: value || '',
+    onCreate: handleCreate,
     onUpdate: handleUpdate,
     onFocus: handleFocus,
     onBlur: handleBlur,
@@ -96,67 +134,56 @@ const RichEditor: React.FC<RichEditorProps> = ({
   });
 
   useEffect(() => {
-    if (!editor) {
+    if (
+      !editor ||
+      !isInitializedRef.current ||
+      !isViewAvailable(editor) ||
+      value === lastSyncedValueRef.current
+    ) {
       return;
     }
 
-    const checkEditorReady = () => {
-      if (editor.view && editor.view.dom) {
+    try {
+      const currentMarkdown = editor.getMarkdown();
+      if (currentMarkdown !== value) {
+        isUpdatingFromPropsRef.current = true;
         if (value && value.trim() !== '') {
           editor.commands.setContent(value, { contentType: 'markdown' });
         } else {
           editor.commands.clearContent();
         }
         lastSyncedValueRef.current = value || '';
-        if (!adaptedEditorRef.current) {
-          adaptedEditorRef.current = createTipTapAdapter(editor);
-        }
-        onEditorReady?.(adaptedEditorRef.current);
-      } else {
-        setTimeout(checkEditorReady, 10);
+        setTimeout(() => {
+          isUpdatingFromPropsRef.current = false;
+        }, 0);
       }
-    };
-
-    checkEditorReady();
-  }, [editor]);
-
-  useEffect(() => {
-    if (!editor) {
-      return;
-    }
-
-    if (value === lastSyncedValueRef.current) {
-      return;
-    }
-
-    const currentMarkdown = editor.getMarkdown();
-    if (currentMarkdown !== value) {
-      if (value && value.trim() !== '') {
-        editor.commands.setContent(value, { contentType: 'markdown' });
-      } else {
-        editor.commands.clearContent();
-      }
-      lastSyncedValueRef.current = value || '';
+    } catch (error) {
+      console.warn('Editor view not available when syncing value:', error);
     }
   }, [editor, value]);
 
   useEffect(() => {
-    if (editor && autoFocus) {
-      setTimeout(() => {
-        editor.commands.focus();
-      }, 100);
-    }
-  }, [editor, autoFocus]);
+    initialValueRef.current = value;
+    lastSyncedValueRef.current = value;
+    isInitializedRef.current = false;
+    adaptedEditorRef.current = null;
+    isUpdatingFromPropsRef.current = false;
+
+    return () => {
+      if (editor) {
+        editor.destroy();
+      }
+      isInitializedRef.current = false;
+      adaptedEditorRef.current = null;
+      isUpdatingFromPropsRef.current = false;
+    };
+  }, [editor]);
 
   if (!editor) {
     return <div className="editor-loading">Loading editor...</div>;
   }
 
-  return (
-    <div className="rich-editor-wrap">
-      <EditorContent editor={editor} />
-    </div>
-  );
+  return <EditorContent className="rich-editor-wrap" editor={editor} />;
 };
 
 export default RichEditor;

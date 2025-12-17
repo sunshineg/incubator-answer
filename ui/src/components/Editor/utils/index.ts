@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import { minimalSetup } from 'codemirror';
 import { EditorState, Compartment } from '@codemirror/state';
@@ -129,12 +129,14 @@ export const useEditor = ({
   editorRef,
   placeholder: placeholderText,
   autoFocus,
+  initialValue,
   onChange,
   onFocus,
   onBlur,
 }) => {
   const [editor, setEditor] = useState<Editor | null>(null);
-  const [value, setValue] = useState<string>('');
+  const isInternalUpdateRef = useRef<boolean>(false);
+
   const init = async () => {
     const isDark = isDarkTheme();
 
@@ -162,6 +164,7 @@ export const useEditor = ({
     });
 
     const startState = EditorState.create({
+      doc: initialValue || '',
       extensions: [
         minimalSetup,
         markdown({
@@ -206,9 +209,20 @@ export const useEditor = ({
       }, 10);
     }
 
+    const originalSetValue = cm.setValue;
+    cm.setValue = (newValue: string) => {
+      isInternalUpdateRef.current = true;
+      originalSetValue.call(cm, newValue);
+      setTimeout(() => {
+        isInternalUpdateRef.current = false;
+      }, 0);
+    };
+
     cm.on('change', () => {
-      const newValue = cm.getValue();
-      setValue(newValue);
+      if (!isInternalUpdateRef.current && onChange) {
+        const newValue = cm.getValue();
+        onChange(newValue);
+      }
     });
 
     cm.on('focus', () => {
@@ -223,10 +237,6 @@ export const useEditor = ({
 
     return cm;
   };
-
-  useEffect(() => {
-    onChange?.(value);
-  }, [value]);
 
   useEffect(() => {
     if (!editorRef.current) {

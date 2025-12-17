@@ -25,7 +25,13 @@ import { logWarning } from './errorHandler';
  * Checks if editor view is available
  */
 function isViewAvailable(editor: TipTapEditor): boolean {
-  return !!(editor.view && editor.view.dom);
+  if (!editor) {
+    return false;
+  }
+  if (editor.isDestroyed) {
+    return false;
+  }
+  return !!(editor.view && editor.state);
 }
 
 /**

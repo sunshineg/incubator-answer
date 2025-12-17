@@ -21,18 +21,10 @@ import { useEffect, useRef } from 'react';
 
 import { EditorView } from '@codemirror/view';
 
-import { Editor } from './types';
+import { BaseEditorProps } from './types';
 import { useEditor } from './utils';
 
-interface MarkdownEditorProps {
-  value: string;
-  onChange?: (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  placeholder?: string;
-  autoFocus?: boolean;
-  onEditorReady?: (editor: Editor) => void;
-}
+interface MarkdownEditorProps extends BaseEditorProps {}
 
 const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   value,
@@ -45,6 +37,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
 }) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const lastSyncedValueRef = useRef<string>(value);
+  const isInitializedRef = useRef<boolean>(false);
 
   const editor = useEditor({
     editorRef,
@@ -53,24 +46,20 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
     onBlur,
     placeholder,
     autoFocus,
+    initialValue: value,
   });
 
   useEffect(() => {
-    if (!editor) {
+    if (!editor || isInitializedRef.current) {
       return;
     }
 
-    editor.setValue(value || '');
-    lastSyncedValueRef.current = value || '';
+    isInitializedRef.current = true;
     onEditorReady?.(editor);
-  }, [editor]);
+  }, [editor, onEditorReady]);
 
   useEffect(() => {
-    if (!editor) {
-      return;
-    }
-
-    if (value === lastSyncedValueRef.current) {
+    if (!editor || value === lastSyncedValueRef.current) {
       return;
     }
 
@@ -82,6 +71,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   }, [editor, value]);
 
   useEffect(() => {
+    lastSyncedValueRef.current = value;
+    isInitializedRef.current = false;
+
     return () => {
       if (editor) {
         const view = editor as unknown as EditorView;
@@ -89,8 +81,9 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
           view.destroy();
         }
       }
+      isInitializedRef.current = false;
     };
-  }, [editor]);
+  }, []);
 
   return (
     <div className="content-wrap">

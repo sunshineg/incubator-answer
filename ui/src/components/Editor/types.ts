@@ -116,11 +116,12 @@ export interface CodeMirrorEditor extends Editor {
   moduleType;
 }
 
-// @deprecated 已废弃，请直接使用 Editor 接口
-// 保留此接口仅用于向后兼容，新代码不应使用
-export interface IEditorContext {
-  editor: Editor;
-  wrapText?;
-  replaceLines?;
-  appendBlock?;
+export interface BaseEditorProps {
+  value: string;
+  onChange?: (value: string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  placeholder?: string;
+  autoFocus?: boolean;
+  onEditorReady?: (editor: Editor) => void;
 }

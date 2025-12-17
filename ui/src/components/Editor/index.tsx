@@ -98,10 +98,10 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
         return;
       }
 
-      setMode(newMode);
       setCurrentEditor(null);
+      setMode(newMode);
     },
-    [mode, currentEditor],
+    [mode],
   );
 
   const getHtml = useCallback(() => {
@@ -172,6 +172,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
         </div>
 
         <EditorComponent
+          key={mode}
           value={value}
           onChange={(markdown) => {
             onChange?.(markdown);

@@ -69,14 +69,26 @@ export function createCommandMethods(editor: Editor) {
 
       const newLines = lines.map(replace) as string[];
       const newText = newLines.join('\n');
-      editor.setValue(newText);
+      editor.dispatch({
+        changes: {
+          from: 0,
+          to: editor.state.doc.length,
+          insert: newText,
+        },
+      });
     },
 
     appendBlock: (content: string) => {
       const { doc } = editor.state;
       const currentText = doc.toString();
       const newText = currentText ? `${currentText}\n\n${content}` : content;
-      editor.setValue(newText);
+      editor.dispatch({
+        changes: {
+          from: 0,
+          to: editor.state.doc.length,
+          insert: newText,
+        },
+      });
     },
 
     insertBold: (text?: string) => {
