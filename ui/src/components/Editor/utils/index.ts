@@ -95,10 +95,8 @@ export function htmlRender(el: HTMLElement | null, config?: htmlRenderConfig) {
     `;
     codeTool.innerHTML = str;
 
-    // Add copy button to pre tag
     pre.style.position = 'relative';
 
-    // 将 codeTool 和 pre 插入到 codeWrap 中, 并且使用 codeWrap 替换 pre
     codeWrap.appendChild(codeTool);
     pre.parentNode?.replaceChild(codeWrap, pre);
     codeWrap.appendChild(pre);

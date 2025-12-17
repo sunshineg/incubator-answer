@@ -32,8 +32,8 @@ const Image = () => {
   const editor = useContext(EditorContext);
   const [editorState, setEditorState] = useState<Editor | null>(editor);
 
-  // 当 editor 改变时，更新 editor state
-  // 这样切换编辑器模式时，事件监听器会重新绑定
+  // Update editor state when editor context changes
+  // This ensures event listeners are re-bound when switching editor modes
   useEffect(() => {
     if (editor) {
       setEditorState(editor);
@@ -329,20 +329,18 @@ const Image = () => {
     if (!editorState) {
       return undefined;
     }
-    // 绑定事件监听器
+
     editorState.on('dragenter', dragenter);
     editorState.on('dragover', dragover);
     editorState.on('drop', drop);
     editorState.on('paste', paste);
+
     return () => {
-      // 清理事件监听器
       editorState.off('dragenter', dragenter);
       editorState.off('dragover', dragover);
       editorState.off('drop', drop);
       editorState.off('paste', paste);
     };
-    // 注意：dragenter, dragover, drop, paste 函数在组件生命周期内是稳定的
-    // 它们不依赖任何会变化的值，所以不需要加入依赖项
   }, [editorState]);
 
   useEffect(() => {

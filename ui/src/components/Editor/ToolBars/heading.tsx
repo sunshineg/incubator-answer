@@ -62,7 +62,7 @@ const Heading = () => {
   const [isLocked, setLockState] = useState(false);
   const [currentEditor, setCurrentEditor] = useState<Editor | null>(null);
 
-  const handleClick = (level: Level = 2, label = '大标题') => {
+  const handleClick = (level: Level = 2, label?: string) => {
     if (!currentEditor) {
       return;
     }

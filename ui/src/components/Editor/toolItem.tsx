@@ -63,7 +63,7 @@ const ToolItem: FC<IProps> = (props) => {
       editor?.addKeyMap({
         [key]: () => {
           onClick?.(editor);
-          return true; // Command 类型要求返回 boolean
+          return true;
         },
       });
     });

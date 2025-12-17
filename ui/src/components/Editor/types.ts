@@ -61,7 +61,6 @@ export interface ExtendEditor {
   setSelection: (anchor: Position, head?: Position) => void;
   setReadOnly: (readOnly: boolean) => void;
 
-  // 底层方法（供编辑器内部使用，不推荐工具栏直接使用）
   wrapText: (before: string, after?: string, defaultText?: string) => void;
   replaceLines: (
     replace: Parameters<Array<string>['map']>[0],
@@ -69,37 +68,29 @@ export interface ExtendEditor {
   ) => void;
   appendBlock: (content: string) => void;
 
-  // 语义化高级方法（工具栏推荐使用）
-  // 文本格式
   insertBold: (text?: string) => void;
   insertItalic: (text?: string) => void;
   insertCode: (text?: string) => void;
   insertStrikethrough: (text?: string) => void;
 
-  // 块级元素
   insertHeading: (level: Level, text?: string) => void;
   insertBlockquote: (text?: string) => void;
   insertCodeBlock: (language?: string, code?: string) => void;
   insertHorizontalRule: () => void;
 
-  // 列表
   insertOrderedList: () => void;
   insertUnorderedList: () => void;
   toggleOrderedList: () => void;
   toggleUnorderedList: () => void;
 
-  // 链接和媒体
   insertLink: (url: string, text?: string) => void;
   insertImage: (url: string, alt?: string) => void;
 
-  // 表格
   insertTable: (rows?: number, cols?: number) => void;
 
-  // 缩进
   indent: () => void;
   outdent: () => void;
 
-  // 状态查询
   isBold: () => boolean;
   isItalic: () => boolean;
   isHeading: (level?: number) => boolean;
