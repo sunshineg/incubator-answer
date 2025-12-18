@@ -29,7 +29,7 @@ import {
 import classNames from 'classnames';
 
 import { PluginType, useRenderPlugin } from '@/utils/pluginKit';
-import PluginRender from '../PluginRender';
+import PluginRender, { PluginSlot } from '../PluginRender';
 
 import {
   BlockQuote,
@@ -86,7 +86,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
   },
   ref,
 ) => {
-  const [mode, setMode] = useState<'markdown' | 'rich'>('rich');
+  const [mode, setMode] = useState<'markdown' | 'rich'>('markdown');
   const [currentEditor, setCurrentEditor] = useState<Editor | null>(null);
   const previewRef = useRef<{ getHtml; element } | null>(null);
 
@@ -145,10 +145,10 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
               <Outdent />
               <Hr />
               <div className="toolbar-divider" />
+              <PluginSlot />
               <Help />
             </PluginRender>
           </EditorContext.Provider>
-
           <div className="btn-group ms-auto" role="group">
             <button
               type="button"

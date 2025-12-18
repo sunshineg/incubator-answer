@@ -633,15 +633,17 @@ export function createCommandMethods(editor: TipTapEditor) {
       if (text) {
         const { from } = editor.state.selection;
         const blockquoteText = `> ${text}`;
-        editor.commands.insertContent(blockquoteText, {
-          contentType: 'markdown',
-        });
-        // Select the text part (excluding the '> ' marker)
-        const textStart = from + 2; // 2 for '> '
-        editor.commands.setTextSelection({
-          from: textStart,
-          to: textStart + text.length,
-        });
+
+        // Use chain to ensure selection happens after insertion
+        editor
+          .chain()
+          .focus()
+          .insertContent(blockquoteText, { contentType: 'markdown' })
+          .setTextSelection({
+            from: from + 1,
+            to: from + 1 + text.length,
+          })
+          .run();
       } else {
         editor.commands.toggleBlockquote();
       }
