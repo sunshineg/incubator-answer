@@ -2155,19 +2155,16 @@ ui:
       page_title: CSS 与 HTML
       custom_css:
         label: 自定义 CSS
-        text: >
-
+        text: 这将插入为 &lt;link>
       head:
         label: 头部
-        text: >
-
+        text: 这将插入到 &lt;/head> 之前。
       header:
         label: 页眉
-        text: >
-
+        text: 这将插入到 &lt;body> 之后。
       footer:
         label: 页脚
-        text: 这将在 &lt;/body> 之前插入。
+        text: 这将插入到 &lt;/body> 之前。
       sidebar:
         label: 侧边栏
         text: 这将插入侧边栏中。
