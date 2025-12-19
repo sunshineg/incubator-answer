@@ -2147,6 +2147,10 @@ ui:
       primary_color:
         label: 主色调
         text: 修改您主题使用的颜色
+      layout:
+        label: 布局
+        full_width: 全宽
+        fixed_width: 定宽
     css_and_html:
       page_title: CSS 与 HTML
       custom_css:
