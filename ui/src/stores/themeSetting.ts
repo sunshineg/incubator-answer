@@ -27,6 +27,7 @@ interface IType {
   theme_config: AdminSettingsTheme['theme_config'];
   theme_options: AdminSettingsTheme['theme_options'];
   color_scheme: AdminSettingsTheme['color_scheme'];
+  layout: AdminSettingsTheme['layout'];
   update: (params: AdminSettingsTheme) => void;
 }
 
@@ -40,6 +41,7 @@ const store = create<IType>((set) => ({
       primary_color: DEFAULT_THEME_COLOR,
     },
   },
+  layout: 'full',
   update: (params) =>
     set((state) => {
       // Compatibility default value is colored or light before v1.5.1

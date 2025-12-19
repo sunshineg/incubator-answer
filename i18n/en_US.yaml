@@ -2186,6 +2186,10 @@ ui:
       primary_color:
         label: Primary color
         text: Modify the colors used by your themes
+      layout:
+        label: Layout
+        full_width: Full-width
+        fixed_width: Fixed-width
     css_and_html:
       page_title: CSS and HTML
       custom_css:

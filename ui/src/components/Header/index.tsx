@@ -83,7 +83,7 @@ const Header: FC = () => {
 
   let navbarStyle = 'theme-light';
   let themeMode = 'light';
-  const { theme, theme_config } = themeSettingStore((_) => _);
+  const { theme, theme_config, layout } = themeSettingStore((_) => _);
   if (theme_config?.[theme]?.navbar_style) {
     // const color = theme_config[theme].navbar_style.startsWith('#')
     themeMode = isLight(theme_config[theme].navbar_style) ? 'light' : 'dark';
@@ -113,7 +113,11 @@ const Header: FC = () => {
         backgroundColor: theme_config[theme].navbar_style,
       }}
       id="header">
-      <div className="w-100 d-flex align-items-center px-3">
+      <div
+        className={classnames(
+          'w-100 d-flex align-items-center px-3',
+          layout === 'Fixed-width' ? 'container-xxl' : '',
+        )}>
         <Navbar.Toggle
           className="answer-navBar me-2"
           onClick={() => {

@@ -22,12 +22,14 @@ import { Outlet, useLocation, ScrollRestoration } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
 import { SWRConfig } from 'swr';
+import classnames from 'classnames';
 
 import {
   toastStore,
   loginToContinueStore,
   errorCodeStore,
   siteLealStore,
+  themeSettingStore,
 } from '@/stores';
 import {
   Header,
@@ -56,7 +58,8 @@ const Layout: FC = () => {
   const { code: httpStatusCode, reset: httpStatusReset } = errorCodeStore();
   const { show: showLoginToContinueModal } = loginToContinueStore();
   const { data: notificationData } = useQueryNotificationStatus();
-
+  const layout = themeSettingStore((state) => state.layout);
+  console.log(layout);
   useEffect(() => {
     // handle footnote links
     const fixFootnoteLinks = () => {
@@ -209,7 +212,11 @@ const Layout: FC = () => {
           revalidateOnFocus: false,
         }}>
         <Header />
-        <div className="position-relative page-wrap d-flex flex-column flex-fill">
+        <div
+          className={classnames(
+            'position-relative page-wrap d-flex flex-column flex-fill',
+            layout === 'Fixed-width' ? 'container-xxl' : '',
+          )}>
           {httpStatusCode ? (
             <HttpErrorContent httpCode={httpStatusCode} />
           ) : (
