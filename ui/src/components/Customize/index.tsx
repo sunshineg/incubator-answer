@@ -138,7 +138,6 @@ const Index: FC = () => {
      * description:  Activate scripts with data-client attribute when route changes
      */
     const allScript = document.body.querySelectorAll('script[data-client]');
-    console.log('allScript', allScript);
     allScript.forEach((scriptNode) => {
       const script = document.createElement('script');
       script.setAttribute('data-client', 'true');
