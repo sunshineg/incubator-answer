@@ -181,6 +181,7 @@ type SiteThemeReq struct {
 	Theme       string         `validate:"required,gt=0,lte=255" json:"theme"`
 	ThemeConfig map[string]any `validate:"omitempty" json:"theme_config"`
 	ColorScheme string         `validate:"omitempty,gt=0,lte=100" json:"color_scheme"`
+	Layout      string         `validate:"omitempty,oneof=Full-width Fixed-width" json:"layout"`
 }
 
 type SiteSeoReq struct {
@@ -217,6 +218,7 @@ type SiteThemeResp struct {
 	Theme        string         `json:"theme"`
 	ThemeConfig  map[string]any `json:"theme_config"`
 	ColorScheme  string         `json:"color_scheme"`
+	Layout       string         `json:"layout"`
 }
 
 func (s *SiteThemeResp) TrTheme(ctx context.Context) {
