@@ -51,7 +51,6 @@ import {
 import { htmlRender } from './utils';
 import Viewer from './Viewer';
 import { EditorContext } from './EditorContext';
-import RichEditor from './RichEditor';
 import MarkdownEditor from './MarkdownEditor';
 import { Editor } from './types';
 
@@ -86,23 +85,10 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
   },
   ref,
 ) => {
-  const [mode, setMode] = useState<'markdown' | 'rich'>('markdown');
   const [currentEditor, setCurrentEditor] = useState<Editor | null>(null);
   const previewRef = useRef<{ getHtml; element } | null>(null);
 
   useRenderPlugin(previewRef.current?.element);
-
-  const handleModeChange = useCallback(
-    (newMode: 'markdown' | 'rich') => {
-      if (newMode === mode) {
-        return;
-      }
-
-      setCurrentEditor(null);
-      setMode(newMode);
-    },
-    [mode],
-  );
 
   const getHtml = useCallback(() => {
     return previewRef.current?.getHtml();
@@ -116,7 +102,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
     [getHtml],
   );
 
-  const EditorComponent = mode === 'markdown' ? MarkdownEditor : RichEditor;
+  const EditorComponent = MarkdownEditor;
 
   return (
     <>
@@ -149,30 +135,10 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
               <Help />
             </PluginRender>
           </EditorContext.Provider>
-          <div className="btn-group ms-auto" role="group">
-            <button
-              type="button"
-              className={`btn btn-sm ${
-                mode === 'markdown' ? 'btn-primary' : 'btn-outline-secondary'
-              }`}
-              title="Markdown Mode"
-              onClick={() => handleModeChange('markdown')}>
-              <i className="bi bi-filetype-md" />
-            </button>
-            <button
-              type="button"
-              className={`btn btn-sm ${
-                mode === 'rich' ? 'btn-primary' : 'btn-outline-secondary'
-              }`}
-              title="Rich Mode"
-              onClick={() => handleModeChange('rich')}>
-              <i className="bi bi-type" />
-            </button>
-          </div>
         </div>
 
         <EditorComponent
-          key={mode}
+          key="markdown-editor"
           value={value}
           onChange={(markdown) => {
             onChange?.(markdown);
@@ -186,7 +152,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
           }}
         />
       </div>
-      {mode === 'markdown' && <Viewer ref={previewRef} value={value} />}
+      <Viewer ref={previewRef} value={value} />
     </>
   );
 };
