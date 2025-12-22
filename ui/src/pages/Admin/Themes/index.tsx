@@ -182,6 +182,7 @@ const Index: FC = () => {
           : DEFAULT_THEME_COLOR;
         formMeta.primary_color.value = themeConfig?.primary_color;
         formData.color_scheme.value = setting?.color_scheme || 'system';
+        formData.layout.value = setting?.layout || 'Full-width';
         setFormData({ ...formMeta });
       }
     });
