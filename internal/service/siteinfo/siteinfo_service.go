@@ -252,6 +252,9 @@ func (s *SiteInfoService) SaveSiteCustomCssHTML(ctx context.Context, req *schema
 
 // SaveSiteTheme save site custom html configuration
 func (s *SiteInfoService) SaveSiteTheme(ctx context.Context, req *schema.SiteThemeReq) (err error) {
+	if len(req.Layout) == 0 {
+		req.Layout = constant.ThemeLayoutFullWidth
+	}
 	content, _ := json.Marshal(req)
 	data := &entity.SiteInfo{
 		Type:    constant.SiteTypeTheme,

@@ -198,9 +198,13 @@ func (s *siteInfoCommonService) GetSiteCustomCssHTML(ctx context.Context) (resp 
 func (s *siteInfoCommonService) GetSiteTheme(ctx context.Context) (resp *schema.SiteThemeResp, err error) {
 	resp = &schema.SiteThemeResp{
 		ThemeOptions: schema.GetThemeOptions,
+		Layout:       constant.ThemeLayoutFullWidth,
 	}
 	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeTheme, resp); err != nil {
 		return nil, err
+	}
+	if resp.Layout == "" {
+		resp.Layout = constant.ThemeLayoutFullWidth
 	}
 	resp.TrTheme(ctx)
 	return resp, nil
