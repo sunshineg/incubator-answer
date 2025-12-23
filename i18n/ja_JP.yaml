@@ -1510,7 +1510,7 @@ ui:
     deleted_permanently: Deleted permanently
     pending: 処理待ち
     more: もっと見る
-    view: View
+    view: 表示方法
     card: Card
     compact: Compact
     display_below: Display below
