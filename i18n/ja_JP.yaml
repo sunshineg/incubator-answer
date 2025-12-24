@@ -1222,7 +1222,7 @@ ui:
       msg:
         empty: 名前を空にすることはできません。
         range: 2～30文字の名前を設定してください。
-        character: ' "a-z", "0-9", " - . _" の文字のみ利用可能です。'
+        character: '使用可能な文字は、英小字「a-z」、数字「0-9」、記号「- . _ 」のみです'
     email:
       label: メールアドレス
       msg:
@@ -1300,7 +1300,7 @@ ui:
         caption: ユーザーは "@username" としてあなたをメンションできます。
         msg: ユーザー名は空にできません。
         msg_range: ユーザー名は2 ~ 30文字で入力してください。
-        character: ' "a-z", "0-9", " - . _" の文字のみ利用可能です。'
+        character: '使用可能な文字は、英小字「a-z」、数字「0-9」、記号「- . _ 」のみです'
       avatar:
         label: プロフィール画像
         gravatar: Gravatar
@@ -1382,8 +1382,8 @@ ui:
     description: リンクされた投稿
     no_linked_question: このコンテンツからリンクされたコンテンツはありません。
   invite_to_answer:
-    title: People Asked
-    desc: Select people who you think might know the answer.
+    title: 回答をリクエスト
+    desc: 答えられそうな人を招待します。
     invite: 回答に招待する
     add: ユーザーを追加
     search: ユーザーを検索
@@ -1707,7 +1707,7 @@ ui:
     admin_name:
       label: 名前
       msg: 名前を空にすることはできません。
-      character: ' "a-z", "0-9", " - . _" の文字のみ利用可能です'
+      character: '使用可能な文字は、英小字「a-z」、数字「0-9」、記号「- . _ 」のみです'
       msg_max_length: 名前は2 ~ 30文字で入力してください。
     admin_password:
       label: パスワード
