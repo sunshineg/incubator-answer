@@ -53,6 +53,8 @@ class Plugins {
 
   private initializationError: Error | null = null;
 
+  private replacementPlugins: Map<PluginType, Plugin> = new Map();
+
   constructor() {
     this.initialization = this.init();
   }
@@ -176,6 +178,23 @@ class Plugins {
       return;
     }
 
+    // Handle singleton plugins (only one per type allowed)
+    const mode = plugin.info.registrationMode || 'multiple';
+    if (mode === 'singleton') {
+      const existingPlugin = this.replacementPlugins.get(plugin.info.type);
+      if (existingPlugin) {
+        const error = new Error(
+          `[PluginKit] Plugin conflict: ` +
+            `Cannot register '${plugin.info.slug_name}' because '${existingPlugin.info.slug_name}' ` +
+            `is already registered as a singleton plugin of type '${plugin.info.type}'. ` +
+            `Only one singleton plugin per type is allowed.`,
+        );
+        console.error(error.message);
+        throw error;
+      }
+      this.replacementPlugins.set(plugin.info.type, plugin);
+    }
+
     if (plugin.i18nConfig) {
       initI18nResource(plugin.i18nConfig);
     }
@@ -206,6 +225,10 @@ class Plugins {
       isInitialized: this.isInitialized,
       error: this.initializationError,
     };
+  }
+
+  getReplacementPlugin(type: PluginType): Plugin | null {
+    return this.replacementPlugins.get(type) || null;
   }
 }
 
@@ -240,6 +263,21 @@ const validateRoutePlugin = async (slugName) => {
   }
 
   return Boolean(registeredPlugin?.enabled);
+};
+
+const getReplacementPlugin = async (
+  type: PluginType,
+): Promise<Plugin | null> => {
+  try {
+    await plugins.initialization;
+    return plugins.getReplacementPlugin(type);
+  } catch (error) {
+    console.error(
+      `[PluginKit] Failed to get replacement plugin of type ${type}:`,
+      error,
+    );
+    return null;
+  }
 };
 
 const mergeRoutePlugins = async (routes) => {
@@ -348,6 +386,7 @@ export {
   mergeRoutePlugins,
   useCaptchaPlugin,
   useRenderPlugin,
+  getReplacementPlugin,
   PluginType,
 };
 export default plugins;

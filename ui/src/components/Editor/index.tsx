@@ -24,13 +24,21 @@ import {
   forwardRef,
   useImperativeHandle,
   useCallback,
+  useEffect,
 } from 'react';
+import { Spinner } from 'react-bootstrap';
 
 import classNames from 'classnames';
 
-import { PluginType, useRenderPlugin } from '@/utils/pluginKit';
+import {
+  PluginType,
+  useRenderPlugin,
+  getReplacementPlugin,
+} from '@/utils/pluginKit';
+import { writeSettingStore } from '@/stores';
 import PluginRender, { PluginSlot } from '../PluginRender';
 
+import { useImageUpload } from './hooks/useImageUpload';
 import {
   BlockQuote,
   Bold,
@@ -87,6 +95,32 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
 ) => {
   const [currentEditor, setCurrentEditor] = useState<Editor | null>(null);
   const previewRef = useRef<{ getHtml; element } | null>(null);
+  const [fullEditorPlugin, setFullEditorPlugin] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { verifyImageSize, uploadSingleFile } = useImageUpload();
+  const {
+    max_image_size = 4,
+    authorized_image_extensions = [],
+    authorized_attachment_extensions = [],
+  } = writeSettingStore((state) => state.write);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const loadPlugin = async () => {
+      const plugin = await getReplacementPlugin(PluginType.EditorReplacement);
+      if (mounted) {
+        setFullEditorPlugin(plugin);
+        setIsLoading(false);
+      }
+    };
+
+    loadPlugin();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   useRenderPlugin(previewRef.current?.element);
 
@@ -103,6 +137,53 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
   );
 
   const EditorComponent = MarkdownEditor;
+
+  if (isLoading) {
+    return (
+      <div className={classNames('md-editor-wrap rounded', className)}>
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: '200px' }}>
+          <Spinner animation="border" variant="secondary" />
+        </div>
+      </div>
+    );
+  }
+
+  if (fullEditorPlugin) {
+    const FullEditorComponent = fullEditorPlugin.component;
+
+    const handleImageUpload = async (file: File | string): Promise<string> => {
+      if (typeof file === 'string') {
+        return file;
+      }
+
+      if (!verifyImageSize([file])) {
+        throw new Error('File validation failed');
+      }
+
+      return uploadSingleFile(file);
+    };
+
+    return (
+      <FullEditorComponent
+        value={value}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        placeholder={editorPlaceholder}
+        autoFocus={autoFocus}
+        imageUploadHandler={handleImageUpload}
+        uploadConfig={{
+          maxImageSizeMiB: max_image_size,
+          allowedExtensions: [
+            ...authorized_image_extensions,
+            ...authorized_attachment_extensions,
+          ],
+        }}
+      />
+    );
+  }
 
   return (
     <>

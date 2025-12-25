@@ -21,12 +21,10 @@ import { useEffect, useState, memo, useContext } from 'react';
 import { Button, Form, Modal, Tab, Tabs } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-import { Modal as AnswerModal } from '@/components';
 import ToolItem from '../toolItem';
 import { EditorContext } from '../EditorContext';
 import { Editor } from '../types';
-import { uploadImage } from '@/services';
-import { writeSettingStore } from '@/stores';
+import { useImageUpload } from '../hooks/useImageUpload';
 
 const Image = () => {
   const editor = useContext(EditorContext);
@@ -40,12 +38,7 @@ const Image = () => {
     }
   }, [editor]);
   const { t } = useTranslation('translation', { keyPrefix: 'editor' });
-  const {
-    max_image_size = 4,
-    max_attachment_size = 8,
-    authorized_image_extensions = [],
-    authorized_attachment_extensions = [],
-  } = writeSettingStore((state) => state.write);
+  const { verifyImageSize, uploadFiles } = useImageUpload();
 
   const loadingText = `![${t('image.uploading')}...]()`;
 
@@ -69,89 +62,6 @@ const Image = () => {
     errorMsg: '',
   });
 
-  const verifyImageSize = (files: FileList) => {
-    if (files.length === 0) {
-      return false;
-    }
-
-    /**
-     * When allowing attachments to be uploaded, verification logic for attachment information has been added. In order to avoid abnormal judgment caused by the order of drag and drop upload, the drag and drop upload verification of attachments and the drag and drop upload of images are put together.
-     *
-     */
-    const canUploadAttachment = authorized_attachment_extensions.length > 0;
-    const allowedAllType = [
-      ...authorized_image_extensions,
-      ...authorized_attachment_extensions,
-    ];
-    const unSupportFiles = Array.from(files).filter((file) => {
-      const fileName = file.name.toLowerCase();
-      return canUploadAttachment
-        ? !allowedAllType.find((v) => fileName.endsWith(v))
-        : file.type.indexOf('image') === -1;
-    });
-
-    if (unSupportFiles.length > 0) {
-      AnswerModal.confirm({
-        content: canUploadAttachment
-          ? t('file.not_supported', { file_type: allowedAllType.join(', ') })
-          : t('image.form_image.fields.file.msg.only_image'),
-        showCancel: false,
-      });
-      return false;
-    }
-
-    const otherFiles = Array.from(files).filter((file) => {
-      return file.type.indexOf('image') === -1;
-    });
-
-    if (canUploadAttachment && otherFiles.length > 0) {
-      const attachmentOverSizeFiles = otherFiles.filter(
-        (file) => file.size / 1024 / 1024 > max_attachment_size,
-      );
-      if (attachmentOverSizeFiles.length > 0) {
-        AnswerModal.confirm({
-          content: t('file.max_size', { size: max_attachment_size }),
-          showCancel: false,
-        });
-        return false;
-      }
-    }
-
-    const imageFiles = Array.from(files).filter(
-      (file) => file.type.indexOf('image') > -1,
-    );
-    const oversizedImages = imageFiles.filter(
-      (file) => file.size / 1024 / 1024 > max_image_size,
-    );
-    if (oversizedImages.length > 0) {
-      AnswerModal.confirm({
-        content: t('image.form_image.fields.file.msg.max_size', {
-          size: max_image_size,
-        }),
-        showCancel: false,
-      });
-      return false;
-    }
-
-    return true;
-  };
-
-  const upload = (
-    files: FileList,
-  ): Promise<{ url: string; name: string; type: string }[]> => {
-    const promises = Array.from(files).map(async (file) => {
-      const type = file.type.indexOf('image') > -1 ? 'post' : 'post_attachment';
-      const url = await uploadImage({ file, type });
-
-      return {
-        name: file.name,
-        url,
-        type,
-      };
-    });
-
-    return Promise.all(promises);
-  };
   function dragenter(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -178,7 +88,7 @@ const Image = () => {
 
     editorState.replaceSelection(loadingText);
     editorState.setReadOnly(true);
-    const urls = await upload(fileList)
+    const urls = await uploadFiles(fileList)
       .catch(() => {
         editorState.replaceRange('', startPos, endPos);
       })
@@ -217,7 +127,7 @@ const Image = () => {
 
       editorState?.replaceSelection(loadingText);
       editorState?.setReadOnly(true);
-      upload(clipboard.files)
+      uploadFiles(clipboard.files)
         .then((urls) => {
           const text = urls.map(({ name, url, type }) => {
             return `${type === 'post' ? '!' : ''}[${name}](${url})`;
@@ -358,6 +268,8 @@ const Image = () => {
     setVisible(true);
   };
 
+  const { uploadSingleFile } = useImageUpload();
+
   const onUpload = async (e) => {
     if (!editor) {
       return;
@@ -369,7 +281,7 @@ const Image = () => {
       return;
     }
 
-    uploadImage({ file: e.target.files[0], type: 'post' }).then((url) => {
+    uploadSingleFile(e.target.files[0]).then((url) => {
       setLink({ ...link, value: url });
       setImageName({ ...imageName, value: files[0].name });
     });
