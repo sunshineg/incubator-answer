@@ -17,31 +17,28 @@
  * under the License.
  */
 
-import { useState, memo, useRef } from 'react';
+import { memo, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Modal as AnswerModal } from '@/components';
 import ToolItem from '../toolItem';
-import { IEditorContext, Editor } from '../types';
+import { EditorContext } from '../EditorContext';
 import { uploadImage } from '@/services';
 import { writeSettingStore } from '@/stores';
 
-let context: IEditorContext;
-const Image = ({ editorInstance }) => {
+const File = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'editor' });
   const { max_attachment_size = 8, authorized_attachment_extensions = [] } =
     writeSettingStore((state) => state.write);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [editor, setEditor] = useState<Editor>(editorInstance);
+  const editor = useContext(EditorContext);
 
   const item = {
     label: 'paperclip',
     tip: `${t('file.text')}`,
   };
 
-  const addLink = (ctx) => {
-    context = ctx;
-    setEditor(context.editor);
+  const addLink = () => {
     fileInputRef.current?.click?.();
   };
 
@@ -132,4 +129,4 @@ const Image = ({ editorInstance }) => {
   );
 };
 
-export default memo(Image);
+export default memo(File);

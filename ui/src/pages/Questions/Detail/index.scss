@@ -47,11 +47,12 @@
   [data-bs-theme='dark'] & {
     color: var(--bs-gray-400) !important;
     background-color: var(--bs-gray-800);
-    &:active, &.active {
-      background-color: #626E79 !important;
+    &:active,
+    &.active {
+      background-color: #626e79 !important;
     }
     &:hover {
-      background-color: #57616B !important;
+      background-color: #57616b !important;
     }
   }
 }

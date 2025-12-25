@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import { minimalSetup } from 'codemirror';
 import { EditorState, Compartment } from '@codemirror/state';
@@ -30,7 +30,7 @@ import Tooltip from 'bootstrap/js/dist/tooltip';
 import { Editor } from '../types';
 import { isDarkTheme } from '@/utils/common';
 
-import createEditorUtils from './extension';
+import { createCodeMirrorAdapter } from './codemirror/adapter';
 
 const editableCompartment = new Compartment();
 interface htmlRenderConfig {
@@ -95,10 +95,8 @@ export function htmlRender(el: HTMLElement | null, config?: htmlRenderConfig) {
     `;
     codeTool.innerHTML = str;
 
-    // Add copy button to pre tag
     pre.style.position = 'relative';
 
-    // 将 codeTool 和 pre 插入到 codeWrap 中, 并且使用 codeWrap 替换 pre
     codeWrap.appendChild(codeTool);
     pre.parentNode?.replaceChild(codeWrap, pre);
     codeWrap.appendChild(pre);
@@ -129,12 +127,14 @@ export const useEditor = ({
   editorRef,
   placeholder: placeholderText,
   autoFocus,
+  initialValue,
   onChange,
   onFocus,
   onBlur,
 }) => {
   const [editor, setEditor] = useState<Editor | null>(null);
-  const [value, setValue] = useState<string>('');
+  const isInternalUpdateRef = useRef<boolean>(false);
+
   const init = async () => {
     const isDark = isDarkTheme();
 
@@ -162,6 +162,7 @@ export const useEditor = ({
     });
 
     const startState = EditorState.create({
+      doc: initialValue || '',
       extensions: [
         minimalSetup,
         markdown({
@@ -190,7 +191,7 @@ export const useEditor = ({
       state: startState,
     });
 
-    const cm = createEditorUtils(view as Editor);
+    const cm = createCodeMirrorAdapter(view as Editor);
 
     cm.setReadOnly = (readOnly: boolean) => {
       cm.dispatch({
@@ -206,9 +207,20 @@ export const useEditor = ({
       }, 10);
     }
 
+    const originalSetValue = cm.setValue;
+    cm.setValue = (newValue: string) => {
+      isInternalUpdateRef.current = true;
+      originalSetValue.call(cm, newValue);
+      setTimeout(() => {
+        isInternalUpdateRef.current = false;
+      }, 0);
+    };
+
     cm.on('change', () => {
-      const newValue = cm.getValue();
-      setValue(newValue);
+      if (!isInternalUpdateRef.current && onChange) {
+        const newValue = cm.getValue();
+        onChange(newValue);
+      }
     });
 
     cm.on('focus', () => {
@@ -223,10 +235,6 @@ export const useEditor = ({
 
     return cm;
   };
-
-  useEffect(() => {
-    onChange?.(value);
-  }, [value]);
 
   useEffect(() => {
     if (!editorRef.current) {
