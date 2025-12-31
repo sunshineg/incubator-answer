@@ -30,6 +30,11 @@
     max-height: 2rem;
   }
 
+  .fixed-width {
+    padding-left: 28px;
+    padding-right: 36px;
+  }
+
   .create-icon {
     color: var(--bs-nav-link-color);
   }
@@ -120,6 +125,9 @@
 
 @media (max-width: 1199.9px) {
   #header {
+    .fixed-width {
+      padding-right: 48px;
+    }
     .nav-grow {
       flex-grow: 1 !important;
     }
@@ -134,8 +142,21 @@
   }
 }
 
+@media screen and (max-width: 991px) {
+  #header {
+    .fixed-width {
+      padding-left: 40px;
+      padding-right: 48px;
+    }
+  }
+}
+
 @media screen and (max-width: 767px) {
   #header {
+    .fixed-width {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
     .nav-text {
       flex: 1;
       white-space: nowrap;

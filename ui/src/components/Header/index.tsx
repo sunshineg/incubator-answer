@@ -115,8 +115,8 @@ const Header: FC = () => {
       id="header">
       <div
         className={classnames(
-          'w-100 d-flex align-items-center px-3',
-          layout === 'Fixed-width' ? 'container-xxl' : '',
+          'w-100 d-flex align-items-center',
+          layout === 'Fixed-width' ? 'container-xxl fixed-width' : 'px-3',
         )}>
         <Navbar.Toggle
           className="answer-navBar me-2"
