@@ -58,7 +58,7 @@ backend:
     undelete:
       other: Отменить удаление
     merge:
-      other: Merge
+      other:
   role:
     name:
       user:
@@ -173,7 +173,7 @@ backend:
       question_closed_cannot_add:
         other: Вопросы закрыты и не могут быть добавлены.
       content_cannot_empty:
-        other: Answer content cannot be empty.
+        other: Содержимое ответа не может быть пустым.
     comment:
       edit_without_permission:
         other: Комментарий не может редактироваться.
@@ -233,7 +233,7 @@ backend:
       cannot_update:
         other: Нет разрешения на обновление.
       content_cannot_empty:
-        other: Content cannot be empty.
+        other: .
       content_less_than_minimum:
         other: Not enough content entered.
     rank:
@@ -701,7 +701,7 @@ backend:
           other: Активный участник на год, опубликовал по крайней мере один раз.
       appreciated:
         name:
-          other: Appreciated
+          other:
         desc:
           other: Received 1 up vote on 20 posts.
       respected:
@@ -1190,8 +1190,7 @@ ui:
     search:
       placeholder: Поиск
   footer:
-    build_on: >-
-      Работает на <1> Apache Answer </1> - программном обеспечении с открытым исходным кодом, которое поддерживает сообщества вопросов и ответов.<br />Сделано с любовью © {{cc}}.
+    build_on: Powered by <1> Apache Answer </1>
   upload_img:
     name: Изменить
     loading: загрузка...
@@ -1445,7 +1444,7 @@ ui:
       content: Are you sure you want to list?
     unlist:
       confirm_btn: Убрать из списка
-      title: Unlist this post
+      title:
       content: Are you sure you want to unlist?
     pin:
       title: Закрепить сообщение
