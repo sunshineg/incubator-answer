@@ -36,7 +36,6 @@ var (
 func init() {
 	_ = godotenv.Load()
 	port = os.Getenv("INSTALL_PORT")
-
 }
 
 func Run(configPath string) {
