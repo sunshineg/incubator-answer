@@ -58,7 +58,7 @@ backend:
     undelete:
       other: Genopret
     merge:
-      other: Merge
+      other: Sammenflet
   role:
     name:
       user:
@@ -140,7 +140,7 @@ backend:
   pass:
     other: Adgangskode
   old_pass:
-    other: Current password
+    other: Nuværende adgangskode
   original_text:
     other: Dette indlæg
   email_or_password_wrong_error:
@@ -150,7 +150,7 @@ backend:
       invalid_url:
         other: Ugyldig URL.
       status_invalid:
-        other: Invalid status.
+        other: Ugyldig status.
     password:
       space_invalid:
         other: Adgangskoden må ikke indeholde mellemrum.
@@ -173,7 +173,7 @@ backend:
       question_closed_cannot_add:
         other: Spørgsmål er lukket og kan ikke tilføjes.
       content_cannot_empty:
-        other: Answer content cannot be empty.
+        other: Svar skal udfyldes.
     comment:
       edit_without_permission:
         other: Kommentar er ikke tilladt at redigere.
@@ -182,7 +182,7 @@ backend:
       cannot_edit_after_deadline:
         other: Kommentaren er for gammel til at blive redigeret.
       content_cannot_empty:
-        other: Comment content cannot be empty.
+        other: Kommentar indhold kan ikke være tomt.
     email:
       duplicate:
         other: Email eksisterer allerede.
@@ -233,9 +233,9 @@ backend:
       cannot_update:
         other: Ingen tilladelse til at opdatere.
       content_cannot_empty:
-        other: Content cannot be empty.
+        other: Indhold kan ikke være tomt.
       content_less_than_minimum:
-        other: Not enough content entered.
+        other: Ikke nok indhold indtastet.
     rank:
       fail_to_meet_the_condition:
         other: Omdømmelse rang opfylder ikke betingelsen.
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: Du kan ikke indstille synonymet for det nuværende tag som sig selv.
       minimum_count:
-        other: Not enough tags were entered.
+        other: Ikke nok tags blev indtastet.
     smtp:
       config_from_name_cannot_be_email:
         other: Fra-navnet kan ikke være en e-mail-adresse.
@@ -311,13 +311,13 @@ backend:
       add_bulk_users_amount_error:
         other: "Antallet af brugere du tilføjer på én gang skal være i intervallet 1 -{{.MaxAmount}}."
       status_suspended_forever:
-        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Denne bruger blev suspenderet for evigt.</strong> Denne bruger opfylder ikke en fællesskabsretningslinje."
       status_suspended_until:
-        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Denne bruger blev suspenderet indtil {{.SuspendedUntil}}.</strong> Denne bruger opfylder ikke en fællesskabsretningslinje."
       status_deleted:
-        other: "This user was deleted."
+        other: "Denne bruger blev slettet."
       status_inactive:
-        other: "This user is inactive."
+        other: "Denne bruger er ikke aktiv."
     config:
       read_config_failed:
         other: Kunne ikke læse konfigurationen
@@ -337,7 +337,7 @@ backend:
         other: Site config ikke fundet.
     badge:
       object_not_found:
-        other: Badge object not found
+        other: Badge objekt ikke fundet
   reason:
     spam:
       name:
@@ -348,7 +348,7 @@ backend:
       name:
         other: uhøflig eller misbrug
       desc:
-        other: "A reasonable person would find this content inappropriate for respectful discourse."
+        other: "En fornuftig person ville finde dette indhold upassende eller ikke respektfuldt."
     a_duplicate:
       name:
         other: en duplikering
@@ -360,7 +360,7 @@ backend:
       name:
         other: ikke et svar
       desc:
-        other: "This was posted as an answer, but it does not attempt to answer the question. It should possibly be an edit, a comment, another question,or deleted altogether."
+        other: "Dette blev sendt som svar, men det forsøger ikke at besvare spørgsmålet. Det bør muligvis være en redigering, en kommentar, et andet spørgsmål, eller slettet helt."
     no_longer_needed:
       name:
         other: ikke længere nødvendigt
@@ -419,7 +419,7 @@ backend:
         name:
           other: kræver detaljer eller klarhed
         desc:
-          other: This question currently includes multiple questions in one. It should focus on one problem only.
+          other: Dette spørgsmål indeholder i øjeblikket flere spørgsmål i én. Det bør kun fokusere på ét problem.
       other:
         name:
           other: noget andet
@@ -480,7 +480,7 @@ backend:
       invited_you_to_answer:
         other: inviterede dig til at svare
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Du har optjent "{{.BadgeName}}" badge
   email_tpl:
     change_email:
       title:
