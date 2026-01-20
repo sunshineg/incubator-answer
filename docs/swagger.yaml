@@ -1,20 +1,3 @@
-# Licensed to the Apache Software Foundation (ASF) under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
-#
-#   http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing,
-# software distributed under the License is distributed on an
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-# KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
-# under the License.
-
 basePath: /
 definitions:
   constant.NotificationChannelKey:
@@ -2072,6 +2055,40 @@ definitions:
     required:
     - user_id
     type: object
+  schema.SiteAdvancedReq:
+    properties:
+      authorized_attachment_extensions:
+        items:
+          type: string
+        type: array
+      authorized_image_extensions:
+        items:
+          type: string
+        type: array
+      max_attachment_size:
+        type: integer
+      max_image_megapixel:
+        type: integer
+      max_image_size:
+        type: integer
+    type: object
+  schema.SiteAdvancedResp:
+    properties:
+      authorized_attachment_extensions:
+        items:
+          type: string
+        type: array
+      authorized_image_extensions:
+        items:
+          type: string
+        type: array
+      max_attachment_size:
+        type: integer
+      max_image_megapixel:
+        type: integer
+      max_image_size:
+        type: integer
+    type: object
   schema.SiteBrandingReq:
     properties:
       favicon:
@@ -2200,14 +2217,18 @@ definitions:
         $ref: '#/definitions/schema.SiteLoginResp'
       revision:
         type: string
+      site_advanced:
+        $ref: '#/definitions/schema.SiteAdvancedResp'
       site_legal:
         $ref: '#/definitions/schema.SiteLegalSimpleResp'
+      site_questions:
+        $ref: '#/definitions/schema.SiteQuestionsResp'
       site_seo:
         $ref: '#/definitions/schema.SiteSeoResp'
+      site_tags:
+        $ref: '#/definitions/schema.SiteTagsResp'
       site_users:
         $ref: '#/definitions/schema.SiteUsersResp'
-      site_write:
-        $ref: '#/definitions/schema.SiteWriteResp'
       theme:
         $ref: '#/definitions/schema.SiteThemeResp'
       version:
@@ -2329,6 +2350,24 @@ definitions:
       login_required:
         type: boolean
     type: object
+  schema.SiteQuestionsReq:
+    properties:
+      min_content:
+        maximum: 65535
+        minimum: 0
+        type: integer
+      restrict_answer:
+        type: boolean
+    type: object
+  schema.SiteQuestionsResp:
+    properties:
+      min_content:
+        maximum: 65535
+        minimum: 0
+        type: integer
+      restrict_answer:
+        type: boolean
+    type: object
   schema.SiteSeoReq:
     properties:
       permalink:
@@ -2352,6 +2391,40 @@ definitions:
     required:
     - permalink
     - robots
+    type: object
+  schema.SiteTagsReq:
+    properties:
+      min_tags:
+        maximum: 5
+        minimum: 0
+        type: integer
+      recommend_tags:
+        items:
+          $ref: '#/definitions/schema.SiteWriteTag'
+        type: array
+      required_tag:
+        type: boolean
+      reserved_tags:
+        items:
+          $ref: '#/definitions/schema.SiteWriteTag'
+        type: array
+    type: object
+  schema.SiteTagsResp:
+    properties:
+      min_tags:
+        maximum: 5
+        minimum: 0
+        type: integer
+      recommend_tags:
+        items:
+          $ref: '#/definitions/schema.SiteWriteTag'
+        type: array
+      required_tag:
+        type: boolean
+      reserved_tags:
+        items:
+          $ref: '#/definitions/schema.SiteWriteTag'
+        type: array
     type: object
   schema.SiteThemeReq:
     properties:
@@ -2428,80 +2501,6 @@ definitions:
         type: string
     required:
     - default_avatar
-    type: object
-  schema.SiteWriteReq:
-    properties:
-      authorized_attachment_extensions:
-        items:
-          type: string
-        type: array
-      authorized_image_extensions:
-        items:
-          type: string
-        type: array
-      max_attachment_size:
-        type: integer
-      max_image_megapixel:
-        type: integer
-      max_image_size:
-        type: integer
-      min_content:
-        maximum: 65535
-        minimum: 0
-        type: integer
-      min_tags:
-        maximum: 5
-        minimum: 0
-        type: integer
-      recommend_tags:
-        items:
-          $ref: '#/definitions/schema.SiteWriteTag'
-        type: array
-      required_tag:
-        type: boolean
-      reserved_tags:
-        items:
-          $ref: '#/definitions/schema.SiteWriteTag'
-        type: array
-      restrict_answer:
-        type: boolean
-    type: object
-  schema.SiteWriteResp:
-    properties:
-      authorized_attachment_extensions:
-        items:
-          type: string
-        type: array
-      authorized_image_extensions:
-        items:
-          type: string
-        type: array
-      max_attachment_size:
-        type: integer
-      max_image_megapixel:
-        type: integer
-      max_image_size:
-        type: integer
-      min_content:
-        maximum: 65535
-        minimum: 0
-        type: integer
-      min_tags:
-        maximum: 5
-        minimum: 0
-        type: integer
-      recommend_tags:
-        items:
-          $ref: '#/definitions/schema.SiteWriteTag'
-        type: array
-      required_tag:
-        type: boolean
-      reserved_tags:
-        items:
-          $ref: '#/definitions/schema.SiteWriteTag'
-        type: array
-      restrict_answer:
-        type: boolean
     type: object
   schema.SiteWriteTag:
     properties:
@@ -3702,6 +3701,47 @@ paths:
       summary: update smtp config
       tags:
       - admin
+  /answer/admin/api/siteinfo/advanced:
+    get:
+      description: get site advanced setting
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.SiteAdvancedResp'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get site advanced setting
+      tags:
+      - admin
+    put:
+      description: update site advanced info
+      parameters:
+      - description: advanced settings
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.SiteAdvancedReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: update site advanced info
+      tags:
+      - admin
   /answer/admin/api/siteinfo/branding:
     get:
       description: get site interface
@@ -3948,6 +3988,47 @@ paths:
       summary: update site login
       tags:
       - admin
+  /answer/admin/api/siteinfo/question:
+    get:
+      description: get site questions setting
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.SiteQuestionsResp'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get site questions setting
+      tags:
+      - admin
+    put:
+      description: update site question settings
+      parameters:
+      - description: questions settings
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.SiteQuestionsReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: update site question settings
+      tags:
+      - admin
   /answer/admin/api/siteinfo/seo:
     get:
       description: get site seo information
@@ -3987,6 +4068,47 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: update site seo information
+      tags:
+      - admin
+  /answer/admin/api/siteinfo/tag:
+    get:
+      description: get site tags setting
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.SiteTagsResp'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get site tags setting
+      tags:
+      - admin
+    put:
+      description: update site tag settings
+      parameters:
+      - description: tags settings
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.SiteTagsReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: update site tag settings
       tags:
       - admin
   /answer/admin/api/siteinfo/theme:
@@ -4069,47 +4191,6 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: update site info config about users
-      tags:
-      - admin
-  /answer/admin/api/siteinfo/write:
-    get:
-      description: get site interface
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.RespBody'
-            - properties:
-                data:
-                  $ref: '#/definitions/schema.SiteWriteResp'
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: get site interface
-      tags:
-      - admin
-    put:
-      description: update site write info
-      parameters:
-      - description: write info
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/schema.SiteWriteReq'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handler.RespBody'
-      security:
-      - ApiKeyAuth: []
-      summary: update site write info
       tags:
       - admin
   /answer/admin/api/theme/options:
