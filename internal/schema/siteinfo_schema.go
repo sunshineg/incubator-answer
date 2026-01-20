@@ -89,21 +89,47 @@ type SiteWriteReq struct {
 	UserID                         string          `json:"-"`
 }
 
-func (s *SiteWriteResp) GetMaxImageSize() int64 {
+type SiteWriteResp SiteWriteReq
+
+// SiteQuestionsReq site questions settings request
+type SiteQuestionsReq struct {
+	MinimumContent int  `validate:"omitempty,gte=0,lte=65535" json:"min_content"`
+	RestrictAnswer bool `validate:"omitempty" json:"restrict_answer"`
+}
+
+// SiteAdvancedReq site advanced settings request
+type SiteAdvancedReq struct {
+	MaxImageSize                   int      `validate:"omitempty,gt=0" json:"max_image_size"`
+	MaxAttachmentSize              int      `validate:"omitempty,gt=0" json:"max_attachment_size"`
+	MaxImageMegapixel              int      `validate:"omitempty,gt=0" json:"max_image_megapixel"`
+	AuthorizedImageExtensions      []string `validate:"omitempty" json:"authorized_image_extensions"`
+	AuthorizedAttachmentExtensions []string `validate:"omitempty" json:"authorized_attachment_extensions"`
+}
+
+// SiteTagsReq site tags settings request
+type SiteTagsReq struct {
+	ReservedTags  []*SiteWriteTag `validate:"omitempty,dive" json:"reserved_tags"`
+	RecommendTags []*SiteWriteTag `validate:"omitempty,dive" json:"recommend_tags"`
+	MinimumTags   int             `validate:"omitempty,gte=0,lte=5" json:"min_tags"`
+	RequiredTag   bool            `validate:"omitempty" json:"required_tag"`
+	UserID        string          `json:"-"`
+}
+
+func (s *SiteAdvancedResp) GetMaxImageSize() int64 {
 	if s.MaxImageSize <= 0 {
 		return constant.DefaultMaxImageSize
 	}
 	return int64(s.MaxImageSize) * 1024 * 1024
 }
 
-func (s *SiteWriteResp) GetMaxAttachmentSize() int64 {
+func (s *SiteAdvancedResp) GetMaxAttachmentSize() int64 {
 	if s.MaxAttachmentSize <= 0 {
 		return constant.DefaultMaxAttachmentSize
 	}
 	return int64(s.MaxAttachmentSize) * 1024 * 1024
 }
 
-func (s *SiteWriteResp) GetMaxImageMegapixel() int {
+func (s *SiteAdvancedResp) GetMaxImageMegapixel() int {
 	if s.MaxImageMegapixel <= 0 {
 		return constant.DefaultMaxImageMegapixel
 	}
@@ -238,8 +264,9 @@ type ThemeOption struct {
 	Value string `json:"value"`
 }
 
-// SiteWriteResp site write response
-type SiteWriteResp SiteWriteReq
+type SiteQuestionsResp SiteQuestionsReq
+type SiteAdvancedResp SiteAdvancedReq
+type SiteTagsResp SiteTagsReq
 
 // SiteLegalResp site write response
 type SiteLegalResp SiteLegalReq
@@ -262,7 +289,9 @@ type SiteInfoResp struct {
 	CustomCssHtml *SiteCustomCssHTMLResp `json:"custom_css_html"`
 	SiteSeo       *SiteSeoResp           `json:"site_seo"`
 	SiteUsers     *SiteUsersResp         `json:"site_users"`
-	Write         *SiteWriteResp         `json:"site_write"`
+	Advanced      *SiteAdvancedResp      `json:"site_advanced"`
+	Questions     *SiteQuestionsResp     `json:"site_questions"`
+	Tags          *SiteTagsResp          `json:"site_tags"`
 	Legal         *SiteLegalSimpleResp   `json:"site_legal"`
 	Version       string                 `json:"version"`
 	Revision      string                 `json:"revision"`

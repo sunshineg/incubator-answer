@@ -87,7 +87,15 @@ func (sc *SiteInfoController) GetSiteInfo(ctx *gin.Context) {
 	if err != nil {
 		log.Error(err)
 	}
-	resp.Write, err = sc.siteInfoService.GetSiteWrite(ctx)
+	resp.Questions, err = sc.siteInfoService.GetSiteQuestion(ctx)
+	if err != nil {
+		log.Error(err)
+	}
+	resp.Tags, err = sc.siteInfoService.GetSiteTag(ctx)
+	if err != nil {
+		log.Error(err)
+	}
+	resp.Advanced, err = sc.siteInfoService.GetSiteAdvanced(ctx)
 	if err != nil {
 		log.Error(err)
 	}

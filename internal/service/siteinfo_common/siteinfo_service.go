@@ -51,6 +51,9 @@ type SiteInfoCommonService interface {
 	FormatAvatar(ctx context.Context, originalAvatarData, email string, userStatus int) *schema.AvatarInfo
 	FormatListAvatar(ctx context.Context, userList []*entity.User) (userID2AvatarMapping map[string]*schema.AvatarInfo)
 	GetSiteWrite(ctx context.Context) (resp *schema.SiteWriteResp, err error)
+	GetSiteAdvanced(ctx context.Context) (resp *schema.SiteAdvancedResp, err error)
+	GetSiteQuestion(ctx context.Context) (resp *schema.SiteQuestionsResp, err error)
+	GetSiteTag(ctx context.Context) (resp *schema.SiteTagsResp, err error)
 	GetSiteLegal(ctx context.Context) (resp *schema.SiteLegalResp, err error)
 	GetSiteLogin(ctx context.Context) (resp *schema.SiteLoginResp, err error)
 	GetSiteCustomCssHTML(ctx context.Context) (resp *schema.SiteCustomCssHTMLResp, err error)
@@ -162,6 +165,33 @@ func (s *siteInfoCommonService) selectedAvatar(
 func (s *siteInfoCommonService) GetSiteWrite(ctx context.Context) (resp *schema.SiteWriteResp, err error) {
 	resp = &schema.SiteWriteResp{}
 	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeWrite, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+// GetSiteAdvanced get site info advanced
+func (s *siteInfoCommonService) GetSiteAdvanced(ctx context.Context) (resp *schema.SiteAdvancedResp, err error) {
+	resp = &schema.SiteAdvancedResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeAdvanced, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+// GetSiteQuestion get site info question
+func (s *siteInfoCommonService) GetSiteQuestion(ctx context.Context) (resp *schema.SiteQuestionsResp, err error) {
+	resp = &schema.SiteQuestionsResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeQuestions, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+// GetSiteTag get site info tag
+func (s *siteInfoCommonService) GetSiteTag(ctx context.Context) (resp *schema.SiteTagsResp, err error) {
+	resp = &schema.SiteTagsResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeTags, resp); err != nil {
 		return nil, err
 	}
 	return resp, nil
