@@ -31,4 +31,7 @@ const (
 	SiteTypeTheme         = "theme"
 	SiteTypePrivileges    = "privileges"
 	SiteTypeUsers         = "users"
+	SiteTypeAdvanced      = "advanced"
+	SiteTypeQuestions     = "questions"
+	SiteTypeTags          = "tags"
 )
