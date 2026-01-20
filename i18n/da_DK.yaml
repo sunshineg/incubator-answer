@@ -1179,7 +1179,7 @@ ui:
       question: Spørgsmål
       tag: Tags
       user: Brugere
-      badges: emblemer
+      badges: Emblemer
       profile: Profil
       setting: Indstillinger
       logout: Log Ud
@@ -1190,7 +1190,7 @@ ui:
     search:
       placeholder: Søg
   footer:
-    build_on: Drevet af <1> Apache svar </1>
+    build_on: Drevet af <1>Apache Answer</1>
   upload_img:
     name: Skift
     loading: indlæser...
@@ -1601,7 +1601,7 @@ ui:
     reputation: Omdømme
     comments: Kommentarer
     votes: Stemmer
-    badges: emblemer
+    badges: Emblemer
     newest: Nyeste
     score: Bedømmelse
     edit_profile: Rediger profil
@@ -1758,7 +1758,7 @@ ui:
     questions: Spørgsmål
     answers: Svar
     users: Brugere
-    badges: emblemer
+    badges: Emblemer
     flags: Anmeldelser
     settings: Indstillinger
     general: Generelt
@@ -2250,7 +2250,7 @@ ui:
       name: Navn
       show_logs: Vis log
       status: Status
-      title: emblemer
+      title: Emblemer
   form:
     optional: (valgfrit)
     empty: skal udfyldes
