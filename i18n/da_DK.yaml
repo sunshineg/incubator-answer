@@ -337,7 +337,7 @@ backend:
         other: Site config ikke fundet.
     badge:
       object_not_found:
-        other: Badge objekt ikke fundet
+        other: Emblem objekt ikke fundet
   reason:
     spam:
       name:
@@ -480,7 +480,7 @@ backend:
       invited_you_to_answer:
         other: inviterede dig til at svare
       earned_badge:
-        other: Du har optjent "{{.BadgeName}}" badge
+        other: Du har optjent "{{.BadgeName}}" emblem
   email_tpl:
     change_email:
       title:
@@ -1993,7 +1993,7 @@ ui:
       desc:
         label: Websted beskrivelse
         msg: Webstedsbeskrivelse skal udfyldes.
-        text: "Beskriv dette websted i en sætning, som bruges i meta description tagget."
+        text: "Beskriv dette websted i en sætning, som bruges i meta description nøgleord."
       contact_email:
         label: Kontakt e-mail
         msg: Kontakt-e-mail skal udfyldes.
@@ -2098,20 +2098,20 @@ ui:
         label: Hver bruger kan kun skrive et svar for det samme spørgsmål
         text: "Slå fra for at give brugerne mulighed for at skrive flere svar på det samme spørgsmål, hvilket kan forårsage svar at være ufokuseret."
       min_tags:
-        label: "Minimumsmærker pr. spørgsmål"
-        text: "Minimum antal mærker kræves i et spørgsmål."
+        label: "Minimumsnøgleord pr. spørgsmål"
+        text: "Minimum antal nøgleord kræves i et spørgsmål."
       recommend_tags:
-        label: Anbefal tags
-        text: "Anbefal tags vil som standard blive vist i dropdown-listen."
+        label: Anbefal nøgleord
+        text: "Anbefal nøgleord vil som standard blive vist i dropdown-listen."
         msg:
-          contain_reserved: "anbefalede tags kan ikke indeholde reserverede tags"
+          contain_reserved: "anbefalede nøgleord kan ikke indeholde reserverede tags"
       required_tag:
-        title: Angiv påkrævede tags
-        label: Sæt “Anbefal tags” som påkrævede tags
-        text: "Hvert nyt spørgsmål skal have mindst et anbefalet tag."
+        title: Angiv påkrævede nøgleord
+        label: Sæt “Anbefal nøgleord” som påkrævede nøgleord
+        text: "Hvert nyt spørgsmål skal have mindst et anbefalet nøgleord"
       reserved_tags:
-        label: Reserverede tags
-        text: "Reserverede tags kan kun bruges af moderator."
+        label: Reserverede nøgleord
+        text: "Reserverede nøgleord kan kun bruges af moderator."
       image_size:
         label: Maks billedstørrelse (MB)
         text: "Den maksimale billedupload størrelse."
@@ -2263,11 +2263,11 @@ ui:
     proposed: foreslået
     question_edit: Rediger spørgsmål
     answer_edit: Svar redigér
-    tag_edit: Tag redigér
+    tag_edit: Nøgleord redigér
     edit_summary: Rediger resumé
     edit_question: Rediger spørgsmål
     edit_answer: Rediger svar
-    edit_tag: Rediger tag
+    edit_tag: Rediger nøgleord
     empty: Ingen gennemgangsopgaver tilbage.
     approve_revision_tip: Godkender du denne revision?
     approve_flag_tip: Godkender du denne anmeldelse?
@@ -2310,7 +2310,7 @@ ui:
     n_or_a: Ikke Relevant
     title_for_question: "Tidslinje for"
     title_for_answer: "Tidslinje for svar på {{ title }} af {{ author }}"
-    title_for_tag: "Tidslinje for tag"
+    title_for_tag: "Tidslinje for nøgleord"
     datetime: Datetime
     type: Type
     by: Af
