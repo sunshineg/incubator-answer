@@ -111,7 +111,7 @@ func (s *SiteInfoService) GetSiteUsers(ctx context.Context) (resp *schema.SiteUs
 // GetSiteTag get site info write
 func (s *SiteInfoService) GetSiteTag(ctx context.Context) (resp *schema.SiteTagsResp, err error) {
 	resp = &schema.SiteTagsResp{}
-	_, err = s.siteInfoCommonService.GetSiteTag(ctx)
+	resp, err = s.siteInfoCommonService.GetSiteTag(ctx)
 	if err != nil {
 		log.Error(err)
 		return resp, nil
