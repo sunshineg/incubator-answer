@@ -89,8 +89,13 @@ func (s *SiteInfoService) GetSiteGeneral(ctx context.Context) (resp *schema.Site
 }
 
 // GetSiteInterface get site info interface
-func (s *SiteInfoService) GetSiteInterface(ctx context.Context) (resp *schema.SiteInterfaceResp, err error) {
+func (s *SiteInfoService) GetSiteInterface(ctx context.Context) (resp *schema.SiteInterfaceSettingsResp, err error) {
 	return s.siteInfoCommonService.GetSiteInterface(ctx)
+}
+
+// GetSiteUsersSettings get site info users settings
+func (s *SiteInfoService) GetSiteUsersSettings(ctx context.Context) (resp *schema.SiteUsersSettingsResp, err error) {
+	return s.siteInfoCommonService.GetSiteUsersSettings(ctx)
 }
 
 // GetSiteBranding get site info branding
@@ -172,10 +177,20 @@ func (s *SiteInfoService) SaveSiteInterface(ctx context.Context, req schema.Site
 
 	content, _ := json.Marshal(req)
 	data := entity.SiteInfo{
-		Type:    constant.SiteTypeInterface,
+		Type:    constant.SiteTypeInterfaceSettings,
 		Content: string(content),
 	}
-	return s.siteInfoRepo.SaveByType(ctx, constant.SiteTypeInterface, &data)
+	return s.siteInfoRepo.SaveByType(ctx, constant.SiteTypeInterfaceSettings, &data)
+}
+
+// SaveSiteUsersSettings save site users settings
+func (s *SiteInfoService) SaveSiteUsersSettings(ctx context.Context, req schema.SiteUsersSettingsReq) (err error) {
+	content, _ := json.Marshal(req)
+	data := entity.SiteInfo{
+		Type:    constant.SiteTypeInterfaceSettings,
+		Content: string(content),
+	}
+	return s.siteInfoRepo.SaveByType(ctx, constant.SiteTypeUsersSettings, &data)
 }
 
 // SaveSiteBranding save site branding information

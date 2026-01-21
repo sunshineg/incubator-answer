@@ -45,7 +45,8 @@ type siteInfoCommonService struct {
 
 type SiteInfoCommonService interface {
 	GetSiteGeneral(ctx context.Context) (resp *schema.SiteGeneralResp, err error)
-	GetSiteInterface(ctx context.Context) (resp *schema.SiteInterfaceResp, err error)
+	GetSiteInterface(ctx context.Context) (resp *schema.SiteInterfaceSettingsResp, err error)
+	GetSiteUsersSettings(ctx context.Context) (resp *schema.SiteUsersSettingsResp, err error)
 	GetSiteBranding(ctx context.Context) (resp *schema.SiteBrandingResp, err error)
 	GetSiteUsers(ctx context.Context) (resp *schema.SiteUsersResp, err error)
 	FormatAvatar(ctx context.Context, originalAvatarData, email string, userStatus int) *schema.AvatarInfo
@@ -81,9 +82,18 @@ func (s *siteInfoCommonService) GetSiteGeneral(ctx context.Context) (resp *schem
 }
 
 // GetSiteInterface get site info interface
-func (s *siteInfoCommonService) GetSiteInterface(ctx context.Context) (resp *schema.SiteInterfaceResp, err error) {
-	resp = &schema.SiteInterfaceResp{}
-	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeInterface, resp); err != nil {
+func (s *siteInfoCommonService) GetSiteInterface(ctx context.Context) (resp *schema.SiteInterfaceSettingsResp, err error) {
+	resp = &schema.SiteInterfaceSettingsResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeInterfaceSettings, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+// GetSiteUsersSettings get site info interface
+func (s *siteInfoCommonService) GetSiteUsersSettings(ctx context.Context) (resp *schema.SiteUsersSettingsResp, err error) {
+	resp = &schema.SiteUsersSettingsResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeUsersSettings, resp); err != nil {
 		return nil, err
 	}
 	return resp, nil
@@ -126,7 +136,7 @@ func (s *siteInfoCommonService) FormatListAvatar(ctx context.Context, userList [
 
 func (s *siteInfoCommonService) getAvatarDefaultConfig(ctx context.Context) (string, string) {
 	gravatarBaseURL, defaultAvatar := constant.DefaultGravatarBaseURL, constant.DefaultAvatar
-	usersConfig, err := s.GetSiteInterface(ctx)
+	usersConfig, err := s.GetSiteUsersSettings(ctx)
 	if err != nil {
 		log.Error(err)
 	}

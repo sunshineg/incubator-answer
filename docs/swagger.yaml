@@ -2212,7 +2212,7 @@ definitions:
       general:
         $ref: '#/definitions/schema.SiteGeneralResp'
       interface:
-        $ref: '#/definitions/schema.SiteInterfaceResp'
+        $ref: '#/definitions/schema.SiteInterfaceSettingsResp'
       login:
         $ref: '#/definitions/schema.SiteLoginResp'
       revision:
@@ -2231,6 +2231,8 @@ definitions:
         $ref: '#/definitions/schema.SiteUsersResp'
       theme:
         $ref: '#/definitions/schema.SiteThemeResp'
+      users_settings:
+        $ref: '#/definitions/schema.SiteUsersSettingsResp'
       version:
         type: string
     type: object
@@ -2254,15 +2256,8 @@ definitions:
     - language
     - time_zone
     type: object
-  schema.SiteInterfaceResp:
+  schema.SiteInterfaceSettingsResp:
     properties:
-      default_avatar:
-        enum:
-        - system
-        - gravatar
-        type: string
-      gravatar_base_url:
-        type: string
       language:
         maxLength: 128
         type: string
@@ -2270,7 +2265,6 @@ definitions:
         maxLength: 128
         type: string
     required:
-    - default_avatar
     - language
     - time_zone
     type: object
@@ -2492,6 +2486,30 @@ definitions:
         type: boolean
       allow_update_website:
         type: boolean
+      default_avatar:
+        enum:
+        - system
+        - gravatar
+        type: string
+      gravatar_base_url:
+        type: string
+    required:
+    - default_avatar
+    type: object
+  schema.SiteUsersSettingsReq:
+    properties:
+      default_avatar:
+        enum:
+        - system
+        - gravatar
+        type: string
+      gravatar_base_url:
+        type: string
+    required:
+    - default_avatar
+    type: object
+  schema.SiteUsersSettingsResp:
+    properties:
       default_avatar:
         enum:
         - system
@@ -3878,7 +3896,7 @@ paths:
             - $ref: '#/definitions/handler.RespBody'
             - properties:
                 data:
-                  $ref: '#/definitions/schema.SiteInterfaceResp'
+                  $ref: '#/definitions/schema.SiteInterfaceSettingsResp'
               type: object
       security:
       - ApiKeyAuth: []
@@ -4191,6 +4209,47 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: update site info config about users
+      tags:
+      - admin
+  /answer/admin/api/siteinfo/users-settings:
+    get:
+      description: get site interface
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.SiteUsersSettingsResp'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get site interface
+      tags:
+      - admin
+    put:
+      description: update site info users settings
+      parameters:
+      - description: general
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.SiteUsersSettingsReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: update site info users settings
       tags:
       - admin
   /answer/admin/api/theme/options:
