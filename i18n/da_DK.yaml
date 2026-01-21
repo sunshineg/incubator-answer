@@ -73,7 +73,7 @@ backend:
       admin:
         other: Hav den fulde magt til at få adgang til webstedet.
       moderator:
-        other: Har adgang til alle indlæg undtagen administratorindstillinger.
+        other: Har adgang til alle opslag undtagen administratorindstillinger.
   privilege:
     level_1:
       description:
@@ -98,7 +98,7 @@ backend:
     rank_comment_vote_up_label:
       other: Op-stem kommentar
     rank_link_url_limit_label:
-      other: Skriv mere end 2 links ad gangen
+      other: Oplæg mere end 2 links ad gangen
     rank_question_vote_up_label:
       other: Op-stem spørgsmål
     rank_answer_vote_up_label:
@@ -110,9 +110,9 @@ backend:
     rank_invite_someone_to_answer_label:
       other: Inviter nogen til at svare
     rank_tag_add_label:
-      other: Opret et nyt tag
+      other: Opret et nyt nøgleord
     rank_tag_edit_label:
-      other: Rediger tag beskrivelse (skal gennemgås)
+      other: Rediger nøgleord beskrivelse (skal gennemgås)
     rank_question_edit_label:
       other: Rediger andres spørgsmål (skal gennemgås)
     rank_answer_edit_label:
@@ -126,11 +126,11 @@ backend:
     rank_answer_audit_label:
       other: Gennemgå svar redigeringer
     rank_tag_audit_label:
-      other: Gennemse tag redigeringer
+      other: Gennemse nøgleord redigeringer
     rank_tag_edit_without_review_label:
-      other: Rediger tag beskrivelse uden gennemgang
+      other: Rediger nøgleord beskrivelse uden gennemgang
     rank_tag_synonym_label:
-      other: Administrer tag synonymer
+      other: Administrer nøgleord synonymer
   email:
     other: E-mail
   e_mail:
@@ -142,7 +142,7 @@ backend:
   old_pass:
     other: Nuværende adgangskode
   original_text:
-    other: Dette indlæg
+    other: Dette opslag
   email_or_password_wrong_error:
     other: E-mail og adgangskode stemmer ikke overens.
   error:
@@ -250,23 +250,23 @@ backend:
         other: Rapport ikke fundet.
     tag:
       already_exist:
-        other: Tag findes allerede.
+        other: Nøgleord findes allerede.
       not_found:
-        other: Tag blev ikke fundet.
+        other: Nøgleord blev ikke fundet.
       recommend_tag_not_found:
-        other: Anbefal tag eksisterer ikke.
+        other: Anbefal nøgleord eksisterer ikke.
       recommend_tag_enter:
-        other: Indtast mindst et påkrævet tag.
+        other: Indtast mindst et påkrævet nøgleord.
       not_contain_synonym_tags:
-        other: Må ikke indeholde synonym tags.
+        other: Må ikke indeholde synonym nøgleord.
       cannot_update:
         other: Ingen tilladelse til at opdatere.
       is_used_cannot_delete:
-        other: Du kan ikke slette et tag, der er i brug.
+        other: Du kan ikke slette et nøgleord, der er i brug.
       cannot_set_synonym_as_itself:
-        other: Du kan ikke indstille synonymet for det nuværende tag som sig selv.
+        other: Du kan ikke indstille synonymet for det nuværende nøgleord som sig selv.
       minimum_count:
-        other: Ikke nok tags blev indtastet.
+        other: Ikke nok nøgleord blev indtastet.
     smtp:
       config_from_name_cannot_be_email:
         other: Fra-navnet kan ikke være en e-mail-adresse.
@@ -438,9 +438,9 @@ backend:
       other: Spørgsmål
   tag:
     tags_title:
-      other: Tags
+      other: Nøgleord
     no_description:
-      other: Tag har ingen beskrivelse.
+      other: Nøgleord har ingen beskrivelse.
   notification:
     action:
       update_question:
@@ -668,7 +668,7 @@ backend:
         name:
           other: Tak
         desc:
-          other: Har 20 op-stemte indlæg og afgav 10 op-stemmer.
+          other: Har 20 op-stemte opslag og afgav 10 op-stemmer.
       gives_back:
         name:
           other: Giver Tilbage
@@ -678,7 +678,7 @@ backend:
         name:
           other: Empatisk
         desc:
-          other: Har 500 op-stemte indlæg og afgav 1000 op-stemmer.
+          other: Har 500 op-stemte opslag og afgav 1000 op-stemmer.
       enthusiast:
         name:
           other: Entusiast
@@ -703,12 +703,12 @@ backend:
         name:
           other: Værdsat
         desc:
-          other: Modtog 1 op-stemme på 20 indlæg.
+          other: Modtog 1 op-stemme på 20 opslag.
       respected:
         name:
           other: Respekteret
         desc:
-          other: Modtog 2 op-stemmer på 100 indlæg.
+          other: Modtog 2 op-stemmer på 100 opslag.
       admired:
         name:
           other: Beundret
@@ -816,16 +816,16 @@ ui:
   page_title:
     question: Spørgsmål
     questions: Spørgsmål
-    tag: Mærke
-    tags: Tags
-    tag_wiki: tag wiki
-    create_tag: Opret tag
-    edit_tag: Rediger tag
+    tag: Nøgleord
+    tags: Nøgleord
+    tag_wiki: nøgleord wiki
+    create_tag: Opret nøgleord
+    edit_tag: Rediger nøgleord
     ask_a_question: Opret spørgsmål
     edit_question: Rediger spørgsmål
     edit_answer: Rediger Svar
     search: Søg
-    posts_containing: Indlæg som indeholder
+    posts_containing: Opslag som indeholder
     settings: Indstillinger
     notifications: Notifikationer
     login: Log Ind
@@ -996,7 +996,7 @@ ui:
       not_a_url: URL-format er forkert.
       url_not_match: URL oprindelsen matcher ikke det aktuelle websted.
   tag_modal:
-    title: Opret et nyt tag
+    title: Opret et nyt nøgleord
     form:
       fields:
         display_name:
@@ -1033,28 +1033,28 @@ ui:
       btn_add: Tilføj et synonym
       btn_edit: Rediger
       btn_save: Gem
-    synonyms_text: Følgende tags vil blive genmappet til
+    synonyms_text: Følgende nøgleord vil blive genmappet til
     delete:
-      title: Slet dette tag
+      title: Slet dette nøgleord
       tip_with_posts: >-
-        <p>Vi tillader ikke <strong>at slette tag med indlæg</strong>.</p> <p>Fjern venligst dette tag fra indlæggene først.</p>
+        <p>Vi tillader ikke <strong>at slette nøgleord med opslag</strong>.</p> <p>Fjern venligst dette nøgleord fra opslagene først.</p>
       tip_with_synonyms: >-
         <p>Vi tillader ikke <strong>at slette tag med indlæg</strong>.</p> <p>Fjern venligst dette tag fra indlæggene først.</p>
       tip: Er du sikker på, at du vil slette?
       close: Luk
     merge:
-      title: Sammenflet mærke
-      source_tag_title: Kilde mærke
-      source_tag_description: Kildemærket og dets tilknyttede data vil blive omlagt til målmærket.
-      target_tag_title: Målmærke
-      target_tag_description: Et synonym mellem disse to tags vil blive oprettet efter sammenlægning.
-      no_results: Ingen mærker matchede
+      title: Sammenflet nøgleord
+      source_tag_title: Kilde nøgleord
+      source_tag_description: Kildenøgleordet og dets tilknyttede data vil blive omlagt til målmærket.
+      target_tag_title: Målnøgleord
+      target_tag_description: Et synonym mellem disse to nøgleord vil blive oprettet efter sammenlægning.
+      no_results: Ingen nøgleord matchede
       btn_submit: Indsend
       btn_close: Luk
   edit_tag:
-    title: Rediger tag
-    default_reason: Rediger tag
-    default_first_reason: Tilføj tag
+    title: Rediger nøgleord
+    default_reason: Rediger nøgleord
+    default_first_reason: Tilføj nøgleord
     btn_save_edits: Gem ændringer
     btn_cancel: Annuller
   dates:
@@ -1114,7 +1114,7 @@ ui:
     btn_save_edits: Gem ændringer
     btn_cancel: Annuller
   tags:
-    title: Tags
+    title: Nøgleord
     sort_buttons:
       popular: Populære
       name: Navn
@@ -1122,8 +1122,8 @@ ui:
     button_follow: Følg
     button_following: Følger
     tag_label: spørgsmål
-    search_placeholder: Filtrer efter tag-navn
-    no_desc: Tag har ingen beskrivelse.
+    search_placeholder: Filtrer efter nøgleord-navn
+    no_desc: Nøgleord har ingen beskrivelse.
     more: Mere
     wiki: Wiki
   ask:
@@ -1150,9 +1150,9 @@ ui:
             optional_body: Beskriv hvad spørgsmålet handler om.
             minimum_characters: "Beskriv hvad spørgsmålet handler om, mindst {{min_content_length}} tegn er påkrævet."
         tags:
-          label: Tags
+          label: Nøgleord
           msg:
-            empty: Tags må ikke være tom.
+            empty: Nøgleord må ikke være tom.
         answer:
           label: Svar
           msg:
@@ -1166,18 +1166,18 @@ ui:
     answer_question: Besvar dit eget spørgsmål
     post_question&answer: Send dit spørgsmål og svar
   tag_selector:
-    add_btn: Tilføj tag
-    create_btn: Opret et nyt tag
-    search_tag: Søg tag
-    hint: Beskriv hvad dit spørgsmål handler om, mindst et mærke er påkrævet.
+    add_btn: Tilføj nøgleord
+    create_btn: Opret et nyt nøgleord
+    search_tag: Søg nøgleord
+    hint: Beskriv hvad dit spørgsmål handler om, mindst et nøgleord er påkrævet.
     hint_zero_tags: Beskriv hvad dit indhold handler om.
-    hint_more_than_one_tag: "Beskriv hvad dit indhold handler om, i det mindste {{min_tags_number}} mærker er påkrævet."
-    no_result: Ingen tags matchede
-    tag_required_text: Påkrævet tag (mindst én)
+    hint_more_than_one_tag: "Beskriv hvad dit indhold handler om, i det mindste {{min_tags_number}} nøgleord er påkrævet."
+    no_result: Ingen nøgleord matchede
+    tag_required_text: Påkrævet nøgleord (mindst én)
   header:
     nav:
       question: Spørgsmål
-      tag: Tags
+      tag: Nøgleord
       user: Brugere
       badges: Emblemer
       profile: Profil
@@ -1329,8 +1329,8 @@ ui:
         label: Alle nye spørgsmål
         description: Få besked om alle nye spørgsmål. Op til 50 spørgsmål om ugen.
       all_new_question_for_following_tags:
-        label: Alle nye spørgsmål til følgende tags
-        description: Få besked om nye spørgsmål til følgende tags.
+        label: Alle nye spørgsmål til følgende nøgleord
+        description: Få besked om nye spørgsmål til følgende nøgleord.
     account:
       heading: Konto
       change_email_btn: Ændre e-mail
@@ -1498,7 +1498,7 @@ ui:
     system_setting: Systemindstilling
     default: Standard
     reset: Nulstil
-    tag: Mærke
+    tag: Nøgleord
     post_lowercase: indlæg
     filter: Filtrer
     ignore: Ignorér
@@ -1533,10 +1533,10 @@ ui:
       more: Mere
     tips:
       title: Avancerede Søgetips
-      tag: "<1>[tag]</1> søgning med et tag"
+      tag: "<1>[tag]</1> søgning med et nøgleord"
       user: "<1>user:username</1> søgning efter forfatter"
       answer: "<1>answers:0</1> ubesvarede spørgsmål"
-      score: "<1>score:3</1> indlæg med 3+ score"
+      score: "<1>score:3</1> opslag med 3+ score"
       question: "<1>is:question</1> søgespørgsmål"
       is_answer: "<1>is:answer</1> søgesvar"
     empty: Vi kunne ikke finde noget. <br /> Prøv forskellige eller mindre specifikke søgeord.
@@ -1567,10 +1567,10 @@ ui:
     success_desc: Du er blevet fjernet fra denne abonnentliste og vil ikke modtage yderligere e-mails fra os.
     link: Skift indstillinger
   question:
-    following_tags: Følger Tags
+    following_tags: Følger Nøgleord
     edit: Rediger
     save: Gem
-    follow_tag_tip: Følg tags for at udvælge dine spørgsmål.
+    follow_tag_tip: Følg nøgleord for at udvælge dine spørgsmål.
     hot_questions: Populære Spørgsmål
     all_questions: Alle Spørgsmål
     x_questions: "{{ count }} Spørgsmål"
@@ -1589,7 +1589,7 @@ ui:
     answered: besvaret
     asked: spurgt
     closed: lukket
-    follow_a_tag: Følg et mærke
+    follow_a_tag: "Følg et nøgleord\n"
     more: Mere
   personal:
     overview: Oversigt
@@ -1615,7 +1615,7 @@ ui:
     top_answers: Populære Svar
     top_questions: Populære Spørgsmål
     stats: Statistik
-    list_empty: Ingen indlæg fundet.<br />Måske vil du vælge en anden fane?
+    list_empty: Ingen opslag fundet.<br />Måske vil du vælge en anden fane?
     content_empty: Ingen opslag fundet.
     accepted: Accepteret
     answered: besvaret
@@ -1980,7 +1980,7 @@ ui:
       name:
         label: Websted navn
         msg: Websted-navn skal udfyldes.
-        text: "Navnet på dette websted, som bruges i title-tagget."
+        text: "Navnet på dette websted, som bruges i title-nøgleord."
       site_url:
         label: Websted URL
         msg: Websted-URL skal udfyldes.
@@ -1989,7 +1989,7 @@ ui:
       short_desc:
         label: Kort beskrivelse af websted
         msg: Kort beskrivelse af websted skal udfyldes.
-        text: "Kort beskrivelse, som anvendt i title-tag på hjemmesiden."
+        text: "Kort beskrivelse, som anvendt i title-nøgleord på hjemmesiden."
       desc:
         label: Websted beskrivelse
         msg: Webstedsbeskrivelse skal udfyldes.
