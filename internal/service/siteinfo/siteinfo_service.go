@@ -138,9 +138,14 @@ func (s *SiteInfoService) GetSiteAdvanced(ctx context.Context) (resp *schema.Sit
 	return s.siteInfoCommonService.GetSiteAdvanced(ctx)
 }
 
-// GetSiteLegal get site legal info
-func (s *SiteInfoService) GetSiteLegal(ctx context.Context) (resp *schema.SiteLegalResp, err error) {
-	return s.siteInfoCommonService.GetSiteLegal(ctx)
+// GetSitePolicies get site legal info
+func (s *SiteInfoService) GetSitePolicies(ctx context.Context) (resp *schema.SitePoliciesResp, err error) {
+	return s.siteInfoCommonService.GetSitePolicies(ctx)
+}
+
+// GetSiteSecurity get site security info
+func (s *SiteInfoService) GetSiteSecurity(ctx context.Context) (resp *schema.SiteSecurityResp, err error) {
+	return s.siteInfoCommonService.GetSiteSecurity(ctx)
 }
 
 // GetSiteLogin get site login info
@@ -261,15 +266,26 @@ func (s *SiteInfoService) SaveSiteTags(ctx context.Context, req *schema.SiteTags
 	return nil, s.siteInfoRepo.SaveByType(ctx, constant.SiteTypeTags, data)
 }
 
-// SaveSiteLegal save site legal configuration
-func (s *SiteInfoService) SaveSiteLegal(ctx context.Context, req *schema.SiteLegalReq) (err error) {
+// SaveSitePolicies save site policies configuration
+func (s *SiteInfoService) SaveSitePolicies(ctx context.Context, req *schema.SitePoliciesReq) (err error) {
 	content, _ := json.Marshal(req)
 	data := &entity.SiteInfo{
-		Type:    constant.SiteTypeLegal,
+		Type:    constant.SiteTypePolicies,
 		Content: string(content),
 		Status:  1,
 	}
-	return s.siteInfoRepo.SaveByType(ctx, constant.SiteTypeLegal, data)
+	return s.siteInfoRepo.SaveByType(ctx, constant.SiteTypePolicies, data)
+}
+
+// SaveSiteSecurity save site security configuration
+func (s *SiteInfoService) SaveSiteSecurity(ctx context.Context, req *schema.SiteSecurityReq) (err error) {
+	content, _ := json.Marshal(req)
+	data := &entity.SiteInfo{
+		Type:    constant.SiteTypeSecurity,
+		Content: string(content),
+		Status:  1,
+	}
+	return s.siteInfoRepo.SaveByType(ctx, constant.SiteTypeSecurity, data)
 }
 
 // SaveSiteLogin save site legal configuration
@@ -361,13 +377,13 @@ func (s *SiteInfoService) GetSeo(ctx context.Context) (resp *schema.SiteSeoReq, 
 	if err = s.siteInfoCommonService.GetSiteInfoByType(ctx, constant.SiteTypeSeo, resp); err != nil {
 		return resp, err
 	}
-	loginConfig, err := s.GetSiteLogin(ctx)
+	siteSecurity, err := s.GetSiteSecurity(ctx)
 	if err != nil {
 		log.Error(err)
 		return resp, nil
 	}
 	// If the site is set to privacy mode, prohibit crawling any page.
-	if loginConfig.LoginRequired {
+	if siteSecurity.LoginRequired {
 		resp.Robots = "User-agent: *\nDisallow: /"
 		return resp, nil
 	}

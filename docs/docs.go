@@ -1211,77 +1211,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/answer/admin/api/siteinfo/legal": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "Set the legal information for the site",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "Set the legal information for the site",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/handler.RespBody"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/schema.SiteLegalResp"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "put": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "update site legal info",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "update site legal info",
-                "parameters": [
-                    {
-                        "description": "write info",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/schema.SiteLegalReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handler.RespBody"
-                        }
-                    }
-                }
-            }
-        },
         "/answer/admin/api/siteinfo/login": {
             "get": {
                 "security": [
@@ -1353,6 +1282,77 @@ const docTemplate = `{
                 }
             }
         },
+        "/answer/admin/api/siteinfo/polices": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the policies information for the site",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Get the policies information for the site",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handler.RespBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/schema.SitePoliciesResp"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "update site policies configuration",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "update site policies configuration",
+                "parameters": [
+                    {
+                        "description": "write info",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schema.SitePoliciesReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.RespBody"
+                        }
+                    }
+                }
+            }
+        },
         "/answer/admin/api/siteinfo/question": {
             "get": {
                 "security": [
@@ -1411,6 +1411,77 @@ const docTemplate = `{
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/schema.SiteQuestionsReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.RespBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/answer/admin/api/siteinfo/security": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the security information for the site",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Get the security information for the site",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handler.RespBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/schema.SiteSecurityResp"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "update site security configuration",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "update site security configuration",
+                "parameters": [
+                    {
+                        "description": "write info",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schema.SiteSecurityReq"
                         }
                     }
                 ],
@@ -10843,9 +10914,6 @@ const docTemplate = `{
                 "site_url"
             ],
             "properties": {
-                "check_update": {
-                    "type": "boolean"
-                },
                 "contact_email": {
                     "type": "string",
                     "maxLength": 512
@@ -10876,9 +10944,6 @@ const docTemplate = `{
                 "site_url"
             ],
             "properties": {
-                "check_update": {
-                    "type": "boolean"
-                },
                 "contact_email": {
                     "type": "string",
                     "maxLength": 512
@@ -10917,7 +10982,12 @@ const docTemplate = `{
                     "$ref": "#/definitions/schema.SiteInterfaceSettingsResp"
                 },
                 "login": {
-                    "$ref": "#/definitions/schema.SiteLoginResp"
+                    "description": "todo",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/schema.SiteLoginResp"
+                        }
+                    ]
                 },
                 "revision": {
                     "type": "string"
@@ -10996,60 +11066,6 @@ const docTemplate = `{
                 }
             }
         },
-        "schema.SiteLegalReq": {
-            "type": "object",
-            "required": [
-                "external_content_display"
-            ],
-            "properties": {
-                "external_content_display": {
-                    "type": "string",
-                    "enum": [
-                        "always_display",
-                        "ask_before_display"
-                    ]
-                },
-                "privacy_policy_original_text": {
-                    "type": "string"
-                },
-                "privacy_policy_parsed_text": {
-                    "type": "string"
-                },
-                "terms_of_service_original_text": {
-                    "type": "string"
-                },
-                "terms_of_service_parsed_text": {
-                    "type": "string"
-                }
-            }
-        },
-        "schema.SiteLegalResp": {
-            "type": "object",
-            "required": [
-                "external_content_display"
-            ],
-            "properties": {
-                "external_content_display": {
-                    "type": "string",
-                    "enum": [
-                        "always_display",
-                        "ask_before_display"
-                    ]
-                },
-                "privacy_policy_original_text": {
-                    "type": "string"
-                },
-                "privacy_policy_parsed_text": {
-                    "type": "string"
-                },
-                "terms_of_service_original_text": {
-                    "type": "string"
-                },
-                "terms_of_service_parsed_text": {
-                    "type": "string"
-                }
-            }
-        },
         "schema.SiteLegalSimpleResp": {
             "type": "object",
             "required": [
@@ -11082,9 +11098,6 @@ const docTemplate = `{
                 },
                 "allow_password_login": {
                     "type": "boolean"
-                },
-                "login_required": {
-                    "type": "boolean"
                 }
             }
         },
@@ -11105,9 +11118,40 @@ const docTemplate = `{
                 },
                 "allow_password_login": {
                     "type": "boolean"
+                }
+            }
+        },
+        "schema.SitePoliciesReq": {
+            "type": "object",
+            "properties": {
+                "privacy_policy_original_text": {
+                    "type": "string"
                 },
-                "login_required": {
-                    "type": "boolean"
+                "privacy_policy_parsed_text": {
+                    "type": "string"
+                },
+                "terms_of_service_original_text": {
+                    "type": "string"
+                },
+                "terms_of_service_parsed_text": {
+                    "type": "string"
+                }
+            }
+        },
+        "schema.SitePoliciesResp": {
+            "type": "object",
+            "properties": {
+                "privacy_policy_original_text": {
+                    "type": "string"
+                },
+                "privacy_policy_parsed_text": {
+                    "type": "string"
+                },
+                "terms_of_service_original_text": {
+                    "type": "string"
+                },
+                "terms_of_service_parsed_text": {
+                    "type": "string"
                 }
             }
         },
@@ -11133,6 +11177,48 @@ const docTemplate = `{
                     "minimum": 0
                 },
                 "restrict_answer": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "schema.SiteSecurityReq": {
+            "type": "object",
+            "required": [
+                "external_content_display"
+            ],
+            "properties": {
+                "check_update": {
+                    "type": "boolean"
+                },
+                "external_content_display": {
+                    "type": "string",
+                    "enum": [
+                        "always_display",
+                        "ask_before_display"
+                    ]
+                },
+                "login_required": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "schema.SiteSecurityResp": {
+            "type": "object",
+            "required": [
+                "external_content_display"
+            ],
+            "properties": {
+                "check_update": {
+                    "type": "boolean"
+                },
+                "external_content_display": {
+                    "type": "string",
+                    "enum": [
+                        "always_display",
+                        "ask_before_display"
+                    ]
+                },
+                "login_required": {
                     "type": "boolean"
                 }
             }

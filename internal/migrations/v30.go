@@ -37,6 +37,16 @@ func updateAdminMenuSettings(ctx context.Context, x *xorm.Engine) (err error) {
 	if err != nil {
 		return
 	}
+
+	err = splitInterfaceMenu(ctx, x)
+	if err != nil {
+		return
+	}
+
+	err = splitLegalMenu(ctx, x)
+	if err != nil {
+		return
+	}
 	return
 }
 
@@ -91,16 +101,7 @@ func splitWriteMenu(ctx context.Context, x *xorm.Engine) error {
 	if err != nil {
 		return err
 	}
-	if existsAdvanced {
-		_, err = x.Context(ctx).ID(siteInfoAdvanced.ID).Update(&entity.SiteInfo{
-			Type:    constant.SiteTypeAdvanced,
-			Content: string(advancedContent),
-			Status:  1,
-		})
-		if err != nil {
-			return err
-		}
-	} else {
+	if !existsAdvanced {
 		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
 			Type:    constant.SiteTypeAdvanced,
 			Content: string(advancedContent),
@@ -120,16 +121,7 @@ func splitWriteMenu(ctx context.Context, x *xorm.Engine) error {
 	if err != nil {
 		return err
 	}
-	if existsQuestions {
-		_, err = x.Context(ctx).ID(siteInfoQuestions.ID).Update(&entity.SiteInfo{
-			Type:    constant.SiteTypeQuestions,
-			Content: string(questionsContent),
-			Status:  1,
-		})
-		if err != nil {
-			return err
-		}
-	} else {
+	if !existsQuestions {
 		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
 			Type:    constant.SiteTypeQuestions,
 			Content: string(questionsContent),
@@ -149,16 +141,7 @@ func splitWriteMenu(ctx context.Context, x *xorm.Engine) error {
 	if err != nil {
 		return err
 	}
-	if existsTags {
-		_, err = x.Context(ctx).ID(siteInfoTags.ID).Update(&entity.SiteInfo{
-			Type:    constant.SiteTypeTags,
-			Content: string(tagsContent),
-			Status:  1,
-		})
-		if err != nil {
-			return err
-		}
-	} else {
+	if !existsTags {
 		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
 			Type:    constant.SiteTypeTags,
 			Content: string(tagsContent),
@@ -172,6 +155,7 @@ func splitWriteMenu(ctx context.Context, x *xorm.Engine) error {
 	return nil
 }
 
+// splitInterfaceMenu splits the site interface settings into interface and user settings
 func splitInterfaceMenu(ctx context.Context, x *xorm.Engine) error {
 	var (
 		siteInfo          = &entity.SiteInfo{}
@@ -216,16 +200,7 @@ func splitInterfaceMenu(ctx context.Context, x *xorm.Engine) error {
 	if err != nil {
 		return err
 	}
-	if existsUsers {
-		_, err = x.Context(ctx).ID(siteInfoUsers.ID).Update(&entity.SiteInfo{
-			Type:    constant.SiteTypeUsersSettings,
-			Content: string(userContent),
-			Status:  1,
-		})
-		if err != nil {
-			return err
-		}
-	} else {
+	if !existsUsers {
 		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
 			Type:    constant.SiteTypeUsersSettings,
 			Content: string(userContent),
@@ -245,16 +220,7 @@ func splitInterfaceMenu(ctx context.Context, x *xorm.Engine) error {
 	if err != nil {
 		return err
 	}
-	if existsInterface {
-		_, err = x.Context(ctx).ID(siteInfoInterface.ID).Update(&entity.SiteInfo{
-			Type:    constant.SiteTypeInterfaceSettings,
-			Content: string(interfaceContent),
-			Status:  1,
-		})
-		if err != nil {
-			return err
-		}
-	} else {
+	if !existsInterface {
 		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
 			Type:    constant.SiteTypeInterfaceSettings,
 			Content: string(interfaceContent),
@@ -265,5 +231,166 @@ func splitInterfaceMenu(ctx context.Context, x *xorm.Engine) error {
 		}
 	}
 
+	return nil
+}
+
+// splitLegalMenu splits the site legal settings into policies and security settings
+func splitLegalMenu(ctx context.Context, x *xorm.Engine) error {
+	var (
+		siteInfo         = &entity.SiteInfo{}
+		siteInfoPolices  = &entity.SiteInfo{}
+		siteInfoSecurity = &entity.SiteInfo{}
+		siteInfoLogin    = &entity.SiteInfo{}
+		siteInfoGeneral  = &entity.SiteInfo{}
+	)
+
+	type SiteLogin struct {
+		AllowNewRegistrations   bool     `json:"allow_new_registrations"`
+		AllowEmailRegistrations bool     `json:"allow_email_registrations"`
+		AllowPasswordLogin      bool     `json:"allow_password_login"`
+		LoginRequired           bool     `json:"login_required"`
+		AllowEmailDomains       []string `json:"allow_email_domains"`
+	}
+
+	type SiteGeneral struct {
+		Name             string `validate:"required,sanitizer,gt=1,lte=128" form:"name" json:"name"`
+		ShortDescription string `validate:"omitempty,sanitizer,gt=3,lte=255" form:"short_description" json:"short_description"`
+		Description      string `validate:"omitempty,sanitizer,gt=3,lte=2000" form:"description" json:"description"`
+		SiteUrl          string `validate:"required,sanitizer,gt=1,lte=512,url" form:"site_url" json:"site_url"`
+		ContactEmail     string `validate:"required,sanitizer,gt=1,lte=512,email" form:"contact_email" json:"contact_email"`
+		CheckUpdate      bool   `validate:"omitempty,sanitizer" form:"check_update" json:"check_update"`
+	}
+
+	// find old site legal settings
+	exist, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypeLegal}).Get(siteInfo)
+	if err != nil {
+		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+		return err
+	}
+	if !exist {
+		return nil
+	}
+	oldSiteLegal := &schema.SiteLegalResp{}
+	if err := json.Unmarshal([]byte(siteInfo.Content), oldSiteLegal); err != nil {
+		return err
+	}
+
+	// find old site login settings
+	existsLogin, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypeLogin}).Get(siteInfoLogin)
+	if err != nil {
+		return err
+	}
+	oldSiteLogin := &SiteLogin{}
+	if err := json.Unmarshal([]byte(siteInfoLogin.Content), oldSiteLogin); err != nil {
+		return err
+	}
+
+	// find old site general settings
+	existGeneral, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypeGeneral}).Get(siteInfoGeneral)
+	if err != nil {
+		return err
+	}
+	oldSiteGeneral := &SiteGeneral{}
+	if err := json.Unmarshal([]byte(siteInfoLogin.Content), oldSiteGeneral); err != nil {
+		return err
+	}
+
+	sitePolicies := &schema.SitePoliciesResp{
+		TermsOfServiceOriginalText: oldSiteLegal.TermsOfServiceOriginalText,
+		TermsOfServiceParsedText:   oldSiteLegal.TermsOfServiceParsedText,
+		PrivacyPolicyOriginalText:  oldSiteLegal.PrivacyPolicyOriginalText,
+		PrivacyPolicyParsedText:    oldSiteLegal.PrivacyPolicyParsedText,
+	}
+	siteLogin := &schema.SiteLoginResp{
+		AllowNewRegistrations:   oldSiteLogin.AllowNewRegistrations,
+		AllowEmailRegistrations: oldSiteLogin.AllowEmailRegistrations,
+		AllowPasswordLogin:      oldSiteLogin.AllowPasswordLogin,
+		AllowEmailDomains:       oldSiteLogin.AllowEmailDomains,
+	}
+	siteGeneral := &schema.SiteGeneralReq{
+		Name:             oldSiteGeneral.Name,
+		ShortDescription: oldSiteGeneral.ShortDescription,
+		Description:      oldSiteGeneral.Description,
+		SiteUrl:          oldSiteGeneral.SiteUrl,
+		ContactEmail:     oldSiteGeneral.ContactEmail,
+	}
+	siteSecurity := &schema.SiteSecurityResp{
+		LoginRequired:          oldSiteLogin.LoginRequired,
+		ExternalContentDisplay: oldSiteLegal.ExternalContentDisplay,
+		CheckUpdate:            oldSiteGeneral.CheckUpdate,
+	}
+	if !existsLogin {
+		siteSecurity.LoginRequired = false
+	}
+	if !existGeneral {
+		siteSecurity.CheckUpdate = true
+	}
+
+	// save settings
+	// save policies settings
+	existsPolicies, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypePolicies}).Get(siteInfoPolices)
+	if err != nil {
+		return err
+	}
+	policiesContent, err := json.Marshal(sitePolicies)
+	if err != nil {
+		return err
+	}
+	if !existsPolicies {
+		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
+			Type:    constant.SiteTypePolicies,
+			Content: string(policiesContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	}
+
+	// save security settings
+	existsSecurity, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypeSecurity}).Get(siteInfoSecurity)
+	if err != nil {
+		return err
+	}
+	securityContent, err := json.Marshal(siteSecurity)
+	if err != nil {
+		return err
+	}
+	if !existsSecurity {
+		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
+			Type:    constant.SiteTypeSecurity,
+			Content: string(securityContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	}
+
+	// save login settings
+	if existsLogin {
+		loginContent, err := json.Marshal(siteLogin)
+		_, err = x.Context(ctx).ID(siteInfoLogin.ID).Update(&entity.SiteInfo{
+			Type:    constant.SiteTypeLogin,
+			Content: string(loginContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	}
+
+	// save general settings
+	if existGeneral {
+		generalContent, err := json.Marshal(siteGeneral)
+		_, err = x.Context(ctx).ID(siteInfoGeneral.ID).Update(&entity.SiteInfo{
+			Type:    constant.SiteTypeGeneral,
+			Content: string(generalContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }

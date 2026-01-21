@@ -359,8 +359,11 @@ func (a *AnswerAPIRouter) RegisterAnswerAdminAPIRouter(r *gin.RouterGroup) {
 	r.GET("/siteinfo/advanced", a.adminSiteInfoController.GetSiteAdvanced)
 	r.PUT("/siteinfo/advanced", a.adminSiteInfoController.UpdateSiteAdvanced)
 
-	r.GET("/siteinfo/legal", a.adminSiteInfoController.GetSiteLegal)
-	r.PUT("/siteinfo/legal", a.adminSiteInfoController.UpdateSiteLegal)
+	r.GET("/siteinfo/polices", a.adminSiteInfoController.GetSitePolicies)
+	r.PUT("/siteinfo/polices", a.adminSiteInfoController.UpdateSitePolices)
+	r.GET("/siteinfo/security", a.adminSiteInfoController.GetSiteSecurity)
+	r.PUT("/siteinfo/security", a.adminSiteInfoController.UpdateSiteSecurity)
+
 	r.GET("/siteinfo/seo", a.adminSiteInfoController.GetSeo)
 	r.PUT("/siteinfo/seo", a.adminSiteInfoController.UpdateSeo)
 	r.GET("/siteinfo/login", a.adminSiteInfoController.GetSiteLogin)

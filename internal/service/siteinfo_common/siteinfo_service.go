@@ -55,7 +55,8 @@ type SiteInfoCommonService interface {
 	GetSiteAdvanced(ctx context.Context) (resp *schema.SiteAdvancedResp, err error)
 	GetSiteQuestion(ctx context.Context) (resp *schema.SiteQuestionsResp, err error)
 	GetSiteTag(ctx context.Context) (resp *schema.SiteTagsResp, err error)
-	GetSiteLegal(ctx context.Context) (resp *schema.SiteLegalResp, err error)
+	GetSitePolicies(ctx context.Context) (resp *schema.SitePoliciesResp, err error)
+	GetSiteSecurity(ctx context.Context) (resp *schema.SiteSecurityResp, err error)
 	GetSiteLogin(ctx context.Context) (resp *schema.SiteLoginResp, err error)
 	GetSiteCustomCssHTML(ctx context.Context) (resp *schema.SiteCustomCssHTMLResp, err error)
 	GetSiteTheme(ctx context.Context) (resp *schema.SiteThemeResp, err error)
@@ -73,7 +74,7 @@ func NewSiteInfoCommonService(siteInfoRepo SiteInfoRepo) SiteInfoCommonService {
 
 // GetSiteGeneral get site info general
 func (s *siteInfoCommonService) GetSiteGeneral(ctx context.Context) (resp *schema.SiteGeneralResp, err error) {
-	resp = &schema.SiteGeneralResp{CheckUpdate: true}
+	resp = &schema.SiteGeneralResp{}
 	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeGeneral, resp); err != nil {
 		return nil, err
 	}
@@ -207,10 +208,19 @@ func (s *siteInfoCommonService) GetSiteTag(ctx context.Context) (resp *schema.Si
 	return resp, nil
 }
 
-// GetSiteLegal get site info write
-func (s *siteInfoCommonService) GetSiteLegal(ctx context.Context) (resp *schema.SiteLegalResp, err error) {
-	resp = &schema.SiteLegalResp{}
-	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeLegal, resp); err != nil {
+// GetSitePolicies get site info policies
+func (s *siteInfoCommonService) GetSitePolicies(ctx context.Context) (resp *schema.SitePoliciesResp, err error) {
+	resp = &schema.SitePoliciesResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypePolicies, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+// GetSiteSecurity get site security config
+func (s *siteInfoCommonService) GetSiteSecurity(ctx context.Context) (resp *schema.SiteSecurityResp, err error) {
+	resp = &schema.SiteSecurityResp{CheckUpdate: true}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeSecurity, resp); err != nil {
 		return nil, err
 	}
 	return resp, nil
