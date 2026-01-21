@@ -10974,12 +10974,7 @@
                     "$ref": "#/definitions/schema.SiteInterfaceSettingsResp"
                 },
                 "login": {
-                    "description": "todo",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/schema.SiteLoginResp"
-                        }
-                    ]
+                    "$ref": "#/definitions/schema.SiteLoginResp"
                 },
                 "revision": {
                     "type": "string"
@@ -11155,6 +11150,11 @@
                     "maximum": 65535,
                     "minimum": 0
                 },
+                "min_tags": {
+                    "type": "integer",
+                    "maximum": 5,
+                    "minimum": 0
+                },
                 "restrict_answer": {
                     "type": "boolean"
                 }
@@ -11166,6 +11166,11 @@
                 "min_content": {
                     "type": "integer",
                     "maximum": 65535,
+                    "minimum": 0
+                },
+                "min_tags": {
+                    "type": "integer",
+                    "maximum": 5,
                     "minimum": 0
                 },
                 "restrict_answer": {
@@ -11252,11 +11257,6 @@
         "schema.SiteTagsReq": {
             "type": "object",
             "properties": {
-                "min_tags": {
-                    "type": "integer",
-                    "maximum": 5,
-                    "minimum": 0
-                },
                 "recommend_tags": {
                     "type": "array",
                     "items": {
@@ -11277,11 +11277,6 @@
         "schema.SiteTagsResp": {
             "type": "object",
             "properties": {
-                "min_tags": {
-                    "type": "integer",
-                    "maximum": 5,
-                    "minimum": 0
-                },
                 "recommend_tags": {
                     "type": "array",
                     "items": {

@@ -2210,9 +2210,7 @@ definitions:
       interface:
         $ref: '#/definitions/schema.SiteInterfaceSettingsResp'
       login:
-        allOf:
-        - $ref: '#/definitions/schema.SiteLoginResp'
-        description: todo
+        $ref: '#/definitions/schema.SiteLoginResp'
       revision:
         type: string
       site_advanced:
@@ -2330,6 +2328,10 @@ definitions:
         maximum: 65535
         minimum: 0
         type: integer
+      min_tags:
+        maximum: 5
+        minimum: 0
+        type: integer
       restrict_answer:
         type: boolean
     type: object
@@ -2337,6 +2339,10 @@ definitions:
     properties:
       min_content:
         maximum: 65535
+        minimum: 0
+        type: integer
+      min_tags:
+        maximum: 5
         minimum: 0
         type: integer
       restrict_answer:
@@ -2396,10 +2402,6 @@ definitions:
     type: object
   schema.SiteTagsReq:
     properties:
-      min_tags:
-        maximum: 5
-        minimum: 0
-        type: integer
       recommend_tags:
         items:
           $ref: '#/definitions/schema.SiteWriteTag'
@@ -2413,10 +2415,6 @@ definitions:
     type: object
   schema.SiteTagsResp:
     properties:
-      min_tags:
-        maximum: 5
-        minimum: 0
-        type: integer
       recommend_tags:
         items:
           $ref: '#/definitions/schema.SiteWriteTag'

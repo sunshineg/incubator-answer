@@ -10982,12 +10982,7 @@ const docTemplate = `{
                     "$ref": "#/definitions/schema.SiteInterfaceSettingsResp"
                 },
                 "login": {
-                    "description": "todo",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/schema.SiteLoginResp"
-                        }
-                    ]
+                    "$ref": "#/definitions/schema.SiteLoginResp"
                 },
                 "revision": {
                     "type": "string"
@@ -11163,6 +11158,11 @@ const docTemplate = `{
                     "maximum": 65535,
                     "minimum": 0
                 },
+                "min_tags": {
+                    "type": "integer",
+                    "maximum": 5,
+                    "minimum": 0
+                },
                 "restrict_answer": {
                     "type": "boolean"
                 }
@@ -11174,6 +11174,11 @@ const docTemplate = `{
                 "min_content": {
                     "type": "integer",
                     "maximum": 65535,
+                    "minimum": 0
+                },
+                "min_tags": {
+                    "type": "integer",
+                    "maximum": 5,
                     "minimum": 0
                 },
                 "restrict_answer": {
@@ -11260,11 +11265,6 @@ const docTemplate = `{
         "schema.SiteTagsReq": {
             "type": "object",
             "properties": {
-                "min_tags": {
-                    "type": "integer",
-                    "maximum": 5,
-                    "minimum": 0
-                },
                 "recommend_tags": {
                     "type": "array",
                     "items": {
@@ -11285,11 +11285,6 @@ const docTemplate = `{
         "schema.SiteTagsResp": {
             "type": "object",
             "properties": {
-                "min_tags": {
-                    "type": "integer",
-                    "maximum": 5,
-                    "minimum": 0
-                },
                 "recommend_tags": {
                     "type": "array",
                     "items": {
