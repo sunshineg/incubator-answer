@@ -25,7 +25,8 @@ const (
 	SiteTypeInterface = "interface"
 	SiteTypeBranding  = "branding"
 	// Deprecated: use SiteTypeAdvanced, SiteTypeQuestions, and SiteTypeTags instead
-	SiteTypeWrite         = "write"
+	SiteTypeWrite = "write"
+	// Deprecated: use SiteTypePolicies and SiteTypeSecurity instead
 	SiteTypeLegal         = "legal"
 	SiteTypeSeo           = "seo"
 	SiteTypeLogin         = "login"
@@ -40,4 +41,7 @@ const (
 
 	SiteTypeUsersSettings     = "users_settings"
 	SiteTypeInterfaceSettings = "interface_settings"
+
+	SiteTypePolicies = "policies"
+	SiteTypeSecurity = "security"
 )

@@ -42,7 +42,6 @@ type SiteGeneralReq struct {
 	Description      string `validate:"omitempty,sanitizer,gt=3,lte=2000" form:"description" json:"description"`
 	SiteUrl          string `validate:"required,sanitizer,gt=1,lte=512,url" form:"site_url" json:"site_url"`
 	ContactEmail     string `validate:"required,sanitizer,gt=1,lte=512,email" form:"contact_email" json:"contact_email"`
-	CheckUpdate      bool   `validate:"omitempty,sanitizer" form:"check_update" json:"check_update"`
 }
 
 func (r *SiteGeneralReq) FormatSiteUrl() {
@@ -158,6 +157,7 @@ type SiteWriteTag struct {
 }
 
 // SiteLegalReq site branding request
+// Deprecated: use SitePoliciesReq and SiteSecurityReq instead
 type SiteLegalReq struct {
 	TermsOfServiceOriginalText string `json:"terms_of_service_original_text"`
 	TermsOfServiceParsedText   string `json:"terms_of_service_parsed_text"`
@@ -165,6 +165,22 @@ type SiteLegalReq struct {
 	PrivacyPolicyParsedText    string `json:"privacy_policy_parsed_text"`
 	ExternalContentDisplay     string `validate:"required,oneof=always_display ask_before_display" json:"external_content_display"`
 }
+
+type SitePoliciesReq struct {
+	TermsOfServiceOriginalText string `json:"terms_of_service_original_text"`
+	TermsOfServiceParsedText   string `json:"terms_of_service_parsed_text"`
+	PrivacyPolicyOriginalText  string `json:"privacy_policy_original_text"`
+	PrivacyPolicyParsedText    string `json:"privacy_policy_parsed_text"`
+}
+
+type SiteSecurityReq struct {
+	LoginRequired          bool   `json:"login_required"`
+	ExternalContentDisplay string `validate:"required,oneof=always_display ask_before_display" json:"external_content_display"`
+	CheckUpdate            bool   `validate:"omitempty,sanitizer" form:"check_update" json:"check_update"`
+}
+
+type SitePoliciesResp SitePoliciesReq
+type SiteSecurityResp SiteSecurityReq
 
 // GetSiteLegalInfoReq site site legal request
 type GetSiteLegalInfoReq struct {
@@ -204,7 +220,6 @@ type SiteLoginReq struct {
 	AllowNewRegistrations   bool     `json:"allow_new_registrations"`
 	AllowEmailRegistrations bool     `json:"allow_email_registrations"`
 	AllowPasswordLogin      bool     `json:"allow_password_login"`
-	LoginRequired           bool     `json:"login_required"`
 	AllowEmailDomains       []string `json:"allow_email_domains"`
 }
 
@@ -284,6 +299,7 @@ type SiteAdvancedResp SiteAdvancedReq
 type SiteTagsResp SiteTagsReq
 
 // SiteLegalResp site write response
+// Deprecated: use SitePoliciesResp and SiteSecurityResp instead
 type SiteLegalResp SiteLegalReq
 
 // SiteLegalSimpleResp site write response
@@ -313,7 +329,6 @@ type SiteInfoResp struct {
 	Revision      string                     `json:"revision"`
 }
 
-// todo: 检查模板使用
 type TemplateSiteInfoResp struct {
 	General       *SiteGeneralResp           `json:"general"`
 	Interface     *SiteInterfaceSettingsResp `json:"interface"`
