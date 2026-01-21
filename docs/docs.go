@@ -1167,7 +1167,7 @@ const docTemplate = `{
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/schema.SiteInterfaceResp"
+                                            "$ref": "#/definitions/schema.SiteInterfaceSettingsResp"
                                         }
                                     }
                                 }
@@ -1695,6 +1695,77 @@ const docTemplate = `{
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/schema.SiteUsersReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.RespBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/answer/admin/api/siteinfo/users-settings": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get site interface",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "get site interface",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handler.RespBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/schema.SiteUsersSettingsResp"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "update site info users settings",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "update site info users settings",
+                "parameters": [
+                    {
+                        "description": "general",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schema.SiteUsersSettingsReq"
                         }
                     }
                 ],
@@ -10843,7 +10914,7 @@ const docTemplate = `{
                     "$ref": "#/definitions/schema.SiteGeneralResp"
                 },
                 "interface": {
-                    "$ref": "#/definitions/schema.SiteInterfaceResp"
+                    "$ref": "#/definitions/schema.SiteInterfaceSettingsResp"
                 },
                 "login": {
                     "$ref": "#/definitions/schema.SiteLoginResp"
@@ -10871,6 +10942,9 @@ const docTemplate = `{
                 },
                 "theme": {
                     "$ref": "#/definitions/schema.SiteThemeResp"
+                },
+                "users_settings": {
+                    "$ref": "#/definitions/schema.SiteUsersSettingsResp"
                 },
                 "version": {
                     "type": "string"
@@ -10905,24 +10979,13 @@ const docTemplate = `{
                 }
             }
         },
-        "schema.SiteInterfaceResp": {
+        "schema.SiteInterfaceSettingsResp": {
             "type": "object",
             "required": [
-                "default_avatar",
                 "language",
                 "time_zone"
             ],
             "properties": {
-                "default_avatar": {
-                    "type": "string",
-                    "enum": [
-                        "system",
-                        "gravatar"
-                    ]
-                },
-                "gravatar_base_url": {
-                    "type": "string"
-                },
                 "language": {
                     "type": "string",
                     "maxLength": 128
@@ -11259,6 +11322,42 @@ const docTemplate = `{
                 "allow_update_website": {
                     "type": "boolean"
                 },
+                "default_avatar": {
+                    "type": "string",
+                    "enum": [
+                        "system",
+                        "gravatar"
+                    ]
+                },
+                "gravatar_base_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "schema.SiteUsersSettingsReq": {
+            "type": "object",
+            "required": [
+                "default_avatar"
+            ],
+            "properties": {
+                "default_avatar": {
+                    "type": "string",
+                    "enum": [
+                        "system",
+                        "gravatar"
+                    ]
+                },
+                "gravatar_base_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "schema.SiteUsersSettingsResp": {
+            "type": "object",
+            "required": [
+                "default_avatar"
+            ],
+            "properties": {
                 "default_avatar": {
                     "type": "string",
                     "enum": [

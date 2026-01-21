@@ -60,6 +60,11 @@ func (sc *SiteInfoController) GetSiteInfo(ctx *gin.Context) {
 		log.Error(err)
 	}
 
+	resp.UsersSettings, err = sc.siteInfoService.GetSiteUsersSettings(ctx)
+	if err != nil {
+		log.Error(err)
+	}
+
 	resp.Branding, err = sc.siteInfoService.GetSiteBranding(ctx)
 	if err != nil {
 		log.Error(err)

@@ -62,10 +62,23 @@ func (sc *SiteInfoController) GetGeneral(ctx *gin.Context) {
 // @Security ApiKeyAuth
 // @Tags admin
 // @Produce json
-// @Success 200 {object} handler.RespBody{data=schema.SiteInterfaceResp}
+// @Success 200 {object} handler.RespBody{data=schema.SiteInterfaceSettingsResp}
 // @Router /answer/admin/api/siteinfo/interface [get]
 func (sc *SiteInfoController) GetInterface(ctx *gin.Context) {
 	resp, err := sc.siteInfoService.GetSiteInterface(ctx)
+	handler.HandleResponse(ctx, err, resp)
+}
+
+// GetUsersSettings get site interface
+// @Summary get site interface
+// @Description get site interface
+// @Security ApiKeyAuth
+// @Tags admin
+// @Produce json
+// @Success 200 {object} handler.RespBody{data=schema.SiteUsersSettingsResp}
+// @Router /answer/admin/api/siteinfo/users-settings [get]
+func (sc *SiteInfoController) GetUsersSettings(ctx *gin.Context) {
+	resp, err := sc.siteInfoService.GetSiteUsersSettings(ctx)
 	handler.HandleResponse(ctx, err, resp)
 }
 
@@ -284,6 +297,24 @@ func (sc *SiteInfoController) UpdateInterface(ctx *gin.Context) {
 		return
 	}
 	err := sc.siteInfoService.SaveSiteInterface(ctx, req)
+	handler.HandleResponse(ctx, err, nil)
+}
+
+// UpdateUsersSettings update users settings
+// @Summary update site info users settings
+// @Description update site info users settings
+// @Security ApiKeyAuth
+// @Tags admin
+// @Produce json
+// @Param data body schema.SiteUsersSettingsReq true "general"
+// @Success 200 {object} handler.RespBody{}
+// @Router /answer/admin/api/siteinfo/users-settings [put]
+func (sc *SiteInfoController) UpdateUsersSettings(ctx *gin.Context) {
+	req := schema.SiteUsersSettingsReq{}
+	if handler.BindAndCheck(ctx, &req) {
+		return
+	}
+	err := sc.siteInfoService.SaveSiteUsersSettings(ctx, req)
 	handler.HandleResponse(ctx, err, nil)
 }
 

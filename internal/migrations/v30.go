@@ -171,3 +171,99 @@ func splitWriteMenu(ctx context.Context, x *xorm.Engine) error {
 
 	return nil
 }
+
+func splitInterfaceMenu(ctx context.Context, x *xorm.Engine) error {
+	var (
+		siteInfo          = &entity.SiteInfo{}
+		siteInfoInterface = &entity.SiteInfo{}
+		siteInfoUsers     = &entity.SiteInfo{}
+	)
+	type SiteInterface struct {
+		Language        string `validate:"required,gt=1,lte=128" form:"language" json:"language"`
+		TimeZone        string `validate:"required,gt=1,lte=128" form:"time_zone" json:"time_zone"`
+		DefaultAvatar   string `validate:"required,oneof=system gravatar" json:"default_avatar"`
+		GravatarBaseURL string `validate:"omitempty" json:"gravatar_base_url"`
+	}
+
+	exist, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypeInterface}).Get(siteInfo)
+	if err != nil {
+		err = errors.InternalServer(reason.DatabaseError).WithError(err).WithStack()
+		return err
+	}
+	if !exist {
+		return nil
+	}
+	oldSiteInterface := &SiteInterface{}
+	if err := json.Unmarshal([]byte(siteInfo.Content), oldSiteInterface); err != nil {
+		return err
+	}
+	siteUser := &schema.SiteUsersSettingsResp{
+		DefaultAvatar:   oldSiteInterface.DefaultAvatar,
+		GravatarBaseURL: oldSiteInterface.GravatarBaseURL,
+	}
+	siteInterface := &schema.SiteInterfaceResp{
+		Language: oldSiteInterface.Language,
+		TimeZone: oldSiteInterface.TimeZone,
+	}
+
+	// save settings
+	// save user settings
+	existsUsers, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypeUsersSettings}).Get(siteInfoUsers)
+	if err != nil {
+		return err
+	}
+	userContent, err := json.Marshal(siteUser)
+	if err != nil {
+		return err
+	}
+	if existsUsers {
+		_, err = x.Context(ctx).ID(siteInfoUsers.ID).Update(&entity.SiteInfo{
+			Type:    constant.SiteTypeUsersSettings,
+			Content: string(userContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	} else {
+		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
+			Type:    constant.SiteTypeUsersSettings,
+			Content: string(userContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	}
+
+	// save interface settings
+	existsInterface, err := x.Context(ctx).Where(builder.Eq{"type": constant.SiteTypeInterfaceSettings}).Get(siteInfoInterface)
+	if err != nil {
+		return err
+	}
+	interfaceContent, err := json.Marshal(siteInterface)
+	if err != nil {
+		return err
+	}
+	if existsInterface {
+		_, err = x.Context(ctx).ID(siteInfoInterface.ID).Update(&entity.SiteInfo{
+			Type:    constant.SiteTypeInterfaceSettings,
+			Content: string(interfaceContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	} else {
+		_, err = x.Context(ctx).Insert(&entity.SiteInfo{
+			Type:    constant.SiteTypeInterfaceSettings,
+			Content: string(interfaceContent),
+			Status:  1,
+		})
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}

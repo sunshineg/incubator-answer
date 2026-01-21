@@ -65,6 +65,21 @@ type SiteInterfaceReq struct {
 	GravatarBaseURL string `validate:"omitempty" json:"gravatar_base_url"`
 }
 
+// SiteInterfaceSettingsReq site interface settings request
+type SiteInterfaceSettingsReq struct {
+	Language string `validate:"required,gt=1,lte=128" json:"language"`
+	TimeZone string `validate:"required,gt=1,lte=128" json:"time_zone"`
+}
+
+type SiteInterfaceSettingsResp SiteInterfaceSettingsReq
+
+type SiteUsersSettingsReq struct {
+	DefaultAvatar   string `validate:"required,oneof=system gravatar" json:"default_avatar"`
+	GravatarBaseURL string `validate:"omitempty" json:"gravatar_base_url"`
+}
+
+type SiteUsersSettingsResp SiteUsersSettingsReq
+
 // SiteBrandingReq site branding request
 type SiteBrandingReq struct {
 	Logo       string `validate:"omitempty,gt=0,lte=512" form:"logo" json:"logo"`
@@ -279,27 +294,30 @@ type SiteSeoResp SiteSeoReq
 
 // SiteInfoResp get site info response
 type SiteInfoResp struct {
-	General       *SiteGeneralResp       `json:"general"`
-	Interface     *SiteInterfaceResp     `json:"interface"`
-	Branding      *SiteBrandingResp      `json:"branding"`
-	Login         *SiteLoginResp         `json:"login"`
-	Theme         *SiteThemeResp         `json:"theme"`
-	CustomCssHtml *SiteCustomCssHTMLResp `json:"custom_css_html"`
-	SiteSeo       *SiteSeoResp           `json:"site_seo"`
-	SiteUsers     *SiteUsersResp         `json:"site_users"`
-	Advanced      *SiteAdvancedResp      `json:"site_advanced"`
-	Questions     *SiteQuestionsResp     `json:"site_questions"`
-	Tags          *SiteTagsResp          `json:"site_tags"`
-	Legal         *SiteLegalSimpleResp   `json:"site_legal"`
-	Version       string                 `json:"version"`
-	Revision      string                 `json:"revision"`
+	General       *SiteGeneralResp           `json:"general"`
+	Interface     *SiteInterfaceSettingsResp `json:"interface"`
+	UsersSettings *SiteUsersSettingsResp     `json:"users_settings"`
+	Branding      *SiteBrandingResp          `json:"branding"`
+	Login         *SiteLoginResp             `json:"login"`
+	Theme         *SiteThemeResp             `json:"theme"`
+	CustomCssHtml *SiteCustomCssHTMLResp     `json:"custom_css_html"`
+	SiteSeo       *SiteSeoResp               `json:"site_seo"`
+	SiteUsers     *SiteUsersResp             `json:"site_users"`
+	Advanced      *SiteAdvancedResp          `json:"site_advanced"`
+	Questions     *SiteQuestionsResp         `json:"site_questions"`
+	Tags          *SiteTagsResp              `json:"site_tags"`
+	Legal         *SiteLegalSimpleResp       `json:"site_legal"`
+	Version       string                     `json:"version"`
+	Revision      string                     `json:"revision"`
 }
+
+// todo: 检查模板使用
 type TemplateSiteInfoResp struct {
-	General       *SiteGeneralResp       `json:"general"`
-	Interface     *SiteInterfaceResp     `json:"interface"`
-	Branding      *SiteBrandingResp      `json:"branding"`
-	SiteSeo       *SiteSeoResp           `json:"site_seo"`
-	CustomCssHtml *SiteCustomCssHTMLResp `json:"custom_css_html"`
+	General       *SiteGeneralResp           `json:"general"`
+	Interface     *SiteInterfaceSettingsResp `json:"interface"`
+	Branding      *SiteBrandingResp          `json:"branding"`
+	SiteSeo       *SiteSeoResp               `json:"site_seo"`
+	CustomCssHtml *SiteCustomCssHTMLResp     `json:"custom_css_html"`
 	Title         string
 	Year          string
 	Canonical     string
