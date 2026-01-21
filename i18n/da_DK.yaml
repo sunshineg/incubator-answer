@@ -1766,7 +1766,7 @@ ui:
     smtp: SMTP
     branding: Branding
     legal: Jura
-    write: Skriv
+    write: Skrivning
     terms: Vilkår
     tos: Betingelser for brug
     privacy: Privatliv
@@ -2091,7 +2091,7 @@ ui:
     write:
       page_title: Skriv
       min_content:
-        label: Mindste antal spørgsmål
+        label: Minimum længde for spørgsmål-tekst
         text: Mindste tilladte spørgsmåls længde i tegn.
       restrict_answer:
         title: Skriv svar
@@ -2143,7 +2143,7 @@ ui:
       color_scheme:
         label: Farveskema
       navbar_style:
-        label: Navbar baggrundsstil
+        label: Navigationsbjælke baggrundsstil
       primary_color:
         label: Primær farve
         text: Ændre farver, der bruges af dine temaer
