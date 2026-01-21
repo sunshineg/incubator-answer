@@ -80,6 +80,7 @@ func splitWriteMenu(ctx context.Context, x *xorm.Engine) error {
 	}
 	// site questions settings
 	siteQuestions := &schema.SiteQuestionsResp{
+		MinimumTags:    siteWrite.MinimumTags,
 		MinimumContent: siteWrite.MinimumContent,
 		RestrictAnswer: siteWrite.RestrictAnswer,
 	}
@@ -87,7 +88,6 @@ func splitWriteMenu(ctx context.Context, x *xorm.Engine) error {
 	siteTags := &schema.SiteTagsResp{
 		ReservedTags:  siteWrite.ReservedTags,
 		RecommendTags: siteWrite.RecommendTags,
-		MinimumTags:   siteWrite.MinimumTags,
 		RequiredTag:   siteWrite.RequiredTag,
 	}
 

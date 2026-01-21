@@ -88,6 +88,7 @@ type SiteBrandingReq struct {
 }
 
 // SiteWriteReq site write request
+// Deprecated: use SiteQuestionsReq, SiteAdvancedReq and SiteTagsReq instead
 type SiteWriteReq struct {
 	MinimumContent                 int             `validate:"omitempty,gte=0,lte=65535" json:"min_content"`
 	RestrictAnswer                 bool            `validate:"omitempty" json:"restrict_answer"`
@@ -107,6 +108,7 @@ type SiteWriteResp SiteWriteReq
 
 // SiteQuestionsReq site questions settings request
 type SiteQuestionsReq struct {
+	MinimumTags    int  `validate:"omitempty,gte=0,lte=5" json:"min_tags"`
 	MinimumContent int  `validate:"omitempty,gte=0,lte=65535" json:"min_content"`
 	RestrictAnswer bool `validate:"omitempty" json:"restrict_answer"`
 }
@@ -124,7 +126,6 @@ type SiteAdvancedReq struct {
 type SiteTagsReq struct {
 	ReservedTags  []*SiteWriteTag `validate:"omitempty,dive" json:"reserved_tags"`
 	RecommendTags []*SiteWriteTag `validate:"omitempty,dive" json:"recommend_tags"`
-	MinimumTags   int             `validate:"omitempty,gte=0,lte=5" json:"min_tags"`
 	RequiredTag   bool            `validate:"omitempty" json:"required_tag"`
 	UserID        string          `json:"-"`
 }

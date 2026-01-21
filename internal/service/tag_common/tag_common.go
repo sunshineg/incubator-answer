@@ -295,7 +295,7 @@ func (ts *TagCommonService) ExistRecommend(ctx context.Context, tags []*schema.T
 }
 
 func (ts *TagCommonService) GetMinimumTags(ctx context.Context) (int, error) {
-	siteInfo, err := ts.siteInfoService.GetSiteTag(ctx)
+	siteInfo, err := ts.siteInfoService.GetSiteQuestion(ctx)
 	if err != nil {
 		return 1, err
 	}
