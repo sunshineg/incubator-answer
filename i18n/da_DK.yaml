@@ -818,7 +818,7 @@ ui:
     questions: Spørgsmål
     tag: Nøgleord
     tags: Nøgleord
-    tag_wiki: nøgleord wiki
+    tag_wiki: nøgleord info
     create_tag: Opret nøgleord
     edit_tag: Rediger nøgleord
     ask_a_question: Opret spørgsmål
@@ -1060,7 +1060,7 @@ ui:
   dates:
     long_date: MMM D
     long_date_with_year: "D MMMM, YYYY"
-    long_date_with_time: "MMM D, ÅÅÅÅ [at] HH:mm"
+    long_date_with_time: "MMM D, YYYY [kl.] HH:mm"
     now: nu
     x_seconds_ago: "{{count}}s siden"
     x_minutes_ago: "{{count}}s siden"
@@ -1125,7 +1125,7 @@ ui:
     search_placeholder: Filtrer efter nøgleord-navn
     no_desc: Nøgleord har ingen beskrivelse.
     more: Mere
-    wiki: Wiki
+    wiki: Info
   ask:
     title: Opret spørgsmål
     edit_title: Rediger spørgsmål
@@ -1892,7 +1892,7 @@ ui:
       form:
         fields:
           users:
-            label: Masse-tilføj bruger
+            label: Masse-tilføj brugere
             placeholder: "John Smith, john@example.com, BUSYopr2\nAlice, alice@example.com, fpDntV8q"
             text: Adskil “navn, e-mail, adgangskode” med kommaer. Én bruger pr. linje.
             msg: "Indtast venligst brugerens e-mail, en pr. linje."
