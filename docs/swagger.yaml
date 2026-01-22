@@ -2236,13 +2236,6 @@ definitions:
     type: object
   schema.SiteInterfaceReq:
     properties:
-      default_avatar:
-        enum:
-        - system
-        - gravatar
-        type: string
-      gravatar_base_url:
-        type: string
       language:
         maxLength: 128
         type: string
@@ -2250,7 +2243,6 @@ definitions:
         maxLength: 128
         type: string
     required:
-    - default_avatar
     - language
     - time_zone
     type: object

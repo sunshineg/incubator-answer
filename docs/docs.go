@@ -11022,21 +11022,10 @@ const docTemplate = `{
         "schema.SiteInterfaceReq": {
             "type": "object",
             "required": [
-                "default_avatar",
                 "language",
                 "time_zone"
             ],
             "properties": {
-                "default_avatar": {
-                    "type": "string",
-                    "enum": [
-                        "system",
-                        "gravatar"
-                    ]
-                },
-                "gravatar_base_url": {
-                    "type": "string"
-                },
                 "language": {
                     "type": "string",
                     "maxLength": 128
