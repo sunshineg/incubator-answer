@@ -1760,7 +1760,7 @@ ui:
     users: 用户管理
     badges: 徽章
     flags: 举报管理
-    settings: 站点设置
+    settings: 设置
     general: 一般
     interface: 界面
     smtp: SMTP
