@@ -147,11 +147,8 @@ const Ask = () => {
       if (prefill || draft) {
         if (prefill) {
           const file = fm<any>(decodeURIComponent(prefill));
-          setFormData((prev) => ({
-            ...prev,
-            title: { ...prev.title, value: file.attributes?.title || '' },
-            content: { ...prev.content, value: file.body || '' },
-          }));
+          formData.title.value = file.attributes?.title;
+          formData.content.value = file.body;
           if (!queryTags && file.attributes?.tags) {
             // Remove spaces in file.attributes.tags
             const filterTags = file.attributes.tags
@@ -161,19 +158,14 @@ const Ask = () => {
             updateTags(filterTags);
           }
         } else if (draft) {
-          setFormData((prev) => ({
-            ...prev,
-            title: { ...prev.title, value: draft.title || '' },
-            content: { ...prev.content, value: draft.content || '' },
-            tags: { ...prev.tags, value: draft.tags || [] },
-            answer_content: {
-              ...prev.answer_content,
-              value: draft.answer_content || '',
-            },
-          }));
+          formData.title.value = draft.title;
+          formData.content.value = draft.content;
+          formData.tags.value = draft.tags;
+          formData.answer_content.value = draft.answer_content;
           setCheckState(Boolean(draft.answer_content));
           setHasDraft(true);
         }
+        setFormData({ ...formData });
       } else {
         resetForm();
       }
@@ -239,25 +231,17 @@ const Ask = () => {
       return;
     }
     questionDetail(qid).then((res) => {
-      setFormData((prev) => {
-        const updatedFormData = {
-          ...prev,
-          title: { ...prev.title, value: res.title },
-          content: { ...prev.content, value: res.content },
-          tags: {
-            ...prev.tags,
-            value: res.tags.map((item) => {
-              return {
-                ...item,
-                parsed_text: '',
-                original_text: '',
-              };
-            }),
-          },
+      formData.title.value = res.title;
+      formData.content.value = res.content;
+      formData.tags.value = res.tags.map((item) => {
+        return {
+          ...item,
+          parsed_text: '',
+          original_text: '',
         };
-        setImmData(updatedFormData);
-        return updatedFormData;
       });
+      setImmData({ ...formData });
+      setFormData({ ...formData });
     });
   }, [qid]);
 
@@ -271,10 +255,10 @@ const Ask = () => {
   );
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
+    setFormData({
+      ...formData,
       title: { value: e.currentTarget.value, errorMsg: '', isInvalid: false },
-    }));
+    });
     if (e.currentTarget.value.length >= 10) {
       querySimilarQuestions(e.currentTarget.value);
     }
@@ -289,25 +273,25 @@ const Ask = () => {
     }));
   };
   const handleTagsChange = (value) =>
-    setFormData((prev) => ({
-      ...prev,
+    setFormData({
+      ...formData,
       tags: { value, errorMsg: '', isInvalid: false },
-    }));
+    });
 
   const handleAnswerChange = (value: string) =>
-    setFormData((prev) => ({
-      ...prev,
+    setFormData({
+      ...formData,
       answer_content: { value, errorMsg: '', isInvalid: false },
-    }));
+    });
 
   const handleSummaryChange = (evt: React.ChangeEvent<HTMLInputElement>) =>
-    setFormData((prev) => ({
-      ...prev,
+    setFormData({
+      ...formData,
       edit_summary: {
-        ...prev.edit_summary,
+        ...formData.edit_summary,
         value: evt.currentTarget.value,
       },
-    }));
+    });
 
   const deleteDraft = () => {
     const res = window.confirm(t('discard_confirm', { keyPrefix: 'draft' }));
@@ -429,17 +413,9 @@ const Ask = () => {
   const handleSelectedRevision = (e) => {
     const index = e.target.value;
     const revision = revisions[index];
-    setFormData((prev) => {
-      const updated = {
-        ...prev,
-        content: {
-          ...prev.content,
-          value: revision.content?.content || '',
-        },
-      };
-      setImmData(updated);
-      return updated;
-    });
+    formData.content.value = revision.content?.content || '';
+    setImmData({ ...formData });
+    setFormData({ ...formData });
   };
   const bool = similarQuestions.length > 0 && !isEdit;
   let pageTitle = t('ask_a_question', { keyPrefix: 'page_title' });
