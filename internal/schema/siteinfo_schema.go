@@ -326,6 +326,7 @@ type SiteInfoResp struct {
 	Questions     *SiteQuestionsResp         `json:"site_questions"`
 	Tags          *SiteTagsResp              `json:"site_tags"`
 	Legal         *SiteLegalSimpleResp       `json:"site_legal"`
+	Security      *SiteSecurityResp          `json:"site_security"`
 	Version       string                     `json:"version"`
 	Revision      string                     `json:"revision"`
 }

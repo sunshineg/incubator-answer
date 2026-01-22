@@ -107,6 +107,9 @@ func (sc *SiteInfoController) GetSiteInfo(ctx *gin.Context) {
 	if legal, err := sc.siteInfoService.GetSiteSecurity(ctx); err == nil {
 		resp.Legal = &schema.SiteLegalSimpleResp{ExternalContentDisplay: legal.ExternalContentDisplay}
 	}
+	if security, err := sc.siteInfoService.GetSiteSecurity(ctx); err == nil {
+		resp.Security = security
+	}
 
 	handler.HandleResponse(ctx, nil, resp)
 }

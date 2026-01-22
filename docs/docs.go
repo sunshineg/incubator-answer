@@ -10996,6 +10996,9 @@ const docTemplate = `{
                 "site_questions": {
                     "$ref": "#/definitions/schema.SiteQuestionsResp"
                 },
+                "site_security": {
+                    "$ref": "#/definitions/schema.SiteSecurityResp"
+                },
                 "site_seo": {
                     "$ref": "#/definitions/schema.SiteSeoResp"
                 },
