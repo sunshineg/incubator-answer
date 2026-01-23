@@ -157,6 +157,117 @@ definitions:
       select_theme:
         type: string
     type: object
+  schema.AIConversationAdminDeleteReq:
+    properties:
+      conversation_id:
+        type: string
+    required:
+    - conversation_id
+    type: object
+  schema.AIConversationAdminDetailResp:
+    properties:
+      conversation_id:
+        type: string
+      created_at:
+        type: integer
+      records:
+        items:
+          $ref: '#/definitions/schema.AIConversationRecord'
+        type: array
+      topic:
+        type: string
+      user_info:
+        $ref: '#/definitions/schema.AIConversationUserInfo'
+    type: object
+  schema.AIConversationAdminListItem:
+    properties:
+      created_at:
+        type: integer
+      helpful_count:
+        type: integer
+      id:
+        type: string
+      topic:
+        type: string
+      unhelpful_count:
+        type: integer
+      user_info:
+        $ref: '#/definitions/schema.AIConversationUserInfo'
+    type: object
+  schema.AIConversationDetailResp:
+    properties:
+      conversation_id:
+        type: string
+      created_at:
+        type: integer
+      records:
+        items:
+          $ref: '#/definitions/schema.AIConversationRecord'
+        type: array
+      topic:
+        type: string
+      updated_at:
+        type: integer
+    type: object
+  schema.AIConversationListItem:
+    properties:
+      conversation_id:
+        type: string
+      created_at:
+        type: integer
+      topic:
+        type: string
+    type: object
+  schema.AIConversationRecord:
+    properties:
+      chat_completion_id:
+        type: string
+      content:
+        type: string
+      created_at:
+        type: integer
+      helpful:
+        type: integer
+      role:
+        type: string
+      unhelpful:
+        type: integer
+    type: object
+  schema.AIConversationUserInfo:
+    properties:
+      avatar:
+        type: string
+      display_name:
+        type: string
+      id:
+        type: string
+      rank:
+        type: integer
+      username:
+        type: string
+    type: object
+  schema.AIConversationVoteReq:
+    properties:
+      cancel:
+        type: boolean
+      chat_completion_id:
+        type: string
+      vote_type:
+        enum:
+        - helpful
+        - unhelpful
+        type: string
+    required:
+    - chat_completion_id
+    - vote_type
+    type: object
+  schema.AIPromptConfig:
+    properties:
+      en_us:
+        type: string
+      zh_cn:
+        type: string
+    type: object
   schema.AcceptAnswerReq:
     properties:
       answer_id:
@@ -215,6 +326,25 @@ definitions:
         type: string
       verify:
         type: boolean
+    type: object
+  schema.AddAPIKeyReq:
+    properties:
+      description:
+        maxLength: 150
+        type: string
+      scope:
+        enum:
+        - read-only
+        - global
+        type: string
+    required:
+    - description
+    - scope
+    type: object
+  schema.AddAPIKeyResp:
+    properties:
+      access_key:
+        type: string
     type: object
   schema.AddCommentReq:
     properties:
@@ -546,6 +676,11 @@ definitions:
       name:
         type: string
     type: object
+  schema.DeleteAPIKeyReq:
+    properties:
+      id:
+        type: integer
+    type: object
   schema.DeletePermanentlyReq:
     properties:
       type:
@@ -628,6 +763,41 @@ definitions:
       is_followed:
         description: if user is followed object will be true,otherwise false
         type: boolean
+    type: object
+  schema.GetAIModelResp:
+    properties:
+      created:
+        type: integer
+      id:
+        type: string
+      object:
+        type: string
+      owned_by:
+        type: string
+    type: object
+  schema.GetAIProviderResp:
+    properties:
+      default_api_host:
+        type: string
+      display_name:
+        type: string
+      name:
+        type: string
+    type: object
+  schema.GetAPIKeyResp:
+    properties:
+      access_key:
+        type: string
+      created_at:
+        type: integer
+      description:
+        type: string
+      id:
+        type: integer
+      last_used_at:
+        type: integer
+      scope:
+        type: string
     type: object
   schema.GetAnswerInfoResp:
     properties:
@@ -2072,6 +2242,49 @@ definitions:
     required:
     - user_id
     type: object
+  schema.SiteAIProvider:
+    properties:
+      api_host:
+        maxLength: 512
+        type: string
+      api_key:
+        maxLength: 256
+        type: string
+      model:
+        maxLength: 100
+        type: string
+      provider:
+        maxLength: 50
+        type: string
+    type: object
+  schema.SiteAIReq:
+    properties:
+      ai_providers:
+        items:
+          $ref: '#/definitions/schema.SiteAIProvider'
+        type: array
+      chosen_provider:
+        maxLength: 50
+        type: string
+      enabled:
+        type: boolean
+      prompt_config:
+        $ref: '#/definitions/schema.AIPromptConfig'
+    type: object
+  schema.SiteAIResp:
+    properties:
+      ai_providers:
+        items:
+          $ref: '#/definitions/schema.SiteAIProvider'
+        type: array
+      chosen_provider:
+        maxLength: 50
+        type: string
+      enabled:
+        type: boolean
+      prompt_config:
+        $ref: '#/definitions/schema.AIPromptConfig'
+    type: object
   schema.SiteAdvancedReq:
     properties:
       authorized_attachment_extensions:
@@ -2218,6 +2431,8 @@ definitions:
     type: object
   schema.SiteInfoResp:
     properties:
+      ai_enabled:
+        type: boolean
       branding:
         $ref: '#/definitions/schema.SiteBrandingResp'
       custom_css_html:
@@ -2228,6 +2443,8 @@ definitions:
         $ref: '#/definitions/schema.SiteInterfaceSettingsResp'
       login:
         $ref: '#/definitions/schema.SiteLoginResp'
+      mcp_enabled:
+        type: boolean
       revision:
         type: string
       site_advanced:
@@ -2310,6 +2527,22 @@ definitions:
         type: boolean
       allow_password_login:
         type: boolean
+    type: object
+  schema.SiteMCPReq:
+    properties:
+      enabled:
+        type: boolean
+    type: object
+  schema.SiteMCPResp:
+    properties:
+      enabled:
+        type: boolean
+      http_header:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
     type: object
   schema.SitePoliciesReq:
     properties:
@@ -2652,6 +2885,17 @@ definitions:
         type: string
       url_title:
         type: string
+    type: object
+  schema.UpdateAPIKeyReq:
+    properties:
+      description:
+        maxLength: 150
+        type: string
+      id:
+        type: integer
+    required:
+    - description
+    - id
     type: object
   schema.UpdateBadgeStatusReq:
     properties:
@@ -3241,6 +3485,174 @@ paths:
       summary: if config file not exist try to redirect to install page
       tags:
       - installation
+  /answer/admin/api/ai-config:
+    get:
+      description: get AI configuration
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.SiteAIResp'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get AI configuration
+      tags:
+      - admin
+    put:
+      description: update AI configuration
+      parameters:
+      - description: AI config
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.SiteAIReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: update AI configuration
+      tags:
+      - admin
+  /answer/admin/api/ai-models:
+    post:
+      description: get AI models
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/schema.GetAIModelResp'
+                  type: array
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get AI models
+      tags:
+      - admin
+  /answer/admin/api/ai-provider:
+    get:
+      description: get AI provider configuration
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/schema.GetAIProviderResp'
+                  type: array
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get AI provider configuration
+      tags:
+      - admin
+  /answer/admin/api/ai/conversation:
+    delete:
+      consumes:
+      - application/json
+      description: delete conversation and its related records for admin
+      parameters:
+      - description: apikey
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.AIConversationAdminDeleteReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      summary: delete conversation for admin
+      tags:
+      - ai-conversation-admin
+    get:
+      consumes:
+      - application/json
+      description: get conversation detail for admin
+      parameters:
+      - description: conversation id
+        in: query
+        name: conversation_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.AIConversationAdminDetailResp'
+              type: object
+      summary: get conversation detail for admin
+      tags:
+      - ai-conversation-admin
+  /answer/admin/api/ai/conversation/page:
+    get:
+      consumes:
+      - application/json
+      description: get conversation list for admin
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: page size
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/pager.PageModel'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/schema.AIConversationAdminListItem'
+                        type: array
+                    type: object
+              type: object
+      summary: get conversation list for admin
+      tags:
+      - ai-conversation-admin
   /answer/admin/api/answer/page:
     get:
       consumes:
@@ -3305,6 +3717,97 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: update answer status
+      tags:
+      - admin
+  /answer/admin/api/api-key:
+    delete:
+      description: delete apikey
+      parameters:
+      - description: apikey
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.DeleteAPIKeyReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: delete apikey
+      tags:
+      - admin
+    post:
+      description: add apikey
+      parameters:
+      - description: apikey
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.AddAPIKeyReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.AddAPIKeyResp'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: add apikey
+      tags:
+      - admin
+    put:
+      description: update apikey
+      parameters:
+      - description: apikey
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.UpdateAPIKeyReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: update apikey
+      tags:
+      - admin
+  /answer/admin/api/api-key/all:
+    get:
+      description: get all api keys
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/schema.GetAPIKeyResp'
+                  type: array
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get all api keys
       tags:
       - admin
   /answer/admin/api/badge/status:
@@ -3432,6 +3935,47 @@ paths:
       summary: Get language options
       tags:
       - Lang
+  /answer/admin/api/mcp-config:
+    get:
+      description: get MCP configuration
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.SiteMCPResp'
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: get MCP configuration
+      tags:
+      - admin
+    put:
+      description: update MCP configuration
+      parameters:
+      - description: MCP config
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.SiteMCPReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      security:
+      - ApiKeyAuth: []
+      summary: update MCP configuration
+      tags:
+      - admin
   /answer/admin/api/plugin/config:
     get:
       description: get plugin config
@@ -4639,6 +5183,90 @@ paths:
       summary: get object timeline detail
       tags:
       - Comment
+  /answer/api/v1/ai/conversation:
+    get:
+      consumes:
+      - application/json
+      description: get conversation detail
+      parameters:
+      - description: conversation id
+        in: query
+        name: conversation_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  $ref: '#/definitions/schema.AIConversationDetailResp'
+              type: object
+      summary: get conversation detail
+      tags:
+      - ai-conversation
+  /answer/api/v1/ai/conversation/page:
+    get:
+      consumes:
+      - application/json
+      description: get conversation list
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: page size
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.RespBody'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/pager.PageModel'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/schema.AIConversationListItem'
+                        type: array
+                    type: object
+              type: object
+      summary: get conversation list
+      tags:
+      - ai-conversation
+  /answer/api/v1/ai/conversation/vote:
+    post:
+      consumes:
+      - application/json
+      description: vote record
+      parameters:
+      - description: vote request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schema.AIConversationVoteReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.RespBody'
+      summary: vote record
+      tags:
+      - ai-conversation
   /answer/api/v1/answer:
     delete:
       consumes:

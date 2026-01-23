@@ -381,8 +381,8 @@ type SiteInfoResp struct {
 	Security      *SiteSecurityResp          `json:"site_security"`
 	Version       string                     `json:"version"`
 	Revision      string                     `json:"revision"`
-	AIEnabled     bool                   `json:"ai_enabled"`
-	MCPEnabled    bool                   `json:"mcp_enabled"`
+	AIEnabled     bool                       `json:"ai_enabled"`
+	MCPEnabled    bool                       `json:"mcp_enabled"`
 }
 
 type TemplateSiteInfoResp struct {

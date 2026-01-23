@@ -42,8 +42,8 @@ const (
 	SiteTypeUsersSettings     = "users_settings"
 	SiteTypeInterfaceSettings = "interface_settings"
 
-	SiteTypePolicies = "policies"
-	SiteTypeSecurity = "security"
+	SiteTypePolicies      = "policies"
+	SiteTypeSecurity      = "security"
 	SiteTypeAI            = "ai"
 	SiteTypeFeatureToggle = "feature-toggle"
 	SiteTypeMCP           = "mcp"
