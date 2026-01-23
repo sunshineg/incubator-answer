@@ -38,7 +38,9 @@ import (
 	"github.com/apache/answer/internal/controller_admin"
 	"github.com/apache/answer/internal/repo/activity"
 	"github.com/apache/answer/internal/repo/activity_common"
+	"github.com/apache/answer/internal/repo/ai_conversation"
 	"github.com/apache/answer/internal/repo/answer"
+	"github.com/apache/answer/internal/repo/api_key"
 	"github.com/apache/answer/internal/repo/auth"
 	"github.com/apache/answer/internal/repo/badge"
 	"github.com/apache/answer/internal/repo/badge_award"
@@ -73,7 +75,9 @@ import (
 	activity2 "github.com/apache/answer/internal/service/activity"
 	activity_common2 "github.com/apache/answer/internal/service/activity_common"
 	"github.com/apache/answer/internal/service/activityqueue"
+	ai_conversation2 "github.com/apache/answer/internal/service/ai_conversation"
 	"github.com/apache/answer/internal/service/answer_common"
+	"github.com/apache/answer/internal/service/apikey"
 	auth2 "github.com/apache/answer/internal/service/auth"
 	badge2 "github.com/apache/answer/internal/service/badge"
 	collection2 "github.com/apache/answer/internal/service/collection"
@@ -85,6 +89,7 @@ import (
 	"github.com/apache/answer/internal/service/dashboard"
 	"github.com/apache/answer/internal/service/eventqueue"
 	export2 "github.com/apache/answer/internal/service/export"
+	"github.com/apache/answer/internal/service/feature_toggle"
 	file_record2 "github.com/apache/answer/internal/service/file_record"
 	"github.com/apache/answer/internal/service/follow"
 	"github.com/apache/answer/internal/service/importer"
@@ -274,7 +279,17 @@ func initApplication(debug bool, serverConf *conf.Server, dbConf *data.Database,
 	badgeService := badge2.NewBadgeService(badgeRepo, badgeGroupRepo, badgeAwardRepo, badgeEventService, siteInfoCommonService)
 	badgeController := controller.NewBadgeController(badgeService, badgeAwardService)
 	controller_adminBadgeController := controller_admin.NewBadgeController(badgeService)
-	answerAPIRouter := router.NewAnswerAPIRouter(langController, userController, commentController, reportController, voteController, tagController, followController, collectionController, questionController, answerController, searchController, revisionController, rankController, userAdminController, reasonController, themeController, siteInfoController, controllerSiteInfoController, notificationController, dashboardController, uploadController, activityController, roleController, pluginController, permissionController, userPluginController, reviewController, metaController, badgeController, controller_adminBadgeController)
+	apiKeyRepo := api_key.NewAPIKeyRepo(dataData)
+	apiKeyService := apikey.NewAPIKeyService(apiKeyRepo)
+	adminAPIKeyController := controller_admin.NewAdminAPIKeyController(apiKeyService)
+	featureToggleService := feature_toggle.NewFeatureToggleService(siteInfoRepo)
+	mcpController := controller.NewMCPController(searchService, siteInfoCommonService, tagCommonService, questionCommon, commentRepo, userCommon, answerRepo, featureToggleService)
+	aiConversationRepo := ai_conversation.NewAIConversationRepo(dataData)
+	aiConversationService := ai_conversation2.NewAIConversationService(aiConversationRepo, userCommon)
+	aiController := controller.NewAIController(searchService, siteInfoCommonService, tagCommonService, questionCommon, commentRepo, userCommon, answerRepo, mcpController, aiConversationService, featureToggleService)
+	aiConversationController := controller.NewAIConversationController(aiConversationService, featureToggleService)
+	aiConversationAdminController := controller_admin.NewAIConversationAdminController(aiConversationService, featureToggleService)
+	answerAPIRouter := router.NewAnswerAPIRouter(langController, userController, commentController, reportController, voteController, tagController, followController, collectionController, questionController, answerController, searchController, revisionController, rankController, userAdminController, reasonController, themeController, siteInfoController, controllerSiteInfoController, notificationController, dashboardController, uploadController, activityController, roleController, pluginController, permissionController, userPluginController, reviewController, metaController, badgeController, controller_adminBadgeController, adminAPIKeyController, aiController, aiConversationController, aiConversationAdminController)
 	swaggerRouter := router.NewSwaggerRouter(swaggerConf)
 	uiRouter := router.NewUIRouter(controllerSiteInfoController, siteInfoCommonService)
 	authUserMiddleware := middleware.NewAuthUserMiddleware(authService, siteInfoCommonService)

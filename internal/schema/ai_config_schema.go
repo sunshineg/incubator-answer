@@ -17,18 +17,35 @@
  * under the License.
  */
 
-package controller_admin
+package schema
 
-import "github.com/google/wire"
+// GetAIProviderResp get AI providers response
+type GetAIProviderResp struct {
+	Name           string `json:"name"`
+	DisplayName    string `json:"display_name"`
+	DefaultAPIHost string `json:"default_api_host"`
+}
 
-// ProviderSetController is controller providers.
-var ProviderSetController = wire.NewSet(
-	NewUserAdminController,
-	NewThemeController,
-	NewSiteInfoController,
-	NewRoleController,
-	NewPluginController,
-	NewBadgeController,
-	NewAdminAPIKeyController,
-	NewAIConversationAdminController,
-)
+// GetAIModelsResp get AI model response
+type GetAIModelsResp struct {
+	Object string `json:"object"`
+	Data   []struct {
+		Id      string `json:"id"`
+		Object  string `json:"object"`
+		Created int    `json:"created"`
+		OwnedBy string `json:"owned_by"`
+	} `json:"data"`
+}
+
+type GetAIModelsReq struct {
+	APIHost string `json:"api_host"`
+	APIKey  string `json:"api_key"`
+}
+
+// GetAIModelResp get AI model response
+type GetAIModelResp struct {
+	Id      string `json:"id"`
+	Object  string `json:"object"`
+	Created int    `json:"created"`
+	OwnedBy string `json:"owned_by"`
+}

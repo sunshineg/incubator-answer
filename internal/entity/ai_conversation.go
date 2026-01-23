@@ -17,18 +17,21 @@
  * under the License.
  */
 
-package controller_admin
+package entity
 
-import "github.com/google/wire"
+import "time"
 
-// ProviderSetController is controller providers.
-var ProviderSetController = wire.NewSet(
-	NewUserAdminController,
-	NewThemeController,
-	NewSiteInfoController,
-	NewRoleController,
-	NewPluginController,
-	NewBadgeController,
-	NewAdminAPIKeyController,
-	NewAIConversationAdminController,
-)
+// AIConversation AI
+type AIConversation struct {
+	ID             int       `xorm:"not null pk autoincr INT(11) id"`
+	CreatedAt      time.Time `xorm:"created not null default CURRENT_TIMESTAMP TIMESTAMP created_at"`
+	UpdatedAt      time.Time `xorm:"updated not null default CURRENT_TIMESTAMP TIMESTAMP updated_at"`
+	ConversationID string    `xorm:"not null unique VARCHAR(255) conversation_id"`
+	Topic          string    `xorm:"not null MEDIUMTEXT topic"`
+	UserID         string    `xorm:"not null default 0 BIGINT(20) user_id"`
+}
+
+// TableName returns the table name
+func (AIConversation) TableName() string {
+	return "ai_conversation"
+}

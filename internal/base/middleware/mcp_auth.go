@@ -17,18 +17,31 @@
  * under the License.
  */
 
-package controller_admin
+package middleware
 
-import "github.com/google/wire"
-
-// ProviderSetController is controller providers.
-var ProviderSetController = wire.NewSet(
-	NewUserAdminController,
-	NewThemeController,
-	NewSiteInfoController,
-	NewRoleController,
-	NewPluginController,
-	NewBadgeController,
-	NewAdminAPIKeyController,
-	NewAIConversationAdminController,
+import (
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/gin-gonic/gin"
+	"github.com/segmentfault/pacman/errors"
+	"github.com/segmentfault/pacman/log"
 )
+
+// AuthMcpEnable check mcp is enabled
+func (am *AuthUserMiddleware) AuthMcpEnable() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		mcpConfig, err := am.siteInfoCommonService.GetSiteMCP(ctx)
+		if err != nil {
+			handler.HandleResponse(ctx, errors.InternalServer(reason.UnknownError), nil)
+			ctx.Abort()
+			return
+		}
+		if mcpConfig != nil && mcpConfig.Enabled {
+			ctx.Next()
+			return
+		}
+		handler.HandleResponse(ctx, errors.Forbidden(reason.ForbiddenError), nil)
+		ctx.Abort()
+		log.Error("abort mcp auth middleware, get mcp config error: ", err)
+	}
+}

@@ -110,6 +110,13 @@ func (sc *SiteInfoController) GetSiteInfo(ctx *gin.Context) {
 	if security, err := sc.siteInfoService.GetSiteSecurity(ctx); err == nil {
 		resp.Security = security
 	}
+	if aiConf, err := sc.siteInfoService.GetSiteAI(ctx); err == nil {
+		resp.AIEnabled = aiConf.Enabled
+	}
+
+	if mcpConf, err := sc.siteInfoService.GetSiteMCP(ctx); err == nil {
+		resp.MCPEnabled = mcpConf.Enabled
+	}
 
 	handler.HandleResponse(ctx, nil, resp)
 }

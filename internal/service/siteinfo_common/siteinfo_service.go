@@ -34,7 +34,7 @@ import (
 //go:generate mockgen -source=./siteinfo_service.go -destination=../mock/siteinfo_repo_mock.go -package=mock
 type SiteInfoRepo interface {
 	SaveByType(ctx context.Context, siteType string, data *entity.SiteInfo) (err error)
-	GetByType(ctx context.Context, siteType string) (siteInfo *entity.SiteInfo, exist bool, err error)
+	GetByType(ctx context.Context, siteType string, withoutCache ...bool) (siteInfo *entity.SiteInfo, exist bool, err error)
 	IsBrandingFileUsed(ctx context.Context, filePath string) (bool, error)
 }
 
@@ -63,6 +63,8 @@ type SiteInfoCommonService interface {
 	GetSiteSeo(ctx context.Context) (resp *schema.SiteSeoResp, err error)
 	GetSiteInfoByType(ctx context.Context, siteType string, resp any) (err error)
 	IsBrandingFileUsed(ctx context.Context, filePath string) bool
+	GetSiteAI(ctx context.Context) (resp *schema.SiteAIResp, err error)
+	GetSiteMCP(ctx context.Context) (resp *schema.SiteMCPResp, err error)
 }
 
 // NewSiteInfoCommonService new site info common service
@@ -298,4 +300,22 @@ func (s *siteInfoCommonService) IsBrandingFileUsed(ctx context.Context, filePath
 		return true
 	}
 	return used
+}
+
+// GetSiteAI get site AI configuration
+func (s *siteInfoCommonService) GetSiteAI(ctx context.Context) (resp *schema.SiteAIResp, err error) {
+	resp = &schema.SiteAIResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeAI, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+// GetSiteMCP get site AI configuration
+func (s *siteInfoCommonService) GetSiteMCP(ctx context.Context) (resp *schema.SiteMCPResp, err error) {
+	resp = &schema.SiteMCPResp{}
+	if err = s.GetSiteInfoByType(ctx, constant.SiteTypeMCP, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
 }

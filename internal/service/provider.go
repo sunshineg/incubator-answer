@@ -24,7 +24,9 @@ import (
 	"github.com/apache/answer/internal/service/activity"
 	"github.com/apache/answer/internal/service/activity_common"
 	"github.com/apache/answer/internal/service/activityqueue"
+	"github.com/apache/answer/internal/service/ai_conversation"
 	answercommon "github.com/apache/answer/internal/service/answer_common"
+	"github.com/apache/answer/internal/service/apikey"
 	"github.com/apache/answer/internal/service/auth"
 	"github.com/apache/answer/internal/service/badge"
 	"github.com/apache/answer/internal/service/collection"
@@ -36,6 +38,7 @@ import (
 	"github.com/apache/answer/internal/service/dashboard"
 	"github.com/apache/answer/internal/service/eventqueue"
 	"github.com/apache/answer/internal/service/export"
+	"github.com/apache/answer/internal/service/feature_toggle"
 	"github.com/apache/answer/internal/service/file_record"
 	"github.com/apache/answer/internal/service/follow"
 	"github.com/apache/answer/internal/service/importer"
@@ -128,4 +131,7 @@ var ProviderSetService = wire.NewSet(
 	badge.NewBadgeGroupService,
 	importer.NewImporterService,
 	file_record.NewFileRecordService,
+	apikey.NewAPIKeyService,
+	ai_conversation.NewAIConversationService,
+	feature_toggle.NewFeatureToggleService,
 )

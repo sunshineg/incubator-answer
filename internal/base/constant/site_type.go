@@ -44,4 +44,7 @@ const (
 
 	SiteTypePolicies = "policies"
 	SiteTypeSecurity = "security"
+	SiteTypeAI            = "ai"
+	SiteTypeFeatureToggle = "feature-toggle"
+	SiteTypeMCP           = "mcp"
 )

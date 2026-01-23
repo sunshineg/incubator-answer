@@ -23,7 +23,9 @@ import (
 	"github.com/apache/answer/internal/base/data"
 	"github.com/apache/answer/internal/repo/activity"
 	"github.com/apache/answer/internal/repo/activity_common"
+	"github.com/apache/answer/internal/repo/ai_conversation"
 	"github.com/apache/answer/internal/repo/answer"
+	"github.com/apache/answer/internal/repo/api_key"
 	"github.com/apache/answer/internal/repo/auth"
 	"github.com/apache/answer/internal/repo/badge"
 	"github.com/apache/answer/internal/repo/badge_award"
@@ -109,4 +111,6 @@ var ProviderSetRepo = wire.NewSet(
 	badge_group.NewBadgeGroupRepo,
 	badge_award.NewBadgeAwardRepo,
 	file_record.NewFileRecordRepo,
+	api_key.NewAPIKeyRepo,
+	ai_conversation.NewAIConversationRepo,
 )
