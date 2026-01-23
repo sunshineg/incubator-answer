@@ -31,6 +31,7 @@ import {
   pageTagStore,
   writeSettingStore,
   siteSecurityStore,
+  aiControlStore,
 } from '@/stores';
 import { RouteAlias } from '@/router/alias';
 import {
@@ -385,6 +386,9 @@ export const initAppSettingsStore = async () => {
       ...appSettings.site_advanced,
       ...appSettings.site_questions,
       ...appSettings.site_tags,
+    });
+    aiControlStore.getState().update({
+      ai_enabled: appSettings.ai_enabled,
     });
     siteSecurityStore.getState().update(appSettings.site_security);
   }

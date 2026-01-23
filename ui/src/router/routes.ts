@@ -445,6 +445,22 @@ const routes: RouteNode[] = [
             path: 'badges',
             page: 'pages/Admin/Badges',
           },
+          {
+            path: 'ai-assistant',
+            page: 'pages/Admin/AiAssistant',
+          },
+          {
+            path: 'ai-settings',
+            page: 'pages/Admin/AiSettings',
+          },
+          {
+            path: 'apikeys',
+            page: 'pages/Admin/Apikeys',
+          },
+          {
+            path: 'mcp',
+            page: 'pages/Admin/Mcp',
+          },
         ],
       },
       {
@@ -466,6 +482,26 @@ const routes: RouteNode[] = [
       {
         path: '50x',
         page: 'pages/50X',
+      },
+      // ai
+      {
+        page: 'pages/SideNavLayoutWithoutFooter',
+        children: [
+          {
+            path: '/ai-assistant',
+            page: 'pages/AiAssistant',
+            guard: () => {
+              return guard.logged();
+            },
+          },
+          {
+            path: '/ai-assistant/:id',
+            page: 'pages/AiAssistant',
+            guard: () => {
+              return guard.logged();
+            },
+          },
+        ],
       },
     ],
   },
