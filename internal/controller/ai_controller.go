@@ -433,7 +433,7 @@ func (c *AIController) handleAIConversation(ctx *gin.Context, w http.ResponseWri
 	maxRounds := 10
 	messages := conversationCtx.GetOpenAIMessages()
 
-	for round := 0; round < maxRounds; round++ {
+	for round := range maxRounds {
 		log.Debugf("AI conversation round: %d", round+1)
 
 		aiReq := openai.ChatCompletionRequest{
