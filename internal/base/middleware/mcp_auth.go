@@ -17,21 +17,31 @@
  * under the License.
  */
 
-package constant
+package middleware
 
-const (
-	SiteTypeGeneral       = "general"
-	SiteTypeInterface     = "interface"
-	SiteTypeBranding      = "branding"
-	SiteTypeWrite         = "write"
-	SiteTypeLegal         = "legal"
-	SiteTypeSeo           = "seo"
-	SiteTypeLogin         = "login"
-	SiteTypeCustomCssHTML = "css-html"
-	SiteTypeTheme         = "theme"
-	SiteTypePrivileges    = "privileges"
-	SiteTypeUsers         = "users"
-	SiteTypeAI            = "ai"
-	SiteTypeFeatureToggle = "feature-toggle"
-	SiteTypeMCP           = "mcp"
+import (
+	"github.com/apache/answer/internal/base/handler"
+	"github.com/apache/answer/internal/base/reason"
+	"github.com/gin-gonic/gin"
+	"github.com/segmentfault/pacman/errors"
+	"github.com/segmentfault/pacman/log"
 )
+
+// AuthMcpEnable check mcp is enabled
+func (am *AuthUserMiddleware) AuthMcpEnable() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		mcpConfig, err := am.siteInfoCommonService.GetSiteMCP(ctx)
+		if err != nil {
+			handler.HandleResponse(ctx, errors.InternalServer(reason.UnknownError), nil)
+			ctx.Abort()
+			return
+		}
+		if mcpConfig != nil && mcpConfig.Enabled {
+			ctx.Next()
+			return
+		}
+		handler.HandleResponse(ctx, errors.Forbidden(reason.ForbiddenError), nil)
+		ctx.Abort()
+		log.Error("abort mcp auth middleware, get mcp config error: ", err)
+	}
+}

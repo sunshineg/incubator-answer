@@ -94,6 +94,13 @@ func (sc *SiteInfoController) GetSiteInfo(ctx *gin.Context) {
 	if legal, err := sc.siteInfoService.GetSiteLegal(ctx); err == nil {
 		resp.Legal = &schema.SiteLegalSimpleResp{ExternalContentDisplay: legal.ExternalContentDisplay}
 	}
+	if aiConf, err := sc.siteInfoService.GetSiteAI(ctx); err == nil {
+		resp.AIEnabled = aiConf.Enabled
+	}
+
+	if mcpConf, err := sc.siteInfoService.GetSiteMCP(ctx); err == nil {
+		resp.MCPEnabled = mcpConf.Enabled
+	}
 
 	handler.HandleResponse(ctx, nil, resp)
 }

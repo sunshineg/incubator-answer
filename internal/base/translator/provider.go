@@ -242,16 +242,14 @@ func inspectTranslatorNode(node any, path []string, isRoot bool) error {
 		return nil
 	case []any:
 		for idx, child := range data {
-			nextPath := append(path, fmt.Sprintf("[%d]", idx))
-			if err := inspectTranslatorNode(child, nextPath, false); err != nil {
+			if err := inspectTranslatorNode(child, append(path, fmt.Sprintf("[%d]", idx)), false); err != nil {
 				return err
 			}
 		}
 		return nil
 	case []map[string]any:
 		for idx, child := range data {
-			nextPath := append(path, fmt.Sprintf("[%d]", idx))
-			if err := inspectTranslatorNode(child, nextPath, false); err != nil {
+			if err := inspectTranslatorNode(child, append(path, fmt.Sprintf("[%d]", idx)), false); err != nil {
 				return err
 			}
 		}

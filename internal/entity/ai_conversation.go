@@ -17,21 +17,21 @@
  * under the License.
  */
 
-package constant
+package entity
 
-const (
-	SiteTypeGeneral       = "general"
-	SiteTypeInterface     = "interface"
-	SiteTypeBranding      = "branding"
-	SiteTypeWrite         = "write"
-	SiteTypeLegal         = "legal"
-	SiteTypeSeo           = "seo"
-	SiteTypeLogin         = "login"
-	SiteTypeCustomCssHTML = "css-html"
-	SiteTypeTheme         = "theme"
-	SiteTypePrivileges    = "privileges"
-	SiteTypeUsers         = "users"
-	SiteTypeAI            = "ai"
-	SiteTypeFeatureToggle = "feature-toggle"
-	SiteTypeMCP           = "mcp"
-)
+import "time"
+
+// AIConversation AI
+type AIConversation struct {
+	ID             int       `xorm:"not null pk autoincr INT(11) id"`
+	CreatedAt      time.Time `xorm:"created not null default CURRENT_TIMESTAMP TIMESTAMP created_at"`
+	UpdatedAt      time.Time `xorm:"updated not null default CURRENT_TIMESTAMP TIMESTAMP updated_at"`
+	ConversationID string    `xorm:"not null unique VARCHAR(255) conversation_id"`
+	Topic          string    `xorm:"not null MEDIUMTEXT topic"`
+	UserID         string    `xorm:"not null default 0 BIGINT(20) user_id"`
+}
+
+// TableName returns the table name
+func (AIConversation) TableName() string {
+	return "ai_conversation"
+}

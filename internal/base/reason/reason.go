@@ -117,6 +117,7 @@ const (
 	UserStatusSuspendedForever       = "error.user.status_suspended_forever"
 	UserStatusSuspendedUntil         = "error.user.status_suspended_until"
 	UserStatusDeleted                = "error.user.status_deleted"
+	ErrFeatureDisabled               = "error.feature.disabled"
 )
 
 // user external login reasons

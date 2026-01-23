@@ -194,6 +194,56 @@ func (s *SiteSeoResp) IsShortLink() bool {
 		s.Permalink == constant.PermalinkQuestionIDByShortID
 }
 
+// AIPromptConfig AI prompt configuration for different languages
+type AIPromptConfig struct {
+	ZhCN string `json:"zh_cn"`
+	EnUS string `json:"en_us"`
+}
+
+// SiteAIReq AI configuration request
+type SiteAIReq struct {
+	Enabled         bool              `validate:"omitempty" form:"enabled" json:"enabled"`
+	ChosenProvider  string            `validate:"omitempty,lte=50" form:"chosen_provider" json:"chosen_provider"`
+	SiteAIProviders []*SiteAIProvider `validate:"omitempty,dive" form:"ai_providers" json:"ai_providers"`
+	PromptConfig    *AIPromptConfig   `validate:"omitempty" form:"prompt_config" json:"prompt_config,omitempty"`
+}
+
+func (s *SiteAIResp) GetProvider() *SiteAIProvider {
+	if !s.Enabled || s.ChosenProvider == "" {
+		return &SiteAIProvider{}
+	}
+	if len(s.SiteAIProviders) == 0 {
+		return &SiteAIProvider{}
+	}
+	for _, provider := range s.SiteAIProviders {
+		if provider.Provider == s.ChosenProvider {
+			return provider
+		}
+	}
+	return &SiteAIProvider{}
+}
+
+type SiteAIProvider struct {
+	Provider string `validate:"omitempty,lte=50" form:"provider" json:"provider"`
+	APIHost  string `validate:"omitempty,lte=512" form:"api_host" json:"api_host"`
+	APIKey   string `validate:"omitempty,lte=256" form:"api_key" json:"api_key"`
+	Model    string `validate:"omitempty,lte=100" form:"model" json:"model"`
+}
+
+// SiteAIResp AI configuration response
+type SiteAIResp SiteAIReq
+
+type SiteMCPReq struct {
+	Enabled bool `validate:"omitempty" form:"enabled" json:"enabled"`
+}
+
+type SiteMCPResp struct {
+	Enabled    bool   `json:"enabled"`
+	Type       string `json:"type"`
+	URL        string `json:"url"`
+	HTTPHeader string `json:"http_header"`
+}
+
 // SiteGeneralResp site general response
 type SiteGeneralResp SiteGeneralReq
 
@@ -266,6 +316,8 @@ type SiteInfoResp struct {
 	Legal         *SiteLegalSimpleResp   `json:"site_legal"`
 	Version       string                 `json:"version"`
 	Revision      string                 `json:"revision"`
+	AIEnabled     bool                   `json:"ai_enabled"`
+	MCPEnabled    bool                   `json:"mcp_enabled"`
 }
 type TemplateSiteInfoResp struct {
 	General       *SiteGeneralResp       `json:"general"`
