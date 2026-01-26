@@ -73,12 +73,16 @@ const Index: FC<Props> = ({
     }
   };
 
+  // For number type, use ?? to preserve 0 value; for other types, use || for backward compatibility
+  const inputValue =
+    type === 'number' ? (fieldObject?.value ?? '') : fieldObject?.value || '';
+
   return (
     <Form.Control
       name={fieldName}
       placeholder={placeholder}
       type={type}
-      value={fieldObject?.value || ''}
+      value={inputValue}
       {...numberInputProps}
       inputMode={inputMode}
       onChange={handleChange}
