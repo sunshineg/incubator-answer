@@ -108,6 +108,7 @@ export const ADMIN_NAV_MENUS = [
     children: [
       { name: 'ai_settings', path: 'ai-settings' },
       { name: 'ai_assistant', path: 'ai-assistant' },
+      { name: 'mcp' },
     ],
   },
   {
@@ -144,7 +145,6 @@ export const ADMIN_NAV_MENUS = [
       { name: 'seo' },
       { name: 'smtp' },
       { name: 'apikeys' },
-      { name: 'mcp' },
     ],
   },
   {
