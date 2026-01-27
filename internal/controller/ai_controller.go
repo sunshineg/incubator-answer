@@ -613,7 +613,7 @@ func (c *AIController) executeToolCalls(ctx *gin.Context, _ http.ResponseWriter,
 
 	for _, toolCall := range validToolCalls {
 		if toolCall.Function.Name != "" {
-			var args map[string]interface{}
+			var args map[string]any
 			if err := json.Unmarshal([]byte(toolCall.Function.Arguments), &args); err != nil {
 				log.Errorf("Failed to parse tool arguments for %s: %v, arguments: %s", toolCall.Function.Name, err, toolCall.Function.Arguments)
 				errorResult := fmt.Sprintf("Error parsing tool arguments: %v", err)
@@ -677,14 +677,14 @@ func (c *AIController) getMCPTools() []openai.Tool {
 
 // convertMCPToolToOpenAI
 func (c *AIController) convertMCPToolToOpenAI(mcpTool mcp.Tool) openai.Tool {
-	properties := make(map[string]interface{})
+	properties := make(map[string]any)
 	required := make([]string, 0)
 
 	maps.Copy(properties, mcpTool.InputSchema.Properties)
 
 	required = append(required, mcpTool.InputSchema.Required...)
 
-	parameters := map[string]interface{}{
+	parameters := map[string]any{
 		"type":       "object",
 		"properties": properties,
 	}
@@ -704,7 +704,7 @@ func (c *AIController) convertMCPToolToOpenAI(mcpTool mcp.Tool) openai.Tool {
 }
 
 // callMCPTool
-func (c *AIController) callMCPTool(ctx context.Context, toolName string, arguments map[string]interface{}) (string, error) {
+func (c *AIController) callMCPTool(ctx context.Context, toolName string, arguments map[string]any) (string, error) {
 	request := mcp.CallToolRequest{
 		Request: mcp.Request{},
 		Params: struct {

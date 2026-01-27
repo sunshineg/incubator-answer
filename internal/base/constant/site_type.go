@@ -20,14 +20,13 @@
 package constant
 
 const (
-	SiteTypeGeneral = "general"
-	// Deprecated: split SiteTypeInterfaceSettings and SiteTypeUsersSettings for better clarity
+	// SiteTypeLegal\SiteTypeLegal\SiteTypeWrite The following items will no longer be used.
+	SiteTypeLegal     = "legal"
 	SiteTypeInterface = "interface"
-	SiteTypeBranding  = "branding"
-	// Deprecated: use SiteTypeAdvanced, SiteTypeQuestions, and SiteTypeTags instead
-	SiteTypeWrite = "write"
-	// Deprecated: use SiteTypePolicies and SiteTypeSecurity instead
-	SiteTypeLegal         = "legal"
+	SiteTypeWrite     = "write"
+
+	SiteTypeGeneral       = "general"
+	SiteTypeBranding      = "branding"
 	SiteTypeSeo           = "seo"
 	SiteTypeLogin         = "login"
 	SiteTypeCustomCssHTML = "css-html"

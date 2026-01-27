@@ -89,8 +89,7 @@ type SiteBrandingReq struct {
 	Favicon    string `validate:"omitempty,gt=0,lte=512" form:"favicon" json:"favicon"`
 }
 
-// SiteWriteReq site write request
-// Deprecated: use SiteQuestionsReq, SiteAdvancedReq and SiteTagsReq instead
+// SiteWriteReq site write request use SiteQuestionsReq, SiteAdvancedReq and SiteTagsReq instead
 type SiteWriteReq struct {
 	MinimumContent                 int             `validate:"omitempty,gte=0,lte=65535" json:"min_content"`
 	RestrictAnswer                 bool            `validate:"omitempty" json:"restrict_answer"`
@@ -159,8 +158,7 @@ type SiteWriteTag struct {
 	DisplayName string `json:"display_name"`
 }
 
-// SiteLegalReq site branding request
-// Deprecated: use SitePoliciesReq and SiteSecurityReq instead
+// SiteLegalReq site branding request use SitePoliciesReq and SiteSecurityReq instead
 type SiteLegalReq struct {
 	TermsOfServiceOriginalText string `json:"terms_of_service_original_text"`
 	TermsOfServiceParsedText   string `json:"terms_of_service_parsed_text"`
@@ -351,8 +349,7 @@ type SiteQuestionsResp SiteQuestionsReq
 type SiteAdvancedResp SiteAdvancedReq
 type SiteTagsResp SiteTagsReq
 
-// SiteLegalResp site write response
-// Deprecated: use SitePoliciesResp and SiteSecurityResp instead
+// SiteLegalResp site write response use SitePoliciesResp and SiteSecurityResp instead
 type SiteLegalResp SiteLegalReq
 
 // SiteLegalSimpleResp site write response

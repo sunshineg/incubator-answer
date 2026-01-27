@@ -369,7 +369,7 @@ func splitLegalMenu(ctx context.Context, x *xorm.Engine) error {
 
 	// save login settings
 	if existsLogin {
-		loginContent, err := json.Marshal(siteLogin)
+		loginContent, _ := json.Marshal(siteLogin)
 		_, err = x.Context(ctx).ID(siteInfoLogin.ID).Update(&entity.SiteInfo{
 			Type:    constant.SiteTypeLogin,
 			Content: string(loginContent),
@@ -382,7 +382,7 @@ func splitLegalMenu(ctx context.Context, x *xorm.Engine) error {
 
 	// save general settings
 	if existGeneral {
-		generalContent, err := json.Marshal(siteGeneral)
+		generalContent, _ := json.Marshal(siteGeneral)
 		_, err = x.Context(ctx).ID(siteInfoGeneral.ID).Update(&entity.SiteInfo{
 			Type:    constant.SiteTypeGeneral,
 			Content: string(generalContent),
