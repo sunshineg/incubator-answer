@@ -388,6 +388,23 @@ func (rs *RevisionService) GetRevisionList(ctx context.Context, req *schema.GetR
 	)
 
 	resp = []schema.GetRevisionResp{}
+	objInfo, infoErr := rs.objectInfoService.GetInfo(ctx, req.ObjectID)
+	if infoErr != nil {
+		return nil, infoErr
+	}
+	if !req.IsAdmin && objInfo.IsDeleted() && objInfo.ObjectCreatorUserID != req.UserID {
+		switch objInfo.ObjectType {
+		case constant.QuestionObjectType:
+			return nil, errors.NotFound(reason.QuestionNotFound)
+		case constant.AnswerObjectType:
+			return nil, errors.NotFound(reason.AnswerNotFound)
+		case constant.TagObjectType:
+			return nil, errors.NotFound(reason.TagNotFound)
+		default:
+			return nil, errors.NotFound(reason.ObjectNotFound)
+		}
+	}
+
 	_ = copier.Copy(&rev, req)
 
 	revs, err = rs.revisionRepo.GetRevisionList(ctx, &rev)

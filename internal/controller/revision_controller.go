@@ -69,6 +69,8 @@ func (rc *RevisionController) GetRevisionList(ctx *gin.Context) {
 	objectID = uid.DeShortID(objectID)
 	req := &schema.GetRevisionListReq{
 		ObjectID: objectID,
+		IsAdmin:  middleware.GetUserIsAdminModerator(ctx),
+		UserID:   middleware.GetLoginUserIDFromContext(ctx),
 	}
 
 	resp, err := rc.revisionListService.GetRevisionList(ctx, req)

@@ -45,6 +45,8 @@ type AddRevisionDTO struct {
 type GetRevisionListReq struct {
 	// object id
 	ObjectID string `validate:"required" comment:"object_id" form:"object_id"`
+	IsAdmin  bool   `json:"-"`
+	UserID   string `json:"-"`
 }
 
 const RevisionAuditApprove = "approve"

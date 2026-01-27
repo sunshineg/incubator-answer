@@ -277,11 +277,13 @@ func (os *ObjService) GetInfo(ctx context.Context, objectID string) (objInfo *sc
 			break
 		}
 		objInfo = &schema.SimpleObjectInfo{
-			ObjectID:   tagInfo.ID,
-			TagID:      tagInfo.ID,
-			ObjectType: objectType,
-			Title:      tagInfo.SlugName,
-			Content:    tagInfo.ParsedText, // todo trim
+			ObjectID:            tagInfo.ID,
+			ObjectCreatorUserID: tagInfo.UserID,
+			TagID:               tagInfo.ID,
+			TagStatus:           tagInfo.Status,
+			ObjectType:          objectType,
+			Title:               tagInfo.SlugName,
+			Content:             tagInfo.ParsedText, // todo trim
 		}
 	}
 	if objInfo == nil {

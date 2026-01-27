@@ -188,9 +188,6 @@ func (a *AnswerAPIRouter) RegisterUnAuthAnswerAPIRouter(r *gin.RouterGroup) {
 	r.GET("/personal/comment/page", a.commentController.GetCommentPersonalWithPage)
 	r.GET("/comment", a.commentController.GetComment)
 
-	// revision
-	r.GET("/revisions", a.revisionController.GetRevisionList)
-
 	// tag
 	r.GET("/tags/page", a.tagController.GetTagWithPage)
 	r.GET("/tags/following", a.tagController.GetFollowingTags)
@@ -224,6 +221,7 @@ func (a *AnswerAPIRouter) RegisterAuthUserWithAnyStatusAnswerAPIRouter(r *gin.Ro
 
 func (a *AnswerAPIRouter) RegisterAnswerAPIRouter(r *gin.RouterGroup) {
 	// revisions
+	r.GET("/revisions", a.revisionController.GetRevisionList)
 	r.GET("/revisions/unreviewed", a.revisionController.GetUnreviewedRevisionList)
 	r.PUT("/revisions/audit", a.revisionController.RevisionAudit)
 	r.GET("/revisions/edit/check", a.revisionController.CheckCanUpdateRevision)
