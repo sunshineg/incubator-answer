@@ -1366,77 +1366,6 @@
                 }
             }
         },
-        "/answer/admin/api/siteinfo/advanced": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "get site advanced setting",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "get site advanced setting",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/handler.RespBody"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/schema.SiteAdvancedResp"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "put": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "update site advanced info",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "update site advanced info",
-                "parameters": [
-                    {
-                        "description": "advanced settings",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/schema.SiteAdvancedReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handler.RespBody"
-                        }
-                    }
-                }
-            }
-        },
         "/answer/admin/api/siteinfo/branding": {
             "get": {
                 "security": [
@@ -1677,7 +1606,7 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/schema.SiteInterfaceSettingsResp"
+                                            "$ref": "#/definitions/schema.SiteInterfaceResp"
                                         }
                                     }
                                 }
@@ -1708,6 +1637,77 @@
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/schema.SiteInterfaceReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.RespBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/answer/admin/api/siteinfo/legal": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Set the legal information for the site",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Set the legal information for the site",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/handler.RespBody"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/schema.SiteLegalResp"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "update site legal info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "admin"
+                ],
+                "summary": "update site legal info",
+                "parameters": [
+                    {
+                        "description": "write info",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schema.SiteLegalReq"
                         }
                     }
                 ],
@@ -1792,219 +1792,6 @@
                 }
             }
         },
-        "/answer/admin/api/siteinfo/polices": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "Get the policies information for the site",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "Get the policies information for the site",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/handler.RespBody"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/schema.SitePoliciesResp"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "put": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "update site policies configuration",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "update site policies configuration",
-                "parameters": [
-                    {
-                        "description": "write info",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/schema.SitePoliciesReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handler.RespBody"
-                        }
-                    }
-                }
-            }
-        },
-        "/answer/admin/api/siteinfo/question": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "get site questions setting",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "get site questions setting",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/handler.RespBody"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/schema.SiteQuestionsResp"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "put": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "update site question settings",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "update site question settings",
-                "parameters": [
-                    {
-                        "description": "questions settings",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/schema.SiteQuestionsReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handler.RespBody"
-                        }
-                    }
-                }
-            }
-        },
-        "/answer/admin/api/siteinfo/security": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "Get the security information for the site",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "Get the security information for the site",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/handler.RespBody"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/schema.SiteSecurityResp"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "put": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "update site security configuration",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "update site security configuration",
-                "parameters": [
-                    {
-                        "description": "write info",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/schema.SiteSecurityReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handler.RespBody"
-                        }
-                    }
-                }
-            }
-        },
         "/answer/admin/api/siteinfo/seo": {
             "get": {
                 "security": [
@@ -2063,77 +1850,6 @@
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/schema.SiteSeoReq"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handler.RespBody"
-                        }
-                    }
-                }
-            }
-        },
-        "/answer/admin/api/siteinfo/tag": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "get site tags setting",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "get site tags setting",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/definitions/handler.RespBody"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/definitions/schema.SiteTagsResp"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
-            "put": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "update site tag settings",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "admin"
-                ],
-                "summary": "update site tag settings",
-                "parameters": [
-                    {
-                        "description": "tags settings",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/schema.SiteTagsReq"
                         }
                     }
                 ],
@@ -2289,7 +2005,7 @@
                 }
             }
         },
-        "/answer/admin/api/siteinfo/users-settings": {
+        "/answer/admin/api/siteinfo/write": {
             "get": {
                 "security": [
                     {
@@ -2316,7 +2032,7 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/schema.SiteUsersSettingsResp"
+                                            "$ref": "#/definitions/schema.SiteWriteResp"
                                         }
                                     }
                                 }
@@ -2331,22 +2047,22 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "update site info users settings",
+                "description": "update site write info",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "admin"
                 ],
-                "summary": "update site info users settings",
+                "summary": "update site write info",
                 "parameters": [
                     {
-                        "description": "general",
+                        "description": "write info",
                         "name": "data",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/schema.SiteUsersSettingsReq"
+                            "$ref": "#/definitions/schema.SiteWriteReq"
                         }
                     }
                 ],
@@ -11737,58 +11453,6 @@
                 }
             }
         },
-        "schema.SiteAdvancedReq": {
-            "type": "object",
-            "properties": {
-                "authorized_attachment_extensions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "authorized_image_extensions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "max_attachment_size": {
-                    "type": "integer"
-                },
-                "max_image_megapixel": {
-                    "type": "integer"
-                },
-                "max_image_size": {
-                    "type": "integer"
-                }
-            }
-        },
-        "schema.SiteAdvancedResp": {
-            "type": "object",
-            "properties": {
-                "authorized_attachment_extensions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "authorized_image_extensions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "max_attachment_size": {
-                    "type": "integer"
-                },
-                "max_image_megapixel": {
-                    "type": "integer"
-                },
-                "max_image_size": {
-                    "type": "integer"
-                }
-            }
-        },
         "schema.SiteBrandingReq": {
             "type": "object",
             "properties": {
@@ -11889,6 +11553,9 @@
                 "site_url"
             ],
             "properties": {
+                "check_update": {
+                    "type": "boolean"
+                },
                 "contact_email": {
                     "type": "string",
                     "maxLength": 512
@@ -11919,6 +11586,9 @@
                 "site_url"
             ],
             "properties": {
+                "check_update": {
+                    "type": "boolean"
+                },
                 "contact_email": {
                     "type": "string",
                     "maxLength": 512
@@ -11957,7 +11627,7 @@
                     "$ref": "#/definitions/schema.SiteGeneralResp"
                 },
                 "interface": {
-                    "$ref": "#/definitions/schema.SiteInterfaceSettingsResp"
+                    "$ref": "#/definitions/schema.SiteInterfaceResp"
                 },
                 "login": {
                     "$ref": "#/definitions/schema.SiteLoginResp"
@@ -11968,32 +11638,20 @@
                 "revision": {
                     "type": "string"
                 },
-                "site_advanced": {
-                    "$ref": "#/definitions/schema.SiteAdvancedResp"
-                },
                 "site_legal": {
                     "$ref": "#/definitions/schema.SiteLegalSimpleResp"
-                },
-                "site_questions": {
-                    "$ref": "#/definitions/schema.SiteQuestionsResp"
-                },
-                "site_security": {
-                    "$ref": "#/definitions/schema.SiteSecurityResp"
                 },
                 "site_seo": {
                     "$ref": "#/definitions/schema.SiteSeoResp"
                 },
-                "site_tags": {
-                    "$ref": "#/definitions/schema.SiteTagsResp"
-                },
                 "site_users": {
                     "$ref": "#/definitions/schema.SiteUsersResp"
                 },
+                "site_write": {
+                    "$ref": "#/definitions/schema.SiteWriteResp"
+                },
                 "theme": {
                     "$ref": "#/definitions/schema.SiteThemeResp"
-                },
-                "users_settings": {
-                    "$ref": "#/definitions/schema.SiteUsersSettingsResp"
                 },
                 "version": {
                     "type": "string"
@@ -12003,10 +11661,21 @@
         "schema.SiteInterfaceReq": {
             "type": "object",
             "required": [
+                "default_avatar",
                 "language",
                 "time_zone"
             ],
             "properties": {
+                "default_avatar": {
+                    "type": "string",
+                    "enum": [
+                        "system",
+                        "gravatar"
+                    ]
+                },
+                "gravatar_base_url": {
+                    "type": "string"
+                },
                 "language": {
                     "type": "string",
                     "maxLength": 128
@@ -12017,13 +11686,24 @@
                 }
             }
         },
-        "schema.SiteInterfaceSettingsResp": {
+        "schema.SiteInterfaceResp": {
             "type": "object",
             "required": [
+                "default_avatar",
                 "language",
                 "time_zone"
             ],
             "properties": {
+                "default_avatar": {
+                    "type": "string",
+                    "enum": [
+                        "system",
+                        "gravatar"
+                    ]
+                },
+                "gravatar_base_url": {
+                    "type": "string"
+                },
                 "language": {
                     "type": "string",
                     "maxLength": 128
@@ -12031,6 +11711,60 @@
                 "time_zone": {
                     "type": "string",
                     "maxLength": 128
+                }
+            }
+        },
+        "schema.SiteLegalReq": {
+            "type": "object",
+            "required": [
+                "external_content_display"
+            ],
+            "properties": {
+                "external_content_display": {
+                    "type": "string",
+                    "enum": [
+                        "always_display",
+                        "ask_before_display"
+                    ]
+                },
+                "privacy_policy_original_text": {
+                    "type": "string"
+                },
+                "privacy_policy_parsed_text": {
+                    "type": "string"
+                },
+                "terms_of_service_original_text": {
+                    "type": "string"
+                },
+                "terms_of_service_parsed_text": {
+                    "type": "string"
+                }
+            }
+        },
+        "schema.SiteLegalResp": {
+            "type": "object",
+            "required": [
+                "external_content_display"
+            ],
+            "properties": {
+                "external_content_display": {
+                    "type": "string",
+                    "enum": [
+                        "always_display",
+                        "ask_before_display"
+                    ]
+                },
+                "privacy_policy_original_text": {
+                    "type": "string"
+                },
+                "privacy_policy_parsed_text": {
+                    "type": "string"
+                },
+                "terms_of_service_original_text": {
+                    "type": "string"
+                },
+                "terms_of_service_parsed_text": {
+                    "type": "string"
                 }
             }
         },
@@ -12066,6 +11800,9 @@
                 },
                 "allow_password_login": {
                     "type": "boolean"
+                },
+                "login_required": {
+                    "type": "boolean"
                 }
             }
         },
@@ -12085,6 +11822,9 @@
                     "type": "boolean"
                 },
                 "allow_password_login": {
+                    "type": "boolean"
+                },
+                "login_required": {
                     "type": "boolean"
                 }
             }
@@ -12111,118 +11851,6 @@
                 },
                 "url": {
                     "type": "string"
-                }
-            }
-        },
-        "schema.SitePoliciesReq": {
-            "type": "object",
-            "properties": {
-                "privacy_policy_original_text": {
-                    "type": "string"
-                },
-                "privacy_policy_parsed_text": {
-                    "type": "string"
-                },
-                "terms_of_service_original_text": {
-                    "type": "string"
-                },
-                "terms_of_service_parsed_text": {
-                    "type": "string"
-                }
-            }
-        },
-        "schema.SitePoliciesResp": {
-            "type": "object",
-            "properties": {
-                "privacy_policy_original_text": {
-                    "type": "string"
-                },
-                "privacy_policy_parsed_text": {
-                    "type": "string"
-                },
-                "terms_of_service_original_text": {
-                    "type": "string"
-                },
-                "terms_of_service_parsed_text": {
-                    "type": "string"
-                }
-            }
-        },
-        "schema.SiteQuestionsReq": {
-            "type": "object",
-            "properties": {
-                "min_content": {
-                    "type": "integer",
-                    "maximum": 65535,
-                    "minimum": 0
-                },
-                "min_tags": {
-                    "type": "integer",
-                    "maximum": 5,
-                    "minimum": 0
-                },
-                "restrict_answer": {
-                    "type": "boolean"
-                }
-            }
-        },
-        "schema.SiteQuestionsResp": {
-            "type": "object",
-            "properties": {
-                "min_content": {
-                    "type": "integer",
-                    "maximum": 65535,
-                    "minimum": 0
-                },
-                "min_tags": {
-                    "type": "integer",
-                    "maximum": 5,
-                    "minimum": 0
-                },
-                "restrict_answer": {
-                    "type": "boolean"
-                }
-            }
-        },
-        "schema.SiteSecurityReq": {
-            "type": "object",
-            "required": [
-                "external_content_display"
-            ],
-            "properties": {
-                "check_update": {
-                    "type": "boolean"
-                },
-                "external_content_display": {
-                    "type": "string",
-                    "enum": [
-                        "always_display",
-                        "ask_before_display"
-                    ]
-                },
-                "login_required": {
-                    "type": "boolean"
-                }
-            }
-        },
-        "schema.SiteSecurityResp": {
-            "type": "object",
-            "required": [
-                "external_content_display"
-            ],
-            "properties": {
-                "check_update": {
-                    "type": "boolean"
-                },
-                "external_content_display": {
-                    "type": "string",
-                    "enum": [
-                        "always_display",
-                        "ask_before_display"
-                    ]
-                },
-                "login_required": {
-                    "type": "boolean"
                 }
             }
         },
@@ -12257,46 +11885,6 @@
                 },
                 "robots": {
                     "type": "string"
-                }
-            }
-        },
-        "schema.SiteTagsReq": {
-            "type": "object",
-            "properties": {
-                "recommend_tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/schema.SiteWriteTag"
-                    }
-                },
-                "required_tag": {
-                    "type": "boolean"
-                },
-                "reserved_tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/schema.SiteWriteTag"
-                    }
-                }
-            }
-        },
-        "schema.SiteTagsResp": {
-            "type": "object",
-            "properties": {
-                "recommend_tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/schema.SiteWriteTag"
-                    }
-                },
-                "required_tag": {
-                    "type": "boolean"
-                },
-                "reserved_tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/schema.SiteWriteTag"
-                    }
                 }
             }
         },
@@ -12423,39 +12011,111 @@
                 }
             }
         },
-        "schema.SiteUsersSettingsReq": {
+        "schema.SiteWriteReq": {
             "type": "object",
-            "required": [
-                "default_avatar"
-            ],
             "properties": {
-                "default_avatar": {
-                    "type": "string",
-                    "enum": [
-                        "system",
-                        "gravatar"
-                    ]
+                "authorized_attachment_extensions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
-                "gravatar_base_url": {
-                    "type": "string"
+                "authorized_image_extensions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "max_attachment_size": {
+                    "type": "integer"
+                },
+                "max_image_megapixel": {
+                    "type": "integer"
+                },
+                "max_image_size": {
+                    "type": "integer"
+                },
+                "min_content": {
+                    "type": "integer",
+                    "maximum": 65535,
+                    "minimum": 0
+                },
+                "min_tags": {
+                    "type": "integer",
+                    "maximum": 5,
+                    "minimum": 0
+                },
+                "recommend_tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.SiteWriteTag"
+                    }
+                },
+                "required_tag": {
+                    "type": "boolean"
+                },
+                "reserved_tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.SiteWriteTag"
+                    }
+                },
+                "restrict_answer": {
+                    "type": "boolean"
                 }
             }
         },
-        "schema.SiteUsersSettingsResp": {
+        "schema.SiteWriteResp": {
             "type": "object",
-            "required": [
-                "default_avatar"
-            ],
             "properties": {
-                "default_avatar": {
-                    "type": "string",
-                    "enum": [
-                        "system",
-                        "gravatar"
-                    ]
+                "authorized_attachment_extensions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
-                "gravatar_base_url": {
-                    "type": "string"
+                "authorized_image_extensions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "max_attachment_size": {
+                    "type": "integer"
+                },
+                "max_image_megapixel": {
+                    "type": "integer"
+                },
+                "max_image_size": {
+                    "type": "integer"
+                },
+                "min_content": {
+                    "type": "integer",
+                    "maximum": 65535,
+                    "minimum": 0
+                },
+                "min_tags": {
+                    "type": "integer",
+                    "maximum": 5,
+                    "minimum": 0
+                },
+                "recommend_tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.SiteWriteTag"
+                    }
+                },
+                "required_tag": {
+                    "type": "boolean"
+                },
+                "reserved_tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schema.SiteWriteTag"
+                    }
+                },
+                "restrict_answer": {
+                    "type": "boolean"
                 }
             }
         },
