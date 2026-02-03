@@ -291,7 +291,7 @@ func splitLegalMenu(ctx context.Context, x *xorm.Engine) error {
 		return err
 	}
 	oldSiteGeneral := &SiteGeneral{}
-	if err := json.Unmarshal([]byte(siteInfoLogin.Content), oldSiteGeneral); err != nil {
+	if err := json.Unmarshal([]byte(siteInfoGeneral.Content), oldSiteGeneral); err != nil {
 		return err
 	}
 
