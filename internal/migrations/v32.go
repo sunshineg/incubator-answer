@@ -17,13 +17,21 @@
  * under the License.
  */
 
-.bubble-user-wrap {
-  scroll-margin-top: 88px;
-}
-.bubble-user {
-  background-color: var(--bs-gray-200);
+package migrations
 
-  [data-bs-theme='dark'] & {
-    background-color: var(--bs-gray-800);
-  }
+import (
+	"context"
+	"fmt"
+
+	"github.com/apache/answer/internal/entity"
+	"xorm.io/xorm"
+)
+
+func updateAvatarType(ctx context.Context, x *xorm.Engine) error {
+	// Sync the User struct to the database.
+	// Since you changed the struct to use TEXT, this will update the column type.
+	if err := x.Context(ctx).Sync(new(entity.User)); err != nil {
+		return fmt.Errorf("sync user table failed: %w", err)
+	}
+	return nil
 }
