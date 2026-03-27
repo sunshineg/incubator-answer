@@ -77,42 +77,42 @@ backend:
   privilege:
     level_1:
       description:
-        other: Level 1 (less reputation required for private team, group)
+        other: 等級 1（聲望要求少，適合私有團隊、群組）
     level_2:
       description:
-        other: Level 2 (low reputation required for startup community)
+        other: 等級 2（聲望要求較低，適合新創社群）
     level_3:
       description:
-        other: Level 3 (high reputation required for mature community)
+        other: 等級 3（聲望要求高，適合成熟社群）
     level_custom:
       description:
-        other: Custom Level
+        other: 自定義等級
     rank_question_add_label:
-      other: Ask question
+      other: 提問
     rank_answer_add_label:
-      other: Write answer
+      other: 填寫答案
     rank_comment_add_label:
       other: 寫留言
     rank_report_add_label:
-      other: Flag
+      other: 檢舉
     rank_comment_vote_up_label:
-      other: Upvote comment
+      other: 按讚留言
     rank_link_url_limit_label:
-      other: Post more than 2 links at a time
+      other: 每次貼文超過2個連結
     rank_question_vote_up_label:
-      other: Upvote question
+      other: 按讚問題
     rank_answer_vote_up_label:
-      other: Upvote answer
+      other: 按讚答案
     rank_question_vote_down_label:
-      other: Downvote question
+      other: 倒讚問題
     rank_answer_vote_down_label:
-      other: Downvote answer
+      other: 倒讚答案
     rank_invite_someone_to_answer_label:
-      other: Invite someone to answer
+      other: 邀請別人回答
     rank_tag_add_label:
-      other: Create new tag
+      other: 建立新標籤
     rank_tag_edit_label:
-      other: Edit tag description (need to review)
+      other: 編輯標籤描述 (需要審核)
     rank_question_edit_label:
       other: Edit other's question (need to review)
     rank_answer_edit_label:
