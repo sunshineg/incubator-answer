@@ -809,7 +809,7 @@ ui:
   how_to_format:
     title: 如何設定文字格式
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">提及貼文：<code>#post_id</code></p></li> <li><p class="mb-2">建立連結</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[標題](https://url.com)</code></pre></li><li><p class="mb-2">段落之間使用換行</p></li><li><p class="mb-2"><em>_斜體_</em> 或 **<strong>粗體</strong>**</p></li><li><p class="mb-2">使用 4 個空格縮排程式碼</p></li><li><p class="mb-2">在行首加入 <code>&gt;</code> 表示引用</p></li><li><p class="mb-2">反引號轉義 <code>`像 _這樣_`</code></p></li><li><p class="mb-2">使用反引號建立程式碼柵欄 <code>`</code></p><pre class="mb-0"><code>```<br/>程式碼<br/>```</code></pre></li></ul>
   pagination:
     prev: 上一頁
     next: 下一頁
@@ -848,11 +848,11 @@ ui:
     posts: 貼文
     ai_assistant: AI 助理
   ai_assistant:
-    description: Got a question? Ask it and get answers, perspectives, and recommendations.
+    description: 有問題嗎？提問以獲得解答、觀點和建議。
     recent_conversations: 最近的對話
     show_more: 顯示更多
     new: 新建聊天
-    ai_generate: AI-generated from posts and may not be accurate.
+    ai_generate: 由 AI 從貼文生成，可能不準確。
     copy: 複製
     ask_a_follow_up: 詢問後續問題
     ask_placeholder: 詢問問題
@@ -860,7 +860,7 @@ ui:
     title: 通知
     inbox: 收件夾
     achievement: 成就
-    new_alerts: New alerts
+    new_alerts: 新通知
     all_read: 全部標記為已讀
     show_more: 顯示更多
     someone: 某人
@@ -981,7 +981,7 @@ ui:
       cell: 單元格
     file:
       text: 附加文件
-      not_supported: "Don’t support that file type. Try again with {{file_type}}."
+      not_supported: "不支援該檔案類型。請使用 {{file_type}} 再試一次。"
       max_size: "附加文件大小不能超過 {{size}} MB。"
   close_modal:
     title: 關閉原因是...
@@ -1004,7 +1004,7 @@ ui:
     msg:
       empty: 請選擇一個原因。
       not_a_url: URL 格式不正確。
-      url_not_match: URL origin does not match the current website.
+      url_not_match: URL 來源與目前網站不符。
   tag_modal:
     title: 創建新標籤
     form:
@@ -1031,7 +1031,7 @@ ui:
             簡單描述更改原因 (錯別字、文字表達、格式等等)
     btn_cancel: 取消
     btn_submit: 提交
-    btn_post: Post new tag
+    btn_post: 發佈新標籤
   tag_info:
     created_at: 創建於
     edited_at: 編輯於
@@ -1047,17 +1047,17 @@ ui:
     delete:
       title: 刪除標籤
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p>我們不允許<strong>刪除含有貼文的標籤</strong>。</p> <p>請先將此標籤從貼文中移除。</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p>我們不允許<strong>刪除含有同義詞的標籤</strong>。</p> <p>請先移除此標籤的同義詞。</p>
       tip: 你確定要刪除嗎？
       close: 關閉
     merge:
       title: 合併標籤
       source_tag_title: 來源標籤
-      source_tag_description: The source tag and its associated data will be remapped to the target tag.
+      source_tag_description: 來源標籤及其關聯資料將被重新對應至目標標籤。
       target_tag_title: 目標標籤
-      target_tag_description: A synonym between these two tags will be created after merging.
+      target_tag_description: 合併後，這兩個標籤之間將建立同義詞關係。
       no_results: 沒有匹配的標籤
       btn_submit: 送出
       btn_close: 關閉
@@ -1085,11 +1085,11 @@ ui:
   reaction:
     heart: 愛心
     smile: 微笑
-    frown: frown
-    btn_label: add or remove reactions
-    undo_emoji: undo {{ emoji }} reaction
-    react_emoji: react with {{ emoji }}
-    unreact_emoji: unreact with {{ emoji }}
+    frown: 皺眉
+    btn_label: 新增或移除回應
+    undo_emoji: 取消 {{ emoji }} 回應
+    react_emoji: 以 {{ emoji }} 回應
+    unreact_emoji: 取消以 {{ emoji }} 回應
   comment:
     btn_add_comment: 添加評論
     reply_to: 回復
@@ -1104,7 +1104,7 @@ ui:
       通过評論询问更多问题或提出改進建議。避免在評論中回答問題。
     tip_answer: >-
       使用評論回復其他用戶或通知他們进行更改。如果你要添加新的信息，請編輯你的帖子，而不是發表評論。
-    tip_vote: It adds something useful to the post
+    tip_vote: 它為貼文新增了有用的內容
   edit_answer:
     title: 編輯回答
     default_reason: 編輯回答
@@ -1148,7 +1148,7 @@ ui:
           label: 編輯歷史
         title:
           label: 標題
-          placeholder: What's your topic? Be specific.
+          placeholder: 您的主題是什麼？請具體說明。
           msg:
             empty: 標題不能為空
             range: 標題最多 150 個字元
@@ -1157,8 +1157,8 @@ ui:
           msg:
             empty: 正文不能爲空。
           hint:
-            optional_body: Describe what the question is about.
-            minimum_characters: "Describe what the question is about, at least {{min_content_length}} characters are required."
+            optional_body: 請描述問題的內容。
+            minimum_characters: "請描述問題的內容，至少需要 {{min_content_length}} 個字元。"
         tags:
           label: 標籤
           msg:
@@ -1180,8 +1180,8 @@ ui:
     create_btn: 建立新標籤
     search_tag: 搜尋標籤
     hint: 請描述您的問題，至少需要一個標籤。
-    hint_zero_tags: Describe what your content is about.
-    hint_more_than_one_tag: "Describe what your content is about, at least {{min_tags_number}} tags are required."
+    hint_zero_tags: 請描述您的內容主題。
+    hint_more_than_one_tag: "請描述您的內容主題，至少需要 {{min_tags_number}} 個標籤。"
     no_result: 沒有匹配的標籤
     tag_required_text: 必填標籤 (至少一個)
   header:
@@ -1196,11 +1196,11 @@ ui:
       admin: 後台管理
       review: 審查
       bookmark: 書籤
-      moderation: Moderation
+      moderation: 管理審核
     search:
       placeholder: 搜尋
   footer:
-    build_on: Powered by <1> Apache Answer </1>
+    build_on: 由 <1> Apache Answer </1> 驅動
   upload_img:
     name: 更改
     loading: 讀取中...
@@ -1221,7 +1221,7 @@ ui:
       empty: 不能為空
     resend_email:
       url_label: 確定要重新發送啟用郵件嗎？
-      url_text: You can also give the activation link above to the user.
+      url_text: 您也可以將上方的啟用連結提供給使用者。
   login:
     login_to_continue: 登入以繼續
     info_sign: 沒有帳戶？<1>註冊</1>
@@ -1232,7 +1232,7 @@ ui:
       label: 名稱
       msg:
         empty: 名稱不能為空
-        range: Name must be between 2 to 30 characters in length.
+        range: 名稱長度必須在 2 至 30 個字元之間。
         character: '必須由 "a-z", "0-9", " - . _" 組成'
     email:
       label: 郵箱
@@ -1262,19 +1262,19 @@ ui:
       msg:
         empty: 郵箱不能為空
   oauth:
-    connect: Connect with {{ auth_name }}
-    remove: Remove {{ auth_name }}
+    connect: 使用 {{ auth_name }} 連接
+    remove: 移除 {{ auth_name }}
   oauth_bind_email:
-    subtitle: Add a recovery email to your account.
+    subtitle: 新增帳號的救援電子郵件。
     btn_update: 更新電子郵件地址
     email:
       label: 電子郵件
       msg:
         empty: 電子郵件不能為空。
     modal_title: 這個電子郵件地址已被使用。
-    modal_content: This email address already registered. Are you sure you want to connect to the existing account?
+    modal_content: 此電子郵件地址已註冊。您確定要連接到現有帳號嗎？
     modal_cancel: 變更電子郵件
-    modal_confirm: Connect to the existing account
+    modal_confirm: 連接至現有帳號
   password_reset:
     page_title: 密碼重置
     btn_name: 重置我的密碼
@@ -1315,7 +1315,7 @@ ui:
       avatar:
         label: 個人照片
         gravatar: 頭像
-        gravatar_text: You can change image on
+        gravatar_text: 取得追蹤標籤的新問題通知。
         custom: 自定義
         custom_text: 您可以上傳您的圖片。
         default: 系統
@@ -1337,10 +1337,10 @@ ui:
         description: 回答你的問題、評論、邀請，以及更多
       all_new_question:
         label: 全部新問題
-        description: Get notified of all new questions. Up to 50 questions per week.
+        description: 取得所有新問題的通知。每週最多 50 個問題。
       all_new_question_for_following_tags:
-        label: All new questions for following tags
-        description: Get notified of new questions for following tags.
+        label: 所有追蹤標籤的新問題
+        description: 取得追蹤標籤的新問題通知。
     account:
       heading: 帳號
       change_email_btn: 更改郵箱
@@ -1375,7 +1375,7 @@ ui:
       title: 我的登入
       label: 使用這些帳號登入或註冊此網站。
       modal_title: 移除登入
-      modal_content: Are you sure you want to remove this login from your account?
+      modal_content: 您確定要從帳號中移除此登入方式嗎？
       modal_confirm_btn: 移除
       remove_success: 移除成功
   toast:
@@ -1390,8 +1390,8 @@ ui:
     answers: 個回答
   linked_question:
     title: 連結的
-    description: Posts linked to
-    no_linked_question: No contents linked from this content.
+    description: 連結的貼文
+    no_linked_question: 此內容沒有連結的相關內容。
   invite_to_answer:
     title: People Asked
     desc: Invite people who you think might know the answer.
@@ -1410,16 +1410,16 @@ ui:
     Views: 閱讀次數
     Follow: 關注
     Following: 已關注
-    follow_tip: Follow this question to receive notifications
+    follow_tip: 追蹤此問題以接收通知
     answered: 回答於
     closed_in: 關閉於
     show_exist: 顯示現有問題。
-    useful: Useful
-    question_useful: It is useful and clear
-    question_un_useful: It is unclear or not useful
-    question_bookmark: Bookmark this question
-    answer_useful: It is useful
-    answer_un_useful: It is not useful
+    useful: 有用
+    question_useful: 此問題有用且清晰
+    question_un_useful: 此問題不清晰或沒有幫助
+    question_bookmark: 收藏此問題
+    answer_useful: 此回答有用
+    answer_un_useful: 此回答沒有幫助
     answers:
       title: 個回答
       score: 評分
@@ -1429,7 +1429,7 @@ ui:
       btn_accepted: 已被採納
     write_answer:
       title: 你的回答
-      edit_answer: Edit my existing answer
+      edit_answer: 編輯我的現有回答
       btn_name: 提交你的回答
       add_another_answer: 添加另一個答案
       confirm_title: 繼續回答
@@ -1440,10 +1440,10 @@ ui:
       characters: 內容必須至少6個字元長度。
       tips:
         header_1: 感謝您的回答
-        li1_1: Please be sure to <strong>answer the question</strong>. Provide details and share your research.
-        li1_2: Back up any statements you make with references or personal experience.
-        header_2: But <strong>avoid</strong> ...
-        li2_1: Asking for help, seeking clarification, or responding to other answers.
+        li1_1: 請務必<strong>回答問題</strong>。提供詳細資訊並分享您的研究。
+        li1_2: 以參考資料或個人經驗支持您的陳述。
+        header_2: 但請<strong>避免</strong>…
+        li2_1: 請求協助、尋求說明或回應其他答案。
     reopen:
       confirm_btn: 重新開放
       title: 重新打開這個貼文
