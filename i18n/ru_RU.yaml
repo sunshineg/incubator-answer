@@ -52,13 +52,13 @@ backend:
     unpin:
       other: Открепить
     show:
-      other: Список
+      other: Показать
     invite_someone_to_answer:
       other: Редактировать
     undelete:
       other: Отменить удаление
     merge:
-      other: Объединить
+      other: Совместить
   role:
     name:
       user:
@@ -71,7 +71,7 @@ backend:
       user:
         other: По умолчанию, без специального доступа.
       admin:
-        other: Имейте все полномочия для доступа к сайту.
+        other: Имеет все полномочия для доступа к сайту.
       moderator:
         other: Имеет доступ ко всем сообщениям, кроме настроек администратора.
   privilege:
@@ -140,7 +140,7 @@ backend:
   pass:
     other: Пароль
   old_pass:
-    other: Current password
+    other: Текущий пароль
   original_text:
     other: Это сообщение
   email_or_password_wrong_error:
@@ -701,7 +701,7 @@ backend:
           other: Активный участник на год, опубликовал по крайней мере один раз.
       appreciated:
         name:
-          other: Appreciated
+          other:
         desc:
           other: Received 1 up vote on 20 posts.
       respected:
@@ -1454,7 +1454,7 @@ ui:
       content: Are you sure you want to list?
     unlist:
       confirm_btn: Убрать из списка
-      title: Unlist this post
+      title:
       content: Are you sure you want to unlist?
     pin:
       title: Закрепить сообщение
