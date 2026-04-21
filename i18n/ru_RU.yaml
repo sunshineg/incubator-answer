@@ -182,7 +182,7 @@ backend:
       cannot_edit_after_deadline:
         other: Невозможно редактировать комментарий из-за того, что он был создан слишком давно.
       content_cannot_empty:
-        other: Comment content cannot be empty.
+        other: Содержимое комментария не может быть пустым.
     email:
       duplicate:
         other: Адрес электронной почты уже существует.
@@ -235,7 +235,7 @@ backend:
       content_cannot_empty:
         other: .
       content_less_than_minimum:
-        other: Not enough content entered.
+        other: Недостаточно символов.
     rank:
       fail_to_meet_the_condition:
         other: Ранг репутации не соответствует условию.
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: Вы не можете установить синоним текущего тега.
       minimum_count:
-        other: Not enough tags were entered.
+        other: Не хватает тегов.
     smtp:
       config_from_name_cannot_be_email:
         other: Поле отправителя не может содержать email адрес.
@@ -311,13 +311,13 @@ backend:
       add_bulk_users_amount_error:
         other: "Количество пользователей, которое Вы добавляете, должно быть в промежутке от 1 до {{.MaxAmount}}."
       status_suspended_forever:
-        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Этот пользователь был заблокирован навсегда.</strong> Пользователь не соответствует правилам сообщества."
       status_suspended_until:
-        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Это пользователь был заблокирован до{{.SuspendedUntil}}.</strong> Пользователь не соответствует правилам сообщества."
       status_deleted:
-        other: "This user was deleted."
+        other: "Этот пользователь был удалён."
       status_inactive:
-        other: "This user is inactive."
+        other: "Это пользователь не активен."
     config:
       read_config_failed:
         other: Не удалось прочитать конфигурацию
@@ -506,7 +506,7 @@ backend:
       title:
         other: "[{{.SiteName}}] Новый вопрос: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nПримечание: Это письмо создано автоматически, не отвечайте на него. Ваш ответ не будет виден.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'> Отписаться от рассылки</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Пароль сброшен"
@@ -563,7 +563,7 @@ backend:
         name:
           other: Редактор
         desc:
-          other: Впервые отредактировать сообщение
+          other: Впервые отредактировать сообщение.
       first_flag:
         name:
           other: Первый флаг
@@ -576,37 +576,37 @@ backend:
           other: Впервые добавить голос в сообщении.
       first_link:
         name:
-          other: First Link
+          other: Первая ссылка
         desc:
-          other: First added a link to another post.
+          other: Впервые добавили ссылку на другой пост.
       first_reaction:
         name:
-          other: First Reaction
+          other: Первая реакция
         desc:
-          other: First reacted to the post.
+          other: Впервые отреагировали на пост.
       first_share:
         name:
-          other: First Share
+          other: Первая отправка
         desc:
-          other: First shared a post.
+          other: Впервые поделились постом.
       scholar:
         name:
           other: Scholar
         desc:
-          other: Asked a question and accepted an answer.
+          other: Задал вопрос, и принял ответ.
       commentator:
         name:
-          other: Commentator
+          other: Комментатор
         desc:
           other: Оставить 5 комментариев.
       new_user_of_the_month:
         name:
-          other: New User of the Month
+          other: Новый пользователь месяца
         desc:
-          other: Outstanding contributions in their first month.
+          other: Впечатлительные вложения в первом месяце.
       read_guidelines:
         name:
-          other: Read Guidelines
+          other: Прочитать правила
         desc:
           other: Прочтите [правила сообщества].
       reader:
@@ -623,7 +623,7 @@ backend:
         name:
           other: Неплохо поделился
         desc:
-          other: Shared a post with 25 unique visitors.
+          other: Поделился постом с 25 уникальными посетителями.
       good_share:
         name:
           other: Good Share
@@ -853,9 +853,9 @@ ui:
     show_more: Show more
     new: New chat
     ai_generate: AI-generated from posts and may not be accurate.
-    copy: Copy
+    copy: Скопировать
     ask_a_follow_up: Ask a follow-up
-    ask_placeholder: Ask a question
+    ask_placeholder: Задать вопрос
   notifications:
     title: Уведомления
     inbox: Входящие
@@ -1429,7 +1429,7 @@ ui:
       btn_accepted: Принято
     write_answer:
       title: Ваш ответ
-      edit_answer: Редактировать мой существующий ответ
+      edit_answer: Редактировать мой ответ
       btn_name: Ответить
       add_another_answer: Добавить другой ответ
       confirm_title: Перейти к ответу
