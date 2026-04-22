@@ -638,127 +638,127 @@ backend:
         name:
           other: Из любви
         desc:
-          other: Использовать 50 лайков в день.
+          other: Использовать 50 голосов в день.
       higher_love:
         name:
-          other: Higher Love
+          other: Высшая любовь
         desc:
-          other: Used 50 up votes in a day 5 times.
+          other: Использовать 50 голосов в день 5 раз.
       crazy_in_love:
         name:
-          other: Crazy in Love
+          other: Безумная любовь
         desc:
-          other: Used 50 up votes in a day 20 times.
+          other: Использовать 50 голосов в день 20 раз.
       promoter:
         name:
-          other: Promoter
+          other: Промоутер
         desc:
-          other: Invited a user.
+          other: Пригласить пользователя.
       campaigner:
         name:
-          other: Campaigner
+          other: Кампания
         desc:
-          other: Invited 3 basic users.
+          other: Пригласить 3 обычных пользователя.
       champion:
         name:
-          other: Champion
+          other: Чемпион
         desc:
-          other: Invited 5 members.
+          other: Пригласил 5 участников.
       thank_you:
         name:
           other: Спасибо
         desc:
-          other: Has 20 up voted posts and gave 10 up votes.
+          other: Иметь 20 голосов на постах и проголосовать за 10 постов.
       gives_back:
         name:
-          other: Gives Back
+          other: Компенсатор
         desc:
-          other: Has 100 up voted posts and gave 100 up votes.
+          other: Иметь 100 голосов на постах и проголосовать за 100 постов.
       empathetic:
         name:
-          other: Empathetic
+          other: Эмпатичный
         desc:
-          other: Has 500 up voted posts and gave 1000 up votes.
+          other: Иметь 500 голосов на постах и проголосовать за 1000 постов.
       enthusiast:
         name:
-          other: Enthusiast
+          other: Энтузиаст
         desc:
-          other: Visited 10 consecutive days.
+          other: Заходить 10 дней подряд.
       aficionado:
         name:
-          other: Aficionado
+          other: Поклонник
         desc:
-          other: Visited 100 consecutive days.
+          other: Заходить 100 дней подряд.
       devotee:
         name:
-          other: Devotee
+          other: Преданный делу
         desc:
-          other: Visited 365 consecutive days.
+          other: Заходить 365 дней подряд.
       anniversary:
         name:
-          other: Anniversary
+          other: Юбилей
         desc:
           other: Активный участник на год, опубликовал по крайней мере один раз.
       appreciated:
         name:
           other:
         desc:
-          other: Received 1 up vote on 20 posts.
+          other: Получить 1 голос на каждом из 20 постов.
       respected:
         name:
-          other: Respected
+          other: Уважаемый
         desc:
-          other: Received 2 up votes on 100 posts.
+          other: Получить по 2 голоса на каждом из 100 постов.
       admired:
         name:
-          other: Admired
+          other: Популярный
         desc:
-          other: Received 5 up votes on 300 posts.
+          other: Получить по 5 голосов на каждом из 300 постов.
       solved:
         name:
-          other: Solved
+          other: Решено
         desc:
-          other: Have an answer be accepted.
+          other: Иметь принятый ответ.
       guidance_counsellor:
         name:
-          other: Guidance Counsellor
+          other: Советник
         desc:
-          other: Have 10 answers be accepted.
+          other: Иметь 10 принятых ответов.
       know_it_all:
         name:
-          other: Know-it-All
+          other: Знаток
         desc:
-          other: Have 50 answers be accepted.
+          other: Иметь 50 принятых ответов.
       solution_institution:
         name:
-          other: Solution Institution
+          other: Научный руководитель
         desc:
-          other: Have 150 answers be accepted.
+          other: Иметь 150 принятых ответов.
       nice_answer:
         name:
-          other: Nice Answer
+          other: Неплохой ответ
         desc:
-          other: Answer score of 10 or more.
+          other: Ответ набрал 10 и более голосов.
       good_answer:
         name:
-          other: Good Answer
+          other: Хороший ответ
         desc:
-          other: Answer score of 25 or more.
+          other: Ответ набрал 25 и более голосов.
       great_answer:
         name:
-          other: Great Answer
+          other: Замечательный ответ
         desc:
-          other: Answer score of 50 or more.
+          other: Ответ набрал 50 и более голосов.
       nice_question:
         name:
-          other: Nice Question
+          other: Неплохой вопрос
         desc:
-          other: Question score of 10 or more.
+          other: Вопрос набрал 10 и более голосов.
       good_question:
         name:
-          other: Good Question
+          other: Хороший вопрос
         desc:
-          other: Question score of 25 or more.
+          other: Вопрос набрал 25 и более голосов.
       great_question:
         name:
           other: Great Question
