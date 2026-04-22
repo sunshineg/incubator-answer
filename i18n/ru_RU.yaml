@@ -591,7 +591,7 @@ backend:
           other: Впервые поделились постом.
       scholar:
         name:
-          other: Scholar
+          other: Знаток
         desc:
           other: Задал вопрос, и принял ответ.
       commentator:
@@ -626,19 +626,19 @@ backend:
           other: Поделился постом с 25 уникальными посетителями.
       good_share:
         name:
-          other: Good Share
+          other: Полезный отправитель
         desc:
-          other: Shared a post with 300 unique visitors.
+          other: Поделиться постом с 300 уникальными посетителями.
       great_share:
         name:
-          other: Great Share
+          other: Прекрасный отправитель
         desc:
-          other: Shared a post with 1000 unique visitors.
+          other: Поделиться постом на котором 1000 уникальных посетителей.
       out_of_love:
         name:
-          other: Out of Love
+          other: Из любви
         desc:
-          other: Used 50 up votes in a day.
+          other: Использовать 50 лайков в день.
       higher_love:
         name:
           other: Higher Love
