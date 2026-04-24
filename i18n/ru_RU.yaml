@@ -247,7 +247,7 @@ backend:
       handle_failed:
         other: Не удалось обработать отчет.
       not_found:
-        other: Отчет не найден.
+        other: Жалоба не найдена.
     tag:
       already_exist:
         other: Тег уже существует.
@@ -341,12 +341,12 @@ backend:
   reason:
     spam:
       name:
-        other: Спам
+        other: спам
       desc:
         other: Этот пост является рекламой или вандализмом. Он не полезен и не имеет отношения к текущей теме.
     rude_or_abusive:
       name:
-        other: Грубость или оскорбления
+        other: грубость или оскорбления
       desc:
         other: "Человек может посчитать такое содержимое неподходящим для уважительной беседы."
     a_duplicate:
@@ -761,9 +761,9 @@ backend:
           other: Вопрос набрал 25 и более голосов.
       great_question:
         name:
-          other: Great Question
+          other: Замечательный вопрос
         desc:
-          other: Question score of 50 or more.
+          other: Вопрос набрал 50 голосов и больше.
       popular_question:
         name:
           other: Popular Question
