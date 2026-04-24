@@ -766,50 +766,50 @@ backend:
           other: Вопрос набрал 50 голосов и больше.
       popular_question:
         name:
-          other: Popular Question
+          other: Популярный вопрос
         desc:
-          other: Question with 500 views.
+          other: Иметь вопрос с 500 просмотрами.
       notable_question:
         name:
-          other: Notable Question
+          other: Достойный вопрос
         desc:
-          other: Question with 1,000 views.
+          other: Иметь вопрос с 1,000 просмотрами.
       famous_question:
         name:
-          other: Famous Question
+          other: Известный вопрос
         desc:
-          other: Question with 5,000 views.
+          other: Иметь вопрос с 5000 просмотрами.
       popular_link:
         name:
-          other: Popular Link
+          other: Популярная ссылочка
         desc:
-          other: Posted an external link with 50 clicks.
+          other: Опубликовал внешнюю ссылку и получил 50 кликов.
       hot_link:
         name:
-          other: Hot Link
+          other: Горячая ссылочка
         desc:
-          other: Posted an external link with 300 clicks.
+          other: Опубликовал внешнюю ссылку и получил 300 кликов.
       famous_link:
         name:
-          other: Famous Link
+          other: Популярная ссылка
         desc:
-          other: Posted an external link with 100 clicks.
+          other: Опубликовал внешнюю ссылку и получил 100 кликов.
     default_badge_groups:
       getting_started:
         name:
-          other: Getting Started
+          other: Начинания
       community:
         name:
-          other: Community
+          other: Сообщество
       posting:
         name:
-          other: Posting
+          other: Публикация
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
     title: 'Форматирование:'
     desc: >-
-      <ul class="mb-0"><li><p class="mb-2">mention a post: <code>#post_id</code></p></li> <li><p class="mb-2">to make links</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Title](https://url.com)</code></pre></li><li><p class="mb-2">put returns between paragraphs</p></li><li><p class="mb-2"><em>_italic_</em> or **<strong>bold</strong>**</p></li><li><p class="mb-2">indent code by 4 spaces</p></li><li><p class="mb-2">quote by placing <code>&gt;</code> at start of line</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">create code fences with backticks <code>`</code></p><pre class="mb-0"><code>```<br/>code here<br/>```</code></pre></li></ul>
+      <ul class="mb-0"><li><p class="mb-2">Упомянуть пост: <code>#айди_поста</code></p></li> <li><p class="mb-2">Создание ссылки</p><pre class="mb-2"><code>&lt;https://url.com&gt;<br/><br/>[Название](https://url.com)</code></pre></li><li><p class="mb-2">Проставляйте переносы строк между параграфами</p></li><li><p class="mb-2"><em>_italic_</em> или **<strong>bold</strong>**</p></li><li><p class="mb-2">отступ для кода 4 пробела</p></li><li><p class="mb-2">Цитируйте <code>&gt;</code> в начале цитаты</p></li><li><p class="mb-2">backtick escapes <code>`like _this_`</code></p></li><li><p class="mb-2">Выделяйте код с помощью обратных кавычек<code>`</code></p><pre class="mb-0"><code>```<br/>код здесь<br/>```</code></pre></li></ul>
   pagination:
     prev: Назад
     next: Следующий
@@ -818,10 +818,10 @@ ui:
     questions: Вопросы
     tag: Тэг
     tags: Теги
-    tag_wiki: wiki тэг
+    tag_wiki: тег вики
     create_tag: Создать тег
     edit_tag: Изменить тег
-    ask_a_question: Create Question
+    ask_a_question: Задать вопрос
     edit_question: Редактировать вопрос
     edit_answer: Редактировать ответ
     search: Поиск
@@ -845,16 +845,16 @@ ui:
     http_50X: Ошибка HTTP 500
     http_403: Ошибка HTTP 403
     logout: Выйти
-    posts: Posts
-    ai_assistant: AI Assistant
+    posts: Посты
+    ai_assistant: ИИ ассистент
   ai_assistant:
-    description: Got a question? Ask it and get answers, perspectives, and recommendations.
-    recent_conversations: Recent Conversations
-    show_more: Show more
-    new: New chat
-    ai_generate: AI-generated from posts and may not be accurate.
+    description: У вас есть вопрос? Задайте его и получите ответы, другие точки зрения и рекомендации.
+    recent_conversations: Последние беседы
+    show_more: Показать еще
+    new: Новая беседа
+    ai_generate: ИИ генерирует из постов и может быть неточным.
     copy: Скопировать
-    ask_a_follow_up: Ask a follow-up
+    ask_a_follow_up: Задать уточняющий вопрос
     ask_placeholder: Задать вопрос
   notifications:
     title: Уведомления
@@ -873,7 +873,7 @@ ui:
     question: Вопрос
     badge_award: Значок
   suspended:
-    title: Ваш аккаунт заблокирован
+    title: Ваш учетная запись заблокирована
     until_time: "Ваша учетная запись была заблокирована до {{ time }}."
     forever: Этот пользователь был навсегда заблокирован.
     end: Вы не соответствуете правилам сообщества.
@@ -981,10 +981,10 @@ ui:
       cell: Ячейка
     file:
       text: Прикрепить файлы
-      not_supported: "Don’t support that file type. Try again with {{file_type}}."
-      max_size: "Attach files size cannot exceed {{size}} MB."
+      not_supported: "Тип файла не поддерживается. Попробуйте {{file_type}}."
+      max_size: "Размер прикрепляемых вложений не может превышать {{size}} МБ."
   close_modal:
-    title: Я закрываю этот пост как...
+    title: Я закрываю этот пост так как...
     btn_cancel: Отменить
     btn_submit: Сохранить
     remark:
@@ -1030,7 +1030,7 @@ ui:
           placeholder: >-
             Коротко опишите изменения (орфография, грамматики, улучшение формата)
     btn_cancel: Отмена
-    btn_submit: Сохрнаить
+    btn_submit: Сохранить
     btn_post: Создать новый тег
   tag_info:
     created_at: Создано
@@ -1047,20 +1047,20 @@ ui:
     delete:
       title: Удалить этот тег
       tip_with_posts: >-
-        <p>We do not allow <strong>deleting tag with posts</strong>.</p> <p>Please remove this tag from the posts first.</p>
+        <p>Мы не разрешаем <strong>удалять тег с сообщениями</strong>.</p> <p>Пожалуйста, сначала удалите этот тег.</p>
       tip_with_synonyms: >-
-        <p>We do not allow <strong>deleting tag with synonyms</strong>.</p> <p>Please remove the synonyms from this tag first.</p>
+        <p>Мы не разрешаем <strong>удалять тег с постами</strong>.</p> <p>Пожалуйста, сначала удалите этот тег из постов.</p>
       tip: Вы уверены, что хотите удалить?
       close: Закрыть
     merge:
-      title: Merge tag
-      source_tag_title: Source tag
-      source_tag_description: The source tag and its associated data will be remapped to the target tag.
-      target_tag_title: Target tag
-      target_tag_description: A synonym between these two tags will be created after merging.
-      no_results: No tags matched
-      btn_submit: Submit
-      btn_close: Close
+      title: Объединить теги
+      source_tag_title: Исходный тег
+      source_tag_description: Исходный тег и связанные с ним данные будут перенесены на целевой тег.
+      target_tag_title: Целевой тег
+      target_tag_description: После слияния будет создан синоним между этими двумя тегами.
+      no_results: Ни один тег не подходит
+      btn_submit: Подтвердить
+      btn_close: Закрыть
   edit_tag:
     title: Изменить тег
     default_reason: Правка тега
@@ -1068,28 +1068,28 @@ ui:
     btn_save_edits: Сохранить изменения
     btn_cancel: Отмена
   dates:
-    long_date: MMM D
-    long_date_with_year: "MMM D, YYYY"
-    long_date_with_time: "MMM D, YYYY [at] HH:mm"
+    long_date: МММ Д
+    long_date_with_year: "МММ Д, ГГГГ"
+    long_date_with_time: "МММ Д, ГГГГ [в] ЧЧ:мм"
     now: сейчас
     x_seconds_ago: "{{count}}с назад"
     x_minutes_ago: "{{count}}м назад"
     x_hours_ago: "{{count}}ч назад"
-    hour: часы
-    day: дней
+    hour: час
+    day: день
     hours: часов
     days: дней
-    month: month
-    months: months
-    year: year
+    month: месяц
+    months: месяцев
+    year: год
   reaction:
     heart: сердечко
-    smile: smile
-    frown: frown
+    smile: смайлик
+    frown: грустный смайлик
     btn_label: добавить или удалить реакции
     undo_emoji: отменить реакцию {{ emoji }}
-    react_emoji: react with {{ emoji }}
-    unreact_emoji: unreact with {{ emoji }}
+    react_emoji: реагировать с {{ emoji }}
+    unreact_emoji: удалить реакцию {{ emoji }}
   comment:
     btn_add_comment: Добавить комментарий
     reply_to: Ответить на
