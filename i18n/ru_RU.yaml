@@ -1135,20 +1135,20 @@ ui:
     search_placeholder: Фильтр по названию тега
     no_desc: Тег не имеет описания.
     more: Подробнее
-    wiki: Wiki
+    wiki: Вики
   ask:
-    title: Create Question
+    title: Задать Вопрос
     edit_title: Редактировать вопрос
     default_reason: Редактировать вопрос
-    default_first_reason: Create question
+    default_first_reason: Задать вопрос
     similar_questions: Похожие вопросы
     form:
       fields:
         revision:
           label: Версия
         title:
-          label: Заголовок
-          placeholder: What's your topic? Be specific.
+          label: 'Заголовок:'
+          placeholder: Какова ваша тема? Будьте конкретны.
           msg:
             empty: Заголовок не может быть пустым.
             range: Заголовок должен быть меньше 150 символов
@@ -1157,8 +1157,8 @@ ui:
           msg:
             empty: Вопрос не может быть пустым.
           hint:
-            optional_body: Describe what the question is about.
-            minimum_characters: "Describe what the question is about, at least {{min_content_length}} characters are required."
+            optional_body: Опишите о чем будет вопрос.
+            minimum_characters: "Опишите о чем будет вопрос, как минимум нужно {{min_content_length}} символов."
         tags:
           label: Теги
           msg:
@@ -1177,12 +1177,12 @@ ui:
     post_question&answer: Опубликуйте свой вопрос и ответ
   tag_selector:
     add_btn: Тег
-    create_btn: новый тег
+    create_btn: Создать новый тег
     search_tag: Поиск тега
-    hint: Describe what your content is about, at least one tag is required.
-    hint_zero_tags: Describe what your content is about.
-    hint_more_than_one_tag: "Describe what your content is about, at least {{min_tags_number}} tags are required."
-    no_result: Нет соответствующих тэгов
+    hint: Опишите ваше содержимое, как минимум требуется один тег.
+    hint_zero_tags: Опишите ваше содержимое.
+    hint_more_than_one_tag: "Опишите ваше содержимое, как минимум требуется {{min_tags_number}} тегов."
+    no_result: Нет соответствующих тегов
     tag_required_text: Обязательный тег (хотя бы один)
   header:
     nav:
@@ -1200,7 +1200,7 @@ ui:
     search:
       placeholder: Поиск
   footer:
-    build_on: Powered by <1> Apache Answer </1>
+    build_on: Работает на <1> Apache Answer </1>
   upload_img:
     name: Изменить
     loading: загрузка...
@@ -1232,8 +1232,8 @@ ui:
       label: Имя пользователя
       msg:
         empty: Имя пользователя не должно быть пустым.
-        range: Name must be between 2 to 30 characters in length.
-        character: 'Must use the character set "a-z", "0-9", " - . _"'
+        range: Длинна названия должна быть от 2 до 30 символов.
+        character: 'Допустимый набор символов "a-z", "0-9", " - . _"'
     email:
       label: Email адрес
       msg:
@@ -1305,12 +1305,12 @@ ui:
       display_name:
         label: Отображаемое имя
         msg: Отображаемое имя не может быть пустым.
-        msg_range: Display name must be 2-30 characters in length.
+        msg_range: Длинна отображаемого имени должна быть от 2 до 30 символов.
       username:
         label: Имя пользователя
         caption: Люди могут упоминать вас как "@username".
         msg: Имя пользователя не может быть пустым.
-        msg_range: Username must be 2-30 characters in length.
+        msg_range: Имя пользователя должно быть от 2 до 30 символов.
         character: 'Must use the character set "a-z", "0-9", "- . _"'
       avatar:
         label: Изображение профиля
