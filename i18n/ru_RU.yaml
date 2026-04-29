@@ -2118,37 +2118,37 @@ ui:
       restrict_answer:
         title: Answer write
         label: Каждый пользователь может написать только один ответ на каждый вопрос
-        text: "Turn off to allow users to write multiple answers to the same question, which may cause answers to be unfocused."
+        text: "Выключите, чтобы позволить пользователям давать несколько ответов на один вопрос, что может привести к размытым ответам."
       min_tags:
-        label: "Minimum tags per question"
-        text: "Minimum number of tags required in a question."
+        label: "Минимально количество тегов в вопросе"
+        text: "Минимально требуемое количество тегов в вопросе."
       recommend_tags:
         label: Рекомендованные теги
-        text: "Recommend tags will show in the dropdown list by default."
+        text: "Рекомендованные теги будут показываться в выпадающем списке по умолчанию."
         msg:
-          contain_reserved: "recommended tags cannot contain reserved tags"
+          contain_reserved: "рекомендованные теги не могут содержать зарезервированные теги"
       required_tag:
-        title: Set required tags
-        label: Set “Recommend tags” as required tags
+        title: Установить зарезервированные теги
+        label: Установите рекомендованный тег как обязательный
         text: "Каждый новый вопрос должен иметь хотя бы один рекомендуемый тег."
       reserved_tags:
         label: Зарезервированные теги
-        text: "Reserved tags can only be used by moderator."
+        text: "Зарезервированные теги которые может использовать только модерация."
       image_size:
-        label: Max image size (MB)
-        text: "The maximum image upload size."
+        label: Максимальный размер изображения (МБ)
+        text: "Максимальный размер загружаемого изображения."
       attachment_size:
-        label: Max attachment size (MB)
-        text: "The maximum attachment files upload size."
+        label: Максимальный размер вложений (МБ)
+        text: "Максимальный размер вложений."
       image_megapixels:
-        label: Max image megapixels
-        text: "Maximum number of megapixels allowed for an image."
+        label: Максимальное количество мегапикселей
+        text: "Максимальное количество мегапикселей, разрешенных для изображений."
       image_extensions:
-        label: Authorized image extensions
-        text: "A list of file extensions allowed for image display, separate with commas."
+        label: Разрешённые расширения изображений
+        text: "Список расширений файлов, разрешенных для отображения изображений, разделенных запятыми."
       attachment_extensions:
-        label: Authorized attachment extensions
-        text: "A list of file extensions allowed for upload, separate with commas. WARNING: Allowing uploads may cause security issues."
+        label: Разрешённые расширения изображений
+        text: "Список расширений файлов, разрешённых для загрузки, разделённых запятыми. ВНИМАНИЕ: разрешение загрузки может вызвать проблемы с безопасностью."
     seo:
       page_title: SEO
       permalink:
@@ -2165,14 +2165,14 @@ ui:
       color_scheme:
         label: Цветовая схема
       navbar_style:
-        label: Navbar background style
+        label: Стиль заднего фона навигационной панели
       primary_color:
         label: Основной цвет
         text: Измените цвета, используемые в ваших темах
       layout:
-        label: Layout
-        full_width: Full-width
-        fixed_width: Fixed-width
+        label: Макет
+        full_width: На всю ширину
+        fixed_width: Фиксированная ширина
     css_and_html:
       page_title: CSS и HTML
       custom_css:
@@ -2180,11 +2180,11 @@ ui:
         text: >
 
       head:
-        label: Head
+        label: Заголовок
         text: >
 
       header:
-        label: Header
+        label: Заголовок
         text: >
 
       footer:
@@ -2216,7 +2216,7 @@ ui:
         text: "Предупреждение: При отключении, вы не сможете войти, если ранее не настроили другой способ входа."
     installed_plugins:
       title: Установленные плагины
-      plugin_link: Plugins extend and expand the functionality. You may find plugins in the <1>Plugin Repository</1>.
+      plugin_link: Плагины расширяют функциональность Answer. Вы можете найти плагины в <1>В репозитории плагинов Answer</1>.
       filter:
         all: Все
         active: Активные
@@ -2260,23 +2260,23 @@ ui:
         label: Необходимый уровень репутации
         text: Выберите количество репутации, необходимое для получения привилегий
       msg:
-        should_be_number: the input should be number
-        number_larger_1: number should be equal or larger than 1
+        should_be_number: значение должно быть числом
+        number_larger_1: число должно быть больше или равно 1
     badges:
-      action: Action
-      active: Active
-      activate: Activate
-      all: All
-      awards: Awards
-      deactivate: Deactivate
+      action: Действия
+      active: Активен
+      activate: Включить
+      all: Все
+      awards: Награды
+      deactivate: Выключить
       filter:
-        placeholder: Filter by name, badge:id
-      group: Group
-      inactive: Inactive
-      name: Name
-      show_logs: Show logs
-      status: Status
-      title: Badges
+        placeholder: Фильтровать по имени, badge:id
+      group: Группа
+      inactive: Неактивен
+      name: Название
+      show_logs: Показать логи
+      status: Статус
+      title: Награды
     apikeys:
       title: API Keys
       add_api_key: Add API Key
