@@ -36,6 +36,7 @@ import (
 	"github.com/apache/answer/internal/service/config"
 	"github.com/apache/answer/internal/service/content"
 	"github.com/apache/answer/internal/service/dashboard"
+	"github.com/apache/answer/internal/service/embedding"
 	"github.com/apache/answer/internal/service/eventqueue"
 	"github.com/apache/answer/internal/service/export"
 	"github.com/apache/answer/internal/service/feature_toggle"
@@ -67,6 +68,7 @@ import (
 	usercommon "github.com/apache/answer/internal/service/user_common"
 	"github.com/apache/answer/internal/service/user_external_login"
 	"github.com/apache/answer/internal/service/user_notification_config"
+	"github.com/apache/answer/internal/service/vector_sync"
 	"github.com/google/wire"
 )
 
@@ -134,4 +136,6 @@ var ProviderSetService = wire.NewSet(
 	apikey.NewAPIKeyService,
 	ai_conversation.NewAIConversationService,
 	feature_toggle.NewFeatureToggleService,
+	embedding.NewEmbeddingService,
+	vector_sync.NewService,
 )
