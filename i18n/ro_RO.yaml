@@ -440,7 +440,7 @@ backend:
     tags_title:
       other: Tags
     no_description:
-      other: The tag has no description.
+      other: Eticheta nu are descriere.
   notification:
     action:
       update_question:
@@ -480,18 +480,18 @@ backend:
       invited_you_to_answer:
         other: te-a invitat să răspunzi
       earned_badge:
-        other: You've earned the "{{.BadgeName}}" badge
+        other: Ai câștigat insigna "{{.BadgeName}}"
   email_tpl:
     change_email:
       title:
         other: "[{{.SiteName}}] Confirmați noua dvs. adresă de e-mail"
       body:
-        other: "Confirm your new email address for {{.SiteName}} by clicking on the following link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nIf you did not request this change, please ignore this email.<br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen."
+        other: "Confirmați noua dvs. adresă de e-mail pentru {{.SiteName}} făcând clic pe următorul link:<br>\n<a href='{{.ChangeEmailUrl}}' target='_blank'>{{.ChangeEmailUrl}}</a><br><br>\n\nDacă nu ați solicitat această modificare, vă rugăm să ignorați acest e-mail.<br><br>\n\n--<br>\nNotă: Acesta este un e-mail automat de sistem, vă rugăm să nu răspundeți la acest mesaj, deoarece răspunsul dvs. nu va fi văzut."
     new_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} a răspuns la întrebarea dvs"
       body:
-        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>View it on {{.SiteName}}</a><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.AnswerUrl}}'>{{.QuestionTitle}}</a><br><br>\n\n{{.DisplayName}}:<br>\n<blockquote>{{.AnswerSummary}}</blockquote><br>\n<a href='{{.AnswerUrl}}'>Vedeti pe {{.SiteName}}</a><br><br>\n\n--<br>\nNotă: Acesta este un e-mail automat de sistem, vă rugăm să nu răspundeți la acest mesaj, deoarece răspunsul dvs. nu va fi văzut.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
     invited_you_to_answer:
       title:
         other: "[{{.SiteName}}] {{.DisplayName}} vă invită să răspundeți"
