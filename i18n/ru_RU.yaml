@@ -233,7 +233,7 @@ backend:
       cannot_update:
         other: Нет разрешения на обновление.
       content_cannot_empty:
-        other: .
+        other: Содержимое не может быть пустым.
       content_less_than_minimum:
         other: Недостаточно символов.
     rank:
