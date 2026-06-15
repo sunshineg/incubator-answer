@@ -58,7 +58,7 @@ backend:
     undelete:
       other: بازگردانی حذف
     merge:
-      other: Merge
+      other: ادغام
   role:
     name:
       user:
@@ -140,7 +140,7 @@ backend:
   pass:
     other: رمز
   old_pass:
-    other: Current password
+    other: رمز عبور فعلی
   original_text:
     other: پست جاری
   email_or_password_wrong_error:
@@ -148,9 +148,9 @@ backend:
   error:
     common:
       invalid_url:
-        other: Invalid URL.
+        other: غلط URL.
       status_invalid:
-        other: Invalid status.
+        other: وضعیت نامعتبر است.
     password:
       space_invalid:
         other: رمز عبور نمی تواند شامل فضای خالی باشد.
@@ -158,7 +158,7 @@ backend:
       cannot_update_their_password:
         other: نمیتوانید رمز عبور خود را تغییر دهید.
       cannot_edit_their_profile:
-        other: You cannot modify your profile.
+        other: شما نمی توانید پروفایل خود را تغییر دهید.
       cannot_modify_self_status:
         other: نمیتوانید وضعیت خود را تغییر دهید.
       email_or_password_wrong:
@@ -173,7 +173,7 @@ backend:
       question_closed_cannot_add:
         other: سوالات بسته شده اند و نمیتوان سوالی اضافه کرد.
       content_cannot_empty:
-        other: Answer content cannot be empty.
+        other: جواب نمی تواند خالی باشد.
     comment:
       edit_without_permission:
         other: نظرات قابل ویرایش نیستند.
@@ -182,7 +182,7 @@ backend:
       cannot_edit_after_deadline:
         other: زمان زیادی برای ویرایش نظر گذشته است.
       content_cannot_empty:
-        other: Comment content cannot be empty.
+        other: محتوای نظر نمی تواند خالی باشد.
     email:
       duplicate:
         other: ایمیل تکراری.
@@ -215,15 +215,15 @@ backend:
       new_password_same_as_previous_setting:
         other: پسورد جدید با پسورد قدیمی یکسان است.
       already_deleted:
-        other: This post has been deleted.
+        other: این پست حذف شده است.
     meta:
       object_not_found:
-        other: Meta object not found
+        other: آبجکت مورد نظر پیدا نشد
     question:
       already_deleted:
         other: این پست حذف شده است.
       under_review:
-        other: Your post is awaiting review. It will be visible after it has been approved.
+        other: پست شما در دست بررسی است. و بعد از تایید شدن نشان داده میشود.
       not_found:
         other: سوال پیدا نشد.
       cannot_deleted:
@@ -233,9 +233,9 @@ backend:
       cannot_update:
         other: اجازه بروزرسانی ندارید.
       content_cannot_empty:
-        other: Content cannot be empty.
+        other: محتوا نمی‌تواند خالی باشد.
       content_less_than_minimum:
-        other: Not enough content entered.
+        other: محتوای وارد شده به حد نصاب نرسیده است.
     rank:
       fail_to_meet_the_condition:
         other: شهرت ناکافی.
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: شما نمی توانید مترادفی برای برچسب فعلی به عوان خودش تنظیم کنین.
       minimum_count:
-        other: Not enough tags were entered.
+        other: تگ وارد شده به حد نصاب نرسیده است.
     smtp:
       config_from_name_cannot_be_email:
         other: '"از طرفه" نمی تواند آدرس ایمیل باشد.'
