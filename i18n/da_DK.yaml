@@ -2141,7 +2141,7 @@ ui:
         label: Max vedhæftningsstørrelse (MB)
         text: "Den maksimale vedhæftede filer upload størrelse."
       image_megapixels:
-        label: Max billed megapixels
+        label: Max billede mega-pixels
         text: "Maksimalt antal megapixels tilladt for et billede."
       image_extensions:
         label: Godkendte billedudvidelser
