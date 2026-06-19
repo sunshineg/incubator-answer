@@ -73,14 +73,14 @@ backend:
       admin:
         other: Hav den fulde magt til at få adgang til webstedet.
       moderator:
-        other: Har adgang til alle opslag undtagen administratorindstillinger.
+        other: Har adgang til alle indlaeg undtagen administratorindstillinger.
   privilege:
     level_1:
       description:
         other: Niveau 1 (mindre omdømme kræves for private team, gruppe)
     level_2:
       description:
-        other: Niveau 2 (lav omdømme kræves for opstart fællesskab)
+        other: Niveau 2 (lavt omdømme kræves for opstart fællesskab)
     level_3:
       description:
         other: Niveau 3 (højt omdømme kræves for moden fællesskab)
@@ -803,7 +803,7 @@ backend:
           other: Fællesskab
       posting:
         name:
-          other: Oplæg
+          other: Indlæg
 # The following fields are used for interface presentation(Front-end)
 ui:
   how_to_format:
@@ -825,7 +825,7 @@ ui:
     edit_question: Rediger spørgsmål
     edit_answer: Rediger Svar
     search: Søg
-    posts_containing: Opslag som indeholder
+    posts_containing: Indlæg indeholdende
     settings: Indstillinger
     notifications: Notifikationer
     login: Log Ind
@@ -845,7 +845,7 @@ ui:
     http_50X: Http Fejl 500
     http_403: HTTP Fejl 403
     logout: Log Ud
-    posts: Opslag
+    posts: Indlæg
     ai_assistant: AI-assistent
   ai_assistant:
     description: Har du et spørgsmål? Stil det og få svar, perspektiver og anbefalinger.
@@ -1031,14 +1031,14 @@ ui:
             Forklar kort dine ændringer (korrigeret stavning, fast grammatik, forbedret formatering)
     btn_cancel: Annuller
     btn_submit: Indsend
-    btn_post: Send nyt tag
+    btn_post: Send nyt nøgleord
   tag_info:
     created_at: Oprettet
     edited_at: Redigeret
     history: Historik
     synonyms:
       title: Synonymer
-      text: Følgende tags vil blive genmappet til
+      text: Følgende nøgleord vil blive omdirigeret til
       empty: Ingen synonymer fundet.
       btn_add: Tilføj et synonym
       btn_edit: Rediger
@@ -1049,7 +1049,7 @@ ui:
       tip_with_posts: >-
         <p>Vi tillader ikke <strong>at slette nøgleord med opslag</strong>.</p> <p>Fjern venligst dette nøgleord fra opslagene først.</p>
       tip_with_synonyms: >-
-        <p>Vi tillader ikke <strong>at slette tag med indlæg</strong>.</p> <p>Fjern venligst dette tag fra indlæggene først.</p>
+        <p>Vi tillader ikke <strong>at slette nøgleord med indlæg</strong>.</p> <p>Fjern venligst dette tag fra indlæggene først.</p>
       tip: Er du sikker på, at du vil slette?
       close: Luk
     merge:
@@ -1153,9 +1153,9 @@ ui:
             empty: Titel må ikke være tom.
             range: Titel på op til 150 tegn
         body:
-          label: Brødtekst
+          label: Beskrivelse
           msg:
-            empty: Brødtekst skal udfyldes.
+            empty: Beskrivelse skal udfyldes.
           hint:
             optional_body: Beskriv hvad spørgsmålet handler om.
             minimum_characters: "Beskriv hvad spørgsmålet handler om, mindst {{min_content_length}} tegn er påkrævet."
@@ -1390,7 +1390,7 @@ ui:
     answers: svar
   linked_question:
     title: Knyttet
-    description: Opslag knyttet til
+    description: Indlæg knyttet til
     no_linked_question: Intet indhold linket fra dette indhold.
   invite_to_answer:
     title: Inviter personer
@@ -1525,7 +1525,7 @@ ui:
     display_below: Vis nedenfor
     always_display: Vis altid
     or: eller
-    back_sites: Tilbage til websteder
+    back_sites: Tilbage til webstedet
   search:
     title: Søgeresultater
     keywords: Nøgleord
@@ -1585,7 +1585,7 @@ ui:
     all_questions: Alle Spørgsmål
     x_questions: "{{ count }} Spørgsmål"
     x_answers: "{{ count }} svar"
-    x_posts: "{{ count }} Opslag"
+    x_posts: "{{ count }} Indlæg"
     questions: Spørgsmål
     answers: Svar
     newest: Nyeste
@@ -1626,7 +1626,7 @@ ui:
     top_questions: Populære Spørgsmål
     stats: Statistik
     list_empty: Ingen opslag fundet.<br />Måske vil du vælge en anden fane?
-    content_empty: Ingen opslag fundet.
+    content_empty: Ingen indlæg fundet.
     accepted: Accepteret
     answered: besvaret
     asked: spurgt
@@ -1790,7 +1790,7 @@ ui:
     apperance: Udseende
     community: Fællesskab
     advanced: Avanceret
-    tags: Tags
+    tags: Nøgleord
     rules: Regler
     policies: Politikker
     security: Sikkerhed
@@ -1811,7 +1811,7 @@ ui:
       content: Du har optjent et nyt badge.
       close: Luk
       confirm: Se emblemer
-    title: emblem
+    title: Emblemer
     awarded: Tildelt
     earned_×: Optjent ×{{ number }}
     ×_awarded: "{{ number }} tildelt"
@@ -2309,38 +2309,38 @@ ui:
         label: Udbyder
       api_host:
         label: API vært
-        msg: API host is required
+        msg: API-vært er påkrævet
       api_key:
-        label: API key
-        check: Check
-        check_success: "Connection successful."
-        msg: API key is required
+        label: API-nøgle
+        check: Tjek
+        check_success: "Forbindelse lykkedes."
+        msg: API-nøgle er påkrævet
       model:
         label: Model
-        msg: Model is required
-      add_success: AI settings updated successfully.
+        msg: Model er påkrævet
+      add_success: AI indstillinger opdateret.
     conversations:
-      topic: Topic
-      helpful: Helpful
-      unhelpful: Unhelpful
-      created: Created
-      action: Action
-      empty: No conversations found.
+      topic: Emne
+      helpful: Nyttigt
+      unhelpful: Ikke nyttig
+      created: Oprettet
+      action: Handling
+      empty: Ingen samtaler fundet.
       delete_modal:
-        title: Delete conversation
-        content: Are you sure you want to delete this conversation? This is permanent!
-        delete_success: Conversation deleted successfully.
+        title: Slet samtale
+        content: Er du sikker på, at du vil slette denne samtale? Dette er permanent!
+        delete_success: Samtalen blev slettet.
     mcp:
       mcp_server:
-        label: MCP server
-        switch: Enabled
+        label: MCP-server
+        switch: Aktiveret
       type:
         label: Type
       url:
         label: URL
       http_header:
-        label: HTTP header
-        text: Please replace {key} with the API Key.
+        label: HTTP-header
+        text: Erstat {key} med API-nøglen.
   form:
     optional: (valgfrit)
     empty: skal udfyldes
@@ -2372,7 +2372,7 @@ ui:
     reputation: omdømme
     flag_post_type: Anmeld dette indlæg som {{ type }}.
     flag_user_type: Anmeldte dette indlæg som {{ type }}.
-    edit_post: Rediger opslag
+    edit_post: Rediger indlæg
     list_post: Sæt indlæg på liste
     unlist_post: Fjern indlæg fra liste
   timeline:
@@ -2420,7 +2420,7 @@ ui:
     discard_confirm: Er du sikker på, at du vil kassere dit udkast?
   messages:
     post_deleted: Dette indlæg er blevet slettet.
-    post_cancel_deleted: Dette opslag er blevet genoprettet.
+    post_cancel_deleted: Dette indlæg er blevet genoprettet.
     post_pin: Dette indlæg er blevet fastgjort.
     post_unpin: Dette indlæg er blevet frigjort.
     post_hide_list: Dette indlæg er blevet skjult fra listen.
@@ -2429,7 +2429,7 @@ ui:
     post_list: Dette indlæg er blevet listet.
     post_unlist: Dette indlæg er blevet aflistet.
     post_pending: Dit indlæg afventer gennemgang. Dette er en forhåndsvisning, det vil være synligt, når det er blevet godkendt.
-    post_closed: Dette opslag er blebet lukket.
+    post_closed: Dette indlæg er blevet lukket.
     answer_deleted: Dette svar er blevet slettet.
     answer_cancel_deleted: Dette svar er blevet genoprettet.
     change_user_role: Denne brugers rolle er blevet ændret.
@@ -2437,7 +2437,7 @@ ui:
     user_normal: Denne bruger er allerede normal.
     user_suspended: Denne bruger er blevet suspenderet.
     user_deleted: Denne bruger er slettet.
-    user_added: User has been added successfully.
+    user_added: Bruger er blevet tilføjet.
     badge_activated: Dette emblem er blevet aktiveret.
     badge_inactivated: Dette emblem er blevet inaktiveret.
     users_deleted: Disse bruger er blevet slettet.
