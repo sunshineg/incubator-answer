@@ -846,16 +846,16 @@ ui:
     http_403: HTTP Fejl 403
     logout: Log Ud
     posts: Opslag
-    ai_assistant: AI Assistant
+    ai_assistant: AI-assistent
   ai_assistant:
-    description: Got a question? Ask it and get answers, perspectives, and recommendations.
-    recent_conversations: Recent Conversations
-    show_more: Show more
-    new: New chat
-    ai_generate: AI-generated from posts and may not be accurate.
-    copy: Copy
-    ask_a_follow_up: Ask a follow-up
-    ask_placeholder: Ask a question
+    description: Har du et spørgsmål? Stil det og få svar, perspektiver og anbefalinger.
+    recent_conversations: Seneste Samtaler
+    show_more: Vis mere
+    new: Ny chat
+    ai_generate: AI-genereret fra opslag og muligvis ikke nøjagtig.
+    copy: Kopiér
+    ask_a_follow_up: Stil et opfølgende spørgsmål
+    ask_placeholder: Stil et spørgsmål
   notifications:
     title: Notifikationer
     inbox: Indbakke
@@ -1788,17 +1788,17 @@ ui:
     plugins: Plugins
     installed_plugins: Installerede Plugins
     apperance: Udseende
-    community: Community
-    advanced: Advanced
+    community: Fællesskab
+    advanced: Avanceret
     tags: Tags
-    rules: Rules
-    policies: Policies
-    security: Security
-    files: Files
-    apikeys: API Keys
-    intelligence: Intelligence
-    ai_assistant: AI Assistant
-    ai_settings: AI Settings
+    rules: Regler
+    policies: Politikker
+    security: Sikkerhed
+    files: Filer
+    apikeys: API Nøgler
+    intelligence: Intelligens
+    ai_assistant: AI-assistent
+    ai_settings: AI-indstillinger
     mcp: MCP
   website_welcome: Velkommen til {{site_name}}
   user_center:
@@ -2111,7 +2111,7 @@ ui:
         always_display: Vis altid eksternt indhold
         ask_before_display: Spørg før visning af eksternt indhold
     write:
-      page_title: Files
+      page_title: Filer
       min_content:
         label: Minimum længde for spørgsmål-tekst
         text: Mindste tilladte spørgsmåls længde i tegn.
@@ -2171,8 +2171,8 @@ ui:
         text: Ændre farver, der bruges af dine temaer
       layout:
         label: Layout
-        full_width: Full-width
-        fixed_width: Fixed-width
+        full_width: Fuld bredde
+        fixed_width: Fast bredde
     css_and_html:
       page_title: CSS og HTML
       custom_css:
@@ -2278,37 +2278,37 @@ ui:
       status: Status
       title: Emblemer
     apikeys:
-      title: API Keys
-      add_api_key: Add API Key
-      desc: Description
-      scope: Scope
-      key: Key
-      created: Created
-      last_used: Last used
+      title: API Nøgler
+      add_api_key: Tilføj API-nøgle
+      desc: Beskrivelse
+      scope: Omfang
+      key: Nøgle
+      created: Oprettet
+      last_used: Sidst brugt
       add_or_edit_modal:
-        add_title: Add API Key
-        edit_title: Edit API Key
-        description: Description
-        description_required: Description is required.
-        scope: Scope
+        add_title: Tilføj API-nøgle
+        edit_title: Rediger API-nøgle
+        description: Beskrivelse
+        description_required: Beskrivelse er påkrævet.
+        scope: Omfang
         global: Global
-        read-only: Read-only
+        read-only: Skrivebeskyttet
       created_modal:
-        title: API key created
-        api_key: API key
-        description: This key will not be displayed again. Make sure you take a copy before continuing.
+        title: API-nøgle oprettet
+        api_key: API-nøgle
+        description: Denne nøgle vil ikke blive vist igen. Sørg for at tage en kopi før du fortsætter.
       delete_modal:
-        title: Delete API Key
-        content: Any applications or scripts using this key will no longer be able to access the API. This is permanent!
+        title: Slet API-nøgle
+        content: Alle programmer eller scripts der bruger denne nøgle vil ikke længere kunne få adgang til API'en. Dette er permanent!
     ai_settings:
       enabled:
-        label: AI enabled
-        check: Enable AI features
-        text: The AI model must be configured correctly before it can be used.
+        label: AI aktiveret
+        check: Aktiver AI-funktioner
+        text: AI-modellen skal konfigureres korrekt, før den kan bruges.
       provider:
-        label: Provider
+        label: Udbyder
       api_host:
-        label: API host
+        label: API vært
         msg: API host is required
       api_key:
         label: API key
