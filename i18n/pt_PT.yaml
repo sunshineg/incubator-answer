@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Notificações
     inbox: Caixa de entrada
@@ -2203,6 +2205,10 @@ ui:
         title: Registrar e-mail
         label: Permitir registro utilizando e-mail
         text: Desative para impedir que qualquer pessoa crie uma nova conta por e-mail.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Domínios de e-mail permitidos
         text: Domínios de e-mail com os quais os usuários devem registrar contas. Um domínio por linha. Ignorado quando vazio.
@@ -2446,5 +2452,4 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
 
