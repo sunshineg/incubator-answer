@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Notificări
     inbox: Mesaje primite
@@ -2203,6 +2205,10 @@ ui:
         title: Înregistrare e-mail
         label: Permite înregistrări noi
         text: Dezactivați pentru a preveni crearea unui cont nou prin e-mail.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Domenii de e-mail permise
         text: Domeniile de e-mail cu care utilizatorii trebuie să înregistreze conturi. Un domeniu pe linie. Se ignoră atunci când este gol.
@@ -2446,5 +2452,4 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
 
