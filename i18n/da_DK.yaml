@@ -856,6 +856,8 @@ ui:
     copy: Kopiér
     ask_a_follow_up: Stil et opfølgende spørgsmål
     ask_placeholder: Stil et spørgsmål
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Notifikationer
     inbox: Indbakke
@@ -2203,6 +2205,10 @@ ui:
         title: E-mail-registrering
         label: Tillad e-mail registrering
         text: Slå fra for at forhindre, at der oprettes en ny konto via e-mail.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Tilladte e-mail-domæner
         text: E-mail-domæner som brugere skal registrere konti med. Et domæne pr. linje. Ignoreres når tomt.
@@ -2446,5 +2452,4 @@ ui:
     copy: Kopier til udklipsholder
     copied: Kopieret
     external_content_warning: Eksterne billeder/medier vises ikke.
-
 
