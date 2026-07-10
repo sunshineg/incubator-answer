@@ -856,6 +856,8 @@ ui:
     copy: 複製
     ask_a_follow_up: 詢問後續問題
     ask_placeholder: 詢問問題
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: 通知
     inbox: 收件夾
@@ -2203,6 +2205,10 @@ ui:
         title: 電子郵件註冊
         label: 允許電子郵件註冊
         text: 關閉以防止任何人透過電子郵件建立新帳號。
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: 允許的電子郵件網域
         text: 使用者必須以此電子郵件網域註冊帳號。每行一個網域。留空時忽略。
@@ -2446,5 +2452,4 @@ ui:
     copy: 複製到剪貼簿
     copied: 已複製
     external_content_warning: 外部圖片/媒體未顯示。
-
 
