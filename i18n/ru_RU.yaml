@@ -856,6 +856,8 @@ ui:
     copy: Скопировать
     ask_a_follow_up: Задать уточняющий вопрос
     ask_placeholder: Задать вопрос
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Уведомления
     inbox: Входящие
@@ -2203,6 +2205,10 @@ ui:
         title: Регистрация по электронной почте
         label: Разрешить регистрацию по электронной почте
         text: Отключите, чтобы предотвратить создание новой учетной записи через электронную почту.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Разрешенные домены электронной почты
         text: Домены электронной почты, с которыми пользователи должны регистрировать аккаунты. Один домен на каждой строке. Игнорируется, если пусто.
@@ -2446,5 +2452,4 @@ ui:
     copy: Скопировать в буфер обмена
     copied: Скопировано
     external_content_warning: Внешние изображения/медиа не отображаются.
-
 
