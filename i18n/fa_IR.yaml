@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: اعلانات
     inbox: پیغام‌های دریافتی
@@ -2203,6 +2205,10 @@ ui:
         title: Email registration
         label: Allow email registration
         text: Turn off to prevent anyone creating new account through email.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: دامنه های مجاز ایمیل
         text: دامنه های ایمیلی که کاربران باید با آنها حساب ثبت کنند. یک دامنه در هر خط. وقتی خالی است نادیده گرفته می شود.
@@ -2446,5 +2452,4 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
 
