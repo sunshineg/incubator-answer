@@ -856,6 +856,8 @@ ui:
     copy: 复制
     ask_a_follow_up: 提出后续问题
     ask_placeholder: 提问
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: 通知
     inbox: 收件箱
@@ -2203,6 +2205,10 @@ ui:
         title: 邮箱注册
         label: 允许邮箱注册
         text: 关闭以阻止任何人通过邮箱创建新账户。
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: 允许的邮箱域
         text: 允许注册账户的邮箱域。每行一个域名。留空时忽略。
@@ -2446,5 +2452,4 @@ ui:
     copy: 复制到剪贴板
     copied: 已复制
     external_content_warning: 外部图像/媒体未显示。
-
 

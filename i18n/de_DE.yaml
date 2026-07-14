@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Benachrichtigungen
     inbox: Posteingang
@@ -2203,6 +2205,10 @@ ui:
         title: E-Mail Registrierung
         label: E-Mail-Registrierung zulassen
         text: Abschalten, um zu verhindern, dass jemand ein neues Konto per E-Mail erstellt.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Zugelassene E-Mail-Domänen
         text: E-Mail-Domänen, bei denen die Nutzer Konten registrieren müssen. Eine Domäne pro Zeile. Wird ignoriert, wenn leer.
@@ -2446,5 +2452,4 @@ ui:
     copy: In die Zwischenablage kopieren
     copied: Kopiert
     external_content_warning: Externe Bilder/Medien werden nicht angezeigt.
-
 

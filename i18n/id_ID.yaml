@@ -29,7 +29,7 @@ backend:
     database_error:
       other: Kesalahan data server.
     forbidden_error:
-      other: Forbidden.
+      other: Terlarang.
     duplicate_request_error:
       other: Duplicate submission.
   action:
@@ -44,7 +44,7 @@ backend:
     reopen:
       other: Buka kembali
     forbidden_error:
-      other: Forbidden.
+      other: Terlarang.
     pin:
       other: Pin
     hide:
@@ -110,7 +110,7 @@ backend:
     rank_invite_someone_to_answer_label:
       other: Undang seseorang untuk menjawab
     rank_tag_add_label:
-      other: Buat tag baru
+      other:
     rank_tag_edit_label:
       other: Edit tag description (need to review)
     rank_question_edit_label:
@@ -132,7 +132,7 @@ backend:
     rank_tag_synonym_label:
       other: Manage tag synonyms
   email:
-    other: Email
+    other:
   e_mail:
     other: Email
   password:
@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Pemberitahuan
     inbox: Kotak Masuk
@@ -2203,6 +2205,10 @@ ui:
         title: Email registration
         label: Allow email registration
         text: Turn off to prevent anyone creating new account through email.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Allowed email domains
         text: Email domains that users must register accounts with. One domain per line. Ignored when empty.
@@ -2446,5 +2452,4 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
 

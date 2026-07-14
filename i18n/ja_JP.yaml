@@ -855,6 +855,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: 通知
     inbox: 受信トレイ
@@ -2204,6 +2206,10 @@ ui:
         title: メールアドレスの登録
         label: メールアドレスの登録を許可
         text: オフにすると、メールで新しいアカウントを作成できなくなります。
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: 許可されたメールドメイン
         text: ユーザーがアカウントを登録する必要があるメールドメインです。1行に1つのドメインがあります。空の場合は無視されます。
@@ -2447,5 +2453,4 @@ ui:
     copy: クリップボードにコピー
     copied: コピーしました
     external_content_warning: 外部の画像/メディアは表示されません。
-
 
