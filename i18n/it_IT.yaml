@@ -235,7 +235,7 @@ backend:
       content_cannot_empty:
         other: Il contenuto non può essere vuoto.
       content_less_than_minimum:
-        other: Not enough content entered.
+        other: Contenuto inserito non sufficiente.
     rank:
       fail_to_meet_the_condition:
         other: Il rango di reputazione non soddisfa le condizioni.
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: Non puoi impostare il sinonimo del tag corrente come se stesso.
       minimum_count:
-        other: Not enough tags were entered.
+        other: Non sono stati inseriti abbastanza tag.
     smtp:
       config_from_name_cannot_be_email:
         other: Il mittente non può essere un indirizzo email.
@@ -2297,11 +2297,11 @@ ui:
         description: Description
         description_required: Description is required.
         scope: Scope
-        global: Global
-        read-only: Read-only
+        global: Globale
+        read-only: Solo lettura
       created_modal:
-        title: API key created
-        api_key: API key
+        title: Chiave API creata
+        api_key: Chiave API
         description: This key will not be displayed again. Make sure you take a copy before continuing.
       delete_modal:
         title: Delete API Key
