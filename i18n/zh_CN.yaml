@@ -2208,7 +2208,7 @@ ui:
       email_verification:
         title: Email verification
         label: Require email verification
-        text: When enabled, users must verify their email address before using the site.
+        text: 开启后，用户必须先验证邮箱地址才能使用本站。
       allowed_email_domains:
         title: 允许的邮箱域
         text: 允许注册账户的邮箱域。每行一个域名。留空时忽略。
