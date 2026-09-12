@@ -1563,8 +1563,8 @@ ui:
   modal_confirm:
     title: Помилка...
   delete_permanently:
-    title: Delete permanently
-    content: Are you sure you want to delete permanently?
+    title: Видалити назавжди
+    content: Ви впевнені, що хочете видалити назавжди?
   account_result:
     success: Ваш новий обліковий запис підтверджено; вас буде перенаправлено на головну сторінку.
     link: Перейти на головну сторінку
@@ -1587,7 +1587,7 @@ ui:
     all_questions: Всі питання
     x_questions: "{{ count }} Питань"
     x_answers: "{{ count }} відповідей"
-    x_posts: "{{ count }} Posts"
+    x_posts: "{{ count }} Дописів"
     questions: Запитання
     answers: Відповіді
     newest: Найновіші
@@ -1670,22 +1670,22 @@ ui:
       placeholder: /data/answer.db
       msg: Файл бази даних не може бути порожнім.
     ssl_enabled:
-      label: Enable SSL
+      label: Увімкнути SSL
     ssl_enabled_on:
       label: On
     ssl_enabled_off:
       label: Off
     ssl_mode:
-      label: SSL Mode
+      label: Режим SSL
     ssl_root_cert:
-      placeholder: sslrootcert file path
-      msg: Path to sslrootcert file cannot be empty
+      placeholder: шлях до файлу sslrootcert
+      msg: Шлях до файлу sslrootcert не може бути порожнім
     ssl_cert:
-      placeholder: sslcert file path
-      msg: Path to sslcert file cannot be empty
+      placeholder: шлях до файлу sslcert
+      msg: Шлях до файлу sslcert не може бути порожнім
     ssl_key:
-      placeholder: sslkey file path
-      msg: Path to sslkey file cannot be empty
+      placeholder: шлях до файлу sslkey
+      msg: Шлях до файлу sslkey не може бути порожнім
     config_yaml:
       title: Створити config.yaml
       label: Файл config.yaml створено.
@@ -1719,7 +1719,7 @@ ui:
       label: Ім’я
       msg: Ім'я не може бути порожнім.
       character: 'Must use the character set "a-z", "0-9", " - . _"'
-      msg_max_length: Name must be between 2 to 30 characters in length.
+      msg_max_length: Довжина імені повинна становити від 2 до 30 символів.
     admin_password:
       label: Пароль
       text: >-
@@ -1728,9 +1728,9 @@ ui:
       msg_min_length: Пароль має бути не менше 8 символів.
       msg_max_length: Пароль має бути не менше 32 символів.
     admin_confirm_password:
-      label: "Confirm Password"
-      text: "Please re-enter your password to confirm."
-      msg: "Confirm password does not match."
+      label: "Підтвердьте пароль"
+      text: "Будь ласка, введіть пароль ще раз для підтвердження."
+      msg: "Підтвердьте, що паролі не збігаються."
     admin_email:
       label: Електронна пошта
       text: Вам знадобиться ця електронна адреса для входу.
@@ -1779,7 +1779,7 @@ ui:
     branding: Брендинг
     legal: Правила та умови
     write: Написати
-    terms: Terms
+    terms: Умови
     tos: Умови використання
     privacy: Приватність
     seo: SEO
@@ -1789,18 +1789,18 @@ ui:
     privileges: Привілеї
     plugins: Плагіни
     installed_plugins: Встановлені плагіни
-    apperance: Appearance
-    community: Community
-    advanced: Advanced
-    tags: Tags
-    rules: Rules
-    policies: Policies
-    security: Security
-    files: Files
-    apikeys: API Keys
-    intelligence: Intelligence
-    ai_assistant: AI Assistant
-    ai_settings: AI Settings
+    apperance: Вигляд
+    community: Спільнота
+    advanced: Додатково
+    tags: Теґи
+    rules: Правила
+    policies: Політики
+    security: Безпека
+    files: Файли
+    apikeys: Ключі API
+    intelligence: Розум
+    ai_assistant: ШІ-асистент
+    ai_settings: Налаштування ШІ
     mcp: MCP
   website_welcome: Ласкаво просимо до {{site_name}}
   user_center:
@@ -1901,7 +1901,7 @@ ui:
         fields:
           display_name:
             label: Зображуване ім'я
-            msg_range: Display name must be 2-30 characters in length.
+            msg_range: Ім'я для зображення має містити від 2 до 30 символів.
           username:
             label: Ім'я користувача
             msg_range: Ім'я користувача має містити від 2 до 30 символів.
@@ -2450,6 +2450,6 @@ ui:
     posts_deleted: These questions have been deleted.
     answers_deleted: These answers have been deleted.
     copy: Copy to clipboard
-    copied: Copied
-    external_content_warning: External images/media are not displayed.
+    copied: Скопійовано
+    external_content_warning: Зовнішні зображення/медіафайли не зображаються.
 
