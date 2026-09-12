@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Bildirimler
     inbox: Gelen Kutusu
@@ -2203,6 +2205,10 @@ ui:
         title: E-posta kaydı
         label: E-posta kaydına izin ver
         text: Herhangi birinin e-posta yoluyla yeni hesap oluşturmasını engellemek için kapatın.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: İzin verilen e-posta alan adları
         text: Kullanıcıların hesap kaydı yapması gereken e-posta alan adları. Her satırda bir alan adı. Boş olduğunda dikkate alınmaz.
@@ -2446,5 +2452,4 @@ ui:
     copy: Panoya kopyala
     copied: Kopyalandı
     external_content_warning: Harici resimler/medya gösterilmiyor.
-
 

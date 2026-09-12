@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Powiadomienia
     inbox: Skrzynka odbiorcza
@@ -2203,6 +2205,10 @@ ui:
         title: Rejestracja przez email
         label: Zezwalaj na rejestrację przez email
         text: Wyłącz, aby uniemożliwić tworzenie nowego konta poprzez email.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Dozwolone domeny email
         text: Domeny email, z których użytkownicy muszą rejestrować konta. Jeden domena na linię. Ignorowane, gdy puste.
@@ -2446,5 +2452,4 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
 

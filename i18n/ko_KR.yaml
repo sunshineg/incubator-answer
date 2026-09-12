@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: 알림
     inbox: 받은 편지함
@@ -2203,6 +2205,10 @@ ui:
         title: 이메일 등록
         label: 이메일 등록 허용
         text: 이메일을 통한 새 계정 생성을 막으려면 끄세요.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: 허용된 이메일 도메인
         text: 사용자가 계정을 등록할 때 필수적으로 사용해야 하는 이메일 도메인입니다. 한 줄에 하나의 도메인을 입력하세요. 비어 있으면 무시됩니다.
@@ -2446,5 +2452,4 @@ ui:
     copy: 클립보드에 복사
     copied: 복사됨
     external_content_warning: 외부 이미지/미디어가 표시되지 않습니다.
-
 
