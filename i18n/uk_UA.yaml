@@ -2207,8 +2207,8 @@ ui:
         text: Вимкніть, щоб запобігти створенню нових облікових записів через електронну пошту.
       email_verification:
         title: Підтвердження е-пошти
-        label: Require email verification
-        text: When enabled, users must verify their email address before using the site.
+        label: Вимагати підтвердження електронної пошти
+        text: Якщо ця функція увімкнена, користувачі повинні підтвердити свою електронну адресу перед початком користування сайтом.
       allowed_email_domains:
         title: Дозволені домени електронної пошти
         text: Домени електронної пошти, на які користувачі повинні зареєструвати облікові записи. Один домен у рядку. Ігнорується, якщо порожній.
@@ -2284,35 +2284,35 @@ ui:
       status: Статус
       title: Значки
     apikeys:
-      title: API Keys
-      add_api_key: Add API Key
-      desc: Description
-      scope: Scope
-      key: Key
-      created: Created
-      last_used: Last used
+      title: Ключі API
+      add_api_key: Додати ключ API
+      desc: Опис
+      scope: Сфера
+      key: Ключ
+      created: Створено
+      last_used: Востаннє використано
       add_or_edit_modal:
-        add_title: Add API Key
-        edit_title: Edit API Key
-        description: Description
-        description_required: Description is required.
-        scope: Scope
-        global: Global
-        read-only: Read-only
+        add_title: Додати ключ API
+        edit_title: Редагувати ключ API
+        description: Опис
+        description_required: Опис є обов’язковим.
+        scope: Сфера
+        global: Загальний
+        read-only: Лише перегляд
       created_modal:
-        title: API key created
-        api_key: API key
-        description: This key will not be displayed again. Make sure you take a copy before continuing.
+        title: Створено ключ API
+        api_key: Ключ API
+        description: Цей ключ більше не показуватиметься. Обов’язково зробіть його копію, перш ніж продовжувати.
       delete_modal:
-        title: Delete API Key
-        content: Any applications or scripts using this key will no longer be able to access the API. This is permanent!
+        title: Видалити ключ API
+        content: Будь-які програми чи скрипти, що використовують цей ключ, більше не матимуть доступу до API. Це остаточне рішення!
     ai_settings:
       enabled:
-        label: AI enabled
-        check: Enable AI features
-        text: The AI model must be configured correctly before it can be used.
+        label: ШІ ввімкнено
+        check: Увімкнути ШІ функції
+        text: Перш ніж почати використовувати модель ШІ, її необхідно правильно налаштувати.
       provider:
-        label: Provider
+        label: Провайдер
       api_host:
         label: API host
         msg: API host is required
