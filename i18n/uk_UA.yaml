@@ -58,7 +58,7 @@ backend:
     undelete:
       other: Скасувати видалення
     merge:
-      other: Merge
+      other: Об'єднати
   role:
     name:
       user:
@@ -140,7 +140,7 @@ backend:
   pass:
     other: Пароль
   old_pass:
-    other: Current password
+    other: Поточний пароль
   original_text:
     other: Цей допис
   email_or_password_wrong_error:
@@ -173,7 +173,7 @@ backend:
       question_closed_cannot_add:
         other: Питання закриті й не можуть бути додані.
       content_cannot_empty:
-        other: Answer content cannot be empty.
+        other: Зміст відповіді не може бути порожнім.
     comment:
       edit_without_permission:
         other: Коментарі не можна редагувати.
@@ -182,7 +182,7 @@ backend:
       cannot_edit_after_deadline:
         other: Час коментаря був занадто довгим, щоб його можна було змінити.
       content_cannot_empty:
-        other: Comment content cannot be empty.
+        other: Зміст коментаря не може бути порожнім.
     email:
       duplicate:
         other: Такий E-mail вже існує.
@@ -233,9 +233,9 @@ backend:
       cannot_update:
         other: Немає дозволу на оновлення.
       content_cannot_empty:
-        other: Content cannot be empty.
+        other: Вміст не може бути порожнім.
       content_less_than_minimum:
-        other: Not enough content entered.
+        other: Введено недостатньо вмісту.
     rank:
       fail_to_meet_the_condition:
         other: Ранг репутації не відповідає умові.
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: Ви не можете встановити синонім поточного тегу як сам тег.
       minimum_count:
-        other: Not enough tags were entered.
+        other: Введено недостатньо тегів.
     smtp:
       config_from_name_cannot_be_email:
         other: Ім’я відправника не може бути електронною адресою.
@@ -311,13 +311,13 @@ backend:
       add_bulk_users_amount_error:
         other: "Кількість користувачів, яких ви додаєте одночасно, має бути в діапазоні 1-{{.MaxAmount}}."
       status_suspended_forever:
-        other: "<strong>This user was suspended forever.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Цього користувача було назавжди заблоковано.</strong> Цей користувач порушив правила спільноти."
       status_suspended_until:
-        other: "<strong>This user was suspended until {{.SuspendedUntil}}.</strong> This user doesn't meet a community guideline."
+        other: "<strong>Цього користувача було заблоковано до {{.SuspendedUntil}}.</strong> Цей користувач порушив правила спільноти."
       status_deleted:
-        other: "This user was deleted."
+        other: "Цей користувач був видалений."
       status_inactive:
-        other: "This user is inactive."
+        other: "Цей користувач неактивний."
     config:
       read_config_failed:
         other: Не вдалося прочитати конфігурацію
@@ -506,7 +506,7 @@ backend:
       title:
         other: "[{{.SiteName}}] Нове питання: {{.QuestionTitle}}"
       body:
-        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nNote: This is an automatic system email, please do not reply to this message as your response will not be seen.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Unsubscribe</a></small>"
+        other: "<a href='{{.QuestionUrl}}'>{{.QuestionTitle}}</a><br>\n<small>{{.Tags}}</small><br><br>\n\n--<br>\nПримітка: Це автоматичне системне повідомлення електронною поштою. Будь ласка, не відповідайте на це повідомлення, оскільки ваша відповідь не буде побачена.<br><br>\n\n<small><a href='{{.UnsubscribeUrl}}'>Відписатися</a></small>"
     pass_reset:
       title:
         other: "[{{.SiteName }}] Скидання пароля"
@@ -578,7 +578,7 @@ backend:
         name:
           other: Перше посилання
         desc:
-          other: First added a link to another post.
+          other: Спочатку додав посилання на інший допис.
       first_reaction:
         name:
           other: Перша реакція
@@ -821,7 +821,7 @@ ui:
     tag_wiki: тег вікі
     create_tag: Створити теґ
     edit_tag: Редагувати теґ
-    ask_a_question: Create Question
+    ask_a_question: Створити питання
     edit_question: Редагувати запитання
     edit_answer: Редагувати відповідь
     search: Пошук
@@ -845,19 +845,19 @@ ui:
     http_50X: Помилка HTTP 500
     http_403: Помилка HTTP 403
     logout: Вийти
-    posts: Posts
-    ai_assistant: AI Assistant
+    posts: Публікації
+    ai_assistant: ШІ-асистент
   ai_assistant:
-    description: Got a question? Ask it and get answers, perspectives, and recommendations.
-    recent_conversations: Recent Conversations
-    show_more: Show more
-    new: New chat
-    ai_generate: AI-generated from posts and may not be accurate.
-    copy: Copy
-    ask_a_follow_up: Ask a follow-up
-    ask_placeholder: Ask a question
-    thinking: Thinking…
-    thoughts: Thoughts
+    description: Є питання? Задайте його та отримайте відповіді, думки та рекомендації.
+    recent_conversations: Останні розмови
+    show_more: Показати більше
+    new: Новий чат
+    ai_generate: Створено за допомогою ШІ на основі публікацій і може бути неточним.
+    copy: Копіювати
+    ask_a_follow_up: Поставте додаткове питання
+    ask_placeholder: Поставити запитання
+    thinking: Думає…
+    thoughts: Думки
   notifications:
     title: Сповіщення
     inbox: Вхідні
@@ -1055,14 +1055,14 @@ ui:
       tip: Ви впевнені, що хочете видалити?
       close: Закрити
     merge:
-      title: Merge tag
-      source_tag_title: Source tag
-      source_tag_description: The source tag and its associated data will be remapped to the target tag.
-      target_tag_title: Target tag
-      target_tag_description: A synonym between these two tags will be created after merging.
-      no_results: No tags matched
-      btn_submit: Submit
-      btn_close: Close
+      title: Об'єднати тег
+      source_tag_title: Тег джерела
+      source_tag_description: Тег джерела та пов’язані з ним дані будуть пере прив'язані до тегу призначення.
+      target_tag_title: Тег призначення
+      target_tag_description: Після об’єднання між цими двома тегами буде створено синонім.
+      no_results: Не знайдено тегів
+      btn_submit: Надіслати
+      btn_close: Закрити
   edit_tag:
     title: Редагувати теґ
     default_reason: Редагувати теґ
@@ -1081,9 +1081,9 @@ ui:
     day: день
     hours: годин
     days: дні
-    month: month
-    months: months
-    year: year
+    month: місяць
+    months: місяці
+    year: рік
   reaction:
     heart: серце
     smile: посмішка
@@ -1139,10 +1139,10 @@ ui:
     more: Більше
     wiki: Вікі
   ask:
-    title: Create Question
+    title: Створити питання
     edit_title: Редагувати питання
     default_reason: Редагувати питання
-    default_first_reason: Create question
+    default_first_reason: Створити питання
     similar_questions: Подібні питання
     form:
       fields:
@@ -1150,7 +1150,7 @@ ui:
           label: Редакція
         title:
           label: Назва
-          placeholder: What's your topic? Be specific.
+          placeholder: Яка у вас тема? Будьте конкретні.
           msg:
             empty: Назва не може бути порожньою.
             range: Назва до 150 символів
@@ -1159,8 +1159,8 @@ ui:
           msg:
             empty: Тіло не може бути порожнім.
           hint:
-            optional_body: Describe what the question is about.
-            minimum_characters: "Describe what the question is about, at least {{min_content_length}} characters are required."
+            optional_body: Опишіть, про що йдеться в запитанні.
+            minimum_characters: "Опишіть, про що йдеться в запитанні; потрібно ввести щонайменше {{min_content_length}} символів."
         tags:
           label: Теґи
           msg:
@@ -1181,9 +1181,9 @@ ui:
     add_btn: Додати теґ
     create_btn: Створити новий теґ
     search_tag: Шукати теґ
-    hint: Describe what your content is about, at least one tag is required.
-    hint_zero_tags: Describe what your content is about.
-    hint_more_than_one_tag: "Describe what your content is about, at least {{min_tags_number}} tags are required."
+    hint: Опишіть, про що йде мова у вашому матеріалі; потрібно вказати принаймні один тег.
+    hint_zero_tags: Опишіть, про що йде мова у вашому контенті.
+    hint_more_than_one_tag: "Опишіть, про що йде мова у вашому матеріалі; потрібно вказати щонайменше {{min_tags_number}} тегів."
     no_result: Не знайдено тегів
     tag_required_text: Обов'язковий тег (принаймні один)
   header:
@@ -1202,7 +1202,7 @@ ui:
     search:
       placeholder: Пошук
   footer:
-    build_on: Powered by <1> Apache Answer </1>
+    build_on: На базі <1> Apache Answer </1>
   upload_img:
     name: Змінити
     loading: завантаження...
@@ -1235,7 +1235,7 @@ ui:
       msg:
         empty: Ім'я не може бути порожнім.
         range: Ім'я повинно мати довжину від 2 до 30 символів.
-        character: 'Must use the character set "a-z", "0-9", " - . _"'
+        character: 'Необхідно використовувати набір символів «a-z», «0-9», « - . _»'
     email:
       label: Електронна пошта
       msg:
@@ -1307,12 +1307,12 @@ ui:
       display_name:
         label: Ім'я для відображення
         msg: Ім'я для відображення не може бути порожнім.
-        msg_range: Display name must be 2-30 characters in length.
+        msg_range: Ім'я для показу має містити від 2 до 30 символів.
       username:
         label: Ім'я користувача
         caption: Користувачі можуть згадувати вас як "@username".
         msg: Ім’я користувача не може бути порожнім.
-        msg_range: Username must be 2-30 characters in length.
+        msg_range: Ім'я користувача має містити від 2 до 30 символів.
         character: 'Must use the character set "a-z", "0-9", "- . _"'
       avatar:
         label: Зображення профілю
@@ -1904,7 +1904,7 @@ ui:
             msg_range: Display name must be 2-30 characters in length.
           username:
             label: Ім'я користувача
-            msg_range: Username must be 2-30 characters in length.
+            msg_range: Ім'я користувача має містити від 2 до 30 символів.
           email:
             label: Електронна пошта
             msg_invalid: Невірна адреса електронної пошти.
@@ -1936,10 +1936,10 @@ ui:
       name: Ім’я
       email: Електронна пошта
       reputation: Репутація
-      created_at: Created time
-      delete_at: Deleted time
-      suspend_at: Suspended time
-      suspend_until: Suspend until
+      created_at: Час створення
+      delete_at: Час видалення
+      suspend_at: Час призупинення
+      suspend_until: Призупинити до
       status: Статус
       role: Роль
       action: Дія
@@ -1974,8 +1974,8 @@ ui:
       suspend_user:
         title: Призупинити цього користувача
         content: Призупинений користувач не може увійти в систему.
-        label: How long will the user be suspended for?
-        forever: Forever
+        label: На який термін буде заблоковано обліковий запис користувача?
+        forever: Назавжди
     questions:
       page_title: Запитання
       unlisted: Вилучене зі списку
@@ -2037,11 +2037,11 @@ ui:
         msg: Часовий пояс не може бути пустим.
         text: Виберіть місто в тому ж часовому поясі, що й ви.
       avatar:
-        label: Default avatar
-        text: For users without a custom avatar of their own.
+        label: Типовий аватар
+        text: Для користувачів, які не мають власного індивідуального аватара.
       gravatar_base_url:
-        label: Gravatar base URL
-        text: URL of the Gravatar provider's API base. Ignored when empty.
+        label: Базова URL-адреса Gravatar
+        text: URL-адреса бази API провайдера Gravatar. Якщо поле порожнє, його значення ігнорується.
     smtp:
       page_title: SMTP
       from_email:
@@ -2108,22 +2108,22 @@ ui:
         label: Політика конфіденційности
         text: "Ви можете додати вміст політики конфіденційності тут. Якщо у вас уже є документ, розміщений деінде, надайте тут повну URL-адресу."
       external_content_display:
-        label: External content
-        text: "Content includes images, videos, and media embedded from external websites."
-        always_display: Always display external content
-        ask_before_display: Ask before displaying external content
+        label: Зовнішній контент
+        text: "Вміст включає зображення, відео та мультимедійні матеріали, вбудовані із зовнішніх вебсайтів."
+        always_display: Завжди показувати зовнішній вміст
+        ask_before_display: Запитайте до зображення зовнішнього вмісту
     write:
-      page_title: Files
+      page_title: Файли
       min_content:
-        label: Minimum question body length
-        text: Minimum allowed question body length in characters.
+        label: Мінімальна довжина тексту запитання
+        text: Мінімальна дозволена довжина тексту запитання у символах.
       restrict_answer:
         title: Відповідь на запис
         label: Кожен користувач може написати лише одну відповідь на кожне запитання
         text: "Вимкнути, щоб дозволити користувачам писати кілька відповідей на одне і те ж питання, що може призвести до розфокусування відповідей."
       min_tags:
-        label: "Minimum tags per question"
-        text: "Minimum number of tags required in a question."
+        label: "Мінімальна кількість тегів на одне запитання"
+        text: "Мінімальна кількість тегів, необхідних у запитанні."
       recommend_tags:
         label: Рекомендовані теги
         text: "За замовчуванням рекомендовані теги будуть показані у спадному списку."
@@ -2167,14 +2167,14 @@ ui:
       color_scheme:
         label: Схема кольорів
       navbar_style:
-        label: Navbar background style
+        label: Стиль фону навігаційної панелі
       primary_color:
         label: Основний колір
         text: Змінюйте кольори, що використовуються у ваших темах
       layout:
-        label: Layout
-        full_width: Full-width
-        fixed_width: Fixed-width
+        label: Макет
+        full_width: На всю ширину
+        fixed_width: Фіксована ширина
     css_and_html:
       page_title: CSS та HTML
       custom_css:
@@ -2206,7 +2206,7 @@ ui:
         label: Дозволити реєстрацію за електронною поштою
         text: Вимкніть, щоб запобігти створенню нових облікових записів через електронну пошту.
       email_verification:
-        title: Email verification
+        title: Підтвердження е-пошти
         label: Require email verification
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
