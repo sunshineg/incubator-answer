@@ -235,7 +235,7 @@ backend:
       content_cannot_empty:
         other: Il contenuto non può essere vuoto.
       content_less_than_minimum:
-        other: Not enough content entered.
+        other: Contenuto inserito non sufficiente.
     rank:
       fail_to_meet_the_condition:
         other: Il rango di reputazione non soddisfa le condizioni.
@@ -266,7 +266,7 @@ backend:
       cannot_set_synonym_as_itself:
         other: Non puoi impostare il sinonimo del tag corrente come se stesso.
       minimum_count:
-        other: Not enough tags were entered.
+        other: Non sono stati inseriti abbastanza tag.
     smtp:
       config_from_name_cannot_be_email:
         other: Il mittente non può essere un indirizzo email.
@@ -856,6 +856,8 @@ ui:
     copy: Copy
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
+    thinking: Thinking…
+    thoughts: Thoughts
   notifications:
     title: Notifiche
     inbox: Posta in arrivo
@@ -2203,6 +2205,10 @@ ui:
         title: Registrazione email
         label: Consenti registrazione email
         text: Disattiva per impedire a chiunque di creare un nuovo account tramite email.
+      email_verification:
+        title: Email verification
+        label: Require email verification
+        text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Domini email consentiti
         text: "Domini email con cui gli utenti devono registrare gli account. Un dominio per riga. Verrà ignorato quando vuoto.\n"
@@ -2291,11 +2297,11 @@ ui:
         description: Description
         description_required: Description is required.
         scope: Scope
-        global: Global
-        read-only: Read-only
+        global: Globale
+        read-only: Solo lettura
       created_modal:
-        title: API key created
-        api_key: API key
+        title: Chiave API creata
+        api_key: Chiave API
         description: This key will not be displayed again. Make sure you take a copy before continuing.
       delete_modal:
         title: Delete API Key
@@ -2446,5 +2452,4 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
 
