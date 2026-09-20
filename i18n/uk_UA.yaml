@@ -1393,7 +1393,7 @@ ui:
   linked_question:
     title: Linked
     description: Posts linked to
-    no_linked_question: No contents linked from this content.
+    no_linked_question: З цього вмісту немає посилань на інший контент.
   invite_to_answer:
     title: Люди запитували
     desc: Виберіть людей, які, на вашу думку, можуть знати відповідь.
@@ -1406,7 +1406,7 @@ ui:
     Asked: Запитали
     asked: запитали
     update: Змінено
-    Edited: Edited
+    Edited: Редаговано
     edit: відредаговано
     commented: прокоментовано
     Views: Переглянуто
@@ -1486,7 +1486,7 @@ ui:
     signup: Зареєструватися
     logout: Вийти
     verify: Підтвердити
-    create: Create
+    create: Створити
     approve: Затвердити
     reject: Відхилити
     skip: Пропустити
@@ -1521,9 +1521,9 @@ ui:
     deleted_permanently: Deleted permanently
     pending: Очікування
     more: Більше
-    view: View
-    card: Card
-    compact: Compact
+    view: Перегляд
+    card: Картка
+    compact: Компактно
     display_below: Display below
     always_display: Always display
     or: or
