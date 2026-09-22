@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: دامنه های مجاز ایمیل
-        text: دامنه های ایمیلی که کاربران باید با آنها حساب ثبت کنند. یک دامنه در هر خط. وقتی خالی است نادیده گرفته می شود.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: Private
         label: Login required
@@ -2452,4 +2452,3 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
