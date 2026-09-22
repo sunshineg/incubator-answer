@@ -2211,7 +2211,7 @@ ui:
         text: Якщо ця функція увімкнена, користувачі повинні підтвердити свою електронну адресу перед початком користування сайтом.
       allowed_email_domains:
         title: Дозволені домени електронної пошти
-        text: Домени електронної пошти, на які користувачі повинні зареєструвати облікові записи. Один домен у рядку. Ігнорується, якщо порожній.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: Приватний
         label: Вхід обов'язковий
@@ -2452,4 +2452,3 @@ ui:
     copy: Копіювати в буфер обміну
     copied: Скопійовано
     external_content_warning: Зовнішні зображення/медіафайли не зображаються.
-
