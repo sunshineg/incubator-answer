@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: 허용된 이메일 도메인
-        text: 사용자가 계정을 등록할 때 필수적으로 사용해야 하는 이메일 도메인입니다. 한 줄에 하나의 도메인을 입력하세요. 비어 있으면 무시됩니다.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: 비공개
         label: 로그인 필수
@@ -2452,4 +2452,3 @@ ui:
     copy: 클립보드에 복사
     copied: 복사됨
     external_content_warning: 외부 이미지/미디어가 표시되지 않습니다.
-
