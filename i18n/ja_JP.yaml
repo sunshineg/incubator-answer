@@ -2212,7 +2212,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: 許可されたメールドメイン
-        text: ユーザーがアカウントを登録する必要があるメールドメインです。1行に1つのドメインがあります。空の場合は無視されます。
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: 非公開
         label: ログインが必要です
@@ -2453,4 +2453,3 @@ ui:
     copy: クリップボードにコピー
     copied: コピーしました
     external_content_warning: 外部の画像/メディアは表示されません。
-
