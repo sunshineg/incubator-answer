@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: 允許的電子郵件網域
-        text: 使用者必須以此電子郵件網域註冊帳號。每行一個網域。留空時忽略。
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: 非公開的
         label: 需要登入
@@ -2452,4 +2452,3 @@ ui:
     copy: 複製到剪貼簿
     copied: 已複製
     external_content_warning: 外部圖片/媒體未顯示。
-
