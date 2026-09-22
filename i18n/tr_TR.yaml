@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: İzin verilen e-posta alan adları
-        text: Kullanıcıların hesap kaydı yapması gereken e-posta alan adları. Her satırda bir alan adı. Boş olduğunda dikkate alınmaz.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: Özel
         label: Giriş gerekli
@@ -2452,4 +2452,3 @@ ui:
     copy: Panoya kopyala
     copied: Kopyalandı
     external_content_warning: Harici resimler/medya gösterilmiyor.
-
