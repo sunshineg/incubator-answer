@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Domenii de e-mail permise
-        text: Domeniile de e-mail cu care utilizatorii trebuie să înregistreze conturi. Un domeniu pe linie. Se ignoră atunci când este gol.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: Privat
         label: Autentificare necesară
@@ -2452,4 +2452,3 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
