@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Dominios de correo electrónico permitidos
-        text: Dominios de correo electrónico con los que los usuarios deben registrar sus cuentas. Un dominio por línea. Ignorado cuando esté vacío.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: Privado
         label: Inicio de sesión requerido
@@ -2452,4 +2452,3 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
