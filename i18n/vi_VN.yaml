@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Miền email được phép
-        text: Miền email mà người dùng phải đăng ký tài khoản. Một miền mỗi dòng. Bỏ qua khi trống.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: Riêng tư
         label: Yêu cầu đăng nhập
@@ -2452,4 +2452,3 @@ ui:
     copy: Copy to clipboard
     copied: Copied
     external_content_warning: External images/media are not displayed.
-
