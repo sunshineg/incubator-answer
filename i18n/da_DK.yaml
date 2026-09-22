@@ -2211,7 +2211,7 @@ ui:
         text: When enabled, users must verify their email address before using the site.
       allowed_email_domains:
         title: Tilladte e-mail-domæner
-        text: E-mail-domæner som brugere skal registrere konti med. Et domæne pr. linje. Ignoreres når tomt.
+        text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
         title: Privat
         label: Log ind påkrævet
@@ -2452,4 +2452,3 @@ ui:
     copy: Kopier til udklipsholder
     copied: Kopieret
     external_content_warning: Eksterne billeder/medier vises ikke.
-
