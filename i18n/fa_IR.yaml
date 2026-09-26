@@ -1082,8 +1082,8 @@ ui:
     hours: ساعات
     days: روزها
     month: ماه
-    months: months
-    year: year
+    months: ماه
+    year: سال
   reaction:
     heart: heart
     smile: smile
@@ -1137,7 +1137,7 @@ ui:
     search_placeholder: فیلتر بر اساس اسم برچسب
     no_desc: برچسب هیچ توضیحی ندارد.
     more: بیشتر
-    wiki: Wiki
+    wiki: ویکی
   ask:
     title: Create Question
     edit_title: سوال را ویرایش کنید
@@ -1406,7 +1406,7 @@ ui:
     Asked: پرسیده شده
     asked: پرسیده شده
     update: تغییر یافته
-    Edited: Edited
+    Edited: ویرایش شده
     edit: ویرایش شده
     commented: commented
     Views: مشاهده شده
@@ -1451,7 +1451,7 @@ ui:
       title: بازگشایی مجدد این پست
       content: آیا مطمئن هستید که می‌خواهید بازگشایی مجدد انجام دهید?
     list:
-      confirm_btn: List
+      confirm_btn: فهرست
       title: List this post
       content: Are you sure you want to list?
     unlist:
@@ -1479,7 +1479,7 @@ ui:
     save: ذخیره
     delete: حذف
     undelete: بازگردانی
-    list: List
+    list: فهرست
     unlist: Unlist
     unlisted: Unlisted
     login: ورود
@@ -1520,13 +1520,13 @@ ui:
     deleted: Deleted
     deleted_permanently: Deleted permanently
     pending: Pending
-    more: More
+    more: بیشتر
     view: View
     card: Card
     compact: Compact
     display_below: Display below
     always_display: Always display
-    or: or
+    or: یا
     back_sites: Back to sites
   search:
     title: نتایج جستجو
@@ -1558,7 +1558,7 @@ ui:
     via: اشتراک گذاری پست با...
     copied: کپی انجام شد
     facebook: اشتراک گذاری در فیس بوک
-    twitter: Share to X
+    twitter: هم‌رسانی در X
   cannot_vote_for_self: شما نمی توانید به پست خودتان رای دهید.
   modal_confirm:
     title: خطا...
@@ -1790,13 +1790,13 @@ ui:
     plugins: افزونه‌ها
     installed_plugins: پلاگین های نصب شده
     apperance: Appearance
-    community: Community
-    advanced: Advanced
-    tags: Tags
+    community: اجتماع
+    advanced: پیشرفته
+    tags: برچسب‌ها
     rules: Rules
     policies: Policies
-    security: Security
-    files: Files
+    security: امنیت
+    files: پرونده‌ها
     apikeys: API Keys
     intelligence: Intelligence
     ai_assistant: AI Assistant
@@ -1811,7 +1811,7 @@ ui:
     modal:
       title: Congratulations
       content: You've earned a new badge.
-      close: Close
+      close: بستن
       confirm: View badges
     title: Badges
     awarded: Awarded
@@ -1852,7 +1852,7 @@ ui:
       uptime: "پایداری:"
       links: Links
       plugins: افزونه‌ها
-      github: GitHub
+      github: گیت‌هاب
       blog: بلاگ
       contact: تماس
       forum: Forum
@@ -1896,7 +1896,7 @@ ui:
       btn_cancel: لغو
       btn_submit: ثبت
     edit_profile_modal:
-      title: Edit profile
+      title: ویرایش نمایه
       form:
         fields:
           display_name:
@@ -2213,7 +2213,7 @@ ui:
         title: دامنه های مجاز ایمیل
         text: Email domains users must use to register accounts. Enter one domain per line, including the @ symbol (for example, @example.com). Ignored when empty.
       private:
-        title: Private
+        title: خصوصی
         label: Login required
         text: Only logged in users can access this community.
       password_login:
@@ -2231,7 +2231,7 @@ ui:
       plugins:
         label: Plugins
         text: Select an existing plugin.
-      name: Name
+      name: نام
       version: Version
       status: وضعیت
       action: اقدام
@@ -2277,9 +2277,9 @@ ui:
       deactivate: Deactivate
       filter:
         placeholder: Filter by name, badge:id
-      group: Group
+      group: گروه
       inactive: Inactive
-      name: Name
+      name: نام
       show_logs: Show logs
       status: Status
       title: Badges
@@ -2322,7 +2322,7 @@ ui:
         check_success: "Connection successful."
         msg: API key is required
       model:
-        label: Model
+        label: مدل
         msg: Model is required
       add_success: AI settings updated successfully.
     conversations:
@@ -2341,9 +2341,9 @@ ui:
         label: MCP server
         switch: Enabled
       type:
-        label: Type
+        label: نوع
       url:
-        label: URL
+        label: نشانی اینترنتی
       http_header:
         label: HTTP header
         text: Please replace {key} with the API Key.
@@ -2351,7 +2351,7 @@ ui:
     optional: (optional)
     empty: cannot be empty
     invalid: is invalid
-    btn_submit: Save
+    btn_submit: ذخیره
     not_found_props: "Required property {{ key }} not found."
     select: Select
   page_review:
@@ -2359,7 +2359,7 @@ ui:
     proposed: proposed
     question_edit: Question edit
     answer_edit: Answer edit
-    tag_edit: Tag edit
+    tag_edit: ویرایش برچسب
     edit_summary: Edit summary
     edit_question: Edit question
     edit_answer: Edit answer
@@ -2374,11 +2374,11 @@ ui:
     flag_user: Flag user
     queued_post: Queued post
     queued_user: Queued user
-    filter_label: Type
+    filter_label: نوع
     reputation: reputation
     flag_post_type: Flagged this post as {{ type }}.
     flag_user_type: Flagged this user as {{ type }}.
-    edit_post: Edit post
+    edit_post: ویرایش نوشته
     list_post: List post
     unlist_post: پست فهرست نشده
   timeline:
