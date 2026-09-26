@@ -438,7 +438,7 @@ backend:
       other: Questions
   tag:
     tags_title:
-      other: Tags
+      other: برچسب‌ها
     no_description:
       other: The tag has no description.
   notification:
@@ -536,7 +536,7 @@ backend:
     accepted:
       other: پذیرفته شده
     edit:
-      other: edit
+      other: ویرایش
   review:
     queued_post:
       other: Queued post
@@ -561,7 +561,7 @@ backend:
           other: Completed our new user tutorial.
       editor:
         name:
-          other: Editor
+          other: ویرایشگر
         desc:
           other: First post edit.
       first_flag:
@@ -800,7 +800,7 @@ backend:
           other: Getting Started
       community:
         name:
-          other: Community
+          other: اجتماع
       posting:
         name:
           other: Posting
@@ -845,7 +845,7 @@ ui:
     http_50X: خطای 500 HTTP
     http_403: خطای 403 HTTP
     logout: خروج
-    posts: Posts
+    posts: نوشته‌ها
     ai_assistant: AI Assistant
   ai_assistant:
     description: Got a question? Ask it and get answers, perspectives, and recommendations.
@@ -853,7 +853,7 @@ ui:
     show_more: Show more
     new: New chat
     ai_generate: AI-generated from posts and may not be accurate.
-    copy: Copy
+    copy: رونوشت
     ask_a_follow_up: Ask a follow-up
     ask_placeholder: Ask a question
     thinking: Thinking…
@@ -871,7 +871,7 @@ ui:
       posts: پست ها
       invites: دعوت ها
       votes: آراء
-    answer: Answer
+    answer: پاسخ
     question: Question
     badge_award: Badge
   suspended:
@@ -1055,7 +1055,7 @@ ui:
       tip: مطمئنید که میخواهید حذف شود?
       close: بستن
     merge:
-      title: Merge tag
+      title: ادغام برچسب
       source_tag_title: Source tag
       source_tag_description: The source tag and its associated data will be remapped to the target tag.
       target_tag_title: Target tag
@@ -1081,7 +1081,7 @@ ui:
     day: روز
     hours: ساعات
     days: روزها
-    month: month
+    month: ماه
     months: months
     year: year
   reaction:
