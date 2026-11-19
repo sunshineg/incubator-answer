@@ -1388,12 +1388,12 @@ ui:
     review: A sua resposta irá aparecer após a revisão.
     sent_success: Enviado com sucesso
   related_question:
-    title: Related
+    title: Relacionado
     answers: respostas
   linked_question:
-    title: Linked
-    description: Posts linked to
-    no_linked_question: No contents linked from this content.
+    title: Vinculado
+    description: Publicações ligadas a
+    no_linked_question: Nenhum conteúdo vinculado a este conteúdo.
   invite_to_answer:
     title: Pessoas Perguntaram
     desc: Select people who you think might know the answer.
@@ -1402,11 +1402,11 @@ ui:
     search: Procurar pessoas
   question_detail:
     action: Acção
-    created: Created
+    created: Criado
     Asked: Perguntado
     asked: perguntado
     update: Modificado
-    Edited: Edited
+    Edited: Editado
     edit: modificado
     commented: comentado
     Views: Visualizado
@@ -1486,7 +1486,7 @@ ui:
     signup: Cadastrar-se
     logout: Sair
     verify: Verificar
-    create: Create
+    create: Criar
     approve: Aprovar
     reject: Rejetar
     skip: Pular
@@ -1518,10 +1518,10 @@ ui:
     normal: Normal
     closed: Fechado
     deleted: Removido
-    deleted_permanently: Deleted permanently
+    deleted_permanently: Excluir permanentemente
     pending: Pendente
     more: Mais
-    view: View
+    view: Visualizar
     card: Card
     compact: Compact
     display_below: Display below
