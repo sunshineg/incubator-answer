@@ -2334,19 +2334,19 @@ ui:
       empty: Nenhuma conversa encontrada.
       delete_modal:
         title: Excluir conversa
-        content: Are you sure you want to delete this conversation? This is permanent!
-        delete_success: Conversation deleted successfully.
+        content: Tem certeza de que deseja excluir esta conversa? Isto é permanente!
+        delete_success: Conversa excluída com sucesso.
     mcp:
       mcp_server:
-        label: MCP server
-        switch: Enabled
+        label: Servidor MCP
+        switch: Habilitado
       type:
-        label: Type
+        label: Tipo
       url:
         label: URL
       http_header:
-        label: HTTP header
-        text: Please replace {key} with the API Key.
+        label: Cabeçalho HTTP
+        text: Por favor substitua {key} pela Chave de API.
   form:
     optional: (opcional)
     empty: não pode ser vazio
@@ -2443,12 +2443,12 @@ ui:
     user_normal: Este usuário já está normal.
     user_suspended: Este usuário foi suspenso.
     user_deleted: Este usuário foi removido.
-    user_added: User has been added successfully.
+    user_added: O usuário foi adicionado com sucesso.
     badge_activated: Este emblema foi ativado.
     badge_inactivated: Este emblema foi desativado.
-    users_deleted: These users have been deleted.
-    posts_deleted: These questions have been deleted.
-    answers_deleted: These answers have been deleted.
-    copy: Copy to clipboard
-    copied: Copied
-    external_content_warning: External images/media are not displayed.
+    users_deleted: Estes usuários foram excluídos.
+    posts_deleted: Estas perguntas foram excluídas.
+    answers_deleted: Estas respostas foram excluídas.
+    copy: Copiar para área de transferência
+    copied: Copiado
+    external_content_warning: Imagens externas/mídia não são exibidas.
