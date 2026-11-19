@@ -1522,11 +1522,11 @@ ui:
     pending: Pendente
     more: Mais
     view: Visualizar
-    card: Card
-    compact: Compact
+    card: Cartão
+    compact: Compacto
     display_below: Display below
-    always_display: Always display
-    or: or
+    always_display: Exibir sempre
+    or: ou
     back_sites: Back to sites
   search:
     title: Procurar Resultados
